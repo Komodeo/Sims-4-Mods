@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="CollectManyInteraction" i="interaction" m="carry.put_down_interactions" n="Collect_Clean_Dish_As_Trash" s="13174">
+  <V n="_animation_actor_map" t="reference">
+    <T n="reference">104044<!--CreateAndPickupObject--></T>
+  </V>
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">0.7</T>
+              <T n="ideal_radius_width">0.1</T>
+              <T n="radius">2</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="facing">
+            <U n="facing">
+              <T n="inner_radius">0</T>
+              <T n="range">180</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+  </L>
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Object</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <V n="aggregate_object" t="definitions">
+    <L n="definitions">
+      <T>22174</T>
+    </L>
+  </V>
+  <T n="allow_autonomous">False</T>
+  <T n="allow_from_sim_inventory">True</T>
+  <L n="asm_actor_overrides">
+    <U>
+      <T n="actor_name">trash</T>
+      <E n="actor_participant">CreatedObject</E>
+    </U>
+  </L>
+  <T n="attention_cost">0.75</T>
+  <T n="autonomy_can_overwrite_similar_affordance">True</T>
+  <V n="basic_content" t="one_shot">
+    <U n="one_shot">
+      <U n="animation_ref">
+        <T n="factory">12110<!--Throw_Away--></T>
+        <U n="overrides">
+          <V n="balloons" t="enabled">
+            <L n="enabled">
+              <U>
+                <L n="balloon_choices">
+                  <U>
+                    <V n="item" t="balloon_icon">
+                      <U n="balloon_icon">
+                        <V n="icon" t="resource_key">
+                          <U n="resource_key">
+                            <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_sink.png">2f7d0004:00000000:0e1923d8f82205c9</T>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </U>
+                </L>
+                <L n="balloon_target">
+                  <E>Actor</E>
+                </L>
+              </U>
+            </L>
+          </V>
+        </U>
+      </U>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">0.78</T>
+                <T n="stat">16655<!--motive_Fun--></T>
+                <L n="tests">
+                  <L>
+                    <V t="trait">
+                      <U n="trait">
+                        <L n="whitelist_traits">
+                          <T>16858<!--trait_Neat--></T>
+                        </L>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_set_max">
+              <U n="statistic_set_max">
+                <T n="stat">29114<!--commodity_Trait_Autonomy_Neat--></T>
+              </U>
+            </V>
+            <V t="statistic_set_max">
+              <U n="statistic_set_max">
+                <T n="stat">163770</T>
+              </U>
+            </V>
+          </L>
+          <T n="trigger_gain_on_start">True</T>
+        </U>
+      </V>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="broadcaster">
+      <U n="broadcaster">
+        <L n="broadcaster_types">
+          <U>
+            <T n="item">201427</T>
+          </U>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x59556AA8<!--Throw Away--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <T n="force_autonomy_on_inertia">False</T>
+  <V n="goal_height_limit" t="enabled" />
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <L n="loot_list">
+          <T>10904<!--Loot_MaidClean--></T>
+          <T>76814<!--Loot_Trash_ExtraDishTrash--></T>
+        </L>
+        <L n="parameterized_autonomy">
+          <U>
+            <E n="key">Actor</E>
+            <U n="value">
+              <L n="requests">
+                <U>
+                  <T n="consider_same_target">False</T>
+                  <V n="randomization_override" t="enabled">
+                    <E n="enabled">DISABLED</E>
+                  </V>
+                  <L n="static_commodities">
+                    <T>16438<!--StaticCommodity_ThrowAway--></T>
+                    <T>16423<!--StaticCommodity_Collect_Trash--></T>
+                    <T>16426<!--StaticCommodity_EmptyTrash--></T>
+                  </L>
+                </U>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </U>
+  </V>
+  <V n="route_start_balloon" t="enabled">
+    <U n="enabled">
+      <U n="balloon">
+        <L n="balloon_choices">
+          <U>
+            <V n="item" t="balloon_icon">
+              <U n="balloon_icon">
+                <V n="icon" t="participant">
+                  <U n="participant">
+                    <L n="participant_type">
+                      <E>Object</E>
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </U>
+        </L>
+        <L n="balloon_target">
+          <E>Actor</E>
+        </L>
+      </U>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <V n="super_affordance_compatibility" t="literal">
+    <U n="literal">
+      <V n="default_inclusion" t="exclude_all">
+        <U n="exclude_all">
+          <L n="include_lists">
+            <T>139888</T>
+          </L>
+        </U>
+      </V>
+    </U>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <L n="test_autonomous">
+    <L>
+      <V t="trait">
+        <U n="trait">
+          <L n="blacklist_traits">
+            <T>16860<!--trait_Slob--></T>
+            <T>160848</T>
+          </L>
+        </U>
+      </V>
+    </L>
+  </L>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <T n="value">30700<!--DishLocation_Outside_Object--></T>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <V n="fallback_behavior" t="always_fail" />
+        <E n="operator">NOTEQUAL</E>
+        <V n="tooltip" t="disabled" />
+        <T n="value">15190<!--Freshness_Spoiled--></T>
+        <E n="who">Object</E>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <V n="fallback_behavior" t="always_pass" />
+        <E n="operator">NOTEQUAL</E>
+        <V n="tooltip" t="disabled" />
+        <T n="value">15108<!--Consumable_Empty--></T>
+        <E n="who">Object</E>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <V n="fallback_behavior" t="always_pass" />
+        <E n="operator">NOTEQUAL</E>
+        <V n="tooltip" t="disabled" />
+        <T n="value">15320<!--Servings_Empty--></T>
+        <E n="who">Object</E>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <V n="fallback_behavior" t="always_pass" />
+        <E n="operator">NOTEQUAL</E>
+        <V n="tooltip" t="disabled" />
+        <T n="value">15326<!--Servings_SmallEmpty--></T>
+        <E n="who">Object</E>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <V n="fallback_behavior" t="always_pass" />
+        <E n="operator">NOTEQUAL</E>
+        <V n="tooltip" t="disabled" />
+        <T n="value">15322<!--Servings_LargeEmpty--></T>
+        <E n="who">Object</E>
+      </U>
+    </V>
+    <V t="commodity_advertised">
+      <U n="commodity_advertised">
+        <T n="check_affordance_suppression">True</T>
+        <V n="requirements" t="require_none" />
+        <L n="static_commodities">
+          <T>16441<!--StaticCommodity_WashDishes--></T>
+        </L>
+        <T n="test_aops">True</T>
+      </U>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">143264<!--testSetInstance_Festival_NoTrashPutAway--></T>
+    </V>
+    <V t="commodity_advertised">
+      <U n="commodity_advertised">
+        <T n="check_affordance_suppression">True</T>
+        <L n="static_commodities">
+          <T>16438<!--StaticCommodity_ThrowAway--></T>
+        </L>
+        <V n="tooltip" t="enabled">
+          <T n="enabled">0x47EF94CE<!--A trash can or sink is required to clean this up.--></T>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">3</T>
+</I>

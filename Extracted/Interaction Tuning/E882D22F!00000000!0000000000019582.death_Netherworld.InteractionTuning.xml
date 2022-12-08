@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="DeathSuperInteraction" i="interaction" m="interactions.utils.death_interactions" n="death_Netherworld" s="103810">
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">1</T>
+              <T n="radius">1.5</T>
+              <T n="require_los">False</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="facing" />
+        </U>
+      </L>
+    </U>
+  </L>
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Actor</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <T n="allow_autonomous">False</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="one_shot" />
+  <T n="can_shoo">False</T>
+  <V n="confirmation_dialog" t="enabled">
+    <U n="enabled">
+      <U n="dialog">
+        <V n="dialog" t="ok_cancel">
+          <U n="ok_cancel">
+            <V n="icon" t="enabled">
+              <V n="enabled" t="participant" />
+            </V>
+            <V n="text" t="single">
+              <T n="single">0x3620C3CA<!--Returning to the Netherworld will permanently remove {0.SimFirstName} from the household and leave all {M0.his}{F0.her} earthly possessions behind - including family members! There is no way back from the Netherworld.--></T>
+            </V>
+            <V n="title" t="enabled">
+              <T n="enabled">0x50F262C<!--Return to Netherworld--></T>
+            </V>
+          </U>
+        </V>
+      </U>
+    </U>
+  </V>
+  <V n="content_score" t="disabled" />
+  <U n="death_dialog">
+    <V n="audio_sting" t="enabled">
+      <U n="enabled">
+        <T n="audio" p="InGame\Audio\Bumper\bumper_game_over.propx">39b2aa4a:00000000:e4380625f832c48e</T>
+      </U>
+    </V>
+    <V n="icon" t="enabled">
+      <V n="enabled" t="resource_key">
+        <U n="resource_key">
+          <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_gravestone.png">2f7d0004:00000000:7c70ef2a230cf012</T>
+        </U>
+      </V>
+    </V>
+    <U n="text">
+      <V n="empty_household" t="enabled">
+        <V n="enabled" t="single">
+          <T n="single">0x1721900E<!--{0.SimFirstName} having successfully returned to the Netherworld, this household is now empty. Select a new one to continue playing with earthly beings.--></T>
+        </V>
+      </V>
+      <V n="fallback" t="single">
+        <T n="single">0xF225983F<!--{1.SimFirstName} has departed from {M1.his}{F1.her} unnatural life and can no longer take care of the household's children. Sim Social Services are well prepared for this kind of situation, and are going to take it from here.--></T>
+      </V>
+      <V n="single_sim" t="enabled">
+        <V n="enabled" t="single">
+          <T n="single">0x3C79B5AB<!--Did {1.SimFirstName} not realize that {M1.he}{F1.she} was leaving {0.SimFirstName} behind? Oh well. Sim Social Services are on the way to take care of {M0.him}{F0.her}.--></T>
+        </V>
+      </V>
+    </U>
+    <V n="title" t="enabled">
+      <T n="enabled">0x992A95D2<!--Game Over!--></T>
+    </V>
+    <L n="ui_responses">
+      <U>
+        <T n="text">0x2B08947E<!--Save and Manage Worlds--></T>
+        <E n="ui_request">TRANSITION_TO_NEIGHBORHOOD_SAVE</E>
+      </U>
+      <U>
+        <T n="text">0xF9E584E6<!--Exit to Main Menu--></T>
+        <E n="ui_request">TRANSITION_TO_MAIN_MENU_NO_SAVE</E>
+      </U>
+    </L>
+  </U>
+  <U n="death_element">
+    <V n="cancel_on_inaccessible_placement" t="no" />
+    <T n="create_urnstone">False</T>
+    <V n="location" t="position">
+      <U n="position">
+        <V n="surface_type_override" t="enabled" />
+      </U>
+    </V>
+    <V n="timing" t="on_xevt">
+      <U n="on_xevt">
+        <E n="criticality">OnCancelOrException</E>
+        <T n="xevt_id">101</T>
+      </U>
+    </V>
+  </U>
+  <V n="death_info" t="Set_To_Minimum_LOD" />
+  <T n="display_name">0x50F262C<!--Return to Netherworld--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <V n="animation_ref" t="enabled">
+          <U n="enabled">
+            <T n="factory">103811<!--Ghost_JumpIn--></T>
+          </U>
+        </V>
+        <E n="outcome_result">FAILURE</E>
+      </U>
+    </U>
+  </V>
+  <T n="save_lock_tooltip">0xAC0C976F<!--You cannot do this while a Sim is returning to the Netherworld!--></T>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <V n="super_affordance_compatibility" t="literal">
+    <U n="literal">
+      <V n="default_inclusion" t="exclude_all" />
+    </U>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified" />
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="identity">
+      <U n="identity">
+        <E n="subject_b">StoredSim</E>
+        <T n="subjects_match">True</T>
+      </U>
+    </V>
+    <V t="lot_owner" />
+    <V t="test_set_reference">
+      <T n="test_set_reference">101697<!--testSet_ActorIsGhost--></T>
+    </V>
+    <V t="has_head_parented_object">
+      <U n="has_head_parented_object">
+        <T n="negate">True</T>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">30</T>
+</I>

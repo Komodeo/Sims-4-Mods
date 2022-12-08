@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="DialogDramaNode" i="drama_node" m="drama_scheduler.dialog_drama_node" n="dialogDramaNode_MusicFestival2021_CloseBusinesses" s="269971">
+  <V n="dialog_and_loot" t="dialog_multi_response">
+    <U n="dialog_multi_response">
+      <U n="dialog">
+        <T n="anonymous_target_sim">True</T>
+        <V n="text" t="single">
+          <T n="single">0xA40C5C4C<!--Hello, I'm calling on behalf of Willow Creek Park Services. We understand that you own a business on Magnolia Blossom in Willow Creek.\n\nThe Sims Sessions performances are about to happen in the area. If you open your business the Sims Sessions will not come to the park this Sunday.\n\nWould you like to close your business so the Sims Sessions performances can come to town?--></T>
+        </V>
+        <L n="ui_responses">
+          <U>
+            <V n="response_command" t="enabled">
+              <V n="enabled" t="literal">
+                <U n="literal">
+                  <T n="command">live_festival.close_businesses_in_live_festival_street</T>
+                </U>
+              </V>
+            </V>
+            <T n="text">0xB16B57AF<!--Yes, Close Business--></T>
+            <E n="ui_request">SEND_COMMAND</E>
+          </U>
+          <U>
+            <T n="text">0x8063545B<!--No Thanks, Keep Business Open--></T>
+          </U>
+        </L>
+      </U>
+    </U>
+  </V>
+  <T n="is_simless">False</T>
+  <U n="min_and_max_times">
+    <T n="lower_bound">0</T>
+    <T n="upper_bound">24</T>
+  </U>
+  <L n="run_tests">
+    <L>
+      <V t="active_live_festival" />
+    </L>
+  </L>
+  <V n="scoring" t="enabled">
+    <U n="enabled">
+      <T n="base_score">90</T>
+      <E n="bucket">MusicFestival</E>
+    </U>
+  </V>
+  <E n="sender_sim_info_type">INSTANCED_ALLOWED</E>
+  <V n="time_option" t="schedule">
+    <U n="schedule">
+      <L n="valid_times">
+        <U>
+          <U n="days_available">
+            <T n="0 SUNDAY">True</T>
+          </U>
+          <U n="start_time">
+            <T n="hour">7</T>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+</I>

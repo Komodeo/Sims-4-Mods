@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="PizzaDeliverySituation" i="situation" m="situations.complex.pizza_delivery_situation" n="situation_PizzaDelivery_New" s="74299">
+  <U n="delivery_completion_affordances">
+    <L n="tags">
+      <E>Interaction_Take_Pizza</E>
+    </L>
+  </U>
+  <U n="delivery_job">
+    <T n="delivery_failure_state">10417<!--pizzaDelivery_notPaid--></T>
+    <T n="leave_state">24224<!--rolestate_leave_now--></T>
+    <T n="no_front_door_state">75492<!--pizzaDelivery_goToMailbox--></T>
+    <T n="ring_doorbell_state">74416<!--pizzaDelivery_ringDoorbell--></T>
+    <T n="situation_job">9830<!--job_pizzaDelivery--></T>
+    <T n="wait_to_deliver_state">74304<!--pizzaDelivery_waitForCustomer--></T>
+  </U>
+  <T n="duration">360</T>
+  <L n="finish_job_notifications">
+    <U>
+      <E n="key">FINISHED_WORK</E>
+      <V n="value" t="literal">
+        <U n="literal">
+          <V n="icon" t="enabled">
+            <V n="enabled" t="participant" />
+          </V>
+          <V n="text" t="single">
+            <T n="single">0x2651F726<!--Here's your pizza! That'll be {0.Money}.--></T>
+          </V>
+          <E n="visual_type">SPEECH</E>
+        </U>
+      </V>
+    </U>
+    <U>
+      <E n="key">NOT_PAID</E>
+      <V n="value" t="literal">
+        <U n="literal">
+          <V n="icon" t="enabled">
+            <V n="enabled" t="participant" />
+          </V>
+          <V n="text" t="single">
+            <T n="single">0xA001E415<!--You don't seem to have enough cash for this pizza. You can have the pizza, but don't think it's free! A bill for the remaining {1.Money} will be coming your way.--></T>
+          </V>
+          <E n="visual_type">SPEECH</E>
+        </U>
+      </V>
+    </U>
+    <U>
+      <E n="key">NO_WORK_TO_DO</E>
+      <V n="value" t="literal">
+        <U n="literal">
+          <V n="icon" t="enabled">
+            <V n="enabled" t="participant" />
+          </V>
+          <V n="text" t="single">
+            <T n="single">0xAFC6F048<!--You didn't show up to claim your pizza, so I charged you {0.Money} and left it outside for the ants to enjoy.--></T>
+          </V>
+          <E n="visual_type">SPEECH</E>
+        </U>
+      </V>
+    </U>
+  </L>
+  <V n="situation_end_time_string" t="show_end_time">
+    <T n="show_end_time">0xA3E17143<!--Work day ends at {0.TimeShort}--></T>
+  </V>
+  <L n="tags">
+    <E>Situation_Ring_Doorbell</E>
+  </L>
+  <T n="wait_for_customer_duration">120</T>
+  <U n="wait_for_tip_state">
+    <U n="interaction_of_interest">
+      <L n="affordances">
+        <T>98203<!--give_Tip_to_PizzaDeliverer--></T>
+      </L>
+    </U>
+    <L n="job_and_role_changes">
+      <U>
+        <T n="Situation Job">9830<!--job_pizzaDelivery--></T>
+        <T n="Role State">178245<!--pizzaDelivery_WaitForTip--></T>
+      </U>
+    </L>
+    <V n="time_out" t="enabled">
+      <T n="enabled">30</T>
+    </V>
+  </U>
+</I>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="Recipe" i="recipe" m="crafting.recipe" n="recipe_Drink_HappyPotion" s="26348">
+  <L n="_first_phases">
+    <E>START_PHASE</E>
+  </L>
+  <L n="_phases">
+    <U>
+      <E n="key">START_PHASE</E>
+      <V n="value" t="simple_phase_ref">
+        <U n="simple_phase_ref">
+          <T n="factory">15611<!--phaseSimple_Drink_Start--></T>
+          <L n="next_phases">
+            <E>make-drink</E>
+          </L>
+        </U>
+      </V>
+    </U>
+    <U>
+      <E n="key">discard_shaker</E>
+      <V n="value" t="simple_phase_ref">
+        <U n="simple_phase_ref">
+          <T n="factory">15609<!--phaseSimple_Drink_DiscardShaker--></T>
+        </U>
+      </V>
+    </U>
+    <U>
+      <E n="key">make-drink</E>
+      <V n="value" t="multi_stage_phase_ref">
+        <U n="multi_stage_phase_ref">
+          <T n="_num_turns">5</T>
+          <U n="content_set">
+            <L n="phase_affordances">
+              <U>
+                <T n="key">1</T>
+                <L n="value">
+                  <U>
+                    <L n="affordance_links">
+                      <T>13051<!--Bar_Pour_Basic--></T>
+                    </L>
+                  </U>
+                </L>
+              </U>
+              <U>
+                <T n="key">2</T>
+                <L n="value">
+                  <U>
+                    <L n="affordance_links">
+                      <T>10334<!--Bar_EmotionResponse--></T>
+                    </L>
+                    <L n="affordance_lists">
+                      <T>16318<!--Bartending_Tricks--></T>
+                    </L>
+                  </U>
+                </L>
+              </U>
+              <U>
+                <T n="key">3</T>
+                <L n="value">
+                  <U>
+                    <L n="affordance_links">
+                      <T>13017<!--Bar_Add_Ice--></T>
+                    </L>
+                  </U>
+                </L>
+              </U>
+              <U>
+                <T n="key">4</T>
+                <L n="value">
+                  <U>
+                    <L n="affordance_links">
+                      <T>13058<!--Bar_Shake_Basic--></T>
+                    </L>
+                  </U>
+                </L>
+              </U>
+              <U>
+                <T n="key">5</T>
+                <L n="value">
+                  <U>
+                    <L n="affordance_links">
+                      <T>13058<!--Bar_Shake_Basic--></T>
+                    </L>
+                  </U>
+                </L>
+              </U>
+            </L>
+          </U>
+          <T n="factory">15600<!--phaseMulti_Drink-MakeDrink--></T>
+          <L n="next_phases">
+            <E>serve_drink</E>
+          </L>
+        </U>
+      </V>
+    </U>
+    <U>
+      <E n="key">serve_drink</E>
+      <V n="value" t="simple_phase_ref">
+        <U n="simple_phase_ref">
+          <T n="factory">15610<!--phaseSimple_Drink_Serve--></T>
+          <L n="next_phases">
+            <E>discard_shaker</E>
+          </L>
+        </U>
+      </V>
+    </U>
+  </L>
+  <T n="_retail_price">48</T>
+  <L n="additional_tests">
+    <L>
+      <V t="trait">
+        <U n="trait">
+          <L n="whitelist_traits">
+            <T>26198<!--trait_PotionMaster--></T>
+          </L>
+        </U>
+      </V>
+    </L>
+  </L>
+  <T n="autonomy_weight">1</T>
+  <T n="available_in_restaurant">False</T>
+  <T n="crafted_by_text">0x2642142E<!--Made By: {0.SimName}--></T>
+  <V n="crafting_cost" t="flat_fee">
+    <T n="flat_fee">1000</T>
+  </V>
+  <U n="final_product">
+    <L n="apply_states">
+      <T>15113<!--Consumable_Untouched--></T>
+      <T>15305<!--Quality_Outstanding--></T>
+    </L>
+    <L n="apply_tags">
+      <E>Func_CraftedObject_Generic</E>
+    </L>
+    <V n="carry_track" t="enabled">
+      <E n="enabled">RIGHT</E>
+    </V>
+    <L n="conditional_apply_states">
+      <U>
+        <T n="state">32305<!--Marketable_HigherValue--></T>
+        <V n="test" t="trait">
+          <U n="trait">
+            <L n="whitelist_traits">
+              <T>31924<!--trait_Marketable--></T>
+            </L>
+          </U>
+        </V>
+      </U>
+    </L>
+    <T n="definition">28387<!--drink_happypotion (Happy Potion)--></T>
+    <L n="loot_list">
+      <T>258754<!--loot_Trait_Perfectionist_AttemptQualityIncrease--></T>
+      <T>33896<!--loot_Buff_Trait_Perfectionist_Outstanding--></T>
+      <T>33897<!--loot_Buff_Trait_Perfectionist_Poor--></T>
+      <T>101262<!--skill_Loot_Mixology_Crafting_Reward--></T>
+      <T>283794<!--loot_Fear_Failure_Trigger_ProgressiveFailure_CraftedObject--></T>
+      <T>283795<!--loot_Fear_Failure_CraftingEffects--></T>
+      <T>284501</T>
+      <T>76175<!--Loot_Commodity_CareerBenefit_Culinary_Bartender--></T>
+    </L>
+    <U n="quality_adjustment">
+      <T n="base_quality">3</T>
+      <T n="skill_adjustment">15</T>
+    </U>
+    <L n="simoleon_value_modifiers_map">
+      <U>
+        <T n="key">15304<!--Quality_Normal--></T>
+        <U n="value">
+          <T n="lower_bound">1</T>
+        </U>
+      </U>
+      <U>
+        <T n="key">15305<!--Quality_Outstanding--></T>
+        <U n="value">
+          <T n="lower_bound">1.5</T>
+          <T n="upper_bound">1.5</T>
+        </U>
+      </U>
+      <U>
+        <T n="key">15306<!--Quality_Poor--></T>
+        <U n="value">
+          <T n="lower_bound">0.5</T>
+          <T n="upper_bound">0.5</T>
+        </U>
+      </U>
+      <U>
+        <T n="key">32305<!--Marketable_HigherValue--></T>
+        <U n="value">
+          <T n="upper_bound">3</T>
+        </U>
+      </U>
+    </L>
+    <V n="simoleon_value_skill_curve" t="enabled">
+      <U n="enabled">
+        <V n="multiplier" t="value_curve">
+          <L n="value_curve">
+            <U>
+              <T n="x">1</T>
+              <T n="y">0.5</T>
+            </U>
+            <U>
+              <T n="x">2</T>
+              <T n="y">0.8</T>
+            </U>
+            <U>
+              <T n="x">3</T>
+              <T n="y">1</T>
+            </U>
+            <U>
+              <T n="x">5</T>
+              <T n="y">1.5</T>
+            </U>
+            <U>
+              <T n="x">10</T>
+              <T n="y">2</T>
+            </U>
+          </L>
+        </V>
+        <T n="statistic">16695<!--statistic_Skill_AdultMajor_Bartending--></T>
+      </U>
+    </V>
+  </U>
+  <L n="mood_list">
+    <T>14641<!--Mood_Inspired--></T>
+  </L>
+  <T n="name">0xE05BA1D7<!--Happy Potion--></T>
+  <T n="phase_interaction_name">0x5C2B4BF8<!--Make Happy Potion--></T>
+  <T n="push_consume">True</T>
+  <V n="push_consume_threshold" t="disabled" />
+  <E n="recipe_difficulty">1</E>
+  <L n="recipe_tags">
+    <E>Recipe_Type_Drink</E>
+    <E>Recipe_Category_Drinks</E>
+    <E>Recipe_Course_Drink</E>
+    <E>Recipe_Meal_Lunch</E>
+    <E>Recipe_Meal_Dinner</E>
+    <E>Recipe_ChildRestricted</E>
+  </L>
+  <T n="restaurant_base_price">7</T>
+  <T n="restaurant_menu_icon_definition">28387<!--Socials_Responses_Sad_LowIntensity--></T>
+  <T n="resumable">False</T>
+  <V n="resume_affordance" t="disabled" />
+  <U n="skill_loot_data">
+    <V n="level_range" t="enabled">
+      <U n="enabled">
+        <T n="lower_bound">3</T>
+        <T n="upper_bound">3</T>
+      </U>
+    </V>
+    <T n="stat">16695<!--statistic_Skill_AdultMajor_Bartending--></T>
+  </U>
+  <V n="skill_test" t="enabled">
+    <U n="enabled">
+      <T n="skill">16695<!--statistic_Skill_AdultMajor_Bartending--></T>
+      <V n="skill_range" t="interval">
+        <U n="interval">
+          <U n="skill_interval">
+            <T n="lower_bound">10</T>
+          </U>
+        </U>
+      </V>
+    </U>
+  </V>
+  <T n="visible_as_subrow">True</T>
+</I>

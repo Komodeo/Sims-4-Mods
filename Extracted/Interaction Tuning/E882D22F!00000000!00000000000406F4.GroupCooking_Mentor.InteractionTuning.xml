@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="GroupCooking_Mentor" s="263924">
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="line_of_sight" />
+        </U>
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">1</T>
+              <T n="radius">2</T>
+            </U>
+          </V>
+        </U>
+        <U>
+          <V n="value" t="facing" />
+        </U>
+        <U>
+          <V n="value" t="posture">
+            <U n="posture">
+              <L n="posture_manifest_tuning">
+                <U>
+                  <V n="posture_type" t="enabled">
+                    <T n="enabled">15537<!--posture_Stand--></T>
+                  </V>
+                </U>
+              </L>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+  </L>
+  <L n="_false_advertisements">
+    <V t="statistic_change">
+      <U n="statistic_change">
+        <T n="amount">8</T>
+        <T n="stat">16656<!--motive_Hunger--></T>
+        <L n="tests">
+          <L>
+            <V t="situation_job_test">
+              <U n="situation_job_test">
+                <T n="negate">True</T>
+                <L n="situation_jobs">
+                  <T>263886<!--situationJob_GroupCooking_JoinedCooks--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="_saveable" t="enabled" />
+  <V n="_situation_participant_provider" t="enabled">
+    <U n="enabled">
+      <L n="provided_participant_type_to_job_map">
+        <U>
+          <E n="key">SituationParticipants1</E>
+          <L n="value">
+            <U>
+              <T n="job">263885<!--situationJob_GroupCooking_HeadCook--></T>
+              <E n="situation_participant">Actor</E>
+              <V n="situations" t="by_definition">
+                <U n="by_definition">
+                  <L n="situations">
+                    <T>263877<!--groupCraftingSituation_GroupCooking_CookTogether--></T>
+                  </L>
+                </U>
+              </V>
+            </U>
+          </L>
+        </U>
+        <U>
+          <E n="key">SituationParticipants2</E>
+          <L n="value">
+            <U>
+              <T n="job">263886<!--situationJob_GroupCooking_JoinedCooks--></T>
+              <E n="situation_participant">Actor</E>
+              <V n="situations" t="by_definition">
+                <U n="by_definition">
+                  <L n="situations">
+                    <T>263877<!--groupCraftingSituation_GroupCooking_CookTogether--></T>
+                  </L>
+                </U>
+              </V>
+            </U>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <L n="_static_commodities">
+    <U>
+      <T n="desire">1</T>
+      <T n="static_commodity">263894<!--commodity_RoleAutonomy_GroupCooking_Cook--></T>
+    </U>
+  </L>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">60</T>
+                  <T n="min_time">60</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_CANCEL</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">269313<!--buff_Role_GroupCooking_Cook_StopCooking--></T>
+                  <E n="participant">TargetSim</E>
+                  <E n="timing">ON_ADD</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_CANCEL</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="constraint_based" />
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">269313<!--buff_Role_GroupCooking_Cook_StopCooking--></T>
+                  <E n="participant">Actor</E>
+                  <E n="timing">ON_ADD</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_CANCEL</E>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="staging_content">
+        <U n="staging_content">
+          <U n="content_set">
+            <L n="affordance_links">
+              <T>13550<!--mentor_Mixer_Food--></T>
+              <T>264064<!--mentor_Mixer_Food_Child--></T>
+            </L>
+          </U>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <U n="operation_actions">
+            <T n="alarm_interval">15</T>
+          </U>
+          <L n="operations">
+            <V t="relationship_change">
+              <U n="relationship_change">
+                <T n="amount">3</T>
+                <L n="subject">
+                  <E>Actor</E>
+                </L>
+                <L n="target_participant_type">
+                  <E>TargetSim</E>
+                </L>
+                <T n="track">16650<!--LTR_Friendship_Main--></T>
+              </U>
+            </V>
+            <V t="relationship_change">
+              <U n="relationship_change">
+                <T n="amount">100</T>
+                <L n="subject">
+                  <E>Actor</E>
+                </L>
+                <L n="target_participant_type">
+                  <E>TargetSim</E>
+                </L>
+                <T n="track">262316<!--sentimentTrack_Close_ST_GroupCooking_CookingTogether--></T>
+              </U>
+            </V>
+            <V t="relationship_change">
+              <U n="relationship_change">
+                <T n="amount">100</T>
+                <L n="subject">
+                  <E>TargetSim</E>
+                </L>
+                <L n="target_participant_type">
+                  <E>Actor</E>
+                </L>
+                <T n="track">262316<!--sentimentTrack_Close_ST_GroupCooking_CookingTogether--></T>
+              </U>
+            </V>
+          </L>
+        </U>
+      </V>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">267639<!--buff_Role_GroupCooking_Mentoree--></T>
+        </U>
+        <L n="subject">
+          <E>TargetSim</E>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x65AF32DB<!--Join Cooking--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <L n="continuation">
+              <U>
+                <T n="affordance">14261<!--si_moveAwayCircle--></T>
+                <E n="target">Actor</E>
+              </U>
+            </L>
+          </U>
+        </U>
+      </L>
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="continuation">
+                  <U>
+                    <T n="affordance">263924<!--GroupCooking_Mentor--></T>
+                  </U>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="participant_running_interaction">
+                <U n="participant_running_interaction">
+                  <L n="affordances">
+                    <T>13276<!--counter_Ico_Transition--></T>
+                    <T>269311<!--counter_Ico_Transition_placeOnCounter--></T>
+                    <T>13763<!--oven_Ico_Transition--></T>
+                    <T>270723<!--oven_Ico_Transition_OTG--></T>
+                    <T>14337<!--stove_Ico_Transition--></T>
+                    <T>212637<!--stove_Ico_Transition_OffTheGrid--></T>
+                    <T>111526</T>
+                    <T>13277<!--counter_MakeFood_Staging_Basic--></T>
+                    <T>37780<!--counter_MakeFood_Staging_Gourmet--></T>
+                    <T>114609</T>
+                    <T>37782<!--oven_MakeFood_Staging_Gourmet--></T>
+                    <T>13770<!--oven_MakeFood_Staging_Basic--></T>
+                    <T>270725<!--oven_MakeFood_Staging_Basic_OffTheGrid--></T>
+                    <T>37788<!--stove_MakeFood_FryingPan_Staging_Gourmet--></T>
+                    <T>32043<!--stove_MakeFood_Pot_Staging_Basic--></T>
+                    <T>37789<!--stove_MakeFood_Pot_Staging_Gourmet--></T>
+                    <T>14338<!--stove_MakeFood_FryingPan_Staging_Basic--></T>
+                    <T>212642<!--stove_MakeFood_FryingPan_Staging_Basic_OffTheGrid--></T>
+                  </L>
+                  <E n="participant">TargetSim</E>
+                  <T n="test_for_not_running">True</T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">129700<!--testSet_HasMet--></T>
+    </V>
+  </L>
+  <L n="tests">
+    <L>
+      <V t="situation_job_test">
+        <U n="situation_job_test">
+          <T n="negate">True</T>
+          <E n="participant">Actor</E>
+          <L n="situation_jobs">
+            <T>263886<!--situationJob_GroupCooking_JoinedCooks--></T>
+          </L>
+        </U>
+      </V>
+    </L>
+  </L>
+  <T n="time_overhead">30</T>
+</I>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="DialogDramaNode" i="drama_node" m="drama_scheduler.dialog_drama_node" n="dialogDramaNode_MusicFestival2021_NPC_Phone_Call" s="269980">
+  <V n="dialog_and_loot" t="dialog_multi_response">
+    <U n="dialog_multi_response">
+      <U n="dialog">
+        <E n="phone_ring_type">NO_RING</E>
+        <V n="text" t="single">
+          <T n="single">0xD38AEE69<!--Sim Sessions is happening right now at Magnolia Blossom Park in Willow Creek!\n\nAre you ready to go to the performances?--></T>
+        </V>
+        <L n="ui_responses">
+          <U>
+            <V n="response_command" t="enabled">
+              <V n="enabled" t="literal">
+                <U n="literal">
+                  <L n="arguments">
+                    <V t="string">
+                      <U n="string">
+                        <T n="arg_value">go_To_MusicFestival2021_Lot</T>
+                      </U>
+                    </V>
+                  </L>
+                  <T n="command">interactions.push</T>
+                </U>
+              </V>
+            </V>
+            <T n="text">0x6AB47411<!--Let's go now!--></T>
+            <E n="ui_request">SEND_COMMAND</E>
+          </U>
+          <U>
+            <V n="response_command" t="enabled">
+              <V n="enabled" t="literal">
+                <U n="literal">
+                  <L n="arguments">
+                    <V t="string">
+                      <U n="string">
+                        <T n="arg_value">loot_MusicFestival_Decline_Invitation_Dialog</T>
+                      </U>
+                    </V>
+                  </L>
+                  <T n="command">loot.apply_to_sim</T>
+                </U>
+              </V>
+            </V>
+            <T n="text">0xFEED4583<!--No Thanks--></T>
+            <E n="ui_request">SEND_COMMAND</E>
+          </U>
+        </L>
+      </U>
+    </U>
+  </V>
+  <V n="live_event_telemetry_name" t="enabled">
+    <E n="enabled">SoM2021</E>
+  </V>
+  <U n="min_and_max_times">
+    <T n="lower_bound">0</T>
+    <T n="upper_bound">5</T>
+  </U>
+  <V n="scoring" t="enabled">
+    <U n="enabled">
+      <T n="base_score">100</T>
+      <E n="bucket">MusicFestival</E>
+    </U>
+  </V>
+  <V n="sender_sim_info" t="sim_filter">
+    <U n="sim_filter">
+      <T n="sim_filter">15939<!--filter_ages_adult--></T>
+    </U>
+  </V>
+  <E n="sender_sim_info_type">INSTANCED_ALLOWED</E>
+  <V n="time_option" t="schedule">
+    <U n="schedule">
+      <L n="valid_times">
+        <U>
+          <U n="days_available">
+            <T n="0 SUNDAY">True</T>
+          </U>
+          <U n="start_time">
+            <T n="hour">12</T>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+</I>

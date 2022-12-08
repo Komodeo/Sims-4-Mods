@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="CraftingPhaseStagingSuperInteraction" i="interaction" m="crafting.crafting_interactions" n="computer_WriteBook_Staging" s="13248">
+  <L n="_false_advertisements" />
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Object</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled">
+    <U n="enabled">
+      <V n="affordance_to_save" t="use_another_si">
+        <T n="use_another_si">14628<!--writebook_resume--></T>
+      </V>
+      <E n="target_to_save">CarriedObject</E>
+    </U>
+  </V>
+  <L n="_static_commodities">
+    <U>
+      <T n="static_commodity">16403<!--Crafting--></T>
+    </U>
+  </L>
+  <T n="attention_cost">0.5</T>
+  <T n="autonomy_can_overwrite_similar_affordance">True</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="stat_based">
+                <U n="stat_based">
+                  <T n="absolute">True</T>
+                  <T n="stat">16574<!--commodity_CraftingProgress--></T>
+                  <U n="threshold">
+                    <T n="value">100</T>
+                  </U>
+                  <E n="who">CraftingObject</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="state_based">
+                <U n="state_based">
+                  <V n="state" t="on_trigger">
+                    <T n="on_trigger">15080<!--BrokenState_Broken--></T>
+                  </V>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_CANCEL</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="stat_based">
+                <U n="stat_based">
+                  <T n="stat">34130<!--commodity_Buff_Object_Writing-WritersBlock--></T>
+                  <U n="threshold">
+                    <T n="value">200</T>
+                  </U>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_CANCEL</E>
+          </U>
+        </V>
+        <V t="list_reference">
+          <T n="list_reference">40705<!--ExitConditionList_MotivesNearFail--></T>
+        </V>
+        <V t="list_reference">
+          <T n="list_reference">40702<!--ExitConditionList_EmotionStressed--></T>
+        </V>
+        <V t="list_reference">
+          <T n="list_reference">40144<!--ExitConditionList_EmotionMiserable--></T>
+        </V>
+      </L>
+      <V n="content" t="staging_content">
+        <U n="staging_content">
+          <U n="content_set">
+            <L n="affordance_links">
+              <T>13249<!--Computer_Write_Keyboard--></T>
+              <T>9559<!--Computer_Write_Mouse--></T>
+              <T>9561<!--Computer_Write_Read--></T>
+            </L>
+          </U>
+          <V n="push_affordance_on_run" t="disabled" />
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <U n="operation_actions">
+            <L n="actions">
+              <T>36987<!--loot_Statistic_WritersBlockChance--></T>
+              <T>104297</T>
+            </L>
+          </U>
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">10</T>
+                <T n="stat">27162<!--commodity_Trait_Creative_Creativity--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">-5</T>
+                <T n="stat">99719<!--Commodity_Trait_Creative_TenseTimer--></T>
+                <L n="tests">
+                  <L>
+                    <V t="buff">
+                      <U n="buff">
+                        <V n="whitelist" t="enabled">
+                          <L n="enabled">
+                            <T>74668<!--Buff_Trait_Creative_Uncreative--></T>
+                          </L>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">0.416666666666667</T>
+                <T n="stat">16574<!--commodity_CraftingProgress--></T>
+                <L n="subject">
+                  <E>CraftingProcess</E>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">0.416666666666667</T>
+                <T n="stat">16574<!--commodity_CraftingProgress--></T>
+                <L n="subject">
+                  <E>CraftingProcess</E>
+                </L>
+                <L n="tests">
+                  <L>
+                    <V t="career_test">
+                      <U n="career_test">
+                        <V n="test_type" t="career_reference">
+                          <U n="career_reference">
+                            <V n="career" t="specific_career">
+                              <T n="specific_career">27933<!--career_Adult_Writer--></T>
+                            </V>
+                            <V n="user_level" t="enabled">
+                              <U n="enabled">
+                                <T n="lower_bound">3</T>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="dynamic_skill">
+              <U n="dynamic_skill">
+                <U n="skill_loot_data_override">
+                  <E n="effectiveness">StandardPeriodic</E>
+                </U>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">1</T>
+                <T n="stat">76238<!--commodity_CareerBenefit_Writer--></T>
+                <L n="tests">
+                  <L>
+                    <V t="career_test">
+                      <U n="career_test">
+                        <V n="test_type" t="career_track">
+                          <U n="career_track">
+                            <T n="career_track">29961<!--Writer_Track2_Author--></T>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                  <L>
+                    <V t="career_test">
+                      <U n="career_test">
+                        <V n="test_type" t="career_track">
+                          <U n="career_track">
+                            <T n="career_track">29960<!--Writer_Track1--></T>
+                            <V n="user_level" t="enabled">
+                              <U n="enabled">
+                                <T n="lower_bound">3</T>
+                                <T n="upper_bound">5</T>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="reference">
+              <T n="reference">253399</T>
+            </V>
+            <V t="reference">
+              <T n="reference">249073</T>
+            </V>
+            <V t="reference">
+              <T n="reference">249558</T>
+            </V>
+            <V t="reference">
+              <T n="reference">253401</T>
+            </V>
+            <V t="reference">
+              <T n="reference">251310</T>
+            </V>
+            <V t="reference">
+              <T n="reference">253402</T>
+            </V>
+            <V t="reference">
+              <T n="reference">249739</T>
+            </V>
+            <V t="reference">
+              <T n="reference">253403</T>
+            </V>
+            <V t="reference">
+              <T n="reference">250954</T>
+            </V>
+          </L>
+        </U>
+      </V>
+      <V n="progressive_stat_change" t="enabled">
+        <U n="enabled">
+          <V n="goal_completion_time" t="skill_based_curve">
+            <U n="skill_based_curve">
+              <L n="curve">
+                <U>
+                  <T n="x">8</T>
+                  <T n="y">750</T>
+                </U>
+                <U>
+                  <T n="x">15</T>
+                  <T n="y">330</T>
+                </U>
+              </L>
+              <T n="skill">16714<!--statistic_Skill_AdultMajor_Writing--></T>
+            </U>
+          </V>
+          <V n="goal_exit_condition" t="disabled" />
+          <V n="goal_value" t="maximum_value">
+            <U n="maximum_value">
+              <T n="stat">16574<!--commodity_CraftingProgress--></T>
+            </U>
+          </V>
+          <E n="subject">CraftingObject</E>
+        </U>
+      </V>
+      <T n="start_autonomous_inertial">False</T>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="state_change">
+      <U n="state_change">
+        <V n="new_value" t="single_value">
+          <U n="single_value">
+            <T n="new_value">96859<!--Computer_Writing--></T>
+          </U>
+        </V>
+        <V n="timing" t="immediately" />
+      </U>
+    </V>
+    <V t="state_change">
+      <U n="state_change">
+        <V n="new_value" t="single_value">
+          <U n="single_value">
+            <T n="new_value">15106<!--Computer_Off--></T>
+          </U>
+        </V>
+        <V n="timing" t="at_end">
+          <U n="at_end">
+            <E n="criticality">OnCancelOrException</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <V n="buff_reason" t="enabled">
+            <T n="enabled">0x628AAD8A<!--(From Liking Writing)--></T>
+          </V>
+          <T n="buff_type">264225<!--buff_SimPreference_Likes_Activities_Writing--></T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>264195<!--trait_SimPreference_Likes_Activities_Writing--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <V n="buff_reason" t="enabled">
+            <T n="enabled">0x313216FB<!--(From Disliking Writing)--></T>
+          </V>
+          <T n="buff_type">264133<!--buff_SimPreference_Dislikes_Activities_Writing--></T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>264168<!--trait_SimPreference_Dislikes_Activities_Writing--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="adventure">
+      <U n="adventure">
+        <L n="_adventure_moments">
+          <U>
+            <E n="key">Career_ChanceCard_01</E>
+            <U n="value">
+              <V n="aventure_moment" t="reference">
+                <T n="reference">265971<!--adventureMoment_SimPreference_Activities_Writing_Like--></T>
+              </V>
+            </U>
+          </U>
+        </L>
+        <L n="_initial_moments">
+          <U>
+            <E n="adventure_moment_key">Career_ChanceCard_01</E>
+            <U n="weight">
+              <L n="multipliers">
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="test_set_reference">
+                        <T n="test_set_reference">269223<!--testSetInstance_SimPreference_PreferenceDiscovery_MaxOrCooldownOrAge--></T>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="trait">
+                        <U n="trait">
+                          <L n="whitelist_traits">
+                            <T>266817<!--trait_SimPreference_NoOpinion_Activities_Writing--></T>
+                            <T>264195<!--trait_SimPreference_Likes_Activities_Writing--></T>
+                            <T>264168<!--trait_SimPreference_Dislikes_Activities_Writing--></T>
+                          </L>
+                        </U>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="test_set_reference">
+                        <T n="test_set_reference">267815<!--testSetInstance_SimPreference_PreferenceDiscovery_EnergizedFocusedInspired--></T>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V t="adventure">
+      <U n="adventure">
+        <L n="_adventure_moments">
+          <U>
+            <E n="key">Career_ChanceCard_01</E>
+            <U n="value">
+              <V n="aventure_moment" t="reference">
+                <T n="reference">265972<!--adventureMoment_SimPreference_Activities_Writing_Dislike--></T>
+              </V>
+            </U>
+          </U>
+        </L>
+        <L n="_initial_moments">
+          <U>
+            <E n="adventure_moment_key">Career_ChanceCard_01</E>
+            <U n="weight">
+              <L n="multipliers">
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="test_set_reference">
+                        <T n="test_set_reference">269223<!--testSetInstance_SimPreference_PreferenceDiscovery_MaxOrCooldownOrAge--></T>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="trait">
+                        <U n="trait">
+                          <L n="whitelist_traits">
+                            <T>266817<!--trait_SimPreference_NoOpinion_Activities_Writing--></T>
+                            <T>264195<!--trait_SimPreference_Likes_Activities_Writing--></T>
+                            <T>264168<!--trait_SimPreference_Dislikes_Activities_Writing--></T>
+                          </L>
+                        </U>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="test_set_reference">
+                        <T n="test_set_reference">267812<!--testSetInstance_SimPreference_PreferenceDiscovery_AngryBoredUncomfortable--></T>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="canonical_animation" t="enabled">
+    <U n="enabled">
+      <T n="factory">31288<!--Computer_Idle_Passive--></T>
+    </U>
+  </V>
+  <V n="content_score" t="disabled" />
+  <T n="disallow_as_mixer_target">True</T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_PracticeWriting</E>
+    <E>Interaction_Computer</E>
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+    <E>Interaction_Skill_Writing</E>
+    <E>Interaction_OldDay_Fine</E>
+    <E>Interaction_Lifestyles_Techie_FlexibleLength</E>
+    <E>Interaction_Lifestyles_Sedentary_FlexibleLength</E>
+    <E>Interaction_Lifestyles_Indoorsy_FlexibleLength</E>
+    <E>Interaction_Lifestyles_AdrenalineSeeker_Mundane</E>
+  </L>
+  <L n="joinable">
+    <U>
+      <V n="invite_available" t="enabled">
+        <U n="enabled">
+          <V n="loc_custom_invite_name" t="enabled">
+            <T n="enabled">0x2898B0EE<!--Ask {1.SimFirstName} To {0.String}--></T>
+          </V>
+        </U>
+      </V>
+      <V n="join_affordance" t="affordance">
+        <U n="affordance">
+          <V n="value" t="custom">
+            <T n="custom">38016<!--mentor_Writing--></T>
+          </V>
+        </U>
+      </V>
+      <V n="join_available" t="enabled">
+        <U n="enabled">
+          <V n="loc_custom_join_name" t="enabled">
+            <T n="enabled">0xF80506D0<!--{0.String}--></T>
+          </V>
+        </U>
+      </V>
+      <E n="join_target">Actor</E>
+      <T n="link_joinable">True</T>
+    </U>
+  </L>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <L n="basic_extras">
+          <V t="transfer_name">
+            <U n="transfer_name">
+              <E n="participant_receiving_name">CraftingProcess</E>
+              <E n="participant_sending_name">CraftingObject</E>
+            </U>
+          </V>
+        </L>
+      </U>
+    </U>
+  </V>
+  <U n="progress_bar_enabled">
+    <T n="remember_progress">True</T>
+  </U>
+  <E n="scoring_priority">NORMAL</E>
+  <U n="skill_loot_data">
+    <V n="level_range" t="enabled">
+      <U n="enabled">
+        <T n="lower_bound">1</T>
+        <T n="upper_bound">10</T>
+      </U>
+    </V>
+    <T n="stat">16714<!--statistic_Skill_AdultMajor_Writing--></T>
+  </U>
+  <T n="subaction_selection_weight">3</T>
+  <V n="super_affordance_compatibility" t="reference">
+    <T n="reference">77330<!--af_ComputerCompatibility--></T>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <V n="fallback_behavior" t="always_pass" />
+        <T n="value">110121</T>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <E n="operator">NOTEQUAL</E>
+        <T n="value">15080<!--BrokenState_Broken--></T>
+      </U>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">28176<!--testSet_EmotionNotStressed--></T>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">28305<!--testSet_EmotionNotMiserable--></T>
+    </V>
+  </L>
+  <T n="time_overhead">600</T>
+</I>

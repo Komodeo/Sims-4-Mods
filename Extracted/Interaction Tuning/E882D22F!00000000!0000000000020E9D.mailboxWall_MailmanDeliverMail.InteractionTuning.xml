@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="mailboxWall_MailmanDeliverMail" s="134813">
+  <V n="_cancelable_by_user" t="prohibit_cancelation" />
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Object</E>
+      </L>
+    </U>
+  </V>
+  <T n="_must_run">False</T>
+  <V n="_saveable" t="enabled" />
+  <L n="_static_commodities">
+    <U>
+      <T n="desire">2</T>
+      <T n="static_commodity">33813<!--StaticCommodity_ServiceNpc_Mailman--></T>
+    </U>
+  </L>
+  <T n="allow_autonomous">True</T>
+  <T n="attention_cost">0.75</T>
+  <V n="basic_content" t="one_shot">
+    <U n="one_shot">
+      <U n="animation_ref">
+        <T n="factory">133438<!--MailboxWall_MailLetter--></T>
+      </U>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="deliver_bill" />
+    <V t="inventory_transfer">
+      <U n="inventory_transfer">
+        <V n="recipient" t="participant" />
+        <V n="source" t="lot_inventory_type">
+          <E n="lot_inventory_type">HIDDEN</E>
+        </V>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="audio_sting">
+      <U n="audio_sting">
+        <U n="audio_sting">
+          <T n="audio" p="InGame\Audio\Bumper\bumper_mail.propx">39b2aa4a:00000000:63116cc79e67f602</T>
+        </U>
+        <E n="subject">Object</E>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="notification">
+      <U n="notification">
+        <V n="dialog" t="single">
+          <V n="single" t="literal">
+            <U n="literal">
+              <V n="icon" t="enabled">
+                <V n="enabled" t="resource_key">
+                  <U n="resource_key">
+                    <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_mailbox.png">2f7d0004:00000000:5a8c361eb2e3f300</T>
+                  </U>
+                </V>
+              </V>
+              <V n="text" t="single">
+                <T n="single">0x5897C235<!--Today's mail has been delivered.--></T>
+              </V>
+            </U>
+          </V>
+        </V>
+        <E n="recipient_subject">ActiveHousehold</E>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+  </L>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x4556BBDE<!--Deliver Mail--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <L n="parameterized_autonomy">
+          <U>
+            <E n="key">Actor</E>
+            <U n="value">
+              <L n="requests">
+                <U>
+                  <T n="consider_same_target">False</T>
+                  <T n="radius_to_consider">10</T>
+                  <T n="retain_priority">False</T>
+                  <L n="static_commodities">
+                    <T>33813<!--StaticCommodity_ServiceNpc_Mailman--></T>
+                  </L>
+                </U>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </U>
+  </V>
+  <V n="route_start_balloon" t="enabled">
+    <U n="enabled">
+      <U n="balloon">
+        <L n="balloon_choices">
+          <U>
+            <V n="item" t="balloon_icon">
+              <U n="balloon_icon">
+                <V n="icon" t="participant">
+                  <U n="participant">
+                    <L n="participant_type">
+                      <E>Object</E>
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </U>
+        </L>
+        <L n="balloon_target">
+          <E>Actor</E>
+        </L>
+      </U>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified" />
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="object_ownership">
+      <U n="object_ownership">
+        <T n="is_owner">True</T>
+        <T n="must_be_owned">False</T>
+        <E n="sim">ActiveHousehold</E>
+      </U>
+    </V>
+    <V t="situation_job_test">
+      <U n="situation_job_test">
+        <L n="situation_jobs">
+          <T>16175<!--job_mailman--></T>
+        </L>
+      </U>
+    </V>
+    <V t="inventory">
+      <U n="inventory">
+        <V n="contents_check" t="has_anything" />
+        <V n="inventory_location" t="hidden_inventory_objects">
+          <U n="hidden_inventory_objects">
+            <E n="inventory">MAILBOX</E>
+          </U>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">5</T>
+</I>

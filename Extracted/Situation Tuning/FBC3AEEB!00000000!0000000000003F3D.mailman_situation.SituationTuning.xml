@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="ServiceNpcSituation" i="situation" m="situations.complex.service_npc_situation" n="mailman_situation" s="16189">
+  <U n="_service_npc_job">
+    <T n="role_state">15874<!--mailman_role_start--></T>
+    <T n="situation_job">16175<!--job_mailman--></T>
+  </U>
+  <T n="audio_sting_on_start" p="InGame\Audio\Bumper\bumper_event_start.propx">39b2aa4a:00000000:78b903461d47e4fc</T>
+  <E n="exclusivity">SERVICE</E>
+  <V n="fake_perform_on_preroll_failure" t="enabled">
+    <U n="enabled">
+      <V n="notification" t="enabled">
+        <U n="enabled">
+          <V n="dialog" t="single">
+            <V n="single" t="literal">
+              <U n="literal">
+                <V n="participant" t="enabled">
+                  <E n="enabled">Actor</E>
+                </V>
+                <V n="text" t="single">
+                  <T n="single">0xC483E192<!--I couldn't reach your mailbox, but I managed to throw the mail in there. Good luck getting it back out!--></T>
+                </V>
+              </U>
+            </V>
+          </V>
+        </U>
+      </V>
+    </U>
+  </V>
+  <L n="finish_job_states">
+    <U>
+      <E n="key">FINISHED_WORK</E>
+      <U n="value">
+        <U n="enter_state_test">
+          <L n="affordances">
+            <T>13540<!--mailbox_MailmanDeliverMail--></T>
+          </L>
+        </U>
+        <T n="role_state" o="true" />
+      </U>
+    </U>
+    <U>
+      <E n="key">NO_WORK_TO_DO</E>
+      <U n="value">
+        <U n="enter_state_test">
+          <L n="affordances">
+            <T>154381<!--serviceNpc_noMoreWork_mailman--></T>
+          </L>
+        </U>
+        <T n="role_state" o="true" />
+      </U>
+    </U>
+  </L>
+  <T n="main_goal_audio_sting" p="InGame\Audio\Bumper\bumper_event_major_complete.propx">39b2aa4a:00000000:10b476550150a33f</T>
+  <T n="max_participants">20</T>
+  <V n="preroll_autonomy" t="enabled">
+    <U n="enabled">
+      <T n="allow_unreachable_destinations">True</T>
+      <E n="preroll_priority">High</E>
+      <E n="preroll_source">SCRIPT</E>
+      <V n="super_affordance_compatibility" t="literal">
+        <U n="literal">
+          <V n="default_inclusion" t="include_all">
+            <U n="include_all">
+              <L n="exclude_affordances">
+                <T>154381<!--serviceNpc_noMoreWork_mailman--></T>
+              </L>
+            </U>
+          </V>
+        </U>
+      </V>
+    </U>
+  </V>
+  <V n="situation_end_time_string" t="show_end_time">
+    <T n="show_end_time">0xA3E17143<!--Work day ends at {0.TimeShort}--></T>
+  </V>
+  <V n="travel_request_behavior" t="allow" />
+</I>

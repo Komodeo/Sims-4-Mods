@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="Broadcaster" i="broadcaster" m="broadcasters.broadcaster" n="Broadcaster_Fireplace_CauseFire" s="75173">
+  <V n="allow_objects" t="from_flammable" />
+  <T n="allow_sims">False</T>
+  <L n="constraints">
+    <V t="cone">
+      <U n="cone">
+        <T n="angle">120</T>
+        <T n="max_radius">2</T>
+        <T n="min_radius">1</T>
+      </U>
+    </V>
+    <V t="line_of_sight">
+      <U n="line_of_sight">
+        <V n="temporary_los" t="enabled" />
+      </U>
+    </V>
+  </L>
+  <L n="effects">
+    <V t="start_fire">
+      <U n="start_fire">
+        <V n="affected_object_cap" t="enabled">
+          <T n="enabled">2</T>
+        </V>
+        <T n="percent_chance">0.5</T>
+        <L n="tests" />
+      </U>
+    </V>
+    <V t="start_fire">
+      <U n="start_fire">
+        <V n="affected_object_cap" t="enabled">
+          <T n="enabled">2</T>
+        </V>
+        <T n="percent_chance">50</T>
+        <L n="tests">
+          <L>
+            <V t="object_criteria">
+              <U n="object_criteria">
+                <V n="identity_test" t="tags">
+                  <U n="tags">
+                    <L n="tag_set">
+                      <E>Func_Fireworks</E>
+                    </L>
+                  </U>
+                </V>
+                <T n="owned">False</T>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="frequency" t="on_pulse">
+    <U n="on_pulse">
+      <T n="cooldown_time">15</T>
+    </U>
+  </V>
+</I>

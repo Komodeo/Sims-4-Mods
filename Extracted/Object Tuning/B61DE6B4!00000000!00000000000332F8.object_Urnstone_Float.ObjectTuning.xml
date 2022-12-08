@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="GameObject" i="object" m="objects.game_object" n="object_Urnstone_Float" s="209656">
+  <U n="_components">
+    <V n="focus" t="enabled">
+      <U n="enabled">
+        <V n="_focus_score" t="globally">
+          <U n="globally">
+            <E n="base">MEDIUM</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V n="idle_component" t="enabled">
+      <U n="enabled">
+        <L n="idle_animation_map">
+          <U>
+            <T n="key">212702<!--floatingUrn_OnWater--></T>
+            <T n="value">212699<!--floatingUrn_Float--></T>
+          </U>
+          <U>
+            <T n="key">212703<!--floatingUrn_OnLand--></T>
+            <T n="value">212700<!--floatingUrn_OnLand--></T>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="inventory_item" t="enabled">
+      <U n="enabled">
+        <V n="no_carry_add_to_sim_inventory_affordances" t="OVERRIDE">
+          <L n="OVERRIDE">
+            <T>111335<!--si_SwipeUrnstoneIntoSimInventory--></T>
+            <T>210068<!--si_SwipeFloatingUrnStoneAndSetOwnership--></T>
+          </L>
+        </V>
+        <T n="skip_carry_pose">True</T>
+        <L n="valid_inventory_types">
+          <E>SIM</E>
+          <E>STORAGE_CHEST_DORM</E>
+        </L>
+      </U>
+    </V>
+    <V n="name" t="enabled">
+      <U n="enabled">
+        <V n="affordance" t="enabled">
+          <T n="enabled">13887<!--rename_EngraveEpitaph--></T>
+        </V>
+        <T n="allow_description">True</T>
+        <T n="allow_name">False</T>
+      </U>
+    </V>
+    <V n="state" t="enabled">
+      <U n="enabled">
+        <L n="state_triggers">
+          <U>
+            <L n="at_states">
+              <T>15432<!--UrnstoneType_Tombstone--></T>
+              <T>15433<!--UrnstoneType_Urn--></T>
+              <T>100384<!--UrnstoneType_Default--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>212703<!--floatingUrn_OnLand--></T>
+              </L>
+            </V>
+            <E n="trigger_operation">OR</E>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>209646<!--urnstoneType_Floating--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>212702<!--floatingUrn_OnWater--></T>
+              </L>
+            </V>
+          </U>
+        </L>
+        <L n="states">
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">100384<!--UrnstoneType_Default--></T>
+              </U>
+              <U>
+                <T n="key">15432<!--UrnstoneType_Tombstone--></T>
+                <U n="value">
+                  <V n="model" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_model">
+                      <U n="set_to_custom_model">
+                        <V n="model" t="from_definition">
+                          <U n="from_definition">
+                            <T n="apply_definition">True</T>
+                            <T n="definition">218640<!--tombstoneGEN_01_float (Tombstone)--></T>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">15433<!--UrnstoneType_Urn--></T>
+                <U n="value">
+                  <V n="model" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_model">
+                      <U n="set_to_custom_model">
+                        <V n="model" t="from_definition">
+                          <U n="from_definition">
+                            <T n="apply_definition">True</T>
+                            <T n="definition">218641<!--Urn_EP07Float (Urn)--></T>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">209646<!--urnstoneType_Floating--></T>
+                <U n="value">
+                  <V n="model" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_model">
+                      <U n="set_to_custom_model">
+                        <V n="model" t="from_definition">
+                          <U n="from_definition">
+                            <T n="definition">216930<!--urnFloatGEN_01 (Urn)--></T>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </V>
+                </U>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">209646<!--urnstoneType_Floating--></T>
+            </V>
+          </U>
+          <U>
+            <V n="default_value" t="reference">
+              <T n="reference">35297<!--GenericOnOff_Off--></T>
+            </V>
+          </U>
+          <U>
+            <V n="default_value" t="reference">
+              <T n="reference">212702<!--floatingUrn_OnWater--></T>
+            </V>
+          </U>
+        </L>
+        <V n="unique_state_changes" t="enabled">
+          <U n="enabled">
+            <T n="off_natural_ground_placement_state">15433<!--UrnstoneType_Urn--></T>
+            <T n="on_natural_ground_placement_state">15432<!--UrnstoneType_Tombstone--></T>
+            <L n="surface_type_placement_states">
+              <U>
+                <E n="key">SURFACETYPE_POOL</E>
+                <T n="value">209646<!--urnstoneType_Floating--></T>
+              </U>
+            </L>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V n="tooltip_component" t="enabled">
+      <U n="enabled">
+        <L n="custom_tooltips">
+          <U>
+            <L n="object_tests">
+              <L>
+                <V t="custom_name">
+                  <U n="custom_name">
+                    <V n="has_custom_description" t="enabled" />
+                  </U>
+                </V>
+                <V t="existence">
+                  <U n="existence">
+                    <E n="participant">StoredSimOrNameData</E>
+                  </U>
+                </V>
+              </L>
+            </L>
+            <L n="tooltip_fields">
+              <U>
+                <E n="key">recipe_description</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0xE2E9872D<!--{0.ObjectDescription}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">Object</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <E n="key">recipe_name</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0x58FCF93F<!--{0.SimName}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">StoredSimOrNameData</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+            </L>
+            <E n="tooltip_style">HOVER_TIP_CUSTOM_OBJECT</E>
+          </U>
+          <U>
+            <L n="object_tests">
+              <L>
+                <V t="custom_name">
+                  <U n="custom_name">
+                    <V n="has_custom_description" t="enabled">
+                      <T n="enabled">False</T>
+                    </V>
+                  </U>
+                </V>
+                <V t="existence">
+                  <U n="existence">
+                    <E n="participant">StoredSimOrNameData</E>
+                  </U>
+                </V>
+              </L>
+            </L>
+            <L n="tooltip_fields">
+              <U>
+                <E n="key">recipe_description</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0x4CE37F7F<!--R.I.P.--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">StoredSim</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <E n="key">recipe_name</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0x58FCF93F<!--{0.SimName}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">StoredSimOrNameData</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+            </L>
+            <E n="tooltip_style">HOVER_TIP_CUSTOM_OBJECT</E>
+          </U>
+          <U>
+            <L n="object_tests">
+              <L>
+                <V t="custom_name">
+                  <U n="custom_name">
+                    <V n="has_custom_description" t="enabled" />
+                  </U>
+                </V>
+                <V t="existence">
+                  <U n="existence">
+                    <T n="exists">False</T>
+                    <E n="participant">StoredSimOrNameData</E>
+                  </U>
+                </V>
+              </L>
+            </L>
+            <L n="tooltip_fields">
+              <U>
+                <E n="key">recipe_description</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0xE2E9872D<!--{0.ObjectDescription}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">Object</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+            </L>
+            <E n="tooltip_style">HOVER_TIP_CUSTOM_OBJECT</E>
+          </U>
+        </L>
+      </U>
+    </V>
+  </U>
+  <L n="_super_affordances">
+    <T>13328<!--debug_Reset--></T>
+    <T>13326<!--debug_ObjectDestroy--></T>
+    <T>103888<!--cheat_set_as_head--></T>
+    <T>14498<!--urnstone_MournAggregate--></T>
+    <T>31621<!--urnstone_Release--></T>
+    <T>14503<!--urnstone_Resurrect--></T>
+    <T>152727</T>
+    <T>153243<!--urnstone_Event_FallChallenge_DoTD--></T>
+    <T>103042<!--urnstone_CallForth_Debug--></T>
+    <T>102258<!--Ghost_Possess--></T>
+    <T>168502<!--Ghost_Pet_Possess--></T>
+    <T>100430<!--urnstone_Destroy--></T>
+    <T>103810<!--death_Netherworld--></T>
+    <T>103864<!--ghost_EnterUrnstone--></T>
+    <T>151840<!--si_Gravestone_ReadEpitaph_NoEpitaph--></T>
+    <T>151841<!--si_Gravestone_ReadEpitaph_HasEpitaph--></T>
+    <T>159841<!--cheat_AddToFamily_StoredSim--></T>
+    <T>161432<!--urnstone_DelayGhostCulling--></T>
+  </L>
+  <U n="recycling_data">
+    <L n="recycling_loot">
+      <T>240919</T>
+    </L>
+    <L n="recycling_values">
+      <U>
+        <E n="Bucks Type">RecycleBitsBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+      <U>
+        <E n="Bucks Type">RecyclePiecesBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+    </L>
+  </U>
+</I>

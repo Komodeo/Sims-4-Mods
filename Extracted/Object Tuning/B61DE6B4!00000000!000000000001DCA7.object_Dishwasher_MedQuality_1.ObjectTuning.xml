@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="GameObject" i="object" m="objects.game_object" n="object_Dishwasher_MedQuality_1" s="122023">
+  <V n="_anim_overrides" t="enabled">
+    <U n="enabled">
+      <L n="params">
+        <U>
+          <T n="name">toddlerObjectName</T>
+          <V n="value" t="string">
+            <T n="string">Dishwasher</T>
+          </V>
+        </U>
+      </L>
+    </U>
+  </V>
+  <U n="_components">
+    <V n="flowing_puddle" t="enabled">
+      <U n="enabled">
+        <T n="max_num_puddles">3</T>
+        <T n="spawn_rate">60</T>
+      </U>
+    </V>
+    <V n="focus" t="enabled">
+      <U n="enabled">
+        <V n="_focus_score" t="globally">
+          <U n="globally">
+            <E n="base">LOW</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V n="live_drag_target" t="enabled">
+      <U n="enabled">
+        <L n="drop_tests_and_actions">
+          <U>
+            <L n="actions">
+              <T>126857<!--loot_LiveDrag_PutInDishwasher--></T>
+            </L>
+            <T n="destroy_live_drag_object">True</T>
+            <E n="drop_type">SINK</E>
+            <L n="test_set">
+              <V t="state">
+                <U n="state">
+                  <V n="fallback_behavior" t="always_pass" />
+                  <E n="operator">NOTEQUAL</E>
+                  <T n="value">15080<!--BrokenState_Broken--></T>
+                </U>
+              </V>
+              <V t="state">
+                <U n="state">
+                  <V n="fallback_behavior" t="always_pass" />
+                  <E n="operator">NOTEQUAL</E>
+                  <T n="value">105868</T>
+                </U>
+              </V>
+              <V t="state">
+                <U n="state">
+                  <E n="operator">NOTEQUAL</E>
+                  <T n="value">122152<!--dishwasher_InUse_On--></T>
+                </U>
+              </V>
+              <V t="state">
+                <U n="state">
+                  <E n="operator">NOTEQUAL</E>
+                  <T n="value">122305<!--dishwasher_InUse_On_Quiet--></T>
+                </U>
+              </V>
+            </L>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="retail_component" t="disabled" />
+    <V n="state" t="enabled">
+      <U n="enabled">
+        <L n="state_triggers">
+          <U>
+            <L n="at_states">
+              <T>15076<!--Brokenness_Broken--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>15080<!--BrokenState_Broken--></T>
+              </L>
+            </V>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>15078<!--Brokenness_Unbroken--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>15081<!--BrokenState_Unbroken--></T>
+              </L>
+            </V>
+            <L n="statistic_operations">
+              <V t="statistic_set_min">
+                <U n="statistic_set_min">
+                  <T n="stat">208412</T>
+                </U>
+              </V>
+            </L>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>122152<!--dishwasher_InUse_On--></T>
+              <T>122305<!--dishwasher_InUse_On_Quiet--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>35296<!--GenericOnOff_On--></T>
+                <T>224553<!--utilities_Power_Consumption_On--></T>
+              </L>
+            </V>
+            <E n="trigger_operation">OR</E>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>122154<!--dishwasher_InUse_Off--></T>
+              <T>122308<!--dishwasher_InUse_Off_Quiet--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>35297<!--GenericOnOff_Off--></T>
+                <T>224564<!--utilities_Power_Consumption_Off--></T>
+              </L>
+            </V>
+            <E n="trigger_operation">OR</E>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>77532<!--FireState_Burn_Material_Change_Replace--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+              </L>
+            </V>
+          </U>
+        </L>
+        <L n="states">
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">15384<!--Upgrade_Generic_LockBrokenness_Completed--></T>
+              </U>
+              <U>
+                <T n="key">15385<!--Upgrade_Generic_LockBrokenness_NotStarted--></T>
+              </U>
+              <U>
+                <T n="key">15386<!--Upgrade_Generic_LockBrokenness_Partial--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">15385<!--Upgrade_Generic_LockBrokenness_NotStarted--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">15076<!--Brokenness_Broken--></T>
+              </U>
+              <U>
+                <T n="key">15077<!--Brokenness_Neutral--></T>
+              </U>
+              <U>
+                <T n="key">15078<!--Brokenness_Unbroken--></T>
+              </U>
+              <U>
+                <T n="key">97754<!--Brokenness_Broken_Sabotage--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">15078<!--Brokenness_Unbroken--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">15080<!--BrokenState_Broken--></T>
+                <U n="value">
+                  <V n="autonomy_modifiers" t="apply_new_value">
+                    <V n="apply_new_value" t="apply_statistic_modifiers">
+                      <U n="apply_statistic_modifiers">
+                        <L n="autonomy_modifiers">
+                          <U>
+                            <L n="decay_modifiers">
+                              <U>
+                                <T n="key">208412</T>
+                                <T n="value">1</T>
+                              </U>
+                            </L>
+                          </U>
+                        </L>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="flowing_puddle_enabled" t="apply_new_value">
+                    <T n="apply_new_value">True</T>
+                  </V>
+                  <V n="vfx_state" t="apply_new_value">
+                    <V n="apply_new_value" t="start_vfx">
+                      <V n="start_vfx" t="single_effect">
+                        <U n="single_effect">
+                          <T n="effect_name">sp03_dish_washer_broken</T>
+                        </U>
+                      </V>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">15081<!--BrokenState_Unbroken--></T>
+                <U n="value">
+                  <V n="autonomy_modifiers" t="apply_new_value">
+                    <V n="apply_new_value" t="apply_statistic_modifiers">
+                      <U n="apply_statistic_modifiers">
+                        <L n="autonomy_modifiers">
+                          <U>
+                            <L n="decay_modifiers">
+                              <U>
+                                <T n="key">208412</T>
+                              </U>
+                            </L>
+                          </U>
+                        </L>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="flowing_puddle_enabled" t="apply_new_value" />
+                  <V n="vfx_state" t="apply_new_value" />
+                </U>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">15081<!--BrokenState_Unbroken--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">15396<!--Upgrade_Generic_LowerBrokenness_Completed--></T>
+                <U n="value">
+                  <V n="autonomy_modifiers" t="apply_new_value">
+                    <V n="apply_new_value" t="apply_statistic_modifiers">
+                      <U n="apply_statistic_modifiers">
+                        <L n="autonomy_modifiers">
+                          <U>
+                            <L n="stat_use_multiplier">
+                              <U>
+                                <T n="key">16633<!--commodity_Object_Brokenness--></T>
+                                <U n="value">
+                                  <E n="apply_direction">DECREASE</E>
+                                  <T n="multiplier">0.5</T>
+                                </U>
+                              </U>
+                            </L>
+                          </U>
+                        </L>
+                      </U>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">15397<!--Upgrade_Generic_LowerBrokenness_NotStarted--></T>
+              </U>
+              <U>
+                <T n="key">15398<!--Upgrade_Generic_LowerBrokenness_Partial--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">15397<!--Upgrade_Generic_LowerBrokenness_NotStarted--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">122152<!--dishwasher_InUse_On--></T>
+                <U n="value">
+                  <V n="audio_state" t="apply_new_value">
+                    <V n="apply_new_value" t="start_audio">
+                      <U n="start_audio">
+                        <T n="audio" p="InGame\Audio\Sfx\dishwasher\dishwasher_run_normal_loop.propx">39b2aa4a:00000000:86e7bea916a571e0</T>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="vfx_state" t="apply_new_value">
+                    <V n="apply_new_value" t="start_vfx">
+                      <V n="start_vfx" t="single_effect">
+                        <U n="single_effect">
+                          <T n="effect_name">sp03_dish_washer_on</T>
+                        </U>
+                      </V>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">122154<!--dishwasher_InUse_Off--></T>
+                <U n="value">
+                  <V n="audio_state" t="apply_new_value" />
+                  <V n="broadcaster" t="apply_new_value" />
+                  <V n="vfx_state" t="apply_new_value" />
+                </U>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">122154<!--dishwasher_InUse_Off--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">122272<!--upgrade_Dishwasher_SpeedyCleaner_Completed--></T>
+              </U>
+              <U>
+                <T n="key">122273<!--upgrade_Dishwasher_SpeedyCleaner_NotStarted--></T>
+              </U>
+              <U>
+                <T n="key">122274<!--upgrade_Dishwasher_SpeedyCleaner_Partial--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">122273<!--upgrade_Dishwasher_SpeedyCleaner_NotStarted--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">122286<!--upgrade_Dishwasher_QuietRunning_Completed--></T>
+              </U>
+              <U>
+                <T n="key">122290<!--upgrade_Dishwasher_QuietRunning_Partial--></T>
+              </U>
+              <U>
+                <T n="key">122291<!--upgrade_Dishwasher_QuietRunning_NotStarted--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">122291<!--upgrade_Dishwasher_QuietRunning_NotStarted--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">122305<!--dishwasher_InUse_On_Quiet--></T>
+                <U n="value">
+                  <V n="audio_state" t="apply_new_value">
+                    <V n="apply_new_value" t="start_audio">
+                      <U n="start_audio">
+                        <T n="audio" p="InGame\Audio\Sfx\dishwasher\dishwasher_run_quite_loop.propx">39b2aa4a:00000000:735dd5ea664f482d</T>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="vfx_state" t="apply_new_value">
+                    <V n="apply_new_value" t="start_vfx">
+                      <V n="start_vfx" t="single_effect">
+                        <U n="single_effect">
+                          <T n="effect_name">sp03_dish_washer_on</T>
+                        </U>
+                      </V>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">122308<!--dishwasher_InUse_Off_Quiet--></T>
+                <U n="value">
+                  <V n="audio_state" t="apply_new_value" />
+                  <V n="vfx_state" t="apply_new_value" />
+                </U>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">122308<!--dishwasher_InUse_Off_Quiet--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">73870<!--TheKnack_Awesome--></T>
+              </U>
+              <U>
+                <T n="key">73871<!--TheKnack_NotAwesome--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">73871<!--TheKnack_NotAwesome--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">35296<!--GenericOnOff_On--></T>
+                <U n="value">
+                  <V n="broadcaster" t="apply_new_value">
+                    <V n="apply_new_value" t="start_broadcaster">
+                      <U n="start_broadcaster">
+                        <L n="broadcaster_types">
+                          <U>
+                            <T n="item">159378<!--broadcaster_Fear_Pet_Dishwasher--></T>
+                          </U>
+                        </L>
+                      </U>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">35297<!--GenericOnOff_Off--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">35297<!--GenericOnOff_Off--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">185122</T>
+              </U>
+              <U>
+                <T n="key">185125</T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">185125</T>
+            </V>
+          </U>
+          <U>
+            <V n="default_value" t="reference">
+              <T n="reference">208488</T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">224553<!--utilities_Power_Consumption_On--></T>
+                <U n="value">
+                  <V n="autonomy_modifiers" t="apply_new_value">
+                    <V n="apply_new_value" t="apply_statistic_modifiers">
+                      <U n="apply_statistic_modifiers">
+                        <L n="lot_statistic_modifiers">
+                          <U>
+                            <V n="modifier" t="basic_value">
+                              <U n="basic_value">
+                                <T n="value">-0.00556</T>
+                              </U>
+                            </V>
+                            <T n="statistic">233027<!--commodity_Utilities_Power--></T>
+                          </U>
+                        </L>
+                        <U n="periodic_statistic_change">
+                          <T n="interval">10</T>
+                          <L n="operations" />
+                        </U>
+                      </U>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">224564<!--utilities_Power_Consumption_Off--></T>
+                <U n="value">
+                  <V n="autonomy_modifiers" t="apply_new_value" />
+                </U>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">224564<!--utilities_Power_Consumption_Off--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">39611<!--FireState_Burn_Material_Change--></T>
+              </U>
+              <U>
+                <T n="key">39736<!--FireState_Burn_Material_Change_Burning--></T>
+              </U>
+              <U>
+                <T n="key">39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+              </U>
+              <U>
+                <T n="key">77532<!--FireState_Burn_Material_Change_Replace--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">35956<!--Materialistic_Admired--></T>
+              </U>
+              <U>
+                <T n="key">35957<!--Materialistic_YetToAdmire--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">35957<!--Materialistic_YetToAdmire--></T>
+            </V>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="weather_aware_component" t="enabled">
+      <U n="enabled">
+        <L n="outside_loot">
+          <U>
+            <E n="key">AnyRain</E>
+            <U n="value">
+              <L n="end_loot">
+                <T>185163</T>
+              </L>
+              <L n="start_loot">
+                <T>184964</T>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </V>
+  </U>
+  <L n="_super_affordances">
+    <T>13328<!--debug_Reset--></T>
+    <T>13326<!--debug_ObjectDestroy--></T>
+    <T>103888<!--cheat_set_as_head--></T>
+    <T>196759</T>
+    <T>13983<!--sim-stand--></T>
+    <T>122028<!--dishwasher_LoadDishes--></T>
+    <T>122048<!--object_Repair_Dishwasher--></T>
+    <T>13327<!--debug_RepairObject--></T>
+    <T>99087<!--object_ReplaceBrokenObject--></T>
+    <T>13319<!--debug_BreakObject--></T>
+    <T>122117<!--dishwasher_Upgrade_LowerBrokenness--></T>
+    <T>122120<!--dishwasher_UpgradeContinue_LowerBrokenness--></T>
+    <T>122255<!--dishwasher_Upgrade_NeverBreaks--></T>
+    <T>122256<!--dishwasher_UpgradeContinue_NeverBreaks--></T>
+    <T>122280<!--dishwasher_Upgrade_SpeedyCleaner--></T>
+    <T>122281<!--dishwasher_UpgradeContinue_SpeedyCleaner--></T>
+    <T>122294<!--dishwasher_Upgrade_QuietRunning--></T>
+    <T>122295<!--dishwasher_UpgradeContinue_QuietRunning--></T>
+    <T>122494<!--dishwasher_StartDishes--></T>
+    <T>126860<!--dishwasher_LoadDishes_AfterEating--></T>
+    <T>129510<!--object_Hire_Repair_Service--></T>
+    <T>130059<!--object_Knack_MakeAwesome_Kitchen_Dishwasher--></T>
+    <T>130229<!--object_Knack_FixIt_Dishwasher--></T>
+    <T>146373</T>
+    <T>144134<!--generic_Object_Toddler_Have_A_Look_NonRadial--></T>
+    <T>144099<!--generic_Object_Toddler_Check_Out--></T>
+    <T>156488<!--dishwasher_Upgrade_LowerBrokenness_CompletedDisplay--></T>
+    <T>156936<!--generic_Object_Toddler_Check_Out_HighChair--></T>
+    <T>156476<!--dishwasher_Upgrade_NeverBreaks_CompletedDisplay--></T>
+    <T>159862<!--petInvestigate_Obsess_Watch_Dishwasher--></T>
+    <T>156477<!--dishwasher_Upgrade_QuietRunning_CompletedDisplay--></T>
+    <T>158379<!--TV_Cat_WatchWary--></T>
+    <T>156478<!--dishwasher_Upgrade_SpeedyCleaner_CompletedDisplay--></T>
+    <T>159883<!--PetInvestigate_Fear_Dishwasher--></T>
+    <T>164482<!--PetInvestigate_LazyTrait_Fear_Dishwasher--></T>
+    <T>164502<!--petInvestigate_LazyTrait_Obsess_Watch_Dishwasher--></T>
+    <T>164546<!--PetQuirks_Lazy_WatchWary--></T>
+    <T>102433<!--Ghost_Possess_Break_Electrocution--></T>
+    <T>287360</T>
+    <T>74457<!--fire_ReplaceBurntObject--></T>
+    <T>168502<!--Ghost_Pet_Possess--></T>
+  </L>
+  <U n="recycling_data">
+    <L n="recycling_values">
+      <U>
+        <E n="Bucks Type">RecycleBitsBucks</E>
+        <T n="Value">0.25</T>
+      </U>
+      <U>
+        <E n="Bucks Type">RecyclePiecesBucks</E>
+        <T n="Value">0.75</T>
+      </U>
+    </L>
+  </U>
+</I>

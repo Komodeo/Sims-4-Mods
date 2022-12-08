@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="petSmall_Sleep_LeftAtHome_OnClosestObject" s="177280">
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Object</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <T n="allow_autonomous">False</T>
+  <T n="attention_cost">0.5</T>
+  <V n="autonomy_preference" t="enabled">
+    <V n="enabled" t="use_preference">
+      <U n="use_preference">
+        <U n="preference">
+          <E n="tag">PET_SLEEP_OBJECT</E>
+        </U>
+      </U>
+    </V>
+  </V>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">158663<!--buff_Sim_Pets_BeWokenUp_Hidden--></T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">168048<!--buff_Pets_CancelLaydown--></T>
+                  <E n="timing">HAS_BUFF</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">300</T>
+                  <T n="min_time">180</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+            <L n="tests">
+              <L>
+                <V t="trait">
+                  <U n="trait">
+                    <L n="blacklist_traits">
+                      <T>170711<!--trait_DisciplinedOut_Pet_WakeUpSims--></T>
+                    </L>
+                    <L n="whitelist_traits">
+                      <T>170715<!--trait_Misbehaviors_Pet_WakeUpSims--></T>
+                    </L>
+                  </U>
+                </V>
+              </L>
+              <L>
+                <V t="buff">
+                  <U n="buff">
+                    <V n="whitelist" t="enabled">
+                      <L n="enabled">
+                        <T>165613<!--emotionalBuffs_General_Pets_Cat_Vengeful--></T>
+                        <T>165615<!--emotionalBuffs_General_Pets_Dog_Vengeful--></T>
+                      </L>
+                    </V>
+                  </U>
+                </V>
+                <V t="trait">
+                  <U n="trait">
+                    <L n="whitelist_traits">
+                      <T>170715<!--trait_Misbehaviors_Pet_WakeUpSims--></T>
+                    </L>
+                  </U>
+                </V>
+              </L>
+            </L>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">167048<!--buff_Motives_Pet_Dog_InSS3Mode--></T>
+                  <E n="participant">Actor</E>
+                  <E n="timing">ON_REMOVE</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">GO_INERTIAL</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">167047<!--buff_Motives_Pet_Cat_InSS3Mode--></T>
+                  <E n="participant">Actor</E>
+                  <E n="timing">ON_REMOVE</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">GO_INERTIAL</E>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="staging_content">
+        <U n="staging_content">
+          <U n="content_set">
+            <L n="affordance_links">
+              <T>165879<!--mixerInteraction_Pets_Sleep_Back--></T>
+              <T>165880<!--mixerInteraction_Pets_Sleep_BackQuirk--></T>
+              <T>165883<!--mixerInteraction_Pets_Sleep_Curl--></T>
+              <T>165884<!--mixerInteraction_Pets_Sleep_CurlQuirk--></T>
+              <T>165881<!--mixerInteraction_Pets_Sleep_Stomach--></T>
+              <T>165882<!--mixerInteraction_Pets_Sleep_StomachQuirk--></T>
+            </L>
+          </U>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">3.33</T>
+                <T n="stat">151037<!--commodity_Motive_PetCat_Energy--></T>
+                <L n="tests">
+                  <L>
+                    <V t="sim_info">
+                      <U n="sim_info">
+                        <V n="species" t="specified">
+                          <U n="specified">
+                            <L n="species">
+                              <E>CAT</E>
+                            </L>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">3.33</T>
+                <T n="stat">151033<!--commodity_Motive_PetDog_Energy--></T>
+                <L n="tests">
+                  <L>
+                    <V t="sim_info">
+                      <U n="sim_info">
+                        <V n="species" t="specified">
+                          <U n="specified">
+                            <L n="species">
+                              <E>DOG</E>
+                            </L>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+          </L>
+        </U>
+      </V>
+      <T n="start_autonomous_inertial">True</T>
+      <T n="start_user_directed_inertial">True</T>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="set_sim_sleeping" />
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">158606<!--buff_Pet_Cat_IsSleeping--></T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="species" t="specified">
+                  <U n="specified">
+                    <L n="species">
+                      <E>CAT</E>
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">158528<!--buff_Pet_Dog_IsSleeping--></T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="species" t="specified">
+                  <U n="specified">
+                    <L n="species">
+                      <E>DOG</E>
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">171915<!--buff_Cat_onRoutableSurface_Misbehavior--></T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="object_routable_surface">
+              <U n="object_routable_surface">
+                <V n="identity_test" t="tags">
+                  <U n="tags">
+                    <L n="tag_set">
+                      <E>Func_Counter</E>
+                      <E>Func_Fridge</E>
+                      <E>BuyCatSS_DiningTable</E>
+                    </L>
+                  </U>
+                </V>
+                <E n="sims">Actor</E>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="basic_reserve_object" t="enabled" />
+  <V n="canonical_animation" t="enabled">
+    <U n="enabled">
+      <T n="factory">163456<!--canonical_LayDownOnObject--></T>
+    </U>
+  </V>
+  <T n="collapsible">True</T>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0xA6AE0903<!--Sleep--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+    <E>Interaction_Sleep</E>
+  </L>
+  <T n="opportunity_cost_multiplier">1</T>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <L n="continuation">
+          <U>
+            <T n="affordance">172178<!--simPicker_Pet_Sleep_NearOwner_WakeUpSim--></T>
+            <E n="target">Actor</E>
+          </U>
+        </L>
+      </U>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <V n="sim_affinity_posture_scoring_data" t="enabled">
+    <U n="enabled">
+      <L n="my_tags">
+        <E>Pet</E>
+      </L>
+    </U>
+  </V>
+  <T n="subaction_selection_weight">1</T>
+  <V n="super_affordance_compatibility" t="literal" />
+  <E n="target_type">OBJECT</E>
+  <V n="test_disallow_while_running" t="enabled">
+    <U n="enabled">
+      <L n="affordances">
+        <T>165899<!--Pet_Laze_Aggregate--></T>
+        <T>166630<!--Pet_Laze_Aggregate_Loyal--></T>
+        <T>165898<!--Pet_Nap_Aggregate--></T>
+        <T>166629<!--Pet_Nap_Aggregate_Loyal--></T>
+      </L>
+      <T n="test_self">False</T>
+    </U>
+  </V>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+          </L>
+        </V>
+        <V n="species" t="specified_extended">
+          <U n="specified_extended">
+            <L n="species">
+              <E>CAT</E>
+              <E>SMALLDOG</E>
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="distance">
+      <U n="distance">
+        <U n="distance_threshold">
+          <E n="comparison">LESS_OR_EQUAL</E>
+          <T n="value">5</T>
+        </U>
+        <E n="subject">Object</E>
+        <V n="target" t="participant_type">
+          <U n="participant_type">
+            <E n="participant">LotOwnerSingleAndInstanced</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">176344<!--testSetInstance_Pets_FreeSleepSpot_SmallPets--></T>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <L n="blacklist">
+          <T>171707<!--buff_Vet_ConeOfShame--></T>
+        </L>
+        <V n="tooltip" t="enabled">
+          <T n="enabled">0x76B39024<!--Pets can't perform this interaction while they have the cone on their head.--></T>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">30</T>
+</I>

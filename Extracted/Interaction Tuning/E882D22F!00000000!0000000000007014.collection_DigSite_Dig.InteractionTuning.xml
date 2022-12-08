@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="collection_DigSite_Dig" s="28692">
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="facing" />
+        </U>
+      </L>
+    </U>
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">1</T>
+              <T n="radius">2</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+  </L>
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Object</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <T n="allow_autonomous">True</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="one_shot">
+    <U n="one_shot">
+      <U n="animation_ref">
+        <T n="factory">76101<!--Rock_Collect--></T>
+        <U n="overrides">
+          <V n="balloons" t="enabled">
+            <L n="enabled">
+              <U>
+                <T n="balloon_chance">100</T>
+                <L n="balloon_choices">
+                  <U>
+                    <V n="item" t="balloon_category">
+                      <T n="balloon_category">76112<!--balloonCategory_Collect_Rocks_thought--></T>
+                    </V>
+                  </U>
+                </L>
+                <T n="balloon_delay">3</T>
+                <T n="balloon_delay_random_offset">1</T>
+                <L n="balloon_target">
+                  <E>Actor</E>
+                </L>
+              </U>
+            </L>
+          </V>
+        </U>
+      </U>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">-0.5</T>
+                <T n="stat">16657<!--motive_Hygiene--></T>
+              </U>
+            </V>
+          </L>
+        </U>
+      </V>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="destroy_object">
+      <U n="destroy_object">
+        <U n="success_chance">
+          <T n="base_chance">100</T>
+        </U>
+        <V n="timing" t="on_xevt">
+          <U n="on_xevt">
+            <T n="xevt_id">101</T>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>217832</T>
+        </L>
+      </U>
+    </V>
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>250345</T>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0xEEB8DA18<!--Dig--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+    <E>Interaction_Collect</E>
+    <E>Interaction_lifestyles_Outdoorsy_OneShot</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="loot_list">
+                  <T>29401<!--loot_ObjectReward_Collectible_Crystal--></T>
+                  <T>35516<!--Loot_Buff_Trait_Geek_CollectedSomething--></T>
+                </L>
+              </U>
+              <U n="weight">
+                <T n="base_value">5</T>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">30528<!--collectTimeCapsuleGEN_01 (Time Capsule)--></T>
+                        </U>
+                      </V>
+                      <V n="location" t="inventory" />
+                    </U>
+                  </V>
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <V n="icon" t="enabled">
+                              <V n="enabled" t="participant">
+                                <U n="participant">
+                                  <L n="participant_type">
+                                    <E>Object</E>
+                                  </L>
+                                </U>
+                              </V>
+                            </V>
+                            <V n="primary_icon_response" t="enabled">
+                              <U n="enabled">
+                                <E n="ui_request">SHOW_SIM_INVENTORY</E>
+                              </U>
+                            </V>
+                            <V n="secondary_icon" t="enabled">
+                              <V n="enabled" t="participant" />
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0x75BDA9D0<!--{0.SimFirstName} dug up a capsule! What could be inside?--></T>
+                            </V>
+                            <V n="text_tokens" t="enabled">
+                              <U n="enabled">
+                                <L n="tokens">
+                                  <V t="participant_type" />
+                                </L>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>35516<!--Loot_Buff_Trait_Geek_CollectedSomething--></T>
+                </L>
+                <V n="response" t="enabled">
+                  <V n="enabled" t="individual">
+                    <U n="individual">
+                      <L n="animations">
+                        <U>
+                          <E n="target">Actor</E>
+                          <U n="animation">
+                            <T n="factory">28364<!--Socials_Responses_Excited_HighIntensity_Giddy--></T>
+                          </U>
+                        </U>
+                      </L>
+                    </U>
+                  </V>
+                </V>
+              </U>
+              <U n="weight">
+                <T n="base_value">3</T>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">30527<!--collectTreasureMapGEN_01 (Treasure Map)--></T>
+                        </U>
+                      </V>
+                      <V n="location" t="inventory" />
+                    </U>
+                  </V>
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <V n="icon" t="enabled">
+                              <V n="enabled" t="participant">
+                                <U n="participant">
+                                  <L n="participant_type">
+                                    <E>Object</E>
+                                  </L>
+                                </U>
+                              </V>
+                            </V>
+                            <V n="participant" t="disabled" />
+                            <V n="primary_icon_response" t="enabled">
+                              <U n="enabled">
+                                <E n="ui_request">SHOW_SIM_INVENTORY</E>
+                              </U>
+                            </V>
+                            <V n="secondary_icon" t="enabled">
+                              <V n="enabled" t="participant" />
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0x200F57E3<!--{0.SimFirstName} dug up a treasure map! This will surely lead to great things.--></T>
+                            </V>
+                            <V n="text_tokens" t="enabled">
+                              <U n="enabled">
+                                <L n="tokens">
+                                  <V t="participant_type" />
+                                </L>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>35516<!--Loot_Buff_Trait_Geek_CollectedSomething--></T>
+                </L>
+                <V n="response" t="enabled">
+                  <V n="enabled" t="individual">
+                    <U n="individual">
+                      <L n="animations">
+                        <U>
+                          <E n="target">Actor</E>
+                          <U n="animation">
+                            <T n="factory">28358<!--Socials_Responses_Excited_LowIntensity--></T>
+                          </U>
+                        </U>
+                      </L>
+                    </U>
+                  </V>
+                </V>
+              </U>
+              <U n="weight">
+                <T n="base_value">1</T>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="state">
+                <U n="state">
+                  <T n="value">76570<!--CollectableRockState_Crystal--></T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">32800<!--collectFossilRock_01 (Limestone)--></T>
+                        </U>
+                      </V>
+                      <V n="location" t="inventory" />
+                    </U>
+                  </V>
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <V n="icon" t="enabled">
+                              <V n="enabled" t="participant">
+                                <U n="participant">
+                                  <L n="participant_type">
+                                    <E>Object</E>
+                                  </L>
+                                </U>
+                              </V>
+                            </V>
+                            <V n="primary_icon_response" t="enabled">
+                              <U n="enabled">
+                                <E n="ui_request">SHOW_SIM_INVENTORY</E>
+                              </U>
+                            </V>
+                            <V n="secondary_icon" t="enabled">
+                              <V n="enabled" t="participant">
+                                <U n="participant">
+                                  <L n="participant_type">
+                                    <E>Actor</E>
+                                  </L>
+                                </U>
+                              </V>
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0xFBFDEDC4<!--{0.SimFirstName} found a piece of limestone! It should have a fossil inside.--></T>
+                            </V>
+                            <V n="text_tokens" t="enabled">
+                              <U n="enabled">
+                                <L n="tokens">
+                                  <V t="participant_type" />
+                                </L>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>35516<!--Loot_Buff_Trait_Geek_CollectedSomething--></T>
+                </L>
+              </U>
+              <U n="weight">
+                <T n="base_value">5</T>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">30528<!--collectTimeCapsuleGEN_01 (Time Capsule)--></T>
+                        </U>
+                      </V>
+                      <V n="location" t="inventory" />
+                    </U>
+                  </V>
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <V n="icon" t="enabled">
+                              <V n="enabled" t="participant">
+                                <U n="participant">
+                                  <L n="participant_type">
+                                    <E>Object</E>
+                                  </L>
+                                </U>
+                              </V>
+                            </V>
+                            <V n="primary_icon_response" t="enabled">
+                              <U n="enabled">
+                                <E n="ui_request">SHOW_SIM_INVENTORY</E>
+                              </U>
+                            </V>
+                            <V n="secondary_icon" t="enabled">
+                              <V n="enabled" t="participant" />
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0x75BDA9D0<!--{0.SimFirstName} dug up a capsule! What could be inside?--></T>
+                            </V>
+                            <V n="text_tokens" t="enabled">
+                              <U n="enabled">
+                                <L n="tokens">
+                                  <V t="participant_type" />
+                                </L>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>35516<!--Loot_Buff_Trait_Geek_CollectedSomething--></T>
+                </L>
+                <V n="response" t="enabled">
+                  <V n="enabled" t="individual">
+                    <U n="individual">
+                      <L n="animations">
+                        <U>
+                          <E n="target">Actor</E>
+                          <U n="animation">
+                            <T n="factory">28364<!--Socials_Responses_Excited_HighIntensity_Giddy--></T>
+                          </U>
+                        </U>
+                      </L>
+                    </U>
+                  </V>
+                </V>
+              </U>
+              <U n="weight">
+                <T n="base_value">3</T>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">30527<!--collectTreasureMapGEN_01 (Treasure Map)--></T>
+                        </U>
+                      </V>
+                      <V n="location" t="inventory" />
+                    </U>
+                  </V>
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <V n="icon" t="enabled">
+                              <V n="enabled" t="participant">
+                                <U n="participant">
+                                  <L n="participant_type">
+                                    <E>Object</E>
+                                  </L>
+                                </U>
+                              </V>
+                            </V>
+                            <V n="participant" t="disabled" />
+                            <V n="primary_icon_response" t="enabled">
+                              <U n="enabled">
+                                <E n="ui_request">SHOW_SIM_INVENTORY</E>
+                              </U>
+                            </V>
+                            <V n="secondary_icon" t="enabled">
+                              <V n="enabled" t="participant" />
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0x200F57E3<!--{0.SimFirstName} dug up a treasure map! This will surely lead to great things.--></T>
+                            </V>
+                            <V n="text_tokens" t="enabled">
+                              <U n="enabled">
+                                <L n="tokens">
+                                  <V t="participant_type" />
+                                </L>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>35516<!--Loot_Buff_Trait_Geek_CollectedSomething--></T>
+                </L>
+                <V n="response" t="enabled">
+                  <V n="enabled" t="individual">
+                    <U n="individual">
+                      <L n="animations">
+                        <U>
+                          <E n="target">Actor</E>
+                          <U n="animation">
+                            <T n="factory">28358<!--Socials_Responses_Excited_LowIntensity--></T>
+                          </U>
+                        </U>
+                      </L>
+                    </U>
+                  </V>
+                </V>
+              </U>
+              <U n="weight">
+                <T n="base_value">1</T>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="state">
+                <U n="state">
+                  <T n="value">76571<!--CollectableRockState_Fossil--></T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="basic_extras" />
+                <L n="loot_list">
+                  <T>29396<!--loot_ObjectReward_Collectible_Metal--></T>
+                  <T>35516<!--Loot_Buff_Trait_Geek_CollectedSomething--></T>
+                </L>
+              </U>
+              <U n="weight">
+                <T n="base_value">5</T>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">30528<!--collectTimeCapsuleGEN_01 (Time Capsule)--></T>
+                        </U>
+                      </V>
+                      <V n="location" t="inventory" />
+                    </U>
+                  </V>
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <V n="icon" t="enabled">
+                              <V n="enabled" t="participant">
+                                <U n="participant">
+                                  <L n="participant_type">
+                                    <E>Object</E>
+                                  </L>
+                                </U>
+                              </V>
+                            </V>
+                            <V n="primary_icon_response" t="enabled">
+                              <U n="enabled">
+                                <E n="ui_request">SHOW_SIM_INVENTORY</E>
+                              </U>
+                            </V>
+                            <V n="secondary_icon" t="enabled">
+                              <V n="enabled" t="participant" />
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0x75BDA9D0<!--{0.SimFirstName} dug up a capsule! What could be inside?--></T>
+                            </V>
+                            <V n="text_tokens" t="enabled">
+                              <U n="enabled">
+                                <L n="tokens">
+                                  <V t="participant_type" />
+                                </L>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>35516<!--Loot_Buff_Trait_Geek_CollectedSomething--></T>
+                </L>
+                <V n="response" t="enabled">
+                  <V n="enabled" t="individual">
+                    <U n="individual">
+                      <L n="animations">
+                        <U>
+                          <E n="target">Actor</E>
+                          <U n="animation">
+                            <T n="factory">28364<!--Socials_Responses_Excited_HighIntensity_Giddy--></T>
+                          </U>
+                        </U>
+                      </L>
+                    </U>
+                  </V>
+                </V>
+              </U>
+              <U n="weight">
+                <T n="base_value">3</T>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">30527<!--collectTreasureMapGEN_01 (Treasure Map)--></T>
+                        </U>
+                      </V>
+                      <V n="location" t="inventory" />
+                    </U>
+                  </V>
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <V n="icon" t="enabled">
+                              <V n="enabled" t="participant">
+                                <U n="participant">
+                                  <L n="participant_type">
+                                    <E>Object</E>
+                                  </L>
+                                </U>
+                              </V>
+                            </V>
+                            <V n="participant" t="disabled" />
+                            <V n="primary_icon_response" t="enabled">
+                              <U n="enabled">
+                                <E n="ui_request">SHOW_SIM_INVENTORY</E>
+                              </U>
+                            </V>
+                            <V n="secondary_icon" t="enabled">
+                              <V n="enabled" t="participant" />
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0x200F57E3<!--{0.SimFirstName} dug up a treasure map! This will surely lead to great things.--></T>
+                            </V>
+                            <V n="text_tokens" t="enabled">
+                              <U n="enabled">
+                                <L n="tokens">
+                                  <V t="participant_type" />
+                                </L>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>35516<!--Loot_Buff_Trait_Geek_CollectedSomething--></T>
+                </L>
+                <V n="response" t="enabled">
+                  <V n="enabled" t="individual">
+                    <U n="individual">
+                      <L n="animations">
+                        <U>
+                          <E n="target">Actor</E>
+                          <U n="animation">
+                            <T n="factory">28358<!--Socials_Responses_Excited_LowIntensity--></T>
+                          </U>
+                        </U>
+                      </L>
+                    </U>
+                  </V>
+                </V>
+              </U>
+              <U n="weight">
+                <T n="base_value">1</T>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="state">
+                <U n="state">
+                  <T n="value">76572<!--CollectableRockState_Metal--></T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <V n="super_affordance_compatibility" t="literal">
+    <U n="literal">
+      <V n="default_inclusion" t="include_all">
+        <U n="include_all">
+          <L n="exclude_lists">
+            <T>97324<!--affordanceList_EatOrDrink--></T>
+          </L>
+        </U>
+      </V>
+    </U>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <V n="test_disallow_while_running" t="enabled">
+    <U n="enabled">
+      <T n="test_self">True</T>
+    </U>
+  </V>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">28305<!--testSet_EmotionNotMiserable--></T>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">32613<!--testSet_Fatigued--></T>
+    </V>
+  </L>
+  <T n="time_overhead">7</T>
+</I>

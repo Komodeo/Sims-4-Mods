@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="NPCInviteSituationDramaNode" i="drama_node" m="drama_scheduler.npc_invite_situation_drama_node" n="dramaNode_NPCInvite_Story_Progression_ChildrenStories_HadBaby" s="280459">
+  <T n="_host_event_at_NPCs_residence">True</T>
+  <V n="_NPC_host_job" t="enabled">
+    <T n="enabled">128966<!--jobs_NPCInvites_InviteOver_NPC_Invite--></T>
+  </V>
+  <V n="_NPC_hosted_situation_player_job" t="enabled">
+    <T n="enabled">128964<!--jobs_NPCInvites_InviteOver_Actor_Target--></T>
+  </V>
+  <L n="_NPC_hosted_situation_start_messages">
+    <U>
+      <U n="dialog">
+        <V n="bring_other_sims" t="enabled">
+          <U n="enabled">
+            <U n="picker_dialog">
+              <V n="max_selectable" t="static_count">
+                <U n="static_count">
+                  <T n="number_selectable">7</T>
+                </U>
+              </V>
+              <T n="min_selectable">0</T>
+              <T n="text_cancel">0x30DC415C<!--Decline--></T>
+              <T n="text_ok">0xC15E5348<!--Accept--></T>
+              <V n="title" t="enabled">
+                <T n="enabled">0x415BA726<!--Select Sims to Travel with--></T>
+              </V>
+            </U>
+            <T n="situation_job">128965<!--jobs_NPCInvites_InviteOver_Invite_SimPicker--></T>
+            <T n="text">0x41CD82EF<!--Accept, and Select Sims to Travel with--></T>
+            <T n="travel_with_filter">109049<!--filter_HasMet_ctyae_NotBusy--></T>
+          </U>
+        </V>
+        <E n="phone_ring_type">BUZZ</E>
+        <V n="text" t="variation">
+          <U n="variation">
+            <L n="variations">
+              <T>0x6F18CC14<!--I have some exciting news {0.SimFirstName}! {1.SimFirstName} and I just had our baby; would you be up for coming over and saying hello?--></T>
+              <T>0x99E46837<!--A stork left us a gift! Totally joking, but {1.SimFirstName} and I did just bring home our baby. Come visit if you're free!--></T>
+              <T>0x7EFA934A<!--{1.SimFirstName} and I just welcomed home our new baby! Are you able to stop by?--></T>
+            </L>
+          </U>
+        </V>
+        <V n="text_tokens" t="enabled">
+          <U n="enabled">
+            <L n="tokens">
+              <V t="participant_type" />
+              <V t="participant_type">
+                <U n="participant_type">
+                  <V n="objects" t="from_participant">
+                    <U n="from_participant">
+                      <E n="participant">SignificantOtherTargetSim</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </U>
+        </V>
+        <T n="zone_title">0xC79595F2<!--{0.String}: {1.String}--></T>
+      </U>
+      <L n="dialog_complete_loot_list">
+        <T>287516<!--loot_Want_BailOnFriend_AddTracker--></T>
+      </L>
+      <L n="dialog_seen_loot_list">
+        <T>274754<!--loot_DiscussExpandingTheFamily_Buff_BabyJoy--></T>
+      </L>
+    </U>
+  </L>
+  <T n="_situation_to_run">274595<!--situation_NPCInvites_DiscussExpandingTheFamily_Pregnancy--></T>
+  <T n="_user_facing">False</T>
+  <T n="allow_during_work_hours">False</T>
+  <V n="cooldown_data" t="none" />
+  <U n="min_and_max_times">
+    <T n="lower_bound">12</T>
+    <T n="upper_bound">36</T>
+  </U>
+  <V n="picked_sim_info" t="no_participant" />
+  <L n="pretests">
+    <L>
+      <V t="test_set_reference">
+        <T n="test_set_reference">282574<!--testSetInstance_Story_Progression_Receive_Story_DramaNode--></T>
+      </V>
+    </L>
+  </L>
+  <L n="receiver_sim_pretests">
+    <L>
+      <V t="sim_info">
+        <U n="sim_info">
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>YOUNGADULT</E>
+              <E>ADULT</E>
+              <E>ELDER</E>
+            </L>
+          </V>
+          <V n="species" t="specified">
+            <U n="specified">
+              <L n="species">
+                <E />
+              </L>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </L>
+  <V n="reschedule_on_failed_tests" t="reschedule">
+    <U n="reschedule">
+      <T n="upper_bound">24</T>
+    </U>
+  </V>
+  <L n="run_tests">
+    <L>
+      <V t="travel_group">
+        <U n="travel_group">
+          <V n="test_type" t="in_travel_group">
+            <U n="in_travel_group">
+              <T n="exists">False</T>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </L>
+  <V n="scoring" t="enabled">
+    <U n="enabled">
+      <T n="base_score">50</T>
+      <E n="bucket">SpecialScoring</E>
+    </U>
+  </V>
+  <V n="sender_sim_info" t="participant_type">
+    <U n="participant_type">
+      <E n="participant_type">TargetSim</E>
+    </U>
+  </V>
+  <V n="time_option" t="schedule">
+    <U n="schedule">
+      <L n="valid_times">
+        <U>
+          <U n="days_available">
+            <T n="0 SUNDAY">True</T>
+            <T n="1 MONDAY">True</T>
+            <T n="2 TUESDAY">True</T>
+            <T n="3 WEDNESDAY">True</T>
+            <T n="4 THURSDAY">True</T>
+            <T n="5 FRIDAY">True</T>
+            <T n="6 SATURDAY">True</T>
+          </U>
+          <T n="duration">12</T>
+          <U n="start_time">
+            <T n="hour">8</T>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+</I>

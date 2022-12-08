@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="WalkbyDogWalker" i="situation" m="situations.ambient.walkby_dog_walker" n="walkbyDogWalker_walk_TYAE" s="168135">
+  <T n="allowed_in_super_speed_3">False</T>
+  <U n="dog">
+    <T n="initial_role_state">168139<!--openStreets_AutonomyRoleStates_PetWorld_DogWalkers_Dog_initial--></T>
+    <T n="situation_job">168142<!--walker_Job_PetWorld_DogWalkers_Dog--></T>
+  </U>
+  <U n="dog_walker">
+    <T n="initial_role_state">168140<!--openStreets_AutonomyRoleStates_PetWorld_DogWalkers_Walker_initial--></T>
+    <T n="situation_job">168143<!--walker_Job_PetWorld_DogWalkers_Walker--></T>
+  </U>
+  <T n="group_filter">133503<!--filter_Aggregate_PetOwner_Dog_TYAE--></T>
+  <U n="leave_state">
+    <U n="interaction_of_interest">
+      <L n="affordances">
+        <T>178138<!--go_to_leave_spawnPoint--></T>
+      </L>
+    </U>
+    <L n="job_and_role_changes">
+      <U>
+        <T n="Situation Job">168143<!--walker_Job_PetWorld_DogWalkers_Walker--></T>
+        <T n="Role State">178139<!--role_Walkby_DogWalker_Leave--></T>
+      </U>
+    </L>
+    <V n="time_out" t="enabled">
+      <T n="enabled">30</T>
+    </V>
+  </U>
+  <L n="sim_spawner_tags">
+    <E>Spawn_Walkby</E>
+  </L>
+  <V n="situation_end_time_string" t="show_end_time">
+    <T n="show_end_time">0xA3E17143<!--Work day ends at {0.TimeShort}--></T>
+  </V>
+  <L n="situation_job_mapping">
+    <U>
+      <E n="filter_tag">Walkby_RoutingMaster</E>
+      <T n="job">168143<!--walker_Job_PetWorld_DogWalkers_Walker--></T>
+    </U>
+    <U>
+      <E n="filter_tag">Walkby_RoutingSlave</E>
+      <T n="job">168142<!--walker_Job_PetWorld_DogWalkers_Dog--></T>
+    </U>
+  </L>
+  <L n="tags">
+    <E>Situation_Weather_Snow_Heavy</E>
+    <E>Situation_Weather_Snow_Storm</E>
+  </L>
+  <U n="walk_state">
+    <L n="job_and_role_changes">
+      <U>
+        <T n="Situation Job">168142<!--walker_Job_PetWorld_DogWalkers_Dog--></T>
+        <T n="Role State">168146<!--openStreets_AutonomyRoleStates_PetWorld_DogWalkers_Dog_walk--></T>
+      </U>
+      <U>
+        <T n="Situation Job">168143<!--walker_Job_PetWorld_DogWalkers_Walker--></T>
+        <T n="Role State">168147<!--openStreets_AutonomyRoleStates_PetWorld_DogWalkers_Walker_walk--></T>
+      </U>
+    </L>
+    <V n="time_out" t="enabled">
+      <T n="enabled">180</T>
+    </V>
+  </U>
+</I>

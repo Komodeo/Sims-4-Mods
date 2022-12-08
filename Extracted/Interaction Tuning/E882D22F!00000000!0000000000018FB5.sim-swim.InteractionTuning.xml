@@ -1,0 +1,1167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="StandSuperInteraction" i="interaction" m="postures.stand" n="sim-swim" s="102325">
+  <V n="_icon" t="resource_key">
+    <U n="resource_key">
+      <T n="key" p="InGame\UI\Icons\InteractionQueue\swimming_posture.png">2f7d0004:00000000:03c07d91e61e7fd7</T>
+    </U>
+  </V>
+  <T n="_provided_posture_type">39398<!--posture_Swim--></T>
+  <T n="_report_running_time">True</T>
+  <V n="_saveable" t="enabled">
+    <U n="enabled">
+      <V n="affordance_to_save" t="use_another_si">
+        <T n="use_another_si">104744<!--terrain-Swim--></T>
+      </V>
+      <E n="target_to_save">Invalid</E>
+    </U>
+  </V>
+  <T n="allow_autonomous">False</T>
+  <T n="allow_user_directed">False</T>
+  <T n="attention_cost">0</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="list_reference">
+          <T n="list_reference">40705<!--ExitConditionList_MotivesNearFail--></T>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">106168<!--buff_LeavePool--></T>
+                  <E n="timing">HAS_BUFF</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+            <L n="tests">
+              <L>
+                <V t="buff">
+                  <U n="buff">
+                    <L n="blacklist">
+                      <T>26171<!--buff_Sim_IsDying--></T>
+                    </L>
+                  </U>
+                </V>
+              </L>
+            </L>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">20</T>
+                  <T n="min_time">15</T>
+                </U>
+              </V>
+            </L>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">98815<!--Buff_Fire_Sim_Singed--></T>
+                  <E n="timing">HAS_BUFF</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">NO_ACTION</E>
+            <L n="loot_actions">
+              <T>99089<!--loot_Fire_Removed_Singed--></T>
+            </L>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">98815<!--Buff_Fire_Sim_Singed--></T>
+                </U>
+              </V>
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">5</T>
+                  <T n="min_time">5</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">NO_ACTION</E>
+            <L n="loot_actions">
+              <T>99089<!--loot_Fire_Removed_Singed--></T>
+            </L>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">205931</T>
+                  <E n="timing">HAS_BUFF</E>
+                </U>
+              </V>
+            </L>
+            <L n="loot_actions">
+              <T>205936</T>
+            </L>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="min_time">5</T>
+                </U>
+              </V>
+            </L>
+            <L n="loot_actions">
+              <T>210778</T>
+            </L>
+            <L n="tests">
+              <L>
+                <V t="trait">
+                  <U n="trait">
+                    <L n="whitelist_traits">
+                      <T>204493</T>
+                    </L>
+                  </U>
+                </V>
+                <V t="swim_location">
+                  <U n="swim_location">
+                    <V n="test" t="swim_in_ocean" />
+                  </U>
+                </V>
+              </L>
+            </L>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">185970<!--buff_GlobalTemperature_Freezing--></T>
+                  <E n="timing">ON_ADD</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_CANCEL</E>
+            <L n="loot_actions">
+              <T>222947<!--loot_Temperature_Freezing_AddExitDelay--></T>
+            </L>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">1</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_CANCEL</E>
+            <L n="loot_actions">
+              <T>277696<!--loot_Fear_Swimming_ScaredInWater--></T>
+            </L>
+            <L n="tests">
+              <L>
+                <V t="trait">
+                  <U n="trait">
+                    <L n="whitelist_traits">
+                      <T>277083<!--trait_Fear_Swimming--></T>
+                    </L>
+                  </U>
+                </V>
+                <V t="mood">
+                  <U n="mood">
+                    <T n="disallow">True</T>
+                    <T n="mood">14634<!--Mood_Confident--></T>
+                  </U>
+                </V>
+              </L>
+            </L>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="staging_content">
+        <U n="staging_content">
+          <U n="content_set">
+            <L n="affordance_links">
+              <T>102550<!--swim_Passive--></T>
+            </L>
+          </U>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <U n="operation_actions">
+            <L n="actions">
+              <T>143712</T>
+              <T>149435</T>
+            </L>
+          </U>
+          <L n="operations">
+            <V t="dynamic_skill">
+              <U n="dynamic_skill">
+                <U n="skill_loot_data_override">
+                  <E n="effectiveness">VerySmallPeriodic</E>
+                  <V n="level_range" t="enabled">
+                    <U n="enabled">
+                      <T n="upper_bound">7</T>
+                    </U>
+                  </V>
+                  <T n="stat">16659<!--skill_Fitness--></T>
+                </U>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">1</T>
+                <T n="stat">103887<!--Commodity_Sim_Swimming--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">-1</T>
+                <T n="stat">10020<!--commodity_Motive_Thirst--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">15</T>
+                <T n="stat">162675<!--motive_PlantSim_Water--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">-0.01</T>
+                <T n="stat">16589<!--commodity_Fitness_Fat--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">1000</T>
+                <T n="stat">39470<!--commodity_object_burning--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">20</T>
+                <T n="stat">29105<!--commodity_Trait_Autonomy_Active--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">4</T>
+                <T n="stat">107571<!--Commodity_Buff_DrownGhost_fearofWater--></T>
+                <L n="tests">
+                  <L>
+                    <V t="trait">
+                      <U n="trait">
+                        <L n="whitelist_traits">
+                          <T>103599<!--trait_ghost_Drown--></T>
+                        </L>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">True</T>
+                <T n="amount">0.1</T>
+                <T n="stat">16655<!--motive_Fun--></T>
+                <L n="tests">
+                  <L>
+                    <V t="zone">
+                      <U n="zone">
+                        <U n="zone_tests">
+                          <V n="zone_modifiers" t="enabled">
+                            <U n="enabled">
+                              <V n="whitelist" t="specify">
+                                <U n="specify">
+                                  <L n="whitelist">
+                                    <T>209417</T>
+                                  </L>
+                                </U>
+                              </V>
+                            </U>
+                          </V>
+                        </U>
+                      </U>
+                    </V>
+                    <V t="swim_location">
+                      <U n="swim_location">
+                        <V n="test" t="swim_in_ocean" />
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">0.21</T>
+                <T n="stat">16657<!--motive_Hygiene--></T>
+                <L n="subject">
+                  <E>Actor</E>
+                </L>
+                <L n="tests">
+                  <L>
+                    <V t="zone">
+                      <U n="zone">
+                        <U n="zone_tests">
+                          <V n="zone_modifiers" t="enabled">
+                            <U n="enabled">
+                              <V n="whitelist" t="specify">
+                                <U n="specify">
+                                  <L n="whitelist">
+                                    <T>209417</T>
+                                  </L>
+                                </U>
+                              </V>
+                            </U>
+                          </V>
+                        </U>
+                      </U>
+                    </V>
+                    <V t="swim_location">
+                      <U n="swim_location">
+                        <V n="test" t="swim_in_ocean" />
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="dynamic_skill">
+              <U n="dynamic_skill">
+                <U n="skill_loot_data_override">
+                  <E n="effectiveness">VerySmallPeriodic</E>
+                  <V n="level_range" t="enabled">
+                    <U n="enabled">
+                      <T n="upper_bound">5</T>
+                    </U>
+                  </V>
+                  <T n="stat">16720<!--statistic_Skill_Child_Motor--></T>
+                </U>
+              </U>
+            </V>
+            <V t="reference">
+              <T n="reference">249740</T>
+            </V>
+            <V t="reference">
+              <T n="reference">249720</T>
+            </V>
+            <V t="reference">
+              <T n="reference">251311</T>
+            </V>
+            <V t="reference">
+              <T n="reference">249765</T>
+            </V>
+          </L>
+          <T n="trigger_gain_on_start">True</T>
+        </U>
+      </V>
+      <T n="start_user_directed_inertial">True</T>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">156408<!--buff_Pools_Hygiene--></T>
+        </U>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">164852<!--buff_Pools_PlantSim_Water--></T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>162668<!--trait_PlantSim--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="broadcaster">
+      <U n="broadcaster">
+        <L n="broadcaster_types">
+          <U>
+            <T n="item">159380<!--broadcaster_Fear_Pet_Swimming--></T>
+          </U>
+          <U>
+            <T n="item">171893<!--broadcaster_Reaction_JumpInPool_Dog--></T>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <V n="buff_reason" t="enabled">
+            <T n="enabled">0xBFEA0585<!--(From Disliking Fitness)--></T>
+          </V>
+          <T n="buff_type">258769<!--buff_SimPreference_Dislikes_Activities_Fitness--></T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>258759<!--trait_SimPreference_Dislikes_Activities_Fitness--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <V n="buff_reason" t="enabled">
+            <T n="enabled">0xE100C391<!--(From Liking Fitness)--></T>
+          </V>
+          <T n="buff_type">258773<!--buff_SimPreference_Likes_Activities_Fitness--></T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>258765<!--trait_SimPreference_Likes_Activities_Fitness--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="adventure">
+      <U n="adventure">
+        <L n="_adventure_moments">
+          <U>
+            <E n="key">Career_ChanceCard_01</E>
+            <U n="value">
+              <V n="aventure_moment" t="reference">
+                <T n="reference">265945<!--adventureMoment_SimPreference_Activities_Fitness_Like--></T>
+              </V>
+            </U>
+          </U>
+        </L>
+        <L n="_initial_moments">
+          <U>
+            <E n="adventure_moment_key">Career_ChanceCard_01</E>
+            <U n="weight">
+              <L n="multipliers">
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="test_set_reference">
+                        <T n="test_set_reference">269650<!--testSetInstance_SimPreference_PreferenceDiscovery_MaxOrCoolOrAgeChildAllowed--></T>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="trait">
+                        <U n="trait">
+                          <L n="whitelist_traits">
+                            <T>266802<!--trait_SimPreference_NoOpinion_Activities_Fitness--></T>
+                            <T>258765<!--trait_SimPreference_Likes_Activities_Fitness--></T>
+                            <T>258759<!--trait_SimPreference_Dislikes_Activities_Fitness--></T>
+                          </L>
+                        </U>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="test_set_reference">
+                        <T n="test_set_reference">268213<!--testSetInstance_SimPreference_PreferenceDiscovery_ConfidentEnergizedFocused--></T>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V t="adventure">
+      <U n="adventure">
+        <L n="_adventure_moments">
+          <U>
+            <E n="key">Career_ChanceCard_01</E>
+            <U n="value">
+              <V n="aventure_moment" t="reference">
+                <T n="reference">265946<!--adventureMoment_SimPreference_Activities_Fitness_Dislike--></T>
+              </V>
+            </U>
+          </U>
+        </L>
+        <L n="_initial_moments">
+          <U>
+            <E n="adventure_moment_key">Career_ChanceCard_01</E>
+            <U n="weight">
+              <L n="multipliers">
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="test_set_reference">
+                        <T n="test_set_reference">269650<!--testSetInstance_SimPreference_PreferenceDiscovery_MaxOrCoolOrAgeChildAllowed--></T>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="trait">
+                        <U n="trait">
+                          <L n="whitelist_traits">
+                            <T>266802<!--trait_SimPreference_NoOpinion_Activities_Fitness--></T>
+                            <T>258765<!--trait_SimPreference_Likes_Activities_Fitness--></T>
+                            <T>258759<!--trait_SimPreference_Dislikes_Activities_Fitness--></T>
+                          </L>
+                        </U>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+                <U>
+                  <T n="multiplier">0</T>
+                  <L n="tests">
+                    <L>
+                      <V t="test_set_reference">
+                        <T n="test_set_reference">267812<!--testSetInstance_SimPreference_PreferenceDiscovery_AngryBoredUncomfortable--></T>
+                      </V>
+                    </L>
+                  </L>
+                </U>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">185469</T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="weather_type">
+              <U n="weather_type">
+                <L n="weather_types">
+                  <E>Hot</E>
+                  <E>Burning</E>
+                  <E>Heatwave</E>
+                </L>
+              </U>
+            </V>
+            <V t="trait">
+              <U n="trait">
+                <L n="blacklist_traits">
+                  <T>199043</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">185467</T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="weather_type">
+              <U n="weather_type">
+                <L n="weather_types">
+                  <E>Cold</E>
+                </L>
+              </U>
+            </V>
+            <V t="location">
+              <U n="location">
+                <U n="location_tests">
+                  <V n="is_outside" t="enabled" />
+                </U>
+              </U>
+            </V>
+            <V t="trait">
+              <U n="trait">
+                <L n="blacklist_traits">
+                  <T>199043</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">185468</T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="weather_type">
+              <U n="weather_type">
+                <L n="weather_types">
+                  <E>Freezing</E>
+                </L>
+              </U>
+            </V>
+            <V t="location">
+              <U n="location">
+                <U n="location_tests">
+                  <V n="is_outside" t="enabled" />
+                </U>
+              </U>
+            </V>
+            <V t="trait">
+              <U n="trait">
+                <L n="blacklist_traits">
+                  <T>199043</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">206484<!--buff_SimisSwimming--></T>
+        </U>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">209183</T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="region">
+              <U n="region">
+                <V n="whitelist" t="enabled">
+                  <L n="enabled">
+                    <T>208308</T>
+                  </L>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">211073</T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="ages" t="specified">
+                  <L n="specified">
+                    <E>CHILD</E>
+                  </L>
+                </V>
+              </U>
+            </V>
+            <V t="skill_test">
+              <U n="skill_test">
+                <T n="skill">16720<!--statistic_Skill_Child_Motor--></T>
+                <V n="skill_range" t="interval">
+                  <U n="interval">
+                    <U n="skill_interval">
+                      <T n="lower_bound">3</T>
+                    </U>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">211075</T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="ages" t="specified" />
+              </U>
+            </V>
+            <V t="skill_test">
+              <U n="skill_test">
+                <T n="skill">16659<!--skill_Fitness--></T>
+                <V n="skill_range" t="interval">
+                  <U n="interval">
+                    <U n="skill_interval">
+                      <T n="lower_bound">3</T>
+                      <T n="upper_bound">5</T>
+                    </U>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="ages" t="specified">
+                  <L n="specified">
+                    <E>TEEN</E>
+                    <E>YOUNGADULT</E>
+                    <E>ADULT</E>
+                    <E>ELDER</E>
+                  </L>
+                </V>
+              </U>
+            </V>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>212821</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">211076</T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="ages" t="specified">
+                  <L n="specified">
+                    <E>TEEN</E>
+                    <E>YOUNGADULT</E>
+                    <E>ADULT</E>
+                    <E>ELDER</E>
+                  </L>
+                </V>
+              </U>
+            </V>
+            <V t="skill_test">
+              <U n="skill_test">
+                <T n="skill">16659<!--skill_Fitness--></T>
+                <V n="skill_range" t="interval">
+                  <U n="interval">
+                    <U n="skill_interval">
+                      <T n="lower_bound">6</T>
+                      <T n="upper_bound">10</T>
+                    </U>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">229576</T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>218444</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">212214</T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="ages" t="specified" />
+              </U>
+            </V>
+            <V t="skill_test">
+              <U n="skill_test">
+                <T n="skill">16659<!--skill_Fitness--></T>
+                <V n="skill_range" t="interval">
+                  <U n="interval">
+                    <U n="skill_interval">
+                      <T n="lower_bound">5</T>
+                      <T n="upper_bound">7</T>
+                    </U>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">212215</T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="ages" t="specified">
+                  <L n="specified">
+                    <E>TEEN</E>
+                    <E>YOUNGADULT</E>
+                    <E>ADULT</E>
+                    <E>ELDER</E>
+                  </L>
+                </V>
+              </U>
+            </V>
+            <V t="skill_test">
+              <U n="skill_test">
+                <T n="skill">16659<!--skill_Fitness--></T>
+                <V n="skill_range" t="interval">
+                  <U n="interval">
+                    <U n="skill_interval">
+                      <T n="lower_bound">8</T>
+                      <T n="upper_bound">10</T>
+                    </U>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>212193<!--loot_Buff_LotMods_BaseGame_ClothingOptional_SkinnyDip_Visible--></T>
+          <T>212269<!--loot_Buff_LotMods_BaseGame_ClothingOptional_SandEverywhere_Remove_Visible--></T>
+        </L>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">185734</T>
+        </U>
+      </U>
+    </V>
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>230404</T>
+          <T>229877</T>
+        </L>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="buff_fire_and_forget">
+      <U n="buff_fire_and_forget">
+        <U n="buff">
+          <V n="buff_reason" t="enabled">
+            <T n="enabled">0x822317F9<!--(From Geothermal Lot Trait)--></T>
+          </V>
+          <T n="buff_type">231825</T>
+        </U>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <V n="buff_reason" t="enabled">
+            <T n="enabled">0xBBED090C<!--(From Swimming Under a Full Moon in Lake Lunvik)--></T>
+          </V>
+          <T n="buff_type">291242</T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="region">
+              <U n="region">
+                <V n="whitelist" t="enabled">
+                  <L n="enabled">
+                    <T>285909</T>
+                  </L>
+                </V>
+              </U>
+            </V>
+            <V t="lunar_phase">
+              <U n="lunar_phase">
+                <U n="phases_to_check">
+                  <V n="whitelist" t="specify">
+                    <U n="specify">
+                      <L n="whitelist">
+                        <E>FULL_MOON</E>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+            </V>
+            <V t="day_and_time">
+              <U n="day_and_time">
+                <V n="is_day" t="enabled">
+                  <T n="enabled">False</T>
+                </V>
+              </U>
+            </V>
+            <V t="location">
+              <U n="location">
+                <U n="location_tests">
+                  <V n="is_on_active_lot" t="Is_or_is_not_on_active_lot">
+                    <U n="Is_or_is_not_on_active_lot">
+                      <T n="is_or_is_not_on_active_lot">False</T>
+                    </U>
+                  </V>
+                </U>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <V n="buff_reason" t="enabled">
+            <T n="enabled">0x6EBB512A<!--(From Werewolf Temperaments)--></T>
+          </V>
+          <T n="buff_type">294342</T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>285382</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff_fire_and_forget">
+      <U n="buff_fire_and_forget">
+        <U n="buff">
+          <T n="buff_type">292756</T>
+        </U>
+      </U>
+    </V>
+  </L>
+  <V n="basic_reserve_object" t="disabled" />
+  <T n="can_shoo">True</T>
+  <L n="cancel_replacement_affordances">
+    <U>
+      <E n="key">BODY</E>
+      <U n="value">
+        <T n="affordance">183184<!--si_ExitMobilePosture--></T>
+        <V n="target" t="enabled">
+          <E n="enabled">Actor</E>
+        </V>
+      </U>
+    </U>
+  </L>
+  <V n="canonical_animation" t="disabled" />
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x3636E9EB<!--Swim--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <T n="ignore_group_socials">False</T>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+    <E>Interaction_Swim</E>
+    <E>Interaction_Lifestyles_Energetic_FlexibleLength</E>
+    <E>Interaction_Lifestyles_Outdoorsy_FlexibleLength</E>
+    <E>Interaction_PlantSim_Water</E>
+  </L>
+  <L n="joinable">
+    <U>
+      <V n="join_affordance" t="affordance">
+        <U n="affordance">
+          <V n="value" t="custom">
+            <T n="custom">107589<!--mentor_Swimming--></T>
+          </V>
+        </U>
+      </V>
+      <V n="join_available" t="enabled">
+        <U n="enabled">
+          <V n="loc_custom_join_name" t="enabled">
+            <T n="enabled">0xD93FB734<!--Coach Swimming--></T>
+          </V>
+        </U>
+      </V>
+      <E n="join_target">Actor</E>
+      <T n="link_joinable">True</T>
+    </U>
+    <U>
+      <V n="invite_available" t="disabled" />
+      <V n="join_affordance" t="affordance">
+        <U n="affordance">
+          <V n="value" t="custom">
+            <T n="custom">143778<!--mentor_Swimming_Nanny--></T>
+          </V>
+        </U>
+      </V>
+      <V n="join_available" t="enabled">
+        <U n="enabled">
+          <V n="loc_custom_join_name" t="enabled">
+            <T n="enabled">0xD93FB734<!--Coach Swimming--></T>
+          </V>
+        </U>
+      </V>
+      <E n="join_target">Actor</E>
+      <T n="link_joinable">True</T>
+    </U>
+  </L>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <T n="force_outcome_on_exit">True</T>
+      </U>
+    </U>
+  </V>
+  <U n="progress_bar_enabled">
+    <T n="bar_enabled">False</T>
+  </U>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">0</T>
+  <V n="super_affordance_klobberers" t="enabled">
+    <V n="enabled" t="literal">
+      <U n="literal">
+        <V n="default_inclusion" t="exclude_all">
+          <U n="exclude_all">
+            <L n="include_affordances">
+              <T>182089</T>
+            </L>
+          </U>
+        </V>
+      </U>
+    </V>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="trait">
+      <U n="trait">
+        <L n="blacklist_traits">
+          <T>16851<!--trait_isGrimReaper--></T>
+        </L>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">30</T>
+  <T n="visible">True</T>
+  <E n="visual_type_override">POSTURE</E>
+  <V n="walk_style" t="enabled">
+    <U n="enabled">
+      <E n="priority">SWIM</E>
+      <T n="walkstyle" p="InGame\Locomotion\Swim.walkstyle">27c01d95:00000000:00000000090d7f4d</T>
+    </U>
+  </V>
+</I>

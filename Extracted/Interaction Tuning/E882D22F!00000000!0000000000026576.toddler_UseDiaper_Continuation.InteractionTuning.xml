@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="toddler_UseDiaper_Continuation" s="157046">
+  <V n="_cancelable_by_user" t="prohibit_cancelation" />
+  <V n="_icon" t="resource_key">
+    <U n="resource_key">
+      <T n="key" p="InGame\UI\Icons\InteractionQueue\IconQueueDiaper.png">2f7d0004:00000000:55ac69fce38923f0</T>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <T n="acquire_targets_as_resource">False</T>
+  <T n="allow_autonomous">False</T>
+  <T n="allow_user_directed">True</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="stat_based">
+                <U n="stat_based">
+                  <T n="absolute">True</T>
+                  <T n="stat">16652<!--motive_Bladder--></T>
+                  <U n="threshold">
+                    <E n="comparison">GREATER_OR_EQUAL</E>
+                    <T n="value">100</T>
+                  </U>
+                </U>
+              </V>
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">3</T>
+                  <T n="min_time">3</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="looping_content">
+        <U n="looping_content">
+          <U n="animation_ref">
+            <U n="overrides">
+              <V n="balloons" t="enabled">
+                <L n="enabled">
+                  <U>
+                    <L n="balloon_choices">
+                      <U>
+                        <V n="item" t="balloon_icon">
+                          <U n="balloon_icon">
+                            <E n="balloon_type">THOUGHT</E>
+                            <V n="icon" t="resource_key">
+                              <U n="resource_key">
+                                <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_babydiapers.png">2f7d0004:00000000:322220fc9ba98a06</T>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </U>
+                    </L>
+                    <L n="balloon_target">
+                      <E>Actor</E>
+                    </L>
+                  </U>
+                </L>
+              </V>
+            </U>
+          </U>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">10</T>
+                <T n="exclusive_to_owning_si">False</T>
+                <T n="stat">16652<!--motive_Bladder--></T>
+              </U>
+            </V>
+          </L>
+        </U>
+      </V>
+      <T n="start_autonomous_inertial">False</T>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>146661<!--loot_Toddler_DiaperFail--></T>
+        </L>
+        <U n="success_chance">
+          <L n="multipliers">
+            <U>
+              <T n="multiplier">0</T>
+              <L n="tests">
+                <L>
+                  <V t="statistic">
+                    <U n="statistic">
+                      <T n="stat">140764<!--commodity_Toddler_DiaperLoad--></T>
+                      <V n="threshold" t="value_threshold">
+                        <U n="value_threshold">
+                          <E n="comparison">LESS_OR_EQUAL</E>
+                          <T n="value">2</T>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </L>
+        </U>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+  </L>
+  <V n="basic_reserve_object" t="disabled" />
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0xE4D2EB02<!--Use Diaper--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <L n="loot_list">
+              <T>96886<!--loot_Commodity_HygieneHands_ReduceMed--></T>
+              <T>152794<!--loot_Statistic_Toddler_Diaper_Use--></T>
+            </L>
+          </U>
+        </U>
+      </L>
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="loot_list">
+                  <T>152794<!--loot_Statistic_Toddler_Diaper_Use--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="statistic">
+                <U n="statistic">
+                  <T n="stat">140764<!--commodity_Toddler_DiaperLoad--></T>
+                  <V n="threshold" t="value_threshold">
+                    <U n="value_threshold">
+                      <T n="value">2</T>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="posture">
+                <U n="posture">
+                  <L n="prohibited_postures">
+                    <T>132262<!--posture_BeCarried--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="loot_list">
+                  <T>152794<!--loot_Statistic_Toddler_Diaper_Use--></T>
+                  <T>156916<!--loot_Commodity_Motive_Hygiene_CarryBladderFailToddler--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="statistic">
+                <U n="statistic">
+                  <T n="stat">140764<!--commodity_Toddler_DiaperLoad--></T>
+                  <V n="threshold" t="value_threshold">
+                    <U n="value_threshold">
+                      <T n="value">3</T>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="posture">
+                <U n="posture">
+                  <L n="required_postures">
+                    <T>132262<!--posture_BeCarried--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">ACTOR</E>
+  <L n="test_autonomous">
+    <L>
+      <V t="skill_test">
+        <U n="skill_test">
+          <T n="skill">144913<!--statistic_Skill_Toddler_Potty--></T>
+          <V n="skill_range" t="threshold">
+            <U n="threshold">
+              <U n="skill_threshold">
+                <E n="comparison">LESS</E>
+                <T n="value">3</T>
+              </U>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="motive">
+        <U n="motive">
+          <L n="stats">
+            <T>16652<!--motive_Bladder--></T>
+          </L>
+          <U n="threshold">
+            <E n="comparison">LESS_OR_EQUAL</E>
+            <T n="value">25</T>
+          </U>
+        </U>
+      </V>
+    </L>
+  </L>
+  <L n="test_globals" />
+  <T n="time_overhead">30</T>
+</I>

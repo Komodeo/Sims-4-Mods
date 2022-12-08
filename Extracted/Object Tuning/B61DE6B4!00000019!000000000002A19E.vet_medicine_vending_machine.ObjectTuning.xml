@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="GameObject" i="object" m="objects.game_object" n="vet_medicine_vending_machine" s="172446">
+  <U n="_components">
+    <V n="focus" t="enabled">
+      <U n="enabled">
+        <V n="_focus_score" t="globally">
+          <U n="globally">
+            <E n="base">LOW</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V n="inventory" t="enabled">
+      <U n="enabled">
+        <T n="allow_putdown_in_inventory">False</T>
+        <V n="count_statistic" t="enabled">
+          <T n="enabled">172459<!--statistic_OwnableVetClinic_Vet_Medicine_Vending_Machine_InventoryCount--></T>
+        </V>
+        <V n="get_put" t="generic">
+          <U n="generic">
+            <L n="constraints">
+              <V t="cone" />
+              <V t="facing" />
+            </L>
+          </U>
+        </V>
+        <E n="inventory_type">VET_MEDICINE_VENDING_MACHINE</E>
+        <T n="return_owned_objects">True</T>
+        <T n="score_contained_objects_for_autonomy">True</T>
+      </U>
+    </V>
+    <V n="live_drag_target" t="enabled">
+      <U n="enabled">
+        <L n="drop_tests_and_actions">
+          <U>
+            <E n="drop_type">VET_MEDICINE_VENDING_MACHINE</E>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="portal" t="enabled">
+      <U n="enabled">
+        <L n="_portal_data">
+          <T>162869<!--portalData_VariableJump_Fridge--></T>
+          <T>163890<!--portalData_DynamicJump_Generic1x1--></T>
+        </L>
+      </U>
+    </V>
+    <V n="retail_component" t="enabled">
+      <V n="enabled" t="reference">
+        <T n="reference">115301<!--retailComponent_Default_LowAppeal--></T>
+      </V>
+    </V>
+    <V n="state" t="enabled">
+      <U n="enabled">
+        <L n="state_triggers">
+          <U>
+            <L n="at_states">
+              <T>176769<!--vetVendingMachine_States_Ownership_Unowned--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>176774<!--vetVendingMachine_States_Visual_Full--></T>
+              </L>
+            </V>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>176770<!--vetVendingMachine_States_Ownership_Owned--></T>
+              <T>172830<!--vetVendingMachine_Inventory_Values_Empty--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>176772<!--vetVendingMachine_States_Visual_Empty--></T>
+              </L>
+            </V>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>176770<!--vetVendingMachine_States_Ownership_Owned--></T>
+              <T>172831<!--vetVendingMachine_Inventory_Values_Half--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>176773<!--vetVendingMachine_States_Visual_Half--></T>
+              </L>
+            </V>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>176770<!--vetVendingMachine_States_Ownership_Owned--></T>
+              <T>172832<!--vetVendingMachine_Inventory_Values_Full--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>176774<!--vetVendingMachine_States_Visual_Full--></T>
+              </L>
+            </V>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>77532<!--FireState_Burn_Material_Change_Replace--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+              </L>
+            </V>
+          </U>
+        </L>
+        <L n="states">
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">172830<!--vetVendingMachine_Inventory_Values_Empty--></T>
+              </U>
+              <U>
+                <T n="key">172831<!--vetVendingMachine_Inventory_Values_Half--></T>
+              </U>
+              <U>
+                <T n="key">172832<!--vetVendingMachine_Inventory_Values_Full--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">172830<!--vetVendingMachine_Inventory_Values_Empty--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">176772<!--vetVendingMachine_States_Visual_Empty--></T>
+                <U n="value">
+                  <V n="geometry_state" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_value">
+                      <T n="set_to_custom_value">Empty</T>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">176773<!--vetVendingMachine_States_Visual_Half--></T>
+                <U n="value">
+                  <V n="geometry_state" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_value">
+                      <T n="set_to_custom_value">Partial</T>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">176774<!--vetVendingMachine_States_Visual_Full--></T>
+                <U n="value">
+                  <V n="geometry_state" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_value">
+                      <T n="set_to_custom_value">Full</T>
+                    </V>
+                  </V>
+                </U>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">176772<!--vetVendingMachine_States_Visual_Empty--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">176769<!--vetVendingMachine_States_Ownership_Unowned--></T>
+              </U>
+              <U>
+                <T n="key">176770<!--vetVendingMachine_States_Ownership_Owned--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">176770<!--vetVendingMachine_States_Ownership_Owned--></T>
+            </V>
+            <V n="tested_states_on_add" t="enabled">
+              <U n="enabled">
+                <V n="fallback_state" t="enabled">
+                  <T n="enabled">176770<!--vetVendingMachine_States_Ownership_Owned--></T>
+                </V>
+                <L n="tested_states">
+                  <U>
+                    <T n="state">176769<!--vetVendingMachine_States_Ownership_Unowned--></T>
+                    <L n="tests">
+                      <L>
+                        <V t="has_lot_owner">
+                          <U n="has_lot_owner">
+                            <T n="has_owner">False</T>
+                          </U>
+                        </V>
+                        <V t="zone">
+                          <U n="zone">
+                            <U n="zone_tests">
+                              <V n="venue_type" t="enabled">
+                                <U n="enabled">
+                                  <V n="whitelist" t="specify">
+                                    <U n="specify">
+                                      <L n="whitelist">
+                                        <T>158847<!--venue_Vet--></T>
+                                      </L>
+                                    </U>
+                                  </V>
+                                </U>
+                              </V>
+                            </U>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                </L>
+              </U>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">39611<!--FireState_Burn_Material_Change--></T>
+              </U>
+              <U>
+                <T n="key">39736<!--FireState_Burn_Material_Change_Burning--></T>
+              </U>
+              <U>
+                <T n="key">39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+              </U>
+              <U>
+                <T n="key">77532<!--FireState_Burn_Material_Change_Replace--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">35956<!--Materialistic_Admired--></T>
+              </U>
+              <U>
+                <T n="key">35957<!--Materialistic_YetToAdmire--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">35957<!--Materialistic_YetToAdmire--></T>
+            </V>
+          </U>
+        </L>
+      </U>
+    </V>
+  </U>
+  <L n="_super_affordances">
+    <T>13328<!--debug_Reset--></T>
+    <T>13326<!--debug_ObjectDestroy--></T>
+    <T>103888<!--cheat_set_as_head--></T>
+    <T>196759</T>
+    <T>172834<!--vetVendingMachine_puchase_Player_NPC_owned--></T>
+    <T>172841<!--vetVendingMachine_puchase_Player_Player_owned--></T>
+    <T>173384<!--autonomous_VetVendingMachine_picker--></T>
+    <T>173497<!--vetVendingMachine_no_items--></T>
+    <T>106859</T>
+    <T>74457<!--fire_ReplaceBurntObject--></T>
+    <T>102258<!--Ghost_Possess--></T>
+    <T>168502<!--Ghost_Pet_Possess--></T>
+  </L>
+  <U n="recycling_data">
+    <L n="recycling_values">
+      <U>
+        <E n="Bucks Type">RecycleBitsBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+      <U>
+        <E n="Bucks Type">RecyclePiecesBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+    </L>
+  </U>
+</I>

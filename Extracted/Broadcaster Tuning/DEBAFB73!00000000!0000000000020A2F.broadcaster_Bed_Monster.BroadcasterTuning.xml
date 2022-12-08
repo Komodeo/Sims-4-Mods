@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="Broadcaster" i="broadcaster" m="broadcasters.broadcaster" n="broadcaster_Bed_Monster" s="133679">
+  <L n="constraints">
+    <V t="circle">
+      <U n="circle">
+        <T n="ideal_radius_width">3</T>
+        <T n="radius">10</T>
+      </U>
+    </V>
+    <V t="line_of_sight">
+      <U n="line_of_sight">
+        <V n="temporary_los" t="enabled" />
+      </U>
+    </V>
+  </L>
+  <L n="effects">
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>135729<!--loot_Buff_Wakeup_MonsterUnderBed--></T>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="species" t="specified">
+                  <U n="specified">
+                    <L n="species">
+                      <E />
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="affordance">
+      <U n="affordance">
+        <L n="affordances">
+          <U>
+            <T n="affordance">138851<!--reactions_Scared_Monster_Panic_Broadcaster--></T>
+          </U>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="sim_info">
+              <U n="sim_info">
+                <V n="species" t="specified">
+                  <U n="specified">
+                    <L n="species">
+                      <E />
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+            <V t="buff">
+              <U n="buff">
+                <L n="blacklist">
+                  <T>138779<!--buff_Object_Bed_MonsterUnder_InterruptSleep--></T>
+                  <T>136465<!--buff_Object_bed_MonsterUnder_Energized_MonsterFriend--></T>
+                </L>
+              </U>
+            </V>
+            <V t="user_running_interaction">
+              <U n="user_running_interaction">
+                <L n="affordances">
+                  <T>135798<!--bed_Monster_Watch_SprayForMonster--></T>
+                  <T>136847<!--reactions_MonsterUnderbed_WatchSpray--></T>
+                </L>
+                <E n="participant">Actor</E>
+                <T n="test_for_not_running">True</T>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="frequency" t="on_pulse">
+    <U n="on_pulse">
+      <T n="cooldown_time">12</T>
+    </U>
+  </V>
+</I>

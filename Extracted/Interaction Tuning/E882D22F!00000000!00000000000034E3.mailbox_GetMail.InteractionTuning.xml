@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="mailbox_GetMail" s="13539">
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Object</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <T n="attention_cost">0.75</T>
+  <V n="basic_content" t="one_shot" />
+  <L n="basic_extras">
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>195698</T>
+        </L>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="notification">
+      <U n="notification">
+        <V n="dialog" t="single">
+          <V n="single" t="literal">
+            <U n="literal">
+              <V n="text" t="single">
+                <T n="single">0x21644839<!--Thank you for registering your home with the Vampire Counsel. We hope you enjoy this complimentary gift for your participation.--></T>
+              </V>
+            </U>
+          </V>
+        </V>
+        <U n="success_chance">
+          <L n="multipliers">
+            <U>
+              <T n="multiplier">0</T>
+              <L n="tests">
+                <L>
+                  <V t="inventory">
+                    <U n="inventory">
+                      <V n="contents_check" t="has_object_with_tag">
+                        <U n="has_object_with_tag">
+                          <L n="tag_set">
+                            <E>Func_RegisteredVampireLair</E>
+                          </L>
+                          <E n="test_type">CONTAINS_ANY_TAG_IN_SET</E>
+                        </U>
+                      </V>
+                      <V n="inventory_location" t="participant_inventory">
+                        <U n="participant_inventory">
+                          <E n="inventory">Object</E>
+                        </U>
+                      </V>
+                      <U n="required_count">
+                        <E n="comparison">EQUAL</E>
+                        <T n="value">0</T>
+                      </U>
+                    </U>
+                  </V>
+                </L>
+                <L>
+                  <V t="zone">
+                    <U n="zone">
+                      <U n="zone_tests">
+                        <V n="zone_modifiers" t="enabled">
+                          <U n="enabled">
+                            <V n="blacklist" t="specify">
+                              <U n="specify">
+                                <L n="blacklist">
+                                  <T>155246</T>
+                                </L>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </U>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </L>
+        </U>
+      </U>
+    </V>
+    <V t="inventory_transfer">
+      <U n="inventory_transfer">
+        <V n="recipient" t="participant">
+          <E n="participant">Actor</E>
+        </V>
+        <V n="source" t="participant" />
+      </U>
+    </V>
+    <V t="notification">
+      <U n="notification">
+        <V n="dialog" t="single">
+          <V n="single" t="literal">
+            <U n="literal">
+              <V n="icon" t="enabled">
+                <V n="enabled" t="participant">
+                  <U n="participant">
+                    <L n="participant_type">
+                      <E>Object</E>
+                    </L>
+                  </U>
+                </V>
+              </V>
+              <V n="secondary_icon" t="enabled">
+                <V n="enabled" t="participant" />
+              </V>
+              <V n="text" t="single">
+                <T n="single">0xB16EB2F5<!--{0.SimFirstName} has collected everything from the mailbox!--></T>
+              </V>
+            </U>
+          </V>
+        </V>
+      </U>
+    </V>
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>178470</T>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x7249E3B2<!--Get Mail--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <V n="animation_ref" t="enabled">
+              <U n="enabled">
+                <T n="factory">11571<!--Mailbox_GetLetter--></T>
+              </U>
+            </V>
+          </U>
+        </U>
+      </L>
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">185491<!--Mailbox_GetPackage--></T>
+                  </U>
+                </V>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="inventory">
+                <U n="inventory">
+                  <V n="contents_check" t="has_object_with_def">
+                    <U n="has_object_with_def">
+                      <T n="definition">205005</T>
+                    </U>
+                  </V>
+                  <V n="inventory_location" t="object_inventory_type">
+                    <U n="object_inventory_type">
+                      <E n="inventory">MAILBOX</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+      <T n="use_fallback_as_default">False</T>
+    </U>
+  </V>
+  <T n="pie_menu_priority">10</T>
+  <V n="route_start_balloon" t="enabled">
+    <U n="enabled">
+      <U n="balloon">
+        <L n="balloon_choices">
+          <U>
+            <V n="item" t="balloon_icon">
+              <U n="balloon_icon">
+                <V n="icon" t="participant">
+                  <U n="participant">
+                    <L n="participant_type">
+                      <E>Object</E>
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </U>
+        </L>
+        <L n="balloon_target">
+          <E>Actor</E>
+        </L>
+      </U>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <V n="super_affordance_compatibility" t="literal">
+    <U n="literal">
+      <V n="default_inclusion" t="include_all">
+        <U n="include_all">
+          <L n="exclude_lists">
+            <T>97324<!--affordanceList_EatOrDrink--></T>
+          </L>
+        </U>
+      </V>
+    </U>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="lot_owner" />
+    <V t="statistic">
+      <U n="statistic">
+        <T n="stat">16675<!--statistic_Object_Mailbox-InventoryCount--></T>
+        <V n="threshold" t="value_threshold">
+          <U n="value_threshold">
+            <T n="value">1</T>
+          </U>
+        </V>
+        <V n="tooltip" t="enabled">
+          <T n="enabled">0x476F17C8<!--Nothing has been delivered to your Sim recently.--></T>
+        </V>
+        <E n="who">Object</E>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">5</T>
+</I>

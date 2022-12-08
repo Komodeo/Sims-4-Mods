@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="GameObject" i="object" m="objects.game_object" n="object_SitLoungeFloat" s="210101">
+  <U n="_components">
+    <V n="focus" t="enabled">
+      <U n="enabled">
+        <V n="_focus_score" t="globally">
+          <U n="globally">
+            <E n="base">LOW</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V n="idle_component" t="enabled">
+      <U n="enabled">
+        <L n="idle_animation_map">
+          <U>
+            <T n="key">210107<!--objectStateValues_SitLoungeFloat_Movement_Still--></T>
+            <T n="value">210619<!--sitLoungeFloat_Unoccupied--></T>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="inventory_item" t="enabled">
+      <U n="enabled">
+        <V n="no_carry_add_to_sim_inventory_affordances" t="OVERRIDE">
+          <L n="OVERRIDE">
+            <T>202254<!--si_SwipeIntoSimInventory_Swim--></T>
+            <T>10459<!--si_SwipeIntoSimInventory--></T>
+          </L>
+        </V>
+        <V n="no_carry_add_to_world_affordances" t="OVERRIDE">
+          <L n="OVERRIDE">
+            <T>211271<!--si_SwipeAddToWorld_SitLoungeFloat_Water--></T>
+          </L>
+        </V>
+        <V n="register_with_lost_and_found" t="enabled" />
+        <T n="remove_from_npc_inventory">True</T>
+        <T n="skip_carry_pose">True</T>
+        <L n="valid_inventory_types">
+          <E>SIM</E>
+          <E>STORAGE_CHEST_DORM</E>
+        </L>
+      </U>
+    </V>
+    <V n="retail_component" t="enabled">
+      <V n="enabled" t="reference">
+        <T n="reference">115308<!--retailComponent_NotSellable--></T>
+      </V>
+    </V>
+    <V n="routing_component" t="enabled">
+      <U n="enabled">
+        <V n="object_routing_component" t="enabled">
+          <U n="enabled">
+            <V n="footprint_toggles" t="enabled">
+              <L n="enabled">
+                <U>
+                  <T n="footprint_hash">sitLoungeFloat_ftp_pathingToggleShape</T>
+                </U>
+              </L>
+            </V>
+            <L n="routing_behavior_map">
+              <U>
+                <T n="key">210105<!--objectStateValues_SitLoungeFloat_Movement_Drift--></T>
+                <V n="value" t="Start_Behavior">
+                  <T n="Start_Behavior">210110<!--objectRoutingBehavior_SitLoungeFloat_Drift--></T>
+                </V>
+              </U>
+              <U>
+                <T n="key">210107<!--objectStateValues_SitLoungeFloat_Movement_Still--></T>
+                <V n="value" t="Stop_All_Behavior" />
+              </U>
+            </L>
+          </U>
+        </V>
+        <U n="plan_context_data">
+          <U n="default_context">
+            <T n="_agent_radius">0.5</T>
+            <V n="_agent_shape" t="rectangle">
+              <U n="rectangle">
+                <T n="length">3</T>
+                <T n="width">1.5</T>
+              </U>
+            </V>
+          </U>
+        </U>
+        <U n="walkstyle_behavior">
+          <T n="default_walkstyle" p="InGame\Locomotion\Float_LoungeChair_Locomotion.walkstyle">27c01d95:00000000:00000000187ccdb3</T>
+          <L n="run_allowed_flags">
+            <E>RUN_ALLOWED_OUTDOORS</E>
+            <E />
+          </L>
+          <T n="run_walkstyle" p="InGame\Locomotion\Float_LoungeChair_Locomotion.walkstyle">27c01d95:00000000:00000000187ccdb3</T>
+          <T n="short_walkstyle" p="InGame\Locomotion\Float_LoungeChair_Locomotion.walkstyle">27c01d95:00000000:00000000187ccdb3</T>
+        </U>
+      </U>
+    </V>
+    <V n="state" t="enabled">
+      <U n="enabled">
+        <L n="state_triggers" />
+        <L n="states">
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">210105<!--objectStateValues_SitLoungeFloat_Movement_Drift--></T>
+              </U>
+              <U>
+                <T n="key">210107<!--objectStateValues_SitLoungeFloat_Movement_Still--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">210107<!--objectStateValues_SitLoungeFloat_Movement_Still--></T>
+            </V>
+            <T n="reset_on_load_if_time_passes">True</T>
+            <T n="reset_to_default">True</T>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">35956<!--Materialistic_Admired--></T>
+              </U>
+              <U>
+                <T n="key">35957<!--Materialistic_YetToAdmire--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">35957<!--Materialistic_YetToAdmire--></T>
+            </V>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="tooltip_component" t="enabled">
+      <U n="enabled">
+        <L n="custom_tooltips">
+          <U>
+            <L n="object_tests">
+              <L>
+                <V t="in_inventory" />
+              </L>
+            </L>
+            <L n="tooltip_fields">
+              <U>
+                <E n="key">recipe_name</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0x144FD666<!--{0.ObjectName}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">Object</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+            </L>
+          </U>
+        </L>
+      </U>
+    </V>
+  </U>
+  <L n="_super_affordances">
+    <T>13328<!--debug_Reset--></T>
+    <T>13326<!--debug_ObjectDestroy--></T>
+    <T>103888<!--cheat_set_as_head--></T>
+    <T>196759</T>
+    <T>210582<!--chair_sitLoungeFloat_Relax--></T>
+    <T>211822<!--chair_SitLoungeFloat_Nap--></T>
+    <T>210113<!--debug_SitLoungeFloat_Drift_Start--></T>
+    <T>210570<!--generic_SitLoungeFloat--></T>
+    <T>210704</T>
+    <T>212289<!--sitLoungeFloat_SuperSplash--></T>
+    <T>212951</T>
+  </L>
+  <U n="recycling_data">
+    <L n="recycling_values">
+      <U>
+        <E n="Bucks Type">RecycleBitsBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+      <U>
+        <E n="Bucks Type">RecyclePiecesBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+    </L>
+  </U>
+</I>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="sim_Cat_HungerFailure" s="157629">
+  <V n="_cancelable_by_user" t="prohibit_cancelation" />
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Actor</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <T n="allow_autonomous">False</T>
+  <T n="allow_user_directed">False</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="one_shot">
+    <U n="one_shot">
+      <U n="animation_ref">
+        <T n="factory">144236<!--animationElement_Cat_Yowl--></T>
+        <U n="overrides">
+          <V n="balloons" t="enabled">
+            <L n="enabled">
+              <U>
+                <L n="balloon_choices">
+                  <U>
+                    <V n="item" t="balloon_icon">
+                      <U n="balloon_icon">
+                        <V n="icon" t="resource_key">
+                          <U n="resource_key">
+                            <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_FastFood.png">2f7d0004:00000000:6de785f8a8358da2</T>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </U>
+                </L>
+                <L n="balloon_target">
+                  <E>Actor</E>
+                </L>
+              </U>
+            </L>
+          </V>
+        </U>
+      </U>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>164916<!--loot_Buff_PetCare_IsDying--></T>
+        </L>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="create_situation">
+      <U n="create_situation">
+        <V n="create_situation" t="situation_start">
+          <U n="situation_start">
+            <V n="actor_init_job" t="specify_job">
+              <T n="specify_job">164140<!--jobs_PetCare_Pet--></T>
+            </V>
+            <T n="invite_picked_sims">False</T>
+            <T n="invite_target_sim">False</T>
+            <T n="situation">164137<!--petCareSituation--></T>
+            <T n="user_facing">False</T>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="notification">
+      <U n="notification">
+        <V n="dialog" t="single">
+          <V n="single" t="literal">
+            <U n="literal">
+              <V n="audio_sting" t="enabled">
+                <U n="enabled">
+                  <T n="audio" p="InEP04\Audio\Stings\sting_pet_neglect.propx">39b2aa4a:00000000:f718b21c508b4415</T>
+                </U>
+              </V>
+              <L n="dialog_options">
+                <E>DISABLE_CLOSE_BUTTON</E>
+              </L>
+              <V n="icon" t="enabled">
+                <V n="enabled" t="participant">
+                  <U n="participant">
+                    <L n="participant_type">
+                      <E>Actor</E>
+                    </L>
+                  </U>
+                </V>
+              </V>
+              <V n="secondary_icon" t="disabled" />
+              <V n="text" t="single">
+                <T n="single">0xB4B1AD59<!--{0.SimFirstName} is being taken away by the Pet Care Worker!--></T>
+              </V>
+              <E n="urgency">URGENT</E>
+              <E n="visual_type">INFORMATION</E>
+            </U>
+          </V>
+        </V>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="remove_from_ensemble">
+      <U n="remove_from_ensemble">
+        <T n="ensemble_type">127285<!--ensemble_Generic--></T>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="audio_sting">
+      <U n="audio_sting">
+        <U n="audio_sting">
+          <T n="audio" p="InEP04\Audio\Stings\sting_pet_neglect.propx">39b2aa4a:00000000:f718b21c508b4415</T>
+        </U>
+      </U>
+    </V>
+  </L>
+  <V n="carry_cancel_override_for_displaced_interactions" t="enabled">
+    <T n="enabled">99868<!--put_down_quickly_cancel_aop--></T>
+  </V>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0xDD5DF235<!--Hunger Failure--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <L n="parameterized_autonomy">
+          <U>
+            <E n="key">Actor</E>
+            <U n="value">
+              <L n="requests">
+                <U>
+                  <T n="retain_carry_target">False</T>
+                  <L n="static_commodities">
+                    <T>164874<!--staticCommodity_Pet_Arrive--></T>
+                  </L>
+                  <T n="test_connectivity_to_target">False</T>
+                </U>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </U>
+  </V>
+  <U n="posture_preferences">
+    <T n="apply_posture_costs">False</T>
+  </U>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <V n="super_affordance_compatibility" t="literal">
+    <U n="literal">
+      <V n="default_inclusion" t="exclude_all">
+        <U n="exclude_all">
+          <L n="include_lists">
+            <T>139888</T>
+          </L>
+        </U>
+      </V>
+    </U>
+  </V>
+  <E n="target_type">ACTOR</E>
+  <V n="test_disallow_while_running" t="enabled">
+    <U n="enabled">
+      <L n="affordances" />
+      <T n="test_self">True</T>
+    </U>
+  </V>
+  <L n="test_globals">
+    <V t="buff">
+      <U n="buff">
+        <L n="blacklist">
+          <T>167531<!--buff_Walkby_PetWorld_NoHunger--></T>
+        </L>
+      </U>
+    </V>
+    <V t="trait">
+      <U n="trait">
+        <L n="blacklist_traits">
+          <T>101685<!--trait_ghost_OldAge--></T>
+        </L>
+      </U>
+    </V>
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="npc" t="enabled" />
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <L n="blacklist">
+          <T>167047<!--buff_Motives_Pet_Cat_InSS3Mode--></T>
+        </L>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">10</T>
+</I>

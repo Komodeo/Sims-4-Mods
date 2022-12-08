@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="DialogDramaNode" i="drama_node" m="drama_scheduler.dialog_drama_node" n="dialogDramaNode_FreeSimoleons" s="264719">
+  <V n="dialog_and_loot" t="dialog_ok_cancel">
+    <U n="dialog_ok_cancel">
+      <U n="dialog">
+        <V n="audio_cancel" t="enabled">
+          <T n="enabled">CancelButton</T>
+        </V>
+        <V n="audio_ok" t="enabled">
+          <T n="enabled">OKButton</T>
+        </V>
+        <E n="dialog_style">LARGE_ICON</E>
+        <V n="icon" t="enabled">
+          <V n="enabled" t="resource_key">
+            <U n="resource_key">
+              <T n="key" p="InGame\UI\Icons\ABTests\ChanceCard_Simoleon.png">2f7d0004:00000000:eea7fd72921509e8</T>
+            </U>
+          </V>
+        </V>
+        <V n="text" t="single">
+          <T n="single">0xD206D007<!--We can offer you this one time gift of 50,000 Simoleons to help you on your way.\n\nDid you know, you can also...\n\n<ul type="circle"><li>Pick up the phone to start a Career to earn a steady income</li><li>Or take up a Hobby like Painting, and sell your Sims' creations!</li></ul>--></T>
+        </V>
+        <T n="text_ok">0x99ADC298<!--OK (Get 50,000 Simoleons)--></T>
+        <V n="title" t="enabled">
+          <T n="enabled">0xCAAC7476<!--You look low on funds!--></T>
+        </V>
+      </U>
+      <L n="on_dialog_accetped_loot_list">
+        <T>107714<!--Loot_Simoleon_50000--></T>
+      </L>
+    </U>
+  </V>
+  <T n="is_simless">True</T>
+  <V n="live_event_telemetry_name" t="enabled">
+    <E n="enabled">free_simoleons</E>
+  </V>
+  <U n="min_and_max_times">
+    <T n="lower_bound">5</T>
+    <T n="upper_bound">7</T>
+  </U>
+  <L n="run_tests">
+    <L>
+      <V t="live_event_state">
+        <U n="live_event_state">
+          <E n="live_event_name">free_simoleons</E>
+          <T n="negate">False</T>
+        </U>
+      </V>
+      <V t="simoleon_value">
+        <U n="simoleon_value">
+          <V n="value_context" t="total_cash" />
+          <U n="value_threshold">
+            <E n="comparison">LESS_OR_EQUAL</E>
+            <T n="value">10000</T>
+          </U>
+        </U>
+      </V>
+    </L>
+  </L>
+  <V n="time_option" t="schedule">
+    <U n="schedule">
+      <L n="valid_times">
+        <U>
+          <U n="days_available">
+            <T n="0 SUNDAY">True</T>
+            <T n="1 MONDAY">True</T>
+            <T n="2 TUESDAY">True</T>
+            <T n="3 WEDNESDAY">True</T>
+            <T n="4 THURSDAY">True</T>
+            <T n="5 FRIDAY">True</T>
+            <T n="6 SATURDAY">True</T>
+          </U>
+          <T n="duration">12</T>
+          <U n="start_time">
+            <T n="hour">8</T>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+</I>

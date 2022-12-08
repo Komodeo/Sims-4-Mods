@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="NPCInviteSituationDramaNode" i="drama_node" m="drama_scheduler.npc_invite_situation_drama_node" n="dramaNode_NPCInvite_BirthdayParty" s="124496">
+  <T n="_host_event_at_NPCs_residence">True</T>
+  <V n="_NPC_host_job" t="enabled">
+    <T n="enabled">117396<!--job_birthday_celebrant_NPC_Inviter--></T>
+  </V>
+  <V n="_NPC_hosted_situation_player_job" t="enabled">
+    <T n="enabled">117383<!--job_guest_birthday_party_Actor_Target--></T>
+  </V>
+  <L n="_NPC_hosted_situation_start_messages">
+    <U>
+      <U n="dialog">
+        <V n="bring_other_sims" t="enabled">
+          <U n="enabled">
+            <U n="picker_dialog">
+              <V n="max_selectable" t="static_count">
+                <U n="static_count">
+                  <T n="number_selectable">7</T>
+                </U>
+              </V>
+              <T n="min_selectable">0</T>
+              <V n="text" t="enabled">
+                <V n="enabled" t="single">
+                  <T n="single">0x26E3BDFB<!--Birthday Party--></T>
+                </V>
+              </V>
+              <V n="text_tokens" t="enabled">
+                <U n="enabled">
+                  <L n="tokens">
+                    <V t="participant_type" />
+                    <V t="participant_type">
+                      <U n="participant_type">
+                        <V n="objects" t="from_participant">
+                          <U n="from_participant">
+                            <E n="participant">TargetSim</E>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                </U>
+              </V>
+              <V n="title" t="enabled">
+                <T n="enabled">0x453B7077<!--Select Sims to Travel With--></T>
+              </V>
+            </U>
+            <T n="situation_job">117841<!--job_guest_birthday_party_NPC_Invite_SimPicker--></T>
+            <T n="text">0x96F39ADC<!--Yes, and Select Sims to Travel With--></T>
+            <T n="travel_with_filter">109049<!--filter_HasMet_ctyae_NotBusy--></T>
+          </U>
+        </V>
+        <E n="phone_ring_type">BUZZ</E>
+        <V n="text" t="single">
+          <T n="single">0x1823D23F<!--Hey, {0.SimFirstName}, it's me, {1.SimFirstName}. Do you want to come to my birthday party?--></T>
+        </V>
+        <T n="text_cancel">0xFEED4583<!--No Thanks--></T>
+        <V n="text_tokens" t="enabled">
+          <U n="enabled">
+            <L n="tokens">
+              <V t="participant_type" />
+              <V t="participant_type">
+                <U n="participant_type">
+                  <V n="objects" t="from_participant">
+                    <U n="from_participant">
+                      <E n="participant">TargetSim</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </U>
+        </V>
+        <T n="zone_title">0xC79595F2<!--{0.String}: {1.String}--></T>
+      </U>
+      <L n="dialog_canceled_loot_list">
+        <T>284878</T>
+      </L>
+      <L n="dialog_complete_loot_list">
+        <T>287516<!--loot_Want_BailOnFriend_AddTracker--></T>
+      </L>
+    </U>
+  </L>
+  <T n="_situation_to_run">117360<!--situation_NPChosted_Birthday_Party--></T>
+  <T n="allow_during_work_hours">False</T>
+  <V n="cooldown_data" t="group_cooldown">
+    <U n="group_cooldown">
+      <E n="group">InviteCooldown</E>
+    </U>
+  </V>
+  <U n="min_and_max_times">
+    <T n="lower_bound">0</T>
+    <T n="upper_bound">24</T>
+  </U>
+  <E n="receiver_sim">Actor</E>
+  <L n="receiver_sim_pretests">
+    <L>
+      <V t="sim_info">
+        <U n="sim_info">
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>TEEN</E>
+              <E>YOUNGADULT</E>
+              <E>ADULT</E>
+              <E>ELDER</E>
+              <E>CHILD</E>
+            </L>
+          </V>
+          <V n="species" t="specified">
+            <U n="specified">
+              <L n="species">
+                <E />
+              </L>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </L>
+  <L n="run_tests">
+    <L>
+      <V t="relationship">
+        <U n="relationship">
+          <U n="prohibited_relationship_bits">
+            <L n="match_any">
+              <T>240110<!--rbc_Sentiment_Negative--></T>
+            </L>
+          </U>
+          <L n="subject">
+            <E>Actor</E>
+          </L>
+          <L n="target_sim">
+            <E>TargetSim</E>
+          </L>
+        </U>
+      </V>
+    </L>
+    <L>
+      <V t="can_create_user_facing_situation">
+        <U n="can_create_user_facing_situation">
+          <T n="allow_non_prestige_is_exempt">True</T>
+        </U>
+      </V>
+      <V t="region">
+        <U n="region">
+          <V n="blacklist" t="enabled">
+            <L n="enabled">
+              <T>104096</T>
+              <T>173593</T>
+            </L>
+          </V>
+        </U>
+      </V>
+    </L>
+  </L>
+  <V n="scoring" t="enabled">
+    <U n="enabled">
+      <T n="base_score">50</T>
+    </U>
+  </V>
+  <V n="sender_sim_info" t="sim_filter">
+    <U n="sim_filter">
+      <T n="sim_filter">127815<!--filter_IsFriend_NPC_Invite_Birthday_Party--></T>
+    </U>
+  </V>
+  <V n="time_option" t="schedule">
+    <U n="schedule">
+      <L n="valid_times">
+        <U>
+          <U n="days_available">
+            <T n="0 SUNDAY">True</T>
+            <T n="1 MONDAY">True</T>
+            <T n="2 TUESDAY">True</T>
+            <T n="3 WEDNESDAY">True</T>
+            <T n="4 THURSDAY">True</T>
+            <T n="5 FRIDAY">True</T>
+            <T n="6 SATURDAY">True</T>
+          </U>
+          <T n="duration">10</T>
+          <U n="start_time">
+            <T n="hour">10</T>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+</I>

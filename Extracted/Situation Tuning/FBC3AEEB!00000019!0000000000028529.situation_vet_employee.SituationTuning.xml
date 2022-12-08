@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="VetEmployeeSituation" i="situation" m="vet.vet_employee_situation" n="situation_vet_employee" s="165161">
+  <U n="_default_state">
+    <L n="job_and_role_changes">
+      <U>
+        <T n="Situation Job">165162<!--jobs_Vet_Employee--></T>
+        <T n="Role State">165163<!--vet_Role_Employee--></T>
+      </U>
+    </L>
+    <L n="state_specific_transitions">
+      <U>
+        <E n="key">TREAT</E>
+        <U n="value">
+          <L n="affordances">
+            <T>176127<!--Vet_Customer_TryGrabEmployee_Immediate--></T>
+          </L>
+        </U>
+      </U>
+    </L>
+    <V n="time_out" t="enabled">
+      <T n="enabled">5</T>
+    </V>
+  </U>
+  <L n="_managed_states">
+    <U>
+      <E n="key">CLEAN</E>
+      <U n="value">
+        <V n="enable_disable" t="enabled">
+          <U n="enabled">
+            <U n="disable_interaction">
+              <L n="affordances">
+                <T>171338<!--vet_Employee_Behavior_DontClean--></T>
+              </L>
+            </U>
+            <T n="disabling_buff">171548<!--buff_OwnableVetClinic_States_DontClean--></T>
+            <U n="enable_interaction">
+              <L n="affordances">
+                <T>171337<!--vet_Employee_Behavior_Clean--></T>
+              </L>
+            </U>
+          </U>
+        </V>
+        <U n="state">
+          <L n="job_and_role_changes">
+            <U>
+              <T n="Situation Job">165162<!--jobs_Vet_Employee--></T>
+              <T n="Role State">171524<!--vet_Role_Employee_Clean--></T>
+            </U>
+          </L>
+          <L n="state_specific_transitions">
+            <U>
+              <E n="key">TREAT</E>
+              <U n="value">
+                <L n="affordances">
+                  <T>176127<!--Vet_Customer_TryGrabEmployee_Immediate--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <V n="time_out" t="enabled">
+            <T n="enabled">10</T>
+          </V>
+        </U>
+      </U>
+    </U>
+    <U>
+      <E n="key">TREAT</E>
+      <U n="value">
+        <V n="enable_disable" t="enabled">
+          <U n="enabled">
+            <U n="disable_interaction">
+              <L n="affordances">
+                <T>171336<!--vet_Employee_Behavior_DontTreatPatients--></T>
+              </L>
+            </U>
+            <T n="disabling_buff">171550<!--buff_OwnableVetClinic_States_DontTreat--></T>
+            <U n="enable_interaction">
+              <L n="affordances">
+                <T>171335<!--vet_Employee_Behavior_TreatPatients--></T>
+              </L>
+            </U>
+          </U>
+        </V>
+        <U n="state">
+          <L n="job_and_role_changes">
+            <U>
+              <T n="Situation Job">165162<!--jobs_Vet_Employee--></T>
+              <T n="Role State">171525<!--vet_Role_Employee_TreatPatient--></T>
+            </U>
+          </L>
+          <L n="state_specific_transitions">
+            <U>
+              <E n="key">TREAT</E>
+              <U n="value">
+                <L n="affordances">
+                  <T>176127<!--Vet_Customer_TryGrabEmployee_Immediate--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <V n="time_out" t="enabled">
+            <T n="enabled">30</T>
+          </V>
+        </U>
+      </U>
+    </U>
+  </L>
+  <V n="situation_end_time_string" t="show_end_time">
+    <T n="show_end_time">0xA3E17143<!--Work day ends at {0.TimeShort}--></T>
+  </V>
+  <U n="total_work_time">
+    <T n="lower_bound">2592</T>
+    <T n="upper_bound">3168</T>
+  </U>
+  <L n="total_work_time_buffs">
+    <U>
+      <T n="key">25</T>
+      <U n="value">
+        <T n="buff_type">137104<!--buff_OwnableBusiness_Employee_Exhausted--></T>
+      </U>
+    </U>
+    <U>
+      <T n="key">99</T>
+      <U n="value">
+        <T n="buff_type">142993<!--buff_OwnableBusiness_Employee_Exhausted_Quit--></T>
+      </U>
+    </U>
+  </L>
+</I>

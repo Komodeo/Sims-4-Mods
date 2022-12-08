@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="Broadcaster" i="broadcaster" m="broadcasters.broadcaster" n="broadcaster_Bed_Monster_DeterentObject_Prevent_Spawn" s="136715">
+  <V n="allow_objects" t="from_tags">
+    <U n="from_tags">
+      <L n="tags">
+        <E>Func_Bed_Valid_MonsterUnder_Target</E>
+      </L>
+    </U>
+  </V>
+  <T n="allow_sims">False</T>
+  <L n="constraints">
+    <V t="circle">
+      <U n="circle">
+        <T n="radius">10</T>
+      </U>
+    </V>
+    <V t="line_of_sight" />
+  </L>
+  <L n="effects">
+    <V t="state">
+      <U n="state">
+        <L n="state_change_on_enter">
+          <T>135984<!--bed_MonsterUnder_Spawn_Values_Prevent_Spawn--></T>
+        </L>
+        <T n="state_change_on_exit">135985<!--bed_MonsterUnder_Spawn_Values_Allow_Spawn--></T>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <L n="state_change_on_enter">
+          <T>133684<!--bed_MonsterUnder_Not_Active--></T>
+        </L>
+        <T n="state_change_on_exit">133684<!--bed_MonsterUnder_Not_Active--></T>
+        <L n="tests">
+          <L>
+            <V t="state">
+              <U n="state">
+                <T n="value">133683<!--bed_MonsterUnder_Active--></T>
+                <E n="who">PickedObject</E>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="frequency" t="on_pulse">
+    <U n="on_pulse">
+      <T n="cooldown_time">8</T>
+    </U>
+  </V>
+</I>

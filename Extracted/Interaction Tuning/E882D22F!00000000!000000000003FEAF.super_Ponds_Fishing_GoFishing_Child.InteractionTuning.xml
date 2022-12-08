@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="PondFishingLocationGoFishingSuperInteraction" i="interaction" m="fishing.fishing_interactions" n="super_Ponds_Fishing_GoFishing_Child" s="261807">
+  <V n="_forwarding" t="Forward" />
+  <V n="_icon" t="resource_key">
+    <U n="resource_key">
+      <T n="key" p="InGame\UI\Icons\InteractionQueue\IconQueue_Pond_BG.png">2f7d0004:00000000:3661c63e5bac7e6f</T>
+    </U>
+  </V>
+  <V n="_saveable" t="disabled" />
+  <T n="allow_autonomous">False</T>
+  <V n="animation_stat" t="enabled">
+    <U n="enabled">
+      <V n="actor_stat" t="enabled">
+        <V n="enabled" t="single">
+          <U n="single">
+            <T n="item">39397<!--statistic_Skill_AdultMajor_Fishing--></T>
+          </U>
+        </V>
+      </V>
+    </U>
+  </V>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="list_reference">
+          <T n="list_reference">40144<!--ExitConditionList_EmotionMiserable--></T>
+        </V>
+        <V t="list_reference">
+          <T n="list_reference">40702<!--ExitConditionList_EmotionStressed--></T>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="stat_based">
+                <U n="stat_based">
+                  <T n="stat">76386<!--statistic_Fishing_FailAtFishing--></T>
+                  <U n="threshold">
+                    <T n="value">100</T>
+                  </U>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="buff_based">
+                <U n="buff_based">
+                  <T n="buff">206305</T>
+                  <E n="timing">HAS_BUFF</E>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_CANCEL</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">35</T>
+                  <T n="min_time">25</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+            <L n="tests">
+              <L>
+                <V t="situation_job_test">
+                  <U n="situation_job_test">
+                    <L n="situation_jobs">
+                      <T>204668</T>
+                    </L>
+                  </U>
+                </V>
+              </L>
+            </L>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="staging_content">
+        <U n="staging_content">
+          <V n="animation_ref" t="enabled">
+            <U n="enabled">
+              <T n="factory">262449<!--anim_Ponds_Fishing_StartStop--></T>
+              <U n="overrides">
+                <L n="props">
+                  <U>
+                    <T n="key">fishingRod</T>
+                    <U n="value">
+                      <T n="definition">45560<!--fishingRodChildGEN_01 (Child's Fishing Rod)--></T>
+                    </U>
+                  </U>
+                </L>
+              </U>
+            </U>
+          </V>
+          <U n="content_set">
+            <L n="affordance_links">
+              <T>262432<!--mixer_Ponds_Fishing_Catch--></T>
+              <T>262443<!--mixer_Ponds_Fishing_Cast--></T>
+            </L>
+          </U>
+          <V n="push_affordance_on_run" t="enabled">
+            <U n="enabled">
+              <E n="actor">SavedActor1</E>
+              <T n="affordance">207729<!--mentor_Fishing--></T>
+              <V n="target" t="enabled">
+                <E n="enabled">Actor</E>
+              </V>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <U n="operation_actions">
+            <L n="actions">
+              <T>108526</T>
+            </L>
+          </U>
+          <L n="operations">
+            <V t="dynamic_skill">
+              <U n="dynamic_skill">
+                <U n="skill_loot_data_override">
+                  <E n="effectiveness">StandardPeriodic</E>
+                  <V n="level_range" t="enabled">
+                    <U n="enabled">
+                      <T n="lower_bound">1</T>
+                      <T n="upper_bound">10</T>
+                    </U>
+                  </V>
+                  <T n="stat">39397<!--statistic_Skill_AdultMajor_Fishing--></T>
+                </U>
+              </U>
+            </V>
+            <V t="dynamic_skill">
+              <U n="dynamic_skill">
+                <U n="skill_loot_data_override">
+                  <E n="effectiveness">StandardPeriodic</E>
+                  <T n="stat">16719<!--statistic_Skill_Child_Mental--></T>
+                </U>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">0.19</T>
+                <T n="stat">16655<!--motive_Fun--></T>
+              </U>
+            </V>
+            <V t="reference">
+              <T n="reference">251311</T>
+            </V>
+            <V t="reference">
+              <T n="reference">249765</T>
+            </V>
+          </L>
+          <T n="trigger_gain_on_start">True</T>
+        </U>
+      </V>
+      <V n="statistic_reduction_by_category" t="enabled">
+        <U n="enabled">
+          <L n="categories">
+            <E>Angry_Buffs</E>
+            <E>Stressed_Buffs</E>
+          </L>
+          <T n="rate">2</T>
+        </U>
+      </V>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="stat_increment_decrement">
+      <U n="stat_increment_decrement">
+        <T n="amount">3</T>
+        <T n="stat">74423<!--statistic_Fishing_NeedToCast--></T>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">157955<!--buff_Trait_AnglersTranquility_Fishing--></T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>26390<!--trait_AnglersTranquility--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <V n="buff_reason" t="enabled">
+            <T n="enabled">0xBC4038B6<!--(From Fishing)--></T>
+          </V>
+          <T n="buff_type">116275</T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>102336</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="broadcaster">
+      <U n="broadcaster">
+        <L n="broadcaster_types">
+          <U>
+            <T n="item">130031<!--broadcaster_GainRelWithOthersUsingObject_Fishing--></T>
+            <L n="test">
+              <L>
+                <V t="sim_info">
+                  <U n="sim_info">
+                    <V n="npc" t="enabled" />
+                  </U>
+                </V>
+              </L>
+            </L>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V t="broadcaster">
+      <U n="broadcaster">
+        <L n="broadcaster_types">
+          <U>
+            <T n="item">178519<!--broadcaster_Obsess_Pet_FishTank--></T>
+          </U>
+        </L>
+        <E n="participant">Object</E>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">210725</T>
+        </U>
+        <L n="tests">
+          <L>
+            <V t="state">
+              <U n="state">
+                <T n="value">210140</T>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="basic_reserve_object" t="disabled" />
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x5AA293E9<!--Go Fishing--></T>
+  <V n="display_name_overrides" t="testable">
+    <U n="testable">
+      <L n="overrides">
+        <U>
+          <V n="new_display_name" t="disabled" />
+          <V n="new_pie_menu_icon" t="enabled">
+            <V n="enabled" t="resource_key">
+              <U n="resource_key">
+                <T n="key" p="InGame\UI\Icons\Events\EventGoal_Inspired.png">2f7d0004:00000000:b2edb9db21e6c47f</T>
+              </U>
+            </V>
+          </V>
+          <L n="test">
+            <L>
+              <V t="career_test">
+                <U n="career_test">
+                  <V n="test_type" t="career_reference">
+                    <U n="career_reference">
+                      <V n="career" t="specific_career">
+                        <T n="specific_career">107255</T>
+                      </V>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="test_set_reference">
+                <T n="test_set_reference">115714<!--testSet_EP01_ScientistBreakthroughValidAtCareerLevel--></T>
+              </V>
+              <V t="mood">
+                <U n="mood">
+                  <T n="mood">14639<!--Mood_Focused--></T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <V n="new_display_name" t="disabled" />
+          <V n="new_pie_menu_icon" t="enabled">
+            <V n="enabled" t="resource_key">
+              <U n="resource_key">
+                <T n="key" p="InGame\UI\Icons\Events\EventGoal_Inspired.png">2f7d0004:00000000:b2edb9db21e6c47f</T>
+              </U>
+            </V>
+          </V>
+          <L n="test">
+            <L>
+              <V t="career_test">
+                <U n="career_test">
+                  <V n="test_type" t="career_reference">
+                    <U n="career_reference">
+                      <V n="career" t="specific_career">
+                        <T n="specific_career">107255</T>
+                      </V>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="test_set_reference">
+                <T n="test_set_reference">115714<!--testSet_EP01_ScientistBreakthroughValidAtCareerLevel--></T>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <V n="new_display_name" t="enabled">
+            <T n="enabled">0x5AA293E9<!--Go Fishing--></T>
+          </V>
+          <V n="new_display_tooltip" t="enabled">
+            <T n="enabled">0xC82D110<!--Fishing while focused increases the likelihood of catching rare fish.--></T>
+          </V>
+          <L n="test">
+            <L>
+              <V t="mood">
+                <U n="mood">
+                  <T n="mood">14639<!--Mood_Focused--></T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <V n="new_display_name" t="enabled">
+            <T n="enabled">0x72ADBADA<!--Go Fishing Illegally--></T>
+          </V>
+          <L n="test">
+            <L>
+              <V t="global_policy_state">
+                <U n="global_policy_state">
+                  <E n="progress_state">COMPLETE</E>
+                  <V n="test_type" t="specific_policy">
+                    <U n="specific_policy">
+                      <L n="policies">
+                        <T>206802</T>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="state">
+                <U n="state">
+                  <T n="value">206295<!--conservationistCareer_ConsultRegulation_Overfishing_NotAllowed--></T>
+                  <E n="who">Actor</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <V n="idle_animation" t="enabled">
+    <U n="enabled">
+      <T n="factory">262441<!--anim_Ponds_Fishing_Idle--></T>
+    </U>
+  </V>
+  <L n="interaction_category_tags">
+    <E>Interaction_Skill_Fishing</E>
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+    <E>Interaction_Skill_Child_Mental</E>
+    <E>Interaction_Lifestyles_Outdoorsy_FlexibleLength</E>
+  </L>
+  <L n="joinable">
+    <U>
+      <V n="invite_available" t="enabled" />
+      <V n="join_affordance" t="affordance">
+        <U n="affordance">
+          <V n="value" t="custom">
+            <T n="custom">97418<!--fishingLocation_GoFishingAggregate--></T>
+          </V>
+        </U>
+      </V>
+      <V n="join_available" t="enabled" />
+    </U>
+    <U>
+      <V n="invite_available" t="enabled">
+        <U n="enabled">
+          <V n="loc_custom_invite_name" t="enabled">
+            <T n="enabled">0x2898B0EE<!--Ask {1.SimFirstName} To {0.String}--></T>
+          </V>
+        </U>
+      </V>
+      <V n="join_affordance" t="affordance">
+        <U n="affordance">
+          <V n="value" t="custom">
+            <T n="custom">207729<!--mentor_Fishing--></T>
+          </V>
+        </U>
+      </V>
+      <V n="join_available" t="enabled">
+        <U n="enabled">
+          <V n="loc_custom_join_name" t="enabled">
+            <T n="enabled">0xF80506D0<!--{0.String}--></T>
+          </V>
+        </U>
+      </V>
+      <E n="join_target">Actor</E>
+      <T n="link_joinable">True</T>
+    </U>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <T n="force_outcome_on_exit">True</T>
+            <L n="loot_list">
+              <T>76451<!--loot_Statistic_Fishing_DoneFishing--></T>
+            </L>
+          </U>
+        </U>
+      </L>
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <V n="secondary_icon" t="enabled">
+                              <V n="enabled" t="participant" />
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0x4AD30334<!--Looks like the fish in this area are too crafty for {0.SimFirstName}. Try fishing elsewhere until {F0.she}{M0.he} has more skill or try using more valuable bait!--></T>
+                            </V>
+                            <V n="text_tokens" t="enabled">
+                              <U n="enabled">
+                                <L n="tokens">
+                                  <V t="participant_type" />
+                                </L>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <T n="force_outcome_on_exit">True</T>
+                <L n="loot_list">
+                  <T>76451<!--loot_Statistic_Fishing_DoneFishing--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="statistic">
+                <U n="statistic">
+                  <T n="stat">76386<!--statistic_Fishing_FailAtFishing--></T>
+                  <V n="threshold" t="value_threshold">
+                    <U n="value_threshold">
+                      <T n="value">100</T>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <V n="pie_menu_icon" t="enabled">
+    <V n="enabled" t="resource_key">
+      <U n="resource_key">
+        <T n="key" p="InGame\UI\Icons\PieMenu\Skills\Skill_Fishing_piemenu.png">2f7d0004:00000000:afeb2aa5f1cc398d</T>
+      </U>
+    </V>
+  </V>
+  <L n="provided_affordances">
+    <U>
+      <T n="affordance">206313</T>
+    </U>
+  </L>
+  <L n="rallyable">
+    <U>
+      <V n="behavior" t="push_affordance">
+        <U n="push_affordance">
+          <T n="affordance">97418<!--fishingLocation_GoFishingAggregate--></T>
+        </U>
+      </V>
+      <L n="sources">
+        <E>ENSEMBLE</E>
+        <E>SOCIAL_GROUP</E>
+      </L>
+    </U>
+  </L>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <V n="super_affordance_compatibility" t="literal">
+    <U n="literal">
+      <V n="default_inclusion" t="exclude_all">
+        <U n="exclude_all">
+          <L n="include_lists" />
+        </U>
+      </V>
+    </U>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="object_definition_criteria">
+      <U n="object_definition_criteria">
+        <V n="identity_test" t="definition_id">
+          <U n="definition_id">
+            <T n="actual_object">269305<!--loot_AnimalObjects_Commodities_Hunger_FillMax--></T>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <L n="blacklist">
+          <T>208336</T>
+        </L>
+      </U>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">269501<!--testSet_Fishing_FreezingTemperature--></T>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">269142<!--testSet_Ponds_FreezingTest--></T>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">265269<!--testSet_Ponds_StockFishCheck--></T>
+    </V>
+  </L>
+  <T n="time_overhead">30</T>
+  <T n="use_best_scoring_aop">False</T>
+</I>

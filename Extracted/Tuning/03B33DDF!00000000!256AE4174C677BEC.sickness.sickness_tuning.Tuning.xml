@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<M n="sickness.sickness_tuning" s="2696218115651894252">
+  <C n="SicknessTuning">
+    <L n="EXAM_TYPES_TAGS">
+      <E>Interaction_ExamTable_Exam</E>
+      <E>Interaction_SurgeryStation_Exam</E>
+    </L>
+    <U n="SICKNESS_CHANCE">
+      <T n="base_value">3</T>
+      <L n="modifiers">
+        <U>
+          <T n="modifier">25</T>
+          <L n="tests">
+            <L>
+              <V t="buff">
+                <U n="buff">
+                  <V n="whitelist" t="enabled">
+                    <L n="enabled">
+                      <T>158936<!--buff_Sickness_Pet_AteSpoiledFood--></T>
+                    </L>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <T n="modifier">-2</T>
+          <L n="tests">
+            <L>
+              <V t="buff">
+                <U n="buff">
+                  <V n="whitelist" t="enabled">
+                    <L n="enabled">
+                      <T>169739<!--buff_Sickness_Exercised--></T>
+                    </L>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <T n="modifier">2</T>
+          <L n="tests">
+            <L>
+              <V t="test_set_reference">
+                <T n="test_set_reference">171618<!--testSetInstance_PetTraits_Actor_Whitelist_Lazy--></T>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <T n="modifier">12</T>
+          <L n="tests">
+            <L>
+              <V t="sim_info">
+                <U n="sim_info">
+                  <V n="ages" t="specified">
+                    <L n="specified">
+                      <E>ELDER</E>
+                    </L>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+    <L n="SICKNESS_TESTS">
+      <L>
+        <V t="sim_info">
+          <U n="sim_info">
+            <V n="ages" t="specified">
+              <L n="specified">
+                <E>ADULT</E>
+                <E>ELDER</E>
+              </L>
+            </V>
+            <V n="species" t="specified">
+              <U n="specified">
+                <L n="species">
+                  <E>CAT</E>
+                  <E>DOG</E>
+                </L>
+              </U>
+            </V>
+          </U>
+        </V>
+        <V t="sickness_test">
+          <U n="sickness_test">
+            <T n="invert">True</T>
+            <E n="target">Actor</E>
+          </U>
+        </V>
+        <V t="buff">
+          <U n="buff">
+            <L n="blacklist">
+              <T>169691<!--buff_Pet_Sickness_TemporaryBlockSickness--></T>
+              <T>171998<!--buff_Pet_Sickness_WellnessTreatBlockSickness--></T>
+              <T>171707<!--buff_Vet_ConeOfShame--></T>
+            </L>
+          </U>
+        </V>
+        <V t="test_set_reference">
+          <T n="test_set_reference">101703<!--testSet_ActorIsNotGhost--></T>
+        </V>
+        <V t="trait">
+          <U n="trait">
+            <L n="blacklist_traits">
+              <T>218444</T>
+            </L>
+          </U>
+        </V>
+      </L>
+    </L>
+    <U n="SICKNESS_TIME_OF_DAY">
+      <T n="hour">4</T>
+      <T n="minute">45</T>
+    </U>
+  </C>
+</M>

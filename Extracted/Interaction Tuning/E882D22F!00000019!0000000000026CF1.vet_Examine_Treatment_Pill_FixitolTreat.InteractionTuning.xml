@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SocialMixerInteraction" i="interaction" m="interactions.social.social_mixer_interaction" n="vet_Examine_Treatment_Pill_FixitolTreat" s="158961">
+  <V n="_icon" t="resource_key">
+    <U n="resource_key">
+      <T n="key" p="InEP04\UI\Icons\InteractionQueueSubInteractions\icon_queuesubinteraction_treatment.png">2f7d0004:00000000:049dc4f064e6ee99</T>
+    </U>
+  </V>
+  <V n="_situation_participant_provider" t="enabled">
+    <U n="enabled">
+      <L n="provided_participant_type_to_job_map">
+        <U>
+          <E n="key">SituationParticipants1</E>
+          <L n="value">
+            <U>
+              <T n="job">164711<!--jobs_Vet_PetOwner--></T>
+              <V n="situations" t="by_tags">
+                <U n="by_tags">
+                  <L n="situation_tags">
+                    <E>Situation_Vet_SickPet</E>
+                  </L>
+                </U>
+              </V>
+            </U>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <T n="allow_autonomous">False</T>
+  <T n="allow_user_directed">True</T>
+  <V n="basic_content" t="no_content" />
+  <L n="basic_extras">
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>162659<!--loot_Commodity_Culling_GhostAdd_target--></T>
+        </L>
+      </U>
+    </V>
+  </L>
+  <T n="category">158996<!--pet_Vet_Treatment--></T>
+  <T n="display_name">0xC75F7E38<!--Fixitol Treat--></T>
+  <V n="display_name_overrides" t="testable">
+    <U n="testable">
+      <L n="overrides">
+        <U>
+          <V n="new_display_name" t="enabled">
+            <T n="enabled">0xC75F7E38<!--Fixitol Treat--></T>
+          </V>
+          <V n="new_pie_menu_icon" t="enabled">
+            <V n="enabled" t="resource_key">
+              <U n="resource_key">
+                <T n="key" p="InGame\UI\Icons\PieMenu\SpecialInteractions\specialinteraction_clubrulesneg_piemenu.png">2f7d0004:00000000:98d33bec1146250a</T>
+              </U>
+            </V>
+          </V>
+          <L n="test">
+            <L>
+              <V t="diagnostic_action_test">
+                <U n="diagnostic_action_test">
+                  <V n="test" t="ruled_out_treatment" />
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <V n="new_display_name" t="enabled">
+            <T n="enabled">0xC75F7E38<!--Fixitol Treat--></T>
+          </V>
+          <V n="new_pie_menu_icon" t="enabled">
+            <V n="enabled" t="resource_key">
+              <U n="resource_key">
+                <T n="key" p="InGame\UI\Icons\PieMenu\SpecialInteractions\specialinteraction_clubrulespos_piemenu.png">2f7d0004:00000000:7663b8efed70f0fe</T>
+              </U>
+            </V>
+          </V>
+          <L n="test">
+            <L>
+              <V t="diagnostic_action_test">
+                <U n="diagnostic_action_test">
+                  <V n="test" t="is_correct_treatment" />
+                </U>
+              </V>
+              <V t="statistic">
+                <U n="statistic">
+                  <T n="stat">158913<!--statistic_Vet_Treatment_Discovery--></T>
+                  <V n="threshold" t="value_threshold">
+                    <U n="value_threshold">
+                      <T n="value">100</T>
+                    </U>
+                  </V>
+                  <E n="who">TargetSim</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <T n="display_name_target">0x8C71C8F7<!--Listen to {1.SimFirstName}'s Question--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Mixer</E>
+    <E>Interaction_All</E>
+    <E>Interaction_SocialAll</E>
+    <E>Interaction_SocialMixer</E>
+    <E>Interaction_ExamTable_Exam</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <V n="animation_ref" t="enabled">
+              <U n="enabled">
+                <T n="factory">165253<!--examTable_Treatment_FeedPill--></T>
+              </U>
+            </V>
+            <L n="basic_extras">
+              <V t="track_diagnostic_action">
+                <U n="track_diagnostic_action">
+                  <E n="action_type">TREATMENT</E>
+                  <E n="result_type">INCORRECT_TREATMENT</E>
+                </U>
+              </V>
+              <V t="vfx">
+                <U n="vfx">
+                  <V n="participant" t="from_participant">
+                    <U n="from_participant">
+                      <E n="participant">TargetSim</E>
+                    </U>
+                  </V>
+                  <V n="timing" t="on_xevt">
+                    <U n="on_xevt">
+                      <T n="xevt_id">209</T>
+                    </U>
+                  </V>
+                  <U n="vfx">
+                    <T n="effect_name">ep04_pet_treatment_failure_large</T>
+                    <V n="joint_name" t="Slot">
+                      <T n="Slot">b__root__</T>
+                    </V>
+                  </U>
+                </U>
+              </V>
+              <V t="payment">
+                <U n="payment">
+                  <V n="payment" t="reference">
+                    <T n="reference">176497<!--vet_Treatment--></T>
+                  </V>
+                </U>
+              </V>
+            </L>
+            <L n="loot_list">
+              <T>169158<!--loot_Reactions_Vet_PetOwner_ExamFailure--></T>
+              <T>158992<!--loot_Vet_StressGain_Standard--></T>
+            </L>
+          </U>
+          <U n="weight">
+            <T n="base_value">1</T>
+            <L n="multipliers">
+              <U>
+                <T n="multiplier">0</T>
+                <L n="tests">
+                  <L>
+                    <V t="sim_info">
+                      <U n="sim_info">
+                        <V n="species" t="specified_extended">
+                          <U n="specified_extended">
+                            <L n="species">
+                              <E>SMALLDOG</E>
+                              <E>CAT</E>
+                            </L>
+                          </U>
+                        </V>
+                        <E n="who">TargetSim</E>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </L>
+          </U>
+        </U>
+        <U>
+          <U n="outcome">
+            <V n="animation_ref" t="enabled">
+              <U n="enabled">
+                <T n="factory">165253<!--examTable_Treatment_FeedPill--></T>
+              </U>
+            </V>
+            <L n="basic_extras">
+              <V t="track_diagnostic_action">
+                <U n="track_diagnostic_action">
+                  <E n="action_type">TREATMENT</E>
+                  <E n="result_type">INCORRECT_TREATMENT</E>
+                </U>
+              </V>
+              <V t="vfx">
+                <U n="vfx">
+                  <V n="participant" t="from_participant">
+                    <U n="from_participant">
+                      <E n="participant">TargetSim</E>
+                    </U>
+                  </V>
+                  <V n="timing" t="on_xevt">
+                    <U n="on_xevt">
+                      <T n="xevt_id">209</T>
+                    </U>
+                  </V>
+                  <U n="vfx">
+                    <T n="effect_name">ep04_pet_treatment_failure</T>
+                    <V n="joint_name" t="Slot">
+                      <T n="Slot">b__root__</T>
+                    </V>
+                  </U>
+                </U>
+              </V>
+              <V t="payment">
+                <U n="payment">
+                  <T n="include_in_total">False</T>
+                  <V n="payment" t="reference">
+                    <T n="reference">176497<!--vet_Treatment--></T>
+                  </V>
+                </U>
+              </V>
+            </L>
+            <L n="loot_list">
+              <T>169158<!--loot_Reactions_Vet_PetOwner_ExamFailure--></T>
+              <T>158992<!--loot_Vet_StressGain_Standard--></T>
+            </L>
+          </U>
+          <U n="weight">
+            <T n="base_value">1</T>
+            <L n="multipliers">
+              <U>
+                <T n="multiplier">0</T>
+                <L n="tests">
+                  <L>
+                    <V t="sim_info">
+                      <U n="sim_info">
+                        <V n="species" t="specified_extended">
+                          <U n="specified_extended">
+                            <L n="species">
+                              <E>DOG</E>
+                            </L>
+                          </U>
+                        </V>
+                        <E n="who">TargetSim</E>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </L>
+          </U>
+        </U>
+      </L>
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">165244<!--examTable_Examinations_StressFailure--></T>
+                  </U>
+                </V>
+                <L n="basic_extras">
+                  <V t="track_diagnostic_action">
+                    <U n="track_diagnostic_action">
+                      <E n="action_type">TREATMENT</E>
+                      <E n="result_type">FAILED_TOO_STRESSED</E>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>169159<!--loot_Reactions_Vet_PetOwner_ExamShocked--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="statistic">
+                <U n="statistic">
+                  <T n="stat">158956<!--statistic_Vet_Treatment_Stress--></T>
+                  <V n="threshold" t="value_threshold">
+                    <U n="value_threshold">
+                      <T n="value">70</T>
+                    </U>
+                  </V>
+                  <E n="who">TargetSim</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">165253<!--examTable_Treatment_FeedPill--></T>
+                  </U>
+                </V>
+                <L n="basic_extras">
+                  <V t="track_diagnostic_action">
+                    <U n="track_diagnostic_action">
+                      <E n="action_type">TREATMENT</E>
+                      <E n="result_type">CORRECT_TREATMENT</E>
+                    </U>
+                  </V>
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="reference">
+                          <T n="reference">168191<!--notification_Vet_ExamOutcomes_CuredSickness--></T>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                  <V t="vfx">
+                    <U n="vfx">
+                      <V n="participant" t="from_participant">
+                        <U n="from_participant">
+                          <E n="participant">TargetSim</E>
+                        </U>
+                      </V>
+                      <V n="timing" t="on_xevt">
+                        <U n="on_xevt">
+                          <T n="xevt_id">209</T>
+                        </U>
+                      </V>
+                      <U n="vfx">
+                        <T n="effect_name">ep04_pet_treatment_success_large</T>
+                        <V n="joint_name" t="Slot">
+                          <T n="Slot">b__root__</T>
+                        </V>
+                      </U>
+                    </U>
+                  </V>
+                  <V t="payment">
+                    <U n="payment">
+                      <T n="include_in_total">False</T>
+                      <V n="payment" t="reference">
+                        <T n="reference">176497<!--vet_Treatment--></T>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <V n="cancel_si" t="enabled">
+                  <L n="enabled">
+                    <E>Actor</E>
+                    <E>TargetSim</E>
+                  </L>
+                </V>
+                <L n="loot_list">
+                  <T>168469<!--loot_OwnableVetClinic_ValueOfService_AddBuffs--></T>
+                  <T>168506<!--loot_Vet_BillOwner--></T>
+                  <T>169160<!--loot_Reactions_Vet_PetOwner_ExamSuccess--></T>
+                  <T>115108<!--skill_Loot_Dynamic_Standard--></T>
+                  <T>178122<!--loot_Buff_Remove_Soothe_Cooldown--></T>
+                  <T>176303<!--loot_Vet_RemoveSickness_TargetSim_CriticalFailure--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="diagnostic_action_test">
+                <U n="diagnostic_action_test">
+                  <V n="test" t="is_correct_treatment" />
+                </U>
+              </V>
+              <V t="sim_info">
+                <U n="sim_info">
+                  <V n="species" t="specified_extended">
+                    <U n="specified_extended">
+                      <L n="species">
+                        <E>DOG</E>
+                      </L>
+                    </U>
+                  </V>
+                  <E n="who">TargetSim</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">165253<!--examTable_Treatment_FeedPill--></T>
+                  </U>
+                </V>
+                <L n="basic_extras">
+                  <V t="track_diagnostic_action">
+                    <U n="track_diagnostic_action">
+                      <E n="action_type">TREATMENT</E>
+                      <E n="result_type">CORRECT_TREATMENT</E>
+                    </U>
+                  </V>
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="reference">
+                          <T n="reference">168191<!--notification_Vet_ExamOutcomes_CuredSickness--></T>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                  <V t="vfx">
+                    <U n="vfx">
+                      <V n="participant" t="from_participant">
+                        <U n="from_participant">
+                          <E n="participant">TargetSim</E>
+                        </U>
+                      </V>
+                      <V n="timing" t="on_xevt">
+                        <U n="on_xevt">
+                          <T n="xevt_id">209</T>
+                        </U>
+                      </V>
+                      <U n="vfx">
+                        <T n="effect_name">ep04_pet_treatment_success</T>
+                        <V n="joint_name" t="Slot">
+                          <T n="Slot">b__root__</T>
+                        </V>
+                      </U>
+                    </U>
+                  </V>
+                  <V t="payment">
+                    <U n="payment">
+                      <T n="include_in_total">False</T>
+                      <V n="payment" t="reference">
+                        <T n="reference">176497<!--vet_Treatment--></T>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <V n="cancel_si" t="enabled">
+                  <L n="enabled">
+                    <E>Actor</E>
+                    <E>TargetSim</E>
+                  </L>
+                </V>
+                <L n="loot_list">
+                  <T>168469<!--loot_OwnableVetClinic_ValueOfService_AddBuffs--></T>
+                  <T>168506<!--loot_Vet_BillOwner--></T>
+                  <T>169160<!--loot_Reactions_Vet_PetOwner_ExamSuccess--></T>
+                  <T>115108<!--skill_Loot_Dynamic_Standard--></T>
+                  <T>178122<!--loot_Buff_Remove_Soothe_Cooldown--></T>
+                  <T>176303<!--loot_Vet_RemoveSickness_TargetSim_CriticalFailure--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="diagnostic_action_test">
+                <U n="diagnostic_action_test">
+                  <V n="test" t="is_correct_treatment" />
+                </U>
+              </V>
+              <V t="sim_info">
+                <U n="sim_info">
+                  <V n="species" t="specified_extended">
+                    <U n="specified_extended">
+                      <L n="species">
+                        <E>SMALLDOG</E>
+                        <E>CAT</E>
+                      </L>
+                    </U>
+                  </V>
+                  <E n="who">TargetSim</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <V n="pie_menu_icon" t="enabled">
+    <V n="enabled" t="resource_key">
+      <U n="resource_key">
+        <T n="key" p="InGame\UI\Icons\PieMenu\SpecialInteractions\specialinteraction_unknown_piemenu.png">2f7d0004:00000000:733d9ded747a4af3</T>
+      </U>
+    </V>
+  </V>
+  <U n="skill_loot_data">
+    <V n="level_range" t="enabled">
+      <U n="enabled">
+        <T n="lower_bound">1</T>
+        <T n="upper_bound">10</T>
+      </U>
+    </V>
+    <T n="stat">161190<!--statistic_Skill_AdultMajor_Veterinarian--></T>
+  </U>
+  <U n="sub_action">
+    <T n="base_weight">2</T>
+  </U>
+  <E n="target_type">TARGET_AND_GROUP</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E>CAT</E>
+              <E>DOG</E>
+            </L>
+          </U>
+        </V>
+        <E n="who">TargetSim</E>
+      </U>
+    </V>
+    <V t="statistic">
+      <U n="statistic">
+        <T n="stat">158956<!--statistic_Vet_Treatment_Stress--></T>
+        <V n="threshold" t="value_threshold">
+          <U n="value_threshold">
+            <E n="comparison">LESS</E>
+            <T n="value">100</T>
+          </U>
+        </V>
+        <V n="tooltip" t="enabled">
+          <T n="enabled">0x8647101C<!--The patient is too stressed to run any exams or get treatments.--></T>
+        </V>
+        <E n="who">TargetSim</E>
+      </U>
+    </V>
+  </L>
+  <L n="tests">
+    <L>
+      <V t="statistic">
+        <U n="statistic">
+          <T n="stat">158913<!--statistic_Vet_Treatment_Discovery--></T>
+          <V n="threshold" t="value_threshold">
+            <U n="value_threshold">
+              <E n="comparison">LESS</E>
+              <T n="value">100</T>
+            </U>
+          </V>
+          <E n="who">TargetSim</E>
+        </U>
+      </V>
+    </L>
+    <L>
+      <V t="statistic">
+        <U n="statistic">
+          <T n="stat">158913<!--statistic_Vet_Treatment_Discovery--></T>
+          <V n="threshold" t="value_threshold">
+            <U n="value_threshold">
+              <E n="comparison">GREATER_OR_EQUAL</E>
+              <T n="value">100</T>
+            </U>
+          </V>
+          <E n="who">TargetSim</E>
+        </U>
+      </V>
+      <V t="sickness_test">
+        <U n="sickness_test">
+          <V n="sickness" t="by_tag">
+            <U n="by_tag">
+              <L n="tags">
+                <E>Sickness_Illness</E>
+              </L>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="sickness_test">
+        <U n="sickness_test">
+          <T n="invert">False</T>
+          <V n="sickness" t="by_tag">
+            <U n="by_tag">
+              <L n="tags">
+                <E>Sickness_CuredBy_ExamTable</E>
+              </L>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </L>
+  <T n="visible">True</T>
+</I>

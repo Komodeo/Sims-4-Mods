@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="npc_choose_to_leave_for_motive_or_homesickness" s="24458">
+  <L n="_false_advertisements">
+    <V t="statistic_change">
+      <U n="statistic_change">
+        <T n="amount">1</T>
+        <T n="stat">16656<!--motive_Hunger--></T>
+      </U>
+    </V>
+    <V t="statistic_change">
+      <U n="statistic_change">
+        <T n="amount">2</T>
+        <T n="stat">16446<!--Buff_OnForeignLot--></T>
+      </U>
+    </V>
+    <V t="statistic_change">
+      <U n="statistic_change">
+        <T n="amount">1</T>
+        <T n="stat">16654<!--motive_Energy--></T>
+      </U>
+    </V>
+    <V t="statistic_change">
+      <U n="statistic_change">
+        <T n="amount">1</T>
+        <T n="stat">16652<!--motive_Bladder--></T>
+      </U>
+    </V>
+  </L>
+  <V n="_saveable" t="enabled" />
+  <T n="allow_user_directed">False</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="one_shot" />
+  <L n="basic_extras">
+    <V t="put_npc_in_leave_now_must_run_situation">
+      <U n="put_npc_in_leave_now_must_run_situation">
+        <E n="subject">Actor</E>
+      </U>
+    </V>
+    <V t="set_goodbye_notification">
+      <U n="set_goodbye_notification">
+        <V n="goodbye_notification" t="notification">
+          <V n="notification" t="reference">
+            <T n="reference">98016<!--notification_Sim_Goodbye_MotiveFailure--></T>
+          </V>
+        </V>
+      </U>
+    </V>
+  </L>
+  <V n="content_score" t="disabled" />
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <U n="progress_bar_enabled">
+    <T n="bar_enabled">False</T>
+  </U>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">ACTOR</E>
+  <L n="test_autonomous">
+    <L>
+      <V t="statistic">
+        <U n="statistic">
+          <T n="stat">16656<!--motive_Hunger--></T>
+          <V n="threshold" t="value_threshold">
+            <U n="value_threshold">
+              <E n="comparison">LESS_OR_EQUAL</E>
+              <T n="value">-80</T>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+    <L>
+      <V t="statistic">
+        <U n="statistic">
+          <T n="stat">16654<!--motive_Energy--></T>
+          <V n="threshold" t="value_threshold">
+            <U n="value_threshold">
+              <E n="comparison">LESS_OR_EQUAL</E>
+              <T n="value">-80</T>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+    <L>
+      <V t="statistic">
+        <U n="statistic">
+          <T n="stat">16652<!--motive_Bladder--></T>
+          <V n="threshold" t="value_threshold">
+            <U n="value_threshold">
+              <E n="comparison">LESS_OR_EQUAL</E>
+              <T n="value">-80</T>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="situation_job_test">
+        <U n="situation_job_test">
+          <T n="negate">True</T>
+          <L n="situation_jobs">
+            <T>130418</T>
+          </L>
+        </U>
+      </V>
+    </L>
+  </L>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified" />
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="npc" t="enabled">
+          <T n="enabled">True</T>
+        </V>
+      </U>
+    </V>
+    <V t="identity">
+      <U n="identity">
+        <T n="subjects_match">True</T>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <V n="whitelist" t="enabled">
+          <L n="enabled">
+            <T>12554<!--Buff_OnForeignLot--></T>
+          </L>
+        </V>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <L n="blacklist">
+          <T>101250<!--buff_role_Imprisoned--></T>
+          <T>101249<!--buff_role_LookBusyInPlace--></T>
+          <T>24312<!--buff_role_LeaveLotNowMustRun--></T>
+        </L>
+      </U>
+    </V>
+    <V t="trait">
+      <U n="trait">
+        <L n="blacklist_traits">
+          <T>101850</T>
+          <T>147121</T>
+        </L>
+        <T n="num_whitelist_required">0</T>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">1</T>
+  <T n="visible">False</T>
+</I>

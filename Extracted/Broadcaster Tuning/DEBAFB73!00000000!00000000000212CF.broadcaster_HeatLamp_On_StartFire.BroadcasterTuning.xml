@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="Broadcaster" i="broadcaster" m="broadcasters.broadcaster" n="broadcaster_HeatLamp_On_StartFire" s="135887">
+  <V n="allow_objects" t="from_flammable" />
+  <T n="allow_sims">False</T>
+  <L n="constraints">
+    <V t="circle">
+      <U n="circle">
+        <T n="ideal_radius">0</T>
+        <T n="ideal_radius_width">0.25</T>
+        <T n="radius">1.5</T>
+      </U>
+    </V>
+    <V t="line_of_sight">
+      <U n="line_of_sight">
+        <V n="temporary_los" t="enabled">
+          <U n="enabled">
+            <T n="max_line_of_sight_radius">15</T>
+          </U>
+        </V>
+      </U>
+    </V>
+  </L>
+  <L n="effects">
+    <V t="start_fire">
+      <U n="start_fire">
+        <T n="percent_chance">0.42</T>
+        <L n="tests">
+          <L>
+            <V t="state">
+              <U n="state">
+                <E n="operator">NOTEQUAL</E>
+                <T n="value">131673<!--Upgrade_HeatLamp_FireSafe_Completed--></T>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="frequency" t="on_pulse">
+    <U n="on_pulse">
+      <T n="cooldown_time">60</T>
+    </U>
+  </V>
+</I>

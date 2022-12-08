@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="toyBallPet_Dog_ChewToy" s="161089">
+  <V n="_affordance_key_override_for_autonomy" t="enabled">
+    <T n="enabled">Pet_Play</T>
+  </V>
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">0.4</T>
+              <T n="ideal_radius_width">0.2</T>
+              <T n="radius">0.9</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="facing" />
+        </U>
+      </L>
+    </U>
+  </L>
+  <L n="_false_advertisements" />
+  <V n="_saveable" t="enabled" />
+  <T n="acquire_targets_as_resource">False</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">20</T>
+                  <T n="min_time">20</T>
+                </U>
+              </V>
+              <V t="stat_based">
+                <U n="stat_based">
+                  <T n="stat">158699<!--commodity_Motive_PetDog_Play--></T>
+                  <U n="threshold">
+                    <T n="value">100</T>
+                  </U>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="looping_content">
+        <U n="looping_content">
+          <U n="animation_ref">
+            <T n="factory">161093<!--toyBallPet_Dog_ChewToy--></T>
+            <U n="overrides">
+              <V n="balloons" t="enabled">
+                <L n="enabled">
+                  <U>
+                    <L n="balloon_choices">
+                      <U>
+                        <V n="item" t="balloon_category">
+                          <T n="balloon_category">166987<!--balloonCategory_Pets_PlayfulTrait--></T>
+                        </V>
+                        <L n="tests">
+                          <L>
+                            <V t="trait">
+                              <U n="trait">
+                                <L n="whitelist_traits">
+                                  <T>171602<!--trait_Pet_Playful_Dog--></T>
+                                </L>
+                              </U>
+                            </V>
+                          </L>
+                        </L>
+                      </U>
+                    </L>
+                    <T n="balloon_delay">2</T>
+                    <L n="balloon_target">
+                      <E>Actor</E>
+                    </L>
+                  </U>
+                </L>
+              </V>
+            </U>
+          </U>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">6</T>
+                <T n="stat">158699<!--commodity_Motive_PetDog_Play--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">-0.33</T>
+                <T n="stat">157968<!--statistic_Object_ToyBallPet_Chewedness--></T>
+                <L n="subject">
+                  <E>Object</E>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_set_max">
+              <U n="statistic_set_max">
+                <T n="stat">164048<!--commodity_Trait_Pet_Playful--></T>
+              </U>
+            </V>
+          </L>
+        </U>
+      </V>
+      <T n="start_autonomous_inertial">False</T>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">164418<!--buff_Object_ToyBallPet_PetPlaying--></T>
+        </U>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">129126<!--buff_Suppress_Emotion_Idle--></T>
+        </U>
+      </U>
+    </V>
+  </L>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0xE9729CE1<!--Chew Toy--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <V n="animation_ref" t="enabled">
+              <U n="enabled">
+                <T n="factory">176781<!--toyBallPet_Dog_ChewToy_Stop--></T>
+              </U>
+            </V>
+            <L n="basic_extras">
+              <V t="put_near">
+                <U n="put_near">
+                  <T n="fallback_to_spawn_point">False</T>
+                  <E n="subject">Object</E>
+                  <E n="target">Actor</E>
+                  <V n="timing" t="on_xevt">
+                    <U n="on_xevt">
+                      <T n="xevt_id">105</T>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="state_change">
+                <U n="state_change">
+                  <V n="new_value" t="value_from_test_list">
+                    <U n="value_from_test_list">
+                      <L n="new_values">
+                        <U>
+                          <V n="test" t="state">
+                            <U n="state">
+                              <T n="value">157960<!--toyBallPet_Chewed_Ruined--></T>
+                            </U>
+                          </V>
+                          <T n="value">35296<!--GenericOnOff_On--></T>
+                        </U>
+                      </L>
+                    </U>
+                  </V>
+                  <V n="timing" t="at_end" />
+                </U>
+              </V>
+            </L>
+            <T n="force_outcome_on_exit">True</T>
+          </U>
+        </U>
+      </L>
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">176781<!--toyBallPet_Dog_ChewToy_Stop--></T>
+                  </U>
+                </V>
+                <L n="basic_extras">
+                  <V t="put_near">
+                    <U n="put_near">
+                      <T n="fallback_to_spawn_point">False</T>
+                      <E n="subject">Object</E>
+                      <E n="target">Actor</E>
+                      <V n="timing" t="on_xevt">
+                        <U n="on_xevt">
+                          <T n="xevt_id">105</T>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="continuation">
+                  <U>
+                    <T n="affordance">167525<!--autonomous_ObjectPicker_PetToy_SmartTrait--></T>
+                  </U>
+                </L>
+                <T n="force_outcome_on_exit">True</T>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="whitelist_traits">
+                    <T>171600<!--trait_Pet_Smart_Dog--></T>
+                  </L>
+                </U>
+              </V>
+              <V t="state">
+                <U n="state">
+                  <E n="operator">NOTEQUAL</E>
+                  <T n="value">157960<!--toyBallPet_Chewed_Ruined--></T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <V n="super_affordance_compatibility" t="literal">
+    <U n="literal">
+      <V n="default_inclusion" t="exclude_all" />
+    </U>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="state">
+      <U n="state">
+        <T n="value">171887<!--petBall_Idle_Off--></T>
+      </U>
+    </V>
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="unspecified" />
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E>DOG</E>
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">30</T>
+  <T n="use_best_scoring_aop">False</T>
+</I>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="ServiceNpcNonRequestable" i="service_npc" m="situations.service_npcs.service_npc_tuning" n="ServiceNpc_Mailman" s="15924">
+  <T n="_min_duration_left_for_arrival_on_lot">0</T>
+  <U n="_work_duration_min_max">
+    <T n="upper_bound">120</T>
+  </U>
+  <T n="always_scheduled">True</T>
+  <T n="display_name">0x88DB4586<!--Mail Carrier--></T>
+  <U n="fake_perform_job">
+    <L n="modifications">
+      <U>
+        <V n="action" t="deliver_bills" />
+        <L n="tests">
+          <L>
+            <V t="object_definition">
+              <U n="object_definition">
+                <V n="item" t="tagged_item">
+                  <U n="tagged_item">
+                    <L n="tag_set">
+                      <E>Func_Mailbox</E>
+                    </L>
+                    <E n="test_type">CONTAINS_ALL_TAGS_IN_SET</E>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+      <U>
+        <V n="action" t="inventory_transfer">
+          <U n="inventory_transfer">
+            <U n="action_value">
+              <E n="recipient">MAILBOX</E>
+              <E n="source">HIDDEN</E>
+            </U>
+          </U>
+        </V>
+        <L n="tests">
+          <L>
+            <V t="inventory">
+              <U n="inventory">
+                <V n="contents_check" t="has_anything" />
+                <V n="inventory_location" t="hidden_inventory_objects">
+                  <U n="hidden_inventory_objects">
+                    <E n="inventory">MAILBOX</E>
+                  </U>
+                </V>
+              </U>
+            </V>
+            <V t="object_definition">
+              <U n="object_definition">
+                <V n="item" t="tagged_item">
+                  <U n="tagged_item">
+                    <L n="tag_set">
+                      <E>Func_Mailbox</E>
+                    </L>
+                    <E n="test_type">CONTAINS_ALL_TAGS_IN_SET</E>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </L>
+  </U>
+  <T n="situation">16189<!--mailman_situation--></T>
+  <U n="work_hours">
+    <L n="schedule_entries">
+      <U>
+        <U n="days_available">
+          <T n="0 SUNDAY">False</T>
+          <T n="1 MONDAY">True</T>
+          <T n="2 TUESDAY">True</T>
+          <T n="3 WEDNESDAY">True</T>
+          <T n="4 THURSDAY">True</T>
+          <T n="5 FRIDAY">True</T>
+          <T n="6 SATURDAY">True</T>
+        </U>
+        <T n="duration">4</T>
+        <T n="random_start">True</T>
+        <U n="start_time">
+          <T n="hour">8</T>
+          <T n="minute">0</T>
+        </U>
+      </U>
+    </L>
+  </U>
+</I>

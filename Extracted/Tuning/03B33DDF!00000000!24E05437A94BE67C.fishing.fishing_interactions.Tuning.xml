@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<M n="fishing.fishing_interactions" s="2657216378188850812">
+  <C n="FishingLocationGoFishingSuperInteraction">
+    <T n="FISHING_WITH_BAIT_INTERACTION_NAME">0x1497611D<!--Fish with Bait--></T>
+    <U n="OUT_OF_BAIT_NOTIFICATION">
+      <V n="text" t="single">
+        <T n="single">0xE311DC61<!--{0.SimFirstName} ran out of {2.ObjectCatalogName} to use as bait. {M0.He}{F0.She} will continue fishing without bait.--></T>
+      </V>
+    </U>
+  </C>
+  <C n="FishingLocationExamineWaterSuperInteraction">
+    <L n="BAIT_NOTIFICATION_TEXT_MAP">
+      <U>
+        <T n="Bait Buff">155037</T>
+        <T n="Notification Text">0x886CDB7A<!--Some fish really need a bait they can sink their teeth into.--></T>
+      </U>
+      <U>
+        <T n="Bait Buff">75548<!--buff_Bait_Frog--></T>
+        <T n="Notification Text">0xED035DB4<!--Some fish here prefer munching on amphibians. Try using a Frog for bait.--></T>
+      </U>
+      <U>
+        <T n="Bait Buff">75549<!--buff_BaitGroup_Organic--></T>
+        <T n="Notification Text">0x4741E769<!--Most fish here will eat almost anything - as long as it's organic, they're biting!--></T>
+      </U>
+      <U>
+        <T n="Bait Buff">75556<!--buff_Bait_SmallFish--></T>
+        <T n="Notification Text">0x4DC951EA<!--Prized catches here like to prey on small fish. Poor, small fish. --></T>
+      </U>
+      <U>
+        <T n="Bait Buff">76071<!--buff_Bait_MediumFish--></T>
+        <T n="Notification Text">0x935D9017<!--The rarest catches here are at the top of the food-chain. Baiting your line with a medium-sized fish might just lure them out.--></T>
+      </U>
+      <U>
+        <T n="Bait Buff">76072<!--buff_Bait_FreshFruit--></T>
+        <T n="Notification Text">0x7E4B04A0<!--Discerning fish here enjoy the freshest of produce. Try some fruit on the line.--></T>
+      </U>
+      <U>
+        <T n="Bait Buff">76073<!--buff_Bait_FreshFlower--></T>
+        <T n="Notification Text">0xEB66100D<!--There's some fancy fish here that only nibble on flowers.--></T>
+      </U>
+    </L>
+    <U n="EXAMINE_SUCCESS_NOTIFICATION">
+      <V n="icon" t="enabled">
+        <V n="enabled" t="participant" />
+      </V>
+    </U>
+    <T n="GENERIC_EXAMINE_NOTIFICATION_TEXT">0xCCB1A5B3<!--These fish are biting at anything. As long as it's valuable, they're going for it!--></T>
+  </C>
+  <C n="FishingLocationCatchMixerInteraction">
+    <U n="BUFF_CATCH_FISH_WITH_BAIT">
+      <T n="buff_type">77314<!--Buff_Skill_Fishing_CaughtFishWithBait--></T>
+    </U>
+    <U n="CATCH_CHANCE_MODIFIER_CURVE">
+      <V n="multiplier" t="value_curve">
+        <L n="value_curve">
+          <U>
+            <T n="x">1</T>
+            <T n="y">0.5</T>
+          </U>
+          <U>
+            <T n="x">2</T>
+            <T n="y">0.75</T>
+          </U>
+          <U>
+            <T n="x">3</T>
+            <T n="y">1</T>
+          </U>
+          <U>
+            <T n="x">4</T>
+            <T n="y">1.25</T>
+          </U>
+          <U>
+            <T n="x">5</T>
+            <T n="y">1.5</T>
+          </U>
+          <U>
+            <T n="x">6</T>
+            <T n="y">1.75</T>
+          </U>
+          <U>
+            <T n="x">7</T>
+            <T n="y">2</T>
+          </U>
+          <U>
+            <T n="x">8</T>
+            <T n="y">2.25</T>
+          </U>
+          <U>
+            <T n="x">9</T>
+            <T n="y">2.5</T>
+          </U>
+          <U>
+            <T n="x">10</T>
+            <T n="y">3</T>
+          </U>
+        </L>
+      </V>
+      <T n="statistic">39397<!--statistic_Skill_AdultMajor_Fishing--></T>
+      <T n="use_effective_skill_level">True</T>
+    </U>
+    <U n="CATCH_ENDANGERED_FISH">
+      <T n="dialog">231049</T>
+      <L n="loots_on_cancel">
+        <T>212536</T>
+        <T>212664</T>
+      </L>
+      <L n="loots_on_ok">
+        <T>212533</T>
+      </L>
+      <L n="tests">
+        <L>
+          <V t="object_criteria">
+            <U n="object_criteria">
+              <V n="identity_test" t="tags">
+                <U n="tags">
+                  <L n="tag_set">
+                    <E>Func_Fish_Endangered</E>
+                  </L>
+                </U>
+              </V>
+              <V n="subject_specific_tests" t="single_object">
+                <U n="single_object">
+                  <E n="target">CreatedObject</E>
+                </U>
+              </V>
+            </U>
+          </V>
+        </L>
+      </L>
+    </U>
+    <U n="CATCH_FISH_NOTIFICATION">
+      <V n="primary_icon_response" t="enabled">
+        <U n="enabled">
+          <E n="ui_request">SHOW_SIM_INVENTORY</E>
+        </U>
+      </V>
+    </U>
+    <T n="CATCH_FISH_NOTIFICATION_BAIT_TEXT">0x673F66F9<!--Fish Type: {0.String}\nBait Type: {1.String}--></T>
+    <T n="CATCH_FISH_NOTIFICATION_TEXT">0x30BA6E7C<!--{0.SimFirstName} caught a {3.String} {2.String} worth {4.String}! What else might be out there?--></T>
+    <U n="CATCH_TREASURE_NOTIFICATION">
+      <V n="primary_icon_response" t="enabled">
+        <U n="enabled">
+          <E n="ui_request">SHOW_SIM_INVENTORY</E>
+        </U>
+      </V>
+      <V n="text" t="single">
+        <T n="single">0xB99F692A<!--{0.SimFirstName} just caught {2.ObjectName|enAn}!--></T>
+      </V>
+    </U>
+    <L n="JUNK_OBJECTS">
+      <U>
+        <T n="definition">44816<!--collectFishFailGENPond_01 (Driftwood)--></T>
+        <U n="throw_into_pond_vfx">
+          <T n="effect_name">ep11_fishing_fail_log_pond</T>
+          <T n="play_immediate">True</T>
+        </U>
+      </U>
+      <U>
+        <T n="definition">44956<!--collectFishFailGENPond_02 (Bunch of Twigs)--></T>
+        <U n="throw_into_pond_vfx">
+          <T n="effect_name">ep11_fishing_fail_weed2_pond</T>
+          <T n="play_immediate">True</T>
+        </U>
+      </U>
+      <U>
+        <T n="definition">44685<!--collectFishFailGENSeaweed_01 (Seaweed)--></T>
+        <U n="throw_into_pond_vfx">
+          <T n="effect_name">ep11_fishing_fail_seaweed_pond</T>
+          <T n="play_immediate">True</T>
+        </U>
+      </U>
+    </L>
+    <T n="TREASURE_PROP_OBJECT">45220</T>
+  </C>
+</M>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SituationGoalRanInteractionOnTargetedSim" i="situation_goal" m="situations.situation_goal_targeted_sim" n="Goal_Date_NPC_InviteEvent_Flirty_NotAtDate" s="117274">
+  <T n="_cooldown">30</T>
+  <V n="_display_data" t="enabled">
+    <U n="enabled">
+      <V n="instance_display_icon" t="enabled">
+        <T n="enabled" p="InGame\UI\Icons\Events\EventGoal_Socialize.png">2f7d0004:00000000:21835a4b8238b2fa</T>
+      </V>
+      <V n="instance_display_name" t="enabled">
+        <T n="enabled">0x5A84AC39<!--Flirt with Someone--></T>
+      </V>
+      <V n="instance_display_tooltip" t="enabled">
+        <T n="enabled">0x9049C6F9<!--Performing romance socials with a Sim will eventually establish a romantic relationship with them.--></T>
+      </V>
+    </U>
+  </V>
+  <U n="_goal_test">
+    <L n="tags">
+      <E>Social_Flirty</E>
+    </L>
+    <E n="test_event">InteractionComplete</E>
+  </U>
+  <L n="_post_tests">
+    <V t="situation_job">
+      <U n="situation_job">
+        <L n="situation_jobs">
+          <T>117124<!--job_Date_Actor_Target--></T>
+        </L>
+      </U>
+    </V>
+  </L>
+  <T n="_score">-100</T>
+  <T n="_select_all_instantiated_sims">True</T>
+  <L n="_target_tests">
+    <V t="situation_job">
+      <U n="situation_job">
+        <T n="negate">True</T>
+        <L n="situation_jobs">
+          <T>117102<!--job_Date_NPC_Inviter--></T>
+        </L>
+      </U>
+    </V>
+  </L>
+  <T n="audio_sting_on_complete" p="InGame\Audio\Bumper\bumper_event_goal_complete.propx">39b2aa4a:00000000:ed52c39bcc2a7111</T>
+  <V n="goal_completion_notification" t="enabled">
+    <U n="enabled">
+      <V n="icon" t="enabled">
+        <V n="enabled" t="participant">
+          <U n="participant">
+            <L n="participant_type">
+              <E>TargetSim</E>
+            </L>
+          </U>
+        </V>
+      </V>
+      <V n="secondary_icon" t="enabled">
+        <V n="enabled" t="participant" />
+      </V>
+      <V n="text" t="single">
+        <T n="single">0xD190736E<!--Hey, {0.SimFirstName}. You're on a date with ME, remember?--></T>
+      </V>
+      <E n="visual_type">SPEECH</E>
+    </U>
+  </V>
+  <V n="goal_completion_notification_and_modal_target" t="enabled">
+    <T n="enabled">117102<!--job_Date_NPC_Inviter--></T>
+  </V>
+</I>

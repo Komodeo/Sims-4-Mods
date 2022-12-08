@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="GameObject" i="object" m="objects.game_object" n="object_PetBowl" s="148818">
+  <V n="_anim_overrides" t="enabled">
+    <U n="enabled">
+      <L n="params">
+        <U>
+          <T n="name">carryObject</T>
+          <V n="value" t="string">
+            <T n="string">petFoodBowl</T>
+          </V>
+        </U>
+      </L>
+    </U>
+  </V>
+  <U n="_components">
+    <V n="carryable" t="enabled" />
+    <V n="consumable" t="enabled">
+      <U n="enabled">
+        <T n="allow_destruction_on_inventory_transfer">False</T>
+        <L n="consume_affordances">
+          <T>148920<!--consumable_PetBowl_CatEat--></T>
+          <T>148921<!--consumable_PetBowl_DogEat--></T>
+          <T>178264<!--consumable_PetBowl_DogEat_Slotted--></T>
+          <T>169185<!--consumable_PetBowl_SmallDogEat--></T>
+          <T>158679<!--consumable_PetBowl_PuppyEat--></T>
+          <T>169117<!--consumable_PetBowl_KittenEat--></T>
+        </L>
+        <L n="consumption_statistics">
+          <V t="statistic_change">
+            <U n="statistic_change">
+              <T n="amount">200</T>
+              <T n="stat">151031<!--commodity_Motive_PetDog_Hunger--></T>
+              <L n="tests">
+                <L>
+                  <V t="sim_info">
+                    <U n="sim_info">
+                      <V n="species" t="specified">
+                        <U n="specified">
+                          <L n="species">
+                            <E>DOG</E>
+                          </L>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </V>
+          <V t="statistic_change">
+            <U n="statistic_change">
+              <T n="amount">0</T>
+              <T n="stat">151032<!--commodity_Motive_PetDog_Bladder--></T>
+            </U>
+          </V>
+          <V t="statistic_change">
+            <U n="statistic_change">
+              <T n="amount">400</T>
+              <T n="stat">151035<!--commodity_Motive_PetCat_Hunger--></T>
+              <L n="tests">
+                <L>
+                  <V t="sim_info">
+                    <U n="sim_info">
+                      <V n="species" t="specified">
+                        <U n="specified">
+                          <L n="species">
+                            <E>CAT</E>
+                          </L>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </V>
+          <V t="statistic_change">
+            <U n="statistic_change">
+              <T n="amount">0</T>
+              <T n="stat">151036<!--commodity_Motive_PetCat_Bladder--></T>
+            </U>
+          </V>
+        </L>
+        <T n="consumption_turns">4</T>
+      </U>
+    </V>
+    <V n="focus" t="enabled">
+      <U n="enabled">
+        <V n="_focus_score" t="globally">
+          <U n="globally">
+            <E n="base">LOW</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V n="inventory_item" t="enabled">
+      <U n="enabled">
+        <T n="skip_carry_pose">True</T>
+        <L n="valid_inventory_types">
+          <E>SIM</E>
+          <E>AUTOPETFEEDER</E>
+          <E>STORAGE_CHEST_DORM</E>
+        </L>
+      </U>
+    </V>
+    <V n="retail_component" t="enabled">
+      <V n="enabled" t="reference">
+        <T n="reference">168124<!--retailComponent_Default_PetBowl--></T>
+      </V>
+    </V>
+    <V n="state" t="enabled">
+      <U n="enabled">
+        <L n="state_triggers">
+          <U>
+            <L n="at_states">
+              <T>15108<!--Consumable_Empty--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>158889<!--petFoodBowl_Freshness_Untouched--></T>
+              </L>
+            </V>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>77532<!--FireState_Burn_Material_Change_Replace--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+              </L>
+            </V>
+          </U>
+        </L>
+        <L n="states">
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">15108<!--Consumable_Empty--></T>
+                <U n="value">
+                  <V n="autonomy_modifiers" t="apply_new_value">
+                    <V n="apply_new_value" t="apply_statistic_modifiers">
+                      <U n="apply_statistic_modifiers">
+                        <L n="autonomy_modifiers">
+                          <U>
+                            <L n="decay_modifiers">
+                              <U>
+                                <T n="key">158892<!--commodity_PetFoodBowl_Freshness--></T>
+                              </U>
+                            </L>
+                          </U>
+                        </L>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="geometry_state" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_value">
+                      <T n="set_to_custom_value">empty</T>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">15109<!--Consumable_Full--></T>
+                <U n="value">
+                  <V n="geometry_state" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_value">
+                      <T n="set_to_custom_value">full</T>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">15110<!--Consumable_HalfFull--></T>
+                <U n="value">
+                  <V n="geometry_state" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_value">
+                      <T n="set_to_custom_value">partial</T>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">15113<!--Consumable_Untouched--></T>
+                <U n="value">
+                  <V n="autonomy_modifiers" t="apply_new_value">
+                    <V n="apply_new_value" t="apply_statistic_modifiers">
+                      <U n="apply_statistic_modifiers">
+                        <L n="autonomy_modifiers">
+                          <U>
+                            <L n="decay_modifiers">
+                              <U>
+                                <T n="key">158892<!--commodity_PetFoodBowl_Freshness--></T>
+                                <T n="value">1</T>
+                              </U>
+                            </L>
+                          </U>
+                        </L>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="geometry_state" t="apply_new_value">
+                    <V n="apply_new_value" t="set_to_custom_value">
+                      <T n="set_to_custom_value">full</T>
+                    </V>
+                  </V>
+                </U>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">15108<!--Consumable_Empty--></T>
+            </V>
+          </U>
+          <U>
+            <V n="default_value" t="reference">
+              <T n="reference">158889<!--petFoodBowl_Freshness_Untouched--></T>
+            </V>
+          </U>
+          <U>
+            <V n="default_value" t="reference">
+              <T n="reference">160223<!--petBowl_Feeder_NotSlotted--></T>
+            </V>
+            <T n="reset_on_load_if_time_passes">True</T>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">131794<!--Kelpto_Stolen_Object--></T>
+              </U>
+              <U>
+                <T n="key">131795<!--Klepto_Not_Stolen_Object--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">131795<!--Klepto_Not_Stolen_Object--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">39611<!--FireState_Burn_Material_Change--></T>
+              </U>
+              <U>
+                <T n="key">39736<!--FireState_Burn_Material_Change_Burning--></T>
+              </U>
+              <U>
+                <T n="key">39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+              </U>
+              <U>
+                <T n="key">77532<!--FireState_Burn_Material_Change_Replace--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">35956<!--Materialistic_Admired--></T>
+              </U>
+              <U>
+                <T n="key">35957<!--Materialistic_YetToAdmire--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">35957<!--Materialistic_YetToAdmire--></T>
+            </V>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="tooltip_component" t="enabled">
+      <U n="enabled">
+        <L n="custom_tooltips">
+          <U>
+            <L n="object_tests">
+              <L>
+                <V t="in_inventory" />
+              </L>
+            </L>
+            <L n="tooltip_fields">
+              <U>
+                <E n="key">recipe_name</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0x144FD666<!--{0.ObjectName}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">Object</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+            </L>
+          </U>
+        </L>
+      </U>
+    </V>
+  </U>
+  <L n="_super_affordances">
+    <T>13328<!--debug_Reset--></T>
+    <T>13326<!--debug_ObjectDestroy--></T>
+    <T>103888<!--cheat_set_as_head--></T>
+    <T>196759</T>
+    <T>167188<!--petBowl_PetPicker_Call--></T>
+    <T>157263<!--waypoint_MoveAround_Cat_PetBowl--></T>
+    <T>157741<!--waypoint_MoveAround_Dog_Object_PetBowl--></T>
+    <T>157013<!--petBowl_FillBowl_CallPets--></T>
+    <T>167189<!--petBowl_PetPicker_FillnCall--></T>
+    <T>169140<!--petBowl_FeedPet_FindBowl--></T>
+    <T>157070<!--petBowl_WaitNearby_Cat--></T>
+    <T>157079<!--petBowl_WaitNearby_Dog--></T>
+    <T>99066<!--Cheat_RefillConsumable--></T>
+    <T>99067<!--Cheat_EmptyConsumable--></T>
+    <T>170840<!--petBowl_FillAll_Ground--></T>
+    <T>158615<!--Pet_PetBowl_EmptyBowl--></T>
+    <T>160752<!--petBowl_SimPicker_Owner_Dog_GrabPetBowl--></T>
+    <T>160750<!--petbowl_PushWhine_CarryBowl--></T>
+    <T>170063<!--cheat_MakeSpoiled_PetBowl--></T>
+    <T>170064<!--cheat_MakeFresh_PetBowl--></T>
+    <T>176578<!--petBowl_FillBowl_FromDropBowl--></T>
+    <T>157510<!--generic_Object_Toddler_Check_Out_CircleConstraint--></T>
+    <T>156936<!--generic_Object_Toddler_Check_Out_HighChair--></T>
+    <T>170557<!--Pet_PetBowl_EmptyBowl_Continuation--></T>
+    <T>106859</T>
+    <T>74457<!--fire_ReplaceBurntObject--></T>
+    <T>102258<!--Ghost_Possess--></T>
+    <T>168502<!--Ghost_Pet_Possess--></T>
+  </L>
+  <U n="recycling_data">
+    <L n="recycling_values">
+      <U>
+        <E n="Bucks Type">RecycleBitsBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+      <U>
+        <E n="Bucks Type">RecyclePiecesBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+    </L>
+  </U>
+</I>

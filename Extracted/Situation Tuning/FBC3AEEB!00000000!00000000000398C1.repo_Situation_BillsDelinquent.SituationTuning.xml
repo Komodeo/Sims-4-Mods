@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="RepoSituation" i="situation" m="situations.complex.repo_situation" n="repo_Situation_BillsDelinquent" s="235713">
+  <V n="ask_not_to_take_failure_notification" t="enabled">
+    <U n="enabled">
+      <V n="icon" t="enabled">
+        <V n="enabled" t="participant">
+          <U n="participant">
+            <L n="participant_type">
+              <E>Actor</E>
+            </L>
+          </U>
+        </V>
+      </V>
+      <V n="text" t="single">
+        <T n="single">0xB53BCA5<!--Nope. You should have paid your bills! I'm afraid I have to take this.--></T>
+      </V>
+      <E n="visual_type">SPEECH</E>
+    </U>
+  </V>
+  <U n="ask_not_to_take_interaction">
+    <L n="affordances">
+      <T>235717<!--repoPerson_PleadForObject--></T>
+      <T>235716<!--repoPerson_ArgueToKeep--></T>
+    </L>
+  </U>
+  <L n="ask_not_to_take_success_chances">
+    <U />
+    <U>
+      <T n="base_chance">90</T>
+    </U>
+    <U>
+      <T n="base_chance">80</T>
+    </U>
+    <U>
+      <T n="base_chance">70</T>
+    </U>
+  </L>
+  <V n="ask_not_to_take_success_notification" t="enabled">
+    <U n="enabled">
+      <V n="icon" t="enabled">
+        <V n="enabled" t="participant">
+          <U n="participant">
+            <L n="participant_type">
+              <E>Actor</E>
+            </L>
+          </U>
+        </V>
+      </V>
+      <V n="text" t="single">
+        <T n="single">0x60628188<!--Oh, fine. If it means that much to you, I'll consider taking something else.--></T>
+      </V>
+      <E n="visual_type">SPEECH</E>
+    </U>
+  </V>
+  <V n="auto_clear_debt_event" t="enabled">
+    <E n="enabled">event_beat_the_man</E>
+  </V>
+  <T n="blocks_super_speed_three">True</T>
+  <U n="bribe_interaction">
+    <L n="affordances">
+      <T>226061<!--RepoPerson_Bribe--></T>
+      <T>234920<!--repoPerson_AppealToHumanity--></T>
+    </L>
+  </U>
+  <E n="debt_source">BILLS</E>
+  <U n="debtor_sim_job_and_role_state">
+    <T n="role_state">224489<!--role_Repo_DebtorSim--></T>
+    <T n="situation_job">224486<!--situationJob_Repo_DebtorSim--></T>
+  </U>
+  <T n="duration">0</T>
+  <U n="find_object_state">
+    <L n="job_and_role_changes">
+      <U>
+        <T n="Situation Job">224486<!--situationJob_Repo_DebtorSim--></T>
+        <T n="Role State">224489<!--role_Repo_DebtorSim--></T>
+      </U>
+      <U>
+        <T n="Situation Job">236353<!--situationJob_Repo_RepoPerson_Bills--></T>
+        <T n="Role State">224394<!--role_Repo_RepoPerson_FindObject--></T>
+      </U>
+    </L>
+    <V n="time_out" t="enabled">
+      <T n="enabled">15</T>
+    </V>
+  </U>
+  <U n="idle_at_object_state">
+    <L n="job_and_role_changes">
+      <U>
+        <T n="Situation Job">224486<!--situationJob_Repo_DebtorSim--></T>
+        <T n="Role State">225977<!--role_Repo_GetNearRepoPerson--></T>
+      </U>
+      <U>
+        <T n="Situation Job">236353<!--situationJob_Repo_RepoPerson_Bills--></T>
+        <T n="Role State">236730<!--role_Repo_RepoPerson_Idle_Bills--></T>
+      </U>
+    </L>
+    <V n="time_out" t="enabled">
+      <T n="enabled">30</T>
+    </V>
+  </U>
+  <U n="leave_state">
+    <L n="job_and_role_changes">
+      <U>
+        <T n="Situation Job">236353<!--situationJob_Repo_RepoPerson_Bills--></T>
+        <T n="Role State">24224<!--rolestate_leave_now--></T>
+      </U>
+    </L>
+    <V n="time_out" t="enabled" />
+  </U>
+  <V n="maximum_object_to_repossess" t="has_maximum_value">
+    <T n="has_maximum_value">10</T>
+  </V>
+  <U n="nothing_to_take_state">
+    <U n="interaction_of_interest">
+      <L n="affordances">
+        <T>228002<!--repoPerson_NothingToTake--></T>
+      </L>
+    </U>
+    <L n="job_and_role_changes">
+      <U>
+        <T n="Situation Job">236353<!--situationJob_Repo_RepoPerson_Bills--></T>
+        <T n="Role State">239161<!--role_Repo_RepoPerson_NothingToTake_Bills--></T>
+      </U>
+    </L>
+    <V n="time_out" t="enabled">
+      <T n="enabled">20</T>
+    </V>
+  </U>
+  <U n="repo_amount">
+    <U n="min_and_max_collection_range">
+      <T n="lower_bound">0.8</T>
+      <T n="upper_bound">1.2</T>
+    </U>
+    <T n="target_amount">100</T>
+  </U>
+  <U n="repo_person_job_and_role_state">
+    <T n="role_state">224394<!--role_Repo_RepoPerson_FindObject--></T>
+    <T n="situation_job">236353<!--situationJob_Repo_RepoPerson_Bills--></T>
+  </U>
+  <U n="repossess_object_state">
+    <U n="interaction_of_interest">
+      <L n="affordances">
+        <T>229529<!--repo_RepoPerson_DestroyObject--></T>
+      </L>
+    </U>
+    <L n="job_and_role_changes">
+      <U>
+        <T n="Situation Job">224486<!--situationJob_Repo_DebtorSim--></T>
+        <T n="Role State">241173<!--role_Repo_Debtor_ObjectTaken_Bills--></T>
+      </U>
+      <U>
+        <T n="Situation Job">236353<!--situationJob_Repo_RepoPerson_Bills--></T>
+        <T n="Role State">239191<!--role_Repo_RepoPerson_TakeObject_Bills--></T>
+      </U>
+    </L>
+    <V n="time_out" t="enabled">
+      <T n="enabled">60</T>
+    </V>
+  </U>
+  <T n="save_lock_tooltip">0xADF48917<!--You cannot save while the Repo Person is actively repossessing.--></T>
+  <V n="situation_end_time_string" t="show_end_time">
+    <T n="show_end_time">0xA3E17143<!--Work day ends at {0.TimeShort}--></T>
+  </V>
+  <L n="valid_object_tests">
+    <L>
+      <V t="object_criteria">
+        <U n="object_criteria">
+          <V n="identity_test" t="tags">
+            <U n="tags">
+              <L n="tag_set">
+                <E>Func_CantRepo</E>
+              </L>
+              <E n="test_type">CONTAINS_NO_TAGS_IN_SET</E>
+            </U>
+          </V>
+          <V n="subject_specific_tests" t="single_object" />
+        </U>
+      </V>
+      <V t="object_criteria">
+        <U n="object_criteria">
+          <V n="identity_test" t="tags">
+            <U n="tags">
+              <L n="tag_set">
+                <E>Func_Lightning_CanStrike</E>
+              </L>
+              <E n="test_type">CONTAINS_ANY_TAG_IN_SET</E>
+            </U>
+          </V>
+          <V n="subject_specific_tests" t="single_object" />
+        </U>
+      </V>
+    </L>
+  </L>
+</I>

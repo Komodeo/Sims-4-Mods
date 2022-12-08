@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="vetPodium_Player_PetOwner_Spay_Continuation_Phone" s="177939">
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">1</T>
+              <T n="ideal_radius_width">1</T>
+              <T n="radius">3</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="facing" />
+        </U>
+      </L>
+    </U>
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">1.5</T>
+              <T n="radius">2</T>
+            </U>
+          </V>
+        </U>
+        <U>
+          <V n="value" t="facing" />
+        </U>
+      </L>
+    </U>
+  </L>
+  <V n="_saveable" t="disabled" />
+  <T n="allow_autonomous">False</T>
+  <T n="allow_user_directed">False</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">3</T>
+                  <T n="min_time">3</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="looping_content">
+        <U n="looping_content">
+          <U n="animation_ref">
+            <T n="factory">11701<!--Phone_Browse--></T>
+          </U>
+        </U>
+      </V>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="call_to_action_turn_off">
+      <U n="call_to_action_turn_off">
+        <T n="_call_to_action">170525<!--callToAction_Vet_Podium--></T>
+        <T n="_permanent">False</T>
+      </U>
+    </V>
+    <V t="create_situation">
+      <U n="create_situation">
+        <V n="create_situation" t="situation_start">
+          <U n="situation_start">
+            <T n="invite_actor">False</T>
+            <L n="invite_participants">
+              <U>
+                <E n="participants_to_invite">Actor</E>
+                <V n="invite_to_job" t="specify_job">
+                  <L n="specify_job">
+                    <T>168071<!--jobs_Vet_Player--></T>
+                  </L>
+                </V>
+              </U>
+              <U>
+                <E n="participants_to_invite">PickedSim</E>
+                <V n="invite_to_job" t="specify_job">
+                  <L n="specify_job">
+                    <T>164710<!--jobs_Vet_Pet--></T>
+                  </L>
+                </V>
+              </U>
+            </L>
+            <T n="invite_picked_sims">False</T>
+            <T n="invite_target_sim">False</T>
+            <T n="situation">175468<!--situation_Player_PetOwner_Neuter--></T>
+          </U>
+        </V>
+        <U n="success_chance">
+          <L n="multipliers">
+            <U>
+              <T n="multiplier">0</T>
+              <L n="tests">
+                <L>
+                  <V t="sim_info">
+                    <U n="sim_info">
+                      <V n="gender" t="specified">
+                        <E n="specified">FEMALE</E>
+                      </V>
+                      <E n="who">PickedSim</E>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </L>
+        </U>
+        <V n="timing" t="at_end">
+          <U n="at_end">
+            <E n="criticality">OnCancelOrException</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="create_situation">
+      <U n="create_situation">
+        <V n="create_situation" t="situation_start">
+          <U n="situation_start">
+            <T n="invite_actor">False</T>
+            <L n="invite_participants">
+              <U>
+                <E n="participants_to_invite">Actor</E>
+                <V n="invite_to_job" t="specify_job">
+                  <L n="specify_job">
+                    <T>168071<!--jobs_Vet_Player--></T>
+                  </L>
+                </V>
+              </U>
+              <U>
+                <E n="participants_to_invite">PickedSim</E>
+                <V n="invite_to_job" t="specify_job">
+                  <L n="specify_job">
+                    <T>164710<!--jobs_Vet_Pet--></T>
+                  </L>
+                </V>
+              </U>
+            </L>
+            <T n="invite_picked_sims">False</T>
+            <T n="invite_target_sim">False</T>
+            <T n="situation">169864<!--situation_Player_PetOwner_Spay--></T>
+            <T n="user_facing">True</T>
+          </U>
+        </V>
+        <U n="success_chance">
+          <L n="multipliers">
+            <U>
+              <T n="multiplier">0</T>
+              <L n="tests">
+                <L>
+                  <V t="sim_info">
+                    <U n="sim_info">
+                      <V n="gender" t="specified">
+                        <E n="specified">MALE</E>
+                      </V>
+                      <E n="who">PickedSim</E>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </L>
+        </U>
+        <V n="timing" t="at_end">
+          <U n="at_end">
+            <E n="criticality">OnCancel</E>
+          </U>
+        </V>
+      </U>
+    </V>
+  </L>
+  <V n="basic_reserve_object" t="disabled" />
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0xF3675EBA<!--Sign In--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <L n="basic_extras">
+          <V t="notification">
+            <U n="notification">
+              <V n="dialog" t="tested">
+                <U n="tested">
+                  <L n="records">
+                    <U>
+                      <V n="item" t="reference">
+                        <T n="reference">172702<!--notifications_Vet_SignIn_Neuter--></T>
+                      </V>
+                      <L n="tests">
+                        <L>
+                          <V t="sim_info">
+                            <U n="sim_info">
+                              <V n="gender" t="specified">
+                                <E n="specified">MALE</E>
+                              </V>
+                              <E n="who">PickedSim</E>
+                            </U>
+                          </V>
+                        </L>
+                      </L>
+                    </U>
+                    <U>
+                      <V n="item" t="reference">
+                        <T n="reference">172701<!--notifications_Vet_SignIn_Spay--></T>
+                      </V>
+                      <L n="tests">
+                        <L>
+                          <V t="sim_info">
+                            <U n="sim_info">
+                              <V n="gender" t="specified">
+                                <E n="specified">FEMALE</E>
+                              </V>
+                              <E n="who">PickedSim</E>
+                            </U>
+                          </V>
+                        </L>
+                      </L>
+                    </U>
+                  </L>
+                </U>
+              </V>
+            </U>
+          </V>
+        </L>
+        <L n="continuation">
+          <U>
+            <T n="affordance">176126<!--simPicker_Vet_CustomerRequestingService--></T>
+            <E n="target">Actor</E>
+          </U>
+        </L>
+      </U>
+    </U>
+  </V>
+  <U n="post_run_autonomy_commodities">
+    <L n="requests">
+      <U>
+        <L n="static_commodities">
+          <T>166883<!--staticCommodity_Vet_Podium--></T>
+        </L>
+      </U>
+    </L>
+  </U>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="can_create_user_facing_situation">
+      <U n="can_create_user_facing_situation">
+        <T n="allow_non_prestige_is_exempt">True</T>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">30</T>
+  <T n="visible">True</T>
+</I>

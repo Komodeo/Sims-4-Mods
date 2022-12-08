@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="MixerInteraction" i="interaction" m="interactions.base.mixer_interaction" n="mixer_Campfire_RoastMarshmallows" s="105235">
+  <V n="_interruptible" t="enabled" />
+  <T n="_must_run">True</T>
+  <T n="allow_user_directed">False</T>
+  <V n="basic_content" t="looping_animation">
+    <U n="looping_animation">
+      <U n="animation_ref">
+        <T n="factory">105218<!--campfire_Roast_CookMarshmallowLoop--></T>
+      </U>
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">10</T>
+                  <T n="min_time">7</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+      </L>
+    </U>
+  </V>
+  <V n="basic_focus" t="disable_focus" />
+  <T n="display_name">0xA2ABF8C<!--Warm Self--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Mixer</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <V n="animation_ref" t="enabled">
+              <U n="enabled">
+                <T n="factory">102327<!--Campfire_Roast_MarshmallowSuccess--></T>
+              </U>
+            </V>
+            <T n="force_outcome_on_exit">True</T>
+            <L n="loot_list">
+              <T>105239<!--loot_Buff_Campfire_MmmMarshmallow--></T>
+              <T>112013<!--loot_Commodity_RoastMarshmallows_TakeTurn--></T>
+            </L>
+          </U>
+          <U n="weight">
+            <T n="base_value">3</T>
+          </U>
+        </U>
+      </L>
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">102330<!--Campfire_Roast_SmoreSuccess--></T>
+                  </U>
+                </V>
+                <L n="loot_list">
+                  <T>105240<!--loot_Buff_Campfire_MmmSmore--></T>
+                  <T>112013<!--loot_Commodity_RoastMarshmallows_TakeTurn--></T>
+                </L>
+              </U>
+              <U n="weight">
+                <T n="base_value">1</T>
+                <L n="multipliers">
+                  <U>
+                    <T n="multiplier">1.5</T>
+                    <L n="tests">
+                      <L>
+                        <V t="skill_test">
+                          <U n="skill_test">
+                            <T n="skill">16705<!--statistic_Skill_AdultMajor_HomestyleCooking--></T>
+                            <V n="skill_range" t="interval">
+                              <U n="interval">
+                                <U n="skill_interval">
+                                  <T n="lower_bound">7</T>
+                                </U>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                </L>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">102328<!--Campfire_Roast_MarshmallowFailureBurn--></T>
+                  </U>
+                </V>
+                <L n="loot_list">
+                  <T>112013<!--loot_Commodity_RoastMarshmallows_TakeTurn--></T>
+                </L>
+                <E n="outcome_result">FAILURE</E>
+              </U>
+              <U n="weight">
+                <L n="multipliers">
+                  <U>
+                    <T n="multiplier">1.5</T>
+                    <L n="tests">
+                      <L>
+                        <V t="skill_test">
+                          <U n="skill_test">
+                            <T n="skill">16705<!--statistic_Skill_AdultMajor_HomestyleCooking--></T>
+                            <V n="skill_range" t="interval">
+                              <U n="interval">
+                                <U n="skill_interval">
+                                  <T n="upper_bound">3</T>
+                                </U>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                      <L>
+                        <V t="sim_info">
+                          <U n="sim_info">
+                            <V n="ages" t="specified">
+                              <L n="specified">
+                                <E>CHILD</E>
+                              </L>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                </L>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">102329<!--Campfire_Roast_MarshmallowFailure--></T>
+                  </U>
+                </V>
+                <L n="loot_list">
+                  <T>112013<!--loot_Commodity_RoastMarshmallows_TakeTurn--></T>
+                </L>
+                <E n="outcome_result">FAILURE</E>
+              </U>
+              <U n="weight">
+                <L n="multipliers">
+                  <U>
+                    <T n="multiplier">1.5</T>
+                    <L n="tests">
+                      <L>
+                        <V t="skill_test">
+                          <U n="skill_test">
+                            <T n="skill">16705<!--statistic_Skill_AdultMajor_HomestyleCooking--></T>
+                            <V n="skill_range" t="interval">
+                              <U n="interval">
+                                <U n="skill_interval">
+                                  <T n="upper_bound">6</T>
+                                </U>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                </L>
+              </U>
+            </U>
+          </L>
+        </U>
+      </L>
+      <T n="use_fallback_as_default">True</T>
+    </U>
+  </V>
+  <U n="sub_action">
+    <T n="base_weight">2</T>
+  </U>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="visible">False</T>
+</I>

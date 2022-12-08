@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="pets_Watch_Investigate" s="166992">
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="line_of_sight">
+            <U n="line_of_sight">
+              <V n="temporary_los" t="enabled">
+                <U n="enabled">
+                  <T n="max_line_of_sight_radius">10</T>
+                </U>
+              </V>
+            </U>
+          </V>
+        </U>
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="radius">10</T>
+            </U>
+          </V>
+        </U>
+        <U>
+          <V n="value" t="facing" />
+        </U>
+      </L>
+    </U>
+  </L>
+  <E n="_constraints_actor">TargetSim</E>
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>TargetSim</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <T n="acquire_targets_as_resource">False</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">20</T>
+                  <T n="min_time">10</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="staging_content">
+        <U n="staging_content">
+          <V n="animation_ref" t="enabled">
+            <U n="enabled">
+              <T n="factory">161418<!--Pet_Quirks_Investigate--></T>
+              <U n="overrides">
+                <V n="balloons" t="enabled">
+                  <L n="enabled">
+                    <U>
+                      <L n="balloon_choices">
+                        <U>
+                          <V n="item" t="balloon_category">
+                            <T n="balloon_category">165643<!--balloonCategory_Discipline_Pets_Watch--></T>
+                          </V>
+                          <L n="tests">
+                            <L>
+                              <V t="test_set_reference">
+                                <T n="test_set_reference">171659<!--testSetInstance_PetTraits_Actor_Blacklist_Loyal--></T>
+                              </V>
+                            </L>
+                          </L>
+                        </U>
+                        <U>
+                          <V n="item" t="balloon_category">
+                            <T n="balloon_category">166463<!--pets_BalloonCategory_LoyalTrait--></T>
+                          </V>
+                          <L n="tests">
+                            <L>
+                              <V t="test_set_reference">
+                                <T n="test_set_reference">171660<!--testSetInstance_PetTraits_Actor_Whitelist_Loyal--></T>
+                              </V>
+                            </L>
+                          </L>
+                        </U>
+                      </L>
+                      <L n="balloon_target">
+                        <E>Actor</E>
+                      </L>
+                    </U>
+                  </L>
+                </V>
+              </U>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled" />
+      <T n="start_user_directed_inertial">True</T>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">171915<!--buff_Cat_onRoutableSurface_Misbehavior--></T>
+        </U>
+        <L n="subject">
+          <E>Actor</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="object_routable_surface">
+              <U n="object_routable_surface">
+                <V n="identity_test" t="tags">
+                  <U n="tags">
+                    <L n="tag_set">
+                      <E>Func_Counter</E>
+                      <E>Func_Fridge</E>
+                      <E>BuyCatSS_DiningTable</E>
+                    </L>
+                  </U>
+                </V>
+                <E n="sims">Actor</E>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="basic_focus" t="tunable_focus">
+    <U n="tunable_focus">
+      <T n="layer">5</T>
+      <T n="score">10</T>
+      <L n="subject">
+        <E>TargetSim</E>
+      </L>
+    </U>
+  </V>
+  <V n="basic_reserve_object" t="disabled" />
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x7474537<!--Watch--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <E n="duplicate_affordance_group">DuplicateAffordance_View</E>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">TARGET</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified" />
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E>CAT</E>
+              <E>DOG</E>
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="identity">
+      <U n="identity">
+        <E n="subject_a">Actor</E>
+        <E n="subject_b">Object</E>
+        <T n="subjects_match">False</T>
+      </U>
+    </V>
+    <V t="user_running_interaction">
+      <U n="user_running_interaction">
+        <L n="affordances">
+          <T>151786<!--TYAE_Watch_Toddler--></T>
+        </L>
+        <E n="participant">TargetSim</E>
+        <T n="test_for_not_running">True</T>
+      </U>
+    </V>
+    <V t="routing_slave_formation">
+      <U n="routing_slave_formation">
+        <V n="formation_test" t="in_formation">
+          <U n="in_formation">
+            <T n="required_or_prohibited">False</T>
+          </U>
+        </V>
+        <V n="participant_slave" t="enabled">
+          <E n="enabled">Actor</E>
+        </V>
+      </U>
+    </V>
+    <V t="test_set_reference">
+      <T n="test_set_reference">129700<!--testSet_HasMet--></T>
+    </V>
+  </L>
+  <T n="time_overhead">10</T>
+</I>

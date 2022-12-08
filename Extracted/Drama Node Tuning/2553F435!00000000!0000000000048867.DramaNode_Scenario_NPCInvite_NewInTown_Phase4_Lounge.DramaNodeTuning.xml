@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="NPCInviteSituationDramaNode" i="drama_node" m="drama_scheduler.npc_invite_situation_drama_node" n="DramaNode_Scenario_NPCInvite_NewInTown_Phase4_Lounge" s="297063">
+  <V n="_NPC_host_job" t="enabled">
+    <T n="enabled">297383<!--situationJob_NPCInvites_Scenario_NewInTown_LoungeEvent_TargetSim--></T>
+  </V>
+  <V n="_NPC_hosted_situation_player_job" t="enabled">
+    <T n="enabled">297382<!--situationJob_NPCInvites_Scenario_NewInTown_LoungeEvent_Actor--></T>
+  </V>
+  <L n="_NPC_hosted_situation_start_messages">
+    <U>
+      <U n="dialog">
+        <V n="bring_other_sims" t="enabled">
+          <U n="enabled">
+            <U n="picker_dialog">
+              <V n="max_selectable" t="static_count">
+                <U n="static_count">
+                  <T n="number_selectable">7</T>
+                </U>
+              </V>
+              <T n="min_selectable">0</T>
+              <T n="text_cancel">0x30DC415C<!--Decline--></T>
+              <T n="text_ok">0xC15E5348<!--Accept--></T>
+              <V n="title" t="enabled">
+                <T n="enabled">0x415BA726<!--Select Sims to Travel with--></T>
+              </V>
+            </U>
+            <T n="situation_job">297383<!--situationJob_NPCInvites_Scenario_NewInTown_LoungeEvent_TargetSim--></T>
+            <T n="text">0x41CD82EF<!--Accept, and Select Sims to Travel with--></T>
+            <T n="travel_with_filter">109049<!--filter_HasMet_ctyae_NotBusy--></T>
+          </U>
+        </V>
+        <E n="phone_ring_type">BUZZ</E>
+        <V n="text" t="single">
+          <T n="single">0x279A2A35<!--Hi there {0.SimFirstName}! Some people and I are hitting the town tonight. You should come with us!--></T>
+        </V>
+        <T n="zone_title">0xC79595F2<!--{0.String}: {1.String}--></T>
+      </U>
+      <L n="dialog_complete_loot_list">
+        <T>287516<!--loot_Want_BailOnFriend_AddTracker--></T>
+      </L>
+    </U>
+  </L>
+  <T n="_situation_to_run">297306<!--situation_Scenario_NewInTown_Phase4_LoungeEvent--></T>
+  <T n="_user_facing">False</T>
+  <T n="allow_during_work_hours">False</T>
+  <V n="cooldown_data" t="none" />
+  <U n="min_and_max_times">
+    <T n="lower_bound">0</T>
+    <T n="upper_bound">24</T>
+  </U>
+  <L n="pretests">
+    <L />
+  </L>
+  <L n="receiver_sim_pretests">
+    <L>
+      <V t="sim_info">
+        <U n="sim_info">
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>TEEN</E>
+              <E>YOUNGADULT</E>
+              <E>ADULT</E>
+              <E>ELDER</E>
+            </L>
+          </V>
+          <V n="species" t="specified">
+            <U n="specified">
+              <L n="species">
+                <E />
+              </L>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </L>
+  <L n="run_tests">
+    <L>
+      <V t="relationship">
+        <U n="relationship">
+          <U n="prohibited_relationship_bits">
+            <L n="match_any">
+              <T>240110<!--rbc_Sentiment_Negative--></T>
+            </L>
+          </U>
+          <L n="subject">
+            <E>Actor</E>
+          </L>
+          <L n="target_sim">
+            <E>TargetSim</E>
+          </L>
+        </U>
+      </V>
+    </L>
+  </L>
+  <V n="scoring" t="disabled" />
+  <V n="sender_sim_info" t="sim_filter">
+    <U n="sim_filter">
+      <L n="blacklist_participants">
+        <E />
+      </L>
+      <T n="sim_filter">127381<!--filter_HasMet_TYAE_AllowGhosts_NotInHousehold_PreferFriends--></T>
+    </U>
+  </V>
+  <V n="time_option" t="schedule">
+    <U n="schedule">
+      <L n="valid_times">
+        <U>
+          <U n="days_available">
+            <T n="0 SUNDAY">True</T>
+            <T n="1 MONDAY">True</T>
+            <T n="2 TUESDAY">True</T>
+            <T n="3 WEDNESDAY">True</T>
+            <T n="4 THURSDAY">True</T>
+            <T n="5 FRIDAY">True</T>
+            <T n="6 SATURDAY">True</T>
+          </U>
+          <T n="duration">2</T>
+          <U n="start_time">
+            <T n="hour">18</T>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+</I>

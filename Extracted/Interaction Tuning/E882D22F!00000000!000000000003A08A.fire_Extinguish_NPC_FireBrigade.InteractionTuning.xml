@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="fire_Extinguish_NPC_FireBrigade" s="237706">
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">1.5</T>
+              <T n="ideal_radius_width">0.5</T>
+              <T n="multi_surface">True</T>
+              <T n="radius">3</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="facing" />
+        </U>
+      </L>
+    </U>
+  </L>
+  <V n="_icon" t="resource_key">
+    <U n="resource_key">
+      <T n="key" p="InGame\UI\Icons\InteractionQueue\IconQueueFire.png">2f7d0004:00000000:520a9297634a669f</T>
+    </U>
+  </V>
+  <T n="_multi_surface">True</T>
+  <V n="_saveable" t="enabled" />
+  <L n="_static_commodities">
+    <U>
+      <T n="static_commodity">237461<!--staticCommodity_Fire_Extinguish_NPC--></T>
+    </U>
+  </L>
+  <T n="allow_autonomous">True</T>
+  <T n="allow_user_directed">False</T>
+  <T n="attention_cost">0.5</T>
+  <T n="autonomy_can_overwrite_similar_affordance">True</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="stat_based">
+                <U n="stat_based">
+                  <T n="stat">39323<!--commodity_object_fire_strength--></T>
+                  <U n="threshold">
+                    <E n="comparison">LESS_OR_EQUAL</E>
+                    <T n="value">1</T>
+                  </U>
+                  <E n="who">Object</E>
+                </U>
+              </V>
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">6</T>
+                  <T n="min_time">4</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+            <L n="loot_actions">
+              <T>98325<!--loot_Buff_Fire_Extinguish--></T>
+              <T>100936<!--loot_Buff_Fire_RecentFire--></T>
+            </L>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="stat_based">
+                <U n="stat_based">
+                  <T n="stat">39470<!--commodity_object_burning--></T>
+                  <U n="threshold">
+                    <E n="comparison">LESS_OR_EQUAL</E>
+                    <T n="value">1</T>
+                  </U>
+                </U>
+              </V>
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">6</T>
+                  <T n="min_time">4</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+            <E n="progress_bar_action">IGNORE_CONDITION</E>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="looping_content">
+        <U n="looping_content">
+          <U n="animation_ref">
+            <T n="factory">40113<!--Fire_Extinguish--></T>
+          </U>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">-12.5</T>
+                <T n="stat">39323<!--commodity_object_fire_strength--></T>
+                <L n="subject">
+                  <E>Object</E>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">1</T>
+                <T n="exclusive_to_owning_si">False</T>
+                <T n="stat">75770<!--commodity_object_fire_BeenExtinguished--></T>
+                <L n="subject">
+                  <E>Object</E>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">-500</T>
+                <T n="stat">39323<!--commodity_object_fire_strength--></T>
+                <L n="subject">
+                  <E>Object</E>
+                </L>
+                <L n="tests">
+                  <L>
+                    <V t="trait">
+                      <U n="trait">
+                        <L n="whitelist_traits">
+                          <T>76817<!--trait_OneWithNature--></T>
+                        </L>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="reference">
+              <T n="reference">249762</T>
+            </V>
+            <V t="reference">
+              <T n="reference">249770</T>
+            </V>
+          </L>
+        </U>
+      </V>
+      <T n="start_autonomous_inertial">False</T>
+    </U>
+  </V>
+  <V n="basic_reserve_object" t="enabled">
+    <U n="enabled">
+      <L n="subject_list">
+        <U>
+          <V n="reserve_type" t="multi" />
+          <L n="subject">
+            <E>Object</E>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <V n="carry_cancel_override_for_displaced_interactions" t="enabled">
+    <T n="enabled">99868<!--put_down_quickly_cancel_aop--></T>
+  </V>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x85E238D6<!--Extinguish--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <V n="goal_height_limit" t="disabled" />
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <T n="force_outcome_on_exit">True</T>
+        <L n="loot_list">
+          <T>97135<!--Loot_Fire_AddExtinguisherBuff--></T>
+          <T>98996<!--Loot_Fire_Extinguish_Nearby_Fires--></T>
+        </L>
+        <L n="parameterized_autonomy">
+          <U>
+            <E n="key">Actor</E>
+            <U n="value">
+              <L n="requests">
+                <U>
+                  <L n="static_commodities">
+                    <T>237461<!--staticCommodity_Fire_Extinguish_NPC--></T>
+                  </L>
+                </U>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </U>
+  </V>
+  <T n="pie_menu_priority">9</T>
+  <U n="post_run_autonomy_commodities">
+    <L n="requests">
+      <U>
+        <T n="consider_same_target">False</T>
+        <T n="retain_carry_target">False</T>
+        <L n="static_commodities">
+          <T>237461<!--staticCommodity_Fire_Extinguish_NPC--></T>
+        </L>
+      </U>
+    </L>
+  </U>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">OBJECT</E>
+  <L n="test_autonomous" />
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+          </L>
+        </V>
+        <V n="npc" t="enabled">
+          <T n="enabled">True</T>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="statistic">
+      <U n="statistic">
+        <T n="stat">39323<!--commodity_object_fire_strength--></T>
+        <V n="threshold" t="value_threshold">
+          <U n="value_threshold">
+            <E n="comparison">GREATER</E>
+            <T n="value">10</T>
+          </U>
+        </V>
+        <E n="who">Object</E>
+      </U>
+    </V>
+    <V t="posture">
+      <U n="posture">
+        <L n="prohibited_postures">
+          <T>143802<!--posture_Baththub_ToddlerBath--></T>
+          <T>188318</T>
+        </L>
+      </U>
+    </V>
+    <V t="fire">
+      <U n="fire">
+        <V n="sim_on_fire" t="enabled">
+          <U n="enabled">
+            <T n="on_fire">True</T>
+            <E n="subject">TargetSim</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="fire">
+      <U n="fire">
+        <V n="sim_on_fire" t="enabled">
+          <U n="enabled">
+            <T n="on_fire">False</T>
+          </U>
+        </V>
+        <V n="tooltip" t="enabled">
+          <T n="enabled">0x4F2AD5DF<!--Extinguish yourself first!--></T>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">5</T>
+</I>

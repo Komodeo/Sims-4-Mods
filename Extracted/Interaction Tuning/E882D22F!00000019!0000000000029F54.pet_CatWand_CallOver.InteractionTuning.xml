@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="pet_CatWand_CallOver" s="171860">
+  <V n="_animation_actor_map" t="literal">
+    <U n="literal">
+      <V n="carry_target" t="enabled">
+        <E n="enabled">PickedObject</E>
+      </V>
+    </U>
+  </V>
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">1</T>
+              <T n="radius">4</T>
+            </U>
+          </V>
+        </U>
+        <U>
+          <V n="value" t="facing">
+            <U n="facing">
+              <T n="range">45</T>
+            </U>
+          </V>
+        </U>
+        <U>
+          <V n="value" t="line_of_sight" />
+        </U>
+      </L>
+    </U>
+  </L>
+  <V n="_saveable" t="enabled" />
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="one_shot" />
+  <L n="basic_extras">
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>176302<!--loot_CatWand_Rainbow--></T>
+        </L>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">168048<!--buff_Pets_CancelLaydown--></T>
+        </U>
+        <L n="subject">
+          <E>TargetSim</E>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="basic_focus" t="tunable_focus">
+    <U n="tunable_focus">
+      <L n="subject">
+        <E>TargetSim</E>
+      </L>
+    </U>
+  </V>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x709F8CE6<!--Play with Cat Wand--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <V n="idle_animation" t="enabled">
+    <U n="enabled">
+      <T n="factory">12082<!--Stand_Idle_Stand_Idle_Looping_basic--></T>
+    </U>
+  </V>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">172056<!--pet_CatWand_GetAttention--></T>
+                  </U>
+                </V>
+                <L n="continuation">
+                  <U>
+                    <T n="affordance">170362<!--petSocials_SimToPet_CatsOnly_CatWand_Success--></T>
+                    <E n="target">TargetSim</E>
+                  </U>
+                </L>
+              </U>
+              <U n="weight">
+                <T n="base_value">3</T>
+                <L n="multipliers">
+                  <U>
+                    <T n="multiplier">0</T>
+                    <L n="tests">
+                      <L>
+                        <V t="mood">
+                          <U n="mood">
+                            <T n="mood">158138<!--mood_Drowsy_Cat--></T>
+                          </U>
+                        </V>
+                        <V t="trait">
+                          <U n="trait">
+                            <L n="blacklist_traits">
+                              <T>164046<!--trait_Pet_Playful_Cat--></T>
+                            </L>
+                            <T n="num_whitelist_required">0</T>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                </L>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">172056<!--pet_CatWand_GetAttention--></T>
+                  </U>
+                </V>
+                <L n="continuation">
+                  <U>
+                    <T n="affordance">170365<!--petSocials_SimToPet_CatsOnly_CatWand_Failure--></T>
+                    <E n="target">TargetSim</E>
+                  </U>
+                </L>
+              </U>
+              <U n="weight">
+                <L n="multipliers">
+                  <U>
+                    <T n="multiplier">6</T>
+                    <L n="tests">
+                      <L>
+                        <V t="trait">
+                          <U n="trait">
+                            <L n="whitelist_traits">
+                              <T>158202<!--trait_Pet_Lazy_Cat--></T>
+                            </L>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                  <U>
+                    <T n="multiplier">0</T>
+                    <L n="tests">
+                      <L>
+                        <V t="trait">
+                          <U n="trait">
+                            <L n="whitelist_traits">
+                              <T>164046<!--trait_Pet_Playful_Cat--></T>
+                            </L>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="state">
+                <U n="state">
+                  <V n="fallback_behavior" t="always_fail" />
+                  <E n="operator">NOTEQUAL</E>
+                  <T n="value">170384<!--catWand_Values_Fuzzies_0--></T>
+                  <E n="who">PickedObject</E>
+                </U>
+              </V>
+              <V t="object_criteria">
+                <U n="object_criteria">
+                  <V n="identity_test" t="tags">
+                    <U n="tags">
+                      <L n="tag_set">
+                        <E>Func_CatWand_Rainbow</E>
+                      </L>
+                      <E n="test_type">CONTAINS_NO_TAGS_IN_SET</E>
+                    </U>
+                  </V>
+                  <V n="subject_specific_tests" t="single_object">
+                    <U n="single_object">
+                      <E n="target">CarriedObject</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">172056<!--pet_CatWand_GetAttention--></T>
+                  </U>
+                </V>
+                <L n="continuation">
+                  <U>
+                    <T n="affordance">170365<!--petSocials_SimToPet_CatsOnly_CatWand_Failure--></T>
+                    <E n="target">TargetSim</E>
+                  </U>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="state">
+                <U n="state">
+                  <V n="fallback_behavior" t="always_fail" />
+                  <T n="value">170384<!--catWand_Values_Fuzzies_0--></T>
+                  <E n="who">PickedObject</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">172056<!--pet_CatWand_GetAttention--></T>
+                  </U>
+                </V>
+                <L n="continuation">
+                  <U>
+                    <T n="affordance">170365<!--petSocials_SimToPet_CatsOnly_CatWand_Failure--></T>
+                    <E n="target">TargetSim</E>
+                  </U>
+                </L>
+              </U>
+              <U n="weight">
+                <T n="base_value">3</T>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="object_criteria">
+                <U n="object_criteria">
+                  <V n="identity_test" t="tags">
+                    <U n="tags">
+                      <L n="tag_set">
+                        <E>Func_CatWand_Rainbow</E>
+                      </L>
+                      <E n="test_type">CONTAINS_NO_TAGS_IN_SET</E>
+                    </U>
+                  </V>
+                  <V n="subject_specific_tests" t="single_object">
+                    <U n="single_object">
+                      <E n="target">CarriedObject</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="mood">
+                <U n="mood">
+                  <T n="mood">158138<!--mood_Drowsy_Cat--></T>
+                  <E n="who">TargetSim</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">178217<!--pet_CatWand_GetAttention_Rainbow--></T>
+                  </U>
+                </V>
+                <L n="continuation">
+                  <U>
+                    <T n="affordance">178218<!--petSocials_SimToPet_CatsOnly_CatWand_Success_Rainbow--></T>
+                    <E n="target">TargetSim</E>
+                  </U>
+                </L>
+              </U>
+              <U n="weight">
+                <T n="base_value">3</T>
+                <L n="multipliers">
+                  <U>
+                    <T n="multiplier">0</T>
+                    <L n="tests">
+                      <L>
+                        <V t="mood">
+                          <U n="mood">
+                            <T n="mood">158138<!--mood_Drowsy_Cat--></T>
+                          </U>
+                        </V>
+                        <V t="trait">
+                          <U n="trait">
+                            <L n="blacklist_traits">
+                              <T>164046<!--trait_Pet_Playful_Cat--></T>
+                            </L>
+                            <T n="num_whitelist_required">0</T>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                </L>
+              </U>
+            </U>
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">178217<!--pet_CatWand_GetAttention_Rainbow--></T>
+                  </U>
+                </V>
+                <L n="continuation">
+                  <U>
+                    <T n="affordance">178220<!--petSocials_SimToPet_CatsOnly_CatWand_Failure_Rainbow--></T>
+                    <E n="target">TargetSim</E>
+                  </U>
+                </L>
+              </U>
+              <U n="weight">
+                <L n="multipliers">
+                  <U>
+                    <T n="multiplier">6</T>
+                    <L n="tests">
+                      <L>
+                        <V t="trait">
+                          <U n="trait">
+                            <L n="whitelist_traits">
+                              <T>158202<!--trait_Pet_Lazy_Cat--></T>
+                            </L>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                  <U>
+                    <T n="multiplier">0</T>
+                    <L n="tests">
+                      <L>
+                        <V t="trait">
+                          <U n="trait">
+                            <L n="whitelist_traits">
+                              <T>164046<!--trait_Pet_Playful_Cat--></T>
+                            </L>
+                          </U>
+                        </V>
+                      </L>
+                    </L>
+                  </U>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="state">
+                <U n="state">
+                  <V n="fallback_behavior" t="always_fail" />
+                  <E n="operator">NOTEQUAL</E>
+                  <T n="value">170384<!--catWand_Values_Fuzzies_0--></T>
+                  <E n="who">PickedObject</E>
+                </U>
+              </V>
+              <V t="object_criteria">
+                <U n="object_criteria">
+                  <V n="identity_test" t="tags">
+                    <U n="tags">
+                      <L n="tag_set">
+                        <E>Func_CatWand_Rainbow</E>
+                      </L>
+                    </U>
+                  </V>
+                  <V n="subject_specific_tests" t="single_object">
+                    <U n="single_object">
+                      <E n="target">CarriedObject</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">172056<!--pet_CatWand_GetAttention--></T>
+                  </U>
+                </V>
+                <L n="continuation">
+                  <U>
+                    <T n="affordance">178220<!--petSocials_SimToPet_CatsOnly_CatWand_Failure_Rainbow--></T>
+                    <E n="target">TargetSim</E>
+                  </U>
+                </L>
+              </U>
+              <U n="weight">
+                <T n="base_value">3</T>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="object_criteria">
+                <U n="object_criteria">
+                  <V n="identity_test" t="tags">
+                    <U n="tags">
+                      <L n="tag_set">
+                        <E>Func_CatWand_Rainbow</E>
+                      </L>
+                    </U>
+                  </V>
+                  <V n="subject_specific_tests" t="single_object">
+                    <U n="single_object">
+                      <E n="target">CarriedObject</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="mood">
+                <U n="mood">
+                  <T n="mood">158138<!--mood_Drowsy_Cat--></T>
+                  <E n="who">TargetSim</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <V n="super_affordance_compatibility" t="literal">
+    <U n="literal">
+      <V n="default_inclusion" t="exclude_all" />
+    </U>
+  </V>
+  <V n="super_affordance_klobberers" t="enabled">
+    <V n="enabled" t="literal">
+      <U n="literal">
+        <V n="default_inclusion" t="exclude_all" />
+      </U>
+    </V>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">30</T>
+</I>

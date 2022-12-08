@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="GameObject" i="object" m="objects.game_object" n="object_toyBallPet_Squeaky_07" s="176196">
+  <V n="_anim_overrides" t="enabled">
+    <U n="enabled">
+      <L n="params">
+        <U>
+          <T n="name">carryObject</T>
+          <V n="value" t="string">
+            <T n="string">toyBall</T>
+          </V>
+        </U>
+      </L>
+    </U>
+  </V>
+  <U n="_components">
+    <V n="affordance_tuning" t="enabled">
+      <U n="enabled">
+        <L n="affordance_map">
+          <U>
+            <T n="key">12993<!--Add_To_World--></T>
+            <U n="value">
+              <L n="tests">
+                <L>
+                  <V t="sim_info">
+                    <U n="sim_info">
+                      <V n="ages" t="specified">
+                        <L n="specified">
+                          <E>TEEN</E>
+                          <E>YOUNGADULT</E>
+                          <E>ADULT</E>
+                          <E>ELDER</E>
+                          <E>CHILD</E>
+                        </L>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </U>
+          <U>
+            <T n="key">13852<!--Put_Away_Item--></T>
+            <U n="value">
+              <L n="tests">
+                <L>
+                  <V t="state">
+                    <U n="state">
+                      <T n="value">171887<!--petBall_Idle_Off--></T>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </U>
+          <U>
+            <T n="key">13855<!--Put_Item_In_My_Inventory--></T>
+            <U n="value">
+              <L n="basic_extras">
+                <V t="loot">
+                  <U n="loot">
+                    <L n="loot_list">
+                      <T>169267<!--loot_Buff_ToyBallPet_PickedUpChewedBall_Actor--></T>
+                    </L>
+                  </U>
+                </V>
+              </L>
+              <L n="tests">
+                <L>
+                  <V t="state">
+                    <U n="state">
+                      <T n="value">171887<!--petBall_Idle_Off--></T>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="carryable" t="enabled">
+      <U n="enabled">
+        <V n="constraint_pick_up" t="enabled">
+          <L n="enabled">
+            <V t="circle">
+              <U n="circle">
+                <T n="radius">1</T>
+              </U>
+            </V>
+          </L>
+        </V>
+        <L n="portal_key_mask_flags">
+          <E>REQUIRE_NO_CARRY</E>
+        </L>
+      </U>
+    </V>
+    <V n="focus" t="enabled">
+      <U n="enabled">
+        <V n="_focus_score" t="globally">
+          <U n="globally">
+            <E n="base">LOW</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V n="idle_component" t="enabled">
+      <U n="enabled">
+        <L n="idle_animation_map">
+          <U>
+            <T n="key">171886<!--petBall_Idle_On--></T>
+            <T n="value">171876<!--petBall_Idle--></T>
+          </U>
+          <U>
+            <T n="key">171887<!--petBall_Idle_Off--></T>
+            <T n="value">171877<!--petBall_Off--></T>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="inventory_item" t="enabled">
+      <U n="enabled">
+        <T n="can_place_in_world">False</T>
+        <V n="no_carry_add_to_sim_inventory_affordances" t="OVERRIDE">
+          <L n="OVERRIDE">
+            <T>202254<!--si_SwipeIntoSimInventory_Swim--></T>
+          </L>
+        </V>
+        <V n="no_carry_add_to_world_affordances" t="OVERRIDE">
+          <L n="OVERRIDE">
+            <T>202250<!--si_SwipeAddToWorld_Swim--></T>
+          </L>
+        </V>
+        <V n="put_away_affordance" t="OVERRIDE">
+          <T n="OVERRIDE">177637<!--Put_Away_Hidden--></T>
+        </V>
+        <L n="target_super_affordances">
+          <U>
+            <T n="affordance">171852<!--petPickerInteraction_ToyBallPet_PlayFetch_Pool--></T>
+            <V n="object_filter" t="filter_by_terrain">
+              <U n="filter_by_terrain">
+                <L n="disallowed_surfaces">
+                  <E>SURFACETYPE_OBJECT</E>
+                  <E>SURFACETYPE_WORLD</E>
+                </L>
+              </U>
+            </V>
+          </U>
+        </L>
+        <L n="valid_inventory_types">
+          <E>SIM</E>
+          <E>PET_TOYBOX</E>
+          <E>STORAGE_CHEST_DORM</E>
+        </L>
+      </U>
+    </V>
+    <V n="retail_component" t="enabled">
+      <V n="enabled" t="reference">
+        <T n="reference">110393<!--retailComponent_Default--></T>
+      </V>
+    </V>
+    <V n="state" t="enabled">
+      <U n="enabled">
+        <L n="state_triggers">
+          <U>
+            <L n="at_states">
+              <T>77532<!--FireState_Burn_Material_Change_Replace--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>39737<!--FireState_Burn_Material_Change_Not_Burning--></T>
+              </L>
+            </V>
+          </U>
+        </L>
+        <L n="states">
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">157960<!--toyBallPet_Chewed_Ruined--></T>
+              </U>
+              <U>
+                <T n="key">157961<!--toyBallPet_Chewed_Normal--></T>
+              </U>
+              <U>
+                <T n="key">163519<!--toyBallPet_Chewed_Start--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">163519<!--toyBallPet_Chewed_Start--></T>
+            </V>
+          </U>
+          <U>
+            <V n="default_value" t="reference">
+              <T n="reference">171887<!--petBall_Idle_Off--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">35296<!--GenericOnOff_On--></T>
+                <U n="value">
+                  <V n="replace_object" t="enabled">
+                    <U n="enabled">
+                      <V n="new_object" t="enabled">
+                        <T n="enabled">176133</T>
+                      </V>
+                    </U>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">35297<!--GenericOnOff_Off--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">35297<!--GenericOnOff_Off--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">131794<!--Kelpto_Stolen_Object--></T>
+              </U>
+              <U>
+                <T n="key">131795<!--Klepto_Not_Stolen_Object--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">131795<!--Klepto_Not_Stolen_Object--></T>
+            </V>
+          </U>
+          <U>
+            <V n="default_value" t="reference">
+              <T n="reference">39612<!--FireState_Burn_Incinerate_Not_Burning--></T>
+            </V>
+          </U>
+        </L>
+        <V n="unique_state_changes" t="enabled">
+          <U n="enabled">
+            <L n="surface_type_placement_states">
+              <U>
+                <E n="key">SURFACETYPE_OBJECT</E>
+                <T n="value">171887<!--petBall_Idle_Off--></T>
+              </U>
+              <U>
+                <E n="key">SURFACETYPE_POOL</E>
+                <T n="value">171886<!--petBall_Idle_On--></T>
+              </U>
+              <U>
+                <E n="key">SURFACETYPE_WORLD</E>
+                <T n="value">171887<!--petBall_Idle_Off--></T>
+              </U>
+            </L>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V n="tooltip_component" t="enabled">
+      <U n="enabled">
+        <L n="custom_tooltips">
+          <U>
+            <L n="object_tests">
+              <L>
+                <V t="in_inventory" />
+              </L>
+            </L>
+            <L n="tooltip_fields">
+              <U>
+                <E n="key">recipe_name</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0x4F918F8<!--{0.ObjectName}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">Object</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+            </L>
+            <E n="tooltip_style">HOVER_TIP_CUSTOM_OBJECT</E>
+          </U>
+        </L>
+        <L n="state_value_strings">
+          <L>
+            <U>
+              <T n="state_value">157960<!--toyBallPet_Chewed_Ruined--></T>
+              <V n="text" t="single">
+                <T n="single">0xDD780072<!--Chewed Out--></T>
+              </V>
+            </U>
+          </L>
+        </L>
+      </U>
+    </V>
+  </U>
+  <L n="_super_affordances">
+    <T>13328<!--debug_Reset--></T>
+    <T>13326<!--debug_ObjectDestroy--></T>
+    <T>103888<!--cheat_set_as_head--></T>
+    <T>106859</T>
+    <T>162590<!--dogPickerInteraction_ToyBallPet_Command_BringBall--></T>
+    <T>202254<!--si_SwipeIntoSimInventory_Swim--></T>
+    <T>161090<!--toyBallPet_Cat_ClawToy--></T>
+    <T>161089<!--toyBallPet_Dog_ChewToy--></T>
+    <T>161178<!--petPickerInteraction_ToyBallPet_OfferToPlay--></T>
+    <T>164070<!--dogPickerInteraction_PetBall_Fetch_FakeThrow--></T>
+    <T>162624<!--simPicker_Owner_Dog_ToyBallPet_Wait--></T>
+    <T>162628<!--toyBallPet_RunAutoFindOwner_WithBall--></T>
+    <T>102258<!--Ghost_Possess--></T>
+    <T>168502<!--Ghost_Pet_Possess--></T>
+    <T>164356<!--immediateSI_ToyBallPet_SetChewed--></T>
+    <T>158197<!--Put_Away_PetToy--></T>
+    <T>191482<!--Autonomous_ObjectPicker_Dog_ToyBall--></T>
+    <T>168542<!--petPickerInteraction_ToyBallPet_OfferToTrain--></T>
+    <T>168577<!--petPickerInteraction_ToyBallPet_FetchBall--></T>
+  </L>
+  <U n="recycling_data">
+    <L n="recycling_values">
+      <U>
+        <E n="Bucks Type">RecycleBitsBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+      <U>
+        <E n="Bucks Type">RecyclePiecesBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+    </L>
+  </U>
+</I>

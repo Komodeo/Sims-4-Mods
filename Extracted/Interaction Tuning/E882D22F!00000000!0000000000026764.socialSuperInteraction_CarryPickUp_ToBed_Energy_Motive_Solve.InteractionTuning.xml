@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="socialSuperInteraction_CarryPickUp_ToBed_Energy_Motive_Solve" s="157540">
+  <V n="_animation_actor_map" t="reference">
+    <T n="reference">104045<!--PickupInteractionTarget--></T>
+  </V>
+  <L n="_false_advertisements">
+    <V t="statistic_change">
+      <U n="statistic_change">
+        <T n="amount">1</T>
+        <T n="stat">16654<!--motive_Energy--></T>
+      </U>
+    </V>
+  </L>
+  <V n="_saveable" t="enabled" />
+  <T n="_super_affordance_can_share_target">True</T>
+  <T n="allow_autonomous">True</T>
+  <T n="allow_user_directed">False</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="one_shot">
+    <U n="one_shot">
+      <V n="periodic_stat_change" t="disabled" />
+    </U>
+  </V>
+  <V n="basic_reserve_object" t="disabled" />
+  <V n="canonical_animation" t="enabled">
+    <U n="enabled">
+      <T n="factory">135812<!--Canonical_CarrySim_PickUp_Stand--></T>
+    </U>
+  </V>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x942846A2<!--Pick Up--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <L n="loot_list">
+          <T>157541<!--loot_Toddler_Statistic_SetAwake_Sleep--></T>
+        </L>
+        <L n="parameterized_autonomy">
+          <U>
+            <E n="key">Actor</E>
+            <U n="value">
+              <L n="requests">
+                <U>
+                  <L n="static_commodities">
+                    <T>156219<!--staticCommodity_Toddler_FindBed_PutToBed--></T>
+                  </L>
+                  <T n="test_connectivity_to_target">False</T>
+                </U>
+              </L>
+            </U>
+          </U>
+        </L>
+      </U>
+    </U>
+  </V>
+  <E n="scoring_priority">VERY HIGH</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">TARGET</E>
+  <L n="test_autonomous">
+    <L>
+      <V t="motive">
+        <U n="motive">
+          <L n="stats">
+            <T>16654<!--motive_Energy--></T>
+          </L>
+          <U n="threshold">
+            <E n="comparison">LESS_OR_EQUAL</E>
+            <T n="value">-25</T>
+          </U>
+          <E n="who">TargetSim</E>
+        </U>
+      </V>
+      <V t="mood">
+        <U n="mood">
+          <T n="disallow">True</T>
+          <T n="mood">27149<!--Mood_Asleep--></T>
+          <E n="who">TargetSim</E>
+        </U>
+      </V>
+      <V t="buff">
+        <U n="buff">
+          <V n="whitelist" t="enabled">
+            <L n="enabled">
+              <T>8847<!--buff_SmallSleepDesire--></T>
+              <T>8904<!--buff_LargeSleepDesire--></T>
+              <T>36123<!--buff_AllowSleepDesire--></T>
+              <T>101209<!--Buff_AskedToStayNight_Invisible--></T>
+            </L>
+          </V>
+        </U>
+      </V>
+      <V t="participant_running_interaction">
+        <U n="participant_running_interaction">
+          <L n="affordances">
+            <T>143573<!--bed_relax_Toddler_lie_down--></T>
+            <T>151428<!--generic_Bed_Sleep--></T>
+          </L>
+          <E n="participant">TargetSim</E>
+          <T n="test_for_not_running">True</T>
+        </U>
+      </V>
+    </L>
+  </L>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified" />
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="relationship">
+      <U n="relationship">
+        <U n="prohibited_relationship_bits">
+          <L n="match_any">
+            <T>141125<!--toddler_stranger--></T>
+          </L>
+        </U>
+        <U n="required_relationship_bits">
+          <L n="match_all">
+            <T>15803<!--has_met--></T>
+          </L>
+        </U>
+        <L n="subject">
+          <E>TargetSim</E>
+        </L>
+        <L n="target_sim">
+          <E>Actor</E>
+        </L>
+      </U>
+    </V>
+  </L>
+  <L n="tests">
+    <L>
+      <V t="posture">
+        <U n="posture">
+          <L n="prohibited_postures">
+            <T>132262<!--posture_BeCarried--></T>
+          </L>
+          <E n="subject">TargetSim</E>
+        </U>
+      </V>
+    </L>
+    <L>
+      <V t="identity">
+        <U n="identity">
+          <E n="subject_a">CarriedObject</E>
+          <E n="subject_b">TargetSim</E>
+          <T n="subjects_match">True</T>
+        </U>
+      </V>
+    </L>
+    <L>
+      <V t="has_parent_object">
+        <U n="has_parent_object">
+          <V n="parent_object" t="enabled" />
+        </U>
+      </V>
+    </L>
+  </L>
+  <T n="time_overhead">30</T>
+  <U n="visual_type_override_data">
+    <T n="tooltip_text">0x215DF6A6<!--Hold--></T>
+  </U>
+</I>

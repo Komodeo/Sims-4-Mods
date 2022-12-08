@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="RummageForFood_Outdoor" s="37315">
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Object</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <L n="_static_commodities">
+    <U>
+      <T n="desire">2</T>
+      <T n="static_commodity">135209</T>
+    </U>
+    <U>
+      <T n="static_commodity">224219<!--staticCommodity_Trash_Rummage--></T>
+    </U>
+    <U>
+      <T n="desire">256</T>
+      <T n="static_commodity">196124</T>
+    </U>
+  </L>
+  <L n="appropriateness_tags">
+    <E>Appropriateness_NotDuringWork</E>
+  </L>
+  <T n="attention_cost">0.75</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">10</T>
+                  <T n="min_time">3</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="looping_content">
+        <U n="looping_content">
+          <U n="animation_ref">
+            <T n="factory">11765<!--Rummage_Outdoor--></T>
+          </U>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">-2</T>
+                <T n="stat">16657<!--motive_Hygiene--></T>
+              </U>
+            </V>
+            <V t="statistic_set_max">
+              <U n="statistic_set_max">
+                <T n="stat">29123<!--commodity_Trait_Autonomy_Slob--></T>
+                <L n="tests">
+                  <L>
+                    <V t="trait">
+                      <U n="trait">
+                        <L n="whitelist_traits">
+                          <T>16860<!--trait_Slob--></T>
+                        </L>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">-5</T>
+                <T n="stat">16616<!--commodity_Motive_HygieneHands--></T>
+              </U>
+            </V>
+          </L>
+          <T n="trigger_gain_on_start">True</T>
+        </U>
+      </V>
+      <T n="start_autonomous_inertial">False</T>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="create_object">
+      <U n="create_object">
+        <V n="creation_data" t="definition">
+          <U n="definition">
+            <T n="definition">22174<!--trashGEN_01_trash (Trash Pile)--></T>
+          </U>
+        </V>
+        <L n="initial_states" />
+        <V n="location" t="position">
+          <U n="position">
+            <T n="allow_off_lot_placement">True</T>
+            <T n="ignore_bb_footprints">False</T>
+          </U>
+        </V>
+        <U n="success_chance">
+          <T n="base_chance">100</T>
+        </U>
+      </U>
+    </V>
+    <V t="state_change">
+      <U n="state_change">
+        <V n="new_value" t="single_value">
+          <U n="single_value">
+            <T n="new_value">99561<!--Trash_Rummagable_NoRummage--></T>
+          </U>
+        </V>
+        <V n="timing" t="at_end">
+          <U n="at_end">
+            <E n="criticality">NotCritical</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>285928</T>
+        </L>
+        <V n="timing" t="at_end" />
+      </U>
+    </V>
+  </L>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x95F948A7<!--Rummage for Food--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <L n="basic_extras">
+              <V t="create_object">
+                <U n="create_object">
+                  <V n="creation_data" t="recipe">
+                    <U n="recipe">
+                      <T n="recipe">97062<!--recipe_Snack_Oatmeal_Rummaged--></T>
+                    </U>
+                  </V>
+                  <L n="initial_states">
+                    <U>
+                      <T n="state">15113<!--Consumable_Untouched--></T>
+                    </U>
+                    <U>
+                      <T n="state">76724<!--Trash_Consumable_HasFood--></T>
+                    </U>
+                  </L>
+                  <V n="location" t="inventory" />
+                  <V n="timing" t="at_end">
+                    <U n="at_end">
+                      <E n="criticality">NotCritical</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="notification">
+                <U n="notification">
+                  <V n="dialog" t="single">
+                    <V n="single" t="literal">
+                      <U n="literal">
+                        <V n="secondary_icon" t="enabled">
+                          <V n="enabled" t="participant" />
+                        </V>
+                        <V n="text" t="single">
+                          <T n="single">0x54F9A659<!--{0.SimFirstName} found some food in this trash can. It still seems edible-ish.--></T>
+                        </V>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="timing" t="at_end">
+                    <U n="at_end">
+                      <E n="criticality">NotCritical</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+            <L n="loot_list">
+              <T>110866</T>
+            </L>
+          </U>
+        </U>
+        <U>
+          <U n="outcome">
+            <L n="basic_extras">
+              <V t="create_object">
+                <U n="create_object">
+                  <V n="creation_data" t="recipe">
+                    <U n="recipe">
+                      <T n="recipe">97064<!--recipe_Food_Homestyle_MacNCheese-Single_Rummaged--></T>
+                    </U>
+                  </V>
+                  <L n="initial_states">
+                    <U>
+                      <T n="state">15113<!--Consumable_Untouched--></T>
+                    </U>
+                    <U>
+                      <T n="state">76724<!--Trash_Consumable_HasFood--></T>
+                    </U>
+                  </L>
+                  <V n="location" t="inventory" />
+                  <V n="timing" t="at_end">
+                    <U n="at_end">
+                      <E n="criticality">NotCritical</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="notification">
+                <U n="notification">
+                  <V n="dialog" t="single">
+                    <V n="single" t="literal">
+                      <U n="literal">
+                        <V n="secondary_icon" t="enabled">
+                          <V n="enabled" t="participant" />
+                        </V>
+                        <V n="text" t="single">
+                          <T n="single">0x54F9A659<!--{0.SimFirstName} found some food in this trash can. It still seems edible-ish.--></T>
+                        </V>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="timing" t="at_end">
+                    <U n="at_end">
+                      <E n="criticality">NotCritical</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+            <L n="loot_list">
+              <T>110866</T>
+            </L>
+          </U>
+        </U>
+        <U>
+          <U n="outcome">
+            <L n="basic_extras">
+              <V t="create_object">
+                <U n="create_object">
+                  <V n="creation_data" t="recipe">
+                    <U n="recipe">
+                      <T n="recipe">97060<!--recipe_Food_Homestyle_GardenSalad-Single_Rummaged--></T>
+                    </U>
+                  </V>
+                  <L n="initial_states">
+                    <U>
+                      <T n="state">15113<!--Consumable_Untouched--></T>
+                    </U>
+                    <U>
+                      <T n="state">76724<!--Trash_Consumable_HasFood--></T>
+                    </U>
+                  </L>
+                  <V n="location" t="inventory" />
+                  <V n="timing" t="at_end">
+                    <U n="at_end">
+                      <E n="criticality">NotCritical</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+              <V t="notification">
+                <U n="notification">
+                  <V n="dialog" t="single">
+                    <V n="single" t="literal">
+                      <U n="literal">
+                        <V n="secondary_icon" t="enabled">
+                          <V n="enabled" t="participant" />
+                        </V>
+                        <V n="text" t="single">
+                          <T n="single">0x54F9A659<!--{0.SimFirstName} found some food in this trash can. It still seems edible-ish.--></T>
+                        </V>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="timing" t="at_end">
+                    <U n="at_end">
+                      <E n="criticality">NotCritical</E>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+            <L n="loot_list">
+              <T>110866</T>
+            </L>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+  <V n="pie_menu_icon" t="enabled">
+    <V n="enabled" t="resource_key">
+      <U n="resource_key">
+        <T n="key" p="InGame\UI\Icons\PieMenu\Traits\trait_glutton_cas_piemenu.png">2f7d0004:00000000:5695d59f0fe55ab7</T>
+      </U>
+    </V>
+  </V>
+  <U n="post_run_autonomy_commodities">
+    <L n="requests">
+      <U>
+        <T n="consider_same_target">False</T>
+        <L n="static_commodities">
+          <T>37314<!--StaticCommodity_RummageEat--></T>
+        </L>
+      </U>
+    </L>
+  </U>
+  <V n="route_start_balloon" t="enabled">
+    <U n="enabled">
+      <U n="balloon">
+        <L n="balloon_choices">
+          <U>
+            <V n="item" t="balloon_icon">
+              <U n="balloon_icon">
+                <V n="icon" t="participant">
+                  <U n="participant">
+                    <L n="participant_type">
+                      <E>Object</E>
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </U>
+        </L>
+        <L n="balloon_target">
+          <E>Actor</E>
+        </L>
+      </U>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">OBJECT</E>
+  <L n="test_autonomous">
+    <L>
+      <V t="appropriateness" />
+      <V t="buff">
+        <U n="buff">
+          <L n="blacklist">
+            <T>196846</T>
+          </L>
+        </U>
+      </V>
+    </L>
+    <L>
+      <V t="buff">
+        <U n="buff">
+          <V n="whitelist" t="enabled">
+            <L n="enabled">
+              <T>196846</T>
+            </L>
+          </V>
+        </U>
+      </V>
+      <V t="test_set_reference">
+        <T n="test_set_reference">229174<!--testSet_Venue_Residential_Allow_Actor--></T>
+      </V>
+    </L>
+  </L>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <T n="value">15356<!--Trashcan_Outdoor_Upright--></T>
+      </U>
+    </V>
+    <V t="trait">
+      <U n="trait">
+        <L n="blacklist_traits" />
+        <L n="whitelist_traits">
+          <T>16843<!--trait_Glutton--></T>
+        </L>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <V n="tooltip" t="enabled">
+          <T n="enabled">0x7C536EC6<!--No fresh trash to rummage.--></T>
+        </V>
+        <T n="value">99560<!--Trash_Rummagable_CanRummage--></T>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">15</T>
+</I>

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="trash_salvage_scavenge" s="14445">
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="ideal_radius">1</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="facing" />
+        </U>
+      </L>
+    </U>
+  </L>
+  <V n="_icon" t="resource_key">
+    <U n="resource_key">
+      <T n="key" p="InGame\UI\Icons\InteractionQueue\IconQueueSalvage.png">2f7d0004:00000000:35f791e45cf6a042</T>
+    </U>
+  </V>
+  <V n="_saveable" t="enabled" />
+  <T n="allow_autonomous">False</T>
+  <T n="attention_cost">0.75</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="list_reference">
+          <T n="list_reference">40705<!--ExitConditionList_MotivesNearFail--></T>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">6</T>
+                  <T n="min_time">3</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+      </L>
+      <V n="content" t="looping_content">
+        <U n="looping_content">
+          <U n="animation_ref">
+            <T n="factory">29554<!--Salvage_Trash_Pile--></T>
+          </U>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">-2</T>
+                <T n="stat">16657<!--motive_Hygiene--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">-5</T>
+                <T n="stat">16616<!--commodity_Motive_HygieneHands--></T>
+              </U>
+            </V>
+          </L>
+        </U>
+      </V>
+      <T n="start_autonomous_inertial">False</T>
+    </U>
+  </V>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0x17741A2C<!--Scavenge for Parts--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="destroy_object">
+                    <U n="destroy_object">
+                      <V n="award_value" t="disabled" />
+                      <V n="objects_to_destroy" t="from_participant">
+                        <U n="from_participant">
+                          <E n="participant">Object</E>
+                        </U>
+                      </V>
+                      <V n="timing" t="at_end">
+                        <U n="at_end">
+                          <E n="criticality">NotCritical</E>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">22174<!--trashGEN_01_trash (Trash Pile)--></T>
+                        </U>
+                      </V>
+                      <L n="initial_states">
+                        <U>
+                          <T n="state">27941<!--Trash_Salvage_NoSalvage--></T>
+                        </U>
+                      </L>
+                      <V n="location" t="position">
+                        <U n="position">
+                          <V n="initial_location" t="from_participant">
+                            <U n="from_participant">
+                              <E n="participant">Object</E>
+                            </U>
+                          </V>
+                        </U>
+                      </V>
+                      <V n="timing" t="at_end">
+                        <U n="at_end">
+                          <E n="criticality">NotCritical</E>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>38198<!--Loot_Trash_Scavenge_Electronics--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="state">
+                <U n="state">
+                  <T n="value">38214<!--Trash_Salvage_Type_Electronic--></T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="destroy_object">
+                    <U n="destroy_object">
+                      <V n="award_value" t="disabled" />
+                      <V n="objects_to_destroy" t="from_participant">
+                        <U n="from_participant">
+                          <E n="participant">Object</E>
+                        </U>
+                      </V>
+                      <V n="timing" t="at_end">
+                        <U n="at_end">
+                          <E n="criticality">NotCritical</E>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">22174<!--trashGEN_01_trash (Trash Pile)--></T>
+                        </U>
+                      </V>
+                      <L n="initial_states">
+                        <U>
+                          <T n="state">27941<!--Trash_Salvage_NoSalvage--></T>
+                        </U>
+                      </L>
+                      <V n="location" t="position">
+                        <U n="position">
+                          <V n="initial_location" t="from_participant">
+                            <U n="from_participant">
+                              <E n="participant">Object</E>
+                            </U>
+                          </V>
+                        </U>
+                      </V>
+                      <V n="timing" t="at_end">
+                        <U n="at_end">
+                          <E n="criticality">NotCritical</E>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>38200<!--Loot_Trash_Scavenge_Kitchen--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="state">
+                <U n="state">
+                  <T n="value">38216<!--Trash_Salvage_Type_Kitchen--></T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="destroy_object">
+                    <U n="destroy_object">
+                      <V n="award_value" t="disabled" />
+                      <V n="objects_to_destroy" t="from_participant">
+                        <U n="from_participant">
+                          <E n="participant">Object</E>
+                        </U>
+                      </V>
+                      <V n="timing" t="at_end">
+                        <U n="at_end">
+                          <E n="criticality">NotCritical</E>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                  <V t="create_object">
+                    <U n="create_object">
+                      <V n="creation_data" t="definition">
+                        <U n="definition">
+                          <T n="definition">22174<!--trashGEN_01_trash (Trash Pile)--></T>
+                        </U>
+                      </V>
+                      <L n="initial_states">
+                        <U>
+                          <T n="state">27941<!--Trash_Salvage_NoSalvage--></T>
+                        </U>
+                      </L>
+                      <V n="location" t="position">
+                        <U n="position">
+                          <V n="initial_location" t="from_participant">
+                            <U n="from_participant">
+                              <E n="participant">Object</E>
+                            </U>
+                          </V>
+                        </U>
+                      </V>
+                      <V n="timing" t="at_end">
+                        <U n="at_end">
+                          <E n="criticality">NotCritical</E>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>38199<!--Loot_Trash_Scavenge_Plumbing--></T>
+                </L>
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="state">
+                <U n="state">
+                  <T n="value">38215<!--Trash_Salvage_Type_Plumbing--></T>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <V n="pie_menu_icon" t="enabled">
+    <V n="enabled" t="resource_key">
+      <U n="resource_key">
+        <T n="key" p="InGame\UI\Icons\PieMenu\Skills\skill_handiness_piemenu.png">2f7d0004:00000000:87a22daf548644a6</T>
+      </U>
+    </V>
+  </V>
+  <T n="pie_menu_priority">1</T>
+  <V n="route_start_balloon" t="enabled">
+    <U n="enabled">
+      <U n="balloon">
+        <L n="balloon_choices">
+          <U>
+            <V n="item" t="balloon_icon">
+              <U n="balloon_icon">
+                <V n="icon" t="participant">
+                  <U n="participant">
+                    <L n="participant_type">
+                      <E>Object</E>
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </U>
+        </L>
+        <L n="balloon_target">
+          <E>Actor</E>
+        </L>
+      </U>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified" />
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+  </L>
+  <L n="tests">
+    <L>
+      <V t="state">
+        <U n="state">
+          <T n="value">27940<!--Trash_Salvage_HasSalvage--></T>
+        </U>
+      </V>
+    </L>
+  </L>
+  <T n="time_overhead">15</T>
+</I>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SituationDramaNode" i="drama_node" m="drama_scheduler.situation_drama_node" n="situationDramaNode_Repo_Situation_BillsDelinquent" s="235712">
+  <T n="allow_during_work_hours">False</T>
+  <T n="homelot_only">True</T>
+  <V n="host_sim_info_job" t="enabled">
+    <T n="enabled">224486<!--situationJob_Repo_DebtorSim--></T>
+  </V>
+  <V n="host_sim_participant" t="enabled">
+    <E n="enabled">Actor</E>
+  </V>
+  <U n="min_and_max_times">
+    <T n="lower_bound">0</T>
+    <T n="upper_bound">24</T>
+  </U>
+  <V n="notification" t="enabled">
+    <U n="enabled">
+      <V n="icon" t="enabled">
+        <V n="enabled" t="resource_key">
+          <U n="resource_key">
+            <T n="key" p="InGame\UI\Icons\Notifications\notification_GenericBills.png">2f7d0004:00000000:eff779155deb7f68</T>
+          </U>
+        </V>
+      </V>
+      <V n="secondary_icon" t="enabled">
+        <V n="enabled" t="participant">
+          <U n="participant">
+            <L n="participant_type">
+              <E>TargetSim</E>
+            </L>
+          </U>
+        </V>
+      </V>
+      <V n="text" t="single">
+        <T n="single">0x6FA92150<!--{0.SimFirstName} has failed to pay {M0.his}{F0.her} bills for too long. The utilities company has sent a professional to repossess {M0.his}{F0.her} valuable items in payment.--></T>
+      </V>
+      <V n="text_tokens" t="enabled">
+        <U n="enabled">
+          <L n="tokens">
+            <V t="participant_type">
+              <U n="participant_type">
+                <V n="objects" t="from_participant">
+                  <U n="from_participant">
+                    <E n="participant">TargetSim</E>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </U>
+      </V>
+      <E n="visual_type">INFORMATION</E>
+    </U>
+  </V>
+  <L n="pretests">
+    <L>
+      <V t="bills">
+        <U n="bills">
+          <V n="is_repo_man_due" t="enabled" />
+          <T n="test_participant_owned_households">True</T>
+        </U>
+      </V>
+    </L>
+  </L>
+  <L n="run_tests">
+    <L>
+      <V t="bills">
+        <U n="bills">
+          <V n="is_repo_man_due" t="enabled" />
+          <T n="test_participant_owned_households">True</T>
+        </U>
+      </V>
+    </L>
+  </L>
+  <V n="scoring" t="enabled">
+    <U n="enabled">
+      <E n="bucket">RepoMan</E>
+    </U>
+  </V>
+  <V n="sender_sim_info" t="no_participant" />
+  <V n="sender_sim_info_job" t="disabled" />
+  <T n="situation_to_run">235713<!--repo_Situation_BillsDelinquent--></T>
+  <V n="time_option" t="schedule">
+    <U n="schedule">
+      <L n="valid_times">
+        <U>
+          <U n="days_available">
+            <T n="0 SUNDAY">True</T>
+            <T n="1 MONDAY">True</T>
+            <T n="2 TUESDAY">True</T>
+            <T n="3 WEDNESDAY">True</T>
+            <T n="4 THURSDAY">True</T>
+            <T n="5 FRIDAY">True</T>
+            <T n="6 SATURDAY">True</T>
+          </U>
+          <T n="duration">12</T>
+          <U n="start_time">
+            <T n="hour">9</T>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+</I>

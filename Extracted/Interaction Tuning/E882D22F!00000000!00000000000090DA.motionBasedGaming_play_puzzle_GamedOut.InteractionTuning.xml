@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="motionBasedGaming_play_puzzle_GamedOut" s="37082">
+  <V n="_icon" t="participant">
+    <U n="participant">
+      <L n="participant_type">
+        <E>Object</E>
+      </L>
+    </U>
+  </V>
+  <V n="_saveable" t="disabled" />
+  <L n="_static_commodities">
+    <U>
+      <T n="static_commodity">16431<!--StaticCommodity_PlayMotionGames--></T>
+    </U>
+    <U>
+      <T n="desire">4</T>
+      <T n="static_commodity">137860</T>
+    </U>
+    <U>
+      <T n="desire">2</T>
+      <T n="static_commodity">34451<!--staticCommodity_PlayGames--></T>
+    </U>
+    <U>
+      <T n="desire">2</T>
+      <T n="static_commodity">141221</T>
+    </U>
+  </L>
+  <T n="allow_autonomous">True</T>
+  <L n="appropriateness_tags">
+    <E>Appropriateness_Playing</E>
+  </L>
+  <T n="attention_cost">0.75</T>
+  <V n="basic_content" t="flexible_length">
+    <U n="flexible_length">
+      <L n="conditional_actions">
+        <V t="list_reference">
+          <T n="list_reference">40705<!--ExitConditionList_MotivesNearFail--></T>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="state_based">
+                <U n="state_based">
+                  <V n="state" t="on_trigger">
+                    <T n="on_trigger">15080<!--BrokenState_Broken--></T>
+                  </V>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_CANCEL</E>
+          </U>
+        </V>
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">60</T>
+                  <T n="min_time">30</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+            <E n="restrictions">AUTONOMOUS_ONLY</E>
+            <L n="tests">
+              <L>
+                <V t="situation_running_test">
+                  <U n="situation_running_test">
+                    <V n="participant" t="enabled" />
+                    <V n="situation_whitelist" t="enabled">
+                      <L n="enabled">
+                        <T>140789</T>
+                        <T>140931</T>
+                        <T>140577</T>
+                        <T>140938</T>
+                        <T>140947</T>
+                        <T>141323</T>
+                      </L>
+                    </V>
+                  </U>
+                </V>
+              </L>
+            </L>
+          </U>
+        </V>
+        <V t="list_reference">
+          <T n="list_reference">39200<!--ExitConditionList_StateBrokenObject--></T>
+        </V>
+      </L>
+      <V n="content" t="staging_content">
+        <U n="staging_content">
+          <U n="content_set">
+            <L n="affordance_links">
+              <T>37117<!--MotionGameRig_Puzzle_Passive--></T>
+              <T>37116<!--MotionGameRig_Puzzle_Active--></T>
+            </L>
+          </U>
+        </U>
+      </V>
+      <V n="periodic_stat_change" t="enabled">
+        <U n="enabled">
+          <U n="operation_actions">
+            <L n="actions">
+              <T>101185<!--loot_Statistic_Breakage_MotionGame--></T>
+            </L>
+          </U>
+          <L n="operations">
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">2.33</T>
+                <T n="stat">16655<!--motive_Fun--></T>
+                <L n="tests">
+                  <L>
+                    <V t="buff">
+                      <U n="buff">
+                        <L n="blacklist">
+                          <T>31758<!--buff_Skill_VideoGaming_GamedOut--></T>
+                        </L>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">-0.78</T>
+                <T n="stat">16655<!--motive_Fun--></T>
+                <L n="tests">
+                  <L>
+                    <V t="buff">
+                      <U n="buff">
+                        <V n="whitelist" t="enabled">
+                          <L n="enabled">
+                            <T>31758<!--buff_Skill_VideoGaming_GamedOut--></T>
+                          </L>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="dynamic_skill">
+              <U n="dynamic_skill">
+                <U n="skill_loot_data_override">
+                  <E n="effectiveness">StandardPeriodic</E>
+                </U>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">10</T>
+                <T n="stat">27550<!--commodity_Trait_Geek_GamingNeed--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">-10</T>
+                <T n="stat">98070<!--commodity_Trait_Geek_GamingNeed_BuffDecay--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">0.15</T>
+                <T n="stat">39000<!--commodity_Trait_Geek_GeekOut--></T>
+                <L n="tests">
+                  <L>
+                    <V t="trait">
+                      <U n="trait">
+                        <L n="whitelist_traits">
+                          <T>16841<!--trait_Geek--></T>
+                        </L>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">0.04</T>
+                <T n="stat">31760<!--commodity_VideoGamingSkill_GamedOut--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">0.09</T>
+                <T n="stat">31811<!--commodity_Skill_VideoGaming_ManiacMatchums--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">1</T>
+                <T n="stat">39919<!--Commodity_Object_MotionGamingRig_Puzzle--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="advertise">False</T>
+                <T n="amount">5</T>
+                <T n="stat">28786<!--commodity_Trait_Genius_MentalStimulation--></T>
+              </U>
+            </V>
+            <V t="dynamic_skill">
+              <U n="dynamic_skill">
+                <U n="skill_loot_data_override">
+                  <E n="effectiveness">StandardPeriodic</E>
+                  <V n="level_range" t="enabled">
+                    <U n="enabled">
+                      <T n="lower_bound">1</T>
+                      <T n="upper_bound">10</T>
+                    </U>
+                  </V>
+                  <T n="stat">16720<!--statistic_Skill_Child_Motor--></T>
+                </U>
+              </U>
+            </V>
+            <V t="statistic_set_max">
+              <U n="statistic_set_max">
+                <T n="stat">16468<!--commodity_Emotion_Autonomy_Playful--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">1</T>
+                <T n="stat">76237<!--commodity_CareerBenefit_Tech--></T>
+                <L n="tests">
+                  <L>
+                    <V t="career_test">
+                      <U n="career_test">
+                        <V n="test_type" t="career_track">
+                          <U n="career_track">
+                            <T n="career_track">32476<!--TechGuru_Track2_Gaming--></T>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                  <L>
+                    <V t="career_test">
+                      <U n="career_test">
+                        <V n="test_type" t="career_track">
+                          <U n="career_track">
+                            <T n="career_track">32475<!--TechGuru_Track1--></T>
+                            <V n="user_level" t="enabled">
+                              <U n="enabled">
+                                <T n="upper_bound">2</T>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </V>
+            <V t="reference">
+              <T n="reference">249084</T>
+            </V>
+            <V t="reference">
+              <T n="reference">249073</T>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">-10</T>
+                <T n="stat">38437<!--Commodity_Age_Elder--></T>
+              </U>
+            </V>
+            <V t="statistic_change">
+              <U n="statistic_change">
+                <T n="amount">10</T>
+                <T n="stat">38440<!--Commodity_Age_Teen--></T>
+              </U>
+            </V>
+          </L>
+        </U>
+      </V>
+      <T n="start_autonomous_inertial">False</T>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="buff">
+      <U n="buff">
+        <U n="buff_type">
+          <T n="buff_type">24732<!--buff_Suppress_All_Interaction--></T>
+        </U>
+      </U>
+    </V>
+    <V t="state_change">
+      <U n="state_change">
+        <V n="new_value" t="single_value">
+          <U n="single_value">
+            <T n="new_value">153899<!--objectStateValue_MotionGameRig_Power_On--></T>
+          </U>
+        </V>
+        <V n="timing" t="immediately" />
+      </U>
+    </V>
+    <V t="state_change">
+      <U n="state_change">
+        <V n="new_value" t="single_value">
+          <U n="single_value">
+            <T n="new_value">153900<!--objectStateValue_MotionGameRig_Power_Off--></T>
+          </U>
+        </V>
+      </U>
+    </V>
+  </L>
+  <V n="canonical_animation" t="enabled">
+    <U n="enabled">
+      <T n="factory">37074<!--MotionBasedGaming_Puzzle_Passive--></T>
+    </U>
+  </V>
+  <T n="category">39026<!--motionGameMat_PlayGame_GamedOut--></T>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0xFB8086F4<!--Maniac Matchums--></T>
+  <V n="display_name_overrides" t="testable">
+    <U n="testable">
+      <L n="overrides">
+        <U>
+          <V n="new_display_name" t="disabled" />
+          <V n="new_pie_menu_icon" t="enabled">
+            <V n="enabled" t="tradition" />
+          </V>
+          <L n="test">
+            <L>
+              <V t="holiday_tradition">
+                <U n="holiday_tradition">
+                  <U n="tradition_filter">
+                    <V n="whitelist" t="specify">
+                      <U n="specify">
+                        <L n="whitelist">
+                          <T>185431</T>
+                        </L>
+                      </U>
+                    </V>
+                  </U>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <T n="force_exit_on_inertia">False</T>
+  <L n="interaction_category_tags">
+    <E>Interaction_PlayGame</E>
+    <E>Interaction_PlayVideoGames</E>
+    <E>Func_Motion</E>
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+    <E>Interaction_Skill_Child_Motor</E>
+    <E>Interaction_Skill_VideoGaming</E>
+    <E>Interaction_Lifestyles_Techie_FlexibleLength</E>
+    <E>Interaction_Lifestyles_Electronics</E>
+  </L>
+  <L n="joinable">
+    <U>
+      <V n="invite_available" t="enabled">
+        <U n="enabled">
+          <V n="loc_custom_invite_name" t="enabled">
+            <T n="enabled">0xAB1D6012<!--Invite to Play Motion Games--></T>
+          </V>
+        </U>
+      </V>
+      <V n="join_affordance" t="commodity_search">
+        <U n="commodity_search">
+          <U n="value">
+            <T n="commodity">16431<!--StaticCommodity_PlayMotionGames--></T>
+          </U>
+        </U>
+      </V>
+      <V n="join_available" t="enabled">
+        <U n="enabled">
+          <V n="loc_custom_join_name" t="enabled">
+            <T n="enabled">0x7102E02E<!--Play Motion Games with {1.SimFirstName}--></T>
+          </V>
+        </U>
+      </V>
+    </U>
+  </L>
+  <T n="opportunity_cost_multiplier">2</T>
+  <V n="outcome" t="single">
+    <U n="single">
+      <U n="actions">
+        <L n="loot_list">
+          <T>38996<!--loot_Statistic_GameForever_Add--></T>
+          <T>39918<!--Loot_Buff_MotionGamingRig_Puzzle--></T>
+          <T>31658<!--loot_MotionBasedGaming--></T>
+        </L>
+      </U>
+    </U>
+  </V>
+  <T n="pie_menu_priority">10</T>
+  <U n="progress_bar_enabled">
+    <T n="remember_progress">True</T>
+  </U>
+  <V n="route_start_balloon" t="enabled">
+    <U n="enabled">
+      <U n="balloon">
+        <L n="balloon_choices">
+          <U>
+            <V n="item" t="balloon_icon">
+              <U n="balloon_icon">
+                <V n="icon" t="participant">
+                  <U n="participant">
+                    <L n="participant_type">
+                      <E>Object</E>
+                    </L>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </U>
+        </L>
+        <L n="balloon_target">
+          <E>Actor</E>
+        </L>
+      </U>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <U n="skill_loot_data">
+    <E n="effectiveness">STANDARD</E>
+    <V n="level_range" t="enabled">
+      <U n="enabled">
+        <T n="lower_bound">1</T>
+        <T n="upper_bound">10</T>
+      </U>
+    </V>
+    <T n="stat">16712<!--statistic_Skill_AdultMajor_VideoGaming--></T>
+  </U>
+  <T n="subaction_selection_weight">3</T>
+  <V n="super_affordance_compatibility" t="literal">
+    <U n="literal">
+      <V n="default_inclusion" t="exclude_all" />
+    </U>
+  </V>
+  <E n="target_type">OBJECT</E>
+  <L n="test_autonomous">
+    <L>
+      <V t="appropriateness" />
+      <V t="situation_job_test">
+        <U n="situation_job_test">
+          <T n="negate">True</T>
+          <L n="situation_jobs">
+            <T>130833</T>
+            <T>140124</T>
+            <T>131306</T>
+            <T>130418</T>
+          </L>
+        </U>
+      </V>
+    </L>
+  </L>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <L n="blacklist" />
+        <V n="whitelist" t="enabled">
+          <L n="enabled">
+            <T>31758<!--buff_Skill_VideoGaming_GamedOut--></T>
+            <T>38877<!--buff_Skill_VideoGaming_GoodSession--></T>
+          </L>
+        </V>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <E n="operator">NOTEQUAL</E>
+        <T n="value">15080<!--BrokenState_Broken--></T>
+      </U>
+    </V>
+    <V t="skill_test">
+      <U n="skill_test">
+        <T n="skill">16712<!--statistic_Skill_AdultMajor_VideoGaming--></T>
+        <V n="skill_range" t="interval">
+          <U n="interval">
+            <U n="skill_interval">
+              <T n="lower_bound">9</T>
+            </U>
+          </U>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">45</T>
+  <L n="transition_asm_params">
+    <U>
+      <T n="param_name">gametype</T>
+      <T n="param_value">puzzle</T>
+    </U>
+  </L>
+  <V n="utility_info" t="enabled">
+    <L n="enabled">
+      <U>
+        <E n="key">POWER</E>
+      </U>
+    </L>
+  </V>
+</I>

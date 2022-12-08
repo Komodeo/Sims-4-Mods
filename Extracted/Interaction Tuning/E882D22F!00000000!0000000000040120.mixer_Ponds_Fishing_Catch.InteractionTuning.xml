@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="FishingLocationCatchMixerInteraction" i="interaction" m="fishing.fishing_interactions" n="mixer_Ponds_Fishing_Catch" s="262432">
+  <T n="allow_user_directed">False</T>
+  <V n="basic_focus" t="disable_focus" />
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <U n="fishing_outcomes">
+    <U n="catch_fish_outcome_actions">
+      <V n="animation_ref" t="enabled">
+        <U n="enabled">
+          <T n="factory">262436<!--anim_Ponds_Fishing_CatchFish--></T>
+        </U>
+      </V>
+      <L n="loot_list">
+        <T>74460<!--loot_Statistic_NeedToCast--></T>
+        <T>76401<!--loot_Statistic_Fishing_CaughtFish--></T>
+        <T>103021</T>
+        <T>111310</T>
+        <T>209395<!--loot_Fishing_NotebookEntry_CaughtFish--></T>
+        <T>212671</T>
+      </L>
+    </U>
+    <U n="catch_junk_outcome_actions">
+      <V n="animation_ref" t="enabled">
+        <U n="enabled">
+          <T n="factory">262437<!--anim_Ponds_Fishing_CatchFail--></T>
+        </U>
+      </V>
+      <L n="loot_list">
+        <T>74460<!--loot_Statistic_NeedToCast--></T>
+        <T>214451</T>
+      </L>
+    </U>
+    <U n="catch_nothing_outcome_actions">
+      <V n="animation_ref" t="enabled">
+        <U n="enabled">
+          <T n="factory">262438<!--anim_Ponds_Fishing_CatchNothing--></T>
+        </U>
+      </V>
+      <L n="loot_list">
+        <T>74460<!--loot_Statistic_NeedToCast--></T>
+        <T>76393<!--loot_Statistic_Fishing_FailAtFishing_BigFail--></T>
+      </L>
+    </U>
+    <U n="catch_treasure_outcome_actions">
+      <V n="animation_ref" t="enabled">
+        <U n="enabled">
+          <T n="factory">262437<!--anim_Ponds_Fishing_CatchFail--></T>
+        </U>
+      </V>
+      <L n="loot_list">
+        <T>74460<!--loot_Statistic_NeedToCast--></T>
+        <T>214450</T>
+      </L>
+    </U>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Mixer</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="lock_out_time" t="enabled">
+    <U n="enabled">
+      <U n="interval">
+        <T n="lower_bound">10</T>
+        <T n="upper_bound">40</T>
+      </U>
+      <T n="target_based_lock_out">True</T>
+    </U>
+  </V>
+  <V n="lock_out_time_initial" t="enabled">
+    <U n="enabled">
+      <T n="lower_bound">10</T>
+      <T n="upper_bound">40</T>
+    </U>
+  </V>
+  <U n="sub_action">
+    <T n="base_weight">2</T>
+  </U>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals" />
+  <L n="tests">
+    <L>
+      <V t="statistic">
+        <U n="statistic">
+          <T n="stat">74423<!--statistic_Fishing_NeedToCast--></T>
+          <V n="threshold" t="value_threshold">
+            <U n="value_threshold">
+              <E n="comparison">LESS_OR_EQUAL</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </L>
+  <T n="visible">False</T>
+</I>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="ServiceNpcHireable" i="service_npc" m="situations.service_npcs.service_npc_tuning" n="serviceNpc_Repair_Free" s="204746">
+  <V n="_fake_perform_notification" t="enabled">
+    <V n="enabled" t="literal">
+      <U n="literal">
+        <V n="icon" t="enabled">
+          <V n="enabled" t="resource_key">
+            <U n="resource_key">
+              <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_wrench.png">2f7d0004:00000000:9999ece5ae028a1b</T>
+            </U>
+          </V>
+        </V>
+        <V n="text" t="single">
+          <T n="single">0x2669914D<!--A Repair Technician repaired broken objects in your house while you were away. You were charged {2.Money}.--></T>
+        </V>
+      </U>
+    </V>
+  </V>
+  <T n="_min_duration_left_for_arrival_on_lot">60</T>
+  <U n="_work_duration_min_max">
+    <T n="upper_bound">600</T>
+  </U>
+  <E n="bill_source">Repair_Service</E>
+  <T n="cost_hourly">0</T>
+  <T n="cost_up_front">0</T>
+  <T n="display_name">0xBA8070B2<!--Repair Service--></T>
+  <U n="fake_perform_job">
+    <L n="modifications">
+      <U>
+        <V n="action" t="set_state">
+          <U n="set_state">
+            <T n="action_value">15081<!--BrokenState_Unbroken--></T>
+          </U>
+        </V>
+        <L n="tests">
+          <L>
+            <V t="state">
+              <U n="state">
+                <E n="operator">LESS_OR_EQUAL</E>
+                <T n="value">15133<!--Dirty_Dirty--></T>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+      <U>
+        <V n="action" t="destroy_object" />
+        <L n="tests">
+          <L>
+            <V t="state">
+              <U n="state">
+                <E n="operator">EQUAL</E>
+                <T n="value">15108<!--Consumable_Empty--></T>
+              </U>
+            </V>
+            <V t="consumable_test">
+              <U n="consumable_test">
+                <U n="bites_left">
+                  <E n="operator">LESS_OR_EQUAL</E>
+                </U>
+              </U>
+            </V>
+          </L>
+          <L>
+            <V t="state">
+              <U n="state">
+                <E n="operator">EQUAL</E>
+                <T n="value">15190<!--Freshness_Spoiled--></T>
+              </U>
+            </V>
+          </L>
+          <L>
+            <V t="object_definition">
+              <U n="object_definition">
+                <V n="item" t="tagged_item">
+                  <U n="tagged_item">
+                    <L n="tag_set">
+                      <E>Func_TrashPile</E>
+                      <E>Func_Puddle</E>
+                    </L>
+                    <E n="test_type">CONTAINS_ANY_TAG_IN_SET</E>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </L>
+  </U>
+  <L n="free_service_traits">
+    <T>32110<!--trait_FreeServices--></T>
+    <T>196358</T>
+  </L>
+  <T n="hire_interaction">230201<!--phone_HireRepair_Free--></T>
+  <T n="icon" p="InGame\UI\Icons\Headlines\Final\headline_wrench.png">2f7d0004:00000000:9999ece5ae028a1b</T>
+  <T n="situation">129479<!--Repair_Situation--></T>
+  <U n="work_hours">
+    <L n="schedule_entries">
+      <U>
+        <U n="days_available">
+          <T n="0 SUNDAY">True</T>
+          <T n="1 MONDAY">True</T>
+          <T n="2 TUESDAY">True</T>
+          <T n="3 WEDNESDAY">True</T>
+          <T n="4 THURSDAY">True</T>
+          <T n="5 FRIDAY">True</T>
+          <T n="6 SATURDAY">True</T>
+        </U>
+        <T n="duration">18</T>
+        <U n="start_time">
+          <T n="hour">8</T>
+        </U>
+      </U>
+      <U>
+        <U n="days_available">
+          <T n="0 SUNDAY">True</T>
+          <T n="1 MONDAY">True</T>
+          <T n="2 TUESDAY">True</T>
+          <T n="3 WEDNESDAY">True</T>
+          <T n="4 THURSDAY">True</T>
+          <T n="5 FRIDAY">True</T>
+          <T n="6 SATURDAY">True</T>
+        </U>
+        <T n="duration">18</T>
+        <U n="start_time">
+          <T n="hour">0</T>
+        </U>
+      </U>
+    </L>
+  </U>
+</I>

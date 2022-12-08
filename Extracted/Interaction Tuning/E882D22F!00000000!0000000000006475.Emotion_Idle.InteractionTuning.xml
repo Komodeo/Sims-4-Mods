@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="MixerInteraction" i="interaction" m="interactions.base.mixer_interaction" n="Emotion_Idle" s="25717">
+  <T n="allow_user_directed">False</T>
+  <V n="basic_focus" t="do_not_change_focus" />
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Mixer</E>
+    <E>Interaction_All</E>
+    <E>Interaction_WaitstaffIdle</E>
+  </L>
+  <V n="lock_out_affordances" t="enabled">
+    <L n="enabled">
+      <T>25937<!--Emotion_Failure_Idle--></T>
+    </L>
+  </V>
+  <V n="lock_out_time" t="enabled">
+    <U n="enabled">
+      <U n="interval">
+        <T n="lower_bound">90</T>
+        <T n="upper_bound">120</T>
+      </U>
+    </U>
+  </V>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <V n="animation_ref" t="enabled">
+              <U n="enabled">
+                <T n="factory">25688<!--Emotions_Idle_LowIntensity--></T>
+                <U n="overrides">
+                  <V n="balloons" t="enabled">
+                    <L n="enabled">
+                      <U>
+                        <T n="balloon_chance">25</T>
+                        <L n="balloon_choices">
+                          <U>
+                            <V n="item" t="balloon_category">
+                              <T n="balloon_category">25779<!--Emotion_Thought--></T>
+                            </V>
+                          </U>
+                        </L>
+                        <L n="balloon_target">
+                          <E>Actor</E>
+                        </L>
+                      </U>
+                    </L>
+                  </V>
+                </U>
+              </U>
+            </V>
+            <L n="loot_list" />
+          </U>
+          <U n="weight">
+            <T n="base_value">3</T>
+          </U>
+        </U>
+      </L>
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <V n="animation_ref" t="enabled">
+                  <U n="enabled">
+                    <T n="factory">25712<!--Emotions_Idle_HighIntensity--></T>
+                    <U n="overrides">
+                      <V n="balloons" t="enabled">
+                        <L n="enabled">
+                          <U>
+                            <L n="balloon_choices">
+                              <U>
+                                <V n="item" t="balloon_category">
+                                  <T n="balloon_category">25779<!--Emotion_Thought--></T>
+                                </V>
+                              </U>
+                            </L>
+                            <L n="balloon_target">
+                              <E>Actor</E>
+                            </L>
+                          </U>
+                        </L>
+                      </V>
+                    </U>
+                  </U>
+                </V>
+                <L n="loot_list" />
+              </U>
+            </U>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="buff">
+                <U n="buff">
+                  <V n="whitelist" t="enabled">
+                    <L n="enabled">
+                      <T>12827<!--MoodBuff_Hidden_Furious--></T>
+                      <T>12840<!--MoodBuff_Hidden_Enraged--></T>
+                      <T>12814<!--MoodBuff_Hidden_Fearless--></T>
+                      <T>12842<!--MoodBuff_Hidden_Humiliated--></T>
+                      <T>12848<!--MoodBuff_Hidden_Mortified--></T>
+                      <T>12852<!--MoodBuff_Hidden_Pumped--></T>
+                      <T>12850<!--MoodBuff_Hidden_Passionate--></T>
+                      <T>12846<!--MoodBuff_Hidden_InTheZone--></T>
+                      <T>12834<!--MoodBuff_Hidden_Elated--></T>
+                      <T>12844<!--MoodBuff_Hidden_Imaginative--></T>
+                      <T>12843<!--MoodBuff_Hidden_Hysterical--></T>
+                      <T>12854<!--MoodBuff_Hidden_Silly--></T>
+                      <T>12832<!--MoodBuff_Hidden_Depressed--></T>
+                      <T>12856<!--MoodBuff_Hidden_Stressed--></T>
+                      <T>12847<!--MoodBuff_Hidden_Miserable--></T>
+                      <T>27323<!--MoodBuff_Hidden_HotHead2--></T>
+                      <T>27320<!--MoodBuff_Hidden_HotHead3--></T>
+                    </L>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+      <T n="use_fallback_as_default">True</T>
+    </U>
+  </V>
+  <U n="progress_bar_enabled">
+    <T n="bar_enabled">False</T>
+  </U>
+  <U n="sub_action">
+    <T n="base_weight">2</T>
+    <E n="mixer_group">IDLES</E>
+  </U>
+  <E n="target_type">ACTOR</E>
+  <L n="test_globals">
+    <V t="buff">
+      <U n="buff">
+        <L n="blacklist">
+          <T>129126<!--buff_Suppress_Emotion_Idle--></T>
+          <T>141769<!--buff_Trait_Toddler--></T>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <L n="blacklist">
+          <T>256563<!--buff_SnowDrift_SuppressIdlesWhenShoveling--></T>
+        </L>
+      </U>
+    </V>
+  </L>
+  <T n="visible">False</T>
+</I>

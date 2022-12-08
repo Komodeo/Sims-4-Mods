@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="ObjectRoutingBehavior" i="snippet" m="routing.object_routing.object_routing_behavior" n="objectRoutingBehavior_RobotVacuum_Run_Faster" s="173186">
+  <E n="object_routing_priority">HIGH</E>
+  <V n="pre_route_animation" t="enabled">
+    <T n="enabled">171491<!--animation_RobotVacuum_NoIdle--></T>
+  </V>
+  <V n="route" t="from_waypoints">
+    <U n="from_waypoints">
+      <V n="waypoint_generator" t="lot_points">
+        <U n="lot_points">
+          <V n="object_tag_generator" t="enabled">
+            <U n="enabled">
+              <T n="constrain_radius">1</T>
+              <T n="object_max_distance">1000</T>
+              <V n="object_search_strategy" t="sorted_by_distance" />
+              <L n="object_tags">
+                <E>Func_RobotVacuum_Mess_DefaultClean</E>
+              </L>
+              <V n="placement_restriction" t="inside_only" />
+            </U>
+          </V>
+        </U>
+      </V>
+    </U>
+  </V>
+  <L n="routing_actions">
+    <V t="destroy_objects">
+      <U n="destroy_objects">
+        <V n="animation_failure" t="enabled">
+          <U n="enabled">
+            <T n="loop_time">3</T>
+            <T n="reference">171489<!--animation_RobotVacuum_Scan--></T>
+          </U>
+        </V>
+        <V n="animation_success" t="enabled">
+          <U n="enabled">
+            <V n="event_id" t="enabled">
+              <T n="enabled">100</T>
+            </V>
+            <T n="reference">171493<!--animation_RobotVacuum_Clean--></T>
+          </U>
+        </V>
+        <L n="loot_success">
+          <T>172063<!--lootActions_RobotVacuum_stat_TrashCapacity_cleanObject--></T>
+          <T>173371<!--lootActions_RobotVacuum_stat_Breakage_small--></T>
+        </L>
+        <V n="object_selection_method" t="tags">
+          <U n="tags">
+            <L n="tags">
+              <E>Func_RobotVacuum_Mess_DefaultClean</E>
+            </L>
+          </U>
+        </V>
+      </U>
+    </V>
+  </L>
+  <L n="termination_loot">
+    <T>171890<!--lootActions_RobotVacuum_RoutingBehavior_SwitchToDock--></T>
+  </L>
+</I>

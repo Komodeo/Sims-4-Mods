@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="DialogDramaNode" i="drama_node" m="drama_scheduler.dialog_drama_node" n="dialogDramaNode_AskIfPromotion" s="273860">
+  <V n="cooldown_data" t="group_cooldown">
+    <U n="group_cooldown">
+      <E n="group">JobPromotionCallCooldown</E>
+    </U>
+  </V>
+  <V n="dialog_and_loot" t="dialog_multi_response">
+    <U n="dialog_multi_response">
+      <U n="dialog">
+        <E n="phone_ring_type">RING</E>
+        <V n="text" t="variation">
+          <U n="variation">
+            <L n="variations">
+              <T>0x4C74BFDF<!--There is a rumor at my workplace that someone will get a promotion! Should I try to impress my boss to get it?--></T>
+              <T>0x71CF2030<!--I heard my boss saying I would be a good candidate for a promotion. Do you think I can do it?--></T>
+              <T>0x1DA83E42<!--More money and prestige, but more work and responsibility. Should I try to get a promotion?--></T>
+            </L>
+          </U>
+        </V>
+      </U>
+      <L n="possible_responses">
+        <U>
+          <U n="item">
+            <L n="loot">
+              <T>274122<!--loot_DramaNode_AskIfPromotion_Positive--></T>
+              <T>274226<!--loot_Aspiration_FriendlyNeighbor_RunEvent--></T>
+              <T>274286<!--loot_Sentiment_AddSentiment_Motivating_FriendlyAdvice_TargetToActor_MediumChance--></T>
+            </L>
+            <T n="text">0x3C49EFF4<!--Yes, you should totally go for it!--></T>
+          </U>
+          <L n="test">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="blacklist_traits">
+                    <T>16823<!--trait_Ambitious--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <U n="item">
+            <L n="loot">
+              <T>274127<!--randomWeightedLoot_DramaNode_AskIfPromotion_Maybe--></T>
+            </L>
+            <T n="text">0xD8063DE3<!--That should be up to you.--></T>
+          </U>
+        </U>
+        <U>
+          <U n="item">
+            <L n="loot">
+              <T>274123<!--loot_DramaNode_AskIfPromotion_Negative--></T>
+            </L>
+            <T n="text">0x857965C7<!--No, I don't think you are up for it.--></T>
+          </U>
+          <L n="test">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="blacklist_traits">
+                    <T>9599<!--trait_Lazy--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <U n="item">
+            <L n="loot">
+              <T>274122<!--loot_DramaNode_AskIfPromotion_Positive--></T>
+              <T>274226<!--loot_Aspiration_FriendlyNeighbor_RunEvent--></T>
+              <T>274286<!--loot_Sentiment_AddSentiment_Motivating_FriendlyAdvice_TargetToActor_MediumChance--></T>
+            </L>
+            <T n="text">0xA25315CB<!--Do it! Aim for the stars!--></T>
+          </U>
+          <L n="test">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="whitelist_traits">
+                    <T>16823<!--trait_Ambitious--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <U n="item">
+            <L n="loot">
+              <T>274123<!--loot_DramaNode_AskIfPromotion_Negative--></T>
+            </L>
+            <T n="text">0x6DBF38F0<!--That would mean more work, don't do it!--></T>
+          </U>
+          <L n="test">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="whitelist_traits">
+                    <T>9599<!--trait_Lazy--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+  </V>
+  <U n="min_and_max_times">
+    <T n="lower_bound">1</T>
+    <T n="upper_bound">24</T>
+  </U>
+  <L n="receiver_sim_pretests">
+    <L>
+      <V t="sim_info">
+        <U n="sim_info">
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>YOUNGADULT</E>
+              <E>ADULT</E>
+              <E>ELDER</E>
+            </L>
+          </V>
+          <V n="species" t="specified">
+            <U n="specified">
+              <L n="species">
+                <E />
+              </L>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </L>
+  <V n="scoring" t="enabled">
+    <U n="enabled">
+      <T n="base_score">100</T>
+      <E n="bucket">NeighborStories</E>
+    </U>
+  </V>
+  <V n="sender_sim_info" t="sim_filter">
+    <U n="sim_filter">
+      <L n="blacklist_participants">
+        <E />
+      </L>
+      <T n="sim_filter">274151<!--dramaNodeFilters_Friend_Base_CanBePromoted--></T>
+    </U>
+  </V>
+  <V n="time_option" t="schedule">
+    <U n="schedule">
+      <L n="valid_times">
+        <U>
+          <U n="days_available">
+            <T n="0 SUNDAY">True</T>
+            <T n="1 MONDAY">True</T>
+            <T n="2 TUESDAY">True</T>
+            <T n="3 WEDNESDAY">True</T>
+            <T n="4 THURSDAY">True</T>
+            <T n="5 FRIDAY">True</T>
+            <T n="6 SATURDAY">True</T>
+          </U>
+          <T n="duration">12</T>
+          <U n="start_time">
+            <T n="hour">8</T>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+</I>

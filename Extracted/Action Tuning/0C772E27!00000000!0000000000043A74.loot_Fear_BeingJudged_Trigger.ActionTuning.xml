@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="LootActions" i="action" m="interactions.utils.loot" n="loot_Fear_BeingJudged_Trigger" s="277108">
+  <L n="loot_actions">
+    <V t="relationship_bits_loot">
+      <U n="relationship_bits_loot">
+        <L n="bit_operations">
+          <U>
+            <T n="bit">288656<!--relationshipBit_Fear_BeingJudged_MeanTracker--></T>
+            <E n="operation">ADD</E>
+            <E n="recipients">TargetSim</E>
+            <E n="targets">Actor</E>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">288479<!--buff_Fear_BeingJudged_Tracker--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+      </U>
+    </V>
+    <V t="trait_add">
+      <U n="trait_add">
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="relationship_bit_count">
+              <U n="relationship_bit_count">
+                <E n="comparison_operator">GREATER_OR_EQUAL</E>
+                <T n="rel_bit">288656<!--relationshipBit_Fear_BeingJudged_MeanTracker--></T>
+                <T n="relationship_count">4</T>
+                <L n="subject">
+                  <E>TargetSim</E>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+        <T n="trait">277087<!--trait_Fear_BeingJudged--></T>
+      </U>
+    </V>
+  </L>
+  <L n="tests">
+    <L>
+      <V t="buff">
+        <U n="buff">
+          <L n="blacklist">
+            <T>277115<!--buff_Fear_Immunity_ResolvedRecently--></T>
+          </L>
+          <E n="subject">TargetSim</E>
+        </U>
+      </V>
+      <V t="trait">
+        <U n="trait">
+          <L n="blacklist_traits">
+            <T>277087<!--trait_Fear_BeingJudged--></T>
+          </L>
+          <E n="subject">TargetSim</E>
+        </U>
+      </V>
+    </L>
+  </L>
+</I>

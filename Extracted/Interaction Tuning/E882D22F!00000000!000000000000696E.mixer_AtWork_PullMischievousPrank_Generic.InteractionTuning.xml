@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="MixerInteraction" i="interaction" m="interactions.base.mixer_interaction" n="mixer_AtWork_PullMischievousPrank_Generic" s="26990">
+  <T n="allow_user_directed">False</T>
+  <V n="basic_content" t="looping_animation">
+    <U n="looping_animation">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">5</T>
+                  <T n="min_time">5</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+      </L>
+    </U>
+  </V>
+  <V n="basic_focus" t="disable_focus" />
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Prank</E>
+    <E>Interaction_Mixer</E>
+    <E>Interaction_All</E>
+    <E>Interaction_Skill_Mischief</E>
+  </L>
+  <V n="lock_out_time_initial" t="enabled">
+    <U n="enabled">
+      <T n="lower_bound">60</T>
+      <T n="upper_bound">60</T>
+    </U>
+  </V>
+  <V n="outcome" t="dual">
+    <U n="dual">
+      <U n="failure_actions">
+        <L n="basic_extras">
+          <V t="notification">
+            <U n="notification">
+              <V n="dialog" t="single">
+                <V n="single" t="literal">
+                  <U n="literal">
+                    <V n="icon" t="enabled">
+                      <V n="enabled" t="participant" />
+                    </V>
+                    <V n="text" t="variation">
+                      <U n="variation">
+                        <L n="variations">
+                          <T>0x9295F37A<!--{0.SimFirstName} attempted to pull a prank at work, but failed miserably.--></T>
+                        </L>
+                      </U>
+                    </V>
+                  </U>
+                </V>
+              </V>
+            </U>
+          </V>
+        </L>
+        <L n="loot_list">
+          <T>26997<!--loot_BuffRemoval_Prank--></T>
+          <T>98360<!--Loot_Buff_MischiefPranksCooldown_Generic--></T>
+        </L>
+      </U>
+      <U n="success_actions">
+        <L n="basic_extras">
+          <V t="notification">
+            <U n="notification">
+              <V n="dialog" t="single">
+                <V n="single" t="literal">
+                  <U n="literal">
+                    <V n="icon" t="enabled">
+                      <V n="enabled" t="participant" />
+                    </V>
+                    <V n="text" t="variation">
+                      <U n="variation">
+                        <L n="variations">
+                          <T>0x4D27A789<!--What a clown! {0.SimFirstName} successfully pulled a fairly clever prank at {M0.his}{F0.her} job.--></T>
+                        </L>
+                      </U>
+                    </V>
+                  </U>
+                </V>
+              </V>
+            </U>
+          </V>
+        </L>
+        <L n="loot_list">
+          <T>26997<!--loot_BuffRemoval_Prank--></T>
+          <T>98360<!--Loot_Buff_MischiefPranksCooldown_Generic--></T>
+        </L>
+      </U>
+    </U>
+  </V>
+  <U n="skill_loot_data">
+    <E n="effectiveness">STANDARD</E>
+    <T n="stat">16707<!--statistic_Skill_AdultMajor_Mischief--></T>
+  </U>
+  <U n="sub_action">
+    <T n="base_weight">2</T>
+  </U>
+  <E n="target_type">ACTOR</E>
+  <L n="test_globals">
+    <V t="buff">
+      <U n="buff">
+        <V n="whitelist" t="enabled">
+          <L n="enabled">
+            <T>26965<!--buff_MischiefPranks_Generic--></T>
+          </L>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="visible">False</T>
+</I>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="GameObject" i="object" m="objects.game_object" n="object_Pet_RainbowPoop_Small" s="167657">
+  <U n="_components">
+    <V n="carryable" t="enabled" />
+    <V n="consumable" t="enabled">
+      <U n="enabled">
+        <T n="allow_destruction_on_inventory_transfer">False</T>
+        <L n="consume_affordances">
+          <T>159184<!--pet_Poop_Eat--></T>
+          <T>176894<!--pet_Poop_Eat_SmallDog--></T>
+        </L>
+        <L n="consumption_statistics">
+          <V t="statistic_change">
+            <U n="statistic_change">
+              <T n="amount">40</T>
+              <T n="stat">151031<!--commodity_Motive_PetDog_Hunger--></T>
+              <L n="subject">
+                <E>Actor</E>
+              </L>
+              <L n="tests">
+                <L>
+                  <V t="sim_info">
+                    <U n="sim_info">
+                      <V n="species" t="specified">
+                        <U n="specified">
+                          <L n="species">
+                            <E>DOG</E>
+                          </L>
+                        </U>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+              </L>
+            </U>
+          </V>
+          <V t="statistic_change">
+            <U n="statistic_change">
+              <T n="amount">-25</T>
+              <T n="stat">151032<!--commodity_Motive_PetDog_Bladder--></T>
+              <L n="subject">
+                <E>Actor</E>
+              </L>
+            </U>
+          </V>
+        </L>
+        <T n="consumption_turns">1</T>
+        <U n="fitness_info">
+          <T n="calories">250</T>
+        </U>
+      </U>
+    </V>
+    <V n="focus" t="enabled">
+      <U n="enabled">
+        <V n="_focus_score" t="globally">
+          <U n="globally">
+            <E n="base">LOW</E>
+          </U>
+        </V>
+      </U>
+    </V>
+    <V n="inventory_item" t="enabled">
+      <U n="enabled">
+        <V n="no_carry_add_to_sim_inventory_affordances" t="OVERRIDE">
+          <L n="OVERRIDE">
+            <T>175151<!--si_SwipeIntoSimInventory_PetPoop--></T>
+          </L>
+        </V>
+        <V n="put_away_affordance" t="OVERRIDE">
+          <T n="OVERRIDE">175151<!--si_SwipeIntoSimInventory_PetPoop--></T>
+        </V>
+        <T n="remove_from_npc_inventory">True</T>
+        <T n="skip_carry_pose">True</T>
+        <L n="valid_inventory_types">
+          <E>SIM</E>
+          <E>TRASHCAN</E>
+          <E>STORAGE_CHEST_DORM</E>
+        </L>
+      </U>
+    </V>
+    <V n="state" t="enabled">
+      <U n="enabled">
+        <L n="state_triggers">
+          <U>
+            <L n="at_states">
+              <T>160746<!--petPoop_Commodity_Values_Destroy--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>160797<!--petPoop_Values_Destroy_Sprout_active--></T>
+              </L>
+            </V>
+            <V n="trigger_chance" t="enabled">
+              <T n="enabled">5</T>
+            </V>
+          </U>
+          <U>
+            <L n="at_states">
+              <T>160746<!--petPoop_Commodity_Values_Destroy--></T>
+            </L>
+            <V n="set_states" t="Set_state_list">
+              <L n="Set_state_list">
+                <T>160795<!--petPoop_Values_Destroy_active--></T>
+              </L>
+            </V>
+          </U>
+        </L>
+        <L n="states">
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">159593<!--petPoop_Values_Unbagged--></T>
+                <U n="value">
+                  <V n="broadcaster" t="apply_new_value">
+                    <V n="apply_new_value" t="start_broadcaster">
+                      <U n="start_broadcaster">
+                        <L n="broadcaster_types">
+                          <U>
+                            <T n="item">162002<!--broadcaster_Reaction_PetPoop_StepOn--></T>
+                          </U>
+                        </L>
+                      </U>
+                    </V>
+                  </V>
+                  <V n="vfx_state" t="apply_new_value">
+                    <V n="apply_new_value" t="start_vfx">
+                      <V n="start_vfx" t="single_effect">
+                        <U n="single_effect">
+                          <T n="effect_name">ep04_pet_sickness_rainbow_stink_small_poop</T>
+                        </U>
+                      </V>
+                    </V>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">159594<!--petPoop_Values_Bagged--></T>
+                <U n="value">
+                  <V n="environment_score" t="apply_new_value" />
+                </U>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">159593<!--petPoop_Values_Unbagged--></T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">160744<!--petPoop_Commodity_Values_Start--></T>
+              </U>
+              <U>
+                <T n="key">160746<!--petPoop_Commodity_Values_Destroy--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">160744<!--petPoop_Commodity_Values_Start--></T>
+            </V>
+            <T n="reset_on_load_if_time_passes">True</T>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">160795<!--petPoop_Values_Destroy_active--></T>
+              </U>
+              <U>
+                <T n="key">160796<!--petPoop_Values_Destroy_inactive--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">160796<!--petPoop_Values_Destroy_inactive--></T>
+            </V>
+            <T n="reset_on_load_if_time_passes">True</T>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">160797<!--petPoop_Values_Destroy_Sprout_active--></T>
+                <U n="value">
+                  <V n="replace_object" t="enabled">
+                    <U n="enabled">
+                      <T n="destroy_original_object">False</T>
+                      <V n="new_object" t="enabled">
+                        <T n="enabled">28743<!--mixer_social_InviteToFakeParty_targeted_mischief_alwaysOn--></T>
+                      </V>
+                    </U>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <T n="key">160798<!--petPoop_Values_Destroy_Sprout_inactive--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">160798<!--petPoop_Values_Destroy_Sprout_inactive--></T>
+            </V>
+            <T n="reset_on_load_if_time_passes">True</T>
+            <T n="reset_to_default">True</T>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">257974</T>
+              </U>
+              <U>
+                <T n="key">257975</T>
+                <U n="value">
+                  <V n="replace_object" t="enabled" />
+                </U>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">257974</T>
+            </V>
+          </U>
+          <U>
+            <L n="client_states">
+              <U>
+                <T n="key">39478<!--FireState_Burn_Incinerate_Burning--></T>
+              </U>
+              <U>
+                <T n="key">39479<!--FireState_Burn_Incinerate--></T>
+              </U>
+              <U>
+                <T n="key">39612<!--FireState_Burn_Incinerate_Not_Burning--></T>
+              </U>
+            </L>
+            <V n="default_value" t="reference">
+              <T n="reference">39612<!--FireState_Burn_Incinerate_Not_Burning--></T>
+            </V>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V n="tooltip_component" t="enabled">
+      <U n="enabled">
+        <L n="custom_tooltips">
+          <U>
+            <L n="tooltip_fields">
+              <U>
+                <E n="key">recipe_description</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0x91D89C7E<!--{0.ObjectCatalogDescription}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">Object</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+              <U>
+                <E n="key">recipe_name</E>
+                <U n="value">
+                  <V n="text" t="single">
+                    <T n="single">0xB65357A4<!--{0.ObjectName}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled">
+                    <U n="enabled">
+                      <L n="tokens">
+                        <V t="participant_type">
+                          <U n="participant_type">
+                            <V n="objects" t="from_participant">
+                              <U n="from_participant">
+                                <E n="participant">Object</E>
+                              </U>
+                            </V>
+                          </U>
+                        </V>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </U>
+            </L>
+            <E n="tooltip_style">HOVER_TIP_CUSTOM_OBJECT</E>
+          </U>
+        </L>
+      </U>
+    </V>
+  </U>
+  <L n="_super_affordances">
+    <T>13328<!--debug_Reset--></T>
+    <T>13326<!--debug_ObjectDestroy--></T>
+    <T>103888<!--cheat_set_as_head--></T>
+    <T>176856<!--pet_Poop_Sniff_Cat--></T>
+    <T>176865<!--pet_Poop_Sniff_LargeDog--></T>
+    <T>159185<!--pet_Poop_Sniff--></T>
+    <T>161204<!--collect_Trash_PetPoop_OnLot_Aggregate--></T>
+    <T>160911<!--Collect_Trash_PetPoop_FromInventory--></T>
+  </L>
+  <U n="recycling_data">
+    <L n="recycling_values">
+      <U>
+        <E n="Bucks Type">RecycleBitsBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+      <U>
+        <E n="Bucks Type">RecyclePiecesBucks</E>
+        <T n="Value">0.5</T>
+      </U>
+    </L>
+  </U>
+</I>

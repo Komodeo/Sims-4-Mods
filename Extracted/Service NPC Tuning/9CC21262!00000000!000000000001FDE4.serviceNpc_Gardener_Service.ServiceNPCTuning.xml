@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="ServiceNpcHireable" i="service_npc" m="situations.service_npcs.service_npc_tuning" n="serviceNpc_Gardener_Service" s="130532">
+  <V n="_fake_perform_notification" t="enabled">
+    <V n="enabled" t="literal">
+      <U n="literal">
+        <V n="icon" t="enabled">
+          <V n="enabled" t="resource_key">
+            <U n="resource_key">
+              <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_Gardening.png">2f7d0004:00000000:bcf6721a428d5635</T>
+            </U>
+          </V>
+        </V>
+        <V n="text" t="single">
+          <T n="single">0xE25DD6FC<!--A Gardener tended to your plants while you were away. You were charged {2.Money}.--></T>
+        </V>
+      </U>
+    </V>
+  </V>
+  <T n="_min_duration_left_for_arrival_on_lot">60</T>
+  <V n="_recurring" t="enabled">
+    <U n="enabled">
+      <T n="one_time_name">0x12ED96F0<!--One Time Gardening Service--></T>
+      <T n="recurring_name">0x78BFCF87<!--Scheduled Gardening Service--></T>
+    </U>
+  </V>
+  <U n="_work_duration_min_max">
+    <T n="upper_bound">360</T>
+  </U>
+  <E n="bill_source">Gardening_Service</E>
+  <T n="cost_hourly">30</T>
+  <T n="cost_up_front">50</T>
+  <T n="display_name">0xF19F9097<!--Professional Gardener--></T>
+  <U n="fake_perform_job">
+    <L n="modifications">
+      <U>
+        <V n="action" t="set_state">
+          <U n="set_state">
+            <T n="action_value">15257<!--Moisture_4_FullyWateredDripping--></T>
+          </U>
+        </V>
+        <L n="tests">
+          <L>
+            <V t="state">
+              <U n="state">
+                <T n="value">185499<!--MoistureEffects_1_Waterable--></T>
+              </U>
+            </V>
+          </L>
+          <L>
+            <V t="state">
+              <U n="state">
+                <T n="value">185497<!--MoistureEffects_0_Dry--></T>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+      <U>
+        <V n="action" t="destroy_object" />
+        <L n="tests">
+          <L>
+            <V t="state">
+              <U n="state">
+                <E n="operator">EQUAL</E>
+                <T n="value">15108<!--Consumable_Empty--></T>
+              </U>
+            </V>
+            <V t="consumable_test">
+              <U n="consumable_test">
+                <U n="bites_left">
+                  <E n="operator">LESS_OR_EQUAL</E>
+                </U>
+              </U>
+            </V>
+            <V t="object_definition">
+              <U n="object_definition">
+                <V n="item" t="tagged_item">
+                  <U n="tagged_item">
+                    <L n="tag_set">
+                      <E>Func_Venue_NotDestroyableByCleanup</E>
+                    </L>
+                    <E n="test_type">CONTAINS_NO_TAGS_IN_SET</E>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+          <L>
+            <V t="state">
+              <U n="state">
+                <E n="operator">EQUAL</E>
+                <T n="value">15190<!--Freshness_Spoiled--></T>
+              </U>
+            </V>
+            <V t="object_definition">
+              <U n="object_definition">
+                <V n="item" t="tagged_item">
+                  <U n="tagged_item">
+                    <L n="tag_set">
+                      <E>Func_Venue_NotDestroyableByCleanup</E>
+                    </L>
+                    <E n="test_type">CONTAINS_NO_TAGS_IN_SET</E>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+          <L>
+            <V t="object_definition">
+              <U n="object_definition">
+                <V n="item" t="tagged_item">
+                  <U n="tagged_item">
+                    <L n="tag_set">
+                      <E>Func_TrashPile</E>
+                      <E>Func_Puddle</E>
+                    </L>
+                    <E n="test_type">CONTAINS_ANY_TAG_IN_SET</E>
+                  </U>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </L>
+  </U>
+  <L n="free_service_traits">
+    <T>32110<!--trait_FreeServices--></T>
+    <T>196358</T>
+  </L>
+  <T n="hire_interaction">130534<!--phone_HireGardener_Service--></T>
+  <T n="icon" p="InGame\UI\Icons\Headlines\Final\headline_Gardening.png">2f7d0004:00000000:bcf6721a428d5635</T>
+  <T n="situation">130533<!--Gardener_Service_Situation--></T>
+  <U n="work_hours">
+    <L n="schedule_entries">
+      <U>
+        <U n="days_available">
+          <T n="0 SUNDAY">False</T>
+          <T n="1 MONDAY">True</T>
+          <T n="2 TUESDAY">True</T>
+          <T n="3 WEDNESDAY">True</T>
+          <T n="4 THURSDAY">True</T>
+          <T n="5 FRIDAY">True</T>
+          <T n="6 SATURDAY">False</T>
+        </U>
+        <T n="duration">6</T>
+        <U n="start_time">
+          <T n="hour">9</T>
+        </U>
+      </U>
+    </L>
+  </U>
+</I>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<M n="services.fire_service" s="8818301941467280642">
+  <C n="FireService">
+    <T n="CAREGIVER_SITUATION">155917<!--caregiverSituation_Toddler--></T>
+    <T n="FIRE_ALARM_ACTIVATION_RADIUS">10</T>
+    <T n="FIRE_ALARM_ACTIVE_STATE">40401<!--FireAlarm_On--></T>
+    <T n="FIRE_ALARM_CYCLE_TIME">10</T>
+    <T n="FIRE_ALARM_DEACTIVATED_STATE">40402<!--FireAlarmState_Off--></T>
+    <T n="FIRE_ALARM_OBJECT_DEF">42827</T>
+    <T n="FIRE_BEEN_EXTINGUISHED_COMMODITY">75770<!--commodity_object_fire_BeenExtinguished--></T>
+    <L n="FIRE_BRIGADE_SITUATION">
+      <U>
+        <U n="item">
+          <T n="chance">100</T>
+          <T n="situation">234740<!--situation_Firefighter--></T>
+        </U>
+        <L n="test">
+          <L>
+            <V t="region">
+              <U n="region">
+                <V n="blacklist" t="enabled">
+                  <L n="enabled">
+                    <T>208308</T>
+                  </L>
+                </V>
+              </U>
+            </V>
+            <V t="object_criteria">
+              <U n="object_criteria">
+                <V n="desired_state_threshold" t="enabled">
+                  <U n="enabled">
+                    <E n="comparison">EQUAL</E>
+                    <T n="value">40401<!--FireAlarm_On--></T>
+                  </U>
+                </V>
+                <V n="identity_test" t="tags">
+                  <U n="tags">
+                    <L n="tag_set">
+                      <E>Func_FireAlarm</E>
+                    </L>
+                    <E n="test_type">CONTAINS_ANY_TAG_IN_SET</E>
+                  </U>
+                </V>
+                <T n="owned">False</T>
+                <T n="use_depreciated_values">False</T>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+      <U>
+        <U n="item">
+          <T n="chance">75</T>
+          <T n="situation">208895<!--situation_IslanderCulture_FireBrigade--></T>
+        </U>
+        <L n="test">
+          <L>
+            <V t="region">
+              <U n="region">
+                <V n="whitelist" t="enabled">
+                  <L n="enabled">
+                    <T>208308</T>
+                  </L>
+                </V>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </L>
+    <L n="FIRE_CAN_SPREAD_TO_SIM_TESTS">
+      <L>
+        <V t="trait">
+          <U n="trait">
+            <L n="blacklist_traits">
+              <T>16854<!--trait_isPregnant--></T>
+              <T>76817<!--trait_OneWithNature--></T>
+              <T>16851<!--trait_isGrimReaper--></T>
+            </L>
+          </U>
+        </V>
+        <V t="buff">
+          <U n="buff">
+            <L n="blacklist">
+              <T>103994</T>
+              <T>155636<!--Buff_Situation_Fire_Panic_Caregiver--></T>
+            </L>
+          </U>
+        </V>
+      </L>
+    </L>
+    <U n="FIRE_INSURANCE_CLAIM_NOTIFICATION">
+      <V n="icon" t="enabled">
+        <V n="enabled" t="resource_key">
+          <U n="resource_key">
+            <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_cashmoney.png">2f7d0004:00000000:36d81b5cf7ea3cab</T>
+          </U>
+        </V>
+      </V>
+      <U n="text">
+        <V n="fallback" t="single">
+          <T n="single">0xF296A347<!--The {0.String} household received {1.Money} as an insurance payment for the items that were damaged in the recent fire.--></T>
+        </V>
+        <V n="single_family" t="enabled">
+          <V n="enabled" t="single">
+            <T n="single">0x2588EF3A<!--The {0.String|enHouseholdNamePlural} received {1.Money} as an insurance payment for the items that were damaged in the recent fire on their lot.--></T>
+          </V>
+        </V>
+        <V n="single_sim" t="enabled">
+          <V n="enabled" t="single">
+            <T n="single">0xBC6D35A9<!--{0.SimFirstName} received {1.Money} as an insurance payment for the items that were damaged in the recent fire on {M0.his}{F0.her} lot.--></T>
+          </V>
+        </V>
+      </U>
+    </U>
+    <T n="FIRE_INSURANCE_CLAIM_PERCENTAGE">50</T>
+    <T n="FIRE_JOB">73823<!--Job_Fire--></T>
+    <T n="FIRE_OBJECT_DEF">43993</T>
+    <T n="FIRE_OBJECT_EXTINGUISHED_STATE_VALUE">39320<!--FireState_FireObject_Extinguished--></T>
+    <T n="FIRE_OBJECT_FIRE_STATE">38913<!--Fire_Fire--></T>
+    <U n="FIRE_OBJECT_SPREAD_CHANCE">
+      <T n="base_value">1</T>
+      <L n="multipliers">
+        <U>
+          <T n="multiplier">0.5</T>
+          <L n="tests">
+            <L>
+              <V t="location">
+                <U n="location">
+                  <U n="location_tests">
+                    <V n="has_terrain_tag" t="enabled">
+                      <U n="enabled">
+                        <T n="negate">True</T>
+                        <L n="terrain_tags">
+                          <E>GRASS</E>
+                          <E>CARPET</E>
+                          <E>HARDWOOD</E>
+                        </L>
+                        <T n="test_floor_tiles">True</T>
+                      </U>
+                    </V>
+                  </U>
+                  <E n="subject">Object</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <T n="multiplier">0</T>
+          <L n="tests">
+            <L>
+              <V t="location">
+                <U n="location">
+                  <U n="location_tests">
+                    <V n="has_terrain_tag" t="enabled">
+                      <U n="enabled">
+                        <T n="negate">False</T>
+                        <L n="terrain_tags">
+                          <E>METAL</E>
+                          <E>STONE</E>
+                        </L>
+                        <T n="test_floor_tiles">True</T>
+                      </U>
+                    </V>
+                  </U>
+                  <E n="subject">Object</E>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+    <L n="FIRE_PANIC_BUFFS">
+      <T>73844<!--Buff_Situation_Fire_Panic--></T>
+      <T>100125<!--Buff_Situation_Fire_safe--></T>
+    </L>
+    <U n="FIRE_PLACEMENT_RANGE">
+      <T n="lower_bound">2</T>
+      <T n="upper_bound">3</T>
+    </U>
+    <T n="FIRE_QUADTREE_RADIUS">0.4</T>
+    <V n="FIRE_REACTION_NOTIFICATION" t="literal">
+      <U n="literal">
+        <V n="icon" t="enabled">
+          <V n="enabled" t="resource_key">
+            <U n="resource_key">
+              <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_angry_v3.png">2f7d0004:00000000:304ff71504fffd8b</T>
+            </U>
+          </V>
+        </V>
+        <V n="secondary_icon" t="enabled">
+          <V n="enabled" t="participant" />
+        </V>
+        <V n="text" t="single">
+          <T n="single">0xD0112185<!--{0.SimFirstName} discovered the fire!--></T>
+        </V>
+        <E n="urgency">URGENT</E>
+      </U>
+    </V>
+    <T n="FIRE_RETARDANT_EXTRA_OBJECT_RADIUS">0.2</T>
+    <T n="FIRE_SIM_ON_FIRE_AFFORDANCE">40870<!--fire_OnFire--></T>
+    <U n="FIRE_SIM_ON_FIRE_CHANCE">
+      <L n="multipliers">
+        <U>
+          <T n="multiplier">0.9</T>
+          <L n="tests">
+            <L>
+              <V t="outfit">
+                <U n="outfit">
+                  <L n="whitelist_outfits">
+                    <E>BATHING</E>
+                  </L>
+                </U>
+              </V>
+              <V t="buff">
+                <U n="buff">
+                  <V n="whitelist" t="enabled">
+                    <L n="enabled">
+                      <T>206158<!--buff_LotMods_BaseGame_ClothingOptional_GetNude_Hidden--></T>
+                      <T>206639<!--buff_LotMods_BaseGame_ClothingOptional_NeverNude_Hidden--></T>
+                    </L>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+        <U>
+          <T n="multiplier">0.01</T>
+          <L n="tests">
+            <L>
+              <V t="buff">
+                <U n="buff">
+                  <V n="whitelist" t="enabled">
+                    <L n="enabled">
+                      <T>237760<!--buff_Fire_WearingFirefighterOutfit--></T>
+                    </L>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </L>
+    </U>
+    <T n="FIRE_SITUATION">73821<!--situation_fire--></T>
+    <T n="FIRE_SPREAD_CHANCE">1</T>
+    <T n="FIRE_SPREAD_INTIAL_TIME_IN_SIM_MINUTES">30</T>
+    <T n="FIRE_SPREAD_REPEATING_TIME_IN_SIM_MINUTES">13</T>
+    <T n="FIRE_SPRINKLER_ACTIVE_STATE">75187<!--FireSprinkler_On--></T>
+    <T n="FIRE_SPRINKLER_DEACTIVATED_STATE">75186<!--FireSprinklerState_Off--></T>
+    <V n="FIRE_STARTED_NOTIFICATION" t="literal">
+      <U n="literal">
+        <V n="icon" t="enabled">
+          <V n="enabled" t="resource_key">
+            <U n="resource_key">
+              <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_angry_v3.png">2f7d0004:00000000:304ff71504fffd8b</T>
+            </U>
+          </V>
+        </V>
+        <E n="information_level">SIM</E>
+        <V n="text" t="single">
+          <T n="single">0x6F89483F<!--A fire has started nearby! Maybe your Sim should put it out before it spreads out of control!--></T>
+        </V>
+        <V n="title" t="enabled">
+          <T n="enabled">0x17ADBC5D<!--FIRE--></T>
+        </V>
+        <E n="urgency">URGENT</E>
+      </U>
+    </V>
+    <T n="FIRE_STRENGTH_COMMODITY">39323<!--commodity_object_fire_strength--></T>
+    <T n="FIRE_STRENGTH_COMMODITY_SUPRESSION_DECAY">20</T>
+    <T n="FLAMMABLE_COMMODITY">39470<!--commodity_object_burning--></T>
+    <T n="FLAMMABLE_COMMODITY_DECAY_PER_FIRE">2</T>
+    <T n="INTERACTION_UNAVAILABLE_DUE_TO_FIRE_TOOLTIP">0xF4357937<!--This interaction is unavailable because of the fire on the lot.--></T>
+    <T n="MAX_NUM_ATTEMPTS_TO_PLACE_FIRE">10</T>
+    <T n="ROUTING_FIRE_CHECK_RADIUS">0.2</T>
+    <T n="SAVE_LOCK_TOOLTIP">0x1F521283<!--You cannot do this during a fire.--></T>
+    <T n="SCORCH_TERRAIN_CLEANUP_HOUR">4</T>
+    <T n="SPRINKLER_ACTIVATION_TIME">20</T>
+    <E n="SPRINKLER_BOX_OBJECT_TAG">Func_Sprinkler</E>
+    <U n="SPRINKLER_EFFECT">
+      <T n="effect_name">s40_fire_sprinkler_system</T>
+      <V n="joint_name" t="Slot">
+        <T n="Slot">_FX_spawnVFX</T>
+      </V>
+    </U>
+    <E n="SPRINKLER_FLOOR_OBJECT_TAG">Func_Sprinkler_Floor</E>
+    <T n="SPRINKLER_HEAD_OBJECT_DEF">45538</T>
+    <T n="SPRINKLER_PUDDLE_CHANCE">30</T>
+    <T n="SPRINKLER_RUN_TIME">5</T>
+    <T n="START_PANIC_INTERACTION">75076<!--fire_reacting_to_fire--></T>
+  </C>
+</M>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="smart_Hub_Order_Maid" s="203547">
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="circle">
+            <U n="circle">
+              <T n="radius">7.5</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="line_of_sight" />
+        </U>
+      </L>
+    </U>
+  </L>
+  <V n="_saveable" t="enabled" />
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="one_shot">
+    <U n="one_shot">
+      <U n="animation_ref">
+        <T n="factory">203568<!--smart_Hub_Socials_Wake_Command--></T>
+        <U n="overrides">
+          <V n="balloons" t="enabled">
+            <L n="enabled">
+              <U>
+                <L n="balloon_choices">
+                  <U>
+                    <V n="item" t="balloon_icon">
+                      <U n="balloon_icon">
+                        <E n="balloon_type">SPEECH</E>
+                        <V n="icon" t="resource_key">
+                          <U n="resource_key">
+                            <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_featherduster.png">2f7d0004:00000000:a1fe3dfbde9811a8</T>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </U>
+                </L>
+                <T n="balloon_delay">3</T>
+                <L n="balloon_target">
+                  <E>Actor</E>
+                </L>
+              </U>
+            </L>
+          </V>
+        </U>
+      </U>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>130183<!--Loot_Break_Object_basic_tiny--></T>
+        </L>
+      </U>
+    </V>
+  </L>
+  <V n="basic_focus" t="tunable_focus" />
+  <T n="category">98910<!--computer_Order--></T>
+  <V n="content_score" t="disabled" />
+  <T n="display_name">0xE48C8ACA<!--Maid--></T>
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <L n="basic_extras">
+              <V t="service_npc_request">
+                <U n="service_npc_request">
+                  <V n="notification" t="enabled">
+                    <U n="enabled">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <V n="icon" t="enabled">
+                              <V n="enabled" t="participant">
+                                <U n="participant">
+                                  <L n="participant_type">
+                                    <E>Object</E>
+                                  </L>
+                                </U>
+                              </V>
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0x35B4D3F7<!--Thanks for hiring from Maids United. Your maid will arrive on {0.DayOfWeekLong} at {0.TimeShort}.--></T>
+                            </V>
+                            <V n="text_tokens" t="enabled" />
+                            <E n="visual_type">SPEECH</E>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                  <V n="request_type" t="hire">
+                    <U n="hire">
+                      <T n="service">15923<!--ServiceNpc_Maid--></T>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+            <L n="loot_list">
+              <T>203524<!--loot_Object_SmartHub_Rel_Gain--></T>
+            </L>
+          </U>
+          <U n="weight">
+            <T n="base_value">17</T>
+          </U>
+        </U>
+        <U>
+          <U n="outcome">
+            <V n="animation_ref" t="enabled">
+              <U n="enabled">
+                <T n="factory">203574<!--smart_Hub_Socials_Sim_Angry--></T>
+              </U>
+            </V>
+            <L n="loot_list">
+              <T>204548<!--loot_Object_Smart_Hub_Misbehavior_Angry--></T>
+            </L>
+          </U>
+          <U n="weight">
+            <T n="base_value">3</T>
+            <L n="multipliers">
+              <U>
+                <T n="multiplier">0</T>
+                <L n="tests">
+                  <L>
+                    <V t="trait">
+                      <U n="trait">
+                        <L n="whitelist_traits">
+                          <T>246953</T>
+                        </L>
+                      </U>
+                    </V>
+                  </L>
+                  <L>
+                    <V t="trait">
+                      <U n="trait">
+                        <L n="blacklist_traits">
+                          <T>246952</T>
+                        </L>
+                      </U>
+                    </V>
+                    <V t="object_type_relationship">
+                      <U n="object_type_relationship">
+                        <U n="prohibited_relationship_bits">
+                          <L n="match_any">
+                            <T>204523<!--object-friendship-despised--></T>
+                            <T>204524<!--object-friendship-disliked--></T>
+                          </L>
+                        </U>
+                        <T n="track">203686<!--smart_Hub_Friendship_Main--></T>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+              <U>
+                <T n="multiplier">2.4</T>
+                <L n="tests">
+                  <L>
+                    <V t="object_type_relationship">
+                      <U n="object_type_relationship">
+                        <U n="required_relationship_bits">
+                          <L n="match_all">
+                            <T>204524<!--object-friendship-disliked--></T>
+                          </L>
+                        </U>
+                        <T n="track">203686<!--smart_Hub_Friendship_Main--></T>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+              <U>
+                <T n="multiplier">8.5</T>
+                <L n="tests">
+                  <L>
+                    <V t="trait">
+                      <U n="trait">
+                        <L n="whitelist_traits">
+                          <T>246952</T>
+                        </L>
+                      </U>
+                    </V>
+                  </L>
+                  <L>
+                    <V t="object_type_relationship">
+                      <U n="object_type_relationship">
+                        <U n="required_relationship_bits">
+                          <L n="match_all">
+                            <T>204523<!--object-friendship-despised--></T>
+                          </L>
+                        </U>
+                        <T n="track">203686<!--smart_Hub_Friendship_Main--></T>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </L>
+          </U>
+        </U>
+        <U>
+          <U n="outcome">
+            <V n="animation_ref" t="enabled">
+              <U n="enabled">
+                <T n="factory">203575<!--smart_Hub_Socials_Sim_Sad--></T>
+              </U>
+            </V>
+            <L n="loot_list">
+              <T>204549<!--loot_Object_Smart_Hub_Misbehavior_Sad--></T>
+            </L>
+          </U>
+          <U n="weight">
+            <T n="base_value">3</T>
+            <L n="multipliers">
+              <U>
+                <T n="multiplier">0</T>
+                <L n="tests">
+                  <L>
+                    <V t="object_type_relationship">
+                      <U n="object_type_relationship">
+                        <U n="prohibited_relationship_bits">
+                          <L n="match_any">
+                            <T>204519<!--object-friendship-acquaintances--></T>
+                          </L>
+                        </U>
+                        <T n="track">203686<!--smart_Hub_Friendship_Main--></T>
+                      </U>
+                    </V>
+                  </L>
+                </L>
+              </U>
+            </L>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">OBJECT</E>
+  <L n="test_globals">
+    <V t="sim_info">
+      <U n="sim_info">
+        <V n="ages" t="specified">
+          <L n="specified">
+            <E>TEEN</E>
+            <E>YOUNGADULT</E>
+            <E>ADULT</E>
+            <E>ELDER</E>
+            <E>CHILD</E>
+          </L>
+        </V>
+        <V n="species" t="specified">
+          <U n="specified">
+            <L n="species">
+              <E />
+            </L>
+          </U>
+        </V>
+        <E n="who">Actor</E>
+      </U>
+    </V>
+    <V t="state">
+      <U n="state">
+        <V n="fallback_behavior" t="always_pass" />
+        <E n="operator">NOTEQUAL</E>
+        <T n="value">15080<!--BrokenState_Broken--></T>
+      </U>
+    </V>
+    <V t="bills">
+      <U n="bills">
+        <V n="additional_bills_delinquency_states" t="enabled">
+          <L n="enabled">
+            <U>
+              <E n="bill_source">Maid_Service</E>
+              <T n="is_delinquent">False</T>
+            </U>
+          </L>
+        </V>
+      </U>
+    </V>
+    <V t="location">
+      <U n="location">
+        <U n="location_tests">
+          <V n="is_venue_type" t="enabled">
+            <U n="enabled">
+              <T n="negate">True</T>
+              <T n="venue_type">105157</T>
+            </U>
+          </V>
+        </U>
+      </U>
+    </V>
+    <V t="service_npc_hired_test">
+      <U n="service_npc_hired_test">
+        <T n="hired">False</T>
+        <T n="service">15923<!--ServiceNpc_Maid--></T>
+        <V n="tooltip" t="enabled">
+          <T n="enabled">0xED90D14F<!--Maid service already scheduled.--></T>
+        </V>
+      </U>
+    </V>
+    <V t="service_npc_hired_test">
+      <U n="service_npc_hired_test">
+        <T n="hired">False</T>
+        <T n="service">204747<!--serviceNpc_Maid_Free--></T>
+        <V n="tooltip" t="enabled">
+          <T n="enabled">0xED90D14F<!--Maid service already scheduled.--></T>
+        </V>
+      </U>
+    </V>
+    <V t="lot_owner">
+      <U n="lot_owner">
+        <V n="tooltip" t="enabled">
+          <T n="enabled">0xE78CE92F<!--You can only hire services while on your home lot.--></T>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">30</T>
+  <V n="utility_info" t="enabled">
+    <L n="enabled">
+      <U>
+        <E n="key">POWER</E>
+      </U>
+    </L>
+  </V>
+</I>

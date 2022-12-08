@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="LootActions" i="action" m="interactions.utils.loot" n="Loot_KnowAbout_InvestigateSim" s="34200">
+  <L n="loot_actions">
+    <V t="know_other_sims_trait">
+      <U n="know_other_sims_trait">
+        <V n="notification" t="enabled">
+          <U n="enabled">
+            <V n="dialog" t="single">
+              <V n="single" t="literal">
+                <U n="literal">
+                  <V n="text" t="single">
+                    <T n="single">0x7DD5DF3<!--After some investigation, {1.SimFirstName} was discovered to have this trait:\n{2.String}--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled" />
+                </U>
+              </V>
+            </V>
+            <V n="timing" t="at_end" />
+          </U>
+        </V>
+        <V n="notification_no_more_traits" t="enabled">
+          <U n="enabled">
+            <V n="dialog" t="single">
+              <V n="single" t="literal">
+                <U n="literal">
+                  <V n="text" t="single">
+                    <T n="single">0xF7AC3CEC<!--{0.SimFirstName} already knows all of {1.SimFirstName}'s traits!--></T>
+                  </V>
+                  <V n="text_tokens" t="enabled" />
+                </U>
+              </V>
+            </V>
+          </U>
+        </V>
+        <E n="target_participant_type">PickedSim</E>
+        <V n="traits" t="random" />
+      </U>
+    </V>
+    <V t="statistics">
+      <V n="statistics" t="statistic_set_max">
+        <U n="statistic_set_max">
+          <T n="stat">34203<!--commodity_Career_InvestigateSim_Cooldown--></T>
+        </U>
+      </V>
+    </V>
+    <V t="relationship_bits_loot">
+      <U n="relationship_bits_loot">
+        <L n="bit_operations">
+          <U>
+            <T n="bit">37066<!--SecretAgent_Investigated--></T>
+            <E n="operation">REMOVE</E>
+            <E n="recipients">Actor</E>
+            <E n="targets">PickedSim</E>
+          </U>
+        </L>
+      </U>
+    </V>
+    <V t="relationship_bits_loot">
+      <U n="relationship_bits_loot">
+        <L n="bit_operations">
+          <U>
+            <T n="bit">37066<!--SecretAgent_Investigated--></T>
+            <E n="operation">ADD</E>
+            <E n="recipients">Actor</E>
+            <E n="targets">PickedSim</E>
+          </U>
+        </L>
+      </U>
+    </V>
+  </L>
+</I>

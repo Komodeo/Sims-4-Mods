@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="MixerInteraction" i="interaction" m="interactions.base.mixer_interaction" n="mixer_AtWork_UnleashTheGerbils_Prank" s="36000">
+  <T n="allow_user_directed">False</T>
+  <V n="basic_content" t="looping_animation">
+    <U n="looping_animation">
+      <L n="conditional_actions">
+        <V t="literal">
+          <U n="literal">
+            <L n="conditions">
+              <V t="time_based">
+                <U n="time_based">
+                  <T n="max_time">5</T>
+                  <T n="min_time">5</T>
+                </U>
+              </V>
+            </L>
+            <E n="interaction_action">EXIT_NATURALLY</E>
+          </U>
+        </V>
+      </L>
+    </U>
+  </V>
+  <V n="basic_focus" t="disable_focus" />
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Prank</E>
+    <E>Interaction_Mixer</E>
+    <E>Interaction_All</E>
+    <E>Interaction_Skill_Child_Creativity</E>
+  </L>
+  <V n="lock_out_time_initial" t="enabled">
+    <U n="enabled">
+      <T n="lower_bound">60</T>
+      <T n="upper_bound">60</T>
+    </U>
+  </V>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <L n="basic_extras">
+              <V t="notification">
+                <U n="notification">
+                  <V n="dialog" t="single">
+                    <V n="single" t="literal">
+                      <U n="literal">
+                        <E n="expand_behavior">FORCE_EXPAND</E>
+                        <V n="icon" t="enabled">
+                          <V n="enabled" t="participant" />
+                        </V>
+                        <V n="text" t="single">
+                          <T n="single">0x3058E64A<!--In the beginning, there were no gerbils. When {0.SimFirstName} entered the classroom, that was no more. Hundreds of little furry creatures rampaged through the halls, bringing delight to most and terror to some. It was a fully successful prank! \n \n{0.SimFirstName} has increased {F0.her}{M0.his} Creative skill.--></T>
+                        </V>
+                        <V n="title" t="enabled">
+                          <T n="enabled">0x13400D83<!--Prank Successful!--></T>
+                        </V>
+                      </U>
+                    </V>
+                  </V>
+                </U>
+              </V>
+            </L>
+            <L n="loot_list">
+              <T>11079<!--Skill_Loot_Dynamic_Large--></T>
+              <T>27408<!--loot_Commodity_Motive_Fun_WorkMischiefReward--></T>
+              <T>35730<!--loot_Buff_MischiefPranks_Successful--></T>
+              <T>26997<!--loot_BuffRemoval_Prank--></T>
+              <T>98370<!--Loot_Buff_MischiefPranksCooldown_UnleashTheGerbils--></T>
+            </L>
+          </U>
+        </U>
+      </L>
+      <L n="tested_outcomes">
+        <U>
+          <L n="potential_outcomes">
+            <U>
+              <U n="outcome">
+                <L n="basic_extras">
+                  <V t="notification">
+                    <U n="notification">
+                      <V n="dialog" t="single">
+                        <V n="single" t="literal">
+                          <U n="literal">
+                            <E n="expand_behavior">FORCE_EXPAND</E>
+                            <V n="icon" t="enabled">
+                              <V n="enabled" t="participant" />
+                            </V>
+                            <V n="text" t="single">
+                              <T n="single">0x4A3906B1<!--{0.SimFirstName} was caught red-handed by a teacher with a cage full of gerbils, and there was no way to talk {M0.his}{F0.her} way out of it.\n \n{0.SimFirstName}'s school performance has decreased, and {M0.he}{F0.she} has received extra homework for the next week as punishment.--></T>
+                            </V>
+                            <V n="title" t="enabled">
+                              <T n="enabled">0x9765A50D<!--Prank Failed!--></T>
+                            </V>
+                          </U>
+                        </V>
+                      </V>
+                    </U>
+                  </V>
+                </L>
+                <L n="loot_list">
+                  <T>35751<!--loot_Buff_MischiefPranks_Unsuccessful--></T>
+                  <T>26997<!--loot_BuffRemoval_Prank--></T>
+                  <T>36134<!--Loot_Buff_Homework_ExtraHomework--></T>
+                  <T>98370<!--Loot_Buff_MischiefPranksCooldown_UnleashTheGerbils--></T>
+                </L>
+                <E n="outcome_result">FAILURE</E>
+              </U>
+            </U>
+          </L>
+        </U>
+      </L>
+      <T n="use_fallback_as_default">True</T>
+    </U>
+  </V>
+  <U n="skill_loot_data">
+    <E n="effectiveness">STANDARD</E>
+    <T n="stat">16718<!--statistic_Skill_Child_Creativity--></T>
+  </U>
+  <U n="sub_action">
+    <T n="base_weight">2</T>
+  </U>
+  <E n="target_type">ACTOR</E>
+  <L n="test_globals">
+    <V t="buff">
+      <U n="buff">
+        <V n="whitelist" t="enabled">
+          <L n="enabled">
+            <T>35987<!--buff_MischiefPranks_UnleashTheGerbils--></T>
+          </L>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="visible">False</T>
+</I>

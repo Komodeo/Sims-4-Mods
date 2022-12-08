@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="firefighter_NoFire" s="237993">
+  <V n="_cancelable_by_user" t="prohibit_cancelation" />
+  <L n="_constraints">
+    <U>
+      <L n="constraints">
+        <U>
+          <V n="value" t="front_door">
+            <U n="front_door">
+              <V n="door_select_option" t="front_door" />
+              <T n="fallback_to_anywhere_on_lot">True</T>
+              <E n="front_door_position_option">INSIDE_FRONT_DOOR</E>
+              <T n="ideal_radius">5</T>
+            </U>
+          </V>
+        </U>
+      </L>
+    </U>
+  </L>
+  <V n="_saveable" t="enabled" />
+  <L n="_static_commodities">
+    <U>
+      <T n="static_commodity">237709<!--staticCommodity_Fire_Extinguish_NPC_Firefighter--></T>
+    </U>
+  </L>
+  <T n="allow_user_directed">False</T>
+  <T n="attention_cost">0.5</T>
+  <V n="basic_content" t="one_shot">
+    <U n="one_shot">
+      <U n="animation_ref">
+        <T n="factory">130210<!--socials_Responses_Angry_HighIntensity_HandsOnFace--></T>
+        <U n="overrides">
+          <V n="balloons" t="enabled">
+            <L n="enabled">
+              <U>
+                <L n="balloon_choices">
+                  <U>
+                    <V n="item" t="balloon_icon">
+                      <U n="balloon_icon">
+                        <E n="balloon_type">SPEECH</E>
+                        <V n="category_icon" t="show_category_icon">
+                          <V n="show_category_icon" t="resource_key">
+                            <U n="resource_key">
+                              <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_angry_v3.png">2f7d0004:00000000:304ff71504fffd8b</T>
+                            </U>
+                          </V>
+                        </V>
+                        <V n="icon" t="resource_key">
+                          <U n="resource_key">
+                            <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_QuestionMark.png">2f7d0004:00000000:873da6c8ff732f1f</T>
+                          </U>
+                        </V>
+                      </U>
+                    </V>
+                  </U>
+                </L>
+                <L n="balloon_target">
+                  <E>Actor</E>
+                </L>
+              </U>
+            </L>
+          </V>
+        </U>
+      </U>
+    </U>
+  </V>
+  <L n="basic_extras">
+    <V t="buff_fire_and_forget">
+      <U n="buff_fire_and_forget">
+        <U n="buff">
+          <T n="buff_type">239656<!--buff_Situation_Fire_FinedForPhonyCall--></T>
+        </U>
+        <E n="participant">LotOwnerSingleAndInstanced</E>
+        <V n="timing" t="at_beginning" />
+      </U>
+    </V>
+  </L>
+  <V n="basic_reserve_object" t="disabled" />
+  <V n="content_score" t="disabled" />
+  <U n="display_name_text_tokens">
+    <L n="tokens">
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Actor</E>
+            </U>
+          </V>
+        </U>
+      </V>
+      <V t="participant_type">
+        <U n="participant_type">
+          <V n="objects" t="from_participant">
+            <U n="from_participant">
+              <E n="participant">Object</E>
+            </U>
+          </V>
+        </U>
+      </V>
+    </L>
+  </U>
+  <L n="interaction_category_tags">
+    <E>Interaction_Super</E>
+    <E>Interaction_All</E>
+  </L>
+  <V n="outcome" t="test_based">
+    <U n="test_based">
+      <L n="fallback_outcomes">
+        <U>
+          <U n="outcome">
+            <L n="basic_extras">
+              <V t="loot">
+                <U n="loot">
+                  <L n="loot_list">
+                    <T>237763<!--loot_Situation_Firefighter_NoFireOnLot--></T>
+                  </L>
+                </U>
+              </V>
+              <V t="destroy_situations_by_tags">
+                <U n="destroy_situations_by_tags">
+                  <L n="situation_tags">
+                    <E>Situation_Firefighter</E>
+                  </L>
+                  <V n="timing" t="at_end" />
+                </U>
+              </V>
+            </L>
+            <T n="force_outcome_on_exit">True</T>
+          </U>
+        </U>
+      </L>
+    </U>
+  </V>
+  <E n="scoring_priority">NORMAL</E>
+  <T n="subaction_selection_weight">1</T>
+  <E n="target_type">ACTOR</E>
+  <L n="test_globals">
+    <V t="fire">
+      <U n="fire">
+        <V n="lot_on_fire" t="enabled">
+          <T n="enabled">False</T>
+        </V>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <E n="subject">LotOwnerSingleAndInstanced</E>
+        <V n="whitelist" t="enabled">
+          <L n="enabled">
+            <T>237762<!--buff_Fire_CalledFirefighters--></T>
+          </L>
+        </V>
+      </U>
+    </V>
+  </L>
+  <T n="time_overhead">30</T>
+  <T n="visible">False</T>
+</I>

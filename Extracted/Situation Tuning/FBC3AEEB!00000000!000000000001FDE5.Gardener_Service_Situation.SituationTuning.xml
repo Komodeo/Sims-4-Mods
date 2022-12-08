@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="ServiceNpcSituation" i="situation" m="situations.complex.service_npc_situation" n="Gardener_Service_Situation" s="130533">
+  <U n="_service_npc_job">
+    <T n="role_state">15910<!--service_npc_arrive_on_lot--></T>
+    <T n="situation_job">130543<!--job_Gardener_Service--></T>
+  </U>
+  <T n="_survives_active_household_change">True</T>
+  <T n="audio_sting_on_start" p="InGame\Audio\Bumper\bumper_event_start.propx">39b2aa4a:00000000:78b903461d47e4fc</T>
+  <E n="exclusivity">SERVICE</E>
+  <T n="fail_on_preroll_execute_failure">False</T>
+  <L n="finish_job_states">
+    <U>
+      <E n="key">ASKED_TO_HANG_OUT</E>
+      <U n="value">
+        <U n="enter_state_test">
+          <L n="affordances">
+            <T>29935<!--mixer_social_NPC_AskToHangOut_targeted_Friendly_alwaysOn--></T>
+          </L>
+          <V n="interaction_outcome" t="enabled">
+            <E n="enabled">SUCCESS</E>
+          </V>
+          <E n="participant">TargetSim</E>
+        </U>
+        <V n="notification" t="enabled">
+          <V n="enabled" t="literal">
+            <U n="literal">
+              <V n="icon" t="enabled">
+                <V n="enabled" t="participant" />
+              </V>
+              <V n="participant" t="disabled" />
+              <V n="text" t="single">
+                <T n="single">0x6394632<!--Ok, I guess I'll stop working then. My fee will be {0.Money}.--></T>
+              </V>
+              <E n="visual_type">SPEECH</E>
+            </U>
+          </V>
+        </V>
+        <T n="role_state" o="true" />
+      </U>
+    </U>
+    <U>
+      <E n="key">DISMISSED</E>
+      <U n="value">
+        <U n="enter_state_test">
+          <L n="affordances">
+            <T>14017<!--sim_DismissServiceNPC--></T>
+          </L>
+          <E n="participant">TargetSim</E>
+        </U>
+        <V n="notification" t="enabled">
+          <V n="enabled" t="literal">
+            <U n="literal">
+              <V n="icon" t="enabled">
+                <V n="enabled" t="participant" />
+              </V>
+              <V n="text" t="single">
+                <T n="single">0xDE1C61D5<!--Guess I'm done here, then. My fee will be {0.Money}.--></T>
+              </V>
+              <E n="visual_type">SPEECH</E>
+            </U>
+          </V>
+        </V>
+        <T n="role_state">36173<!--rolestate_tippable_maid_leave_now--></T>
+      </U>
+    </U>
+    <U>
+      <E n="key">FINISHED_WORK</E>
+      <U n="value">
+        <U n="enter_state_test">
+          <L n="affordances">
+            <T>13944<!--serviceNpc_noMoreWork--></T>
+          </L>
+        </U>
+        <V n="notification" t="enabled">
+          <V n="enabled" t="literal">
+            <U n="literal">
+              <V n="icon" t="enabled">
+                <V n="enabled" t="participant" />
+              </V>
+              <V n="text" t="single">
+                <T n="single">0x9B15ADA2<!--Looks like I'm all done here. That'll be {0.Money}.--></T>
+              </V>
+              <E n="visual_type">SPEECH</E>
+            </U>
+          </V>
+        </V>
+        <T n="role_state">36173<!--rolestate_tippable_maid_leave_now--></T>
+      </U>
+    </U>
+    <U>
+      <E n="key">FIRED</E>
+      <U n="value">
+        <U n="enter_state_test">
+          <L n="affordances">
+            <T>14032<!--sim_FireServiceNPC--></T>
+          </L>
+          <E n="participant">TargetSim</E>
+        </U>
+        <V n="notification" t="enabled">
+          <V n="enabled" t="literal">
+            <U n="literal">
+              <V n="icon" t="enabled">
+                <V n="enabled" t="participant" />
+              </V>
+              <V n="text" t="single">
+                <T n="single">0xA308BA03<!--You don't want me anymore? Well, that'll be {0.Money} for today's services.--></T>
+              </V>
+              <E n="visual_type">SPEECH</E>
+            </U>
+          </V>
+        </V>
+        <T n="role_state" o="true" />
+      </U>
+    </U>
+    <U>
+      <E n="key">NOT_PAID</E>
+      <U n="value">
+        <U n="enter_state_test">
+          <L n="affordances">
+            <T>14140<!--sim_ServiceNpcNotPaid--></T>
+          </L>
+        </U>
+        <V n="notification" t="enabled">
+          <V n="enabled" t="literal">
+            <U n="literal">
+              <V n="icon" t="enabled">
+                <V n="enabled" t="participant" />
+              </V>
+              <V n="text" t="single">
+                <T n="single">0xF8FC9790<!--I don't work for free, you know. If you ever want my help again, you'd better get your act together and pay the {1.Money} bill I'll be sending you.--></T>
+              </V>
+              <E n="visual_type">SPEECH</E>
+            </U>
+          </V>
+        </V>
+        <T n="role_state" o="true" />
+      </U>
+    </U>
+    <U>
+      <E n="key">NO_WORK_TO_DO</E>
+      <U n="value">
+        <V n="notification" t="enabled">
+          <V n="enabled" t="literal">
+            <U n="literal">
+              <V n="icon" t="enabled">
+                <V n="enabled" t="participant" />
+              </V>
+              <V n="text" t="single">
+                <T n="single">0x65442C6D<!--Looks like your place doesn't need my services today. I'll just head off to my next client.--></T>
+              </V>
+              <E n="visual_type">SPEECH</E>
+            </U>
+          </V>
+        </V>
+        <T n="role_state" o="true" />
+      </U>
+    </U>
+  </L>
+  <T n="main_goal_audio_sting" p="InGame\Audio\Bumper\bumper_event_major_complete.propx">39b2aa4a:00000000:10b476550150a33f</T>
+  <T n="max_participants">20</T>
+  <V n="preroll_autonomy" t="enabled">
+    <U n="enabled">
+      <T n="allow_unreachable_destinations">False</T>
+      <E n="preroll_priority">Low</E>
+      <E n="preroll_source">SCRIPT</E>
+      <V n="super_affordance_compatibility" t="literal">
+        <U n="literal">
+          <V n="default_inclusion" t="include_all">
+            <U n="include_all">
+              <L n="exclude_affordances">
+                <T>13944<!--serviceNpc_noMoreWork--></T>
+              </L>
+            </U>
+          </V>
+        </U>
+      </V>
+    </U>
+  </V>
+  <V n="situation_end_time_string" t="show_end_time">
+    <T n="show_end_time">0xA3E17143<!--Work day ends at {0.TimeShort}--></T>
+  </V>
+  <V n="start_work_test_and_state" t="enabled">
+    <U n="enabled">
+      <U n="enter_state_test">
+        <L n="tags">
+          <E>Interaction_VisitLot</E>
+        </L>
+      </U>
+      <T n="role_state">130540<!--Gardener_Service_role_start--></T>
+    </U>
+  </V>
+  <V n="time_jump" t="allow" />
+  <V n="travel_request_behavior" t="allow" />
+</I>

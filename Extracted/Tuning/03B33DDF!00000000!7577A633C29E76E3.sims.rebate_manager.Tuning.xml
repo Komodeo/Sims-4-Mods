@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<M n="sims.rebate_manager" s="8464416765904844515">
+  <C n="RebateItem">
+    <L n="_elements">
+      <T ev="64">COCONUT_REBATE</T>
+      <T ev="65">CRITIC_CAREER_THRIFTY</T>
+      <T ev="66">SURPRISE_HOLIDAY_DISCOUNT</T>
+      <T ev="67">VALUED_CUSTOMER</T>
+    </L>
+  </C>
+  <C n="RebateManager">
+    <U n="REBATE_CYCLE">
+      <L n="schedule_entries">
+        <U>
+          <U n="days_available">
+            <T n="0 SUNDAY">True</T>
+            <T n="1 MONDAY">False</T>
+          </U>
+        </U>
+      </L>
+    </U>
+    <U n="REBATE_NOTIFICATION">
+      <V n="icon" t="enabled">
+        <V n="enabled" t="resource_key">
+          <U n="resource_key">
+            <T n="key" p="InGame\UI\Icons\Headlines\Final\headline_simoleon.png">2f7d0004:00000000:bb40d6575241ca1a</T>
+          </U>
+        </V>
+      </V>
+      <V n="text" t="single">
+        <T n="single">0xE4D048A2<!--A rebate check of {0.Money} has been received! Sims in the household were able to save on their recent purchases:\n{1.String}--></T>
+      </V>
+      <V n="title" t="enabled">
+        <T n="enabled">0x96C4EFC3<!--Rebate Received!--></T>
+      </V>
+    </U>
+    <U n="REBATE_PAYMENT_SCHEDULE">
+      <L n="schedule_entries">
+        <U>
+          <U n="days_available">
+            <T n="1 MONDAY">True</T>
+            <T n="3 WEDNESDAY">True</T>
+            <T n="5 FRIDAY">True</T>
+          </U>
+        </U>
+      </L>
+    </U>
+    <L n="REBATES">
+      <U>
+        <E n="key">COCONUT_REBATE</E>
+        <U n="value">
+          <T n="notification_text">0xBF269135<!--{0.Number} for growing coconuts!--></T>
+          <V n="rebate_category" t="gameplay_object">
+            <U n="gameplay_object">
+              <T n="cyclical">True</T>
+            </U>
+          </V>
+          <V n="rebate_payout_type" t="per_item">
+            <T n="per_item">10</T>
+          </V>
+          <L n="tests_set">
+            <L>
+              <V t="object_criteria">
+                <U n="object_criteria">
+                  <V n="identity_test" t="definition_id">
+                    <U n="definition_id">
+                      <T n="actual_object">219551</T>
+                    </U>
+                  </V>
+                  <T n="on_active_lot">True</T>
+                  <T n="owned">False</T>
+                  <V n="subject_specific_tests" t="single_object" />
+                </U>
+              </V>
+              <V t="global_policy_state">
+                <U n="global_policy_state">
+                  <E n="progress_state">COMPLETE</E>
+                  <V n="test_type" t="specific_policy">
+                    <U n="specific_policy">
+                      <L n="policies">
+                        <T>207008</T>
+                      </L>
+                    </U>
+                  </V>
+                </U>
+              </V>
+            </L>
+          </L>
+          <V n="valid_objects" t="by_tag">
+            <L n="by_tag">
+              <E>Func_RebatePlant</E>
+            </L>
+          </V>
+        </U>
+      </U>
+      <U>
+        <E n="key">CRITIC_CAREER_THRIFTY</E>
+        <U n="value">
+          <T n="notification_text">0xA6851414<!--{0.Number}% off for purchasing Art and leveraging Critical Connections--></T>
+          <V n="rebate_payout_type" t="percentage">
+            <T n="percentage">20</T>
+          </V>
+          <L n="tests_set">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="whitelist_traits">
+                    <T>139623</T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+          <V n="valid_objects" t="by_tag">
+            <L n="by_tag">
+              <E>Func_Art</E>
+            </L>
+          </V>
+        </U>
+      </U>
+      <U>
+        <E n="key">SURPRISE_HOLIDAY_DISCOUNT</E>
+        <U n="value">
+          <T n="notification_text">0x6996177E<!--{0.Number}% off for shopping on Rebate Day!--></T>
+          <V n="rebate_payout_type" t="percentage" />
+          <L n="tests_set">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="whitelist_traits">
+                    <T>181915</T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </U>
+      <U>
+        <E n="key">VALUED_CUSTOMER</E>
+        <U n="value">
+          <T n="notification_text">0x598DBACF<!--{0.Number}% off for being Thrifty--></T>
+          <V n="rebate_category" t="buildbuy" />
+          <V n="rebate_payout_type" t="percentage" />
+          <L n="tests_set">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="whitelist_traits">
+                    <T>27947<!--trait_ValuedCustomer--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+        </U>
+      </U>
+    </L>
+  </C>
+</M>
