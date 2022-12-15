@@ -153,13 +153,6 @@ class PregnancyTracker(SimInfoTracker):
             return partner
 
     def start_pregnancy(self, parent_a, parent_b, pregnancy_origin=PregnancyOrigin.DEFAULT):
-        if not self.is_pregnancy_supported:
-            logger.callstack('Start pregnancy attempted on invalid species; {} with id {} and species {}.', (self._sim_info), (self._sim_info.id), (self._sim_info.species), level=(sims4.log.LEVEL_ERROR), owner='kalucas')
-            return
-        if self.is_pregnant:
-            return
-        if not parent_a.incest_prevention_test(parent_b):
-            return
         self._seed = random.randint(1, MAX_UINT32)
         self._parent_ids = (parent_a.id, parent_b.id)
         self._offspring_data = []
