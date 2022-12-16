@@ -2304,7 +2304,7 @@ class DoesHouseholdHaveFreeSlotsFilterTerm(InvertibleFilterTerm):
 
     def calculate_score(self, sim_info, **kwargs):
         score = 1
-        return FilterResult(score=(self.invert_score_if_necessary(score)), sim_info=sim_info)
+        return FilterResult(score, sim_info=sim_info)
 
 
 class CanDieFilterTerm(InvertibleFilterTerm):
