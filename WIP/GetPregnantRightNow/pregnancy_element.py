@@ -51,7 +51,7 @@ class PregnancyElement(XevtTriggeredElement):
 
     def _do_behavior(self, *args, **kwargs):
         subject_sim = self.interaction.get_participant(self.pregnancy_subject)
-        if not (subject_sim is None or subject_sim.household.free_slot_count):
+        if not (subject_sim is None):
             return
         death_interaction = get_death_interaction(subject_sim)
         if death_interaction is not None:
