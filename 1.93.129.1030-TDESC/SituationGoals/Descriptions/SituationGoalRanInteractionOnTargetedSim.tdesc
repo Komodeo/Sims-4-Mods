@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation_goal" class="SituationGoalRanInteractionOnTargetedSim" module="situations.situation_goal_targeted_sim" muid="6BA77C7813A6F208" description="Situation Goal for running an interaction on targeted sim." instance_needs_reference="True" instance_subclasses_only="False" parents="SituationGoalTargetedSim, SituationGoal" path="SituationGoals\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="_goal_test" class="TunableParticipantRanInteractionTest" display="Goal Test" muid="5D73C7404ED5E9B3" description="Check to see if the Sim ran an affordance as a particular actor" Deprecated="False" filter="0" group="General">
+            <TunableList name="affordance_lists" class="TunableSet" display="Affordance Lists" muid="E90EDECC18D33B70" description="The Sim must have run either any affordance or have a proxied affordance&#xA;in Affordances or these Affordance Lists, or an interaction matching&#xA;one of the tags in this tunable's Tags field." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="snippet" class="TunableReference" muid="FBBB72745232006C" description="A reference to a AffordanceList tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="AffordanceList" />
+            </TunableList>
+            <TunableList name="affordances" class="TunableSet" display="Affordances" muid="7594ED2BE7460385" description="The Sim must have run either any affordance or have a proxied affordance&#xA;in this list or Affordance Lists, or an interaction matching&#xA;one of the tags in this tunable's Tags field." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="interaction" class="TunableReference" muid="8F3309C9DF7DA8AD" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <Tunable type="bool" name="consider_all_cancelled_as_failure" class="Tunable" default="False" display="Consider All Cancelled As Failure" muid="257CBB988B9C57D2" description="If True, test will consider the interaction outcome to be Failure if&#xA;canceled for any reason. If this box is checked and&#xA;consider_user_cancelled_as_failure is not checked, user cancel's&#xA;will still be treated as failures." Deprecated="False" filter="0" group="General" />
+            <Tunable type="bool" name="consider_user_cancelled_as_failure" class="Tunable" default="True" display="Consider User Cancelled As Failure" muid="9B3C78D67120C819" description="If True, test will consider the interaction outcome to be Failure if&#xA;canceled by the user." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="interaction_outcome" class="OptionalTunable" default="disabled" display="Interaction Outcome" muid="E7D970543A0DB920" description="The interaction's outcome must match the outcome tuned here to pass this test." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="56A54F30FBA4732C" />
+                <TunableEnum type="OutcomeResult" name="enabled" class="TunableEnumEntry" default="NONE" display="Enabled" muid="F64A3AD5FAAF0A11" dynamic_entries="interactions-utils-outcome_enums.OutcomeResult._elements" static_entries="interactions-utils-outcome_enums.OutcomeResult" Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableVariant type="None" name="running_time" class="OptionalTunable" default="disabled" display="Running Time" muid="686A8AC577D34069" description="Amount of time in sim minutes that this interaction needs to&#xA;have been running for for this test to pass true. This time is how&#xA;long the interaction has been in the SI State.&#xA;&#xA;If your setting this, you probably want Test Event to be set to&#xA;InteractionUpdate." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CF4B8B58F3398CD7" />
+                <Tunable type="float" name="enabled" class="TunableSimMinute" default="10" display="Enabled" muid="F5FC9E0255F72F89" min="0" max="None" description="Amount of time in sim minutes that this interaction needs to&#xA;have been running for for this test to pass true. This time is how&#xA;long the interaction has been in the SI State.&#xA;&#xA;If your setting this, you probably want Test Event to be set to&#xA;InteractionUpdate." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableList name="skill_tags" class="TunableSet" display="Skill Tags" muid="B16F2A1B9105B9FF" description="Skill tags to check against skill attached to the interaction,&#xA;determined by if the interaction identifies it in skill  &#xA;loot data, or if it is an associated skill in the outcome.&#xA;&#xA;If you are setting this and are not using affordances or lists &#xA;for filtering, you probably want to ensure that you set&#xA;interaction tags that are more or equally restrictive to either &#xA;one of Interaction_Super or Interaction_Mixer.  And do not&#xA;use Interaction_All, unless you really want to trigger &#xA;for both mixers and super interactions." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="4047CA3D032CF1A7" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="skill" filter="0" group="General" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="8FA51C3A074C9199" description="The Sim must have run either an interaction matching one of these Tags &#xA;or an affordance from the list of Affordances in this tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="210B61F75558059F" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+            <TunableTuple name="target_filters" class="TunableTuple" display="Target Filters" muid="90A0304571024210" description="Restrictions on the target of this interaction." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="object_states" class="OptionalTunable" default="disabled" display="Object States" muid="E7A61E3B7CE115C7" description="Limit test success only to target objects that are in certain states" Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F6F831BB55C72FC8" />
+                    <TunableTuple name="enabled" class="BasicStateCheckFactory" display="Enabled" muid="5D41EBF857B5B062" description="This option tests crafted item's tags against a list of possible&#xA;tags." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="object_requirement" class="TunableVariant" default="any_object" display="Object Requirement" muid="BC1F7DDDB901913C" Deprecated="False" filter="0" group="General">
+                            <Tunable name="any_object" class="TunableExistance" display="Any Object" muid="32EE9203C2A70BB1" />
+                            <TunableTuple name="definition" class="TunableTuple" display="Definition" muid="24524A84EA1FDC08" Deprecated="False" filter="0" group="General">
+                                <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="E7E9BB4E7C3C4451" description="The object must have this definition." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="tag" class="TunableTuple" display="Tag" muid="ECCFC8D1197B03A0" Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="tag" class="CraftTaggedItemFactory" display="Tag" muid="D9729DEBFDBFB3D6" description="The object must have this tag." Deprecated="False" filter="0" group="General">
+                                    <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="9A27EB7FED0AB6FD" description="The tag of objects we want to test ownership of" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="B1D8A6CBA0BE3FE2" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    </TunableList>
+                                    <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="53CA0DA1B247203E" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the objects on the lot." Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableTuple>
+                        </TunableVariant>
+                        <TunableList name="state_set" class="TunableSet" display="State Set" muid="C1B09FF694401E88" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="object_state" class="TunableReference" muid="850A4193C5F5825E" description="What state to test for." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                        <TunableEnum type="StateTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_STATE_IN_SET" display="Test Type" muid="565317315A126FE9" static_entries="objects-object_tests.StateTestType" description="How to test the states in the state set against the objects in&#xA;the inventory." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+                <TunableVariant type="None" name="object_tags" class="OptionalTunable" default="disabled" display="Object Tags" muid="69E903C585E9EDD1" description="Object tags for limiting test success to a subset of target &#xA;objects." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6B7F800E34260DB7" />
+                    <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="3C9C5A6C0B26A483" description="Target object tags and how they are tested." Deprecated="False" filter="0" group="General">
+                        <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="64CC778C4EB6ABCE" description="A set of tags to test the target object for." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="A49C85D2EFCC0E6B" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A tag to test the target object for." Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                        <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="2F54782E039E3E" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the &#xA;target object." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableTuple>
+            <TunableEnum type="InteractionTestEvents" name="test_event" class="TunableEnumEntry" default="InteractionComplete" display="Test Event" muid="826263BA70F5FCEE" static_entries="event_testing-tests_with_data.InteractionTestEvents" description="The event that we want to trigger this instance of the tuned&#xA;test on.&#xA;InteractionStart: Triggers when the interaction starts.&#xA;InteractionComplete: Triggers when the interaction ends. This is best&#xA;used with a one shot interaction. It will not get called if an interaction&#xA;is canceled. If you have a Sim parked in an interaction that you can&#xA;only exit via cancel, you will not hit this.&#xA;InteractionUpdate: Triggers on a 15 sim minute cadence from the&#xA;start of the interaction.  If the interaction ends before a cycle&#xA;is up it does not trigger.  Do not use this for short interactions&#xA;as it has a possibility of never getting an update for an&#xA;interaction." Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

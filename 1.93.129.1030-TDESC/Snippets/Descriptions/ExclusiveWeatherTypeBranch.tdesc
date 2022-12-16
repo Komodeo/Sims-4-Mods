@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="ExclusiveWeatherTypeBranch" module="weather.weather_service" muid="94A01154C149FD15" description="Test to choose which of two possible branches should be used." instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="result_false" class="TunableExclusiveWeatherTypeVariant" default="single_entry" display="Result False" muid="D3A58185D4EDEB66" description="Result to use if test fails." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="single_entry" class="TunableExclusiveWeatherTypeLeaf" display="Single Entry" muid="6B935CFE2CF6D8FA" description="Leaf node of the Exclusive Weather Type tree" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="WeatherType" name="weather_type" class="TunableEnumEntry" default="UNDEFINED" display="Weather Type" muid="F7193C02B60139DF" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" description="The weather type." Deprecated="False" filter="0" group="General" invalid_entries="Freezing,Cold,Cool,Warm,Hot,Burning,UNDEFINED,AnySnow,AnyRain,Max_Snow_Accumulation,Max_Rain_Accumulation,AnyLightning,StruckByLightning" />
+            </TunableTuple>
+            <Tunable type="snippet" name="tested" class="TunableReference" display="Tested" muid="8CDAF39BA6CCFF90" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ExclusiveWeatherTypeBranch" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="result_true" class="TunableExclusiveWeatherTypeVariant" default="single_entry" display="Result True" muid="D07A18758159525F" description="Result to use if test passes." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="single_entry" class="TunableExclusiveWeatherTypeLeaf" display="Single Entry" muid="49AF322DB4218676" description="Leaf node of the Exclusive Weather Type tree" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="WeatherType" name="weather_type" class="TunableEnumEntry" default="UNDEFINED" display="Weather Type" muid="5387A57E6EEBF642" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" description="The weather type." Deprecated="False" filter="0" group="General" invalid_entries="Freezing,Cold,Cool,Warm,Hot,Burning,UNDEFINED,AnySnow,AnyRain,Max_Snow_Accumulation,Max_Rain_Accumulation,AnyLightning,StruckByLightning" />
+            </TunableTuple>
+            <Tunable type="snippet" name="tested" class="TunableReference" display="Tested" muid="69AD598634A9E80F" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ExclusiveWeatherTypeBranch" />
+        </TunableVariant>
+
+        <TdescFragTag name="test" class="TunableTestSet" display="Test" muid="EB4B073D2B2F329C" description="If at least one of these passes the result_true branch will be&#xA;used. Otherwise the false branch will be." filter="0" group="General" />
+    </Instance>
+</TuningRoot>

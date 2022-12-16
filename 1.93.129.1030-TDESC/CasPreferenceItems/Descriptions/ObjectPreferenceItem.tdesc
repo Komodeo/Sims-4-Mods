@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="cas_preference_item" class="ObjectPreferenceItem" module="cas.cas_preference_item" muid="94E068C674D297E" description="A Preference Item subtype that uses object defintion or tags to define the preference item." instance_needs_reference="True" instance_subclasses_only="False" parents="CasPreferenceItem" path="CasPreferenceItems\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="object_item_def" class="TunableVariant" default="tags" display="Object Item Def" muid="B95962CE3C0B09C4" Deprecated="False" filter="0" group="General">
+            <TunableTuple name="definition_id" class="TunableObjectTypeFactory" display="Definition Id" muid="525D2B06EFC65EC9" Deprecated="False" filter="0" group="General">
+                <Tunable type="object" name="actual_object" class="TunableReference" display="Actual Object" muid="B68527ABC07D150" description="The object we want to test ownership of" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableTuple>
+            <TunableTuple name="tags" class="TunableObjectTagFactory" display="Tags" muid="295EC7EE195EF9B7" Deprecated="False" filter="0" group="General">
+                <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="CB5A236FD7A48166" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="B0A780C9B7D988D4" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+                <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="70EB259D6523E098" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the objects on the lot." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

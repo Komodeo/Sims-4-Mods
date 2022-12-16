@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="TunableTestedGreetingTargeted" module="interactions.social.greeting_socials.greetings" muid="2CF02A4C06890BCB" instance_needs_reference="True" instance_subclasses_only="False" parents="TunableTestedGreeting" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="tests_or_greeting" class="TunableVariant" default="none" display="Tests Or Greeting" muid="C839DAB08C3512DB" description="Either play a greeting if the tests pass, or reference another&#xA;TunableTestedGreetingTargeted that will perform it's behavior if the&#xA;tests pass." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="greeting" class="TunableTuple" display="Greeting" muid="1F0F1E77AD9630E6" description="                " Deprecated="False" filter="0" group="General">
+                <TunableTuple name="si" class="TunableReactionSi" display="Si" muid="CC0B3DA0213207CF" description="Super reactions that allow the Sim to play an SI before&#xA;socializing. These can be Social Super Interactions which work&#xA;well so that we guarantee the Sim is within social constraints.&#xA;Since these can be touching socials, you can have a social&#xA;super interaction that uses a jig group." Deprecated="False" filter="0" group="General">
+                    <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="CCAAD470BD8EDD94" description="The affordance to push on the subject." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="SuperInteraction" />
+                    <TunableVariant type="None" name="affordance_run_priority" class="OptionalTunable" default="disabled" display="Affordance Run Priority" muid="B7C9727FFEA92098" description="If enabled, specify the priority at which the affordance runs. This&#xA;may be different than 'affordance_priority'. For example. you might&#xA;want an affordance to push at high priority such that it cancels&#xA;existing interactions, but it runs at a lower priority such that it&#xA;can be more easily canceled." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="676A56C1617DB4C2" />
+                        <TunableEnum type="Priority" name="enabled" class="TunableEnumEntry" default="Low" display="Enabled" muid="A6EB1912660DFFDC" static_entries="interactions-priority.Priority" description="The run priority for the specified affordance." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="affordance_target" class="OptionalTunable" default="enabled" display="Affordance Target" muid="37CA90D02273001E" description="If enabled, the pushed interaction will target a specified&#xA;participant." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F61A8959FEFB5B6A" />
+                        <TunableEnum type="ParticipantTypeReaction" name="enabled" class="TunableEnumEntry" default="TargetSim" display="Enabled" muid="1265C92C05A95623" static_entries="interactions.ParticipantTypeReaction" description="The participant to be targeted by the pushed interaction." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="override_interaction_source" class="OptionalTunable" default="disabled" display="Override Interaction Source" muid="4B6297B612C28247" description="If enabled, we will override the source of this pushed SI.&#xA;&#xA;For example if we don't want a pushed SI to be easily canceled&#xA;by another user directed interaction, we can set this to be &#xA;SCRIPT_WITH_USER_INTENT." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F1D63999D068CDF8" />
+                        <TunableEnum type="InteractionSource" name="enabled" class="TunableEnumEntry" default="SCRIPT" display="Enabled" muid="96A02F1748B91474" static_entries="interactions-context.InteractionSource" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableTuple>
+            <Tunable name="none" class="TunableExistance" display="None" muid="1E62E7A7D454C0C4" />
+            <TunableTuple name="tests" class="TunableTuple" display="Tests" muid="C395A5B4B2ACE674" description="Child TunableTestedGreetingTargeted nodes that run if the tests pass." Deprecated="False" filter="0" group="General">
+                <TunableList name="child_nodes" class="TunableList" display="Child Nodes" muid="78200EE9BAEF767C" description="A list of children to run through as children of this branch.&#xA;If any one passes, it will not process any more children." Deprecated="False" filter="0" group="General">
+                    <Tunable type="snippet" class="TunableReference" muid="C314B7B769A47DE7" description="A child node that represents a set of tests to run as&#xA;well as child nodes or a greeting." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="TunableTestedGreetingTargeted" />
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

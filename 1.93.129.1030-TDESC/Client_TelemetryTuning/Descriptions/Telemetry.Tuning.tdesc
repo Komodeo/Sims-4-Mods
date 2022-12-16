@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="Telemetry_Tuning" class="Telemetry.Tuning" module="Telemetry" muid="CE58B792B921A68D" description="Global tuning parameters for client-side telemetry." export_modes="client_binary" path="Client_TelemetryTuning\Descriptions">
+        <TunableList name="UIEvents" class="TunableList" display="UI event mappings" muid="55778EB5879FE357" description="Specifies the different ways a censor can be applied, like full body, torso only, etc." binary_type="Sorted">
+            <TunableTuple class="Telemetry.UIEventMapping" muid="5EA886ACE8CCE0A6">
+                <Tunable type="str" name="Event" class="Tunable" default="" display="Event name" muid="7F8C2C1A55133522" description="UI event to map. This can either be the full event name or a prefix: &quot;gainFocus&quot; will match both &quot;gainFocus&quot; and &quot;gainFocus.leftButton&quot;." binary_type="HashCode32" />
+                <Tunable type="str" name="HookGroup" class="Tunable" default="" display="Telemetry Hook Group" muid="1105CDAF9D0BA043" description="Module ID for the telemetry hook; exactly four characters. For example, for the telemetry hook CLNT/GAME/TIME, this would be GAME." binary_type="RevFourCC" />
+                <Tunable type="str" name="HookName" class="Tunable" default="" display="Telemetry Hook Name" muid="C3683A6660D99254" description="Name ID for the telemetry hook; exactly four characters. For example, for the telemetry hook CLNT/GAME/TIME, this would be TIME." binary_type="RevFourCC" />
+                <TunableEnum type="UIEventMappingMode" name="Mode" class="TunableEnumEntry" default="Report as event" muid="E75E67274A33C281" static_entries="telemetry.UIEventMappingMode" description="What type of telemetry to produce on this event." binary_type="UInt32" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

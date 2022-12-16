@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation_goal" class="SituationGoalMultipleSimsInRelationship" module="situations.SituationGoalMultipleSimsInRelationship" muid="4184A44C54235D7A" description="Situation goal that completes when multiple sims of interest have a tuned&#xA;relbit toward one another.&#xA;&#xA;Sims of interest is a concept that depends on the type of object this&#xA;SituationGoal is attached to. For example, this can be all sims in a&#xA;situation if this is attached to a situation. Or this can be all sims in a&#xA;scenario if this SituationGoal is attached to a scenario." instance_needs_reference="True" instance_subclasses_only="False" parents="SituationGoal" path="SituationGoals\Descriptions" use_guid_for_reference="True">
+        <Deleted name="_iterations" muid="671497D148E1232C" />
+
+        <TunableVariant type="None" name="rel_bit_count_strategy" class="TunableVariant" default="all_possible" display="Rel Bit Count" muid="3EDC18E77628DC25" description="The number of relbits we're looking for.&#xA;&#xA;All Possible: This will test against every sim having the relbit with every other sim.&#xA;Tuned Literal: This will test a tuned number of sims having the relbit with one another." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="all_possible" class="Tunable_AllRelationships" display="All Possible" muid="4E3775931673A191" description="Counting strategy that tests against all sims of interest having a given&#xA;relationship with one another." Deprecated="False" filter="0" group="General">
+                <TunableList name="allowed_species" class="TunableEnumSet" default="HUMAN" display="Allowed Species" muid="FCD1231A06DE9249" description="Only relationships with sims of these species are considered for the&#xA;goal.&#xA;&#xA;For example, if the goal is testing that all sims in the household&#xA;are friends with each other, we would want to constrain this to be&#xA;HUMAN only because dogs and cats use a different set of relationship&#xA;bits." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Species" class="TunableEnumEntry" default="HUMAN" muid="E2274FB009DEB744" static_entries="sims-sim_info_types.Species" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="EQUAL" display="Comparison" muid="59F8F323D3AF9EC9" static_entries="sims4-math.Operator" description="The comparison to perform against the target relationship count." Deprecated="False" filter="0" group="General" />
+                <TunableList name="rel_bits" class="TunableList" display="Rel Bits" muid="8A893B7E709AE04A" description="A list of Rel Bit entries." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="19149544BF361947" description="Tuning for a single Rel Bit and whether we require it to be&#xA;present or absent in the target relationships." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="action" class="TunableVariant" default="require" display="Action" muid="A5A5D6EF148C3EB4" description="Whether we are checking for the presence or absence of&#xA;the tuned Rel Bit.&#xA;&#xA;Require - We are checking for the presence of this Rel Bit.&#xA;Prohibit - We are checking for the absence of this Rel Bit." Deprecated="False" filter="0" group="General">
+                            <Tunable name="prohibit" class="TunableExistance" display="Prohibit" muid="A44B7C6EB79EB12C" />
+                            <Tunable name="require" class="TunableExistance" display="Require" muid="11F5466F4959AA45" />
+                        </TunableVariant>
+                        <Tunable type="relbit" name="rel_bit" class="TunableReference" display="Rel Bit" muid="FC3334C534934809" description="The type of relationship we're looking for.&#xA;&#xA;In other words, we're looking for any relationship&#xA;with this Rel Bit." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="tuned_literal" class="Tunable_TunedNumberOfRelationships" display="Tuned Literal" muid="F8BA2FA658C44A23" description="Counting strategy that tests against some tuned number of sims of interest&#xA;having a given relationship with one another." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="_target_relationship_bit_count" class="TunableRange" default="1" display="Target Relationship Bit Count" muid="A0C24C8AFFA0362B" min="0" max="None" description="The number of relationship bits that this goal is testing against." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="allowed_species" class="TunableEnumSet" default="HUMAN" display="Allowed Species" muid="923371C70D203F4A" description="Only relationships with sims of these species are considered for the&#xA;goal.&#xA;&#xA;For example, if the goal is testing that all sims in the household&#xA;are friends with each other, we would want to constrain this to be&#xA;HUMAN only because dogs and cats use a different set of relationship&#xA;bits." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Species" class="TunableEnumEntry" default="HUMAN" muid="8733A8001DA65B54" static_entries="sims-sim_info_types.Species" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="EQUAL" display="Comparison" muid="1A046F74E3C338CB" static_entries="sims4-math.Operator" description="The comparison to perform against the target relationship count." Deprecated="False" filter="0" group="General" />
+                <TunableList name="rel_bits" class="TunableList" display="Rel Bits" muid="B1D99B5C981A3DB9" description="A list of Rel Bit entries." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="8B17AFA02DA181E2" description="Tuning for a single Rel Bit and whether we require it to be&#xA;present or absent in the target relationships." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="action" class="TunableVariant" default="require" display="Action" muid="FB8F9280DD721B5B" description="Whether we are checking for the presence or absence of&#xA;the tuned Rel Bit.&#xA;&#xA;Require - We are checking for the presence of this Rel Bit.&#xA;Prohibit - We are checking for the absence of this Rel Bit." Deprecated="False" filter="0" group="General">
+                            <Tunable name="prohibit" class="TunableExistance" display="Prohibit" muid="2590ABC97E2CBA4A" />
+                            <Tunable name="require" class="TunableExistance" display="Require" muid="C13860D2D458FA0E" />
+                        </TunableVariant>
+                        <Tunable type="relbit" name="rel_bit" class="TunableReference" display="Rel Bit" muid="4520F26917B9B6BF" description="The type of relationship we're looking for.&#xA;&#xA;In other words, we're looking for any relationship&#xA;with this Rel Bit." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="6D89E9D77E70ACE" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="AD70B7B757ABE046" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

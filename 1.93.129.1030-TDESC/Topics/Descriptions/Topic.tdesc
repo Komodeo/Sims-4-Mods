@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="topic" class="Topic" module="topics.topic" muid="801837215C8D8CDE" description="A topic element." instance_needs_reference="True" instance_subclasses_only="False" path="Topics\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="guaranteed_content" class="OptionalTunable" default="disabled" display="Guaranteed Content" muid="BEA141D33C92F495" description="If enabled, will force content set generation to add options for&#xA;this topic." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5AE81AE58F010F" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="9F06D22B549810B0" description="If enabled, will force content set generation to add options for&#xA;this topic." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="count" class="Tunable" default="1" display="Count" muid="AA768BCBC7E66FF5" description="The number of options to force into the content set." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="priority" class="Tunable" default="0" display="Priority" muid="CD0C9D485C5CE1FE" description="The priority of this Topic vs. other Topics. Ties are randomized." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="bool" name="is_timed_relevancy" class="Tunable" default="False" display="Is Timed Relevancy" muid="DD95B13A2AF80254" description="If set, relevancy value is treated as number of minutes until topic&#xA;is removed." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="relevancy_value" class="TunableLiteralOrRandomValue" default="literal" display="Relevancy Value" muid="FB4427E2207EA683" description="Initial Decay value once value has reached zero topic will be&#xA;removed.  If is_timeout is set, this will the number of minutes&#xA;before topic will timeout." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="literal" class="TunableIntervalLiteral" display="Literal" muid="35D93EC08FEE3328" description="A literal value that is to be used as the lower &#xA;and upper bound of an interval. This allows both literal and &#xA;range interval tunings in the same TunableVariant without &#xA;having to manually set the lower and upper bounds to the same&#xA;value." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="D1F34D08541004CA" min="0" max="None" description="The upper and lower bounds." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="random_in_range" class="TunableInterval" display="Random In Range" muid="B8FFA58B914C427F" description="A tunable interval between lower_bound and upper_bound." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="67130E5E0053DC2" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="90171C767B1BD4F" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="int" name="score_bonus" class="Tunable" default="0" display="Score Bonus" muid="32737E896ACB3B40" description="Score bonus for matching topic tag." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

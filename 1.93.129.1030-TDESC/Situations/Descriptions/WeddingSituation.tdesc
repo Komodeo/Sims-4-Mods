@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="WeddingSituation" module="situations.complex.wedding_situation" muid="925E9B31D2B8AB67" description="Class for the Base Game Wedding Situation.&#xA;GP11 introduced a new Wedding Situation that takes place of this one." instance_subclasses_only="False" parents="SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="bartender" class="TunableTuple" display="Bartender" muid="94690654280E101A" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="bartender_prep_role_state" class="TunableReference" display="Bartender Prep Role State" muid="3A61B09814DF3E8F" description="Bartender's role state for preparing for guests." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="bartender_serve_role_state" class="TunableReference" display="Bartender Serve Role State" muid="6B2E1E99140B7E5" description="Bartender's role state for serving guests." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="4760BC8635EB7879" description="The SituationJob for the Bartenders." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <TunableTuple name="betrothed" class="TunableTuple" display="Betrothed" muid="F8E73B535F2E024A" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="betrothed_ceremony_role_state" class="TunableReference" display="Betrothed Ceremony Role State" muid="847D9B6816E0F1A0" description="betrothed's role state during the ceremony." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="betrothed_gather_role_state" class="TunableReference" display="Betrothed Gather Role State" muid="FC6F05EA394F2D3F" description="betrothed's role state before the ceremony." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="betrothed_reception_role_state" class="TunableReference" display="Betrothed Reception Role State" muid="18703AF977F429DF" description="betrothed's role state after the ceremony." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="967B60B3BDC67850" description="The SituationJob for the betrothed." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <TunableTuple name="caterer" class="TunableTuple" display="Caterer" muid="3D09E1D94434BEBC" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="caterer_prep_role_state" class="TunableReference" display="Caterer Prep Role State" muid="27311467934053FC" description="Caterer's role state for preparing for guests." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="caterer_serve_role_state" class="TunableReference" display="Caterer Serve Role State" muid="C7F9AF7AB601C570" description="Caterer's role state for serving guests." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="99EC77F1F055935A" description="The SituationJob for the Caterers." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <TunableTuple name="ceremony" class="TunableInteractionOfInterest" display="Ceremony" muid="8154E5BE16888B20" description="Starting this interaction starts the ceremony. Completing it starts&#xA;the reception." Deprecated="False" filter="0" group="Triggers">
+            <TunableList name="affordances" class="TunableList" display="Affordances" muid="22F256B46F095591" description="The Sim must have started either any affordance in this list or an&#xA;interaction matching one of the tags in this tunable's Tags&#xA;field." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="F8932974BF2706F8" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="CA6D243304F430D8" description="The Sim must have run either an interaction matching one of these&#xA;Tags or an affordance from the list of Affordances in this&#xA;tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="30790A542BFFFD33" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <TunableTuple name="cold_feet" class="TunableInteractionOfInterest" display="Cold Feet" muid="2F8B9B3FD89C4106" description="Running this mixer interaction during the ceremony causes it to&#xA;FAIL." Deprecated="False" filter="0" group="Triggers">
+            <TunableList name="affordances" class="TunableList" display="Affordances" muid="887FD5AC1719A1BC" description="The Sim must have started either any affordance in this list or an&#xA;interaction matching one of the tags in this tunable's Tags&#xA;field." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="3CD65B74054DB302" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="3F95B01874F7D2BF" description="The Sim must have run either an interaction matching one of these&#xA;Tags or an affordance from the list of Affordances in this&#xA;tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="ED349FB10C18AD33" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <TunableTuple name="cut_cake" class="TunableInteractionOfInterest" display="Cut Cake" muid="CD3F87CDD1A79318" description="Once this interaction is run guests can eat cake." Deprecated="False" filter="0" group="Triggers">
+            <TunableList name="affordances" class="TunableList" display="Affordances" muid="D24609B3326A36C5" description="The Sim must have started either any affordance in this list or an&#xA;interaction matching one of the tags in this tunable's Tags&#xA;field." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="C8FDA8902ED2B659" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="9F3E75148D6D09B5" description="The Sim must have run either an interaction matching one of these&#xA;Tags or an affordance from the list of Affordances in this&#xA;tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="7BC4DF4567652A15" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <Tunable type="relbit" name="engaged_bit" class="TunableReference" display="Engaged Bit" muid="EE5DFC11C8F43224" description="The Rel Bit to look for when auto-populating betrothed Sims." allow_none="False" Deprecated="False" filter="0" group="Roles" restrict="RelationshipBit" />
+
+        <TunableTuple name="entertainer" class="TunableTuple" display="Entertainer" muid="DEBF59105DEB3C96" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="entertainer_prep_role_state" class="TunableReference" display="Entertainer Prep Role State" muid="10945230B76E7BCF" description="Entertainer's role state during preparation phase." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="B74C976483395028" description="The SituationJob for the entertainer." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <TunableTuple name="guest" class="TunableTuple" display="Guest" muid="39A17E63913E2CD2" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="guest_ceremony_role_state" class="TunableReference" display="Guest Ceremony Role State" muid="85D1704D2B72FB50" description="Guest's role state during the ceremony." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="guest_failed_reception_role_state" class="TunableReference" display="Guest Failed Reception Role State" muid="FA10D5BB4E0FE9E" description="Guest's role state during the reception if the ceremony was a&#xA;unmitigated disaster." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="guest_gather_impatient_role_state" class="TunableReference" display="Guest Gather Impatient Role State" muid="9FEC21404902BAB6" description="Guest's role state if it is taking too long for the ceremony to&#xA;start." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="guest_gather_role_state" class="TunableReference" display="Guest Gather Role State" muid="A51F6955803CA442" description="Guest's role state before the ceremony." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="guest_reception_post_cake_role_state" class="TunableReference" display="Guest Reception Post Cake Role State" muid="5A47ACB0C1BC9783" description="Guest's role state during the reception, after the cake is cut,&#xA;if the ceremony was successful." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="guest_reception_pre_cake_role_state" class="TunableReference" display="Guest Reception Pre Cake Role State" muid="51C9F737A84923E4" description="Guest's role state during the reception, before the cake is&#xA;cut, if the ceremony was successful." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="23275E9FABA53297" description="The SituationJob for the Guests." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+            <Tunable type="scommodity" name="watch_wedding_static_commodity" class="TunableReference" display="Watch Wedding Static Commodity" muid="17BABA0787ECF8C0" description="The static commodity that will be forced to be solved on the&#xA;sim when they move into the ceremony state." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="float" name="guests_become_impatient_timeout" class="TunableSimMinute" default="60" display="Guests Become Impatient Timeout" muid="5A94E01F749D0F38" min="None" max="None" description="If the ceremony is not started in this amount of time the guests&#xA;will grow impatient." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Triggers" />
+
+        <Tunable type="float" name="guests_start_reception_timeout" class="TunableSimMinute" default="120" display="Guests Start Reception Timeout" muid="2867B00C8F1CD76B" min="None" max="None" description="If the party is already in the ImpatientGatherState, after this&#xA;amount of time we switch the party to PostCakeReceptionState&#xA;so everyone can enjoy." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Triggers" />
+
+        <TunableTuple name="kiss" class="TunableInteractionOfInterest" display="Kiss" muid="2A5D1A23F3B1E95B" description="Running this mixer interaction during the ceremony causes it to&#xA;SUCCEED." Deprecated="False" filter="0" group="Triggers">
+            <TunableList name="affordances" class="TunableList" display="Affordances" muid="F8F0BD690A65672E" description="The Sim must have started either any affordance in this list or an&#xA;interaction matching one of the tags in this tunable's Tags&#xA;field." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="847B4614DA10990E" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="DCA6691EE49EB2E6" description="The Sim must have run either an interaction matching one of these&#xA;Tags or an affordance from the list of Affordances in this&#xA;tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="E288131BB55A2BC7" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <Tunable type="interaction" name="move_in_together_interaction" class="TunableReference" display="Move In Together Interaction" muid="7BE42BE48ED03FA6" description="The affordance to push on the betrothed sims when the wedding event ends." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="venue_invitation_message" muid="18B3B26563214C29" />
+
+        <Deleted name="venue_situation_player_job" muid="82F0C278DE4DB12B" />
+    </Instance>
+</TuningRoot>

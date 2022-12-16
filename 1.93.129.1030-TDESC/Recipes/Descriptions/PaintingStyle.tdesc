@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="recipe" class="PaintingStyle" module="crafting.painting" muid="D74EE79D78BCF47A" description="A painting style represents a particular type of art a Sim can choose to&#xA;produce. It is a set of textures each with restrictions on when it becomes&#xA;available.&#xA;&#xA;The player chooses a style through the Recipe Picker, thus to actually&#xA;appear as a choice to the player a PaintingStyle must have one or more&#xA;associated recipes (one for each size, for example)." instance_subclasses_only="False" path="Recipes\Descriptions" use_guid_for_reference="True">
+        <Tunable type="int" name="_display_name" class="TunableLocalizedString" default="0x0" display="Display Name" muid="5A315B274D30B08C" description="The style name that will be displayed on the hovertip." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="_textures" class="TunableList" display="Textures" muid="186B57CBDD0FB08B" description="A set of PaintingTextures from which one will be chosen for an&#xA;artwork created using this PaintingStyle." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="FA1A57EA4AACA583" description="A particular painting texture and a weight indicating how&#xA;often it will be picked from among available textures when&#xA;this style is used." Deprecated="False" filter="0" group="General">
+                <Tunable type="recipe" name="texture" class="TunableReference" display="Texture" muid="F4D643B4BBDC0B75" description="A particular painting texture to use as part of this&#xA;style." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="PaintingTexture" />
+                <Tunable type="float" name="weight" class="TunableRange" default="1.0" display="Weight" muid="AF85D2AAA79A70FC" min="0" max="None" description="The relative likelihood (among available textures) that&#xA;this one will be chosen." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

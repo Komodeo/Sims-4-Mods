@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="client_tutorial" class="Client_Tutorial" module="client_tutorials.client_tutorial" muid="C6EF519314DCF1AC" description="Main container class that holds all data for a client tutorial." instance_subclasses_only="False" path="Client_Tutorials\Descriptions">
+        <Tunable type="bool" name="allowed_in_casdemo" class="Tunable" default="False" display="Allowed in CAS Demo" muid="8794F120AA0A970F" description="Allow this Tutorial in CAS Demo" tuning_state="NeedsTuning" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="client_tutorial" name="category" class="TunableReference" display="Category" muid="398A8BBEA938EA88" description="The tutorial category in which this tutorial belongs." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" restrict="Client_TutorialCategory" />
+
+        <Tunable type="int" name="name" class="TunableLocalizedString" default="0x0" display="Name" muid="E64712B2D9C08AC6" description="Name of the tutorial. i.e. if this is a tutorial about Build/Buy&#xA;you might put &quot;Build Buy Mode&quot;" allow_none="True" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableTuple name="notification" class="TunableTNSNotification" display="Notification" muid="A5C17BEF12A0D50E" description="This is the notification that will show when you are eligible for&#xA;this tutorial. When a tutorial triggers, we show a notification and&#xA;let the player decide if they want to click the notification to see&#xA;the tutorial." export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+            <Tunable type="ResourceKey" name="audio" class="TunableResourceKey" default="None" display="Audio String" muid="3EA06526E760A15D" description="The sound to play when the dialog is shown." allow_none="True" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" resource_types="0x39b2aa4a" />
+            <TunableEnum type="UiDialogNotificationExpandBehavior" name="expand_behavior" class="TunableEnumEntry" default="USER_SETTING" display="Expand Behavior" muid="32BE3B9EB9AE9835" static_entries="ui-ui_dialog_notification.UiDialogNotification.UiDialogNotificationExpandBehavior" description="Specify the notification's expand behavior." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+            <Tunable type="ResourceKey" name="icon" class="TunableResourceKey" default="None" display="Icon" muid="CA6825110C7FC418" description="The icon image to be displayed" allow_none="True" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" resource_types="0x2f7d0004" />
+            <TunableEnum type="UiDialogNotificationLevel" name="information_level" class="TunableEnumEntry" default="PLAYER" display="Information Level" muid="1547C4D5107811AC" static_entries="ui-ui_dialog_notification.UiDialogNotification.UiDialogNotificationLevel" description="Specify the notification's information level." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+            <Tunable type="ResourceKey" name="secondary_icon" class="TunableResourceKey" default="None" display="Secondary Icon" muid="22E6D024DD66F431" description="A secondary icon image to be displayed." allow_none="True" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" resource_types="0x2f7d0004" />
+            <Tunable type="int" name="text" class="TunableLocalizedString" default="0x0" display="Text" muid="519D96838F273A68" description="The dialog's text, a localized string that may use tokens." allow_none="True" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+            <Tunable type="int" name="title" class="TunableLocalizedString" default="0x0" display="Title" muid="AFDA82B86BCD031E" description="The dialog's title." allow_none="True" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+            <TunableList name="ui_responses" class="TunableList" display="Ui Responses" muid="C4BE8A22298466BE" description="A list of buttons that are mapped to UI commands." export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                <TunableTuple class="TunableUiDialogResponse" muid="6F38AAE9E7DFB8F0" description="A dialog response." filter="0" group="General">
+                    <Tunable type="int" name="text" class="TunableLocalizedString" default="0x0" display="Text" muid="E21A59F7AE06C78F" description="The prompt's text." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+                    <TunableEnum type="UiDialogUiRequest" name="ui_request" class="TunableEnumEntry" default="NO_REQUEST" display="Ui Request" muid="DCED550AD20F9F4F" static_entries="ui-ui_dialog.UiDialogResponse.UiDialogUiRequest" description="This prompt's associated UI action." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableEnum type="UiDialogNotificationUrgency" name="urgency" class="TunableEnumEntry" default="DEFAULT" display="Urgency" muid="3D0DFC39736CB56D" static_entries="ui-ui_dialog_notification.UiDialogNotification.UiDialogNotificationUrgency" description="Specify the notification's urgency." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+            <TunableEnum type="UiDialogNotificationVisualType" name="visual_type" class="TunableEnumEntry" default="INFORMATION" display="Visual Type" muid="63F1EAF36754D582" static_entries="ui-ui_dialog_notification.UiDialogNotification.UiDialogNotificationVisualType" description="Specify the notification's visual treatment." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableList name="slides" class="TunableList" display="Slides" muid="78A3B40D47F9591B" description="These are the slides (images with a description) that create the&#xA;story for this tutorial. They will be shown in the order they are&#xA;provided, so the first slide in this list will be the first slide&#xA;of the tutorial." filter="0" group="General">
+            <TunableTuple class="TunableTutorialSlideTuple" muid="8F94826076CF9DAE" filter="0" group="General">
+                <Tunable type="ResourceKey" name="image" class="TunableResourceKey" default="None" display="Image" muid="EF77CCA1C9FCF1F7" description="The image for this slide." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" resource_types="0x2f7d0004" />
+                <Tunable type="ResourceKey" name="image_console" class="TunableResourceKey" default="None" display="Image (Console)" muid="A8BFCFB9F9E8F842" description="The image for this slide on console.  If unset the Image will be used as a fallback." allow_none="True" export_modes="client_binary" filter="0" group="General" resource_types="0x2f7d0004" />
+                <Tunable type="ResourceKey" name="image_console_jp" class="TunableResourceKey" default="None" display="Image (Console; JP)" muid="DEAB60DEECFE504F" description="The image for this slide on console for the JP SKU.  Fallback order is: Image (Console), Image." allow_none="True" export_modes="client_binary" filter="0" group="General" resource_types="0x2f7d0004" />
+                <TunableEnum type="TutorialPlatformFilter" name="platform_filter" class="TunableEnumEntry" default="ALL_PLATFORMS" display="Platform Filter" muid="443A5612D3A87EE9" static_entries="tutorials-tutorial.TutorialPlatformFilter" description="The platforms on which this slide is shown." Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+                <Tunable type="int" name="text" class="TunableLocalizedString" default="0x0" display="Text" muid="8FE74873FF921F01" description="The text for this slide." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="triggers" class="TunableList" display="Triggers" muid="E7B3C32B662971DE" description="These are the events that can trigger this tutorial. i.e. if&#xA;this is a Build/Buy tutorial, we might want to trigger this&#xA;tutorial when you build something, buy something, or enter&#xA;build/buy. You could add all three of those events and this&#xA;tutorial will trigger if any one of them happen. The tutorial&#xA;tip will be triggered at any point that one of these events&#xA;is even triggered." export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+            <TunableEnum type="Trigger" class="TunableEnumEntry" default="INVALID" muid="F4AEBA50D360D72D" dynamic_entries="client-tutorial.Trigger._elements" static_entries="client-tutorial.Trigger" filter="0" group="General" />
+        </TunableList>
+
+        <Tunable type="int" name="ui_sort_order" class="Tunable" default="0" display="Ui Sort Order" muid="908368C2BFA1D324" description="Sort order for UI purposes. Relative to other tutorials" tuning_state="NeedsTuning" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList />
+
+        <ActionList />
+    </VersionHistory>
+</TuningRoot>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="story_progression.story_progression_service" muid="1070818EB83896A7">
+        <Class name="StoryProgressionPassType" muid="9D464BF735AE666A" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="GLOBAL" muid="E7A9C31800E91E11" enum_value="0" />
+
+            <EnumItem name="PER_WORLD" muid="989BD70F85DB06E5" enum_value="1" />
+        </Class>
+
+        <Class name="StoryProgressionService" muid="46C88870F700B8A8">
+            <TunableList name="ACTIONS" class="TunableList" display="Actions" muid="36648AECFCE20463" description="A list of actions that are available to Story Progression." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" class="TunableStoryProgressionActionVariant" default="none" muid="E337926F2B5F37F4" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="fame" class="TunableStoryProgressionActionFame" display="Fame" muid="A320326E05F9F6BD" description="An action defines behavior that is to occur on a certain&#xA;subset of Sims affected by Story Progression." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="time_of_day" class="TunableTuple" display="Time Of Day" muid="FB01BA5DCE43C43C" description="Only run this action when it is between a certain time of day." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="end_time" class="TunableTimeOfDay" display="End Time" muid="6EFA8426090B8A2D" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="hour" class="TunableRange" default="6" display="Hour" muid="79C7FC97BB1BF91D" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="DF808DCC3C4107F4" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="65AB8A2ECAFF9435" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="hour" class="TunableRange" default="2" display="Hour" muid="478995988E797AB6" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="12BB081C1B3AA2B3" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableTuple>
+                    <TunableTuple name="initial_population" class="TunableStoryProgressionInitialPopulation" display="Initial Population" muid="11CB640B539FD9C6" description="An action defines behavior that is to occur on a certain&#xA;subset of Sims affected by Story Progression." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="_homeless_households" class="TunableInterval" display="Homeless Households" muid="A18C1D56184AE9A7" description="Random number of homeless households to create." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="DB5E15577EDE0C9D" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="upper_bound" class="TunableRange" default="3" display="Upper Bound" muid="6A0245E534BD46AA" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableList name="_region_to_population_density" class="TunableMapping" display="Region To Population Density" muid="4D0344F55321502E" mapping_key="Region Description" mapping_value="Population Density" description="Based on region what percent of available lots will be filled." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="2AAC803633D19637" Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="Population Density" class="TunableTuple" display="Population Density" muid="FE64716AC129BDD9" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="float" name="density" class="TunablePercent" default="40" display="Density" muid="51A221F98F5929F7" min="0" max="100" description="Percent of how much of the residential lots will be occupied of&#xA;all the available lots in that region.  If the current lot&#xA;density is greater than this value, then no household will be&#xA;moved in." Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="min_empty" class="TunableRange" default="2" display="Min Empty" muid="934D0881B914B134" min="0" max="None" description="Minimum number of empty lots that should stay empty for this neighborhood." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                                <Tunable type="regiondescription" name="Region Description" class="TunableReference" display="Region Description" muid="935C401ACCEBD72D" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="max_population" class="TunableStoryProgressionActionMaxPopulation" display="Max Population" muid="285959E07978012A" description="An action defines behavior that is to occur on a certain&#xA;subset of Sims affected by Story Progression." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="culling_buffer_percentage" class="TunablePercent" default="20" display="Culling Buffer Percentage" muid="4F742F30D61BD8B3" min="0" max="100" description="When sim infos are culled due to the number of sim infos exceeding&#xA;the cap, this is how much below the cap the number of sim infos&#xA;will be (as a percentage of the cap) after the culling, roughly.&#xA;The margin of error is due to the fact that we cull at the household&#xA;level, so the number of sims culled can be a bit more than this value&#xA;if the last household culled contains more sims than needed to reach&#xA;the goal. (i.e. we never cull partial households)" Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="homeless_played_demotion_time" class="OptionalTunable" default="disabled" display="Homeless Played Demotion Time" muid="812DBF2D8457C28A" description="If enabled, played Sims that have been homeless for at least this&#xA;many days will be drops from FULL to BASE_SIMULATABLE lod." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="3ABB634964461BFB" />
+                            <Tunable type="int" name="enabled" class="TunableRange" default="10" display="Enabled" muid="308E9384041CBDBD" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableList name="sim_info_cap_per_lod" class="TunableMapping" display="Sim Info Cap Per Lod" muid="13DFFBEEC76FEEC9" mapping_key="key" mapping_value="value" description="The mapping of SimInfoLODLevel value to an interval of sim info cap&#xA;integer values.&#xA;&#xA;NOTE: The ACTIVE lod can't be tuned here because it's being tracked&#xA;via the Maximum Size tuning in Household module tuning." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="13FA4A1740732031" Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="SimInfoLODLevel" name="key" class="TunableEnumEntry" default="FULL" display="Key" muid="920742DCF68C983C" static_entries="sims-sim_info_lod.SimInfoLODLevel" description="The SimInfoLODLevel value." Deprecated="False" filter="0" group="General" invalid_entries="ACTIVE" />
+                                <Tunable type="int" name="value" class="TunableRange" default="210" display="Value" muid="E4FB84E922AA0565" min="0" max="None" description="The number of sim infos allowed to be present before culling&#xA;is triggered for this SimInfoLODLevel." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                        <TunableTuple name="time_of_day" class="TunableTuple" display="Time Of Day" muid="81346F334CE22034" description="Only run this action when it is between a certain time of day." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="end_time" class="TunableTimeOfDay" display="End Time" muid="C57E2AC55B5E85B7" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="hour" class="TunableRange" default="6" display="Hour" muid="48B4A051256446C9" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="4B0C345B3C365BFB" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="FA4933F0F11D08D9" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="hour" class="TunableRange" default="2" display="Hour" muid="4702902D405D517B" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="DB0D594CD50A3C1F" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableTuple>
+                    <Tunable name="none" class="TunableExistance" display="None" muid="5EB1FE0612313534" />
+                    <TunableTuple name="relationship_culling" class="TunableStoryProgressionRelationshipCulling" display="Relationship Culling" muid="8C4DE01E2EE383E9" description="An action defines behavior that is to occur on a certain&#xA;subset of Sims affected by Story Progression." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="time_of_day" class="TunableTuple" display="Time Of Day" muid="86D849D3884F0A13" description="Only run this action when it is between a certain time of day." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="end_time" class="TunableTimeOfDay" display="End Time" muid="6837E519F281EFED" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="hour" class="TunableRange" default="5" display="Hour" muid="B98549BBAA46C405" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="DB70F211B5E2269F" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="E0E318CCA772AFA7" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="hour" class="TunableRange" default="2" display="Hour" muid="190040CB229AD641" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="2903BA5BCCAB0EA7" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableTuple>
+                    <TunableTuple name="rentable_lot_population" class="TunableStoryProgressionDestinationPopulateAction" display="Rentable Lot Population" muid="39EEEDC41962A48C" description="An action defines behavior that is to occur on a certain&#xA;subset of Sims affected by Story Progression." Deprecated="False" filter="0" group="General">
+                        <TunableList name="_region_to_rentable_zone_density" class="TunableMapping" display="Region To Rentable Zone Density" muid="86BB439CD624559C" mapping_key="Region Description" mapping_value="Rentable Zone Density" description="Based on region what percent of available lots will be filled." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="9DC35EF90C3269EB" Deprecated="False" filter="0" group="General">
+                                <Tunable type="regiondescription" name="Region Description" class="TunableReference" display="Region Description" muid="3A6F465571353C6F" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                <TunableTuple name="Rentable Zone Density" class="TunableTuple" display="Rentable Zone Density" muid="6652F811F25B127C" Deprecated="False" filter="0" group="General">
+                                    <TunableList name="_venues_to_populate" class="TunableSet" display="Venues To Populate" muid="335A4C7AAA8FAFE6" description="A set of venue references that are considered to be rentable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <Tunable type="venue" class="TunableReference" muid="8591CAE74E368FB0" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    </TunableList>
+                                    <TunableList name="bed_count_to_travel_group_size" class="TunableMapping" display="Bed Count To Travel Group Size" muid="360EF1DEB90374D2" mapping_key="Number of beds" mapping_value="Travel Group Size" description="Based on the house description how many sims should go on vacation" Deprecated="False" filter="0" group="General">
+                                        <TunableTuple class="TunableTuple" muid="8748477F1C445878" Deprecated="False" filter="0" group="General">
+                                            <Tunable type="int" name="Number of beds" class="Tunable" default="1" display="Number Of Beds" muid="D1F5F35AF3BE909F" description="The number of beds on the lot to determine how many sims&#xA;can go in the vacation group." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                            <TunableVariant type="None" name="Travel Group Size" class="TunableLiteralOrRandomValue" default="literal" display="Travel Group Size" muid="D6879514C877DD79" description="The maximum number of sims that should go on vacation to&#xA;that lot." Deprecated="False" filter="0" group="General">
+                                                <TunableTuple name="literal" class="TunableIntervalLiteral" display="Literal" muid="1F2F434FC11892B6" description="A literal value that is to be used as the lower &#xA;and upper bound of an interval. This allows both literal and &#xA;range interval tunings in the same TunableVariant without &#xA;having to manually set the lower and upper bounds to the same&#xA;value." Deprecated="False" filter="0" group="General">
+                                                    <Tunable type="int" name="value" class="TunableRange" default="10" display="Value" muid="5D2A56C7F0FFDFAD" min="0" max="None" description="The upper and lower bounds." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                </TunableTuple>
+                                                <TunableTuple name="random_in_range" class="TunableInterval" display="Random In Range" muid="EAEC65F9954870D4" description="A tunable interval between lower_bound and upper_bound." Deprecated="False" filter="0" group="General">
+                                                    <Tunable type="int" name="lower_bound" class="TunableRange" default="10" display="Lower Bound" muid="916B67701D4F60F" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                    <Tunable type="int" name="upper_bound" class="TunableRange" default="10" display="Upper Bound" muid="3398B98BFF26388E" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                </TunableTuple>
+                                            </TunableVariant>
+                                        </TunableTuple>
+                                    </TunableList>
+                                    <Tunable type="float" name="density" class="TunablePercent" default="80" display="Density" muid="75763BA32F160DF2" min="0" max="100" description="Percent of lots will be occupied once a user sim has rented a lot." Deprecated="False" filter="0" group="General" />
+                                    <TunableVariant type="None" name="duration" class="TunableLiteralOrRandomValue" default="literal" display="Duration" muid="59E469712BA73298" description="The maximum in sim days npc's should stay on vacation." Deprecated="False" filter="0" group="General">
+                                        <TunableTuple name="literal" class="TunableIntervalLiteral" display="Literal" muid="D94C9D19A3C429ED" description="A literal value that is to be used as the lower &#xA;and upper bound of an interval. This allows both literal and &#xA;range interval tunings in the same TunableVariant without &#xA;having to manually set the lower and upper bounds to the same&#xA;value." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="A9A95477F8FC344A" min="1" max="None" description="The upper and lower bounds." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        </TunableTuple>
+                                        <TunableTuple name="random_in_range" class="TunableInterval" display="Random In Range" muid="8AE3DE0A1A7B6936" description="A tunable interval between lower_bound and upper_bound." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="F01273DA74DE07C5" min="1" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                            <Tunable type="int" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="5DE4EAEE796DDA35" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        </TunableTuple>
+                                    </TunableVariant>
+                                    <TunableList name="household_description_to_ideal_travel_group_size" class="TunableMapping" display="Household Description To Ideal Travel Group Size" muid="3DF21212C5A307E6" mapping_key="House Description" mapping_value="Travel Group Size" description="Based on the house description how many sims should go on vacation" Deprecated="False" filter="0" group="General">
+                                        <TunableTuple class="TunableTuple" muid="6B91E89C76AEBE69" Deprecated="False" filter="0" group="General">
+                                            <Tunable type="housedescription" name="House Description" class="TunableReference" display="House Description" muid="7CA7361CC01A9501" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                            <TunableVariant type="None" name="Travel Group Size" class="TunableLiteralOrRandomValue" default="literal" display="Travel Group Size" muid="8FB5430C412147C2" description="The maximum number of sims that should go on vacation to&#xA;that lot." Deprecated="False" filter="0" group="General">
+                                                <TunableTuple name="literal" class="TunableIntervalLiteral" display="Literal" muid="C83479E3CB32DC0D" description="A literal value that is to be used as the lower &#xA;and upper bound of an interval. This allows both literal and &#xA;range interval tunings in the same TunableVariant without &#xA;having to manually set the lower and upper bounds to the same&#xA;value." Deprecated="False" filter="0" group="General">
+                                                    <Tunable type="int" name="value" class="TunableRange" default="10" display="Value" muid="D4F4E97CE2EC0657" min="0" max="None" description="The upper and lower bounds." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                </TunableTuple>
+                                                <TunableTuple name="random_in_range" class="TunableInterval" display="Random In Range" muid="FE6EF70951F28AC6" description="A tunable interval between lower_bound and upper_bound." Deprecated="False" filter="0" group="General">
+                                                    <Tunable type="int" name="lower_bound" class="TunableRange" default="10" display="Lower Bound" muid="61EBB1C6F44BE7FC" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                    <Tunable type="int" name="upper_bound" class="TunableRange" default="10" display="Upper Bound" muid="16101F5B67C6B6D7" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                </TunableTuple>
+                                            </TunableVariant>
+                                        </TunableTuple>
+                                    </TunableList>
+                                    <Tunable type="int" name="min_to_populate" class="TunableRange" default="3" display="Min To Populate" muid="E9A2147A9E80E990" min="0" max="None" description="Minimum number of lots that should be rented." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <TunableList name="travel_group_size_to_household_template" class="TunableMapping" display="Travel Group Size To Household Template" muid="C627CFB9092602D8" mapping_key="key" mapping_value="value" description="Mapping to travel group size to household templates. If there&#xA;are no household that fulfill the requirement of renting a&#xA;zone, then random household template will chosen to be created&#xA;to rent a zone." Deprecated="False" filter="0" group="General">
+                                        <TunableTuple class="TunableTuple" muid="4E3110ECD36B2F46" Deprecated="False" filter="0" group="General">
+                                            <Tunable type="int" name="key" class="Tunable" default="1" display="Key" muid="109EB0FD63690902" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                            <TunableList name="value" class="TunableList" display="Value" muid="E4D5582454FF49FB" description="Household template that will be created for renting a zone." Deprecated="False" filter="0" group="General">
+                                                <Tunable type="sim_template" class="TunableReference" muid="C42DA4A469812F73" allow_none="False" Deprecated="False" filter="0" group="General" restrict="HouseholdTemplate" />
+                                            </TunableList>
+                                        </TunableTuple>
+                                    </TunableList>
+                                </TunableTuple>
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="university" class="TunableStoryProgressionActionUniversity" display="University" muid="479D2E6FC9D393F3" description="An action defines behavior that is to occur on a certain&#xA;subset of Sims affected by Story Progression." Deprecated="False" filter="0" group="General">
+                        <TunableList name="number_of_classes_to_take_on_reenrollment" class="TunableList" display="Number Of Classes To Take On Reenrollment" muid="7BA58C2300A578BC" description="A list of weighted numbers of classes to take when this story&#xA;progression action re-enrolls a sim." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="4EDB3A33DF74C50B" Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="number_of_classes" class="TunableRange" default="3" display="Number Of Classes" muid="BCA5B4D76AA0F099" min="1" max="None" description="The number of classes to take." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="weight" class="Tunable" default="1" display="Weight" muid="1CAEDC2323708D64" description="The relative chance of taking this number of classes." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                        <TunableTuple name="performance_gain_per_day" class="TunableInterval" display="Performance Gain Per Day" muid="E431E2B3C8A99E01" description="The amount of work performance to give a university student per day." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableRange" default="70" display="Lower Bound" muid="FBE6C90F2B156001" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableRange" default="90" display="Upper Bound" muid="3958CB31CAA99881" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="time_to_update_progress" class="TunableTimeOfDay" display="Time To Update Progress" muid="C4653F83902E1AAB" description="The approximate time of day when the action should update story &#xA;progress." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="hour" class="TunableRange" default="20" display="Hour" muid="A8C71BE3779AFC69" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="7B1679C105577AFD" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableList>
+
+            <Tunable type="float" name="INTERVAL" class="TunableRealSecond" default="5" display="Interval" muid="FF6D2E4FEE4CB77F" min="None" max="None" description="The time between Story Progression actions. A lower number will&#xA;impact performance." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="STORY_PROGRESSION_PASSES" class="TunableList" display="Story Progression Passes" muid="1F60CC7A018E1FD7" description="A list of the different Story Progression Passes that&#xA;are used to attempt to seed new Story Arcs upon Sims." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="7F7011907A89F57" description="Data related to a single Story Progression Pass." Deprecated="False" filter="0" group="General">
+                    <Tunable type="str" name="debug_pass_name" class="Tunable" default="" display="Debug Pass Name" muid="1BBEC1274D733F6B" description="Name of this pass for use within logs and the GSI for easier debugging." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="demographic_data" class="TunableList" display="Demographic Data" muid="12A9D88F4C98E44C" description="A grouping of the different instructions of what this pass should do at&#xA;every demographic value given by the demographic function." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="4289179C26727878" description="A group of demographic data.  Each set of demographic data should have a maximum range&#xA;higher than the previous one." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="chance_of_occurrence" class="TunablePercent" default="100" display="Chance Of Occurrence" muid="4994512F0A073898" min="0" max="100" description="The chance that we attempt to seed an arc at all during this pass&#xA;at this demographic level." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="maximum_range" class="TunablePercent" default="100" display="Maximum Range" muid="F158E36E90A98EAF" min="0" max="100" description="The maximum value of this range of demographic data within the pass tuning.&#xA;Each maximum range should be larger than the one before it in order to create&#xA;the ranges where each set of demographic data is used.  The demographic function&#xA;ends up returning a percentage which we then use these values to determine which&#xA;data set we want to use based on that percentage." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="number_to_seed" class="TunableInterval" display="Number To Seed" muid="91E46D37A65D55A5" description="The number of arcs to seed.  A random value between min and max will be chosen&#xA;as the number we will seed." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="85D10507DCFCF2AC" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="upper_bound" class="TunableRange" default="3" display="Upper Bound" muid="36A3E085649497ED" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                    <TunableVariant type="None" name="demographic_function" class="TunableVariant" default="sim_test" display="Demographic Function" muid="105BD237AAFBCD3A" description="The different demographic function that we will use in order to&#xA;determine the chance of one of these arcs being seeded.&#xA;&#xA;Each of these functions will return a percentage of sims/households/lots&#xA;that fit the question out of a total.  This percentage is then used with&#xA;the demographic data to determine exactly what to do." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="residential_lot" class="TunableResidentialLotDemographicFunction" display="Residential Lot" muid="CBF56B3D90CD2F74" description="A demographic function that checks against the lots that are populated or not." Deprecated="False" filter="0" group="General">
+                            <Tunable type="bool" name="check_filled_lots" class="Tunable" default="False" display="Check Filled Lots" muid="9A278DFF0B26DDE8" description="If checked we will check the number of residential lots that have Sims who live on them&#xA;against the total number of residential lots with at least one bed or have a Sim living there, else we will&#xA;do the opposite and check the number of empty residential lots with at least one bed against the&#xA;number of total residential lots that have at least one bed or a Sim living there." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="sim_test" class="TunableSimTestDemographicFunction" display="Sim Test" muid="C9BD6D5C6B7E1711" description="A demographic function that checks all Sims that pass one test against all of the Sims that pass both&#xA;that test and another one." Deprecated="False" filter="0" group="General">
+                            <TdescFragTag name="demographic_tests" class="TunableTestSet" display="Demographic Tests" muid="F8A48774029BC41D" description="A set of tests that the Sim must pass to actually be in consideration.&#xA;These tests will be run after the initial tests so the final demographic&#xA;number will end up being:&#xA;number of sims that pass demographic tests/number of sims that pass initial tests" filter="0" group="General" />
+                            <TdescFragTag name="initial_tests" class="TunableTestSet" display="Initial Tests" muid="B3B9A62527D37680" description="The initial set of tests that are run in order to determine which Sims&#xA;should this demographic test check against.  Leave this empty to test&#xA;against all Sims.&#xA;Example: If we are trying to figure out the rate of employment for Teens.&#xA;A test to check if the Sim Info is a Teen should be here." filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="total_sim" class="TunableTotalSimDemographicFunction" display="Total Sim" muid="61A0C6D712E59F90" description="A demographic function that checks all Sims against the total Sim Cap" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableEnum type="StoryProgressionPassType" name="pass_type" class="TunableEnumEntry" default="GLOBAL" display="Pass Type" muid="B5A58CBA4C656B67" static_entries="story_progression-story_progression_service.StoryProgressionPassType" description="The different type of pass this is.&#xA;GLOBAL: This pass will run a single time and interact&#xA;with Sims/Households/Lots across the entire game.&#xA;PER_WORLD: This pass will run multiple times, once&#xA;per world and only interact with Sims/Households/Lots on&#xA;that world." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="potential_arcs" class="TunableList" display="Potential Arcs" muid="BDE0DBB8DCC7303" description="A weighted list of the potential story arcs&#xA;to try and seed." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="7A03647AE716425E" description="A pair of a potential story arc and the&#xA;weight of that story arc being selected." Deprecated="False" filter="0" group="General">
+                            <Tunable type="story_arc" name="story_arc" class="TunableReference" display="Story Arc" muid="1E01F8014F715AE2" description="The story arc that might be chosen." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <Tunable type="int" name="weight" class="TunableRange" default="1" display="Weight" muid="A0DCFEFD048334F4" min="1" max="None" description="The chance that this story arc will be chosen." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="UPDATE_TIME" class="TunableTimeOfDay" display="Update Time" muid="BF057F8EC2F6EED1" description="The time of day that the story progression service&#xA;will seed new arcs and update the existing ones." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="hour" class="TunableRange" default="12" display="Hour" muid="17930BE5D7925046" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="69F47E70F7F634BE" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="88BA6188E5D59A1E" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

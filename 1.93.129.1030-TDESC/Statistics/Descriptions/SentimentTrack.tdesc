@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="statistic" class="SentimentTrack" module="relationships.sentiment_track" muid="E7806D30F4FD097A" description="Represents a single sentiment track." instance_needs_reference="True" instance_subclasses_only="False" parents="RelationshipTrack" path="Statistics\Descriptions" use_guid_for_reference="True">
+        <Deleted name="_add_bit_on_threshold" muid="610428DCDBBEA404" />
+
+        <Tunable type="int" name="archetype_name" class="TunableLocalizedString" default="0x0" display="Archetype Name" muid="2E1EF6E024636783" description="The localized archetype name for this sentiment.&#xA;Eg: hurt/ecstatic/glad  " Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="bit_data_tuning" muid="6B3A8F52F7558A3A" />
+
+        <Deleted name="display_priority" muid="30D94E71D8410C45" />
+
+        <TunableEnum type="SentimentDurationType" name="duration" class="TunableEnumEntry" default="INVALID" display="Duration" muid="E1D848124049192D" static_entries="relationships-relationship_enums.SentimentDurationType" description="The duration of this sentiment. Must be either long or short type.  " Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+
+        <TunableVariant type="None" name="long_term_priority" class="OptionalTunable" default="disabled" display="Long Term Priority" muid="97236F1888ADA2FB" description="Priority for long term sentiments.&#xA;Long term sentiment with higher priority will always replace&#xA;existing sentiment with lower (or No) priority.&#xA;Long term sentiment with lower (or No) priority will only&#xA;replace existing sentiment with higher priority if existing sentiments&#xA;remaining duration is shorter than the long term priority value threshold&#xA;in sentiment track tracker module tuning.&#xA;&#xA;(NOte: 0 priority beats No priority)" Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="96080590519AC717" />
+            <Tunable type="int" name="enabled" class="TunableRange" default="0" display="Enabled" muid="D30DEF14E6F24958" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableList name="loot_on_proximity" class="TunableList" display="Loot On Proximity" muid="77C70ED2032DE8EB" description="A list of loot actions that will be applied to the subject Sim if &#xA;the subject sim comes in proximity of the target sim, and the &#xA;subject sim is not in a cooldown period for the target sim.&#xA;Resolver Participants:&#xA;actor - sim owning the sentiment&#xA;target - target of the sentiment" Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="FCA80FCE1687B5F9" description="A loot action applied to the subject Sim." allow_none="False" Deprecated="False" filter="0" group="Sentiment Loot" restrict="LootActions" />
+        </TunableList>
+
+        <TunableTuple name="proximity_loot_chance_weight" class="TunableTunableMultiplier" display="Proximity Loot Chance Weight" muid="DE9234A33FFF4D1C" description="The random weight for this loot to be applied when in proximity of &#xA;a sim that this sim has a sentiment towards.&#xA;Resolver Participants:&#xA;actor - sim owning the sentiment&#xA;target - target of the sentiment" Deprecated="False" filter="0" group="Sentiment Loot">
+            <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="66BF372A9B7F4BAC" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="2DD10D5F69A2A3A2" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="CFD85FE0B7E15731" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="3E0343EBB032CB7C" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="9FF7BDE058304CBC" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableEnum type="SentimentSignType" name="sign" class="TunableEnumEntry" default="INVALID" display="Sign" muid="9BAE5BC03147C1D8" static_entries="relationships-relationship_enums.SentimentSignType" description="The sign of this sentiment. Must be either positive or negative &#xA;type.  " Deprecated="False" filter="0" group="General" invalid_entries="SentimentDurationType.INVALID" />
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="ScreenSlam" module="snippets" muid="D0A4AA55B596295D" instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="value" class="TunableScreenSlam" display="Value" muid="54B9BB33EC71B963" description="Tunable Screen Slams!" Deprecated="False" filter="0" group="General">
+            <Tunable type="bool" name="active_sim_only" class="Tunable" default="True" display="Active Sim Only" muid="BE227E1B53817FEA" description="If true, the screen slam will be only be shown if the active Sim&#xA;triggers it." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="audio_sting" class="OptionalTunable" default="disabled" display="Audio Sting" muid="8C13CA02E05E5FA8" description="A sting to play at the same time as the screen slam.&#xA;***Some screen slams may appear to play a sting, but the audio is&#xA;actually tuned on something else.  Example: On CareerLevel tuning&#xA;there already is a tunable, Promotion Audio Sting, to trigger a&#xA;sting, so one is not necessary on the screen slam.  Make sure to&#xA;avoid having multiple stings play simultaneously.***" Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="45992D0812A542B4" />
+                <TunableTuple name="enabled" class="TunablePlayAudio" display="Enabled" muid="3AA9BBF8EEF26A76" Deprecated="False" filter="0" group="General">
+                    <Tunable type="ResourceKey" name="audio" class="TunableResourceKey" default="None" display="Audio" muid="F8678BF009477BF1" description="The sound to play." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+                    <Tunable type="bool" name="immediate_audio" class="Tunable" default="False" display="Immediate Audio" muid="CBF1FBBD3A6C0479" description="If checked, this audio will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. Earbuds audio will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="joint_name_hash" class="OptionalTunable" default="disabled" display="Joint Name Hash" muid="97F1B1E724DA89E1" description="Specify if the audio is attached to a slot and, if so, which&#xA;slot. Otherwise the audio will be attached to the object's &#xA;origin." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9CDA2B3DF1FC7CCA" />
+                        <Tunable type="str" name="enabled" class="TunableStringHash32" default="None" display="Enabled" muid="514F2F86F5131DAB" description="The name of the slot this audio is attached to." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="bool" name="play_on_active_sim_only" class="Tunable" default="False" display="Play On Active Sim Only" muid="1040C987EE2BFCE3" description="If enabled, and audio target is Sim, the audio will only be &#xA;played on selected Sim. Otherwise it will be played regardless &#xA;Sim is selected or not.&#xA;&#xA;If audio target is Object, always set this to False. Otherwise&#xA;the audio will never be played.&#xA;&#xA;ex. This will be useful for Earbuds where we want to hear the&#xA;music only when the Sim is selected." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableVariant>
+            <TunableVariant type="None" name="display_type" class="ScreenSlamDisplayVariant" default="size_based" display="Display Type" muid="53754E2BE2271F6D" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="key_based" class="TunableScreenSlamKeyBased" display="Key Based" muid="6F28B65329D0BBD5" description="Screen Slam visual is dictated by a string key.&#xA;&#xA;Verify with your UI partner what this should be. " Deprecated="False" filter="0" group="General">
+                    <Tunable type="str" name="key" class="Tunable" default="medium" display="Key" muid="BD9635E951C525F8" description="Key to use for the screenslam. This will be typically tied&#xA;to what animation will play. Verify with your UI partner&#xA;what the correct value to use will be." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="size_based" class="TunableScreenSlamSizeBased" display="Size Based" muid="A9BF6E85BDA08B28" description="Screen Slam visual is dictated by the value of the size tunable." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ScreenSlamSizeEnum" name="screen_slam_size" class="TunableEnumEntry" default="MEDIUM" display="Screen Slam Size" muid="AFC2F01BFC9FB739" static_entries="ui-screen_slam.ScreenSlamSizeEnum" description="Screen slam size." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableVariant>
+            <TunableVariant type="None" name="icon" class="OptionalTunable" default="disabled" display="Icon" muid="563CE402526A89C7" description=",&#xA;Icon to be displayed for the screen Slam." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D35EA23082F109C7" />
+                <Tunable type="ResourceKey" name="enabled" class="TunableIcon" default="None" display="Enabled" muid="83CBB05373CF66E4" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+            </TunableVariant>
+            <TunableVariant type="None" name="text" class="OptionalTunable" default="disabled" display="Text" muid="E3139A0CCD58D349" description="&quot;&#xA;Text of the screen slam." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C07B024A91B67D61" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="588D942E1A8CEAA6" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableVariant type="None" name="title" class="OptionalTunable" default="disabled" display="Title" muid="E470CAECBE0EC074" description="Title of the screen slam." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="20667425D77C0F22" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="80A0BC52AA7F84FE" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

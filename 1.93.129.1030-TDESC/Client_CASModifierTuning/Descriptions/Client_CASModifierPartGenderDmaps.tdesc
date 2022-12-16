@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="casmodifiertuning" class="Client_CASModifierPartGenderDmaps" module="casmodifiertuning.Client_CASModifierPartGenderDmaps" muid="804A73C761B00FEF" description="Defines special d-maps that should be applied to sims only when the sim has CasParts of a specific gender applied" export_modes="client_binary,server_binary" group="Mapped Modifiers" path="Client_CASModifierTuning\Descriptions">
+        <Tunable type="bool" name="ActiveIfSimDoesntHaveBreasts" class="Tunable" default="true" muid="4AFCD61B36F49545" description="Defines whether this tuning is applied for sims that don't have breasts" group="General" />
+
+        <Tunable type="bool" name="ActiveIfSimHasBreasts" class="Tunable" default="true" muid="4F010136BF1A65AB" description="Defines whether this tuning is applied for sims that have breasts" group="General" />
+
+        <TunableEnum type="Age" name="Age" class="TunableEnumEntry" default="None" display="Age" muid="1268968DC37B019A" static_entries="sims-sim_info_types.Age" description="Age this applies to." export_modes="client_binary,server_binary" filter="0" group="General" />
+
+        <Tunable type="int" name="ConditionalCasPartBodyType" class="Tunable" default="0" display="Body Type" muid="87FC1FC82EC4E19B" description="This tuning applies only to sims wearing a CASPart of this BodyType and Gender" group="Conditional CASPart" />
+
+        <TunableEnum type="Gender" name="ConditionalCasPartGender" class="TunableEnumEntry" default="None" display="Part's Gender" muid="448EAC374A4A28B6" static_entries="sims-sim_info_types.Gender" description="This tuning applies only to sims wearing a CASPart of this BodyType and Gender" export_modes="client_binary,server_binary" filter="0" group="Conditional CASPart" />
+
+        <Tunable type="str" name="FallbackDmapName" class="Tunable" default="dmap_name" display="DmapName" muid="38F256CBD7390D75" description="Dmap name. If specified, this dmap will be applied if none of the modifiers in the list above are present on the sim" binary_type="HashCode64" group="Dmap Applied If No Mapped Modifiers Present On Sim" />
+
+        <Tunable type="float" name="FallbackDmapValue" class="Tunable" default="0.0" display="Value" muid="71B751E4EC7DE7AA" description="The value at which the fallback dmap will be applied, if there is a fallback dmap specified. Use 0 if no fallback dmap" group="Dmap Applied If No Mapped Modifiers Present On Sim" />
+
+        <TunableEnum type="Gender" name="Gender" class="TunableEnumEntry" default="None" display="Gender" muid="BE679D389D42B823" static_entries="sims-sim_info_types.Gender" description="Gender this applies to." export_modes="client_binary,server_binary" filter="0" group="General" />
+
+        <TunableList name="ModifierDmapConversionList" class="TunableList" display="Dmap Conversions" muid="3B0E3B35FE66BACD" description="Modifier To Dmap Conversion Data">
+            <TunableTuple name="ModifierPartGenderDmap" class="Client_CASModifierPartGenderDmaps.ModifierPartGenderDmap" muid="7976A1865861694D" description="Modifier To Dmap Conversion Data">
+                <Tunable type="str" name="DmapName" class="Tunable" default="dmap_name" muid="4172B08961AA6A92" description="Dmap name" binary_type="HashCode64" />
+                <Tunable type="float" name="MaxValueMapping" class="Tunable" default="1.0" muid="B67AEBBA0988CB5C" description="When the modifier specified is present at 1, the dmap specified will be applied at this value" />
+                <Tunable type="float" name="MinValueMapping" class="Tunable" default="0.0" muid="65AF763843759EA2" description="When the modifier specified is present at near 0, the dmap specified will be applied at this value" />
+                <Tunable type="str" name="Modifier" class="Tunable" default="modifier_name" muid="6871550258DB20D5" description="Modifier name." binary_type="HashCode64" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableEnum type="OccultType" name="OccultType" class="TunableEnumEntry" default="HUMAN" display="Occult Type" muid="C640CC278ED29899" static_entries="sims-occult-occult_enums.OccultType" description="The occult type this tuning is specific to." group="General" />
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="object_part" class="ObjectPart" module="objects.part" muid="F6EC946B76137B5D" description="The instance tuning for object parts, which can be shared between objects,&#xA;contains information like support posture part, slot information and&#xA;interaction just for parts." instance_needs_reference="True" instance_subclasses_only="False" path="ObjectParts\Descriptions" use_guid_for_reference="True">
+        <TunableList name="blacklisted_buffs" class="TunableList" display="Blacklisted Buffs" muid="361ED4278983654E" description="A list of buffs that will disable this part as a candidate to run an&#xA;interaction." Deprecated="False" filter="0" group="General">
+            <Tunable type="buff" class="TunableReference" muid="FB30B65227BF60EB" description="Reference to a buff to disable the part." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <Tunable type="bool" name="can_pick" class="Tunable" default="True" display="Can Pick" muid="77F86E0CD11DB5E" description="If checked, this part can be picked (selected as target when&#xA;clicking on object.)  If unchecked, cannot be picked." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="part_surface" class="TunableVariant" default="part_owner" display="Part Surface" muid="BEFB77EE5F8BB72" description="The rules to determine the surface type for this object." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="override_surface" class="Tunable_OverrideSurfaceType" display="Override Surface" muid="DD5F12F27B2C3A94" description="Part will use the tuned override surface type" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="SurfaceType" name="override_surface_type" class="TunableEnumEntry" default="SURFACETYPE_WORLD" display="Override Surface Type" muid="49D3B7F14F78001E" static_entries="routing.SurfaceType" description="The override for the surface type. If used, part owner's &#xA;surface type will be ignored." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="part_owner" class="Tunable_PartOwnerSurfaceType" display="Part Owner" muid="19B9FF4032AB0C8D" description="Part will use the part owners's surface type.&#xA;If parent has no routing surface, return None" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableList name="portal_data" class="TunableSet" display="Portal Data" muid="ED861275DC4EA936" description="If the object owning this part has a portal component tuned, the&#xA;specified portals will be created for each part of this type. The&#xA;root position of the part is the subroot position." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="snippet" class="TunableReference" muid="A5682332550D18C0" description="A reference to a PortalData tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="PortalData" />
+        </TunableList>
+
+        <Tunable type="subroot" name="subroot" class="TunableReference" display="Subroot" muid="8649865EE931451F" description="The reference of the subroot definition in the part." allow_none="True" Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="supported_affordance_data" class="TunableTuple" display="Supported Affordance Data" muid="68D78F4D94B7E259" description="Define affordance compatibility for this part." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="compatibility" class="TunableAffordanceFilterSnippet" default="literal" display="Compatibility" muid="23C8D449426097A0" description="Affordances supported by the part&#xA; (This may be tuned in place here using 'literal' or as a reference to a AffordanceFilter tuning snippet.)" Deprecated="False" filter="0" group="General">
+                <TdescFragTag name="literal" class="_TunableAffordanceFilter" display="Literal" muid="12CDB4D78BC5B66D" description="An affordance filter." filter="0" group="General" />
+                <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="E261DD1087DE70D5" description="A reference to a AffordanceFilter tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="AffordanceFilter" />
+            </TunableVariant>
+            <Tunable type="bool" name="consider_mixers" class="Tunable" default="False" display="Consider Mixers" muid="3FA1F924311BA0CA" description="If checked, mixers are filtered through this compatibility&#xA;check. If unchecked, all mixers are assumed to be valid to run&#xA;on this part." Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableVariant type="None" name="supported_posture_types" class="TunablePostureTypeListSnippet" default="literal" display="Supported Posture Types" muid="A981B30D3BAD2FDA" description="The postures supported by this part. If empty, assumes all postures&#xA;are supported.&#xA; (This may be tuned in place here using 'literal' or as a reference to a PostureTypeList tuning snippet.)" Deprecated="False" filter="0" group="General">
+            <TunableList name="literal" class="TunableList" display="Literal" muid="5B3037929172E53C" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="63FD34C1940E1A91" Deprecated="False" filter="0" group="General">
+                    <Tunable type="posture" name="posture_type" class="TunableReference" display="Posture Type" muid="10E5AB0E1FBFDF69" description="Posture that is supported by this object." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableVariant type="None" name="required_clearance" class="OptionalTunable" default="disabled" display="Required Clearance" muid="247DA789202E5CBC" description="Amount of clearance you need in front of the object or part&#xA;for this posture to be supported." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C3F1C5B80776E972" />
+                        <Tunable type="float" name="enabled" class="Tunable" default="1" display="Enabled" muid="9089A6293FA340BC" description="Amount of clearance you need in front of the object or part&#xA;for this posture to be supported." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableList>
+            <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="5457272650C3F974" description="A reference to a PostureTypeList tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="PostureTypeList" />
+        </TunableVariant>
+
+        <TunableTuple name="trait_requirements" class="TunableWhiteBlackList" display="Trait Requirements" muid="59A982C66A377F5D" description="Trait blacklist and whitelist requirements to pick this part." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="blacklist" class="OptionalTunable" default="nothing" display="Blacklist" muid="E339664BAF270DF9" description="When an item is tested against this white/black list, it is&#xA;only allowed if it is not in the blacklist. If no blacklist is&#xA;specified, no items are disallowed." Deprecated="False" filter="0" group="General">
+                <Tunable name="nothing" class="TunableExistance" display="Nothing" muid="4D32D57854C73AF6" />
+                <TunableTuple name="specify" class="TunableBlacklist" display="Specify" muid="4EAD237673621AA0" description="A tunable blacklist." Deprecated="False" filter="0" group="General">
+                    <TunableList name="blacklist" class="TunableSet" display="Blacklist" muid="2B5A96A62E1947CC" description="Blacklisted items." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="trait" class="TunableReference" muid="76949EB73F7C56FF" description="Reference to the trait white/blacklists." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                    </TunableList>
+                    <TunableVariant type="None" name="threshold" class="OptionalTunable" default="threshold" display="Threshold" muid="7E3F3A81FDE886DA" description="Tunable option for how many items must be in the blacklist&#xA;for the blacklist to fail when testing a collection of items.&#xA;By default, only one object needs to be in the list." Deprecated="False" filter="0" group="General">
+                        <Tunable name="all_must_match" class="TunableExistance" display="All Must Match" muid="9339E89A7F77B9BA" />
+                        <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="684688930EFDB394" description="When testing a collection of items, the number of items in&#xA;that collection that are in the blacklist must pass this&#xA;threshold test for the blacklist to disallow them all." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="83AAFD2138774E83" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="DC9DF343575BBB91" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableVariant>
+            <TunableVariant type="None" name="whitelist" class="OptionalTunable" default="everything" display="Whitelist" muid="FBD6BA0FD57ABC75" description="When an item is tested against this white/black list, it is&#xA;only allowed if it is in the whitelist. If no whitelist is&#xA;specified, all items are allowed." Deprecated="False" filter="0" group="General">
+                <Tunable name="everything" class="TunableExistance" display="Everything" muid="DD627871E50C62B1" />
+                <TunableTuple name="specify" class="TunableWhitelist" display="Specify" muid="297A9D94CEF0F698" description="A tunable whitelist." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="threshold" class="OptionalTunable" default="threshold" display="Threshold" muid="63D62FE503DA4D0A" description="Tunable option for how many items must be in the whitelist&#xA;for the whitelist to pass when testing a collection of items.&#xA;By default, only one object needs to be in the list." Deprecated="False" filter="0" group="General">
+                        <Tunable name="all_must_match" class="TunableExistance" display="All Must Match" muid="F70BCAE8A163F354" />
+                        <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="9924BE0F5245A23B" description="When testing a collection of items, the number of items in&#xA;that collection that are in the whitelist must pass this&#xA;threshold test for the whitelist to allow them all." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="854E4429811A585E" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="8911FE9354DB4EDE" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableList name="whitelist" class="TunableSet" display="Whitelist" muid="D91B14CD8F8EAB3" description="Whitelisted items." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="trait" class="TunableReference" muid="36A1D2568EA177F6" description="Reference to the trait white/blacklists." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="AutonomousSimPickerSuperInteraction" module="interactions.base.picker_interaction" muid="274FFC0CF28BF2A2" instance_needs_reference="True" instance_subclasses_only="False" parents="AutonomousPickerSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableList name="actor_continuation" class="TunableContinuation" display="Actor Continuation" muid="78C468ED25B923F5" description="If specified, a continuation to push on the actor when a picker&#xA;selection has been made." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple class="TunableTuple" muid="651AEE67B2F47AA4" description="A continuation entry." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="9F61B06460F6B736" description="The affordance to push as a continuation on the specified&#xA;actor Sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <TunableVariant type="None" name="carry_target" class="OptionalTunable" default="disabled" display="Carry Target" muid="DC61552313003AD9" description="If enabled, specify a carry target for this continuation." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="29A739A9B33DEB76" />
+                    <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Object" display="Enabled" muid="6B85BF214EABC512" static_entries="interactions.ParticipantType" description="The participant the affordance will set as a carry target." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="inventory_carry_target" class="TunableVariant" default="None" display="Inventory Carry Target" muid="FF5E817754409FC6" description="Item in inventory (of continuations actor) to use as carry&#xA;target for continuation if carry target is None" Deprecated="False" filter="0" group="General">
+                    <Tunable name="None" class="TunableExistance" display="None" muid="FC5ABC6B151ED857" />
+                    <TunableTuple name="object_with_base_definition" class="TunableTuple" display="Object With Base Definition" muid="2DC2D14D9E77FCE1" Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="C5AAB2B5713C24A2" description="The base definition to look for inside inventory.&#xA;Objects that redirect (like counters) will match if base&#xA;definition is the same." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="object_with_definition" class="TunableTuple" display="Object With Definition" muid="2C1832B767DDD8E2" Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="57CE3B4AC7AF5FF0" description="The exact object definition to look for inside&#xA;inventory." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="object_with_tag" class="CraftTaggedItemFactory" display="Object With Tag" muid="DDB464E2C148117E" description="This option tests crafted item's tags against a list of possible tags" Deprecated="False" filter="0" group="General">
+                        <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="300DC886F2180794" description="The tag of objects we want to test ownership of" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="D98D93E0F20C9611" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                        <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="4F90EDDE8F6FF61F" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the objects on the lot." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+                <Tunable type="bool" name="preserve_preferred_object" class="Tunable" default="True" display="Preserve Preferred Object" muid="44507A03EF9EB33F" description="If checked, the pushed interaction's preferred objects are&#xA;determined by the current preferred objects.&#xA;&#xA;If unchecked, the transition sequence would not award bonuses to&#xA;any specific part." Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="preserve_target_part" class="Tunable" default="False" display="Preserve Target Part" muid="A6D88F76F14C859E" description="If checked, the pushed interaction will use the same target part&#xA;if applicable. Defaults to false because typically we will want&#xA;to let the transition select which part to use." Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="si_affordance_override" class="TunableReference" display="Si Affordance Override" muid="D1CB3A3CB0485C97" description="When the tuned affordance is a mixer for a different SI, use&#xA;this to specify the mixer's appropriate SI. This is useful for&#xA;pushing socials." allow_none="True" Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="ParticipantType" name="target" class="TunableEnumEntry" default="Object" display="Target" muid="C2CD0E8F388AE6BF" static_entries="interactions.ParticipantType" description="The participant the affordance will target." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableTuple name="continuation_linking" class="TunableTuple" display="Continuation Linking" muid="F0A4D79E954D9639" description="How/if to link the continuations pushed by this picker. Specify &#xA;which continuations should be cancelled if any of the other &#xA;continuations are cancelled." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable type="bool" name="cancel_entire_chain" class="Tunable" default="False" display="Cancel Entire Chain" muid="CDA714BB38422D53" description="By default (False) only the specific continuation pushed on the&#xA;target specified by continuation to cancel will be cancelled &#xA;if any other continuation (or it's continuations) are cancelled.&#xA;If true, that continuation as well as any continuations of that &#xA;continuation will be cancelled.&#xA;&#xA;e.g. &#xA;actorA continuation continues to actorB or actorC&#xA;targetA continuation continues to targetB or targetC&#xA;&#xA;if &quot;continuations to cancel&quot; is TARGET or ALL then if this&#xA;is false, canceling actorA, actorB, or actorC will cancel&#xA;targetA ONLY.  If the target has already continued to targetB&#xA;or targetC they will remain untouched.  However if this true, &#xA;canceling actorA, actorB, or actorC will cancel targetA, &#xA;targetB, or targetC if the target has already continued on to&#xA;either of them." Deprecated="False" filter="0" group="General" />
+            <TunableEnum type="SimPickerLinkContinuation" name="continuations_to_cancel" class="TunableEnumEntry" default="NEITHER" display="Continuations To Cancel" muid="7A8E989280595E0" static_entries="interactions-base-picker_interaction.SimPickerLinkContinuation" description="Whose, if any, continuations pushed by this picker should cancel&#xA;if any of the other continuations pushed by this picker are&#xA;canceled. &#xA;&#xA;e.g. if &quot;ACTOR&quot; is selected, then if the target continuation or&#xA;any of the picked continuations are canceled the actor &#xA;continuation will also be canceled.&#xA;&#xA;Note:  Currently, if there is no actor or target continuation&#xA;then no link occurs." Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="bool" name="continuations_are_sequential" class="Tunable" default="False" display="Continuations Are Sequential" muid="141DE17842E72839" description="This specifies that the continuations tuned in picked_continuation&#xA;are applied sequentially to the list of picked sims.&#xA;&#xA;e.g. The first continuation will be pushed on the first picked sim.&#xA;The second continuation will be pushed on the second picked sim,&#xA;etc. Note: There should never be more picked sims than&#xA;continuations, however, there can be less picked sims than&#xA;continuations, to allow for cases where the number of sims is a&#xA;range." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="bool" name="create_sim_if_no_valid_choices" class="Tunable" default="False" display="Create Sim If No Valid Choices" muid="7DE21FD11E2AB6D0" description="If checked, this picker will generate a sim that matches the tuned&#xA;filter if no other matching sims are available. This sim will match&#xA;the tuned filter, but not necessarily respect other rules of this &#xA;picker (like radius, tests, or instantiation). If you need one of&#xA;those things, see a GPE about improving this option." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="bool" name="include_actor_sim" class="Tunable" default="False" display="Include Actor Sim" muid="89E8F70F2A13797F" description="If checked then the actor sim can be included in the picker options&#xA;and will not be blacklisted." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="bool" name="include_instantiated_sims" class="Tunable" default="True" display="Include Instantiated Sims" muid="D8FC2D61AFA90D62" description="If unchecked, instantiated sims will never be available in the&#xA;picker. if checked, they must still pass the filters and tests." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="bool" name="include_rabbithole_sims" class="Tunable" default="False" display="Include Rabbithole Sims" muid="BE73B11DC14B6311" description="If unchecked, rabbithole sims will never be available in the&#xA;picker. if checked, they must still pass the filters and tests." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="bool" name="include_target_sim" class="Tunable" default="False" display="Include Target Sim" muid="185C5C022C536EB0" description="If checked then the target sim can be included in the picker options&#xA;and will not be blacklisted." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="bool" name="include_uninstantiated_sims" class="Tunable" default="True" display="Include Uninstantiated Sims" muid="E69B73248583F05E" description="If unchecked, uninstantiated sims will never be available in the&#xA;picker. if checked, they must still pass the filters and tests This&#xA;is an optimization tunable." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <TunableList name="picked_continuation" class="TunableContinuation" display="Picked Continuation" muid="598906976A7BC85E" description="If specified, a continuation to push on each sim selected in the&#xA;picker." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple class="TunableTuple" muid="E8F661D4727F8E4F" description="A continuation entry." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="FE87EF415CB88114" description="The affordance to push as a continuation on the specified&#xA;actor Sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <TunableVariant type="None" name="carry_target" class="OptionalTunable" default="disabled" display="Carry Target" muid="40D8394A8521B614" description="If enabled, specify a carry target for this continuation." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D1A1617E2247685E" />
+                    <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Object" display="Enabled" muid="A35FF9DC5E632C46" static_entries="interactions.ParticipantType" description="The participant the affordance will set as a carry target." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="inventory_carry_target" class="TunableVariant" default="None" display="Inventory Carry Target" muid="7847778AF3F7B130" description="Item in inventory (of continuations actor) to use as carry&#xA;target for continuation if carry target is None" Deprecated="False" filter="0" group="General">
+                    <Tunable name="None" class="TunableExistance" display="None" muid="22C880C5E99AF02" />
+                    <TunableTuple name="object_with_base_definition" class="TunableTuple" display="Object With Base Definition" muid="26F6589C0D3B9AC" Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="C8F570B69632DF6B" description="The base definition to look for inside inventory.&#xA;Objects that redirect (like counters) will match if base&#xA;definition is the same." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="object_with_definition" class="TunableTuple" display="Object With Definition" muid="61DF3AE686F13240" Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="9263CF70198850C2" description="The exact object definition to look for inside&#xA;inventory." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="object_with_tag" class="CraftTaggedItemFactory" display="Object With Tag" muid="E0F5DB5888BA6ED5" description="This option tests crafted item's tags against a list of possible tags" Deprecated="False" filter="0" group="General">
+                        <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="CDCFF4EBD2C5C18D" description="The tag of objects we want to test ownership of" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="CCB2D8103B32584A" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                        <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="E974E8E5FAD4E071" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the objects on the lot." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+                <Tunable type="bool" name="preserve_preferred_object" class="Tunable" default="True" display="Preserve Preferred Object" muid="BAAED7B0F764F83D" description="If checked, the pushed interaction's preferred objects are&#xA;determined by the current preferred objects.&#xA;&#xA;If unchecked, the transition sequence would not award bonuses to&#xA;any specific part." Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="preserve_target_part" class="Tunable" default="False" display="Preserve Target Part" muid="7F20A10C5133D1C6" description="If checked, the pushed interaction will use the same target part&#xA;if applicable. Defaults to false because typically we will want&#xA;to let the transition select which part to use." Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="si_affordance_override" class="TunableReference" display="Si Affordance Override" muid="5BEF99B1B72B8257" description="When the tuned affordance is a mixer for a different SI, use&#xA;this to specify the mixer's appropriate SI. This is useful for&#xA;pushing socials." allow_none="True" Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="ParticipantType" name="target" class="TunableEnumEntry" default="Object" display="Target" muid="8C0F3129BCA3ECD7" static_entries="interactions.ParticipantType" description="The participant the affordance will target." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="radius" class="OptionalTunable" default="disabled" display="Radius" muid="ADAE1E411E14CD44" description="If enabled then Sim must be in a certain range for consideration.&#xA;This should only be enabled when include_instantiated_sims is True&#xA;and include_uninstantiated_sims is False." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="51EDCCB583B9C9E7" />
+            <Tunable type="int" name="enabled" class="TunableRange" default="5" display="Enabled" muid="D6878E9B4602BC8D" min="1" max="50" description="Sim must be in a certain range for consideration." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="sim_filter" class="OptionalTunable" default="no_filter" display="Sim Filter" muid="A2E433C71A26EE64" description="Optional Sim Filter to run Sims through. Otherwise we will just get&#xA;all Sims that pass the tests." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="no_filter" class="TunableExistance" display="No Filter" muid="8153394B2DF6F8A2" />
+            <Tunable type="sim_filter" name="sim_filter_selected" class="TunableReference" display="Sim Filter Selected" muid="ACC0E527E7B92545" description="Sim Filter to run all Sims through before tests." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="TunableSimFilter" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="sim_filter_household_override" class="OptionalTunable" default="disabled" display="Sim Filter Household Override" muid="6FB83A2B1D244BE4" description="Sim filter by default uses the actor's household for household-&#xA;related filter terms, such as the In Family filter term. If this is&#xA;enabled, a different participant's household will be used. If the&#xA;participant is an object instead of a Sim, the object's owner&#xA;household will be used." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="991E2DC2CE90D3DA" />
+            <TunableEnum type="ParticipantTypeSingle" name="enabled" class="TunableEnumEntry" default="TargetSim" display="Enabled" muid="8FB9376BAC5B986A" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" invalid_entries="Actor" />
+        </TunableVariant>
+
+        <TunableEnum type="ParticipantTypeSingle" name="sim_filter_requesting_sim" class="TunableEnumEntry" default="Actor" display="Sim Filter Requesting Sim" muid="F519171887D30366" static_entries="interactions.ParticipantTypeSingle" description="Determine which Sim filter requests are relative to. For example, if&#xA;you want all Sims in a romantic relationship with the target, tune&#xA;TargetSim here, and then a relationship filter.&#xA;&#xA;NOTE: Tuning filters is, performance-wise, preferable to tests." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <TdescFragTag name="sim_tests" class="TunableTestSet" display="Sim Tests" muid="668D08535A3BE86F" description="A set of tests that are run against the prospective sims. At least&#xA;one test must pass in order for the prospective sim to show. All&#xA;sims will pass if there are no tests. Picked_sim is the participant&#xA;type for the prospective sim." filter="0" group="Picker Tuning" />
+
+        <TunableList name="success_loot_actions" class="TunableList" display="Success Loot Actions" muid="917468A58865B40F" description="List of loot actions to apply on successful picker selection." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable type="action" class="TunableReference" muid="206EE109B401AF24" allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+        </TunableList>
+
+        <TunableList name="target_continuation" class="TunableContinuation" display="Target Continuation" muid="2D5668F4A08FB32C" description="If specified, a continuation to push on the target sim when a picker&#xA;selection has been made." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple class="TunableTuple" muid="C2D6A11563B23231" description="A continuation entry." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="27703BD03E88D475" description="The affordance to push as a continuation on the specified&#xA;actor Sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <TunableVariant type="None" name="carry_target" class="OptionalTunable" default="disabled" display="Carry Target" muid="C8DDF3FDABB6F749" description="If enabled, specify a carry target for this continuation." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="E5FFA818E6F37344" />
+                    <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Object" display="Enabled" muid="4A608884467A6F7B" static_entries="interactions.ParticipantType" description="The participant the affordance will set as a carry target." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="inventory_carry_target" class="TunableVariant" default="None" display="Inventory Carry Target" muid="D7B3B5856B0DB8A2" description="Item in inventory (of continuations actor) to use as carry&#xA;target for continuation if carry target is None" Deprecated="False" filter="0" group="General">
+                    <Tunable name="None" class="TunableExistance" display="None" muid="F90888943D29DDEE" />
+                    <TunableTuple name="object_with_base_definition" class="TunableTuple" display="Object With Base Definition" muid="FF5A4703FD767C24" Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="34074E99DB5755A8" description="The base definition to look for inside inventory.&#xA;Objects that redirect (like counters) will match if base&#xA;definition is the same." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="object_with_definition" class="TunableTuple" display="Object With Definition" muid="65BF6E1F8E4D5C5A" Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="4BA91ABE033A5A12" description="The exact object definition to look for inside&#xA;inventory." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="object_with_tag" class="CraftTaggedItemFactory" display="Object With Tag" muid="7055BD2A76F54FBB" description="This option tests crafted item's tags against a list of possible tags" Deprecated="False" filter="0" group="General">
+                        <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="AE8225D6C5824907" description="The tag of objects we want to test ownership of" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="4B244B1B5EB04A52" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                        <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="B05B6906CF2947F" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the objects on the lot." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+                <Tunable type="bool" name="preserve_preferred_object" class="Tunable" default="True" display="Preserve Preferred Object" muid="DDA1C0B43FDD9DC1" description="If checked, the pushed interaction's preferred objects are&#xA;determined by the current preferred objects.&#xA;&#xA;If unchecked, the transition sequence would not award bonuses to&#xA;any specific part." Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="preserve_target_part" class="Tunable" default="False" display="Preserve Target Part" muid="674156ECA68159E2" description="If checked, the pushed interaction will use the same target part&#xA;if applicable. Defaults to false because typically we will want&#xA;to let the transition select which part to use." Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="si_affordance_override" class="TunableReference" display="Si Affordance Override" muid="647E5C0A1DAABA1E" description="When the tuned affordance is a mixer for a different SI, use&#xA;this to specify the mixer's appropriate SI. This is useful for&#xA;pushing socials." allow_none="True" Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="ParticipantType" name="target" class="TunableEnumEntry" default="Object" display="Target" muid="1A00F585B6378D89" static_entries="interactions.ParticipantType" description="The participant the affordance will target." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="bool" name="test_compatibility" class="Tunable" default="False" display="Test Compatibility" muid="39129F142376C057" description="If checked then the actor continuation will be tested for&#xA;interaction compatibility." Deprecated="False" filter="0" group="Picker Tuning" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="145B765290F8B57A" new_muid="CDA714BB38422D53" />
+            <Action type="kRename" old_muid="EB61A90009BA6457" new_muid="7A8E989280595E0" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

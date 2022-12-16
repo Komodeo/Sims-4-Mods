@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="object" class="Sim" module="sims.sim" muid="CF1D27103E08C6F3" description="A little digital person." instance_needs_reference="True" instance_subclasses_only="False" parents="GameObject, ScriptObject" path="Objects\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="_awareness_component" class="OptionalTunable" default="disabled" display="Awareness Component" muid="324D4984BF1F0858" description="If enabled, this Sim will react to stimuli using the client-driven&#xA;awareness system." Deprecated="False" filter="0" group="Components">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5D8773180A5BA2CA" />
+            <TunableTuple name="enabled" class="TunableAwarenessComponent" display="Enabled" muid="159307BD18EB70EF" description="The awareness component controls how Sims play interaction-specific content&#xA;to react to external stimuli. For example, a cat who is eating might look up&#xA;when Sims walk by.&#xA;&#xA;This content is specific to the interaction. In order for awareness to work&#xA;while running the Eat interaction, Eat-specific content must be authored and&#xA;accounted for.&#xA;&#xA;Traits and other factors control and define how specific stimuli affect a&#xA;Sim. Some cat, for example, might be more or less prone to be aware of their&#xA;surroundings." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableTuple name="_carrying_component" class="TunableCarryingComponent" display="Carrying Component" muid="E01109778293480F" description="Define how this Sim picks up, holds, and puts down carryable&#xA;objects." Deprecated="False" filter="0" group="Components">
+            <TunableVariant type="None" name="carry_locomotion" class="TunableVariant" default="bipedal" display="Carry Locomotion" muid="50765980A7CE0E05" description="Define how this Sim locomotes, and by that how this Sim holds&#xA;things." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="bipedal" class="Tunable_CarryLocomotionBipedal" display="Bipedal" muid="4763958A0F2532ED" description="The Sim is bipedal. They can pick up objects using their right or left&#xA;hand. They have handedness, which defines which hand they prefer to use." Deprecated="False" filter="0" group="General">
+                    <TunableList name="handedness_trait_map" class="TunableMapping" display="Handedness Trait Map" muid="C1BAF6B930593BF5" mapping_key="key" mapping_value="value" description="Associate the Sim's handedness to specific traits." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="CAC17FB1256D9710" Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="Hand" name="key" class="TunableEnumEntry" default="RIGHT" display="Key" muid="A281446BDBB11508" static_entries="animation-posture_manifest.Hand" description="The Sim's handedness." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="trait" name="value" class="TunableReference" display="Value" muid="B09F98997104D3B" description="The trait associated with this specific handedness." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+                <TunableTuple name="quadrupedal" class="Tunable_CarryLocomotionQuadrupedal" display="Quadrupedal" muid="85709A70DC1880EA" description="The Sim is quadrupedal. They can pick up objects using their mouth, and&#xA;Sims can possibly ride their back (or somehow, they can hold things on&#xA;their back). They have no handedness, i.e. they cannot define whether or&#xA;not they prefer to hold things in their mouth or on their back." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="strategy" name="default_put_down_strategy" class="TunableReference" display="Default Put Down Strategy" muid="39D82BF014D9E27F" description="If the object specifies no species-specific put down tuning,&#xA;fallback to this strategy." allow_none="False" Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="holstering_behavior" class="TunableTuple" display="Holstering Behavior" muid="992C50AB1E460651" description="Define the holstering behavior for this Sim." Deprecated="False" filter="0" group="General">
+                <TunableList name="age_specific_behavior" class="TunableMapping" display="Age Specific Behavior" muid="CEF6C94FDDFF5DF4" mapping_key="key" mapping_value="value" description="Define age-specific holstering behavior for this Sim. For&#xA;example, toddlers always holster objects while routing (visual&#xA;choice)." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="1225806167436E9" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="Age" name="key" class="TunableEnumEntry" default="ADULT" display="Key" muid="ACA8BEFBB950A5BA" static_entries="sims-sim_info_types.Age" description="The age for which this behavior applies." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="value" class="TunableHolsteringBehaviorVariant" default="allow" display="Value" muid="F912BFEA80319868" Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="allow" class="Tunable_HolsteringBehaviorAllowed" display="Allow" muid="CC227F1C9AC0BF3A" description="This Sim is allowed to holster objects to satisfy constraints that require&#xA;free hands. The Sim will still respect the holstering restrictions defined&#xA;by the interactions." Deprecated="False" filter="0" group="General">
+                                <Tunable type="bool" name="always_holster_for_non_mobile_transitions" class="Tunable" default="False" display="Always Holster For Non Mobile Transitions" muid="C9B44B3148CB72D8" description="If checked, this Sim will always holster all objects when executing&#xA;a transition involving a non-mobile posture (whether it be the&#xA;source or the destination.)" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="always_holster_while_routing" class="Tunable" default="False" display="Always Holster While Routing" muid="3D03CDB9068EFEFB" description="If checked, this Sim will always holster all objects when routing.&#xA;If unchecked, the Sim will only holster while routing if the object&#xA;is specifically tuned to exhibit this behavior." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="disallow" class="Tunable_HolsteringBehaviorDisallowed" display="Disallow" muid="54023F6A25C95794" description="This Sim is never allowed to holster. Any interaction that requires free&#xA;hands is incompatible with carry." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableList>
+                <TunableVariant type="None" name="default_behavior" class="TunableHolsteringBehaviorVariant" default="allow" display="Default Behavior" muid="CFF81C18FD96C4B1" description="Define the default holstering behavior for this Sim." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="allow" class="Tunable_HolsteringBehaviorAllowed" display="Allow" muid="C6A95B64DEDC24B6" description="This Sim is allowed to holster objects to satisfy constraints that require&#xA;free hands. The Sim will still respect the holstering restrictions defined&#xA;by the interactions." Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="always_holster_for_non_mobile_transitions" class="Tunable" default="False" display="Always Holster For Non Mobile Transitions" muid="CA986295047B2EA9" description="If checked, this Sim will always holster all objects when executing&#xA;a transition involving a non-mobile posture (whether it be the&#xA;source or the destination.)" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="always_holster_while_routing" class="Tunable" default="False" display="Always Holster While Routing" muid="E9530AFCD3E03236" description="If checked, this Sim will always holster all objects when routing.&#xA;If unchecked, the Sim will only holster while routing if the object&#xA;is specifically tuned to exhibit this behavior." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="disallow" class="Tunable_HolsteringBehaviorDisallowed" display="Disallow" muid="789A9940CF673262" description="This Sim is never allowed to holster. Any interaction that requires free&#xA;hands is incompatible with carry." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+            <TunableList name="put_down_strategy_multipliers" class="TunableMapping" display="Put Down Strategy Multipliers" muid="F17FC804768A72BC" mapping_key="key" mapping_value="value" description="Define some global multiplier that affect a Sim's behavior when&#xA;putting down objects. For instance, toddlers might be generally&#xA;discouraged from putting objects in slots, and Wild toddlers might&#xA;be generally encouraged to put objects on the floor." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="AD3ED1BAA756540E" Deprecated="False" filter="0" group="General">
+                    <Tunable type="trait" name="key" class="TunableReference" display="Key" muid="1D672F6FDD255A02" description="If the Sim has this trait, these multipliers are applied." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableTuple name="value" class="TunablePutDownStrategyOverride" display="Value" muid="A658848A21C1CFB2" description="A set of overrides that can affect Put Down costs." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="object_inventory_cost_override" class="_TunablePutDownOverrideVariant" default="dont_override" display="Object Inventory Cost Override" muid="86C2F634CC7920E5" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="cost_override" class="TunableRange" default="1" display="Cost Override" muid="200A6AC5F555D655" min="0" max="None" description="A cost multiplier to apply to the generic cost. A multiplier&#xA;that's less than 1 makes the choice more optimal, while a&#xA;multiplier greater than 1 makes the choice less optimal." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable name="disallow" class="TunableExistance" display="Disallow" muid="1EA997E61F93E87A" />
+                            <Tunable name="dont_override" class="TunableExistance" display="Dont Override" muid="7294EF62B8ADADB1" />
+                            <Tunable name="heavily_discouraged" class="TunableExistance" display="Heavily Discouraged" muid="3ED586981D4E7263" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="slot_cost_override" class="_TunablePutDownOverrideVariant" default="dont_override" display="Slot Cost Override" muid="11B83254887A1690" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="cost_override" class="TunableRange" default="1" display="Cost Override" muid="6C95664A8987B860" min="0" max="None" description="A cost multiplier to apply to the generic cost. A multiplier&#xA;that's less than 1 makes the choice more optimal, while a&#xA;multiplier greater than 1 makes the choice less optimal." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable name="disallow" class="TunableExistance" display="Disallow" muid="F2A018591FF2026E" />
+                            <Tunable name="dont_override" class="TunableExistance" display="Dont Override" muid="A067E7A795A027E4" />
+                            <Tunable name="heavily_discouraged" class="TunableExistance" display="Heavily Discouraged" muid="6D59D230181D7EB4" />
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableVariant type="None" name="_ensemble_component" class="OptionalTunable" default="disabled" display="Ensemble Component" muid="FAA9AE6E3A31906" description="If enabled, the Sim will have specific ensemble-related&#xA;functionality. This is not a requirement for Sims to be in&#xA;ensembles." Deprecated="False" filter="0" group="Components">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4F9C5109A266E966" />
+            <TunableTuple name="enabled" class="TunableEnsembleComponent" display="Enabled" muid="3030D91F5F28656E" description="This component handles certain functionality related to ensembles." Deprecated="False" filter="0" group="General">
+                <TunableList name="_rel_bit_ensembles" class="TunableMapping" display="Rel Bit Ensembles" muid="A47B6687A317624" mapping_key="key" mapping_value="value" description="A mapping of relationship bit to ensemble. A Sim will generate an&#xA;ensemble with a Sim with this particular bit.&#xA;&#xA;e.g.&#xA;    A dog might want to form an ensemble with one of their owners.&#xA;    Dogs who chose to form an ensemble with the same Sim will share&#xA;    an ensemble." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="25627BC0B43CAF7" Deprecated="False" filter="0" group="General">
+                        <Tunable type="relbit" name="key" class="TunableReference" display="Key" muid="B0E838A031CFAFB4" description="The relationship bit driving the behavior." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipBit" />
+                        <Tunable type="ensemble" name="value" class="TunableReference" display="Value" muid="91758710C02E917B" description="The ensemble to form." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableTuple name="_interaction_queue" class="TunableInteractionQueue" display="Interaction Queue" muid="A6E1C43BDEEA2C38" description="The interaction queue is a manager or ordering a Sim's pending interactions&#xA;and processing them as they reach the head of the queue. The queue consists&#xA;of several ListBuckets in a static priority ordering.  The next interaction&#xA;is found by checking the buckets in order until an interaction is found that&#xA;is compatible with the Sim's current SIState." Deprecated="False" filter="0" group="Components">
+            <Tunable type="bool" name="always_start_inertial" class="Tunable" default="False" display="Always Start Inertial" muid="8B3AEA310D2773CC" description="If this is checked, interactions queued on this Sim always start&#xA;inertial, regardless of what the content's tuning might say.&#xA;&#xA;This makes Sims more responsive to commands but less sticky and less&#xA;likely to complete any given task." Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="max_interactions" class="TunableRange" default="8" display="Max Interactions" muid="8B9371D678EF26C7" min="0" max="10" description="The maximum number of visible interactions in the queue, including&#xA;running interactions. If this value is greater than 10, the&#xA;interaction queue .swf must be updated." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Deleted name="_persistence" muid="E39C6EE8BAAB1D56" />
+
+        <TunableList name="_phone_affordances" class="TunableList" display="Phone Affordances" muid="8C7104A5FAB3F2C7" description="A list of affordances generated when the player wants to use the&#xA;Sim's cell phone." Deprecated="False" filter="0" group="General">
+            <Tunable type="interaction" class="TunableReference" muid="498872B124337585" description="An affordance that can be run as a solo interaction." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableList name="_relation_panel_affordances" class="TunableList" display="Relation Panel Affordances" muid="BFBD13897A0D0BDA" description="A list of affordances that are shown when the player clicks on a Sim&#xA;in the relationship panel. These affordances must be able to run as&#xA;solo interactions, meaning they cannot have a target object or Sim.&#xA;&#xA;When the selected interaction runs, the Subject type &#xA;&quot;PickedItemId&quot; will be set to the clicked Sim's id. For example,&#xA;a relationship change loot op with Subject as Actor and Target&#xA;Subject as PickedItemId will change the relationship between the&#xA;Active Sim and the Sim selected in the Relationship Panel." Deprecated="False" filter="0" group="General">
+            <Tunable type="interaction" class="TunableReference" muid="9CDCE6D331D84B8F" description="An affordance shown when the player clicks on a relation in the&#xA;relationship panel." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableVariant type="None" name="_school" class="OptionalTunable" default="disabled" display="School" muid="1B4DBBE5DB9FC161" description="If enabled, this Sim is required to be enrolled in school at&#xA;specific ages." Deprecated="False" filter="0" group="Components">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="85C62DD3FC6E306B" />
+            <TunableTuple name="enabled" class="TunableSchoolTuning" display="Enabled" muid="3B63AF4053B0B076" description="Tuning related to school." Deprecated="False" filter="0" group="General">
+                <TunableList name="school_data" class="TunableMapping" display="School Data" muid="D7B4890FCBF04847" min="1" mapping_key="key" mapping_value="value" description="Ensure Sims of these ages are auto-enrolled in school." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="2D37B68881533903" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="Age" name="key" class="TunableEnumEntry" default="CHILD" display="Key" muid="6A5DFE01CFD372A9" static_entries="sims-sim_info_types.Age" description="The age for which we ensure a school career is added." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="value" class="Tunable_SchoolData" display="Value" muid="66EA8A5143E4A9A2" description="School data specific to an age." Deprecated="False" filter="0" group="General">
+                            <Tunable type="career" name="school_career" class="TunableReference" display="School Career" muid="39CD26984E2DFB4" description="The career for this age." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="object" name="school_homework" class="TunableReference" display="School Homework" muid="A0820B4F99BF1E58" description="The homework object for this school career." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+                <TdescFragTag name="school_data_tests" class="TunableTestSet" display="School Data Tests" muid="8533087CBEFAC97E" description="Tests that must pass in order for a Sim to be added to a school career on load.&#xA;&#xA;Example: with EP12 installed we don't want drop outs or early graduates being forced back into school. &#xA;Testing for the appropriate traits prevents that from happening, but only when EP12 is installed." filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Deleted name="_world_file_object_persists" muid="717A263D02F0031A" />
+
+        <TunableTuple name="animation_overlay_component" class="TunableAnimationOverlayComponent" display="Animation Overlay Component" muid="EECA0D678C929860" description="Tune animation overlays that are constantly played on this Sim." Deprecated="False" filter="0" group="Components">
+            <TunableList name="animation_overlays" class="TunableList" display="Animation Overlays" muid="F1C03EADDEF61ACF" description="A list of animation overlays to play on this Sim." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableAnimationOverlay" muid="63E1D933F9749A5E" description="A construct that is responsible for playing overlay animations on a Sim." Deprecated="False" filter="0" group="General">
+                    <Tunable type="animation" name="_overlay_animation" class="TunableReference" display="Overlay Animation" muid="3EABED3C896DAF9E" description="The animation element controlling the overlay." allow_none="False" Deprecated="False" filter="0" group="General" restrict="AnimationElement" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableTuple name="initial_buff" class="TunableBuffReference" display="Initial Buff" muid="4DBFA0BCD0EE31D2" description="A buff that will be permanently added to the Sim on creation. Used&#xA;to affect the neutral state of a Sim." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="buff_reason" class="OptionalTunable" default="disabled" display="Buff Reason" muid="1CBA83A544C8D07E" description="If set, specify a reason why the buff was added." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="DAB2A3EE7744466D" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="D7AF0079283D4413" description="The reason the buff was added. This will be displayed in the&#xA;buff tooltip." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="F289729A1E65DF60" description="Buff that will get added to sim." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="trait_quirks" class="TunableTraitQuirkSet" display="Trait Quirks" muid="7CCF2B2649A6FDAD" description="Quirks are traits that are applied to Sims randomly. They are meant to drive&#xA;behavior that should be unique, but not necessarily exposed to the player.&#xA;&#xA;Quirks are categorized in sets. A Sim must have one trait from each of the&#xA;defined sets. Each quirk can be assigned a weight, so that some quirks are&#xA;more common than others.&#xA;&#xA;When loading a Sim, quirks are automatically added if no quirk from the set&#xA;is assigned. This means the tuning may be updated and the changes can be&#xA;reflected on legacy Sims.&#xA;&#xA;e.g.:&#xA;    Dogs may be easily scared, neutral, or never scared, for example." Deprecated="False" filter="0" group="Components">
+            <TunableList name="_quirk_sets" class="TunableList" display="Quirk Sets" muid="6E0F22EC6060800E" description="A list of all the quirk sets for this Sim. One quirk from each set&#xA;is assigned." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="8B7E6258CB5E4540" Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="count" class="TunableVariant" default="fixed" display="Count" muid="2F117B34F9095ED7" description="Define how many quirks from this set the Sim is supposed to&#xA;receive." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="dynamic" class="Tunable_QuirkCountDynamic" display="Dynamic" muid="1E5519899FD8808D" description="The number of quirks to be equipped from this set is random. Traits can&#xA;modify this number." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="interval" class="TunableInterval" display="Interval" muid="ECC5EF2E9536D06F" description="The Sim is going to receive between these many quirks from this set." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="F1628D076B4FD2FC" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="7BB8FBE18F5339C8" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableList name="trait_modifiers" class="TunableMapping" display="Trait Modifiers" muid="E6E58CBB194F9476" mapping_key="key" mapping_value="value" description="If the Sim is equipped with this trait, the available number of&#xA;quirks is modified accordingly.&#xA;&#xA;NOTE: You can specify negative values to subtract from the count." Deprecated="False" filter="0" group="General">
+                                <TunableTuple class="TunableTuple" muid="C8735C231BBB7D14" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="trait" name="key" class="TunableReference" display="Key" muid="C3571045AC84586F" description="The Sim must have this trait in order for the modifier to be&#xA;applied." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="633DB615CBD8F92B" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="int" name="lower_bound_modifier" class="Tunable" default="1" display="Lower Bound Modifier" muid="B46A2AC2427C6FEC" description="The lower bound of the available quirk count is modified by&#xA;this amount." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <Tunable type="int" name="upper_bound_modifier" class="Tunable" default="1" display="Upper Bound Modifier" muid="BD419106EB005BA6" description="The upper bound of the available quirk count is modified by&#xA;this amount." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableTuple>
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="fixed" class="Tunable_QuirkCountFixed" display="Fixed" muid="B73DE65C7307D321" description="The number of quirks to be equipped from this set is fixed." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="count" class="Tunable" default="1" display="Count" muid="AF3A4D936E78CD59" description="The Sim is going to receive these many quirks from this set." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableList name="entries" class="TunableList" display="Entries" muid="43B17FCCEC6524D0" description="A quirk set. This Sim is guaranteed to have one and only one of&#xA;the quirks tuned here." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="878BB526B397B276" description="A quirk entry. The weight is relative to other quirks in&#xA;this set." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="quirk_relative_weight" class="TunableRange" default="1" display="Quirk Relative Weight" muid="12FA32111F2EF346" min="1.192092896e-07" max="None" description="The likelihood that this quirk is assigned relative to&#xA;other quirks in this quirk set." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="trait" name="quirk_trait" class="TunableReference" display="Quirk Trait" muid="2E7D64DFA72D725D" description="The trait representing this quirk." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

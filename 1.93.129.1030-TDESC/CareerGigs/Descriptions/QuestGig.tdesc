@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="career_gig" class="QuestGig" module="careers.missions.mission_gig" muid="E0813D4E0DC4D3CE" description="Tuning for a QuestGig. Like Missions, these Gigs have no deadline, and use&#xA;dynamically chosen Objectives.  However, objectives/tasks may be hidden from the&#xA;player until activated." instance_subclasses_only="False" parents="MissionGig, HomeAssignmentGig, Gig" path="CareerGigs\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="hide_inactive_objectives" class="Tunable" default="False" display="Hide Inactive Objectives" muid="602931AD4BA0D7E6" description="If checked, any inactive objectives (including already-completed objectives &#xA;and objectives that require the previous one to be complete) will not appear&#xA;in the UI until activated." Deprecated="False" filter="0" group="UI" />
+
+        <Deleted name="mission_reputation_text" muid="9446632BDFA77CB7" />
+
+        <Tunable type="int" name="picker_description_text" class="TunableLocalizedString" default="0x0" display="Picker Description Text" muid="A5253967C47035C0" description="            The concatenated text that will be used to be displayed as the Quest Gig&#xA;            description text in the Quest Picker. Combines the customer description text&#xA;            and the rewards text.&#xA;            Ex: {0.String}&#xA;{1.String}&#xA;            " Deprecated="False" filter="0" group="UI" />
+
+        <TunableVariant type="None" name="quest_rel_text" class="OptionalTunable" default="disabled" display="Quest Rel Text" muid="9A3BD4299986774B" description="If enabled, allows rel reward text to be displayed for the QuestGig in the &#xA;Career Panel.  The rel gain is with the Quest target sim.&#xA;Ex: +Rel with {0.Name}" Deprecated="False" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F95384E0A08AA8DF" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="7518B941BC53A741" description="The rel reward text to be displayed in the QuestGig summary in the Career Panel." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="E2F4DC61C15FC3A1" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

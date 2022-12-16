@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.sim_spawner_service" muid="AB10BF63F8BFDFAD">
+        <Class name="SimSpawnerService" muid="D105FED25FA66424">
+            <TunableList name="LEAVING_INTERACTION_TAGS" class="TunableSet" display="Leaving Interaction Tags" muid="8D83A7CB76950D21" description="Interaction tags to detect sims running leave lot interactions." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="A7E1E1A160C40E4C" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="1" group="General" />
+            </TunableList>
+
+            <Tunable type="int" name="NPC_SOFT_CAP" class="Tunable" default="20" display="Npc Soft Cap" muid="2CB339B7D7E6D902" description="The base value for calculating the soft cap on the maximum &#xA;number of NPCs instantiated.&#xA;&#xA;The actual value of the NPC soft cap will be&#xA;this tuning value minus the number of sims in the active household.&#xA;&#xA;There is no hard cap because certain types of NPCs must always&#xA;spawn or the game will be broken. The prime example of a &#xA;game breaker is the Grim Reaper.&#xA;&#xA;If the number of NPCs is:&#xA;&#xA;1) At or above the soft cap only game breaker NPCs will be spawned.&#xA;&#xA;2) Above the soft cap then low priority NPCs will be driven from the lot.&#xA;&#xA;3) Equal to the soft cap and there are pending requests for higher priority&#xA;NPCs, then lower priority NPCs will be driven from the lot.&#xA;                " tuning_state="NeedsTuning" Deprecated="False" filter="1" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

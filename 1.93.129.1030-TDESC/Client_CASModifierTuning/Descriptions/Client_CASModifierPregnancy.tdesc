@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="casmodifiertuning" class="Client_CASModifierPregnancy" module="casmodifiertuning.Client_CASModifierPregnancy" muid="A90167209DB692A3" description="Assigns modifiers used for pregnancy." export_modes="client_binary,server_binary" path="Client_CASModifierTuning\Descriptions">
+        <TunableList name="Ages" class="TunableSet" display="Ages" muid="1B39D161BBF8B9FD" description="Valid ages for these modifiers" filter="0" group="Genus" unique_entries="true">
+            <TunableEnum type="Age" class="TunableEnumEntry" default="None" muid="232F518A235A00F4" static_entries="sims-sim_info_types.Age" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+        </TunableList>
+
+        <TunableList name="Genders" class="TunableSet" display="Genders" muid="FC00658E434494EC" description="Valid genders for these modifiers" filter="0" group="Genus" unique_entries="true">
+            <TunableEnum type="Gender" class="TunableEnumEntry" default="None" muid="AB0D2477ABD86AF2" static_entries="sims-sim_info_types.Gender" export_modes="client_binary,server_binary,server_xml" filter="0" group="Genus" />
+        </TunableList>
+
+        <TunableList name="ModifierSliders" class="TunableSet" muid="57B25C099418C791" description="List of modifier pairs used for pregnancy.  Each modifier pair should consist of two opposite-pole modifiers that together make up a slider.  For example: 'yfHeadBelly_Small' and 'yfHeadBelly_Big'" filter="0" group="General" unique_entries="true">
+            <TunableTuple name="SliderData" class="Client_CASModifierPregnancy.SliderData" muid="1772E1F601CCA074" description="Parameters for a single slider.">
+                <Tunable type="float" name="MaxSliderValue" class="Tunable" default="1" muid="40186D3D35E3BBCE" min="0" max="1" description="Value that this slider will be set to when the Sim is 100% pregnant." />
+                <Tunable type="str" name="ModifierName0" class="Tunable" default="" muid="FB092CEB2B56452F" description="Name of modifier corresponding with the 0% pregnant side of the slider.  This must be prefixed with the name of the .modifiers.xml where this modifier is defined.  For example: 'yfHeadBelly_Small'." allow_none="True" binary_type="HashCode64" />
+                <Tunable type="str" name="ModifierName1" class="Tunable" default="" muid="FE629628FBC6BB74" description="Name of modifier corresponding with the 100% pregnant side of the slider.  This must be prefixed with the name of the .modifiers.xml where this modifier is defined.  For example: 'yfHeadBelly_Big'." allow_none="True" binary_type="HashCode64" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableEnum type="OccultType" name="OccultType" class="TunableEnumEntry" default="HUMAN" display="Occult Type" muid="24CB5A8209551918" static_entries="sims-occult-occult_enums.OccultType" description="Valid occult type for these modifiers" export_modes="client_binary,server_binary,server_xml" group="Genus" />
+
+        <TunableEnum type="SpeciesExtended" name="Species" class="TunableEnumEntry" default="HUMAN" display="Species" muid="C02C7C986770C49B" static_entries="sims-sim_info_types.SpeciesExtended" description="Valid species for these modifiers" export_modes="client_binary,server_binary,server_xml" filter="0" group="Genus" />
+    </Instance>
+</TuningRoot>

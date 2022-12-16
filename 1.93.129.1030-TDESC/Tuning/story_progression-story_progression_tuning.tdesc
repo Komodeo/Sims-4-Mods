@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="story_progression.story_progression_tuning" muid="DC11AA9323E8526F">
+        <Class name="StoryProgressionDomainType" muid="C76303DD6EB463FA" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="MY_HOUSEHOLDS" muid="6FCCE9FE9C91E979" enum_value="0" />
+
+            <EnumItem name="OTHER_HOUSEHOLDS" muid="A9F221B6578D1CEA" enum_value="1" />
+        </Class>
+
+        <Class name="StoryProgTunables" muid="AA16172463A2394E">
+            <TunableList name="DOMAIN_ENABLEMENT_DEFAULTS" class="TunableMapping" display="Domain Enablement Defaults" muid="6F6895F394D50C16" mapping_key="key" mapping_value="value" description="Default enablement states for all story progression domains that can be enabled/disabled." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="CategoryEnablementDefaultTuple">
+                <TunableTuple class="TunableTuple" muid="48689E4C0049D538" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="StoryProgressionDomainType" name="key" class="TunableEnumEntry" default="MY_HOUSEHOLDS" display="Key" muid="E2BDDED47600F690" static_entries="story_progression-story_progression_tuning.StoryProgressionDomainType" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="bool" name="value" class="Tunable" default="True" display="Value" muid="B87E8635444D8EEE" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="HISTORY" class="TunableTuple" display="History" muid="535821C5D2A8AE3" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="chapter_history_lifetime" class="TunableTimeSpan" display="Chapter History Lifetime" muid="14EA0B5F39A5B6DA" description="How long a chapter's history will be stored in persistence." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="days" class="TunableRange" default="5" display="Days" muid="DA43F28F475FD28C" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="hours" class="TunableRange" default="0" display="Hours" muid="AA8253A0669AA163" min="0" max="23" description="Number of hours" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="minutes" class="TunableRange" default="0" display="Minutes" muid="9D7685FF2036AEF6" min="0" max="59" description="Number of minutes" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableList name="death_type_discovery_string_map" class="TunableMapping" display="Death Type Discovery String Map" muid="F1686E4C513C4C5" mapping_key="key" mapping_value="value" description="Mapping of death type to a discovery string. " Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="5F7CC152E7F3F05E" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="DeathType" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="2D52AD254077522" dynamic_entries="interactions-utils-death.DeathType._elements" static_entries="interactions-utils-death.DeathType" Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="value" class="TunableLocalizedStringFactoryVariant" default="single" display="Value" muid="E551C3DC8425224A" description="A localization string. This may either be a single string, a set to pick a random string from, or concatenation from list of string." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="concatenation" class="TunableLocalizedStringFactoryConcatenation" display="Concatenation" muid="A0C2CF82F41446A5" description="A list of localized string concatenations. These strings will be joined together into single line-separated string" Deprecated="False" filter="0" group="General">
+                                <TunableList name="concatenations" class="TunableList" display="Concatenations" muid="F52B4A1C62544C46" Deprecated="False" filter="0" group="General">
+                                    <TunableVariant type="None" class="TunableLocalizedStringSnippet" default="literal" muid="FB287E9CE8977D7" description="This may be tuned in place here using 'literal' or as a reference to a LocalizedString tuning snippet." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="int" name="literal" class="TunableLocalizedString" default="0x0" display="Literal" muid="C34E4196E4315ADD" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                                        <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="1ECBF0C2F73FA634" description="A reference to a LocalizedString tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LocalizedString" />
+                                    </TunableVariant>
+                                </TunableList>
+                            </TunableTuple>
+                            <Tunable type="int" name="single" class="TunableLocalizedString" default="0x0" display="Single" muid="55AFCE7E47D4E708" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="variation" class="TunableLocalizedStringFactoryVariation" display="Variation" muid="2D539F949B527678" description="A list of possible localized string variations." Deprecated="False" filter="0" group="General">
+                                <TunableList name="variations" class="TunableList" display="Variations" muid="C4A602514B9E7554" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="A1F98A297C180F34" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableList>
+                <TunableVariant type="None" name="no_history_discovery_string" class="TunableLocalizedStringFactoryVariant" default="single" display="No History Discovery String" muid="87AB02DCB5509773" description="String to display when there are no historical arcs to discover." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="concatenation" class="TunableLocalizedStringFactoryConcatenation" display="Concatenation" muid="1073B261A9CD0DD0" description="A list of localized string concatenations. These strings will be joined together into single line-separated string" Deprecated="False" filter="0" group="General">
+                        <TunableList name="concatenations" class="TunableList" display="Concatenations" muid="C41AA25FA0D4760D" Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" class="TunableLocalizedStringSnippet" default="literal" muid="787DBB8303A4878F" description="This may be tuned in place here using 'literal' or as a reference to a LocalizedString tuning snippet." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="literal" class="TunableLocalizedString" default="0x0" display="Literal" muid="83624472F83E6D1F" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="137117245F49007E" description="A reference to a LocalizedString tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LocalizedString" />
+                            </TunableVariant>
+                        </TunableList>
+                    </TunableTuple>
+                    <Tunable type="int" name="single" class="TunableLocalizedString" default="0x0" display="Single" muid="DFC52BBD80D9833" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="variation" class="TunableLocalizedStringFactoryVariation" display="Variation" muid="695D3B150B5C7012" description="A list of possible localized string variations." Deprecated="False" filter="0" group="General">
+                        <TunableList name="variations" class="TunableList" display="Variations" muid="AF91EA3AD7BDD735" Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="9D5DC277821EDB13" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableTuple>
+        </Class>
+    </Module>
+</TuningRoot>

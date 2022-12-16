@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="notebook_entry" class="NotebookEntry" module="notebook.notebook_entry" muid="4ECC524C6D3E983F" description="Notebook entry to unlock on the notebook UI." instance_subclasses_only="False" path="NotebookEntrys\Descriptions" use_guid_for_reference="True">
+        <TunableEnum type="NotebookCategories" name="category_id" class="TunableEnumEntry" default="INVALID" display="Category Id" muid="23336F72EF3F6927" dynamic_entries="ui-notebook_tuning.NotebookCategories._elements" static_entries="ui-notebook_tuning.NotebookCategories" description="Category type which will define the format the UI will use&#xA;to display the information." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="entry_icon" class="OptionalTunable" default="disabled" display="Entry Icon" muid="570260ECA2D1DA84" description="Optional icon to be displayed with the entry text." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="45668937AA201197" />
+            <Tunable type="ResourceKey" name="enabled" class="TunableIcon" default="None" display="Enabled" muid="2EBF3B350193BA24" description="Optional icon to be displayed with the entry text." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="entry_sublist" class="OptionalTunable" default="disabled" display="Entry Sublist" muid="95F90D4E649F01BC" description="List of objects linked to a notebook entry.&#xA;i.e. Ingredient objects attached to a serum or to a recipe." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="853448A014E996F9" />
+            <TunableList name="enabled" class="TunableList" display="Enabled" muid="6F506ECDFE7DC8B7" description="List of objects linked to a notebook entry.&#xA;i.e. Ingredient objects attached to a serum or to a recipe." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="5C47775468E5B08E" description="Pair of object definitions and amount of objects needed&#xA;to " Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="num_objects_required" class="Tunable" default="0" display="Num Objects Required" muid="CEB36291B236DD18" description="Number of objects required on this field.  This will be&#xA;displayed next to the current value of objects found in the &#xA;inventory.&#xA;Example: Serums will displayed &#xA;         &lt;current_objects_held / num_objects_required&gt;" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="object" name="object_definition" class="TunableReference" display="Object Definition" muid="D39C42BAF9EAC74F" description="Reference to ingredient object." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="entry_sublist_is_sortable" class="OptionalTunable" default="disabled" display="Entry Sublist Is Sortable" muid="A9F9BDA23D0EC7D" description="If enabled, entry sublist will be presented sorted alphabetically." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9025805F4A409662" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="59FB298EF930E9E5" Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="include_new_entry" class="Tunable" default="False" display="Include New Entry" muid="AC292463682DF7F8" description="If checked, the new entry in entry sublist will be sorted." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="int" name="entry_text" class="TunableLocalizedString" default="0x0" display="Entry Text" muid="FC8BB393D977AA47" description="Text to be displayed on the notebook entry.        " Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="entry_tooltip" class="OptionalTunable" default="disabled" display="Entry Tooltip" muid="65A3C17CAA936A73" description="Text to be displayed when the player hovers this entry." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9CA590C80A1442B4" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="910262FB0C7A12F2" description="Text to be displayed when the player hovers this entry." Deprecated="False" filter="0" group="General">
+                <TunableList name="tooltip_fields" class="TunableMapping" display="Tooltip Fields" muid="197A347B6A072887" mapping_key="key" mapping_value="value" description="Mapping of tooltip fields to its localized values. Since &#xA;this fields are created from a system originally created &#xA;for recipes, all of them may be tuned, but these are the &#xA;most common fields to show on a tooltip:&#xA;- recipe_name = This is the actual title of the tooltip.  &#xA;This is the main text&#xA;- recipe_description = This description refers to the main &#xA;text that will show below the title&#xA;- header = Smaller text that will show just above the title&#xA;- subtext = Smaller text that will show just bellow the &#xA;title" Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="8DFAB6963FCE043A" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="TooltipFields" name="key" class="TunableEnumEntry" default="recipe_name" display="Key" muid="7F2CA92FB809B9B5" static_entries="objects-hovertip.TooltipFields" description="Fields to be populated in the tooltip.  These fields&#xA;will be populated with the text and tokens tuned." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="value" class="TunableLocalizedString" default="0x0" display="Value" muid="B3CEE8977D33EE7E" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <TunableEnum type="HovertipStyle" name="tooltip_style" class="TunableEnumEntry" default="HOVER_TIP_DEFAULT" display="Tooltip Style" muid="CF4B71B83BA39142" static_entries="objects-hovertip.HovertipStyle" description="Types of possible tooltips that can be displayed for an entry. " Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableEnum type="NotebookSubCategories" name="subcategory_id" class="TunableEnumEntry" default="INVALID" display="Subcategory Id" muid="46CA8406772825BD" dynamic_entries="ui-notebook_tuning.NotebookSubCategories._elements" static_entries="ui-notebook_tuning.NotebookSubCategories" description="Subcategory type which will define the format the UI will use&#xA;to display the information." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

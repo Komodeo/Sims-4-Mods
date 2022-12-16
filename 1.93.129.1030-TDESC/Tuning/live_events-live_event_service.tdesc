@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="live_events.live_event_service" muid="DD33B2B5F4E0A3A4">
+        <Class name="LiveEventName" muid="16E50CF6DEFD7BBC" enum_bit_flag="False" enum_locked="True">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="2A6EEA54A4D7B595" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="46D989D3132305E1" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="DEFAULT" muid="5398449FB491ED4A" enum_value="0" />
+        </Class>
+
+        <Class name="LiveEventState" muid="5F9ED11489604C8C" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="ACTIVE" muid="6315F87A83AEAE4F" enum_value="1" />
+
+            <EnumItem name="COMPLETED" muid="B513886DAFB47BFD" enum_value="0" />
+        </Class>
+
+        <Class name="LiveEventType" muid="CD1176CA6503F22C" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="AB_TEST" muid="AA53CE89F4060175" enum_value="0" />
+
+            <EnumItem name="LIVE_FESTIVAL" muid="493CC811937989F4" enum_value="1" />
+
+            <EnumItem name="SCENARIO" muid="D8E79DD47ED1833F" enum_value="2" />
+        </Class>
+
+        <Class name="LiveEventService" muid="8567B6FBFEB84876">
+            <TunableList name="LIVE_EVENTS" class="TunableMapping" display="Live Events" muid="1A9AD73BE0D3ECE1" mapping_key="key" mapping_value="value" description="A list of all of the live events that we want to add functionality for." Deprecated="False" filter="0" group="General" mapping_class="TunableLiveEventDataMap">
+                <TunableTuple class="TunableTuple" muid="B1B2B971FD41367E" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="LiveEventName" name="key" class="TunableEnumEntry" default="DEFAULT" display="Key" muid="1E51FD23C5D395EE" dynamic_entries="live_events-live_event_service.LiveEventName._elements" static_entries="live_events-live_event_service.LiveEventName" description="The name of this live event, as defined by the PMs in the UM message." Deprecated="False" filter="0" group="General" invalid_entries="DEFAULT" />
+                    <TunableTuple name="value" class="TunableLiveEventData" display="Value" muid="C6C78D231C6AB61E" Deprecated="False" export_modes="server_xml" filter="0" group="General">
+                        <TunableVariant type="None" name="action" class="TunableVariant" default="None" display="Action" muid="6833A62398A28CC7" description="A gameplay action that runs when the event occurs." Deprecated="False" filter="0" group="General">
+                            <Tunable name="None" class="TunableExistance" display="None" muid="E162F59676073E43" />
+                            <TunableTuple name="start_drama_node" class="TunableTuple" display="Start Drama Node" muid="960BC61A48FA4D3" description="If this event is active, we will schedule a drama node." Deprecated="False" filter="0" group="General">
+                                <Tunable type="drama_node" name="drama_node" class="TunableReference" display="Drama Node" muid="1344B1746F587F3D" description="The drama node to schedule when the player is in this live event.&#xA;This could be a Dialog drama node to trigger a dialog after a certain amount of time." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                        <TunableVariant type="None" name="event_content" class="TunableVariant" default="None" display="Event Content" muid="83DFBA3A3722317F" description="If enabled, specifies data related to the event that will be&#xA;exported to client/UI." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                            <Tunable name="None" class="TunableExistance" display="None" muid="BDDCF23BEB1D4F78" />
+                            <Tunable type="snippet" name="scenario" class="TunableReference" display="Scenario" muid="813348DDF1F5CDCC" description="This option enables or disables a tuned scenario via the&#xA;live event." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Scenario" />
+                        </TunableVariant>
+                        <TunableEnum type="LiveEventType" name="event_type" class="TunableEnumEntry" default="AB_TEST" display="Event Type" muid="6B1D063C56BD9B76" static_entries="live_events-live_event_service.LiveEventType" description="The type of live event this is." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="is_unique" class="Tunable" default="False" display="Is Unique" muid="B989C22974339536" description="If this event is unique, there can only be 1 event of this type active at a time." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="timing_data" class="TunableVariant" default="None" display="Timing Data" muid="19DC3368F4F832F0" description="Data about when the event should occur." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                            <Tunable name="None" class="TunableExistance" display="None" muid="35ACD8A9AF40DC31" />
+                            <TunableTuple name="tuned_start_and_end" class="TunableStartAndEndDate" display="Tuned Start And End" muid="F53BC387B813693B" description="This option allows a fixed start and end time to be tuned." Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="end_date_and_time" class="TunableDateTuple" display="End Date (UTC)" muid="1764542937CC736F" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="int" name="day" class="TunableRange" default="1" display="Day" muid="F8BBD771141A72C1" min="1" max="31" description="Day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="hour" class="TunableRange" default="0" display="Hour" muid="68FA17AE2CA7A1CB" min="0" max="23" description="Hour (24-hour)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="E567C347A08D48A5" min="0" max="59" description="Minute" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="month" class="TunableRange" default="1" display="Month" muid="A506C23505C52251" min="1" max="12" description="Month" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="year" class="TunableRange" default="2021" display="Year" muid="1D960A2770A092F" min="2014" max="None" description="Year" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                                <TunableTuple name="start_date_and_time" class="TunableDateTuple" display="Start Date (UTC)" muid="59EF80888807C813" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="int" name="day" class="TunableRange" default="1" display="Day" muid="48FEF58B74A64784" min="1" max="31" description="Day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="hour" class="TunableRange" default="0" display="Hour" muid="E6147BD604CB1D42" min="0" max="23" description="Hour (24-hour)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="5B63722435498AB7" min="0" max="59" description="Minute" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="month" class="TunableRange" default="1" display="Month" muid="CFE057E9255632D4" min="1" max="12" description="Month" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="year" class="TunableRange" default="2021" display="Year" muid="39E17065DF8AC963" min="2014" max="None" description="Year" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableTuple>
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="BBC0969F35D3142C" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="lot_decoration" class="LotDecoration" module="lot_decoration.lot_decoration" muid="25AF680D679CE475" description="A lot decoration is an item that may be applied to certain locations&#xA;of the lot as supported by the client lot decoration system." instance_subclasses_only="False" path="LotDecorations\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="_display_data" class="OptionalTunable" default="disabled" display="Display Data" muid="9AA004762AD98CC8" description="If enabled, specify display data for this instance." Deprecated="False" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B571AC3F777F0261" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="68A18C401E81BBFB" description="The instance's display data." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="instance_display_description" class="OptionalTunable" default="enabled" display="Instance Display Description" muid="1D81C2A494B239A9" description="If enabled, specify a display description for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="FE8152A54EC6B93F" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="9DD81CAE48EF422D" description="The instance's description. " Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_icon" class="OptionalTunable" default="enabled" display="Instance Display Icon" muid="B532C6C8A13B887B" description="If enabled, specify a display icon for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6FFD0F458280AE7B" />
+                    <Tunable type="ResourceKey" name="enabled" class="TunableIcon" default="None" display="Enabled" muid="394023A421AF9332" description="The instance's icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_name" class="OptionalTunable" default="enabled" display="Instance Display Name" muid="2193433F753C15BB" description="If enabled, specify a display name for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="25C4748C5169A796" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="A6B2E3CB96E3AA72" description="The instance's name." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_tooltip" class="OptionalTunable" default="enabled" display="Instance Display Tooltip" muid="4A1FE93339169249" description="If enabled, specify a display tooltip for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="1059969462560FD0" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="721508ECD54D7044" description="The instance's tooltip. " Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableList name="available_locations" class="TunableEnumSet" display="Available Locations" muid="13416E4C74ED6154" description="The locations where this decoration may be applied.  Used for&#xA;picker filtering." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="DecorationLocation" class="TunableEnumEntry" default="FOUNDATIONS" muid="117AC3A5ACC1D2FA" static_entries="lot_decoration-lot_decoration_enums.DecorationLocation" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <Tunable type="decotrim" name="decoration_resource" class="TunableReference" display="Decoration Resource" muid="135D1A6739AD54E0" description="The catalog decoration resource used for this lot decoration." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="picker_categories" class="TunableEnumSet" default="ALL" display="Picker Categories" muid="5DB0709FE67915E5" description="The categories this decoration applies to.  Used for picker&#xA;drop-down filtering." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="DecorationPickerCategory" class="TunableEnumEntry" default="ALL" muid="7C73F4AC291AC93C" dynamic_entries="lot_decoration-lot_decoration_enums.DecorationPickerCategory._elements" static_entries="lot_decoration-lot_decoration_enums.DecorationPickerCategory" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="WeeklyScheduleSituationSet" module="venues.weekly_schedule_zone_director" muid="E3BE0C93AAFAD0D6" description="Structure containing a set of situation datas for a period of time." instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableList name="random_situations" class="TunableList" display="Random Situations" muid="B5E5A62B2994DB95" description="Situations in which remaining instantiated sims will attempt to be placed" Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="FC671C8D4529BC9B" Deprecated="False" filter="0" group="General">
+                <Tunable type="snippet" name="situation_data" class="TunableReference" display="Situation Data" muid="8C66C327B04712C7" description="The situation data to run." allow_none="False" Deprecated="False" filter="0" group="General" restrict="WeeklyScheduleSituationData" />
+                <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="514D056748844C53" description="Weight for this situation. Used for random selection until all&#xA;available sims are used." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="FC1C39E7E0E7108D" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="E3989BD577A942D1" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="A54C9C84A4D8C2EE" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="B773C40393D0DDE9" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="523069BFF841E312" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="required_situations" class="TunableList" display="Required Situations" muid="B7C756CB40A9831C" description="Situations that will always attempt to run as long as required jobs are sufficiently filled." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="E21E732F32963526" Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="max_created" class="OptionalTunable" default="limited" display="Max Created" muid="A208FAF5D21ED890" description="Maximum number of this situation to create." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="limited" class="TunableTuple" display="Limited" muid="BBE76BBD9C452C50" Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="count" class="TunableRange" default="1" display="Count" muid="A0B89AC6BFA6CE8D" min="1" max="None" description="Maximum number of this situation to create." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableList name="count_modifiers" class="TunableList" display="Count Modifiers" muid="67C4AAE067DCDF3C" description="Reduce number of situations by 1 for every sim previously assigned (in this time period)&#xA;to specified situation/job." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="F3E85E57B8CA9EED" Deprecated="False" filter="0" group="General">
+                                <Tunable type="situation_job" name="job" class="TunableReference" display="Job" muid="49B08C72F71A87BC" description="The situation job. " allow_none="False" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="situation" name="situation" class="TunableReference" display="Situation" muid="826CE67C2470C03B" description="The Situation." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                    <Tunable name="unlimited" class="TunableExistance" display="Unlimited" muid="B7E1A39C64CC27A1" />
+                </TunableVariant>
+                <Tunable type="snippet" name="situation_data" class="TunableReference" display="Situation Data" muid="9A59AA2B8DBD10FA" description="The situation data to run." allow_none="False" Deprecated="False" filter="0" group="General" restrict="WeeklyScheduleSituationData" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="start_any_time_loot" class="TunableList" display="Start Any Time Loot" muid="CFC0E8B941031BB" description="A list of loot operations that will be given when this situation &#xA;set starts regardless of whether it's at the start.  (i.e. Even if &#xA;user travelled to the lot mid period.)" Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="F316B78485D0C326" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions,RandomWeightedLoot" />
+        </TunableList>
+
+        <TunableList name="start_on_time_loot" class="TunableList" display="Start On Time Loot" muid="EC93E2E8F74073E3" description="A list of loot operations that will be given if the situation set&#xA;starts at the beginning of it's scheduled time.  (i.e. Didn't &#xA;travel to the lot mid period.)" Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="C3283574914737C7" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions,RandomWeightedLoot" />
+        </TunableList>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="9B3C7A2FD5E81D47" />
+            <Action type="kRemove" old_muid="A5509B4DAF80B6A7" />
+            <Action type="kRemove" old_muid="2E3F3BA2137B41BF" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="A7C1F46276056EDC" new_muid="EC93E2E8F74073E3" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

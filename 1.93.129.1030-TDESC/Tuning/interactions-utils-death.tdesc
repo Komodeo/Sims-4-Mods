@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="interactions.utils.death" muid="2B401704B530E951">
+        <Class name="DeathType" muid="7219C217B7F9C1CC" enum_bit_flag="False" enum_locked="True">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="99BFDADC7976186" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="BC7C99F480AD9305" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="NONE" muid="E592DD3CB4FD9F4A" enum_value="0" />
+        </Class>
+
+        <Class name="DeathTracker" muid="80C3BF130A33FCB4">
+            <TunableList name="DEATH_BUFFS" class="TunableList" display="Death Buffs" muid="BA36E6CCD83852EC" description="A list of buffs to apply to Sims when another Sim dies. For example, use&#xA;this tuning to tune a &quot;Death of a Good Friend&quot; buff." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="B3DADB43F154F4B2" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="buff" class="TunableBuffReference" display="Buff" muid="629CEAB7ACE9C98D" description="The buff to apply to the Sim." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="buff_reason" class="OptionalTunable" default="disabled" display="Buff Reason" muid="F2AD93078956BA0C" description="If set, specify a reason why the buff was added." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="40E68BF6620B15AE" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="237C679655BEDD3" description="The reason the buff was added. This will be displayed in the&#xA;buff tooltip." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="75E625090F0BE7C5" description="Buff that will get added to sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableTuple>
+                    <TunableVariant type="None" name="notification" class="OptionalTunable" default="disabled" display="Notification" muid="3B01FD599C705AD3" description="If enabled, an off-lot death generates a notification for the&#xA;target Sim. This is limited to one per death instance." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="3F62DCB4394E8971" />
+                        <Tunable type="snippet" name="enabled" class="TunableReference" display="Enabled" muid="8CAC389D8B98A0E4" description="The notification to show." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Notification" />
+                    </TunableVariant>
+                    <Tunable type="snippet" name="test_set" class="TunableReference" display="Test Set" muid="CDB062F17C08F6CB" description="The test that must pass between the dying Sim (TargetSim) and&#xA;the Sim we're considering (Actor). If this test passes, no&#xA;further test is executed." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="TestSetInstance" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="action" name="DEATH_RELATIONSHIP_BIT_FIXUP_LOOT" class="TunableReference" display="Death Relationship Bit Fixup Loot" muid="2F7A944760DCE1BD" description="A reference to the loot to apply to a Sim upon death.&#xA;&#xA;This is where the relationship bit fixup loots will be tuned. This&#xA;used to be on the interactions themselves but if the interaction was&#xA;reset then the bits would stay as they were. If we add more relationship&#xA;bits we want to clean up on death, the references Loot is the place to &#xA;do it." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="DEATH_TYPE_GHOST_TRAIT_MAP" class="TunableMapping" display="Death Type Ghost Trait Map" muid="4E4458E4FCD15DA2" mapping_key="Death Type" mapping_value="Ghost Trait" description="The ghost trait to be applied to a Sim when they die with a given death&#xA;type." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="4B41369164367E9F" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="DeathType" name="Death Type" class="TunableEnumEntry" default="NONE" display="Death Type" muid="A5392B1E00CF6B07" dynamic_entries="interactions-utils-death.DeathType._elements" static_entries="interactions-utils-death.DeathType" description="The death type to map to a ghost trait." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="trait" name="Ghost Trait" class="TunableReference" display="Ghost Trait" muid="6C3B7B083BCAF9BD" description="The ghost trait to apply to a Sim when they die from the specified&#xA;death type." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="buff" name="IS_DYING_BUFF" class="TunableReference" display="Is Dying Buff" muid="77113A239CEB4A1" description="A reference to the buff a Sim is given when they are dying." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

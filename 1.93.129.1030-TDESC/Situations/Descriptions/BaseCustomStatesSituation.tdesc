@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="BaseCustomStatesSituation" module="situations.custom_states.custom_states_situation" muid="B2E9E384D8298D59" description="The Basic Custom States Situation." instance_subclasses_only="True" parents="SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <TunableList name="default_job_and_roles" class="TunableMapping" display="Default Job And Roles" muid="8D1A4BFF5F2AAC15" mapping_key="Situation Job" mapping_value="Role State" description="A mapping between the default situation jobs and role states." Deprecated="False" filter="0" group="~Core~">
+            <TunableTuple class="TunableTuple" muid="5F8A3156F30590D9" Deprecated="False" filter="0" group="General">
+                <Tunable type="role_state" name="Role State" class="TunableReference" display="Role State" muid="4CC557AA5EC8181" description="A reference to a default Role State for this Situation Job." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="situation_job" name="Situation Job" class="TunableReference" display="Situation Job" muid="3AD183891E8D59DE" description="A reference to a default Situation Job." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="default_situation_job" class="OptionalTunable" default="disabled" display="Default Situation Job" muid="3F89BAA3BF343D72" description="Optionally tune a default situation job.&#xA;This is needed when using Zone directors etc,&#xA;which automatically assume a default job is present." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="AFE697572DE49AFE" />
+            <Tunable type="situation_job" name="enabled" class="TunableReference" display="Enabled" muid="6CD75CB96A78FFAD" description="Optionally tune a default situation job.&#xA;This is needed when using Zone directors etc,&#xA;which automatically assume a default job is present." allow_none="True" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableEnum type="SituationSerializationOption" name="persistence_option" class="TunableEnumEntry" default="LOT" display="Persistence Option" muid="B8E228E46BCEF830" static_entries="situations-situation_types.SituationSerializationOption" description="How this situation save/loads.  Each option saves the situation into a different place&#xA;within the save game.  The situation may still fail to load if the Sims no longer match&#xA;their filters, time has passed, or the zone director just says no at the end of it.&#xA;&#xA;DONT: This situation will never save load.&#xA;&#xA;LOT: This situation will be saved on the lot.  This means that it will only be loaded upon&#xA;returning to this lot.&#xA;&#xA;STREET: This situation will be saved on the street.  This means that if you travel between different&#xA;lots on the same street that it will be loaded." Deprecated="False" filter="0" group="General" invalid_entries="HOLIDAY" />
+
+        <TunableList name="pre_populate_jobs" class="TunableMapping" display="Pre Populate Jobs" muid="8DFF9A2521934C5" mapping_key="job" mapping_value="pre_population_data" description="A mapping of Job Types to data that will prepopulate that Job with Sims in the Situation Creation UI." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="C6792960EE2057D7" Deprecated="False" filter="0" group="General">
+                <Tunable type="situation_job" name="job" class="TunableReference" display="Job" muid="8650C7BD6E4BF8CC" description="The job to prepopulate." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+                <TunableTuple name="pre_population_data" class="TunableTuple" display="Pre Population Data" muid="1F501A82094CC0F2" description="Data used to prepopulate the tuned Job. These tunables are all relative to the Sim that scheduled the&#xA;event." Deprecated="False" filter="0" group="General">
+                    <Tunable type="bool" name="include_owner_sim" class="Tunable" default="True" display="Include Owner Sim" muid="A338980309E213D0" description="If checked, the Sim that scheduled this event will be prepopulated for the tuned Job." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="included_relbits" class="TunableList" display="Included Relbits" muid="11EFA7B5D4AB4BD4" description="Any Sim that shares one of these RelBits with the owner Sim will be prepopulated in the tuned Job." Deprecated="False" filter="0" group="General">
+                        <Tunable type="relbit" class="TunableReference" muid="C6FB5AFBBDEF9987" description="Any Sim that shares this RelBit with the Sim that scheduled this event will be prepopulated into&#xA;the tuned Job." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RelationshipBit" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="bool" name="should_cancel_leave_interaction_on_premature_removal" class="Tunable" default="False" display="Should Cancel Leave Interaction On Premature Removal" muid="F4942E3D4BB5482F" description="If Checked any leave interaction running or queued on the sim&#xA;should be canceled if they are removed prematurely from the situation.&#xA;&#xA;Any situation that can cause a sim to leave the lot (but not leave lot&#xA;must run) should have this checked so that the leave interaction can be canceled&#xA;if the sim is pulled from this situation to be in another situation.&#xA;&#xA;My dinner party ends and the guest are leaving. I decide to throw an&#xA;after hours affair inviting several of the guests who are leaving. I need&#xA;to cancel their leave interaction so that they will stay." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="int" name="sims_expected_to_be_in_situation" class="TunableRange" default="1" display="Sims Expected To Be In Situation" muid="760881C8A62AAE00" min="0" max="None" description="The number of Sims expected to be in the situation for the zone director to calculate over." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Walkby" />
+    </Instance>
+</TuningRoot>

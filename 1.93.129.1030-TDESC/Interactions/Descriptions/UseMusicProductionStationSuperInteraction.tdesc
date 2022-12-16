@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="UseMusicProductionStationSuperInteraction" module="interactions.music_production_station_interactions" muid="DCB2E7EA3EBABEE4" description="An interaction that 'parks' a sim at a music production station and prepares &#xA;the station for producing/remixing a specified music track." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <Tunable type="int" name="audio_start_event" class="Tunable" default="520" display="Audio Start Event" muid="E5FC26B1A8CB8EF0" description="The script event to listen for from animation so we know when to&#xA;start the music." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="int" name="audio_stop_event" class="Tunable" default="521" display="Audio Stop Event" muid="4F589A826E059B59" description="The script event to listen for from animation so we know when to&#xA;stop the music." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="channels" class="TunableMapping" display="Channels" muid="29EC6009A41CE4F8" mapping_key="key" mapping_value="value" description="A map of channel enums and their associated data. " Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="D9C942AEB8B925" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="ChannelFlags" name="key" class="TunableEnumEntry" default="CHANNEL1" display="Key" muid="C1A58CBF9757F460" static_entries="objects-components-stored_audio_component.ChannelFlags" description="The enum for a channel." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="TunableTuple" display="Value" muid="31E7F91E56BA35C7" description="Channel specific data." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="channel_name" class="TunableLocalizedString" default="0x0" display="Channel Name" muid="1A6A4F654A27C0D2" description="The name to display for this channel. " Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="channel_tests" class="TunableTestSet" display="Channel Tests" muid="8A8C3F1FAD7A3BA0" description="The tests to display this channel's remix mixer" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="music_track_data_snippet" class="TunableMusicTrackDataSnippet" default="literal" display="Music Track Data Snippet" muid="394508B1C5C9AAAB" description="The reference to looping and fixed-length .propx files for the associated&#xA;music track.&#xA; (This may be tuned in place here using 'literal' or as a reference to a MusicTrackData tuning snippet.)" Deprecated="False" filter="0" group="General">
+            <TunableTuple name="literal" class="TunableMusicTrackData" display="Literal" muid="5DE77FF531AF574B" description="A pairing of looping and fixed-length audio tracks to be played and saved&#xA;from the music production station." Deprecated="False" filter="0" group="General">
+                <Tunable type="ResourceKey" name="fixed_length_audio" class="TunableResourceKey" default="None" display="Fixed Length Audio" muid="B9760DE0C0DB06D0" description="The fixed-length propx file of the music track." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+                <Tunable type="ResourceKey" name="looping_audio" class="TunableResourceKey" default="None" display="Looping Audio" muid="B6A44A574B729C54" description="The looping propx file of the music track." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+            </TunableTuple>
+            <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="AF654B7501B5B7BB" description="A reference to a MusicTrackData tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="MusicTrackData" />
+        </TunableVariant>
+
+        <Tunable type="int" name="turn_off_channel_display_name" class="TunableLocalizedString" default="0x0" display="Turn Off Channel Display Name" muid="31D7D0C8F89A81A4" description="The name to display for remix mixers that turn off a channel. " Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="ResourceKey" name="turn_off_channel_icon" class="TunableIcon" default="None" display="Turn Off Channel Icon" muid="478C67EF9ADF6201" description="The icon to display in the pie menu for remix mixers that turn off a channel. " Deprecated="False" filter="0" group="UI" resource_types="0x2f7d0004" />
+
+        <Tunable type="int" name="turn_on_channel_display_name" class="TunableLocalizedString" default="0x0" display="Turn On Channel Display Name" muid="1E01AD441079EDD1" description="The name to display for remix mixers that turn on a channel." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="ResourceKey" name="turn_on_channel_icon" class="TunableIcon" default="None" display="Turn On Channel Icon" muid="5C6FE52C8ABE90B" description="The icon to display in the pie menu for remix mixers that turn on a channel. " Deprecated="False" filter="0" group="UI" resource_types="0x2f7d0004" />
+    </Instance>
+</TuningRoot>

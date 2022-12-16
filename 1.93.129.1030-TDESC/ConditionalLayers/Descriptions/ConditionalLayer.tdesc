@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="conditional_layer" class="ConditionalLayer" module="world.conditional_layer" muid="6E411BFD8C0C75F3" instance_needs_reference="True" instance_subclasses_only="False" path="ConditionalLayers\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="client_only" class="Tunable" default="False" display="Client Only" muid="9C86C151780F63BB" description="If checked, this layer is loaded as a client side layer. All &#xA;objects on the layer will exist as scene models only and have no&#xA;gameplay (e.g. no interactions, no footprint).&#xA;&#xA;This is useful for layers that are purely decorative. And unlike&#xA;regular game objects, client side objects can be placed outside of&#xA;routable/interactable areas, e.g. decorative cards in the distance.&#xA;&#xA;We do not support mixing game objects and client only objects on&#xA;the same layer. Please separate them out onto their on layers." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="fade_data" class="OptionalTunable" default="disabled" display="Fade Data" muid="1DB1787F68D7B00" description="If enabled, the conditional layer will fade in rather than pop." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="980A72276D1A702F" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="5B30930095D750A2" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="delay_max" class="TunableRange" default="20.0" display="Delay Max" muid="D18439358E936AC1" min="0.0" max="None" description="The maximum length of the fade delay in sim minutes." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="delay_min" class="TunableRange" default="10.0" display="Delay Min" muid="5898A4736B376C21" min="0.0" max="None" description="The minimum length of the fade delay in sim minutes." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="fade_duration" class="Tunable" default="10.0" display="Fade Duration" muid="FFA767A2EF4583AA" description="The duration of the fade in sim minutes." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="str" name="layer_name" class="TunableStringHash32" default="None" display="Layer Name" muid="D76130F230CD6764" description="The name of the layer that will be loaded.&#xA;World Building should tell you what this should be." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

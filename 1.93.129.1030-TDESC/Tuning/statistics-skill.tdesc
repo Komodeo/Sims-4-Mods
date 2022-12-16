@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="statistics.skill" muid="6DF9A4C69CA49902">
+        <Class name="SkillEffectiveness" muid="72252F6BC07C7DAC" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="7777404E464FEC3D" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="F7EAAA59B8910D43" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="STANDARD" muid="44E0C7FAF55CD9DE" enum_value="0" />
+        </Class>
+
+        <Class name="SkillLevelType" muid="E699CCA3631B697B" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="CHILD" muid="A1B5900A300C3F71" enum_value="2" />
+
+            <EnumItem name="MAJOR" muid="71391E6A8D1C8B8E" enum_value="0" />
+
+            <EnumItem name="MINOR" muid="97C0072C0A653E4B" enum_value="1" />
+
+            <EnumItem name="POTTY" muid="2FF2814168D0BD28" enum_value="6" />
+
+            <EnumItem name="TEEN" muid="DF6E2941DF47CEAE" enum_value="3" />
+
+            <EnumItem name="TODDLER" muid="D1F926BC3997DDD9" enum_value="5" />
+
+            <EnumItem name="VAMPIRE_LORE" muid="1290C9620CB8773A" enum_value="4" />
+        </Class>
+
+        <Class name="Skill" muid="3674DEA4E9F30C2B">
+            <Tunable type="float" name="DYNAMIC_SKILL_INTERVAL" class="TunableRange" default="1" display="Dynamic Skill Interval" muid="E0D8DD19A462AD04" min="1" max="None" description="Interval used when dynamic loot is used in a&#xA;PeriodicStatisticChangeElement." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="SKILL_EFFECTIVENESS_GAIN" class="TunableMapping" display="Skill Effectiveness Gain" muid="A91D746100324C86" mapping_key="key" mapping_value="value" description="Skill gain points based on skill effectiveness." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="AD94D37CBA400280" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SkillEffectiveness" name="key" class="TunableEnumEntry" default="STANDARD" display="Key" muid="CF63F674C2FA19E8" dynamic_entries="statistics-skill.SkillEffectiveness._elements" static_entries="statistics-skill.SkillEffectiveness" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableCurve" display="Value" muid="96A73E835C03B725" Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableVector2" muid="3181079F1246CC17" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="B4422B0241A46CE2" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="7717BECBFEE5F019" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SKILL_LEVEL_LIST" class="TunableMapping" display="Skill Level List" muid="831182FC577AB89C" mapping_key="key" mapping_value="value" description="A mapping defining the level boundaries for each skill type." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="SkillLevelListMappingTuple">
+                <TunableTuple class="TunableTuple" muid="E3F4F54C77743A5D" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SkillLevelType" name="key" class="TunableEnumEntry" default="MAJOR" display="Key" muid="151B7BB5A696904C" static_entries="statistics-skill.SkillLevelType" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="1D0813716C9D91F7" description="The level boundaries for skill type, specified as a delta from the&#xA;previous value." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" class="Tunable" default="0" muid="FB0017350672E7F5" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

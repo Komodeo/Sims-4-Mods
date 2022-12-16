@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="trends.trend_tuning" muid="D967078343AD3913">
+        <Class name="TrendType" muid="4B4C405B6A8D83C7" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="73FC004851953BBC" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="8F2B76FC1FB0FFB8" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="INVALID" muid="446DECC7E6E158DB" enum_value="0" />
+        </Class>
+
+        <Class name="TrendTuning" muid="37E03A9CEF3CBFB7">
+            <TunableEnum type="Tag" name="CELEBRITY_TREND" class="TunableTag" default="INVALID" display="Celebrity Trend" muid="4B88F8B5F1F011BB" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag we use to indicate Celebrity Trends." Deprecated="False" dynamic_entries_prefix="func_trend" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+
+            <TunableEnum type="Tag" name="TODDLER_CHILD_TREND" class="TunableTag" default="INVALID" display="Toddler Child Trend" muid="38DEEE33092C34AD" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag we use to indicate Toddler or Child trends." Deprecated="False" dynamic_entries_prefix="func_trend" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+
+            <TunableList name="TREND_DATA" class="TunableList" display="Trend Data" muid="43DF32437A45E648" description="A list of data about trends." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="6A332473679952DF" description="The data about this trend." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="trend_name" class="TunableLocalizedString" default="0x0" display="Trend Name" muid="68455B25AC2A3F7E" description="The name for this trend. This will show up in a bulleted&#xA;list when a player researches current trends." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="Tag" name="trend_tag" class="TunableTag" default="INVALID" display="Trend Tag" muid="C2E5C9352D708296" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag for this trend." Deprecated="False" dynamic_entries_prefix="func_trend" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                    <TunableEnum type="TrendType" name="trend_type" class="TunableEnumEntry" default="INVALID" display="Trend Type" muid="4E7798C8774A3C9" dynamic_entries="trends-trend_tuning.TrendType._elements" static_entries="trends-trend_tuning.TrendType" description="The type of this trend." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="TREND_REFRESH_COOLDOWN" class="TunableTimeSpan" display="Trend Refresh Cooldown" muid="B39380ABA76B84A5" description="The amount of time it takes before trends refresh." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="days" class="TunableRange" default="2" display="Days" muid="7AE922ECA4929C95" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="hours" class="TunableRange" default="0" display="Hours" muid="A64205D36052D5BD" min="0" max="23" description="Number of hours" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minutes" class="TunableRange" default="0" display="Minutes" muid="75A8359651C29FB1" min="0" max="59" description="Number of minutes" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableList name="TREND_TIME_REMAINING_DESCRIPTION" class="TunableMapping" display="Trend Time Remaining Description" muid="24260C02B983459C" mapping_key="sim_hours" mapping_value="description_string" description="A mapping of thresholds, in Sim Hours, to descriptions used when&#xA;describing the amount of time remaining in the study trends&#xA;notification." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="B66F97BB4B94C587" Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="description_string" class="TunableLocalizedString" default="0x0" display="Description String" muid="4652313DFB9757F4" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="sim_hours" class="Tunable" default="None" display="Sim Hours" muid="575443E6347A046B" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="object" name="TRENDLESS_VIDEO_DEFINITION" class="TunableReference" display="Trendless Video Definition" muid="4F2CF7DB96B7C45C" description="The object definition to use if a Sim records a trendless video." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </Class>
+    </Module>
+</TuningRoot>

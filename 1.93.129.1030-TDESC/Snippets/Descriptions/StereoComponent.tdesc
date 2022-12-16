@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="StereoComponent" module="snippets" muid="865E0F15DEE4EDCF" instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="value" class="TunableStereoComponent" display="Value" muid="4EA904789C55D91C" description="Manage radio channel states and interactions" Deprecated="False" filter="0" group="General">
+            <Tunable type="object_state" name="channel_state" class="TunableReference" display="Channel State" muid="5D86FA892F2DCF76" description="The state used to populate the radio stations" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectState" />
+            <Tunable type="bool" name="immediate" class="Tunable" default="False" display="Immediate" muid="FE7227FECA3881D0" description="If checked, this audio will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. Earbuds audio will be played immediately while &#xA;the Sim is routing or animating.&#xA;&#xA;This is passed down to the audio state when it is triggered, and thus&#xA;will overwrite any tuning on the state value." Deprecated="False" filter="0" group="General" />
+            <TunableList name="listen_affordances" class="TunableList" display="Listen Affordances" muid="EE83E24D43079672" description="An ordered list of affordances that define &quot;listening&quot; to this&#xA;stereo. The first succeeding affordance is used." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="287316CC029AF8E" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <Tunable type="object_state" name="off_state" class="TunableReference" display="Off State" muid="FFE9B2252AD5CC28" description="The channel that represents the off state." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+            <Tunable type="bool" name="play_on_active_sim_only" class="Tunable" default="False" display="Play On Active Sim Only" muid="8F895BFB07C9362E" description="If enabled, and audio target is Sim, the audio will only be &#xA;played on selected Sim. Otherwise it will be played regardless &#xA;Sim is selected or not.&#xA;&#xA;If audio target is Object, always set this to False. Otherwise&#xA;the audio will never be played.&#xA;&#xA;ex. This will be useful for Earbuds where we want to hear the&#xA;music only when the Sim is selected.&#xA;&#xA;This is passed down to the audio state when it is triggered, and thus&#xA;will overwrite any tuning on the state value." Deprecated="False" filter="0" group="General" />
+            <TunableList name="unavailable_channels" class="TunableList" display="Unavailable Channels" muid="75507498F0F00BB3" description="Items in this list that past tests will not be available, even if &#xA;the whitelist is empty. " Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="760DB2D52BE6F793" Deprecated="False" filter="0" group="General">
+                    <TunableList name="channel_states" class="TunableSet" display="Channel States" muid="F8DBC20C54B917B6" description="If the test passes, channel states in this list will be not &#xA;be available. " Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="object_state" class="TunableReference" muid="F1DE936D4B645FEF" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                    </TunableList>
+                    <TdescFragTag name="test" class="TunableTestSet" display="Test" muid="BE162C65EDAE1A1F" description="Tests for unavailable channel states. Note that we also have &#xA;tests on listen affordances, please make sure they are not &#xA;duplicated so to save performance." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableList name="whitelist_channels" class="TunableList" display="Whitelist Channels" muid="DEACF0A058EAA480" description="This acts like a filter. Items in this list who pass their test &#xA;will be combined together and become a whitelist. We will check &#xA;against this whitelist to generate available picker channel states.&#xA;If this list is empty, the filter will be disabled." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="3547B6AC65143EC9" Deprecated="False" filter="0" group="General">
+                    <TunableList name="channel_states" class="TunableSet" display="Channel States" muid="C4BCB5FD29ACBA32" description="If the test passes, channel states in this list will be in &#xA;the whitelist and become available." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="object_state" class="TunableReference" muid="F46BA2D1A14D7ECF" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                    </TunableList>
+                    <TdescFragTag name="test" class="TunableTestSet" display="Test" muid="CFE51F16C67ABCD6" description="Tests for whitelist channel states. Note that we also have &#xA;tests on listen affordances, please make sure they are not &#xA;duplicated so to save performance." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="558628AB16998AAD" new_muid="BE162C65EDAE1A1F" />
+            <Action type="kRename" old_muid="B28D220DFFBE0E1C" new_muid="75507498F0F00BB3" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

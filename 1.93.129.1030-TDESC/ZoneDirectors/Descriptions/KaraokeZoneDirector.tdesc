@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="zone_director" class="KaraokeZoneDirector" module="venues.karaoke_venue.karaoke_zone_director" muid="610B828B79F57E2" description="Zone Director for the Karaoke Venue." instance_needs_reference="True" instance_subclasses_only="False" parents="SchedulingZoneDirector, ZoneDirectorBase" path="ZoneDirectors\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="special_event_schedule" class="TunableSituationWeeklySchedule" display="Special Event Schedule" muid="79B02BAA93F362CE" description="The schedule to trigger the different special scheduled events." Deprecated="False" filter="0" group="General">
+            <TunableList name="schedule_entries" class="TunableList" display="Schedule Entries" muid="A35E134FF2490A89" description="A list of event schedules. Each event is a mapping of days of the&#xA;week to a start_time and duration." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableScheduleEntry" muid="CB46AFDA879FD576" description="A schedule. Define availability for days of the week. For the set of&#xA;specified days, define an hour of the day and a duration, in hours.&#xA;Optionally, specified if the start time is random within the tuned window." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="days_available" class="TunableAvailableDays" display="Days Available" muid="97C895DC2850DC68" description="Which days of the week to include" Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="0 SUNDAY" class="Tunable" default="False" display="0 Sunday" muid="49A04619F8EEE23" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="1 MONDAY" class="Tunable" default="False" display="1 Monday" muid="633889A3393595FC" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="2 TUESDAY" class="Tunable" default="False" display="2 Tuesday" muid="FA63094668283618" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="3 WEDNESDAY" class="Tunable" default="False" display="3 Wednesday" muid="67FDD3AC6FA01AD2" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="4 THURSDAY" class="Tunable" default="False" display="4 Thursday" muid="486F6CB2DB62B930" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="5 FRIDAY" class="Tunable" default="False" display="5 Friday" muid="E76F72DC6DAC099" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="6 SATURDAY" class="Tunable" default="False" display="6 Saturday" muid="EAD191C49CE14106" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <Tunable type="float" name="duration" class="Tunable" default="1.0" display="Duration" muid="50999ED7CD3B855D" description="Duration of this work session in hours." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="bool" name="random_start" class="Tunable" default="False" display="Random Start" muid="4A9F5050C6F8C13B" description="If checked, this schedule will have a random start time in the tuned&#xA;window each time." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="CareerShiftType" name="schedule_shift_type" class="TunableEnumEntry" default="ALL_DAY" display="Schedule Shift Type" muid="4E45F0B39E444583" static_entries="careers-career_enums.CareerShiftType" description="Shift Type for the schedule, this will be used for validations." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="situation" name="situation" class="TunableReference" display="Situation" muid="EDDF8920BC4C1FA7" description="The situation to start according to the tuned schedule." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="6BD1C87DBE04B450" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="hour" class="TunableRange" default="9" display="Hour" muid="DA54F12635CF795B" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="2D31A760C5B2984F" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="aspiration" class="Aspiration" module="aspirations.aspiration_tuning" muid="12FA3A55E2B5524F" description="A Basic Aspiration that can be displayed to the UI.  This is used for both&#xA;Aspirations that display in the UI within the Aspiration panel and for&#xA;Aspirations that exist in the background." instance_subclasses_only="False" parents="AspirationBasic" path="Aspirations\Descriptions" use_guid_for_reference="True">
+        <Tunable type="int" name="descriptive_text" class="TunableLocalizedString" default="0x0" display="Descriptive Text" muid="683BAB4550EEFA5D" description="Description for this aspiration" allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" />
+
+        <Tunable type="int" name="display_name" class="TunableLocalizedString" default="0x0" display="Display Name" muid="2F6A06470275580F" description="Display name for this aspiration" allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" />
+
+        <Tunable type="bool" name="is_child_aspiration" class="Tunable" default="False" display="Is Child Aspiration" muid="4728E4B8DEB1E115" description="If checked then this aspiration can only be completed by a child&#xA;Sim and will not be considered complete even if all of the&#xA;Objectives are complete as a non-child." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="Special Cases" />
+
+        <Tunable type="bool" name="is_teen_aspiration" class="Tunable" default="False" display="Is Teen Aspiration" muid="7545FA01A2672AD1" description="If checked then this aspiration can only be completed by a teen&#xA;Sim and will not be considered complete even if all of the&#xA;Objectives are complete as a non-teen." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="Special Cases" />
+
+        <TunableList name="on_complete_loot_actions" class="TunableList" display="On Complete Loot Actions" muid="F4156601D4BA378B" description="List of loots operations that will be awarded when this aspiration&#xA;completes." Deprecated="False" filter="0" group="Rewards">
+            <Tunable type="action" class="TunableReference" muid="5531B1B316338395" allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+        </TunableList>
+
+        <Tunable type="reward" name="reward" class="TunableReference" display="Reward" muid="FE9E0A5EEFBEFD9B" description="The reward given when this Aspiration is completed." allow_none="True" Deprecated="False" filter="0" group="Rewards" />
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="career_gig" class="MissionGig" module="careers.missions.mission_gig" muid="22CC6985D758C73" description="Tuning for a Batuu-style Mission. These Gigs have no deadline, and use&#xA;dynamically chosen Objectives instead of an Aspiration." instance_subclasses_only="False" parents="HomeAssignmentGig, Gig" path="CareerGigs\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="allow_duplicate_objectives" class="Tunable" default="False" display="Allow Duplicate Objectives" muid="1EA8C596B9D54AAD" description="If checked, the same Objective can be chosen multiple times for this&#xA;Mission. If unchecked, selected Objectives will be ignored by the&#xA;remaining Mission Objective Data." Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="audio_on_prep_task_completion" muid="E547AADBDE370771" />
+
+        <Deleted name="bonus_gig_aspiration_tuning" muid="76756C659CE96D94" />
+
+        <Deleted name="career_events" muid="FE3CA10BD2277AA7" />
+
+        <Deleted name="critical_failure_test" muid="2FB55737E7321E75" />
+
+        <TunableList name="cycling_display_data" class="TunableList" display="Cycling Display Data" muid="2F9CB1144598E5D7" description="A list of name/description pairs that will be cycled for each completion&#xA;of the tuned Aspiration for this Mission. If this list is empty, the&#xA;Display Name and Display Description from the Display Data will be used." Deprecated="False" filter="0" group="UI">
+            <TunableTuple class="TunableTuple" muid="398D4715AE07E8F7" description="The Title and Description to use when this display data is being used." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="customer_description" class="TunableLocalizedString" default="0x0" display="Customer Description" muid="A859186FF9AB8726" description="The display description for this entry. The Active Sim is &#xA;passed in for the first token." Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="mission_name" class="TunableLocalizedString" default="0x0" display="Mission Name" muid="230BA1759651855C" description="The display name for this entry. The Active Sim is passed in&#xA;for the first token." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Deleted name="end_of_gig_dialog" muid="81A6FB77524AC58E" />
+
+        <Deleted name="gig_cast" muid="B4288E5688C67AB1" />
+
+        <Deleted name="gig_cast_rel_bit_collection_id" muid="D11F4EFF0DAC8C32" />
+
+        <Deleted name="gig_picker_localization_format" muid="9B3DD944829BA4E2" />
+
+        <Deleted name="gig_prep_tasks" muid="F1BAA8821D23C44" />
+
+        <Deleted name="gig_prep_time" muid="7B883B52574567A1" />
+
+        <Deleted name="gig_time" muid="149F8D6FC147C6CA" />
+
+        <Deleted name="great_success_remaining_time" muid="1823BDF697CFA447" />
+
+        <TunableList name="mission_objective_data" class="TunableList" display="Mission Objective Data" muid="D57566F287FB5E0A" description="A list of data used to create a single Objectives for this Mission." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableMissionObjectiveData" muid="5145D7C0A11C57C5" description="An Objective for this Mission." Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="completes_mission" class="Tunable" default="False" display="Completes Mission" muid="96A535D7C4A67E32" description="If checked, completion of this Objective will also complete the&#xA;Mission." Deprecated="False" filter="0" group="General" />
+                <TunableList name="completion_loot" class="TunableList" display="Completion Loot" muid="1376B0388B9FCEDF" description="A list of loot operations to apply when the objective is complete." Deprecated="False" filter="0" group="General">
+                    <Tunable type="action" class="TunableReference" muid="FEB476CB4AD46F09" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                </TunableList>
+                <TunableList name="lot_specific_situations" class="TunableMapping" display="Lot Specific Situations" muid="7DC07DF20FBC7922" mapping_key="Lot Description" mapping_value="Situations" description="A mapping of Lots to Situations that should start when this &#xA;Objective is active and the Sim has loaded into the Zone for the&#xA;tuned Lot." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="A4AFC250B6797FAD" Deprecated="False" filter="0" group="General">
+                        <Tunable type="lotdescription" name="Lot Description" class="TunableReference" display="Lot Description" muid="46AA946CF68311B5" description="The lot this situation should start in." Deprecated="False" filter="0" group="General" />
+                        <TunableList name="Situations" class="TunableList" display="Situations" muid="46903B3D2D026552" description="The list of Situations to start when the Sim has loaded into the&#xA;Zone for the tuned Lot Description." Deprecated="False" filter="0" group="General">
+                            <Tunable type="situation" class="TunableReference" muid="C4780E70BB35745A" description="A Situation to start." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableList>
+                <TunableVariant type="None" name="object_state_changes_on_active" class="OptionalTunable" default="disabled" display="Object State Changes On Active" muid="5ED53EA74AA990F9" description="If enabled, allows setting the tuned state on all matching objects&#xA;when this objective is active and able to be completed." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6BD4137970501DA" />
+                    <TunableTuple name="enabled" class="TunableObjectStateHelper" display="Enabled" muid="2A0614BF4003D536" description="The objects and states to set on them." Deprecated="False" filter="0" group="General">
+                        <Tunable type="object_state" name="desired_state" class="TunableReference" display="Desired State" muid="3532ADEFB53FC8F2" description="State that will be set to the objects." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                        <TunableList name="object_tags" class="TunableTags" display="Object Tags" muid="4F85E1C2489638C9" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="F1918F7F7EAF2CF8" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Find all of the objects based on these tags." Deprecated="False" dynamic_entries_prefix="func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                        </TunableList>
+                        <TunableVariant type="None" name="object_target" class="TunableObjectTargetVariant" default="room_objects" display="Object Target" muid="7B6A4C3E9B57855A" description="Define the set of objects that this interaction is applied to." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="all_objects" class="Tunable_ObjectTargetAll" display="All Objects" muid="178BC2808D553650" description="The target are all objects. Find all objects that have the tags." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="room_objects" class="Tunable_ObjectTargetRoom" display="Room Objects" muid="9ED22DB6E2984523" description="The target are all objects in the same room as the interaction target&#xA;that have the tags." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="DCF4B6CA17BAB476" description="If pass these tests, the object's state will be changed to&#xA;Desired State." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+                <TunableVariant type="None" name="object_state_changes_on_complete" class="OptionalTunable" default="disabled" display="Object State Changes On Complete" muid="CF3F3B73AED18045" description="If enabled, allows setting the tuned state on all matching objects&#xA;when this objective is complete." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9555D584011ECDF7" />
+                    <TunableTuple name="enabled" class="TunableObjectStateHelper" display="Enabled" muid="26F444D3E52BBD1F" description="The objects and states to set on them." Deprecated="False" filter="0" group="General">
+                        <Tunable type="object_state" name="desired_state" class="TunableReference" display="Desired State" muid="6A0C084A50219786" description="State that will be set to the objects." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                        <TunableList name="object_tags" class="TunableTags" display="Object Tags" muid="40AC6925CC15A695" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="AC3049AF471388BB" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Find all of the objects based on these tags." Deprecated="False" dynamic_entries_prefix="func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                        </TunableList>
+                        <TunableVariant type="None" name="object_target" class="TunableObjectTargetVariant" default="room_objects" display="Object Target" muid="ED997CC9ABC61A98" description="Define the set of objects that this interaction is applied to." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="all_objects" class="Tunable_ObjectTargetAll" display="All Objects" muid="6D7BD296B2DF0DDD" description="The target are all objects. Find all objects that have the tags." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="room_objects" class="Tunable_ObjectTargetRoom" display="Room Objects" muid="D25549457AC4DA2E" description="The target are all objects in the same room as the interaction target&#xA;that have the tags." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="4876E596DB69047F" description="If pass these tests, the object's state will be changed to&#xA;Desired State." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+                <Tunable type="bool" name="requires_previous_objective_complete" class="Tunable" default="False" display="Requires Previous Objective Complete" muid="EE96ED219D75B61C" description="If checked, this objective can only be completed if the previous&#xA;objective in the Mission has been completed." Deprecated="False" filter="0" group="General" />
+                <TunableList name="weighted_objectives" class="WeightedObjectives" display="Weighted Objectives" muid="EF6BADBD2D48075A" description="A list of tested, weighted objectives. A set of tests are run against &#xA;the active Sim. If the tests pass, this objective and the weight are &#xA;added to a list for randomization. Only one Objective is selected." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="EEC98F12C70C7C6A" description="A set of tests that are run against the Sim. If the tests pass,&#xA;this objective and the weight are added to a list for randomization." Deprecated="False" filter="0" group="General">
+                        <Tunable type="objective" name="objective" class="TunableReference" display="Objective" muid="F3A15B7E3C49EF68" description="The objective that will be provided if the tests pass." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="87FAE33E1161B81D" description="The tests that must pass for this objective to be valid." filter="0" group="General" />
+                        <Tunable type="float" name="weight" class="TunableRange" default="1" display="Weight" muid="568DF4AB9606EB60" min="0" max="None" description="The weight of this objective against the other passing objectives." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="mission_reputation_text" class="OptionalTunable" default="disabled" display="Mission Reputation Text" muid="E2F4DC61C15FC3A1" description="If enabled, allows tuning for reputation changes in the reward description." Deprecated="False" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6B6F228CBEBBE8F2" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="871B35CFFBF91C01" description="The string that shows the Reputation change for this Mission. This&#xA;is used in the Mission Reward Description. " Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="int" name="mission_rewards_description" class="TunableLocalizedString" default="0x0" display="Mission Rewards Description" muid="466E3F792DC51274" description="The description of the rewards for this mission. This will be used in&#xA;both the Mission Picker and in the Career Panel.&#xA;Current tokens are:&#xA;0.String - Gig Pay (Since these pay in bucks, the ValueString of &#xA;BuckTypeToDisplayString in bucks_utils module tuning will be used)&#xA;1.String - Mission Reward Text &quot;Reward Object: Fish Bowl&quot;&#xA;2.String - Mission Reputation Text &quot;Resistance +  First Order -&quot;" Deprecated="False" filter="0" group="UI" />
+
+        <TunableVariant type="None" name="mission_rewards_text" class="OptionalTunable" default="disabled" display="Mission Rewards Text" muid="68C2745CC17885A6" description="If enabled, allows tuning for extra rewards in the reward description." Deprecated="False" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="45930EF7B8CD818C" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="5E7FE8D4C4BE6C3B" description="The string that shows the reward for this Mission. This is used in&#xA;the Mission Reward Description." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="mission_trait" class="OptionalTunable" default="disabled" display="Mission Trait" muid="8A904AB54E15EFF0" description="If enabled, allows tuning a trait that is added to the Sim any time &#xA;they have this mission. The trait is removed upon mission completion." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7D8CBB25056C4F50" />
+            <Tunable type="trait" name="enabled" class="TunableReference" display="Enabled" muid="2B3F33F68C5BA55F" description="This Trait is given to Sims when they have this Mission. It's removed&#xA;when this mission is complete." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+        </TunableVariant>
+
+        <TunableTuple name="objective_completion_audio" class="TunablePlayAudio" display="Objective Completion Audio" muid="C47974305FA27DBF" description="An audio sting to play when a mission objective is complete." Deprecated="False" filter="0" group="General">
+            <Tunable type="ResourceKey" name="audio" class="TunableResourceKey" default="None" display="Audio" muid="62263768A9D250A9" description="The sound to play." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+            <Tunable type="bool" name="immediate_audio" class="Tunable" default="False" display="Immediate Audio" muid="A130F03DDB3CB310" description="If checked, this audio will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. Earbuds audio will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="joint_name_hash" class="OptionalTunable" default="disabled" display="Joint Name Hash" muid="B70C8D09C30816DF" description="Specify if the audio is attached to a slot and, if so, which&#xA;slot. Otherwise the audio will be attached to the object's &#xA;origin." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="794EF7C587423C75" />
+                <Tunable type="str" name="enabled" class="TunableStringHash32" default="None" display="Enabled" muid="33FDAF685533D994" description="The name of the slot this audio is attached to." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="bool" name="play_on_active_sim_only" class="Tunable" default="False" display="Play On Active Sim Only" muid="92E2C0245F62001E" description="If enabled, and audio target is Sim, the audio will only be &#xA;played on selected Sim. Otherwise it will be played regardless &#xA;Sim is selected or not.&#xA;&#xA;If audio target is Object, always set this to False. Otherwise&#xA;the audio will never be played.&#xA;&#xA;ex. This will be useful for Earbuds where we want to hear the&#xA;music only when the Sim is selected." Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Deleted name="payout_stat_data" muid="23081C18273D11A6" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="F90F485ADB761679" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

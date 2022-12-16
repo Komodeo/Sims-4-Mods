@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="season" class="Season" module="seasons.season" muid="72CD707153C52E1D" description="A season consists of the content of a season, which primarily includes&#xA;holidays.  This resource also is where a seasonal content is set for&#xA;different season lengths." instance_needs_reference="True" instance_subclasses_only="False" path="Seasons\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="screen_slam" class="OptionalTunable" default="disabled" display="Screen Slam" muid="BF3F54394850F879" description="If enabled, trigger this Screen Slam when transitioning to this season." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A10EB45B3CD3938D" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="D8C989D4C36CDC29" description="The screenslam to trigger, and hour of the day when it should&#xA;appear to the users." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="slam" class="TunableScreenSlamSnippet" default="literal" display="Slam" muid="B35189ECC55D1B44" description="This may be tuned in place here using 'literal' or as a reference to a ScreenSlam tuning snippet." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="literal" class="TunableScreenSlam" display="Literal" muid="838956490A5FB2FC" description="Tunable Screen Slams!" Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="active_sim_only" class="Tunable" default="True" display="Active Sim Only" muid="337A866B968B1511" description="If true, the screen slam will be only be shown if the active Sim&#xA;triggers it." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="audio_sting" class="OptionalTunable" default="disabled" display="Audio Sting" muid="173CC2C3A3FBD13C" description="A sting to play at the same time as the screen slam.&#xA;***Some screen slams may appear to play a sting, but the audio is&#xA;actually tuned on something else.  Example: On CareerLevel tuning&#xA;there already is a tunable, Promotion Audio Sting, to trigger a&#xA;sting, so one is not necessary on the screen slam.  Make sure to&#xA;avoid having multiple stings play simultaneously.***" Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="534628F790F35F4A" />
+                            <TunableTuple name="enabled" class="TunablePlayAudio" display="Enabled" muid="7E035FE388FCD399" Deprecated="False" filter="0" group="General">
+                                <Tunable type="ResourceKey" name="audio" class="TunableResourceKey" default="None" display="Audio" muid="E1DE6D9A4A600FD8" description="The sound to play." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+                                <Tunable type="bool" name="immediate_audio" class="Tunable" default="False" display="Immediate Audio" muid="8CA09C549C743269" description="If checked, this audio will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. Earbuds audio will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                                <TunableVariant type="None" name="joint_name_hash" class="OptionalTunable" default="disabled" display="Joint Name Hash" muid="DD36DB76A617AD9F" description="Specify if the audio is attached to a slot and, if so, which&#xA;slot. Otherwise the audio will be attached to the object's &#xA;origin." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4B14829C2B29141D" />
+                                    <Tunable type="str" name="enabled" class="TunableStringHash32" default="None" display="Enabled" muid="7D7EAB89CBDD57D" description="The name of the slot this audio is attached to." Deprecated="False" filter="0" group="General" />
+                                </TunableVariant>
+                                <Tunable type="bool" name="play_on_active_sim_only" class="Tunable" default="False" display="Play On Active Sim Only" muid="6765110C5A8CD86E" description="If enabled, and audio target is Sim, the audio will only be &#xA;played on selected Sim. Otherwise it will be played regardless &#xA;Sim is selected or not.&#xA;&#xA;If audio target is Object, always set this to False. Otherwise&#xA;the audio will never be played.&#xA;&#xA;ex. This will be useful for Earbuds where we want to hear the&#xA;music only when the Sim is selected." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                        <TunableVariant type="None" name="display_type" class="ScreenSlamDisplayVariant" default="size_based" display="Display Type" muid="133919FD75D138AA" Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="key_based" class="TunableScreenSlamKeyBased" display="Key Based" muid="9B7887FCEF5AB664" description="Screen Slam visual is dictated by a string key.&#xA;&#xA;Verify with your UI partner what this should be. " Deprecated="False" filter="0" group="General">
+                                <Tunable type="str" name="key" class="Tunable" default="medium" display="Key" muid="B2B2C7FED6228265" description="Key to use for the screenslam. This will be typically tied&#xA;to what animation will play. Verify with your UI partner&#xA;what the correct value to use will be." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="size_based" class="TunableScreenSlamSizeBased" display="Size Based" muid="EF083D6BEDD879A5" description="Screen Slam visual is dictated by the value of the size tunable." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="ScreenSlamSizeEnum" name="screen_slam_size" class="TunableEnumEntry" default="MEDIUM" display="Screen Slam Size" muid="A96984C7CE332E5" static_entries="ui-screen_slam.ScreenSlamSizeEnum" description="Screen slam size." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                        <TunableVariant type="None" name="icon" class="OptionalTunable" default="disabled" display="Icon" muid="16E1E7058D345F58" description=",&#xA;Icon to be displayed for the screen Slam." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8344C1DD6B61E833" />
+                            <Tunable type="ResourceKey" name="enabled" class="TunableIcon" default="None" display="Enabled" muid="9F1CA77F80914088" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="text" class="OptionalTunable" default="disabled" display="Text" muid="5351CB4C3101BAF1" description="&quot;&#xA;Text of the screen slam." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="2CD4C78F4B224A21" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="1E68D099ABF24638" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="title" class="OptionalTunable" default="disabled" display="Title" muid="13524165A5D72D11" description="Title of the screen slam." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A16E3F37750BD369" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="B405811D4927D75E" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                    </TunableTuple>
+                    <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="487BFA466C0808AE" description="A reference to a ScreenSlam tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ScreenSlam" />
+                </TunableVariant>
+                <TunableTuple name="trigger_time" class="TunableTimeOfDay" display="Trigger Time" muid="A119BB17278D4287" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="hour" class="TunableRange" default="6" display="Hour" muid="37F964F3970EB8B4" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="9D39223A01B6A428" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="ResourceKey" name="season_icon" class="TunableIcon" default="None" display="Season Icon" muid="7AB518F59AA4DB7" description="The season's icon." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" resource_types="0x2f7d0004" />
+
+        <TunableList name="season_length_content" class="TunableMapping" display="Season Length Content" muid="B803C6DEBF99A9B0" mapping_key="key" mapping_value="value" description="A mapping of season length option to the content contained within." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="1085E4A929D87877" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="SeasonLength" name="key" class="TunableEnumEntry" default="NORMAL" display="Key" muid="EF55983C4C30A422" static_entries="seasons-seasons_enums.SeasonLength" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="TunableSeasonalContent" display="Value" muid="DC1E65532E4A4418" description="Content of a season, consisting primarily of season-specific holidays,&#xA;as well as the timings of when early/late season begins within the season." Deprecated="False" filter="0" group="General">
+                    <TunableList name="holidays" class="TunableMapping" display="Holidays" muid="D4DDA6E3E4193652" mapping_key="key" mapping_value="value" Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="FC34E75B16F899ED" Deprecated="False" filter="0" group="General">
+                            <Tunable type="holiday_definition" name="key" class="TunableReference" display="Key" muid="6DCD51E11C5A6B98" description="Drama node to be scheduled for this holiday." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <TunableList name="value" class="TunableList" display="Value" muid="84E7E3B6A82282AA" Deprecated="False" filter="0" group="General">
+                                <TunableTuple class="TunableDayOfSeason" muid="2D23553DF95DF201" description="The day of the season, which is a week and day of week,&#xA;relative to the start of the season." Deprecated="False" filter="0" group="General">
+                                    <TunableEnum type="Days" name="day_of_week" class="TunableEnumEntry" default="SUNDAY" display="Day Of Week" muid="E427F3F32BC23DF8" static_entries="tunable_time.Days" description="Day of the week." Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="week_of_season" class="TunableRange" default="0" display="Week Of Season" muid="E23131CEA7E8D293" min="0" max="7" description="Which week of the season this is.  First week is week 0." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableList>
+                    <TunableTuple name="segments" class="TunableTuple" display="Segments" muid="8CD9F7B2554ADBE" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="early_season_length" class="TunableTimeSpan" display="Early Season Length" muid="FB44D70F13154E41" description="Early season length, in days." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="days" class="TunableRange" default="2" display="Days" muid="49494A2E9639E364" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="late_season_length" class="TunableTimeSpan" display="Late Season Length" muid="8AB9868B62BEDE13" description="Late season length, in days." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="days" class="TunableRange" default="2" display="Days" muid="761A72B589BB85D6" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="int" name="season_name" class="TunableLocalizedString" default="0x0" display="Season Name" muid="9C655F9B62098978" description="The season's name." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" />
+
+        <TunableVariant type="None" name="whim_set" class="OptionalTunable" default="disabled" display="Whim Set" muid="4434B0DCF9C4F316" description="If enabled then this season will offer a whim set to the Sim&#xA;when it is that season." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C4C0F384D9E2B02" />
+            <Tunable type="aspiration" name="enabled" class="TunableReference" display="Enabled" muid="8A19B61B309CFCE2" description="A whim set that is active when this season is active." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectivelessWhimSet" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

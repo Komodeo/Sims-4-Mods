@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.water_terrain_objects" muid="7BF82BF6DE7B20F6">
+        <Class name="WaterTerrainObjectCache" muid="EEF94546F8FF6B25">
+            <TunableTuple name="OBJECT_SQ_DISTANCE_THRESHOLD" class="TunableThreshold" display="Object Sq Distance Threshold" muid="CCE12773A6DCB3DB" description="The distance threshold between the user's click on water and objects in&#xA;the world that have WATER_TERRAIN_TAGS. If the user picks water, we&#xA;find the nearest object in this distance threshold and generate a pie&#xA;menu." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="A9B25322772A7BFE" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="value" class="Tunable" default="100.0" display="Value" muid="D0ABF6BC3B0502E" description="The value of the threshold that the collection is compared&#xA;against." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableList name="WATER_TERRAIN_TAGS" class="TunableList" display="Water Terrain Tags" muid="B6A5833AB9F2E0C2" description="The Tags on Object Definitions that mark objects for caching near the&#xA;water. Please make exclusive tags for this, as we don't want to include&#xA;objects that don't make sense." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="D6169977952929A3" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A tag that marks an object for caching near the water terrain." Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

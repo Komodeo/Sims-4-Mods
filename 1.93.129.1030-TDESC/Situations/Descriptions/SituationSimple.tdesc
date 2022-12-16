@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="SituationSimple" module="situations.situation_simple" muid="F9C628CB299348BB" description="Base class for Situations that will be constructed, primarily by designers,&#xA;in the Object Editor. These situations are comprised of a linear sequence&#xA;of phases of a fixed duration." instance_subclasses_only="False" parents="Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <TunableList name="_exit_conditions" class="TunableList" display="Exit Conditions" muid="B5450A48C775C923" description="A list of condition groups of which if any are satisfied, the group is satisfied." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="DF68EB48227C447B" Deprecated="False" filter="0" group="General">
+                <TunableList name="conditions" class="TunableList" display="Conditions" muid="A156382D037E9B8F" description="A list of conditions that all must be satisfied for the&#xA;group to be considered satisfied." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" class="TunableSituationCondition" default="time_based" muid="E1380FE45CB17413" description="A condition for a situation or single phase." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="event_based" class="TunableEventBasedCondition" display="Event Based" muid="7F5784895D4D292" description="A condition that is satsified by some event" Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="TestEvent" name="event_to_listen_for" class="TunableEnumEntry" default="Invalid" display="Event To Listen For" muid="E7FD449A7649DB7E" dynamic_entries="event_testing-test_events.TestEvent._elements" static_entries="event_testing-test_events.TestEvent" description="Event that this exit condition should listen for " Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="time_based" class="TunableTimeRangeCondition" display="Time Based" muid="D77E56BC9241E161" description="The minimum and maximum amount of time required to satisify this condition." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="max_time" class="TunableSimMinute" default="None" display="Max Time" muid="3FBC86645FFD8E2A" min="None" max="None" description="Maximum amount of time (in sim minutes) for this condition to be satisfied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="min_time" class="TunableSimMinute" default="1" display="Min Time" muid="4177E29E1FB3A677" min="None" max="None" description="Minimum amount of time (in sim minutes) for this condition to be satisfied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="_phases" class="TunableList" display="Phases" muid="24B6DA4095FBB6C7" Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableSituationPhase" muid="D51DDFCD839FAC0E" description="Situation reference." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="duration" class="TunableSimMinute" default="60" display="Duration" muid="7249FAD6A586F123" min="None" max="None" description="How long the phase will last in sim minutes.&#xA;0 means forever, which should be used on the last phase of the situation." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="exit_conditions" class="TunableList" display="Exit Conditions" muid="D427AD0DBFBA8392" description="A list of condition groups of which if any are satisfied, the group is satisfied." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="940CCA1159B9015" Deprecated="False" filter="0" group="General">
+                        <TunableList name="conditions" class="TunableList" display="Conditions" muid="D4FEAB31B2167B6F" description="A list of conditions that all must be satisfied for the group to be considered satisfied." Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" class="TunableSituationCondition" default="time_based" muid="62FA2C28437DE004" description="A condition for a situation or single phase." Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="event_based" class="TunableEventBasedCondition" display="Event Based" muid="DB4457BF3E1A3724" description="A condition that is satsified by some event" Deprecated="False" filter="0" group="General">
+                                    <TunableEnum type="TestEvent" name="event_to_listen_for" class="TunableEnumEntry" default="Invalid" display="Event To Listen For" muid="2538C449D212CC5A" dynamic_entries="event_testing-test_events.TestEvent._elements" static_entries="event_testing-test_events.TestEvent" description="Event that this exit condition should listen for " Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                                <TunableTuple name="time_based" class="TunableTimeRangeCondition" display="Time Based" muid="93BBAFD32C9BACA3" description="The minimum and maximum amount of time required to satisify this condition." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="float" name="max_time" class="TunableSimMinute" default="None" display="Max Time" muid="EE72C802298D2BE5" min="None" max="None" description="Maximum amount of time (in sim minutes) for this condition to be satisfied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="float" name="min_time" class="TunableSimMinute" default="1" display="Min Time" muid="87ABD30035791F2C" min="None" max="None" description="Minimum amount of time (in sim minutes) for this condition to be satisfied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableVariant>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableList>
+                <TunableList name="job_list" class="TunableMapping" display="Job List" muid="642BF1B0455D5417" mapping_key="job" mapping_value="role" description="A list of roles associated with the situation." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="4B5F02C673BF0D25" Deprecated="False" filter="0" group="General">
+                        <Tunable type="situation_job" name="job" class="TunableReference" display="Job" muid="A655275821630F9" description="Job reference" allow_none="False" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="role_state" name="role" class="TunableReference" display="Role" muid="4AF9B67F71FF577F" description="Role the job will perform" allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

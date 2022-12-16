@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="animation.focus.focus_tuning" muid="136F2AD7F37C04D2">
+        <Class name="FocusScore" muid="44B4A9F3025F6C67" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="4C42F7A16FBBB1EE" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="1541E3ED847ED51D" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="NONE" muid="90E2182B0FDDDAFF" enum_value="0" />
+        </Class>
+
+        <Class name="FocusTuning" muid="56E62D8CF00DBB6">
+            <TunableList name="FOCUS_SCORE_VALUES" class="TunableMapping" display="Focus Score Values" muid="5305800BBC2444A4" mapping_key="key" mapping_value="value" description="A mapping of focus score to their numerical representation." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="36906682685E89E0" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="FocusScore" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="BFF92CE231B5DC56" dynamic_entries="animation-focus-focus_tuning.FocusScore._elements" static_entries="animation-focus-focus_tuning.FocusScore" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="value" class="TunableRange" default="1" display="Value" muid="A311A17B454B471D" min="0" max="None" description="The value associated with this focus score. Sims chose what to focus&#xA;on based on the weighted randomization of all objects they could&#xA;choose to focus on." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

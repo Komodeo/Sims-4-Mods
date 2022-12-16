@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="ChooseDeliverySuperInteraction" module="crafting.serving_interactions" muid="F135EA359C04570B" instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <Deleted name="allow_autonomous" muid="BCD7AD35A9F43B27" />
+
+        <Deleted name="allow_user_directed" muid="6F14015844EF0A21" />
+
+        <Deleted name="basic_content" muid="5E1494868711F878" />
+
+        <TunableVariant type="None" name="consume_affordance_override" class="OptionalTunable" default="disabled" display="Consume Affordance Override" muid="E16B4F2D1FA23D8D" description="If tuned, this will forward a consume affordance override to the&#xA;serving interactions instead of getting the consume affordance from&#xA;the object's consumable component. Useful if we want the Sim to do&#xA;something instead of consume the object after it has been served." Deprecated="False" filter="0" group="Serving Tunings">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5C59D3B27D4C158D" />
+            <Tunable type="interaction" name="enabled" class="TunableReference" display="Enabled" muid="54928233981350DB" description="Affordance override for when we want to push a consume." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SuperInteraction" />
+        </TunableVariant>
+
+        <Tunable type="recipe" name="crafting_type_requirement" class="TunableReference" display="Crafting Type Requirement" muid="BD73C9FFF6B0CB5F" description="This specifies the crafting object type that is required for this interaction to work.This allows the crafting system to know what type of object the SI was expecting when it can't find that SI." allow_none="True" Deprecated="False" filter="0" group="General" restrict="CraftingObjectType" />
+
+        <Tunable type="bool" name="destroy_ico_object_if_reset" class="Tunable" default="False" display="Destroy Ico Object If Reset" muid="5D22C9BD44A7CFDD" description="If this is enabled and the sim is reset while they are performing &#xA;this interaction, we will destroy the ico object and end the&#xA;crafting process. We should use this in cases where the ICO object&#xA;cannot be safely reset. This will also refund the household." Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="display_name" muid="CB40401881D292C1" />
+
+        <Deleted name="display_name_overrides" muid="438D77D21AB18B9B" />
+
+        <Tunable type="bool" name="force_final_product" class="Tunable" default="False" display="Force Final Product" muid="287AC807B2A0B8A" description="Whether or not to force the final product to set as a result of this interaction completing.  &#xA;Normally this is governed by the phase when a crafting process is transferred to an ICO or creation of the &#xA;final product.&#xA;  &#xA;Set this to true in cases where this doesn't make sense.&#xA;&#xA;e.g. Crafting on a cauldron places the process early on the cauldron which starts out as an ICO, &#xA;but at the completion of the last crafting SI, the cauldron itself 'becomes' a the final product." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="serve_target_override" class="OptionalTunable" default="disabled" display="Serve Target Override" muid="C339EED76340A7F0" description="An optional target override for the Serve interactions that are&#xA;pushed during this one.&#xA;&#xA;Example: This interaction is tuned on the Espresso Machine because&#xA;you don't need an Espresso Bar to make drinks, but we need to be&#xA;able to serve to an Espresso bar underneath using the same recipe." Deprecated="False" filter="0" group="Serving Tunings">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="23D0A41358ACF12F" />
+            <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Object" display="Enabled" muid="38E7AC0D1C32BC3A" static_entries="interactions.ParticipantType" description="The participant type to use as the target of the serve&#xA;interactions." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="serve_to_sit_slot_affordance" class="OptionalTunable" default="disabled" display="Serve To Sit Slot Affordance" muid="88443E2672E88FD0" description="If tuned, the Sim has the ability to serve to a slot on a surface&#xA;that the ordering Sim is sitting at." Deprecated="False" filter="0" group="Serving Tunings">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A0E03342409BB922" />
+            <Tunable type="interaction" name="enabled" class="TunableReference" display="Enabled" muid="BC1DE4C1CF501278" description="Affordance used to serve an object to a slot on a Surface that a&#xA;Sim is sitting at." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ServeToSitSlotSuperInteraction,CreateAndServeToSitSlotSuperInteraction" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="serve_to_slot_affordance" class="OptionalTunable" default="disabled" display="Serve To Slot Affordance" muid="8D50AE3EBD607805" description="If tuned, the Sim has the ability to serve to a slot on a surface." Deprecated="False" filter="0" group="Serving Tunings">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="21FC0ED18D9D6F2" />
+            <Tunable type="interaction" name="enabled" class="TunableReference" display="Enabled" muid="F5A4922FE1942E0" description="Affordance used to serve an object to a slot, if the ordering Sim&#xA;is not at a surface." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ServeToSlotSuperInteraction,CreateAndServeToSlotSuperInteraction" />
+        </TunableVariant>
+
+        <Tunable type="bool" name="skip_serve_if_crafter_is_orderer" class="Tunable" default="False" display="Skip Serve If Crafter Is Orderer" muid="A4CF50FC1EB625B5" description="If true, and the crafter is the orderer, we will use Consume&#xA;Affordance Override or get the consume affordance on the object,&#xA;and push that instead of serve to self.&#xA;&#xA;NOTE: This will only work if the final product has already been&#xA;created as part of the crafting process before this affordance is&#xA;run." Deprecated="False" filter="0" group="Serving Tunings" />
+
+        <Tunable type="bool" name="stop_other_sims_crafting" class="Tunable" default="False" display="Stop Other Sims Crafting" muid="DAC42718BC48DB5D" description="If this crafting interaction is being run as part of group crafting&#xA;then we will inform the situation that we would like the helping&#xA;crafters to stop.  Example: When the sim transitions off the counter&#xA;to putting the items in the stove the other sims helping craft&#xA;should no longer be running interactions on the counters chopping&#xA;food." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

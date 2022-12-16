@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="interactions.base.super_interaction" muid="A6F79A7E58A3D5FA">
+        <Class name="RallyableTag" muid="18F1B0D1BE6DB6C8" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="C48A7805AEA816AC" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="445B8792C1115658" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="NONE" muid="68484E7C0F19E161" enum_value="0" />
+        </Class>
+
+        <Class name="RallySource" muid="B874E6C7B0996F08" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="ENSEMBLE" muid="F9F3BE53A8DDA272" enum_value="1" />
+
+            <EnumItem name="SOCIAL_GROUP" muid="93F64BC922CDBAE6" enum_value="0" />
+        </Class>
+
+        <Class name="SuperInteraction" muid="1637133ADBC54894">
+            <Tunable type="interaction" name="CARRY_POSTURE_REPLACEMENT_AFFORDANCE" class="TunableReference" display="Carry Posture Replacement Affordance" muid="47934FB921229352" description="The replacement affordance for carry postures. Should only be changed with engineering support." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="DEFAULT_POSTURE_TARGET_PREFERENCES" class="TunableMapping" display="Default Posture Target Preferences" muid="531AF9C500D271B6" mapping_key="key" mapping_value="value" description="A tunable mapping of posture tags to a goal score bonus in meters.&#xA;This is used to make some objects more attractive than others for&#xA;the purposes of posture preference scoring.  That means that higher&#xA;numbers are good; the Sim will go x meters out of their way to use&#xA;these objects, where x is the amount tuned.&#xA;&#xA;For example, if one object has a score of 3 and another object has&#xA;a score of 0, the object that scores 0 will need to be more than 3&#xA;meters closer than the object that scores 3 for the Sim to choose&#xA;it.&#xA;&#xA;Example: Let's say you want to make couches more desirable for&#xA;watching TV.  To do this, you would create a new tag in&#xA;PostureTransitionTargetPreferenceTag (found in Tuning-&gt;postures)&#xA;called &quot;ComfortableSeating&quot;.  Then you would tag all appropriate&#xA;objects with that tag by adding it to PosturePreferenceTagList on&#xA;the object.  Next, you would come in here and add a new item with a&#xA;key of that tag and a value of 10 or so, which is about the size of&#xA;the constraint to watch TV. Thus they will tend to use couches in&#xA;the TV cone at the expense of other factors. One example downside&#xA;of this is they will be less inclined to consider how centered they&#xA;are in the TV cone and what direction the sofa is facing." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="54D42AFE387FEF83" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="PostureTransitionTargetPreferenceTag" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="E48DF39A1C4E2F23" dynamic_entries="postures.PostureTransitionTargetPreferenceTag._elements" static_entries="postures.PostureTransitionTargetPreferenceTag" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="761B08DEE7F9EF84" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="MULTIPLAYER_REJECTED_TOOLTIP" class="TunableLocalizedString" default="0x0" display="Multiplayer Rejected Tooltip" muid="F1B356A917A302B" description="Grayed out Pie Menu Text on sim has already been rejected by other&#xA;player." Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

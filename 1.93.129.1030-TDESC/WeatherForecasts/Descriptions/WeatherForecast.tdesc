@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="weather_forecast" class="WeatherForecast" module="weather.weather_forecast" muid="2C1D31A38867875E" description="Weather Forecast tunable resource." instance_needs_reference="True" instance_subclasses_only="False" path="WeatherForecasts\Descriptions" use_guid_for_reference="True">
+        <Tunable type="ResourceKey" name="calendar_icon" class="TunableIcon" default="None" display="Calendar Icon" muid="55755647D4DBAAA" description="The small icon for this forecast." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" resource_types="0x2f7d0004" />
+
+        <Tunable type="ResourceKey" name="calendar_icon_large" class="TunableIcon" default="None" display="Calendar Icon Large" muid="40CE19900A6ECD4E" description="The large icon for this forecast." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" resource_types="0x2f7d0004" />
+
+        <Tunable type="ResourceKey" name="calendar_icon_mascot" class="TunableIcon" default="None" display="Calendar Icon Mascot" muid="AD9D7C88E61BFC1D" description="Optional icon to use as the forecast mascot in the calendar." allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" resource_types="0x2f7d0004" />
+
+        <Tunable type="int" name="forecast_description" class="TunableLocalizedString" default="0x0" display="Forecast Description" muid="AEB5E5AC8436931F" description="The description for this forecast." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="int" name="forecast_name" class="TunableLocalizedString" default="0x0" display="Forecast Name" muid="B3DC3E3E2BB37B18" description="The name for this forecast." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableVariant type="None" name="prescribed_weather_type" class="OptionalTunable" default="disabled" display="Prescribed Weather Type" muid="547A805D4655D7B0" description="The types of prescribed weather this forecast counts as" Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="DDACF6EC94A6F895" />
+            <TunableTuple name="enabled" class="TuningPrescribedWeatherType" display="Enabled" muid="A4EA9BE2B3FD31BE" Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="blizzard" class="Tunable" default="False" display="Blizzard" muid="9CA045CA79CFFDAD" description="If checked this forecast will be unavailable if blizzard is disabled" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="rain" class="Tunable" default="False" display="Rain" muid="FC2C98B592DD8585" description="If checked this forecast will be unavailable if rain is disabled" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="snow" class="Tunable" default="False" display="Snow" muid="8609791837C81A42" description="If checked this forecast will be unavailable if snow is disabled" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="storm" class="Tunable" default="False" display="Storm" muid="638ED75F624E0D13" description="If checked this forecast will be unavailable if storm is disabled" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="thunder_snow_storms" class="Tunable" default="False" display="Thunder Snow Storms" muid="B6A54D4C4170EBCC" description="If checked this forecast will be unavailable if thunder snow storms are disabled in the options menu." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableList name="weather_event_time_blocks" class="TunableMapping" display="Weather Event Time Blocks" muid="1CF0D02C926F858B" mapping_key="key" mapping_value="value" description="The weather events that make up this forecast.  Key is hour of day&#xA;that event would start, value is a list of potential events" Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="F414721482686ADF" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="key" class="Tunable" default="0" display="Key" muid="3827C46CC4C17A6A" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableList" display="Value" muid="E1CB26D1BBD2A81B" description="List of the weather events that can occur in this time block" Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="1332CE58C193FA58" description="A tuple of information for the weather event." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="duration" class="TunableInterval" display="Duration" muid="4C62FFBFB1C4707B" description="Minimum and maximum time, in sim hours, this event can last." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="763D2060AAEDC4EB" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableRange" default="4" display="Upper Bound" muid="F54B616FF039AB8" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <Tunable type="weather_event" name="weather_event" class="TunableReference" display="Weather Event" muid="3DD152E184A977F2" description="The weather event." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="WeatherEvent" />
+                        <Tunable type="int" name="weight" class="Tunable" default="1" display="Weight" muid="612D8D3DAE40FD94" description="Weight of this event being selected." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="weather_ui_override" class="TunableMapping" display="Weather Ui Override" muid="D0BB259CE22136A4" mapping_key="key" mapping_value="value" description="If set, this overrides the weather type that is shown for the&#xA;specified group." Deprecated="False" filter="0" group="Special Cases">
+            <TunableTuple class="TunableTuple" muid="624BF7D305398D4E" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="WeatherTypeGroup" name="key" class="TunableEnumEntry" default="UNGROUPED" display="Key" muid="510ABE3923FB1148" static_entries="weather-weather_enums.WeatherTypeGroup" Deprecated="False" filter="0" group="General" invalid_entries="UNGROUPED" />
+                <TunableEnum type="WeatherType" name="value" class="TunableEnumEntry" default="UNDEFINED" display="Value" muid="93150461825F394E" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" Deprecated="False" filter="0" group="General" invalid_entries="UNDEFINED" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

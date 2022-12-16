@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.components.inventory_availability_tuning" muid="85A42427F52C06A8">
+        <Class name="InventoryAvailabilityTuning" muid="620A28D92D559C6E">
+            <TunableList name="ZONE_AVAILABILITY_RULES" class="TunableList" display="Zone Availability Rules" muid="E8688961CEA98FB1" description="The rules used to determine whether or not specific items are available in a given region/zone." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="4CE078E7FA3E281D" Deprecated="False" filter="0" group="General">
+                    <TunableList name="associated_tests" class="TunableInventoryAvailabilityTestList" display="Associated Tests" muid="DB11C764497869B2" description="A set of tests that must pass for this ruleset to be active.  Any tests used here should&#xA;not be based on anything other than the current zone or venue." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" class="TunableInventoryAvailabilityTestVariant" default="region" muid="DFB41857C8FAC700" Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="region" class="TunableRegionTest" display="Region" muid="6A64B6BE0449EED0" description="A test to check which region the actor sim is in." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="blacklist" class="OptionalTunable" default="disabled" display="Blacklist" muid="F71885CD53C84E58" description="If enabled then we will check a blacklist of regions in insure that&#xA;the sim is not within one of them." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CFC301A5239BD944" />
+                                    <TunableList name="enabled" class="TunableSet" display="Enabled" muid="C0253A18560C60C" description="A set of regions that the sim being tested must not be within." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <Tunable type="region" class="TunableReference" muid="C123BFFBFE5234A7" description="A region that the sim being tested in must not be within." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    </TunableList>
+                                </TunableVariant>
+                                <TunableVariant type="None" name="whitelist" class="OptionalTunable" default="disabled" display="Whitelist" muid="BB0C9A08E6FA80DF" description="If enabled then we will check a whitelist of regions in insure that&#xA;the sim is within one of them." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="353848052B48BE59" />
+                                    <TunableList name="enabled" class="TunableSet" display="Enabled" muid="89A6197D419F92AC" description="A set of regions that the sim being tested must be within." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <Tunable type="region" class="TunableReference" muid="4BB6D23C77E91DF5" description="A region that the sim being tested in must be within." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    </TunableList>
+                                </TunableVariant>
+                            </TunableTuple>
+                        </TunableVariant>
+                    </TunableList>
+                    <TunableTuple name="tag_white_black_list" class="TunableWhiteBlackList" display="Tag White Black List" muid="E4983930E45D3D2E" description="If associated tests pass, this white/black list indicates whether this object will be visible based&#xA;on the tags on the object." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="blacklist" class="OptionalTunable" default="nothing" display="Blacklist" muid="70488EAD13C2D226" description="When an item is tested against this white/black list, it is&#xA;only allowed if it is not in the blacklist. If no blacklist is&#xA;specified, no items are disallowed." Deprecated="False" filter="0" group="General">
+                            <Tunable name="nothing" class="TunableExistance" display="Nothing" muid="234AF974727BCB8C" />
+                            <TunableTuple name="specify" class="TunableBlacklist" display="Specify" muid="C724DE3BEF6543BB" description="A tunable blacklist." Deprecated="False" filter="0" group="General">
+                                <TunableList name="blacklist" class="TunableSet" display="Blacklist" muid="EF93D066D9B37925" description="Blacklisted items." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Tag" class="TunableTag" default="INVALID" muid="2A78523F4C63DA6D" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A tag to filter on." Deprecated="False" dynamic_entries_prefix="Func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                                </TunableList>
+                                <TunableVariant type="None" name="threshold" class="OptionalTunable" default="threshold" display="Threshold" muid="AB75198BB432B1B" description="Tunable option for how many items must be in the blacklist&#xA;for the blacklist to fail when testing a collection of items.&#xA;By default, only one object needs to be in the list." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="all_must_match" class="TunableExistance" display="All Must Match" muid="75D498224171FF2E" />
+                                    <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="C7B66AF597B0A336" description="When testing a collection of items, the number of items in&#xA;that collection that are in the blacklist must pass this&#xA;threshold test for the blacklist to disallow them all." Deprecated="False" filter="0" group="General">
+                                        <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="43EA91E20D61C690" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                        <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="E5DB33F06A48533E" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableVariant>
+                            </TunableTuple>
+                        </TunableVariant>
+                        <TunableVariant type="None" name="whitelist" class="OptionalTunable" default="everything" display="Whitelist" muid="AC9B1E53FBCE2842" description="When an item is tested against this white/black list, it is&#xA;only allowed if it is in the whitelist. If no whitelist is&#xA;specified, all items are allowed." Deprecated="False" filter="0" group="General">
+                            <Tunable name="everything" class="TunableExistance" display="Everything" muid="A1AB2313DBDCBE5E" />
+                            <TunableTuple name="specify" class="TunableWhitelist" display="Specify" muid="6FE5007E4A375AFF" description="A tunable whitelist." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="threshold" class="OptionalTunable" default="threshold" display="Threshold" muid="AFB45ECE243E166D" description="Tunable option for how many items must be in the whitelist&#xA;for the whitelist to pass when testing a collection of items.&#xA;By default, only one object needs to be in the list." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="all_must_match" class="TunableExistance" display="All Must Match" muid="F88B72F6DB9C9323" />
+                                    <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="BB7BD1BB3B2F00DB" description="When testing a collection of items, the number of items in&#xA;that collection that are in the whitelist must pass this&#xA;threshold test for the whitelist to allow them all." Deprecated="False" filter="0" group="General">
+                                        <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="718612DF31E93FDB" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                        <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="883FDD25A750A87F" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableVariant>
+                                <TunableList name="whitelist" class="TunableSet" display="Whitelist" muid="C9859CDFF6EBA44C" description="Whitelisted items." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Tag" class="TunableTag" default="INVALID" muid="7E1AC46069A69FAD" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A tag to filter on." Deprecated="False" dynamic_entries_prefix="Func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="ObjectsInMultipleInventoriesObjectPickerInteraction" module="interactions.base.picker_interaction" muid="3E7DF4DB8F051585" description="Picker Interaction to select a single object from various inventories." instance_needs_reference="True" instance_subclasses_only="False" parents="ObjectPickerInteraction, PickerSingleChoiceSuperInteraction, PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="inventory_item_test" class="TunableVariant" default="object" display="Inventory Item Test" muid="C32DB48304676613" description="A test to run on the objects in the inventory to determine&#xA;which objects will show up in the picker. An object test type&#xA;left un-tuned is considered any object." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple name="object" class="TunableObjectTypeFactory" display="Object" muid="5CDBD6A1B6D4FAFF" Deprecated="False" filter="0" group="General">
+                <Tunable type="object" name="actual_object" class="TunableReference" display="Actual Object" muid="353F6C6BDD974BD2" description="The object we want to test ownership of" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableTuple>
+            <TunableTuple name="tag_set" class="TunableObjectTagFactory" display="Tag Set" muid="4C14198389E14DEB" Deprecated="False" filter="0" group="General">
+                <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="FAADCD095509054B" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="4002F3BB54822452" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+                <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="905A3AD1762973C2" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the objects on the lot." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="use_household_inventory" class="OptionalTunable" default="disabled" display="Use Household Inventory" muid="4AE612FB80BBBD9" description="If enabled, the actor who's household inventory to look for &#xA;items that pass the test." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="94483183D4C1C04E" />
+            <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="82A426F65023B14D" static_entries="interactions.ParticipantType" description="Subject on which the household inventory exists." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="use_sim_inventory" class="OptionalTunable" default="disabled" display="Use Sim Inventory" muid="6E8DFF81C38D761C" description="If enabled, the actor for who's inventory to look for items that pass &#xA;the test." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A6085CCFE1032E45" />
+            <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="A6347E425ABD4228" static_entries="interactions.ParticipantType" description="Subject on which the sim inventory exists." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

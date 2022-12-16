@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="sim_template" class="PremadeHouseholdTemplate" module="world.premade_household_template" muid="4DECB591E6B2D686" description="A household template for creating premade households." instance_subclasses_only="False" parents="HouseholdTemplate" path="SimTemplates\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="_hidden" class="Tunable" default="False" display="Hidden" muid="2C86ACFBD5B0DD7C" description="If enabled, the household is hidden from Manage Households,&#xA;accessible from Managed Worlds." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="_household_members" class="TunableList" display="Household Members" muid="ADD2318C5CAC954C" description="A list of sim templates that will make up the sims in this household." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="F018EDD87A40EB3A" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="Tag" name="household_member_tag" class="TunableEnumWithFilter" default="INVALID" display="Household Member Tag" muid="F2C8A6327BA00DF4" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag to be used to create relationship between sim members. This does&#xA;NOT have to be unique for all household templates. If you want to&#xA;add more tags in the tag tuning just add with prefix of&#xA;household_member.r." Deprecated="False" dynamic_entries_prefix="household_member" filter="0" group="General" />
+                <Tunable type="sim_template" name="sim_template" class="TunableReference" display="Sim Template" muid="A480CC3F2393E0C3" description="A template to use for creating a household member. If this&#xA;references a resource that is not installed, the household member is&#xA;ignored and the family is going to be created without this&#xA;individual." allow_none="False" Deprecated="False" filter="0" group="General" restrict="PremadeSimTemplate" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="_townie_street" class="OptionalTunable" default="disabled" display="Townie Street" muid="CCA38EEDB124E412" description="If enabled, this household is a townie household and is&#xA;assigned to a street." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C663086FA7E17F1" />
+            <Tunable type="worlddescription" name="enabled" class="TunableReference" display="Enabled" muid="F92DABD8016FA9E2" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

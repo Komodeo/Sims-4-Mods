@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="SwitchLightImmediateInteraction" module="objects.lighting.lighting_interactions" muid="9084EA507F898D1C" description="An interaction that immediately changes the dimmer value of a light or a&#xA;particular set of lights." instance_needs_reference="True" instance_subclasses_only="False" parents="ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="lighting_setting_operation" class="TunableVariant" default="from_tuning" display="Lighting Setting Operation" muid="6E69D2961B35C8F" description="Define the operation we're going to execute. We can either apply&#xA;settings from the tuning or display UI that allows the player to&#xA;affect this light." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="from_tuning" class="Tunable_FromTuning" display="From Tuning" muid="6064221E92AB2698" description="The interaction turns the light on or off depending on the tuned values." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="lighting_settings" class="TunableLightingHelper" display="Lighting Settings" muid="F36C65B68788F39E" description="A tunable that allows you to easily control lighting." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="dimmer_value" class="TunableDimmerValueVariant" default="automated_by_client" display="Dimmer Value" muid="83EEB8C8938097FC" description="Specify the intensity to be applied to the light." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="automated_by_client" class="Tunable_DimmerValueFromClient" display="Automated By Client" muid="8913F50C04EFA2A7" description="The dimmer value is automated by client." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="do_not_change_dimmer_value" class="Tunable_DoNotChangeDimmerValue" display="Do Not Change Dimmer Value" muid="A80B9E0EFBFF9272" description="Keep the dimmer value unchanged" Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="specify_dimmer_value" class="Tunable_DimmerValueSpecified" display="Specify Dimmer Value" muid="EA961A4B880C1E45" description="The dimmer value is specified." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="dimmer_value" class="TunableRange" default="0" display="Dimmer Value" muid="16512AE22F527F70" min="0" max="1" description="This value should be a float between 0.0 and 1.0. A value of&#xA;0.0 is off and a value of 1.0 is completely on." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="store_previous_setting" class="Tunable" default="False" display="Store Previous Setting" muid="8448B16BBF6F4049" description="If enabled, current dimmer value will be stored in &#xA;previous setting before changing it to the new value.." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="use_previous_setting" class="Tunable_DimmerValueFromPreviousSetting" display="Use Previous Setting" muid="31EA5D23C25EE186" description="The dimmer value is from previous dimmer value setting." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="light_color" class="TunableLightColorVariant" default="do_not_change_light_color" display="Light Color" muid="68D27C09F701B146" description="Specify the color to be applied to the light." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="do_not_change_light_color" class="Tunable_LightColorNoChange" display="Do Not Change Light Color" muid="2259CB44EA8C4362" description="Light color will not change" Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="specify_light_color" class="Tunable_LightColorSpecified" display="Specify Light Color" muid="B964DA52C6CB1175" description="The light color is specified." Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" name="light_color" class="TunableColor" default="none" display="Light Color" muid="34ECB083C79131FC" description="The color of the lights." Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="hex" class="TunableColorHex" display="Hex" muid="BEFC97FF8DF06491" description="A color." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="str" name="hex_code" class="Tunable" default="#FFFFFFFF" display="Hex Code" muid="BD4AF6E946810C4A" description="An ARGB color in hex, same as one would use in HTML. A leading '0x' or '#' is allowed but not required. You can omit the alpha, in which case opaque is assumed." Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                                <TunableEnum type="Color" name="name" class="TunableEnumEntry" default="WHITE" display="Name" muid="70D59CD75B692900" static_entries="sims4-color.Color" Deprecated="False" filter="0" group="General" />
+                                <Tunable name="none" class="TunableExistance" display="None" muid="57D66030373D250" />
+                                <TunableTuple name="rgb" class="TunableColorRGBA" display="Rgb" muid="FBA325231D99173B" description="A color." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="5801C4A930A5BF81" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="D065D4DCD213FE77" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="FC61983525DF17EA" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="3AA376D2FCB6079C" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableVariant>
+                            <Tunable type="bool" name="store_previous_setting" class="Tunable" default="False" display="Store Previous Setting" muid="5F58FAD7BF25E294" description="If enabled, current color will be stored in &#xA;previous setting before changing it to the new color." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="use_previous_setting" class="Tunable_LightColorFromPreviousSetting" display="Use Previous Setting" muid="2A82B37FB6EF9B00" description="The light color is from previous color value setting." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="light_target" class="TunableLightTargetVariant" default="this_light" display="Light Target" muid="6089952E4A146CB9" description="Define the set of lights that this interaction is applied to." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="all_lights" class="Tunable_LightTargetAll" display="All Lights" muid="B91DFD02BE93FD9" description="The target are all lights, except those tagged as manual lights." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="room_lights" class="Tunable_LightTargetRoom" display="Room Lights" muid="1058AF22792B9FFE" description="The target are all lights in the same room as the interaction target,&#xA;expect manual lights." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="specific_lights" class="Tunable_LightTargetFromTags" display="Specific Lights" muid="910F26A1E3118F0E" description="The target are all lights with a specific tag, including lights tagged&#xA;as manual lights." Deprecated="False" filter="0" group="General">
+                            <TunableList name="tags" class="TunableSet" display="Tags" muid="6408C1822EE1B64" description="An object with any tag in this set is a potential target of this&#xA;interaction, provided it has a lighting component." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="955FCD26E6AF8D0A" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A tag." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="this_light" class="Tunable_LightTargetInteraction" display="This Light" muid="6E7DD8DB46C6412C" description="The target is the light that is the target of the interaction." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="state_change" class="OptionalTunable" default="disabled" display="State Change" muid="3DC73B7C9214976F" description="If enabled, apply the state value to the light." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="684DCF2B5B661BD8" />
+                        <Tunable type="object_state" name="enabled" class="TunableReference" display="Enabled" muid="1E0FB42B40081B6D" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableTuple>
+            <TunableTuple name="from_ui" class="Tunable_FromUi" display="From Ui" muid="EC0B70A31D7DC5C0" description="The interaction displays a dialog that changes the light's color or&#xA;intensity." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="light_target" class="TunableLightTargetVariant" default="this_light" display="Light Target" muid="2C90BA95FD943092" description="Define the set of lights this operation applies to (e.g. All&#xA;Lights, This Room, All Candles, etc...)" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="all_lights" class="Tunable_LightTargetAll" display="All Lights" muid="590ED448D392C6B6" description="The target are all lights, except those tagged as manual lights." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="room_lights" class="Tunable_LightTargetRoom" display="Room Lights" muid="CCA58CA0BACECB1B" description="The target are all lights in the same room as the interaction target,&#xA;expect manual lights." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="specific_lights" class="Tunable_LightTargetFromTags" display="Specific Lights" muid="22AFFE5D66A50ED0" description="The target are all lights with a specific tag, including lights tagged&#xA;as manual lights." Deprecated="False" filter="0" group="General">
+                        <TunableList name="tags" class="TunableSet" display="Tags" muid="35572A11ABCB4F4F" description="An object with any tag in this set is a potential target of this&#xA;interaction, provided it has a lighting component." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="C192B503696575D6" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A tag." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="this_light" class="Tunable_LightTargetInteraction" display="This Light" muid="BC097B80E600245F" description="The target is the light that is the target of the interaction." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

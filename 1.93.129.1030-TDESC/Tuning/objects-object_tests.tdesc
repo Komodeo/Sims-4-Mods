@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.object_tests" muid="35FC2E7338BBD49B">
+        <Class name="TagTestType" muid="83DCB0BC9D47D3C0" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="CONTAINS_ALL_TAGS_IN_SET" muid="520369DEA29B14" enum_value="2" />
+
+            <EnumItem name="CONTAINS_ANY_TAG_IN_SET" muid="E12D71D6FBFD5E2F" enum_value="1" />
+
+            <EnumItem name="CONTAINS_NO_TAGS_IN_SET" muid="79DF949150A4DCAB" enum_value="3" />
+        </Class>
+
+        <Class name="StateTestType" muid="4A76BF8CE0C9C556" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="CONTAINS_ALL_STATES_IN_SET" muid="7CA0734FF95324C4" enum_value="2" />
+
+            <EnumItem name="CONTAINS_ANY_STATE_IN_SET" muid="A4A73ACBF2CAFDB" enum_value="1" />
+
+            <EnumItem name="CONTAINS_NO_STATE_IN_SET" muid="B54B56E829D8A5F5" enum_value="3" />
+        </Class>
+
+        <Class name="ObjectCriteriaTestEvents" muid="8A2E9C643C975BF5" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="AllObjectEvents" muid="147127E0F90E864D" enum_value="0" />
+
+            <EnumItem name="ItemCrafted" muid="37DCE3BE3A5A9FED" enum_value="5" />
+
+            <EnumItem name="ObjectStateChange" muid="D701DB0121088ABA" enum_value="39" />
+
+            <EnumItem name="OnExitBuildBuy" muid="7AC9D650244B3B04" enum_value="46" />
+
+            <EnumItem name="OnInventoryChanged" muid="7C43C99D7F99958D" enum_value="54" />
+        </Class>
+
+        <Class name="InventoryTest" muid="B26BF97D63485B44">
+            <Class name="TestHiddenInventories" muid="71F042A314F49214" enum_bit_flag="False" enum_locked="False">
+                <EnumItem name="ANY" muid="8E663BCBD34901C4" enum_value="0" />
+
+                <EnumItem name="HIDDEN_ONLY" muid="5C5A030DFC7BC8A3" enum_value="1" />
+
+                <EnumItem name="NON_HIDDEN_ONLY" muid="A4B6556B2890885" enum_value="2" />
+            </Class>
+        </Class>
+
+        <Class name="InUseTest" muid="4607C6F823273B74">
+            <Class name="Candidates" muid="F349010DEB4CDF38" enum_bit_flag="False" enum_locked="False">
+                <EnumItem name="NON_ACTOR_HOUSEHOLD_MEMBERS" muid="9B3884D86CD2FB42" enum_value="1" />
+
+                <EnumItem name="NON_ACTOR_NON_HOUSEHOLD_MEMBERS" muid="ED21C352E4B4C42C" enum_value="2" />
+
+                <EnumItem name="NON_ACTORS" muid="82AB2FAC9DEF93BE" enum_value="0" />
+
+                <EnumItem name="NOT_ACTORS_OR_ENSEMBLE" muid="ABBCB06590518293" enum_value="4" />
+
+                <EnumItem name="PICKED_SIM" muid="C0CBA7979763DD5" enum_value="3" />
+            </Class>
+        </Class>
+
+        <Class name="ActiveRoutingObjectsTest" muid="BD4003A5FA560D72">
+            <TunableList name="MAX_OBJECTS_PER_CATEGORY" class="TunableMapping" display="Max Objects Per Category" muid="D04CB33C545361D6" mapping_key="key" mapping_value="value" description="Mapping tracking category to maximum number of simultaneous active objects." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="23AE6ECF59C08B5D" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ObjectRoutingBehaviorTrackingCategory" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="DA7190EFE1942A28" dynamic_entries="objects-object_enums.ObjectRoutingBehaviorTrackingCategory._elements" static_entries="objects-object_enums.ObjectRoutingBehaviorTrackingCategory" description="Category to test against." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="value" class="Tunable" default="0" display="Value" muid="776D1B6E2C630302" description="The maximum number of simultaneous routing objects of this category.&#xA;If set to 0 or omitted, no maximum will be enforced." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

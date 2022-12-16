@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="objective" class="CustomTrackerObjective" module="event_testing.custom_tracker_objective" muid="EE7CC656FD0AB0A4" description="An objective that sets up special tracking in order to track special&#xA;changes outside of tests." instance_needs_reference="True" instance_subclasses_only="False" path="Objectives\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="display_age_list" class="DisplayAgeListOptionalTunable" default="disabled" display="Display Age List" muid="4C5DCF61E1E02B6E" description="If enabled, the Sim must be one of the specified ages for the&#xA;Objective to be displayed in the UI.  This does not create any&#xA;Gameplay side checks to prevent this Objective from being completed&#xA;anyways." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="153C9F38D5D7F5BC" />
+            <TunableList name="enabled" class="TunableEnumSet" default="TODDLER,CHILD,TEEN,YOUNGADULT,ADULT,ELDER" display="Enabled" muid="264583174C04509F" Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Age" class="TunableEnumEntry" default="ADULT" muid="1C0DE0C717E9AE54" static_entries="sims-sim_info_types.Age" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableVariant>
+
+        <Tunable type="int" name="display_text" class="TunableLocalizedString" default="0x0" display="Display Text" muid="54FDBF0D0DB83B9A" description="The single line description of the objective as it appears in&#xA;various panels." allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" />
+
+        <Tunable type="bool" name="relative_to_unlock_moment" class="Tunable" default="False" display="Relative To Unlock Moment" muid="3044B1A1DD68407E" description="If true this objective will start counting from the moment of&#xA;assignment or reset instead of over the total lifetime of a Sim,&#xA;most useful for Careers and Whimsets.&#xA;&#xA;Note: this effect is only for 'Total' data tests (tests that used&#xA;persisted save data)&#xA; " Deprecated="False" filter="0" group="Special Cases" />
+
+        <Tunable type="bool" name="resettable" class="Tunable" default="False" display="Resettable" muid="CC2CD21F61E1D524" description="Setting this allows for this objective to reset back to zero for&#xA;certain uses, such as for Whim Set activation." Deprecated="False" filter="0" group="Special Cases" />
+
+        <Tunable type="int" name="satisfaction_points" class="Tunable" default="0" display="Satisfaction Points" muid="AFA0EE7EC0707A2D" description="The number of satisfaction points received upon the completion of&#xA;this Objective." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="Rewards" />
+
+        <Tunable type="bool" name="show_progress" class="Tunable" default="True" display="Show Progress" muid="27192BDF8B3CC8D5" description="If True, incremental progress is shown in UI. If False,&#xA;progress display is disabled." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="int" name="tooltip" class="TunableLocalizedString" default="0x0" display="Tooltip" muid="ECB3638ABEA3F66" description="The tooltip of the Objective." allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" />
+
+        <TunableVariant type="None" name="tracking" class="TunableVariant" default="commodity" display="Tracking" muid="FA5EF1028370DE4D" description="The method of tracking that we want to use." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="commodity" class="TunableTrackCommodity" display="Commodity" muid="38E6517FDB3B944B" description="Track a commodity." Deprecated="False" filter="0" group="General">
+                <Tunable type="statistic" name="commodity_to_track" class="TunableReference" display="Commodity To Track" muid="4E5AFA2D48A7B420" description="The commodity that we want to track on the Sim." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Commodity" />
+                <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="D82BC2B82D2CE679" description="The threshold that we are trying to reach." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="E42B556D7244123E" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="905D7B3D2A4D9F84" description="The value of a threshold." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList />
+    </VersionHistory>
+</TuningRoot>

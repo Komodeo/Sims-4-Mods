@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="cas_menu_item" class="CASMenuItem" module="cas.cas_tuning" muid="875D690AD21DA963" description="Item in the CAS context menu." instance_subclasses_only="False" path="CasMenuItems\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="actions" class="CASMenuItemActions" display="Actions" muid="EEE021DED6812B6F" description="Actions to perform when this menu item is selected." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <TunableVariant type="None" name="change_menu_state" class="OptionalTunable" default="disabled" display="Change Menu State" muid="F6BBC58E525B54DD" description="MenuState to change into. This value must be supported by the&#xA;code, so this will most likely be provided by an engineer.&#xA;To be deprecated.  It is part of the old system." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="690B86099AAA1B0B" />
+                <TunableTuple name="enabled" class="CASMenuState" display="Enabled" muid="423A77D23937771" description="MenuState to change into. This value must be supported by the&#xA;code, so this will most likely be provided by an engineer.&#xA;To be deprecated.  It is part of the old system." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="MenuItem" name="menu_item" class="TunableEnumEntry" default="NONE" display="Menu Item" muid="EBCF121DCFE187C9" static_entries="cas-cas_enums.CASMenuState.MenuItem" Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="MenuMode" name="menu_mode" class="TunableEnumEntry" default="NONE" display="Menu Mode" muid="C48BBBA2961223E7" static_entries="cas-cas_enums.CASMenuState.MenuMode" Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="MenuSection" name="menu_section" class="TunableEnumEntry" default="NONE" display="Menu Section" muid="E3876E6F1A5E054A" static_entries="cas-cas_enums.CASMenuState.MenuSection" Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="MenuType" name="menu_type" class="TunableEnumEntry" default="NONE" display="Menu Type" muid="1DAEE42C50A2A10C" static_entries="cas-cas_enums.CASMenuState.MenuType" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableVariant>
+            <TunableVariant type="None" name="display_ui_widget" class="OptionalTunable" default="disabled" display="Display Ui Widget" muid="7F024752ED4BEE6F" description="Name of a UI widget that should be shown when this item is selected." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="2358D649381D2B4B" />
+                <Tunable type="str" name="enabled" class="Tunable" default="" display="Enabled" muid="EAA3A2928507DEFE" description="Name of a UI widget that should be shown when this item is selected." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+        </TunableTuple>
+
+        <Tunable type="str" name="audio_component_name" class="Tunable" default="" display="Audio Component Name" muid="373B040E8AE7DFEF" description="Optional name to associate with this item for the UI audio system." allow_none="True" Deprecated="False" export_modes="client_binary" filter="0" group="UI" />
+
+        <TunableList name="disable_reasons" class="TunableList" display="Disable Reasons" muid="D67558569F53A050" description="List of possible conditions under which this menu item should appear disabled." Deprecated="False" export_modes="client_binary" filter="0" group="UI">
+            <TunableTuple class="CASMenuItemDisableReason" muid="946B575A97E661E7" Deprecated="False" filter="0" group="General">
+                <TunableList name="criteria" class="CASContextCriterionList" display="Criteria" muid="F494C21CB3AE7BAA" description="Criteria which defines when this menu item should be disabled for&#xA;the given reason." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="CASContextCriterionListEntry" muid="516A394FBD87B1E8" Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="criterion" class="CASContextCriterion" default="none" display="Criterion" muid="36861EB423BB285D" description="An element of CAS state to match against." Deprecated="False" filter="0" group="General">
+                            <TunableList name="active_occult_form" class="TunableEnumFlags" default="HUMAN" display="Active Occult Form" muid="366D7BC4E0972EE8" description="Compare the current sim's active occult form with this list.&#xA;(This is only if the sim has an occult form active.)" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="OccultType" class="TunableEnumEntry" default="HUMAN" muid="85257958A6853FA4" static_entries="sims-occult-occult_enums.OccultType" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="age" class="TunableEnumSet" display="Age" muid="690CE306F6ABF71" description="Compare the current sim's age with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Age" class="TunableEnumEntry" default="YOUNGADULT" muid="1B5B3662B851288D" static_entries="sims-sim_info_types.Age" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="allowed_packs" class="TunableEnumSet" display="Allowed Packs" muid="FF4A406E800F842B" description="Will only be allowed for packs in this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Pack" class="TunableEnumEntry" default="BASE_GAME" muid="A3E66FA179E816D1" static_entries="sims4-common.Pack" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="gender" class="TunableEnumSet" display="Gender" muid="19E722722F8ED04E" description="Compare the current sim's gender with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Gender" class="TunableEnumEntry" default="MALE" muid="6A5483306363FDA0" static_entries="sims-sim_info_types.Gender" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <Tunable type="bool" name="has_paint_layer" class="Tunable" default="False" display="Has Paint Layer" muid="9703D4DF6A042059" description="Check if the current sim has a paint layer present.&#xA;Note: This is currently only valid for pets." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="in_genetics_mode" class="Tunable" default="False" display="In Genetics Mode" muid="4F9B9C6A3AC7ADFD" description="Check if genetics mode is currently active." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_direct_manip_enabled" class="Tunable" default="False" display="Is Direct Manip Enabled" muid="5FE6F9B2AEE74CD0" description="Check if direct manip is enabled for the sim." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_fashion_mode" class="Tunable" default="False" display="Is Fashion Mode" muid="BD2AA1698099D789" description="Check if currently in fashion mode." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_full_edit_mode" class="Tunable" default="False" display="Is Full Edit Mode" muid="622CD96CCD2D02E7" description="Check if full edit mode is enabled for the sim." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_mannequin" class="Tunable" default="False" display="Is Mannequin" muid="A90E02228973C33B" description="Check if the current sim is a mannequin." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_new_sim" class="Tunable" default="False" display="Is New Sim" muid="18436A9B055BDF24" description="Check if this is a newly-made sim." Deprecated="False" filter="0" group="General" />
+                            <Tunable name="none" class="TunableExistance" display="None" muid="4AB09382F3D8A0F4" />
+                            <TunableList name="occult_type" class="TunableEnumFlags" default="HUMAN" display="Occult Type" muid="E01B686AB9C71B70" description="Compare the current sim's occult type with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="OccultType" class="TunableEnumEntry" default="HUMAN" muid="5CB4499151844412" static_entries="sims-occult-occult_enums.OccultType" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="species" class="TunableEnumSet" display="Species" muid="53C02DCA6B23FB95" description="Compare the current sim's species with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="SpeciesExtended" class="TunableEnumEntry" default="HUMAN" muid="68029D3FE6B778A3" static_entries="sims-sim_info_types.SpeciesExtended" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                            </TunableList>
+                        </TunableVariant>
+                        <Tunable type="bool" name="exclude_if_matched" class="Tunable" default="False" display="Exclude If Matched" muid="B9DF50C4FF1AAB54" description="Whether the item this criteria applies to should be excluded&#xA;instead of included if this criteria is satisfied." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="int" name="reason" class="TunableLocalizedString" default="0x0" display="Reason" muid="8CEF452D5FEB780E" description="The reason for disabling this menu item." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="icon_overrides" class="TunableList" display="Icon Overrides" muid="4B0269F8690C8CC5" description="List of possible overrides for the icons for this menu item.&#xA;Each override will be evaluated in the order listed, the last&#xA;override to satisfy its criteria will be used." Deprecated="False" export_modes="client_binary" filter="0" group="UI">
+            <TunableTuple class="CASMenuItemIconOverride" muid="FF3C8EDB896426D0" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="icons" class="CASMenuItemIconSet" display="Icons" muid="2FAE3CDC743D894D" description="Icons to use instead of the default icons.&#xA;Note that you must specify all the desired icons here, even&#xA;if they differ from the defaults.  For example, if you wish&#xA;to only override the selected icon, you still need to specify&#xA;the default icon here as well." Deprecated="False" filter="0" group="General">
+                    <Tunable type="ResourceKey" name="default_icon" class="TunableIcon" default="None" display="Default Icon" muid="9C5BF950DC021729" description="Icon to display for this menu item." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    <Tunable type="ResourceKey" name="new_content_icon" class="TunableIcon" default="None" display="New Content Icon" muid="4D4374E46722143E" description="Icon to use when there is new content related to this item.&#xA;If not specified, will fall back to the default icon." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    <Tunable type="ResourceKey" name="selected_icon" class="TunableIcon" default="None" display="Selected Icon" muid="45445C6E722C4A12" description="Icon to use for the selected state of the item.&#xA;If not specified, will fall back to the default icon." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                </TunableTuple>
+                <TunableList name="override_criteria" class="CASContextCriterionList" display="Override Criteria" muid="2933605237462FB0" description="Criteria to determine when this set of icons should be used." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="CASContextCriterionListEntry" muid="64A673987DED0E5E" Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="criterion" class="CASContextCriterion" default="none" display="Criterion" muid="F5EDD4DC367ECEC4" description="An element of CAS state to match against." Deprecated="False" filter="0" group="General">
+                            <TunableList name="active_occult_form" class="TunableEnumFlags" default="HUMAN" display="Active Occult Form" muid="3D232157E1209BEE" description="Compare the current sim's active occult form with this list.&#xA;(This is only if the sim has an occult form active.)" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="OccultType" class="TunableEnumEntry" default="HUMAN" muid="2182EDAB1AC4FE1C" static_entries="sims-occult-occult_enums.OccultType" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="age" class="TunableEnumSet" display="Age" muid="A4F3994490377116" description="Compare the current sim's age with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Age" class="TunableEnumEntry" default="YOUNGADULT" muid="841763311E107F2C" static_entries="sims-sim_info_types.Age" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="allowed_packs" class="TunableEnumSet" display="Allowed Packs" muid="C39C70D95F93F8BF" description="Will only be allowed for packs in this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Pack" class="TunableEnumEntry" default="BASE_GAME" muid="9F97608E05D39AF3" static_entries="sims4-common.Pack" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="gender" class="TunableEnumSet" display="Gender" muid="4B5F939A8BAB6D8" description="Compare the current sim's gender with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Gender" class="TunableEnumEntry" default="MALE" muid="44A7809650FAF584" static_entries="sims-sim_info_types.Gender" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <Tunable type="bool" name="has_paint_layer" class="Tunable" default="False" display="Has Paint Layer" muid="CC045DD130D3E81" description="Check if the current sim has a paint layer present.&#xA;Note: This is currently only valid for pets." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="in_genetics_mode" class="Tunable" default="False" display="In Genetics Mode" muid="19AA18730E37D083" description="Check if genetics mode is currently active." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_direct_manip_enabled" class="Tunable" default="False" display="Is Direct Manip Enabled" muid="8CAAB9848538D2EE" description="Check if direct manip is enabled for the sim." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_fashion_mode" class="Tunable" default="False" display="Is Fashion Mode" muid="16139ADB8AE46FAC" description="Check if currently in fashion mode." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_full_edit_mode" class="Tunable" default="False" display="Is Full Edit Mode" muid="F68AFFD532F639B4" description="Check if full edit mode is enabled for the sim." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_mannequin" class="Tunable" default="False" display="Is Mannequin" muid="DFA97718EBFA4750" description="Check if the current sim is a mannequin." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_new_sim" class="Tunable" default="False" display="Is New Sim" muid="B4FE7765D3F3F023" description="Check if this is a newly-made sim." Deprecated="False" filter="0" group="General" />
+                            <Tunable name="none" class="TunableExistance" display="None" muid="80C1AF0B5EDD5398" />
+                            <TunableList name="occult_type" class="TunableEnumFlags" default="HUMAN" display="Occult Type" muid="C1F9F7BFF4C78B70" description="Compare the current sim's occult type with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="OccultType" class="TunableEnumEntry" default="HUMAN" muid="377D311D5A47776C" static_entries="sims-occult-occult_enums.OccultType" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="species" class="TunableEnumSet" display="Species" muid="5324D3495867E309" description="Compare the current sim's species with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="SpeciesExtended" class="TunableEnumEntry" default="HUMAN" muid="E6AA54AC89BB3649" static_entries="sims-sim_info_types.SpeciesExtended" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                            </TunableList>
+                        </TunableVariant>
+                        <Tunable type="bool" name="exclude_if_matched" class="Tunable" default="False" display="Exclude If Matched" muid="5236CCCCFDBDF43F" description="Whether the item this criteria applies to should be excluded&#xA;instead of included if this criteria is satisfied." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableTuple name="icons" class="CASMenuItemIconSet" display="Icons" muid="AD02051C65ABD49A" description="Default icons to use for the menu item." Deprecated="False" export_modes="client_binary" filter="0" group="UI">
+            <Tunable type="ResourceKey" name="default_icon" class="TunableIcon" default="None" display="Default Icon" muid="86EEBDF95A79C971" description="Icon to display for this menu item." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+            <Tunable type="ResourceKey" name="new_content_icon" class="TunableIcon" default="None" display="New Content Icon" muid="DF0EDB703F7AF29F" description="Icon to use when there is new content related to this item.&#xA;If not specified, will fall back to the default icon." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+            <Tunable type="ResourceKey" name="selected_icon" class="TunableIcon" default="None" display="Selected Icon" muid="419F6C98287A6AD6" description="Icon to use for the selected state of the item.&#xA;If not specified, will fall back to the default icon." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+        </TunableTuple>
+
+        <Tunable type="int" name="name" class="TunableLocalizedString" default="0x0" display="Name" muid="67DEF5823D19A5D4" description="Item name" Deprecated="False" export_modes="client_binary" filter="0" group="UI" />
+
+        <TunableList name="part_tags" class="TunableSet" display="Part Tags" muid="7CE79B27AD875AE9" max="1" description="Tags to use for what parts to include in the displayed catalog.&#xA;(09/26/2017 - Currently only one tag is supported but will be expanded to multiple later.)" Deprecated="False" export_modes="client_binary" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableTag" default="INVALID" muid="F238CC47690CE7D7" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A tag." Deprecated="False" dynamic_entries_prefix="" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+        </TunableList>
+
+        <TunableEnum type="RemoveActions" name="remove_action" class="TunableEnumEntry" default="REMOVE_PART" display="Remove Action" muid="80551D830D758B27" static_entries="cas-cas_tuning.CASMenuItem.RemoveActions" description="What action to perform when the remove button is clicked, if present." Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+
+        <TunableList name="sim_click_activations" class="TunableList" display="Sim Click Activations" muid="EC6AD3F995A1CE1F" description="Defines a list of areas on the sim that when clicked should cause&#xA;this menu item to become selected." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <TunableTuple class="CASMenuItemSimClickActivation" muid="267E29A36584682F" Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="click_source" class="TunableVariant" default="none" display="Click Source" muid="5F5974A51845FDE7" description="The possible areas on which a sim might be clicked.&#xA;&#xA;Note: Clothing is only a valid option for pet sims." Deprecated="False" filter="0" group="General">
+                    <TunableList name="body_types" class="TunableEnumSet" display="Body Types" muid="C1D92BF9971788E6" description="Areas corresponding to sim BodyTypes." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <TunableEnum type="BodyType" class="TunableEnumEntry" default="NONE" muid="AFCF0C03153E1882" static_entries="sims-outfits-outfit_enums.BodyType" Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                    <Tunable name="clothing" class="TunableExistance" display="Clothing" muid="E7F1D969E5960572" />
+                    <Tunable name="none" class="TunableExistance" display="None" muid="52EEC2DFF7312502" />
+                    <TunableList name="sim_regions" class="TunableEnumSet" display="Sim Regions" muid="64F23DEC14E1D5AB" description="Areas corresponding to SimRegions." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <TunableEnum type="SimRegion" class="TunableEnumEntry" default="INVALID" muid="75EB47F3CF512A44" static_entries="cas-cas_enums.SimRegion" Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableVariant>
+                <TunableTuple name="criteria" class="CASContextCriteria" display="Criteria" muid="5F2E860372BB8ADE" description="Criteria to determine if this click source should be enabled." Deprecated="False" filter="0" group="General">
+                    <TunableList name="match_all" class="CASContextCriterionList" display="Match All" muid="57C82FBE3E9C3C94" description="All criteria in this list must be matched to consider this&#xA;collection of criteria satisfied." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="CASContextCriterionListEntry" muid="EA6127AF297EC4C9" Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" name="criterion" class="CASContextCriterion" default="none" display="Criterion" muid="C500BB98627FFD4B" description="An element of CAS state to match against." Deprecated="False" filter="0" group="General">
+                                <TunableList name="active_occult_form" class="TunableEnumFlags" default="HUMAN" display="Active Occult Form" muid="6F8A3220C9BFE080" description="Compare the current sim's active occult form with this list.&#xA;(This is only if the sim has an occult form active.)" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="OccultType" class="TunableEnumEntry" default="HUMAN" muid="347A705960A9F086" static_entries="sims-occult-occult_enums.OccultType" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="age" class="TunableEnumSet" display="Age" muid="27F76ED0952342F4" description="Compare the current sim's age with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Age" class="TunableEnumEntry" default="YOUNGADULT" muid="5B4EC9F54282DDBD" static_entries="sims-sim_info_types.Age" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="allowed_packs" class="TunableEnumSet" display="Allowed Packs" muid="CE2CAACC02DDD33C" description="Will only be allowed for packs in this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Pack" class="TunableEnumEntry" default="BASE_GAME" muid="52072110592DBC6A" static_entries="sims4-common.Pack" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="gender" class="TunableEnumSet" display="Gender" muid="79DDE20CD3B2AAEF" description="Compare the current sim's gender with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Gender" class="TunableEnumEntry" default="MALE" muid="12B1A01B9B759F00" static_entries="sims-sim_info_types.Gender" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <Tunable type="bool" name="has_paint_layer" class="Tunable" default="False" display="Has Paint Layer" muid="E0E1692D77761794" description="Check if the current sim has a paint layer present.&#xA;Note: This is currently only valid for pets." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="in_genetics_mode" class="Tunable" default="False" display="In Genetics Mode" muid="DAEF3EC51575A141" description="Check if genetics mode is currently active." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_direct_manip_enabled" class="Tunable" default="False" display="Is Direct Manip Enabled" muid="A11078F9E6681A8D" description="Check if direct manip is enabled for the sim." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_fashion_mode" class="Tunable" default="False" display="Is Fashion Mode" muid="624345EC87FD2F11" description="Check if currently in fashion mode." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_full_edit_mode" class="Tunable" default="False" display="Is Full Edit Mode" muid="5E0B64835C1F7A16" description="Check if full edit mode is enabled for the sim." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_mannequin" class="Tunable" default="False" display="Is Mannequin" muid="54CC13A0AAEC48B0" description="Check if the current sim is a mannequin." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_new_sim" class="Tunable" default="False" display="Is New Sim" muid="CF2D166DDD3FA004" description="Check if this is a newly-made sim." Deprecated="False" filter="0" group="General" />
+                                <Tunable name="none" class="TunableExistance" display="None" muid="C033B9E6CAAF387D" />
+                                <TunableList name="occult_type" class="TunableEnumFlags" default="HUMAN" display="Occult Type" muid="421AE82652E52176" description="Compare the current sim's occult type with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="OccultType" class="TunableEnumEntry" default="HUMAN" muid="FA7C6BC6706782AB" static_entries="sims-occult-occult_enums.OccultType" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="species" class="TunableEnumSet" display="Species" muid="83EDEFC46A030124" description="Compare the current sim's species with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="SpeciesExtended" class="TunableEnumEntry" default="HUMAN" muid="3A8AFEA9395D0B35" static_entries="sims-sim_info_types.SpeciesExtended" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                                </TunableList>
+                            </TunableVariant>
+                            <Tunable type="bool" name="exclude_if_matched" class="Tunable" default="False" display="Exclude If Matched" muid="2BEB8D76799C6F9F" description="Whether the item this criteria applies to should be excluded&#xA;instead of included if this criteria is satisfied." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                    <TunableList name="match_any" class="CASContextCriterionList" display="Match Any" muid="93E7B985C701C1A5" description="Any criteria in this list can be matched to consider this&#xA;collection of criteria satisfied. Any criteria in match_all&#xA;must also be matched." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="CASContextCriterionListEntry" muid="D7D318447D090519" Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" name="criterion" class="CASContextCriterion" default="none" display="Criterion" muid="5EE39B89D76B4842" description="An element of CAS state to match against." Deprecated="False" filter="0" group="General">
+                                <TunableList name="active_occult_form" class="TunableEnumFlags" default="HUMAN" display="Active Occult Form" muid="BCF65E36A768AF36" description="Compare the current sim's active occult form with this list.&#xA;(This is only if the sim has an occult form active.)" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="OccultType" class="TunableEnumEntry" default="HUMAN" muid="53056FB44B6F83C0" static_entries="sims-occult-occult_enums.OccultType" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="age" class="TunableEnumSet" display="Age" muid="AAE623CB4BAAC947" description="Compare the current sim's age with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Age" class="TunableEnumEntry" default="YOUNGADULT" muid="9A6D65D3F452F53C" static_entries="sims-sim_info_types.Age" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="allowed_packs" class="TunableEnumSet" display="Allowed Packs" muid="A813BC647E724588" description="Will only be allowed for packs in this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Pack" class="TunableEnumEntry" default="BASE_GAME" muid="E46AD08251611855" static_entries="sims4-common.Pack" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="gender" class="TunableEnumSet" display="Gender" muid="FBF73D89D2E02C6D" description="Compare the current sim's gender with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Gender" class="TunableEnumEntry" default="MALE" muid="884D27BCD04E665A" static_entries="sims-sim_info_types.Gender" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <Tunable type="bool" name="has_paint_layer" class="Tunable" default="False" display="Has Paint Layer" muid="8183CD7D80A96054" description="Check if the current sim has a paint layer present.&#xA;Note: This is currently only valid for pets." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="in_genetics_mode" class="Tunable" default="False" display="In Genetics Mode" muid="6A165327493C9397" description="Check if genetics mode is currently active." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_direct_manip_enabled" class="Tunable" default="False" display="Is Direct Manip Enabled" muid="451FB78A865C987E" description="Check if direct manip is enabled for the sim." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_fashion_mode" class="Tunable" default="False" display="Is Fashion Mode" muid="80FBFCFA2C2AC7E3" description="Check if currently in fashion mode." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_full_edit_mode" class="Tunable" default="False" display="Is Full Edit Mode" muid="27A708B28355D66B" description="Check if full edit mode is enabled for the sim." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_mannequin" class="Tunable" default="False" display="Is Mannequin" muid="D2EBD957784F16B" description="Check if the current sim is a mannequin." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_new_sim" class="Tunable" default="False" display="Is New Sim" muid="86622F197129B465" description="Check if this is a newly-made sim." Deprecated="False" filter="0" group="General" />
+                                <Tunable name="none" class="TunableExistance" display="None" muid="1EEDAD2ECB2E7534" />
+                                <TunableList name="occult_type" class="TunableEnumFlags" default="HUMAN" display="Occult Type" muid="F01C6E9CF8963163" description="Compare the current sim's occult type with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="OccultType" class="TunableEnumEntry" default="HUMAN" muid="7AA6E5D3A5151283" static_entries="sims-occult-occult_enums.OccultType" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="species" class="TunableEnumSet" display="Species" muid="44C142DCF58213BB" description="Compare the current sim's species with this list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="SpeciesExtended" class="TunableEnumEntry" default="HUMAN" muid="58618A220942FB68" static_entries="sims-sim_info_types.SpeciesExtended" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                                </TunableList>
+                            </TunableVariant>
+                            <Tunable type="bool" name="exclude_if_matched" class="Tunable" default="False" display="Exclude If Matched" muid="D83FBFD5C29AB0FB" description="Whether the item this criteria applies to should be excluded&#xA;instead of included if this criteria is satisfied." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

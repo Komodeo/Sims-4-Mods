@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="relationships.sentiment_track_tracker" muid="5D7EFADB355488F2">
+        <Class name="SentimentTrackTracker" muid="949093E57141C0FA">
+            <TunableTuple name="BALLOON_DATA" class="TunableTuple" display="Balloon Data" muid="98C881B876011B45" description="Information that will be used to create a balloon when a sentiment gets added to a sim." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="balloon_stack_window_seconds" class="TunableRange" default="10" display="Balloon Stack Window Seconds" muid="22D5E9AA8BAC91A7" min="10" max="None" description="The delay in seconds that a sentiment bubble should wait and see&#xA;if similar sentiments on the same sim is triggered (generally towards multiple other sims).&#xA;If similar sentiments are detected within the time window, they will be condensed into a &#xA;&quot;multi-sentiment&quot; visual treatment. Numbers are in sim seconds " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="BalloonTypeEnum" name="balloon_type" class="TunableEnumEntry" default="SENTIMENT" display="Balloon Type" muid="EFE658275376D5F2" static_entries="balloon-balloon_enums.BalloonTypeEnum" description="The visual style of the balloon background." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="balloon_view_offset" class="TunableVector3" display="Balloon View Offset" muid="BC5B20D68B974D6C" description="The Vector3 offset from the balloon bone to the thought balloon. " Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="143BE40ADA38D63D" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="E5B1FD0E2ABAB934" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="z" class="Tunable" default="0.0" display="Z" muid="2A3C21941298AA10" description="z component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <Tunable type="float" name="duration" class="TunableRange" default="3.0" display="Duration" muid="19DEBB7819495AD1" min="0.0" max="None" description="The duration, in seconds, that a balloon should last." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="icon" class="TunableIconVariant" default="resource_key" display="Icon" muid="EC3F006F65D222DB" description="The Icon that will be showed within the balloon." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="career_icon_override" class="TunableCareerIconOverrideIconFactory" display="Career Icon Override" muid="BADDEDA56E45F8D4" Deprecated="False" filter="0" group="General">
+                        <Tunable type="career" name="career_reference" class="TunableReference" display="Career Reference" muid="6507285C03561D2B" description="The Career to override the icon." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="99EF3C77E5D7FB8A" description="The Participant who owns the career." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="4BFA1583DCB7BE7E" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="lifestyle_brand" class="TunableLifestyleBrandIconFactory" display="Lifestyle Brand" muid="FA4722FCF63C8CED" Deprecated="False" filter="0" group="General">
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="50C286F0B651FA87" description="The Participant who owns the lifestyle brand we want to use." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="FFCF4DE7711A4F32" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="participant" class="TunableParticipantTypeIconFactory" display="Participant" muid="F1CFBCD9A2350C1A" description="The Sim who's thumbnail will be used." Deprecated="False" filter="0" group="General">
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="F6AB5C7146124FA3" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantType" class="TunableEnumEntry" default="Invalid" muid="38FE39CECF99C3F8" static_entries="interactions.ParticipantType" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="privacy" class="TunablePrivacyIconFactory" display="Privacy" muid="CC2FBE55393505EF" description="Search an interaction's privacy liability to find violating Sims&#xA;and randomly select one to display an icon of." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="resource_key" class="TunableIconFactory" display="Resource Key" muid="F10C70BDDA9A92D3" description="The icon image to be displayed." Deprecated="False" filter="0" group="General">
+                        <Tunable type="ResourceKey" name="key" class="TunableIcon" default="None" display="Key" muid="4CB83BC055B2050" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    </TunableTuple>
+                    <TunableTuple name="tradition" class="TunableHolidayIconFactory" display="Tradition" muid="D60B9900223A367E" Deprecated="False" filter="0" group="General">
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="69D40A6D9F5CDD20" description="We use this participant's holiday tracker to get the icon." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="D33B289A408F3797" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+                <Tunable type="ResourceKey" name="multi_sim_icon" class="TunableResourceKey" default="None" display="Multi Sim Icon" muid="76CE20916D9D84A3" description="The Icon that will be showed within the balloon for sentiments towards multiple sims." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                <Tunable type="ResourceKey" name="overlay" class="TunableResourceKey" default="None" display="Overlay" muid="B9041B547205349E" description="The overlay for the balloon, if present." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+            </TunableTuple>
+
+            <Tunable type="int" name="LONG_TERM_PRIORITY_VALUE_THRESHOLD" class="Tunable" default="1" display="Long Term Priority Value Threshold" muid="43007DE10A35291C" description="The SentimentTrack value below which a lower priority long-term SentimentTrack can replace a higher priority &#xA;long-term SentimentTrack." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="LONG_TERM_VALUE_ADJUSTMENT" class="Tunable" default="1" display="Long Term Value Adjustment" muid="D1AE1EF04C35D95F" description="When failing to add a positive long-term SentimentTrack. This will be a whole number value added to the &#xA;negative long term SentimentTrack value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="NEGATIVE_LONG_TERM_VALUE_THRESHOLD" class="Tunable" default="1" display="Negative Long Term Value Threshold" muid="F4F4F8D091024F47" description="The SentimentTrack value below which a positive long-term SentimentTrack can replace a negative &#xA;long-term SentimentTrack" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="NEGATIVE_SHORT_TERM_VALUE_THRESHOLD" class="Tunable" default="1" display="Negative Short Term Value Threshold" muid="DD4B8D51C9E7EB2B" description="SentimentTrack value below which a positive short-term SentimentTrack can&#xA;replace all negative short-term SentimentTracks" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="PRIORITY_VALUE_ADJUSTMENT" class="Tunable" default="0" display="Priority Value Adjustment" muid="3D181AD3171B4BB1" description="When failing to add an opposite sign long-term SentimentTrack due to existing having higher priority,&#xA;This will be a whole number value added to the existing long term SentimentTrack value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="PROXIMITY_LOOT_COOLDOWN" class="TunableSimMinute" default="100" display="Proximity Loot Cooldown" muid="40D54215B3134713" min="0" max="None" description="The number of seconds until a sim is allowed to attempt to roll to get a buff from a SentimentTrack that &#xA;they have towards a specific sim." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="PROXIMITY_NO_LOOT_CHANCE_WEIGHT" class="TunableTunableMultiplier" display="Proximity No Loot Chance Weight" muid="BF7E2ACB029A68A6" description="The weighted chance that a sim may roll to not get a loot when coming in proximity of a sim that they have a&#xA;sentiment towards." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="C5F390FC7B2F4104" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="468A7C63385C1E97" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="A1E326831931FCC1" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="193F9A05978E816B" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="213BFC150A9BAC68" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+
+            <Tunable type="int" name="SENTIMENT_CAP" class="TunableRange" default="4" display="Sentiment Cap" muid="E9E504E0FA036276" min="1" max="4" description="Maximum amount of sentiments that one sim can have towards another individual sim.&#xA;If someone wants to make this a value higher than 4, please sync up with a GPE lead first." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="SHORT_TERM_VALUE_ADJUSTMENT" class="Tunable" default="1" display="Short Term Value Adjustment" muid="55249ED9493E97DD" description="When failing to add a positive short-term SentimentTrack. This will be a whole number value added to the &#xA;existing negative short term SentimentTrack values." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

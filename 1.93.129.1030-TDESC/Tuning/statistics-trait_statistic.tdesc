@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="statistics.trait_statistic" muid="FD30BE24934EE11B">
+        <Class name="TraitStatisticGroup" muid="48E4C8B64C103E16" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="A783E0CE6D42C977" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="B17ABF820AEE17A3" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="NO_GROUP" muid="72CF005CC4C0031E" enum_value="0" />
+        </Class>
+
+        <Class name="TraitStatistic" muid="E9707F590250372B">
+            <TunableList name="GROUPS" class="TunableMapping" display="Groups" muid="27E5A05930393FAD" mapping_key="key" mapping_value="value" description="A mapping between Groups for trait statistics and the maximum number&#xA;of traits that are allowed to be unlocked for that group." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="CBE8993200C34AC8" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="TraitStatisticGroup" name="key" class="TunableEnumEntry" default="NO_GROUP" display="Key" muid="9B1ED87748A7277A" dynamic_entries="statistics-trait_statistic.TraitStatisticGroup._elements" static_entries="statistics-trait_statistic.TraitStatisticGroup" description="The trait statistic group to limit." Deprecated="False" filter="0" group="General" invalid_entries="NO_GROUP" />
+                    <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="25EDA8A7A849E32B" min="1" max="None" description="The maximum number of trait statistics in this group that can be&#xA;in either the unlocked or at risk states.  When this cap is reached&#xA;all other trait statistics in the group will only be allowed to have&#xA;their value change towards the default value of the statistic." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

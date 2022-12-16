@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="bucks.sim_info_bucks_tracker" muid="C7C0F7C7C6440C66">
+        <Class name="SimInfoBucksTracker" muid="C29A34E2AF96CFF">
+            <TunableList name="BUCK_TYPE_TO_CATEGORIES_MAPPING" class="TunableMapping" display="Buck Type To Categories Mapping" muid="A7563CDEE767DD10" mapping_key="key" mapping_value="value" description="A mapping of buck type to the categorized buck perks. " Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="SimBuckToCategoryMapping">
+                <TunableTuple class="TunableTuple" muid="606E797BB97554D1" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="BucksType" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="4CD78074194C6267" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" description="A type of bucks that this kind of tracker holds." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableList name="value" class="TunableMapping" display="Value" muid="24E48B213C3EE8F2" mapping_key="key" mapping_value="value" description="Ordered list of buck perks categories that will appear in the &#xA;rewards UI along with the perks that belong in the category." Deprecated="False" filter="0" group="General" mapping_class="SimCategoryMapping">
+                        <TunableTuple class="TunableTuple" muid="60FC22AE2CAA97A9" Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="key" class="Tunable" default="0" display="Key" muid="27F6CB05D9AE0BA1" description="An integer value used to set the specific order of the categories&#xA;in the UI. the lower numbers are displayed first in the UI." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="value" class="SimRewardCategoryInfoTuple" display="Value" muid="5C9053749170751B" description="Tuning structure holding all of the localized string data for the &#xA;tuned Perk Category.        " Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="category_name" class="TunableLocalizedString" default="0x0" display="Category Name" muid="1CA72362A0FF7CEB" description="This is the localized name of the category that will show up &#xA;in the bucks UI." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="category_tooltip" class="TunableLocalizedString" default="0x0" display="Category Tooltip" muid="E6AA6CC06A24197B" description="This is the description that will show up when the user hovers&#xA;over the catgory name for a while." Deprecated="False" filter="0" group="General" />
+                                <TunableList name="rewards" class="TunableMapping" display="Rewards" muid="3D2D94518621DE35" mapping_key="key" mapping_value="value" description="An ordered list of the rewards that will appear in this&#xA;category." Deprecated="False" filter="0" group="General" mapping_class="SimRewardCategoryMapping">
+                                    <TunableTuple class="TunableTuple" muid="D9A907A6D92511CD" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="int" name="key" class="Tunable" default="0" display="Key" muid="7556574DE8C2418B" description="An integer value used to order the appearance of the rewards&#xA;inside of the category. The smaller numbers are sorted to&#xA;the front of the list." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <Tunable type="bucks_perk" name="value" class="TunableReference" display="Value" muid="52F5A65CAD735180" description="The Buck Perk (reward) to display in the category panel of&#xA;the UI." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    </TunableTuple>
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="PhotoPickerSuperInteraction" module="crafting.photography_interactions" muid="C567134EDACC51DA" description="An interaction that displays photos sourced from a specific&#xA;photo-choice strategy." instance_needs_reference="True" instance_subclasses_only="False" parents="PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableEnum type="ObjectPickerStyle" name="photo_cell_style" class="TunableEnumEntry" default="NUMBERED" display="Photo Cell Style" muid="60A8A84A6C4470B8" static_entries="ui-ui_dialog_picker.ObjectPickerStyle" description="Set the style for the photo cell." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <TunableVariant type="None" name="photo_source" class="TunableVariant" default="none" display="Photo Source" muid="EE970AF8F5869608" description="Set the source of the photos in the picker." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="none" class="TunableExistance" display="None" muid="CD1127BAEF75B9C8" />
+            <TunableVariant type="None" name="tunable" class="TunableVariant" default="active_gig" display="Tunable" muid="258FBD9453E9E2FC" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="active_gig" class="Tunable_PhotoSourceActiveGig" display="Active Gig" muid="D46A73A0B5F3B7DD" description="Call into the career tracker and return photos saved on the active gig." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="before_or_after_photos" class="OptionalTunable" default="disabled" display="Before Or After Photos" muid="BA2568567AD5A263" description="If enabled, filter the photos stored on the gig by the&#xA;before/after value on the Photos.&#xA;&#xA;If disabled, then the gig will return all the photos&#xA;from the Gig, regardless of before/after value." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="FA9C719DE418F70C" />
+                        <Tunable type="bool" name="enabled" class="Tunable" default="True" display="Enabled" muid="AB12E5E7A4F245E8" description="If True, use the before photos stored on the Gig. If False,&#xA;use the after photos stored on the Gig." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="career" name="career_reference" class="TunableReference" display="Career Reference" muid="BD640AE6828D4CBE" description="A reference to the gig-career that provides the stored photos." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="gig_history" class="Tunable_PhotoSourceGigHistory" display="Gig History" muid="B88376288B2386DB" description="Call into the career tracker and return all photos saved within the Gig History&#xA;of the active Sim." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="before_or_after_photos" class="OptionalTunable" default="disabled" display="Before Or After Photos" muid="FC0B7E43B664EBF7" description="If enabled, filter the photos stored on the gig by the&#xA;before/after value on the Photos.&#xA;&#xA;If disabled, then the gig will return all the photos&#xA;from the Gig, regardless of before/after value." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C6A15E30A409F76A" />
+                        <Tunable type="bool" name="enabled" class="Tunable" default="True" display="Enabled" muid="FF2E6116C2549762" description="If True, use the before photos stored on the Gig. If False,&#xA;use the after photos stored on the Gig." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="career" name="career_reference" class="TunableReference" display="Career Reference" muid="6EACA7A06AA6CDA3" description="A reference to the gig-career that provides the stored photos." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableVariant>
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList />
+
+        <ActionList>
+            <Action type="kRemove" old_muid="11208D8643FD86E3" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="949E4CB1FA1C4D42" />
+            <Action type="kRemove" old_muid="38D4E6A55161D66B" />
+            <Action type="kRemove" old_muid="E8D0770949630B5E" />
+            <Action type="kRemove" old_muid="BA3D6521FF707A9F" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

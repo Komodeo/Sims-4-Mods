@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.sim" muid="BFC855FE13C7210E">
+        <Class name="LOSAndSocialConstraintTuning" muid="AEFD637422743482">
+            <Tunable type="float" name="adjustment_cone_angle" class="Tunable" default="1.5707" display="Adjustment Cone Angle" muid="61AA07DAD32A36DB" description="The angle in radians of the social adjustment cone in front of the&#xA;target sim during a social super interaction." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="constraint_expansion_amount" class="Tunable" default="5" display="Constraint Expansion Amount" muid="CE53D25FC04F10AF" description="The amount, in meters, to expand the Sim's current constraint by when&#xA;calculating fallback social constraints. This number should be equal to&#xA;the tuned radius for the standard social group constraint minus a&#xA;nominal amount, such as 1 meter to prevent extremely small intersections&#xA;from being considered valid." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="incompatible_target_sim_route_nearby_frequency" class="Tunable" default="5" display="Incompatible Target Sim Route Nearby Frequency" muid="938151DAD0861B3B" description="The number of sim minutes to delay in between routing nearby the target&#xA;Sim of a social interaction if they are in an incompatible state (such&#xA;as sleeping)." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="maximum_intended_distance_to_route_nearby" class="Tunable" default="20" display="Maximum Intended Distance To Route Nearby" muid="5D13BEEE1EC9CD06" description="The maximum distance in meters from the target Sim's current position to&#xA;their intended position where a Sim will stop the target Sim instead of&#xA;routing to their intended position. Note: this only applies to Sims who&#xA;are trying to socialize with a target Sim at higher-priority than the&#xA;interaction that Sim is running." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="minimum_adjustment_cone_radius" class="Tunable" default="0.7" display="Minimum Adjustment Cone Radius" muid="2863EB53245B2988" description="The minimum radius in meters, that the Sim needs to be in front of the&#xA;target Sim when running social adjustment before a social super&#xA;interaction." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="minimum_delay_between_route_nearby_attempts" class="Tunable" default="5" display="Minimum Delay Between Route Nearby Attempts" muid="71F3831E0C209B5D" description="The minimum delay, in Sim minutes, between route nearby attempts when a&#xA;social is in the head of a Sim's queue. NOTE: This is performance-&#xA;critical so please don't change this unless you know what you are doing." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="num_sides_for_circle_expansion_of_point_constraint" class="Tunable" default="8" display="Num Sides For Circle Expansion Of Point Constraint" muid="55BE97DCB0094D33" description="The number of sides to use when creating a circle for expanding point&#xA;constraints for the fallback social constraint." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+
+        <Class name="Sim" muid="478C01770FAE118D">
+            <Tunable type="int" name="BUFF_CLOTHING_REASON" class="TunableLocalizedString" default="0x0" display="Buff Clothing Reason" muid="55B3D7FFED2DE316" description="The localized string used to give reason why clothing buff was added.&#xA;Does not support any tokens." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="buff" name="FOREIGN_ZONE_BUFF" class="TunableReference" display="Foreign Zone Buff" muid="E3E71263D2FD5886" description="This buff is applied to any sim that is not in their home zone.  It is&#xA;used by autonomy for NPCs to score the GoHome interaction." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Buff" />
+
+            <TunableList name="MULTI_MOTIVE_BUFF_MOTIVES" class="TunableMapping" display="Multi Motive Buff Motives" muid="A97DD45BA56CE89C" mapping_key="key" mapping_value="value" description="Buffs, Motives and the threshold needed for that motive to count towards&#xA;the multi motive buff" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="4EDA505D017B0300" Deprecated="False" filter="0" group="General">
+                    <Tunable type="buff" name="key" class="TunableReference" display="Key" muid="EB2F9E7857C75482" description="Buff that is added when all the motives are above their threshold" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Buff" />
+                    <TunableList name="value" class="TunableMapping" display="Value" muid="1EEA1A0682C12134" mapping_key="key" mapping_value="value" description="Motives and the threshold needed for that motive to count towards&#xA;the multi motive buff" Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="6199E54D6460A29B" Deprecated="False" filter="0" group="General">
+                            <Tunable type="statistic" name="key" class="TunableReference" display="Key" muid="539AB0EAD7EF3435" description="Motive needed above threshold to get the buff" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Commodity" />
+                            <TunableTuple name="value" class="TunableThreshold" display="Value" muid="1AFFF0890D445B15" description="Threshold at which this motive counts for the buff" Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="6E17B7F004D82998" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="2205A96BDBA376D1" description="The value of a threshold." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

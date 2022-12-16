@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="RetailComponent" module="snippets" muid="EE7142755A7BF7F8" instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="value" class="TunableRetailComponent" display="Value" muid="BA7B9CAAD39262B5" description="Manages sellability and advertising of objects on retail lots." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="advertises" class="OptionalTunable" default="enabled" display="Advertises" muid="DB57D94DD2781FE" description="If enabled, this object will contribute to the curb appeal for the&#xA;retail lot on which it is placed. Curb appeal affects foot traffic&#xA;for the store as well as the type of clientele." Deprecated="False" filter="0" group="General">
+                <Tunable name="Does_Not_Advertise" class="TunableExistance" display="Does Not Advertise" muid="6A2066DD185C631E" />
+                <TunableTuple name="enabled" class="TunableRetailCurbAppeal" display="Enabled" muid="543D8C91A6DF35AB" description="Curb appeal advertise tuning for the Retail Component." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="base_curb_appeal" class="Tunable" default="1" display="Base Curb Appeal" muid="6804E6FA6E2747E1" description="The amount of curb appeal this object should add just for being on&#xA;the retail lot. Curb appeal affects the number of customers the&#xA;store draws in. Sim counts can be tuned in the Retail Customer&#xA;tuning." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="state_based_curb_appeal" class="TunableMapping" display="State Based Curb Appeal" muid="36522F296AC2FAEF" mapping_key="Retail_Object_State" mapping_value="Curb_Appeal_Adjustmnet" description="A mapping of states and the amount of curb appeal to add/subtract&#xA;when the object is in that state. When an object changes out of&#xA;these states, the curb appeal will be reverted back." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="4E091222E9B9CB78" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="Curb_Appeal_Adjustmnet" class="Tunable" default="1" display="Curb Appeal Adjustmnet" muid="B47304F33FE9355E" description="The curb appeal to apply to the retail lot when the object&#xA;is in the specified state." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="object_state" name="Retail_Object_State" class="TunableReference" display="Retail Object State" muid="9ED6FE49C3D0FF57" description="The object state the retail object should be in for the " allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+            <TunableVariant type="None" name="sellable" class="OptionalTunable" default="enabled" display="Sellable" muid="4F47904FE51C345B" description="If enabled, this object can be sold on a retail lot." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="D5A30BE2BD5010AE" description="The data associated with selling this item." Deprecated="False" filter="0" group="General">
+                    <TunableList name="allowed_occupied_slots_for_sellable" class="TunableSet" display="Allowed Occupied Slots For Sellable" muid="656AECAFF904C680" description="By default, an object will become unsellable if anything is&#xA;parented to it. This is to prevent awkward scenarios such&#xA;as selling a counter with a sink is parented, leaving the&#xA;sink floating in mid-air. However, some slots on objects&#xA;are okay occupied, e.g. a table should still be sellable if&#xA;chairs are parented. Adding those slots to this set (e.g.&#xA;slot_SitChair on tables) will allow this object to remain&#xA;sellable even if those slots are occupied." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="slot_type" class="TunableReference" muid="7885C4F37783AFCD" allow_none="False" Deprecated="False" filter="0" group="General" restrict="SlotType" />
+                    </TunableList>
+                    <Tunable type="interaction" name="browse_affordance" class="TunableReference" display="Browse Affordance" muid="B63719722D0535CA" description="The affordance a Sim will run to browse retail objects." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="interaction" name="buy_affordance" class="TunableReference" display="Buy Affordance" muid="B0852D4D26DE02A2" description="The affordance a Sim will run to buy retail objects. This&#xA;affordance should handle destroying the object and adding&#xA;the money to the retail funds." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="interaction" name="clear_placard_affordance" class="TunableReference" display="Clear Placard Affordance" muid="7E044B01F3F94709" description="The affordance a Sim will run to remove a placard from the lot." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableList name="for_sale_extra_affordances" class="TunableList" display="For Sale Extra Affordances" muid="6DE9EAD394C5BD5B" description="When this object is marked For Sale, these are the extra&#xA;interactions that will still be available. For instance, a&#xA;debug interaction to sell the object could go here or you&#xA;may want Sit to still be on chairs so customers can try&#xA;them out. You may also want Clean on anything that can get&#xA;dirty so employees can clean them.&#xA;&#xA;Note: These interactions are specific to this object. Do not&#xA;add interactions that don't make sense for this object." Deprecated="False" filter="0" group="General">
+                        <Tunable type="interaction" class="TunableReference" muid="EC6FFC75D30843E2" description="The affordance to be left available on the object." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                    <TunableVariant type="None" name="placard_override" class="OptionalTunable" default="disabled" display="Placard Override" muid="418F5EC6C87EE2D4" description="If enabled, we will only use this placard when this object&#xA;is sold. If disabled, the game will attempt to smartly&#xA;choose a placard." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="BB6902A6157D9F5A" />
+                        <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="4DE65F75D902AF7B" description="The placard and vfx to use for this object." Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="model" class="TunableReference" display="Model" muid="1C89C2C4189A666A" description="The placard to use when this object is sold." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <TunableTuple name="vfx" class="TunablePlayEffect" display="Vfx" muid="408FDE76FD6849C0" description="The effect to play when the object is sold." Deprecated="False" filter="0" group="General">
+                                <Tunable type="str" name="effect_name" class="Tunable" default="" display="Effect Name" muid="71FF24B1D914E7FA" description="The name of the effect to play." Deprecated="False" filter="0" group="General" />
+                                <TunableVariant type="None" name="joint_name" class="OptionalTunable" default="Slot" display="Joint Name" muid="1064F9209D3AE171" description="Specify if the visual effect is attached to a slot and, if so, which&#xA;slot." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="Current_Position" class="TunableExistance" display="Current Position" muid="A0D3F959EF16F4ED" />
+                                    <Tunable type="str" name="Slot" class="TunableStringHash32" default="_FX_" display="Slot" muid="A7F22EB9953251EF" description="The name of the slot this effect is attached to." Deprecated="False" filter="0" group="General" />
+                                </TunableVariant>
+                                <Tunable type="bool" name="play_immediate" class="Tunable" default="False" display="Play Immediate" muid="1269C7BD2C471D1F" description="If checked, this effect will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. VFX will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableList name="restock_affordances" class="TunableList" display="Restock Affordances" muid="698B67AFCF9AD5B4" description="The affordances a Sim will run to restock retail objects." Deprecated="False" filter="0" group="General">
+                        <Tunable type="interaction" class="TunableReference" muid="366CCADA4370F257" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                    <Tunable type="interaction" name="set_for_sale_affordance" class="TunableReference" display="Set For Sale Affordance" muid="DD9C26F32A6BA88D" description="The affordance a Sim will run to set a retail object as For&#xA;Sale." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="interaction" name="set_not_for_sale_affordance" class="TunableReference" display="Set Not For Sale Affordance" muid="D7F89D24F315321" description="The affordance a Sim will run to set a retail object as Not&#xA;For Sale." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+                <Tunable name="Not_For_Sale" class="TunableExistance" display="Not For Sale" muid="2F08CDFE1FF5674A" />
+            </TunableVariant>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

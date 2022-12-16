@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="social_group" class="FormationSocialGroup" module="socials.formation_group" muid="D207B86143B3C68B" description="Formation social groups revolve around sims in a group following a routing anchor object and walking in a formation." instance_needs_reference="True" instance_subclasses_only="False" parents="SocialGroup" path="SocialGroups\Descriptions" use_guid_for_reference="True">
+        <Deleted name="adjust_sim_positions_dynamically" muid="32B51AB527042845" />
+
+        <TunableVariant type="None" name="formation_tuning" class="TunableRoutingFormationListSnippet" default="literal" display="Formation Tuning" muid="A3EA5796EB0D009B" description="A list of routing formations. One will be chosen based on the number of members of the group.&#xA;It will use the closest match based on the number of offsets in the formation.&#xA;Note that you will generally always want to use the 'follow' formation type here.&#xA; (This may be tuned in place here using 'literal' or as a reference to a RoutingFormationList tuning snippet.)" Deprecated="False" filter="0" group="Routing">
+            <TunableTuple name="literal" class="TunableRoutingFormationList" display="Literal" muid="575A9F9ECA1CF77D" description="A tunable list of routing formations, along with functionality&#xA;to choose the most appropriate formation based on number of&#xA;routing slaves." Deprecated="False" filter="0" group="General">
+                <TunableList name="formations" class="TunableList" display="Formations" muid="CFF41CB68E384A35" min="1" description="A list of routing formations. One will be chosen based on the number of members of the group.&#xA;It will use the closest match based on the number of offsets in the formation.&#xA;Note that you will generally always want to use the 'follow' formation type here." Deprecated="False" filter="0" group="General">
+                    <Tunable type="snippet" class="TunableReference" muid="477A1CC65CB213FD" allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoutingFormation" />
+                </TunableList>
+            </TunableTuple>
+            <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="3272F65E5A2DABFB" description="A reference to a RoutingFormationList tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoutingFormationList" />
+        </TunableVariant>
+
+        <Tunable type="float" name="minimum_paired_angle" class="TunableRange" default="10" display="Minimum Paired Angle" muid="24752BD69547C817" min="0" max="90" description="Minimum angle between sims in formation (from straight ahead/behind)&#xA;for paired conversation to be attempted.  (ignored if for actor sim&#xA;No sim is far enough off)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="routing_event_delay" class="TunableInterval" display="Routing Event Delay" muid="FA4F46B768C6F7DD" description="Delay between the START of a routing event to when the next one can&#xA;first be scheduled in real world seconds" Deprecated="False" filter="0" group="General">
+            <Tunable type="int" name="lower_bound" class="TunableRange" default="3" display="Lower Bound" muid="D786C2C0D78E2FAB" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="upper_bound" class="TunableRange" default="5" display="Upper Bound" muid="1CAB3D268839B10E" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableList name="routing_events" class="TunableList" display="Routing Events" muid="3BF7D0DD62C54398" description="Events and weight for paired events.&#xA;Only one pair can occur within the specified routing event delay.&#xA;To avoid overlap, minimum delay must be longer than duration of&#xA;route event." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="B487D0B4E3B62FDA" Deprecated="False" filter="0" group="General">
+                <Tunable type="snippet" name="actor_event" class="TunableReference" display="Actor Event" muid="6A19B2B532EFADCB" description="A paired route event for the sim tested as the actor sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RouteEventPaired" />
+                <TunableTuple name="chance" class="TunableSuccessChance" display="Chance" muid="211A20C1BAA6E994" description="Percent Chance that the Route Event pair will play." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="base_chance" class="TunablePercent" default="100" display="Base Chance" muid="771B69D3E78BF108" min="0" max="100" description="The basic chance of success." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="530204432219E33" description="A list of multipliers to apply to base_chance." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="C8DE93C920D1BD2E" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="6FBE3F590AF6E212" min="0" max="None" description="The multiplier to apply to base_chance if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="9EEB7DE101C82381" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+                <Tunable type="snippet" name="target_event" class="TunableReference" display="Target Event" muid="B03D578901E5C655" description="A paired route event for the sim tested as the target sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RouteEventPaired" />
+                <Tunable type="float" name="weight" class="TunableRange" default="1" display="Weight" muid="C29F52C935BAA406" min="1" max="None" description="The weight to assign to this event." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="object" name="routing_object" class="TunableReference" display="Routing Object" muid="1D6CEFF5FC5161BC" description="An object with a routing component that will be used as the anchor object for this group." allow_none="False" Deprecated="False" filter="0" group="Routing" />
+
+        <Tunable type="object_state" name="routing_object_off_state" class="TunableReference" display="Routing Object Off State" muid="BD14F969788AAAFE" description="object state to deactivate the routing object." allow_none="False" Deprecated="False" filter="0" group="Routing" restrict="ObjectStateValue" />
+
+        <Tunable type="object_state" name="routing_object_on_state" class="TunableReference" display="Routing Object On State" muid="7C59FCF3A0569C5B" description="object state to activate the routing object." allow_none="False" Deprecated="False" filter="0" group="Routing" restrict="ObjectStateValue" />
+
+        <Deleted name="social_anchor_object" muid="206AD7E0DAF27674" />
+    </Instance>
+</TuningRoot>

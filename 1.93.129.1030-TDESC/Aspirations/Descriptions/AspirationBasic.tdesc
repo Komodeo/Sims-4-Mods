@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="aspiration" class="AspirationBasic" module="aspirations.aspiration_tuning" muid="35597CB78D029EA3" description="An aspiration that doesn't need any data to display to the UI." instance_subclasses_only="True" path="Aspirations\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="can_complete_without_objectives" class="Tunable" default="True" display="Can Complete Without Objectives" muid="BBEA3FE9EC1FF066" description="If checked, this Milestone can have 0 objectives and be completed.&#xA;If unchecked, having zero objectives won't complete this Milestone. &#xA;This can be used for Milestones like Missions that have dynamically-&#xA;added Objectives that might not be available when the Milestone is &#xA;tested for completion." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="do_not_register_events_on_load" class="Tunable" default="False" display="Do Not Register Events On Load" muid="981B9424786D709B" description="If checked we will not register these events on load.&#xA;&#xA;This should be checked for all aspirations that are part of an&#xA;aspiration track." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="objective_completion_type" class="TunableVariant" default="complete_all" display="Objective Completion Type" muid="D9441E72AA3DD32F" description="A requirement of what objectives need to be completed.                          " Deprecated="False" filter="0" group="~Core~">
+            <TunableTuple name="complete_all" class="TunableAllCompletionType" display="Complete All" muid="4FF3EC9D7475982D" description="All of the Objectives as part of this Milestone must be completed&#xA;in order for this Milestone to be considered complete." Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="complete_subset" class="TunableSubsetCompletionType" display="Complete Subset" muid="CF28F02033F59A9C" description="A numerical subset of the total Objectives need to be complete for&#xA;this Milestone to be considered complete." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="number_required" class="TunableRange" default="1" display="Number Required" muid="BF591DEE6C1A02F1" min="1" max="None" description="The number of objectives as part of this Milestone that must be&#xA;completed until this Milestone is considered complete." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableList name="objectives" class="TunableList" display="Objectives" muid="896BD0C48AEB8650" description="A list of all of the Objectives that will be tracked in order for&#xA;this Milestone to be completed.  Using the Objective Completion Type&#xA;we will determine the action number of Objectives that need to be&#xA;completed." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="~Core~">
+            <Tunable type="objective" class="TunableReference" muid="431C2B1C1B6321E4" description="An Objective that is one of the requirements for this Milestone&#xA;to be completed." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableVariant type="None" name="screen_slam" class="OptionalTunable" default="disabled" display="Screen Slam" muid="824E95CB70F1356B" description="Which screen slam to show when this aspiration is complete.&#xA;Localization Tokens: Sim - {0.SimFirstName}, Milestone Name - &#xA;{1.String}, Aspiration Track Name - {2.String}" Deprecated="False" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="794EE4F9E3938978" />
+            <TunableVariant type="None" name="enabled" class="TunableScreenSlamSnippet" default="literal" display="Enabled" muid="55FF5B299659BB01" description="This may be tuned in place here using 'literal' or as a reference to a ScreenSlam tuning snippet." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="literal" class="TunableScreenSlam" display="Literal" muid="914C94FE22704B53" description="Tunable Screen Slams!" Deprecated="False" filter="0" group="General">
+                    <Tunable type="bool" name="active_sim_only" class="Tunable" default="True" display="Active Sim Only" muid="D2EE4592DE109C8" description="If true, the screen slam will be only be shown if the active Sim&#xA;triggers it." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="audio_sting" class="OptionalTunable" default="disabled" display="Audio Sting" muid="F7CAFD2CEBB25E3D" description="A sting to play at the same time as the screen slam.&#xA;***Some screen slams may appear to play a sting, but the audio is&#xA;actually tuned on something else.  Example: On CareerLevel tuning&#xA;there already is a tunable, Promotion Audio Sting, to trigger a&#xA;sting, so one is not necessary on the screen slam.  Make sure to&#xA;avoid having multiple stings play simultaneously.***" Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8B26A625BF4E5103" />
+                        <TunableTuple name="enabled" class="TunablePlayAudio" display="Enabled" muid="EB0DC3CC231AF0C7" Deprecated="False" filter="0" group="General">
+                            <Tunable type="ResourceKey" name="audio" class="TunableResourceKey" default="None" display="Audio" muid="178778D0A4CAB7ED" description="The sound to play." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+                            <Tunable type="bool" name="immediate_audio" class="Tunable" default="False" display="Immediate Audio" muid="F17D977AE14AE92D" description="If checked, this audio will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. Earbuds audio will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                            <TunableVariant type="None" name="joint_name_hash" class="OptionalTunable" default="disabled" display="Joint Name Hash" muid="56A756A25788794B" description="Specify if the audio is attached to a slot and, if so, which&#xA;slot. Otherwise the audio will be attached to the object's &#xA;origin." Deprecated="False" filter="0" group="General">
+                                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8C8EA6ACD1647421" />
+                                <Tunable type="str" name="enabled" class="TunableStringHash32" default="None" display="Enabled" muid="515F128B5720EF1B" description="The name of the slot this audio is attached to." Deprecated="False" filter="0" group="General" />
+                            </TunableVariant>
+                            <Tunable type="bool" name="play_on_active_sim_only" class="Tunable" default="False" display="Play On Active Sim Only" muid="8227C0F84D61F73A" description="If enabled, and audio target is Sim, the audio will only be &#xA;played on selected Sim. Otherwise it will be played regardless &#xA;Sim is selected or not.&#xA;&#xA;If audio target is Object, always set this to False. Otherwise&#xA;the audio will never be played.&#xA;&#xA;ex. This will be useful for Earbuds where we want to hear the&#xA;music only when the Sim is selected." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableVariant type="None" name="display_type" class="ScreenSlamDisplayVariant" default="size_based" display="Display Type" muid="416BF72B51C38FB5" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="key_based" class="TunableScreenSlamKeyBased" display="Key Based" muid="93FA09B14EF13FEC" description="Screen Slam visual is dictated by a string key.&#xA;&#xA;Verify with your UI partner what this should be. " Deprecated="False" filter="0" group="General">
+                            <Tunable type="str" name="key" class="Tunable" default="medium" display="Key" muid="CDE291CEB968A771" description="Key to use for the screenslam. This will be typically tied&#xA;to what animation will play. Verify with your UI partner&#xA;what the correct value to use will be." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="size_based" class="TunableScreenSlamSizeBased" display="Size Based" muid="60A10340DFAA8452" description="Screen Slam visual is dictated by the value of the size tunable." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="ScreenSlamSizeEnum" name="screen_slam_size" class="TunableEnumEntry" default="MEDIUM" display="Screen Slam Size" muid="4CD91ADD7712A9A7" static_entries="ui-screen_slam.ScreenSlamSizeEnum" description="Screen slam size." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableVariant type="None" name="icon" class="OptionalTunable" default="disabled" display="Icon" muid="FD8B179172B60CCC" description=",&#xA;Icon to be displayed for the screen Slam." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="2F5EF89596E62D55" />
+                        <Tunable type="ResourceKey" name="enabled" class="TunableIcon" default="None" display="Enabled" muid="D6A4B160D7EC7755" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="text" class="OptionalTunable" default="disabled" display="Text" muid="2A7F31247F300C15" description="&quot;&#xA;Text of the screen slam." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C81C959AC703061B" />
+                        <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="50CE76E337644543" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="title" class="OptionalTunable" default="disabled" display="Title" muid="1E78B16B344F6947" description="Title of the screen slam." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A9D759548792B813" />
+                        <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="22FA5941DB05B417" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableTuple>
+                <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="89367B63B8A6440E" description="A reference to a ScreenSlam tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ScreenSlam" />
+            </TunableVariant>
+        </TunableVariant>
+
+        <Tunable type="bool" name="track_completion_count" class="Tunable" default="False" display="Track Completion Count" muid="BD84324C05F492C9" description="If checked, this Milestone will track how many times it's been&#xA;completed, even through resets. For instance, GP09 Missions reuse the &#xA;same Aspiration but still need to track how many times the Aspiration&#xA;has been completed." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="SituationStyleData" module="situations.situation_tuning" muid="12E8BC55BB8E5328" description="Tuning that holds style data for Situations." instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="cas_edit_job" class="OptionalTunable" default="disabled" display="Cas Edit Job" muid="C5035C924D662A97" description="If enabled, shows up to two Sims from a specific job and allows taking them in to CAS." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="79EB1E9572695312" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="1B16BB051FC4A3FC" description="The job to show in the UI and the outfit category the Sim should be shown in." Deprecated="False" filter="0" group="General">
+                <Tunable type="situation_job" name="job" class="TunableReference" display="Job" muid="7B86A97A575656B9" description="This is the Situation Job that can be edited in CAS. Currently, the UI only supports up to 2 Sims in&#xA;this job." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="ResourceKey" name="no_sim_selected_icon" class="TunableIcon" default="None" display="No Sim Selected Icon" muid="D9F02C69D2EEF9AF" description="The icon to show in place of a Sim if no Sim has been selected for the tuned Job." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                <TunableEnum type="OutfitCategory" name="outfit_category" class="TunableEnumEntry" default="EVERYDAY" display="Outfit Category" muid="41836D63B6100820" static_entries="sims-outfits-outfit_enums.OutfitCategory" description="The outfit the Sim will wear in the UI. This is also the outfit that will be targeted when in CAS." Deprecated="False" filter="0" group="General" invalid_entries="CURRENT_OUTFIT" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="customizable_guest_attire" class="OptionalTunable" default="disabled" display="Customizable Guest Attire" muid="E9607B318DC3C5CC" description="If enabled, allows customizing the guest attire for a Situation." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="EC97DDD40779A0DC" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="D510E151D8AE10" description="Color and Style tuning for the guest attire." Deprecated="False" filter="0" group="General">
+                <TunableList name="color_map" class="TunableMapping" display="Color Map" muid="42C0E4A6B1587CC9" mapping_key="key" mapping_value="value" description="A mapping from CAS tags to LocalizedStrings representing available colors for Situation guest attire." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="DF312AB903F0E59F" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="Tag" name="key" class="TunableEnumWithFilter" default="INVALID" display="Key" muid="B59DAE7AB34B4ABA" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A color tag used to find matching CAS parts for the Guests." Deprecated="False" dynamic_entries_prefix="color" filter="0" group="General" pack_safe="True" />
+                        <TunableTuple name="value" class="TunableTuple" display="Value" muid="EBF5C30D0254A9F9" description="The name and hex value for the color." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="color_name" class="TunableLocalizedString" default="0x0" display="Color Name" muid="5E12B8C5EBF7EF13" description="The name of the Color." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="str" name="color_value" class="Tunable" default="ffffffff" display="Color Value" muid="5A3D6D5C98633659" description="The hex value of the color." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+                <TunableList name="style_map" class="TunableMapping" display="Style Map" muid="6CD2B78FCAED8B94" mapping_key="key" mapping_value="value" description="A mapping from CAS tags to LocalizedStrings shown in the Situation Creation UI for choosing attire style." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="CFC9604E4522F792" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="Tag" name="key" class="TunableEnumWithFilter" default="INVALID" display="Key" muid="F32BBDBE908924AA" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The style tag of the CAS parts associated with this style." Deprecated="False" dynamic_entries_prefix="style" filter="0" group="General" invalid_entries="INVALID" />
+                        <Tunable type="int" name="value" class="TunableLocalizedString" default="0x0" display="Value" muid="3104FF8AC2B02C7E" description="The display name for this style. Shown in a dropdown in the Situation Creation UI." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

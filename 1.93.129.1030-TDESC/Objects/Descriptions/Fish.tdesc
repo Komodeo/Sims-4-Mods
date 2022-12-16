@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="object" class="Fish" module="fishing.fish_object" muid="E5DBDDD32F552AC4" description="The Fish object. This holds information that is specific to a fish such as&#xA;the fish bowl VFX name, the weight range, etc." instance_needs_reference="True" instance_subclasses_only="False" parents="GameObject, ScriptObject" path="Objects\Descriptions" use_guid_for_reference="True">
+        <TunableList name="buffs_on_catch" class="TunableList" display="Buffs On Catch" muid="AC97ED9CD6135EBA" description="A list of buffs to award the Sim when they catch this fish." Deprecated="False" filter="0" group="Fishing">
+            <TunableTuple class="TunableBuffReference" muid="2587F75E449EFF13" Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="buff_reason" class="OptionalTunable" default="disabled" display="Buff Reason" muid="3DC46FB566BAE32E" description="If set, specify a reason why the buff was added." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="86AE8C157485505D" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="CFF60FDE8CB0C001" description="The reason the buff was added. This will be displayed in the&#xA;buff tooltip." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="CBB65EAFCED7A61D" description="Buff that will get added to sim." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableTuple name="catch_multiplier" class="TunableTunableMultiplier" display="Catch Multiplier" muid="2CC94E154C824B25" description="The catch multiplier used if this fish is added to an object's&#xA;fishing data through gameplay. If the fish is added to the fishing&#xA;data through tuning, it will use the weight tuned in the fishing &#xA;data instead of this one. " Deprecated="False" filter="0" group="Fishing">
+            <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="3F89FC80030F6433" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="88D19DD5BEBB87A6" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="11506E97C2B8A7B7" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="8A0C419D8203307B" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="C39D2A0218928989" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TdescFragTag name="catchable_tests" class="TunableTestSet" display="Catchable Tests" muid="557DB19E1690E1A2" description="If these tests pass, the Sim can catch this fish.&#xA;If these tests fail, the Sim can not catch this fish.&#xA;This doesn't stop the Sim from trying to catch these fish, but it&#xA;will never happen.&#xA;&#xA;DO NOT add bait buffs here. Those should be added to the Required Bait tunable field.&#xA;&#xA;When testing on fishing skill be sure to enable 'Use Effective&#xA;Skill Level' since baits can change it." filter="0" group="Fishing" />
+
+        <Tunable type="str" name="fish_type" class="Tunable" default="None" display="Fish Type" muid="10DC1F59BB47DD97" description="The asm parameter for the size of the fish. If you're unsure what&#xA;this should be set to, talk to the animator or modeler and ask what&#xA;fish type this fish should be." choice_query="SwingSupport:EnumNames(fishType)" Deprecated="False" filter="0" group="Fishing" />
+
+        <Tunable type="str" name="fishbowl_vfx" class="Tunable" default="None" display="Fishbowl Vfx" muid="1137A49EC34DA5E3" description="The name of the VFX to use when this fish is dropped in a fish bowl." Deprecated="False" filter="0" group="Fishing" />
+
+        <Tunable type="str" name="fishing_hole_vfx" class="Tunable" default="None" display="Fishing Hole Vfx" muid="5B5AAE28C6DE5F19" description="The name of the VFX to use at the fishing hole (pond) where this&#xA;fish can be caught." Deprecated="False" filter="0" group="Fishing" />
+
+        <Tunable type="str" name="fishing_spot_vfx" class="Tunable" default="None" display="Fishing Spot Vfx" muid="C54B6274FCF35583" description="The name of the VFX to use at the fishing spot (sign) where this&#xA;fish can be caught." Deprecated="False" filter="0" group="Fishing" />
+
+        <TunableList name="global_policy_value_mapping" class="TunableMapping" display="Global Policy Value Mapping" muid="8B3DC3C05D13C5C8" mapping_key="key" mapping_value="value" description="The mapping of global policies that when enacted are used to&#xA;increment the base value of the fish by a percent of its original value." Deprecated="False" filter="0" group="Fishing">
+            <TunableTuple class="TunableTuple" muid="82B2091B989491FB" Deprecated="False" filter="0" group="General">
+                <Tunable type="snippet" name="key" class="TunableReference" display="Key" muid="8F93228FDE4180AA" description="The global policy that when completed updates the cost of the&#xA;fish by the paired percent." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="GlobalPolicy" />
+                <Tunable type="float" name="value" class="TunablePercent" default="50" display="Value" muid="6B05338B39C18039" min="0" max="100" description="The percent of the fish's value to increment the base value." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="inventory_to_fish_vfx" class="TunableMapping" display="Inventory To Fish Vfx" muid="9FC4E07A45D5B7EC" mapping_key="inventory_type" mapping_value="base vfx name" description="The inventory type to fish vfx to play when fish is placed in&#xA;inventory type.  If inventory type does not exist in mapping, use&#xA;fishbowl_vfx as fallback vfx to play." Deprecated="False" filter="0" group="Fishing">
+            <TunableTuple class="TunableTuple" muid="8772D4E0D5C59068" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="base vfx name" class="TunableTuple" display="Base Vfx Name" muid="C0319E9E0B38E50A" Deprecated="False" filter="0" group="General">
+                    <Tunable type="str" name="vfx_base_bone_name" class="Tunable" default="_FX_fish_" display="Vfx Base Bone Name" muid="9D1314461B915284" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="str" name="vfx_name" class="Tunable" default="" display="Vfx Name" muid="1190CB872289FCC3" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableEnum type="InventoryType" name="inventory_type" class="TunableEnumEntry" default="UNDEFINED" display="Inventory Type" muid="D2B5B75B5669931C" dynamic_entries="objects-components-inventory_enums.InventoryType._elements" static_entries="objects-components-inventory_enums.InventoryType" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="float" name="mean_weight_deviation" class="Tunable" default="1" display="Mean Weight Deviation" muid="6EF65BFB88E0CD3" description="This is the amount of deviation from the mean the weight can be.&#xA;The mean weight is first decided then multiplied by this number.&#xA;The result is both added and subtracted from the mean weight to get&#xA;the min/max possible weight of the fish. We then pick a random&#xA;number between the min and max to determine the final weight of the&#xA;fish.&#xA;&#xA;Example: Assume Mean Weight = 2 and Mean Weight Deviation = 0.2&#xA;2 x 0.2 = 0.4&#xA;min = 2 - 0.4 = 1.6&#xA;max = 2 + 0.4 = 2.4&#xA;A random number is chosen between 1.6 and 2.4, inclusively." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Fishing" />
+
+        <TunableVariant type="None" name="required_bait_buff" class="OptionalTunable" default="disabled" display="Required Bait Buff" muid="E85920DBC1B821E9" description="The bait buff that is required to catch this fish.&#xA;&#xA;If this is tuned, this fish can not be caught without the required bait.&#xA;If this is not tuned, this fish can be caught with or without bait.&#xA;&#xA;Note: Bait buffs are the only buffs that should be tuned here.&#xA;If you want to gate this fish on a non-bait buff, use the Catchable Tests." Deprecated="False" filter="0" group="Fishing">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="2751F60FFD084BF9" />
+            <Tunable type="buff" name="enabled" class="TunableReference" display="Enabled" muid="A69022A2E2B77B6C" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableList name="skill_weight_curve" class="TunableCurve" display="Skill Weight Curve" muid="1F302A94E16A4EEB" description="This curve represents the mean weight in kg of the fish based on the Sims's fishing skill level.&#xA;The X axis is the Sim's effective fishing skill level.&#xA;The Y axis is the mean weight, in kg, of the fish.&#xA;The mean weight will be modified by the Mean Weight Deviation field." Deprecated="False" filter="0" group="Fishing">
+            <TunableTuple class="TunableVector2" muid="AA0DE56D67C9FA92" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="x" class="Tunable" default="0.0" display="x: Effective Fishing Skill Level" muid="A0E192D6317D83CB" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="y" class="Tunable" default="0.0" display="y: Mean Weight (kg)" muid="233CCBBD38D9B1E2" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="object" name="wall_mounted_object" class="TunableReference" display="Wall Mounted Object" muid="A21EC540851650EE" description="When this fish is mounted to the wall, this is the object it will turn in to." allow_none="False" Deprecated="False" filter="0" group="Fishing" />
+
+        <Tunable type="float" name="weight_money_multiplier" class="Tunable" default="1" display="Weight Money Multiplier" muid="5C6BF51D26399E57" description="The weight of the fish will be multiplied by this number then the&#xA;result of that multiplication will be added to the base value of&#xA;the fish." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Fishing" />
+    </Instance>
+</TuningRoot>

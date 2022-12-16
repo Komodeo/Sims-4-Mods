@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="drama_node" class="HolidayDramaNode" module="holidays.holiday_drama_node" muid="326E204E9AE472F4" description="A drama node that has information about running a holiday." instance_subclasses_only="False" parents="BaseDramaNode" path="DramaNodes\Descriptions" use_guid_for_reference="True">
+        <Tunable type="holiday_definition" name="holiday" class="TunableReference" display="Holiday" muid="74EF6F2E2B2BA58D" description="The holiday that this drama node starts." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="pre_holiday_duration" class="TunableTimeSpan" display="Pre Holiday Duration" muid="54B56F8955255F29" description="This duration is used to calculate the drama node's start time for&#xA;main holidays by subtracting the tuned amount from the globally &#xA;tuned start time. The player is notified with a reminder for the&#xA;holiday, and decorations will be put up in the neighborhood.&#xA;For surprise holidays, this should be set to 0, as surprise &#xA;holidays have no pre-holiday state." Deprecated="False" filter="0" group="General">
+            <Tunable type="int" name="hours" class="TunableRange" default="23" display="Hours" muid="75E136A1713FEB41" min="0" max="23" description="Number of hours" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TdescFragTag name="tests_to_create_situation" class="TunableTestSet" display="Tests To Create Situation" muid="3EA3A8A565D47DB1" description="Tests that must pass for the holiday situation to be created&#xA;on the target sim." filter="0" group="General" />
+
+        <Deleted name="ui_display_data" muid="22DADDFF354F247B" />
+    </Instance>
+</TuningRoot>

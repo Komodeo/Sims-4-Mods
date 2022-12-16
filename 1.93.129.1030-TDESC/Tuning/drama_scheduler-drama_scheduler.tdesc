@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="drama_scheduler.drama_scheduler" muid="609E2214433BC29A">
+        <Class name="NodeSelectionOption" muid="C6BEF9D6E2A686C9" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="BASED_ON_HOUSEHOLD" muid="1D968CED81CC1ABD" enum_value="1" />
+
+            <EnumItem name="STATIC_AMOUNT" muid="7BE24AF2FB4FEF72" enum_value="0" />
+        </Class>
+
+        <Class name="DramaScheduleService" muid="BE36E5AB3A4D63C2">
+            <TunableList name="BUCKET_SCORING_RULES" class="TunableMapping" display="Bucket Scoring Rules" muid="3A90CC76EFBD618E" mapping_key="key" mapping_value="value" description="A mapping between the different possible scoring buckets, and rules&#xA;about scheduling nodes in that bucket." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="6FDA419F52C0C4C8" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="DramaNodeScoringBucket" name="key" class="TunableEnumEntry" default="DEFAULT" display="Key" muid="8E304D57D48FA098" dynamic_entries="drama_scheduler-drama_enums.DramaNodeScoringBucket._elements" static_entries="drama_scheduler-drama_enums.DramaNodeScoringBucket" description="The bucket that we are going to score on startup." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="455FAA1D6A3F4D4A" description="Rules about scheduling this drama node." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="days" class="TunableAvailableDays" display="Days" muid="4AE1D6B93461E859" description="Which days of the week to include" Deprecated="False" filter="0" group="General">
+                            <Tunable type="bool" name="0 SUNDAY" class="Tunable" default="False" display="0 Sunday" muid="F1D134D68FFB800F" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="1 MONDAY" class="Tunable" default="False" display="1 Monday" muid="9274DC91EA58CCA" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="2 TUESDAY" class="Tunable" default="False" display="2 Tuesday" muid="6E511DE771CB514D" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="3 WEDNESDAY" class="Tunable" default="False" display="3 Wednesday" muid="C3F3E1659809A798" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="4 THURSDAY" class="Tunable" default="False" display="4 Thursday" muid="42D754B8503A66FF" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="5 FRIDAY" class="Tunable" default="False" display="5 Friday" muid="2B41D4CF2DE1F12E" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="6 SATURDAY" class="Tunable" default="False" display="6 Saturday" muid="F596A3EFB484F321" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableVariant type="None" name="number_to_schedule" class="TunableVariant" default="none" display="Number To Schedule" muid="1078A25B6534265D" description="How many actual nodes should we schedule from this bucket." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="based_on_household" class="TunableTuple" display="Based On Household" muid="361B028ACF0D5161" description="Select the number of nodes based on the number of Sims in&#xA;the active household." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="fixed_amount" class="TunableTuple" display="Fixed Amount" muid="F43700088B38D49C" description="Select the number of nodes based on a static number." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="number_of_nodes" class="TunableRange" default="1" display="Number Of Nodes" muid="4E285C188D029F88" min="0" max="None" description="The number of nodes that we will always try and&#xA;schedule from this bucket." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <Tunable name="none" class="TunableExistance" display="None" muid="68912E9FF44E9B85" />
+                        </TunableVariant>
+                        <Tunable type="bool" name="refresh_nodes_on_scheduling" class="Tunable" default="False" display="Refresh Nodes On Scheduling" muid="EB2C05D174E17070" description="If checked, any existing scheduled nodes for this &#xA;particular scoring bucket will be canceled before scheduling&#xA;new nodes." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="score_if_no_nodes_are_scheduled" class="Tunable" default="False" display="Score If No Nodes Are Scheduled" muid="9C689B9B7973887A" description="If checked then if no drama nodes are scheduled from this&#xA;bucket then we will try and score and schedule this bucket&#xA;even if we are not expected to score nodes on this day." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="STARTUP_BUCKETS" class="TunableSet" display="Startup Buckets" muid="490804A93C952921" description="PLEASE CHECK WITH YOUR GPE PARTNER BEFORE ADDING TO THIS SET!&#xA;&#xA;A set of buckets that we want to schedule on initial startup.  We will&#xA;run an initial scoring of nodes within these buckets the first time&#xA;a game is loaded.  This should mainly be used if there is a need to&#xA;have nodes schedule immediately when the player begins playing and they&#xA;cannot wait until the next scheduling ping.&#xA;&#xA;Ex. Auditions for the acting career are represented as Drama Nodes that&#xA;the player can sign up for.  When the player begins playing the game&#xA;they shouldn't have to wait until the next day for auditions to be&#xA;available for them to sign up for." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="DramaNodeScoringBucket" class="TunableEnumEntry" default="DEFAULT" muid="889E342A628F09CF" dynamic_entries="drama_scheduler-drama_enums.DramaNodeScoringBucket._elements" static_entries="drama_scheduler-drama_enums.DramaNodeScoringBucket" description="The bucket that we are going to score this node in." Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <TunableTuple name="VENUE_BUCKET_DAYS" class="TunableAvailableDays" display="Venue Bucket Days" muid="31B9A1CD8D5092E0" description="Which days of the week to include" Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="0 SUNDAY" class="Tunable" default="False" display="0 Sunday" muid="E2655C4AD547BAA1" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="1 MONDAY" class="Tunable" default="False" display="1 Monday" muid="F84D37228A2C4CBF" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="2 TUESDAY" class="Tunable" default="False" display="2 Tuesday" muid="F237ABACDC531395" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="3 WEDNESDAY" class="Tunable" default="False" display="3 Wednesday" muid="58DC4012A6DF6DB8" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="4 THURSDAY" class="Tunable" default="False" display="4 Thursday" muid="3B1B8D6A2B87B0C4" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="5 FRIDAY" class="Tunable" default="False" display="5 Friday" muid="A2329350ACC1A909" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="6 SATURDAY" class="Tunable" default="False" display="6 Saturday" muid="656618B9687C9FF6" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableList name="WEEKLY_SCHEDULING_RULES" class="TunableMapping" display="Weekly Scheduling Rules" muid="8EF5466FA4113866" mapping_key="key" mapping_value="value" description="A mapping between the different possible weekly scheduling groups, and rules&#xA;about scheduling nodes in that group." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="F90A8DAB8B411178" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="WeeklySchedulingGroup" name="key" class="TunableEnumEntry" default="DEFAULT" display="Key" muid="A1A7973717C03051" dynamic_entries="drama_scheduler-drama_enums.WeeklySchedulingGroup._elements" static_entries="drama_scheduler-drama_enums.WeeklySchedulingGroup" description="The group that we are going to put the weekly scheduled nodes in." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="C85FADAA929DF10E" description="Rules about scheduling this drama node weekly." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="weeks_gap" class="TunableRange" default="1" display="Weeks Gap" muid="3460EBA988137A7D" min="1" max="None" description="Week gaps for scheduling.&#xA;For example if this is set to 1, we will schedule one node per 1 week; &#xA;if this is 2, we will schedule one node per 2 weeks... and so on. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="weeks_to_schedule_in_advance" class="TunableRange" default="1" display="Weeks To Schedule In Advance" muid="FD3C9BFE145A37A2" min="1" max="None" description="Number of weeks we want to be scheduled in advance.&#xA;For example, if weeks_to_schedule_in_advance is 4, this week is week 7, latest scheduled week is week X,&#xA;weeks_gap is 1. Then when we run the scheduling code, we will need to make sure:&#xA;weeks_to_schedule_in_advance &lt;= latest scheduled week number - this week number + weeks_gap&#xA;(4 &lt;= X - 7 + 1)&#xA;Otherwise we will keep scheduling until X is large enough to satisfy the inequation." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

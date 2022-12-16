@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="WeeklyScheduleSituationData" module="venues.weekly_schedule_zone_director" muid="54BF25D36FCCAFED" description="Structure containing the situation and job information neccessary to start a scheduled situation." instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableList name="job_assignments" class="TunableList" display="Job Assignments" muid="A797AD1FB38AD0C6" description="List of jobs with associated test of sims who can fulfill that job and min/max number of&#xA;sims assigned to that job.&#xA;&#xA;Will make two passes attempting to assign instantiated sims to jobs.  The first pass will&#xA;assign instantiated sims that pass the test into jobs until the jobs meets the minimum requirements.&#xA;The second pass will assign instantiated sims into jobs until the job meets the maximum requirements." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="398158FC8ACC963" Deprecated="False" filter="0" group="General">
+                <Tunable type="situation_job" name="job" class="TunableReference" display="Job" muid="57843C0745586456" description="The situation job. " allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="sim_count" class="TunableInterval" display="Sim Count" muid="9207F8D70738E6C3" description="Number of sims for this job.&#xA;Minimum of 0 means job is optional.&#xA;Will attempt to assign up to the max before moving on to next job/situation." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="4C91FCFA9F702577" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="7E6D17F7A974BEB3" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="1972F0CBD2AA6B5F" description="Tests used to determine if the instanced sim should be assigned to this job." filter="0" group="General" />
+                <TunableList name="upper_bound_count_modifiers" class="TunableList" display="Upper Bound Count Modifiers" muid="9EEEBA745F50F75" description="Reduce Max sim count by 1 for every sim previously assigned (in this time period)&#xA;to specified situation/job." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="5364EBF0EF84A2A" Deprecated="False" filter="0" group="General">
+                        <Tunable type="situation_job" name="job" class="TunableReference" display="Job" muid="74D852D7AA4B0E9D" description="The situation job. " allow_none="False" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="situation" name="situation" class="TunableReference" display="Situation" muid="9A00D206A454671F" description="The Situation." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="situation" name="situation" class="TunableReference" display="Situation" muid="CD788DC9877D3809" description="Situation to run." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <TunableEnum type="UserFacingType" name="user_facing" class="TunableEnumEntry" default="NEVER" display="User Facing" muid="C9360F6330CD0259" static_entries="venues-weekly_schedule_zone_director.UserFacingType" description="NEVER: Never make user facing.&#xA;ALWAYS: Make user facing if at least 1 selectable sim in in situation.&#xA;LINK_SELECTABLE_SIMS: Make user facing and link to selectable sim if only 1 selectable sim is in the situation.&#xA;LINK_CAREER_SIMS: Make user facing and link to career sim if only 1 career sim is in the situation." Deprecated="False" filter="0" group="General" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="BA0BE7BE3C1D693A" new_muid="9EEEBA745F50F75" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

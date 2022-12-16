@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.components.buff_component" muid="FF8A5FAB7F658ACA">
+        <Class name="BuffComponent" muid="8AD411FFC3155B13">
+            <Tunable type="mood" name="DEFAULT_MOOD" class="TunableReference" display="Default Mood" muid="7AF1FA18BA7D3E0D" description="The default initial mood." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="EXCLUSIVE_SET" class="TunableList" display="Exclusive Set" muid="36C4E62487692C9D" description="A list of buff groups to determine which buffs are exclusive from each&#xA;other within the same group.  A buff cannot exist in more than one exclusive group.&#xA;&#xA;The following rule of exclusivity for a group:&#xA;1. Higher weight will always be added and remove any lower weight buffs&#xA;2. Lower weight buff will not be added if a higher weight already exist in component&#xA;3. Same weight buff will always be added and remove any buff with same weight.&#xA;&#xA;Example: Group 1:&#xA;            Buff1 with weight of 5 &#xA;            Buff2 with weight of 1&#xA;            Buff3 with weight of 1&#xA;         Group 2:&#xA;            Buff4 with weight of 6&#xA;&#xA;If sim has Buff1, trying to add Buff2 or Buff3 will not be added.&#xA;If sim has Buff2, trying to add Buff3 will remove Buff2 and add Buff3&#xA;If sim has Buff2, trying to add Buff1 will remove Buff 2 and add Buff3&#xA;If sim has Buff4, trying to add Buff1, Buff2, or Buff3 will be added and Buff4 will stay &#xA;                  on component " Deprecated="False" filter="0" group="General">
+                <TunableList class="TunableList" muid="D02AB182F559E38B" Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="129752598EA50185" Deprecated="False" filter="0" group="General">
+                        <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="A5E1F87111F105A2" description="Buff in exclusive group" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <Tunable type="int" name="weight" class="Tunable" default="1" display="Weight" muid="90013D133754F8A4" description="weight to determine if this buff should be added and&#xA;remove other buffs in the exclusive group or not added at all.&#xA;&#xA;Example: Buff1 with weight of 5 &#xA;         Buff2 with weight of 1&#xA;         Buff3 with weight of 1&#xA;&#xA;If sim has Buff1, trying to add Buff2 or Buff3 will not be added.&#xA;If sim has Buff2, trying to add Buff3 will remove Buff2 and add Buff3&#xA;if sim has Buff2, trying to add Buff1 will remove Buff 2 and add Buff3" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableList>
+
+            <Tunable type="int" name="UPDATE_INTENSITY_BUFFER" class="TunableRange" default="1" display="Update Intensity Buffer" muid="20ED874B83350A04" min="0" max="None" description="A buffer that prevents a mood from becoming active unless its intensity&#xA;is greater than the current active mood's intensity plus this amount.&#xA;&#xA;For example, if this tunable is 1, and the Sim is in a Flirty mood with&#xA;intensity 2, then a different mood would become the active mood only if&#xA;its intensity is 3+.&#xA;&#xA;If the predominant mood has an intensity that is less than the active&#xA;mood's intensity, that mood will become the active mood." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+
+        <Class name="BuffPickerSuperInteraction" muid="D3DD3B8B36408C5D">
+            <Class name="BuffHandlingType" muid="1F81D040B7514609" enum_bit_flag="True" enum_locked="False">
+                <EnumItem name="DISABLE" muid="1398C3FD8C2E5153" enum_value="4" />
+
+                <EnumItem name="HIDE" muid="1DB5212B1F0042AE" enum_value="1" />
+
+                <EnumItem name="SELECT" muid="BC4F606AC144C8C2" enum_value="2" />
+            </Class>
+        </Class>
+    </Module>
+</TuningRoot>

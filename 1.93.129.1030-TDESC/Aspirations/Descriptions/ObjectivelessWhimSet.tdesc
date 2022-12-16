@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="aspiration" class="ObjectivelessWhimSet" module="whims.whim_set" muid="AA9D1CA3AD646D67" description="A whim set that does not have any objectives.  These whim sets are either&#xA;active or inactive and thus do not have any priority that decays." instance_subclasses_only="False" parents="AspirationBasic" path="Aspirations\Descriptions" use_guid_for_reference="True">
+        <Deleted name="do_not_register_events_on_load" muid="F0CBDB50F6FBBE4D" />
+
+        <TunableVariant type="None" name="force_target" class="OptionalTunable" default="disabled" display="Force Target" muid="90AE1579417D6DA1" description="Upon WhimSet activation, use this option to seek out and set a&#xA;specific target for this set. If the desired target does not exist&#xA;or is not instanced on the lot, WhimSet will not activate." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9AA3A656CFE55E23" />
+            <TunableVariant type="None" name="enabled" class="TunableWhimSetTargetVariant" default="genealogy_target" display="Enabled" muid="D13D0D8260225EBB" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="genealogy_target" class="GeneTargetFactory" display="Genealogy Target" muid="260960B6C2FD0BE0" description="This option tests for completion of a tuned Achievement." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="FamilyRelationshipIndex" name="relationship" class="TunableEnumEntry" default="FATHER" display="Relationship" muid="80B785B0D5F694E0" static_entries="sims-genealogy_tracker.FamilyRelationshipIndex" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="relationship_target" class="RelationTargetFactory" display="Relationship Target" muid="6828DE89C9EDBC37" description="This option tests for completion of a tuned Achievement." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="relationship_test" class="TunableRelationshipTest" display="Relationship Test" muid="DD9C0DB27599E4DB" description="The relationship state that this goal will complete when&#xA;obtained." Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="invert_num_relations" class="Tunable" default="False" display="Invert Num Relations" muid="63B5F5F4D3591EA6" description="If checked then we will check that your Num Relations is less than or&#xA;equal to the value rather than the other way around." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="prohibited_relationship_bits" class="TunableTuple" display="Prohibited Relationship Bits" muid="F0CDCE60B3636F94" Deprecated="False" filter="0" group="General">
+                            <TunableList name="match_all" class="TunableSet" display="Match All" muid="E5D5E157A3E69DA9" description="All of these relationship bits must match to fail the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="B75CFFFB46981683" allow_none="False" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="match_any" class="TunableSet" display="Match Any" muid="BBC56E36D26C7D48" description="If any of these relationship bits match the test will fail." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="400C4CB9736263BC" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="relationship_score_interval" class="TunableInterval" display="Relationship Score Interval" muid="E6C267E686E660DB" description="The range that the relationship score must be within in order for&#xA;this test to pass." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableRange" default="-100.0" display="Lower Bound" muid="8760737C4D13CA32" min="-100.0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableRange" default="100.0" display="Upper Bound" muid="B6BED46EA3460405" min="None" max="100.0" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="required_relationship_bits" class="TunableTuple" display="Required Relationship Bits" muid="6DF48A3245F05995" Deprecated="False" filter="0" group="General">
+                            <TunableList name="match_all" class="TunableSet" display="Match All" muid="33EA18EF2C05A5DA" description="All of these relationship bits must be present to pass the&#xA;test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="3C6BF3A67128B2AE" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                            <TunableList name="match_any" class="TunableSet" display="Match Any" muid="A640DE038B9754DE" description="Any of these relationship bits will pass the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="D311C4EC0F320D81" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableEnum type="RelationshipTestEvents" name="test_event" class="TunableEnumEntry" default="AllRelationshipEvents" display="Test Event" muid="A132EB11647FC70C" static_entries="relationships-relationship_tests.RelationshipTestEvents" description="The event that we want to trigger this instance of the tuned test&#xA;on." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="test_incest" class="TunableVariant" default="disabled" display="Test Incest" muid="76840FEC9F70DA4E" description="Test for incest status. Test passes if this matches the two Sim's&#xA;incest status." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F92143C144FA2CE" />
+                            <Tunable name="is incestuous" class="TunableExistance" display="Is Incestuous" muid="DE92415026768E6A" />
+                            <Tunable name="is not incestuous" class="TunableExistance" display="Is Not Incestuous" muid="F5033C2A453273DE" />
+                        </TunableVariant>
+                        <Tunable type="statistic" name="track" class="TunableReference" display="Track" muid="1526368BEB08C35" description="If set, the test will use the relationship score between sims for&#xA;this track. If unset, the track defaults to the global module&#xA;tunable REL_INSPECTOR_TRACK." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipTrack" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableVariant>
+
+        <Deleted name="objective_completion_type" muid="BE2F7EC86725B44F" />
+
+        <Deleted name="objectives" muid="6C90D9CE2453A7EB" />
+
+        <Tunable type="float" name="priority" class="TunableRange" default="5" display="Priority" muid="53D01AE3DB69655F" min="0" max="None" description="The priority of this whim set." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="screen_slam" muid="FB8E64BFCF32F7EB" />
+
+        <TunableVariant type="None" name="secondary_target" class="OptionalTunable" default="disabled" display="Secondary Target" muid="49C6AAD2B9A478BA" description="Upon WhimSet activation, define a Sim that is used as a flavor&#xA;target, such that text can reference it. For example, a Dare whim&#xA;might use this field such that a &quot;Flirt with Bobby&quot; whim has a&#xA;&quot;(From Being Dared by Frank)&quot; origin." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="E556A1E6C5BA8CCA" />
+            <TunableVariant type="None" name="enabled" class="TunableWhimSetTargetVariant" default="genealogy_target" display="Enabled" muid="7314B71A3F8361A2" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="genealogy_target" class="GeneTargetFactory" display="Genealogy Target" muid="C7C247FAEE54280D" description="This option tests for completion of a tuned Achievement." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="FamilyRelationshipIndex" name="relationship" class="TunableEnumEntry" default="FATHER" display="Relationship" muid="C4F10371D0A7019D" static_entries="sims-genealogy_tracker.FamilyRelationshipIndex" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="relationship_target" class="RelationTargetFactory" display="Relationship Target" muid="89B05249EDB19C73" description="This option tests for completion of a tuned Achievement." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="relationship_test" class="TunableRelationshipTest" display="Relationship Test" muid="7B4AE146B491A5C5" description="The relationship state that this goal will complete when&#xA;obtained." Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="invert_num_relations" class="Tunable" default="False" display="Invert Num Relations" muid="580CC554A9E53707" description="If checked then we will check that your Num Relations is less than or&#xA;equal to the value rather than the other way around." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="prohibited_relationship_bits" class="TunableTuple" display="Prohibited Relationship Bits" muid="14874659887A46D5" Deprecated="False" filter="0" group="General">
+                            <TunableList name="match_all" class="TunableSet" display="Match All" muid="EBDCC0C300988389" description="All of these relationship bits must match to fail the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="83577BA252EE5F16" allow_none="False" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="match_any" class="TunableSet" display="Match Any" muid="199BBA60E4863E06" description="If any of these relationship bits match the test will fail." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="E28D47CD6A09B378" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="relationship_score_interval" class="TunableInterval" display="Relationship Score Interval" muid="84F14A816F4F5951" description="The range that the relationship score must be within in order for&#xA;this test to pass." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableRange" default="-100.0" display="Lower Bound" muid="E085F43B557E53" min="-100.0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableRange" default="100.0" display="Upper Bound" muid="7E3054C01CF6E925" min="None" max="100.0" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="required_relationship_bits" class="TunableTuple" display="Required Relationship Bits" muid="F21B2DD43F2867C9" Deprecated="False" filter="0" group="General">
+                            <TunableList name="match_all" class="TunableSet" display="Match All" muid="E513AE4C9803BB31" description="All of these relationship bits must be present to pass the&#xA;test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="3C5C578E34C16FED" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                            <TunableList name="match_any" class="TunableSet" display="Match Any" muid="A17F2FDF44574EC" description="Any of these relationship bits will pass the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="386B78A4942522BA" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableEnum type="RelationshipTestEvents" name="test_event" class="TunableEnumEntry" default="AllRelationshipEvents" display="Test Event" muid="518D77462B8EE317" static_entries="relationships-relationship_tests.RelationshipTestEvents" description="The event that we want to trigger this instance of the tuned test&#xA;on." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="test_incest" class="TunableVariant" default="disabled" display="Test Incest" muid="C7FFC2116882476D" description="Test for incest status. Test passes if this matches the two Sim's&#xA;incest status." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="20CDE2E4BCEC7EF5" />
+                            <Tunable name="is incestuous" class="TunableExistance" display="Is Incestuous" muid="6DF44E8CC6785F23" />
+                            <Tunable name="is not incestuous" class="TunableExistance" display="Is Not Incestuous" muid="A13B89CC3737AFAA" />
+                        </TunableVariant>
+                        <Tunable type="statistic" name="track" class="TunableReference" display="Track" muid="145DCDC2A8453468" description="If set, the test will use the relationship score between sims for&#xA;this track. If unset, the track defaults to the global module&#xA;tunable REL_INSPECTOR_TRACK." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipTrack" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableVariant>
+
+        <Tunable type="int" name="whim_reason" class="TunableLocalizedString" default="0x0" display="Whim Reason" muid="B0DEA73E6DEA0857" description="The reason that shows in the whim tooltip for the reason that this&#xA;whim was chosen for the sim.&#xA;&#xA;0 (Number): The most relevant numerical value pertaining to the&#xA;completion of this goal. This is usually the number of iterations&#xA;required to complete it although it could also be other values such as&#xA;the price of the item that the user is required to purchase.&#xA;&#xA;1 (Sim): The Sim who owns the goal.&#xA;&#xA;2 (Sim): The Sim the goal is directed at.&#xA;&#xA;3 (Sim): The goal's secondary SimInfo, if one exists." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="whims" class="TunableWeightedWhimCollection" display="Whims" muid="E7D362E9AD782D3C" description="List of weighted whims." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableWeightedWhimReference" muid="6C1AA786D373DCC0" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="weight" class="Tunable" default="1.0" display="Weight" muid="31190665A6B62EA6" description="A higher number means a higher chance of being selected." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="whim" name="whim" class="TunableReference" display="Whim" muid="121D466F1FCB7D6E" description="The whim that will be used when selecting this entry." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="274EC1595F220091" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="865F6BE4DDD3E5BE" />
+            <Action type="kRemove" old_muid="3B798D86243C6CFE" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="E942B6911E640C51" />
+            <Action type="kRemove" old_muid="416285DD3667CE4D" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="interactions.picker.purchase_picker_service" muid="3215F003A4E104DD">
+        <Class name="PurchasePickerGroup" muid="ED240C54826A5857" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="97E28167E05A7C77" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="938C8596A12AF30B" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="INVALID" muid="C1B96AC1122335A1" enum_value="0" />
+        </Class>
+
+        <Class name="PurchasePickerService" muid="4EC60C4F1FCA005D">
+            <TunableList name="PICKER_DATA_GROUPS" class="TunableMapping" display="Picker Data Groups" muid="5472D7B1A02CA3B7" mapping_key="key" mapping_value="value" description="A mapping between purchase picker groups and tuning relating&#xA;to the various limited data that can be provided from the&#xA;picker." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="E66E2F38985F3627" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="PurchasePickerGroup" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="E244CEC933CCDB95" dynamic_entries="interactions-picker-purchase_picker_service.PurchasePickerGroup._elements" static_entries="interactions-picker-purchase_picker_service.PurchasePickerGroup" description="The purchase picker group type that this&#xA;set of purchase picker limited items is linked to." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="B8BA404A6860DDC1" description="List of categories of items we will pick from to fulfill the items provider. Number of those items are limited." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="7F790A8EFF2E1473" Deprecated="False" filter="0" group="General">
+                            <TunableList name="items_list" class="TunableMapping" display="Items List" muid="5D4E915AA15E6643" mapping_key="key" mapping_value="value" description="These are items within this category we will pick randomly to fulfill the items provider.&#xA;Key is the object definition, weight is the relative chance they will be picked." Deprecated="False" filter="0" group="General">
+                                <TunableTuple class="TunableTuple" muid="CCC92800527D591D" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="object" name="key" class="TunableReference" display="Key" muid="2363B637F9417E99" description="The object definition we are creating from." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    <Tunable type="float" name="value" class="TunableRange" default="1.0" display="Value" muid="72FCC93773D6E440" min="0.0" max="None" description="The relative weight of this object. Higher weight has higher chance to be picked." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableList>
+                            <Tunable type="int" name="number_of_types_of_items" class="TunableRange" default="1" display="Number Of Types Of Items" muid="DF400F474987446C" min="1" max="None" description="This will be used to limit the number of types of items in this category.&#xA;Say we have 6 kinds of items in the category. If this value is set to 2 we will &#xA;randomly select 2 kinds from the 6." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="quantity_for_each_item" class="TunableRange" default="1" display="Quantity For Each Item" muid="5E9935955E0DF3C2" min="1" max="None" description="Available number of items in each picked kind of item.&#xA;For example if we have apple and pear picked, and this number is 3,&#xA;then eventually we will have 3 apples and 3 pears in the vendor's sell picker." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="65F58FF6BB02BD5D" description="A series of tests that must pass in order for this entire category to be picked by the provider." filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="REFRESH_TIME" class="TunableTimeOfDay" display="Refresh Time" muid="7EC7CDD8007997EE" description="The time of day that the items will refresh in the picker." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="hour" class="TunableRange" default="12" display="Hour" muid="FFF1483417FA7ADC" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="EAD361FB49D1FDFA" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+    </Module>
+</TuningRoot>

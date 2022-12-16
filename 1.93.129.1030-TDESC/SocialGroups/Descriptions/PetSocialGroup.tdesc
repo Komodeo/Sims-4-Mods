@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="social_group" class="PetSocialGroup" module="socials.pet_group" muid="4493F56803A6E670" description="A Social Group that contains a group of animals instead of humans." instance_needs_reference="True" instance_subclasses_only="False" parents="SocialGroup" path="SocialGroups\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="adjustment_interval" class="TunableInterval" display="Adjustment Interval" muid="DE0E520F9587280F" description="How long Sims wait before adjusting positions." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="lower_bound" class="TunableSimMinute" default="2" display="Lower Bound" muid="5C7041C0DBA942CD" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="upper_bound" class="TunableSimMinute" default="5" display="Upper Bound" muid="ED0744C45972AF70" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Deleted name="include_default_facing_constraint" muid="5D166F143661C327" />
+
+        <Tunable type="float" name="main_social_lockout_time" class="TunableSimMinute" default="10" display="Main Social Lockout Time" muid="3FB62FDE8CFF986E" min="None" max="None" description="Amount of time main socials are locked out after one executes." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="main_social_tags" class="TunableSet" display="Main Social Tags" muid="C94A073EEE784DB0" description="If any of these Tags are found on mixers run in the social group it&#xA;is considered to be a main social for the social group.&#xA;&#xA;In a Pet Group you're only allowed to have one of these running at a&#xA;time." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="6921E3A0663CC4C1" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="An individual Tag that's considered a main social by the social group." Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableTuple name="scoring_function" class="TunablePetGroupCostFunction" display="Scoring Function" muid="60F89B1284D43031" description="The scoring function for this group." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="maximum_distance" class="TunableRange" default="1.0" display="Maximum Distance" muid="5B92D1484035BDFF" min="0" max="None" description="Any distance to another Sim over this amount scores zero." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="minimum_distance" class="TunableRange" default="1.5" display="Minimum Distance" muid="859C8310FC60EE23" min="0" max="None" description="Any distance to another Sim under this amount scores zero." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="required_distance" class="TunableRange" default="0.75" display="Required Distance" muid="8BD04A45DF6C8C9B" min="0" max="None" description="Any position that requires the Sim to move less than this amount&#xA;scores zero. This encourages Sims to move." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

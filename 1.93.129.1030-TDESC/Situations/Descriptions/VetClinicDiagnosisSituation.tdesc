@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="VetClinicDiagnosisSituation" module="vet.vet_clinic_player_situations" muid="FB3A993C32277843" description="Vet Clinic Diagnosis Situation is the user-facing situation between&#xA;vet and pet." instance_subclasses_only="False" parents="SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <Deleted name="_buff" muid="E0BB220338928A29" />
+
+        <Deleted name="_cost" muid="3B0A0C28EEF617BF" />
+
+        <Deleted name="_hidden_scoring_override" muid="E8188B547824F0D4" />
+
+        <Deleted name="_icon" muid="CD708C1681A0D805" />
+
+        <Deleted name="_implies_greeted_status" muid="F52742CD08B25296" />
+
+        <Deleted name="_initiating_sim_tests" muid="6EC49C9C2927F957" />
+
+        <Deleted name="_level_data" muid="DCA61D5EA6921E74" />
+
+        <Deleted name="_main_goal_visibility_test" muid="F24C487D26426AA9" />
+
+        <TunableTuple name="_progress_meter_settings" class="TunableStatBasedSituationMeterData" display="Progress Meter Settings" muid="5F131CDB88504648" description="The meter used to track the progress of the diagnosis." Deprecated="False" filter="0" group="Situation">
+            <TunableVariant type="None" name="_display_text" class="OptionalTunable" default="disabled" display="Display Text" muid="1829671DFE2B41C1" description="Optional meter display text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="2CEAA7B5FBD838A7" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="D4074F3BD71ABE3F" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableList name="_threshold_data" class="TunableList" display="Threshold Data" muid="A66BE377FCB94F9A" description="List of thresholds for this meter." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="4B7A831EB1728A2" Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="color" class="TunableColorSnippet" default="literal" display="Color" muid="DC2983DC622EF185" description="Color of meter at this specified threshold.&#xA;&#xA;Note: alpha value is not used.&#xA; (This may be tuned in place here using 'literal' or as a reference to a Color tuning snippet.)" Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="literal" class="TunableColor" default="none" display="Literal" muid="2F9C28E1C403297D" description="A color." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="hex" class="TunableColorHex" display="Hex" muid="C0E57653D8D5BF20" description="A color." Deprecated="False" filter="0" group="General">
+                                <Tunable type="str" name="hex_code" class="Tunable" default="#FFFFFFFF" display="Hex Code" muid="20CDB77917E9A370" description="An ARGB color in hex, same as one would use in HTML. A leading '0x' or '#' is allowed but not required. You can omit the alpha, in which case opaque is assumed." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableEnum type="Color" name="name" class="TunableEnumEntry" default="WHITE" display="Name" muid="302CE68950B57614" static_entries="sims4-color.Color" Deprecated="False" filter="0" group="General" />
+                            <Tunable name="none" class="TunableExistance" display="None" muid="4C77C082C13F6DB7" />
+                            <TunableTuple name="rgb" class="TunableColorRGBA" display="Rgb" muid="BC66678E7BB4FB63" description="A color." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="916209E7D0B4B7F6" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="66BA2C8E7A4255CF" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="4D4DFB1D74C70218" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="D3F3C7410263E931" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                        <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="F179DD1D4435CED6" description="A reference to a Color tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Color" />
+                    </TunableVariant>
+                    <Tunable type="int" name="threshold_value" class="Tunable" default="0" display="Threshold Value" muid="E3B67A7C9203D286" description="Value at or above which this threshold exists. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableVariant type="None" name="_tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="A269D753BBC7F043" description="Optional tooltip text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7A9980623296424A" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="4B5E23843883AD65" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="bool" name="auto_update_on_stat_change" class="Tunable" default="True" display="Auto Update On Stat Change" muid="2DA539B34E96F5B6" description="If set, the meter will automatically update when the associated&#xA;stat changes.  Unset this for cases when you want the situation&#xA;to control when the meter changes." Deprecated="False" filter="0" group="General" />
+            <Tunable type="statistic" name="stat" class="TunableReference" display="Stat" muid="9A8567AE2074FDFD" description="Statistic this meter is based off of." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Deleted name="_relationship_between_job_members" muid="518BC6BAB5AB72A6" />
+
+        <Deleted name="_resident_job" muid="77C36396D11098A9" />
+
+        <TunableTuple name="_stress_meter_settings" class="TunableStatBasedSituationMeterData" display="Stress Meter Settings" muid="91E43862C9F2B850" description="The meter used to track the stress level of the patient." Deprecated="False" filter="0" group="Situation">
+            <TunableVariant type="None" name="_display_text" class="OptionalTunable" default="disabled" display="Display Text" muid="51E2866BBC3EEB4C" description="Optional meter display text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="53E14C371F4A0173" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="E27456E0BC3B3BB1" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableList name="_threshold_data" class="TunableList" display="Threshold Data" muid="90C45270C4FB9959" description="List of thresholds for this meter." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="A408D981F49A4ADB" Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="color" class="TunableColorSnippet" default="literal" display="Color" muid="7B045BDDCFCC7ED9" description="Color of meter at this specified threshold.&#xA;&#xA;Note: alpha value is not used.&#xA; (This may be tuned in place here using 'literal' or as a reference to a Color tuning snippet.)" Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="literal" class="TunableColor" default="none" display="Literal" muid="53EBEBE7CA6E53BA" description="A color." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="hex" class="TunableColorHex" display="Hex" muid="BA3D3750D1B8AD48" description="A color." Deprecated="False" filter="0" group="General">
+                                <Tunable type="str" name="hex_code" class="Tunable" default="#FFFFFFFF" display="Hex Code" muid="2784D4C93D361BDE" description="An ARGB color in hex, same as one would use in HTML. A leading '0x' or '#' is allowed but not required. You can omit the alpha, in which case opaque is assumed." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableEnum type="Color" name="name" class="TunableEnumEntry" default="WHITE" display="Name" muid="17C727D74B3BE7AA" static_entries="sims4-color.Color" Deprecated="False" filter="0" group="General" />
+                            <Tunable name="none" class="TunableExistance" display="None" muid="8EBE7E534CC984AB" />
+                            <TunableTuple name="rgb" class="TunableColorRGBA" display="Rgb" muid="8BAA6CD49EE46A2C" description="A color." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="B1D0C44B5B0F64AE" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="2EF0AD46B0E9B6A" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="94990E771E9E91ED" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="48BDAF40429D2D87" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                        <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="74CA74BC06FF4A02" description="A reference to a Color tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Color" />
+                    </TunableVariant>
+                    <Tunable type="int" name="threshold_value" class="Tunable" default="0" display="Threshold Value" muid="E6A3E7B3BC9791FF" description="Value at or above which this threshold exists. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableVariant type="None" name="_tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="8E65824A7FC7530A" description="Optional tooltip text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="569F86788236AE34" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="E59FA798B6227CF2" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="bool" name="auto_update_on_stat_change" class="Tunable" default="True" display="Auto Update On Stat Change" muid="DF3B4BE7E6F7658F" description="If set, the meter will automatically update when the associated&#xA;stat changes.  Unset this for cases when you want the situation&#xA;to control when the meter changes." Deprecated="False" filter="0" group="General" />
+            <Tunable type="statistic" name="stat" class="TunableReference" display="Stat" muid="34815A33A890C5EA" description="Statistic this meter is based off of." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="ResourceKey" name="audio_sting_on_symptom_discovery" class="TunableResourceKey" default="None" display="Audio Sting On Symptom Discovery" muid="355F8EC99B5EF370" description="The sound to play when a symptom is discovered." allow_none="True" Deprecated="False" filter="0" group="Audio" resource_types="0x39b2aa4a" />
+
+        <Deleted name="category" muid="8532354FB765D959" />
+
+        <Deleted name="compatible_venues" muid="3082E242205DB7E3" />
+
+        <Deleted name="creation_ui_option" muid="761C284A4912460F" />
+
+        <Deleted name="duration" muid="BA1F9D5EB0BEC578" />
+
+        <Deleted name="entitlement" muid="5D38CADD7E09BD97" />
+
+        <Deleted name="exclusivity" muid="B98D4C712CD8EFF6" />
+
+        <Deleted name="force_invite_only" muid="7F27C497436FA946" />
+
+        <Deleted name="goal_button_text" muid="A7BF1A8C5453774E" />
+
+        <Deleted name="goal_sub_text" muid="369DE4C468C34CD7" />
+
+        <Deleted name="job_display_ordering" muid="96CE2A42EB12A7A3" />
+
+        <Deleted name="main_goal" muid="133FE206DB87203A" />
+
+        <Deleted name="max_participants" muid="EAA39E99C397B8A6" />
+
+        <Deleted name="minor_goal_chains" muid="95B62A76FC15387" />
+
+        <TunableTuple name="pet_job" class="TunableSituationJobAndRoleState" display="Pet Job" muid="7316C354F9D6EF5A" description="The job and role which the pet Sim is placed into." Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="role_state" class="TunableReference" display="Role State" muid="9431B24186C32665" description="A role state the sim assigned to the job will perform" allow_none="False" Deprecated="False" filter="0" group="General" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="261BA8D03111AD87" description="A reference to a SituationJob that can be performed at this Situation." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Deleted name="recommended_job_object_notification" muid="AD5AFD4F15059577" />
+
+        <Deleted name="recommended_job_object_text" muid="48ACA31A0E048278" />
+
+        <Deleted name="screen_slam_bronze" muid="D17ADC4643E4E558" />
+
+        <Deleted name="screen_slam_gold" muid="A66B21E1E6D341FC" />
+
+        <Deleted name="screen_slam_no_medal" muid="BA8A924914BF2591" />
+
+        <Deleted name="screen_slam_silver" muid="ABC89583056E5B12" />
+
+        <Deleted name="situation_display_type_override" muid="69954EA1A81BFAC4" />
+
+        <Deleted name="targeted_situation" muid="471C972CCF5DA66" />
+
+        <Tunable type="int" name="undiscovered_sickness_text" class="TunableLocalizedString" default="0x0" display="Undiscovered Sickness Text" muid="395C5DB60F4900E5" description="Text to use if a sickness is undiscovered." Deprecated="False" filter="0" group="UI" />
+
+        <Tunable type="int" name="undiscovered_symptom_text" class="TunableLocalizedString" default="0x0" display="Undiscovered Symptom Text" muid="3AC5454B732AC0EB" description="Text to use if a symptom is undiscovered." Deprecated="False" filter="0" group="UI" />
+
+        <Deleted name="venue_invitation_message" muid="C4DA1FDE02388DC5" />
+
+        <Deleted name="venue_situation_player_job" muid="95AA46780354625" />
+
+        <TunableTuple name="vet_job" class="TunableSituationJobAndRoleState" display="Vet Job" muid="B0B6600B8D7708E3" description="The job and role which the vet Sim is placed into." Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="role_state" class="TunableReference" display="Role State" muid="DC87AD9B8F951638" description="A role state the sim assigned to the job will perform" allow_none="False" Deprecated="False" filter="0" group="General" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="EF6BB7EA0361D68D" description="A reference to a SituationJob that can be performed at this Situation." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Deleted name="weight_multipliers" muid="831EC3F2ADF424FE" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="DAC9E943CECC8E23" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

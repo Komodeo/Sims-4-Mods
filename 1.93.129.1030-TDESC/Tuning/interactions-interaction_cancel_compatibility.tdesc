@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="interactions.interaction_cancel_compatibility" muid="D71FDE795075D1C8">
+        <Class name="InteractionCancelReason" muid="67DF52CBA797E209" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="DEATH" muid="8D58C511027C3A8" enum_value="0" />
+
+            <EnumItem name="FIRE" muid="101287CC203CB2C0" enum_value="1" />
+
+            <EnumItem name="WEDDING" muid="6752BDF0ADF55E7B" enum_value="2" />
+        </Class>
+
+        <Class name="InteractionCancelCompatibility" muid="405508C9A72356FF">
+            <TunableList name="INTERACTION_CANCEL_COMPATIBILITY" class="TunableMapping" display="Interaction Cancel Compatibility" muid="EE42178B77F4CC49" mapping_key="key" mapping_value="value" description="A mapping between cancel reasons and affordance filters.  When a reason&#xA;is requested it runs the interaction though the affordance filter that&#xA;is requested along with all affordance filters in the hierarchy above&#xA;it.&#xA;&#xA;For example, the wedding will ensure the the interaction matches the&#xA;wedding, fire, and death reasons.&#xA;&#xA;The hierarchy of reasons is defined within python.  GPE support will be&#xA;needed to change or add new values to the hierarchy of reasons." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="FA31E836D877C06" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="InteractionCancelReason" name="key" class="TunableEnumEntry" default="DEATH" display="Key" muid="C68AD1C2E77E75C8" static_entries="interactions-interaction_cancel_compatibility.InteractionCancelReason" description="An interaction canceling reason." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="value" class="TunableAffordanceFilterSnippet" default="literal" display="Value" muid="D4FD13B3CC788195" description="An affordance filter that defines which interactions are able to&#xA;be canceled.  If the interaction is not compatible with the&#xA;affordance filter then it will be canceled.&#xA; (This may be tuned in place here using 'literal' or as a reference to a AffordanceFilter tuning snippet.)" Deprecated="False" filter="0" group="General">
+                        <TdescFragTag name="literal" class="_TunableAffordanceFilter" display="Literal" muid="22CB7B996528E480" description="An affordance filter." filter="0" group="General" />
+                        <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="104F55579AB7C095" description="A reference to a AffordanceFilter tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="AffordanceFilter" />
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

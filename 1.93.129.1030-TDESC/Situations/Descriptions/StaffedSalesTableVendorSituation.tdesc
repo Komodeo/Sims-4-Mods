@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="StaffedSalesTableVendorSituation" module="situations.ambient.sales_table_vendor_situation" muid="DD35C0E1C0AB5F16" description="Situations for Sims who want to sell items but can only do so at certain&#xA;objects.&#xA;&#xA;The big difference between this and a regular SalesTableVendorSituation is&#xA;that a Sim added to this situation creates an object relationship with an&#xA;object essentially claiming it. The Sim can then push interactions and have&#xA;the role_state_overrides change the target automatically or can be tested&#xA;against to gate certain interactions to only work if the Sim has claimed&#xA;the object.&#xA;&#xA;The Sim must be able to make an object relationship with an object or the&#xA;situation will self_destruct thinking it has no object to staff. This is&#xA;one of the reasons why the StaffedObjectSituationMixin wasn't just added&#xA;to SalesTableVendorSituation." instance_subclasses_only="False" parents="SalesTableVendorSituation, SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="_object_to_staff_filter" class="ObjectDefinitonsOrTagsVariant" default="object_tags" display="Object To Staff Filter" muid="CC3A6D73998506A1" description="Either a list of object definitions or tags that identify the type&#xA;of object the Sim in this situation will be staffing." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="object_definitions" class="TunableObjectDefinitionsFilter" display="Object Definitions" muid="AA84821D373A6CEA" description="A Tunable Filter that filters based on specific object definitions." Deprecated="False" filter="0" group="General">
+                <TunableList name="items_to_check" class="TunableList" display="Items To Check" muid="391DEE749F8508CA" description="A List of the definitions that can be matched to fulfill the filter.&#xA;This list is considered a Match Any requirement." Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" class="TunableReference" muid="7EF30C06984AE972" description="A reference to a definiton that can be matched as part of the &#xA;filter." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="object_tags" class="TunableObjectTagsFilter" display="Object Tags" muid="7D2238D9A48AB0DC" description="A Tunable Filter that filters based on a tag set." Deprecated="False" filter="0" group="General">
+                <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="3C14BF34527CC2A7" description="A Set of tags that can be matched to fulfill the filter. The set&#xA;is considered a Match Any requirement." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="1EE2C40DBF60DD76" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A reference to a tag that can be matched as part of the filter." Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="bool" name="_unowned_objects_only" class="Tunable" default="False" display="Unowned Objects Only" muid="6A0A9E34284B3FFC" description="If checked, objects are only valid if they are unowned.  For example,&#xA;if your Sim places down a yoga instruction mat, yoga instructors at a spa&#xA;venue can have this checked so they don't try to staff your instruction mat." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

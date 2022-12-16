@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.ghost" muid="2624CCE7B9506564">
+        <Class name="Ghost" muid="E0F2A5233D5C9AD8">
+            <TunableVariant type="None" name="URNSTONE_DEFINITION" class="TunableObjectCreationDataVariant" default="definition" display="Urnstone Definition" muid="CF478BA41C801478" description="When Sims die, create this urnstone. This applies to all types of death,&#xA;i.e. the Death interactions as well as the auto-generation of urnstones&#xA;for Sims that have died off-lot." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="clone_object" class="Tunable_CloneObject" display="Clone Object" muid="91DE65717132FED9" description="Specify an object to be cloned." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="definition_override" class="OptionalTunable" default="disabled" display="Definition Override" muid="9A627A86AEF75C5C" description="Override to specify a different definition than that of the object&#xA;being cloned." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="881AC800F7ABD6C1" />
+                        <Tunable type="object" name="enabled" class="TunableReference" display="Enabled" muid="23EC78895E9A66E2" description="The definition of the object that is created." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="source_object" class="TunableVariant" default="slotted_to_participant" display="Source Object" muid="C5D14FB837B88067" description="Where the object to be cloned can be found." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="is_participant" class="Tunable_ParticipantObject" display="Is Participant" muid="3C242B056466F3C4" description="The object is a participant." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="17700E74F6AB10CF" static_entries="interactions.ParticipantType" description="Used to clone a participant object." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="slotted_to_participant" class="Tunable_SlottedObject" display="Slotted To Participant" muid="4701FAE54E23ED8" description="The object is one slotted on a participant." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="slotted_to_participant" class="TunableTuple" display="Slotted To Participant" muid="49311BF69BD0E2C1" description="Used to clone an object slotted to a participant." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="ParticipantType" name="parent_object_participant" class="TunableEnumEntry" default="Object" display="Parent Object Participant" muid="6AA54D1369F06229" static_entries="interactions.ParticipantType" description="The participant object which will contain the specified&#xA;slot where the object to be cloned is slotted." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="slot_type" name="parent_slot_type" class="TunableReference" display="Parent Slot Type" muid="5E6280FE6C3FB351" description="A particular slot type where the cloned object can be found.  The&#xA;first slot of this type found on the source_object will be used." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableTuple>
+                <TunableTuple name="create_photo_object" class="Tunable_CreatePhotoObject" display="Create Photo Object" muid="B6BB545FECE6E161" description="Create a photo object based on the participant target." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ParticipantTypeSingle" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="6356388146FACF07" static_entries="interactions.ParticipantTypeSingle" description="Used to create photo of a participant object." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="definition" class="Tunable_ObjectDefinition" display="Definition" muid="98DEA9F656A51B69" description="Specify an object definition." Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="236A249510490F0E" description="The definition of the object that is created." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+                <TunableTuple name="definition_tested" class="Tunable_ObjectDefinitionTested" display="Definition Tested" muid="BDC892550299B87E" description="Specify an object definition based on tests." Deprecated="False" filter="0" group="General">
+                    <TunableList name="definitions" class="TunableList" display="Definitions" muid="5E50E7C0C79B7DF1" description="A list of potential object definitions to use." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="C6BF0AADC5AE269E" Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="78A093CC0BB5947B" description="The definition of the object to be created." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="32E669261AF810FC" description="The weight of this definition relative to other&#xA;definitions in this list." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="68BB1E48C0D2E276" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="E9C56403C2FEBFB2" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple class="TunableTuple" muid="59AD05EDCD9C4680" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="9F58B31238026EF2" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="3342C8D6E8570202" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                    <Tunable type="object" name="fallback_definition" class="TunableReference" display="Fallback Definition" muid="CD9B6CF7ED1947F1" description="Should no test pass, use this definition." allow_none="True" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="from_fishing_data" class="Tunable_CreateObjectFromFishingData" display="From Fishing Data" muid="5414DED72E6EECDE" description="Create a fish object from the tuned participant fishing data." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="source" class="TunableFishingDataTargetVariant" default="participant" display="Source" muid="2F33C626B5AADBE6" description="Source on which we will get the fishing data information " Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="participant" class="Tunable_FishingDataFromParticipant" display="Participant" muid="F693F8480671A55A" description="The fishing data is from tuned participant." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="ParticipantTypeObject" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="C6581A1245714F72" static_entries="interactions.ParticipantTypeObject" description="Participant on which we will get the fishing data information " Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="reference" class="Tunable_FishingDataFromReference" display="Reference" muid="57309DA08FA2D884" description="The fishing data is from tuned reference." Deprecated="False" filter="0" group="General">
+                            <Tunable type="snippet" name="fishing_data" class="TunableReference" display="Fishing Data" muid="E39378085D73B274" description="Fishing data reference." allow_none="False" Deprecated="False" filter="0" group="General" restrict="FishingData" />
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableTuple>
+                <TunableTuple name="from_stored_object_info" class="Tunable_CreateObjectFromStoredObjectInfo" display="From Stored Object Info" muid="546CEF48C10DC4A7" description="Create an object using info stored on the source participant." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ParticipantTypeSingleSim" name="stored_object_info_participant" class="TunableEnumEntry" default="Actor" display="Stored Object Info Participant" muid="1DA38E3A6ADEA423" static_entries="interactions.ParticipantTypeSingleSim" description="The Sim participant of this interaction which contains the stored&#xA;object info that is used to create this object." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="StoredObjectType" name="stored_object_type" class="TunableEnumEntry" default="INVALID" display="Stored Object Type" muid="F37B772A030CD05C" dynamic_entries="objects-components-stored_object_info_tuning.StoredObjectType._elements" static_entries="objects-components-stored_object_info_tuning.StoredObjectType" description="The type of object being stored. This will be used to retrieve the&#xA;stored object from the Stored Object Info Component of the target." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                </TunableTuple>
+                <TunableTuple name="random_by_tags" class="Tunable_RandomFromTags" display="Random By Tags" muid="85CC7B42A6CA8A36" description="Specify a tag which will randomly choose an object that has been marked with that&#xA;tag and create it." Deprecated="False" filter="0" group="General">
+                    <TunableList name="filter_tags" class="TunableTags" display="Filter Tags" muid="303E5BB868B8FE39" min="1" Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="70AD8E424184B0B9" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Define tags to try and create the object. Picks randomly from&#xA;objects with these tags." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                    </TunableList>
+                </TunableTuple>
+                <TunableTuple name="random_recipe" class="Tunable_RandomWeightedRecipe" display="Random Recipe" muid="619DC207CDA56480" description="Specify a weighted list of recipes that can be available for recipe creation." Deprecated="False" filter="0" group="General">
+                    <TunableList name="weighted_recipes" class="TunableList" display="Weighted Recipes" muid="F60AE9B503F62DBB" min="1" description="A list of weighted list of recipes that can be available for recipe creation." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="B87E97603BF41B3F" description="The weighted recipe." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="recipe" class="Tunable_RecipeDefinition" display="Recipe" muid="25F842771D261370" description="Specify a recipe. The final product's definition is used as a&#xA;definition." Deprecated="False" filter="0" group="General">
+                                <Tunable type="recipe" name="recipe" class="TunableReference" display="Recipe" muid="9DBDD40B55C952F8" description="The recipe to use to create the object." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                <Tunable type="bool" name="show_crafted_by_text" class="Tunable" default="True" display="Show Crafted By Text" muid="3B05F2BD66674DF6" description="Show crafted by text on the tooltip of item created by this recipe. &#xA;Will not be visible if crafter is not a sim." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="190BF0109EAAB7E4" description="A construct that determines a total multiplier value based on tunable tests." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="20BB7BD4E2D5C261" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="EF446B445E9AB1DF" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple class="TunableTuple" muid="CC59C94038AED406" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="741F07E6FE52A5E2" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="764191266BF73B93" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+                <TunableTuple name="random_recipe_by_tags" class="Tunable_RandomWeightedTaggedRecipe" display="Random Recipe By Tags" muid="A1E712026FF14EE2" description="Specify a weighted list of recipes tags that can be available for recipe creation." Deprecated="False" filter="0" group="General">
+                    <TunableList name="weighted_recipe_tags" class="TunableList" display="Weighted Recipe Tags" muid="FD5A527D33A4A0A9" min="1" description="A list of weighted list of recipe tags that can be available for &#xA;recipe creation." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="9E58DB5F1ED288E6" description="The weighted recipe tag." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="recipe_tag" class="Tunable_RecipeByTag" display="Recipe Tag" muid="8C60C6522F67C590" description="Specify a recipe tag. The final product's definition is used as a&#xA;definition." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="Tag" name="recipe_tag" class="TunableTag" default="INVALID" display="Recipe Tag" muid="20BD4EBF577E16BB" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The recipe tag to use to create the object." Deprecated="False" dynamic_entries_prefix="Recipe" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                                <Tunable type="bool" name="show_crafted_by_text" class="Tunable" default="True" display="Show Crafted By Text" muid="C0BC463D2489937D" description="Show crafted by text on the tooltip of item created by this recipe. &#xA;Will not be visible if crafter is not a sim." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="9851E7FB536E6BFE" description="A construct that determines a total multiplier value based on tunable tests." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="D2AF1885E5752477" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="7CCC0F65FCB12E1D" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple class="TunableTuple" muid="C117FF547A1C0B16" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="3E926199F22E68DF" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="78B9FE53050436FC" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+                <TunableTuple name="recipe" class="Tunable_RecipeDefinition" display="Recipe" muid="DABCD073EE3683B" description="Specify a recipe. The final product's definition is used as a&#xA;definition." Deprecated="False" filter="0" group="General">
+                    <Tunable type="recipe" name="recipe" class="TunableReference" display="Recipe" muid="ACDEE0F7CF9703E" description="The recipe to use to create the object." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="bool" name="show_crafted_by_text" class="Tunable" default="True" display="Show Crafted By Text" muid="865D5E5C4E850725" description="Show crafted by text on the tooltip of item created by this recipe. &#xA;Will not be visible if crafter is not a sim." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="recipe_by_tag" class="Tunable_RecipeByTag" display="Recipe By Tag" muid="A1B115374C67D69E" description="Specify a recipe tag. The final product's definition is used as a&#xA;definition." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Tag" name="recipe_tag" class="TunableTag" default="INVALID" display="Recipe Tag" muid="88C4A2D15DB42D6C" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The recipe tag to use to create the object." Deprecated="False" dynamic_entries_prefix="Recipe" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="bool" name="show_crafted_by_text" class="Tunable" default="True" display="Show Crafted By Text" muid="53F7B0334545418" description="Show crafted by text on the tooltip of item created by this recipe. &#xA;Will not be visible if crafter is not a sim." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="serving" class="Tunable_CraftableServing" display="Serving" muid="C66D7752C49202BE" description="Create an object that is a serving of the specified crafted object.  This loot can be used to create an object&#xA;outside of the GrabServingInteraction flow, which requires the Sim to go into carry posture.&#xA;&#xA;Use cases:&#xA;- For cases where we want to get more than one serving at a time in a single interaction, we don't want to run&#xA;  the grab serving more than once.  e.g. cauldron bottle up all servings of a potion.&#xA;- For cases where we don't even want to run a carry at all.   e.g. cauldron drink from cauldron, we want to drink&#xA;  directly from the cauldron (no carry), but create a hidden object we can run a custom consume on." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ParticipantType" name="serving_source" class="TunableEnumEntry" default="Object" display="Serving Source" muid="A84D1A8CBF2D4E45" static_entries="interactions.ParticipantType" description="The source of the " Deprecated="False" filter="0" group="General" />
+                    <TunableList name="transferred_states" class="TunableList" display="Transferred States" muid="A4EF7F0E2E797D23" description="A list of states to be copied over to the created object." Deprecated="False" filter="0" group="General">
+                        <Tunable type="object_state" class="TunableReference" muid="8591A97828140B95" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                    <TunableList name="transferred_stats" class="TunableList" display="Transferred Stats" muid="55FCD356B37543FB" description="A list of stats to be copied over to the created object." Deprecated="False" filter="0" group="General">
+                        <Tunable type="statistic" class="TunableReference" muid="805EB28BB3BFE452" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                    <Tunable type="bool" name="use_base_recipe_on_setup" class="Tunable" default="True" display="Use Base Recipe On Setup" muid="F7A6A576FFB878D1" description="If enabled, the created serving will use the Base Object when being set up. &#xA;Otherwise, the recipe tuning will be used. In general, this  should stay checked. &#xA;Unchecking this is useful for objects like the Pit BBQ where a group serving is being pulled &#xA;from another group serving. The &quot;Call to Meal&quot; interactions will be forwarded correctly." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="bool" name="use_linked_recipe_mapping" class="Tunable" default="False" display="Use Linked Recipe Mapping" muid="1DB4BC38ACFD7C2A" description="If enabled, when creating the recipe, instead of using the base recipe it will look into &#xA;the recipe linked recipe tuning and find what recipes it can generate.&#xA;This is used to support multiple recipes generated from the same multiserve.&#xA;i.e. Ice cream carton can generate bowls, milkshakes and cones." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableVariant>
+
+            <TunableList name="URNSTONE_RELEASE_VFX" class="TunableTestedList" display="Urnstone Release Vfx" muid="74915CFD9DD0F320" description="When a Ghost's spirit is released from the Urnstone, either via a player&#xA;interaction or by the Culling commodity expiring, play this VFX." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="21B931247E6590EB" description="An entry in this tested list." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="item" class="TunablePlayEffect" display="Item" muid="BC0C58073B7AFFBE" description="Distributable Primitive-like object (it supports the running/stop/write API)&#xA;that represents a visual effect parented to a game object.&#xA;&#xA;Call start() to start the effect and stop() to stop it." Deprecated="False" filter="0" group="General">
+                        <Tunable type="str" name="effect_name" class="Tunable" default="" display="Effect Name" muid="60914F6AA1811AE" description="The name of the effect to play." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="joint_name" class="OptionalTunable" default="Slot" display="Joint Name" muid="9A9A4B320689D7EE" description="Specify if the visual effect is attached to a slot and, if so, which&#xA;slot." Deprecated="False" filter="0" group="General">
+                            <Tunable name="Current_Position" class="TunableExistance" display="Current Position" muid="1A09361756F7BC97" />
+                            <Tunable type="str" name="Slot" class="TunableStringHash32" default="_FX_" display="Slot" muid="E39E5E4898ACA32F" description="The name of the slot this effect is attached to." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <Tunable type="bool" name="play_immediate" class="Tunable" default="False" display="Play Immediate" muid="A8FCA1779719FCF7" description="If checked, this effect will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. VFX will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <Tunable type="bool" name="stop_processing" class="Tunable" default="False" display="Stop Processing" muid="DDEA7E5ACD83594D" description="If checked, no other element from this list is considered if&#xA;this element passes its associated test." Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="test" class="TunableTestSet" display="Test" muid="F220823C5534770C" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableEnum type="Tag" name="URNSTONE_TAG" class="TunableEnumWithFilter" default="INVALID" display="Urnstone Tag" muid="809379ECCA509C6D" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag associated with urns and tombstone. They all need this tag if&#xA;they want to be considered for an NPC ghost to spawn." Deprecated="False" dynamic_entries_prefix="func" filter="0" group="General" />
+
+            <Tunable type="float" name="WALKBY_COOLDOWN" class="TunableSimMinute" default="48" display="Walkby Cooldown" muid="EEB3A93C78B932C0" min="None" max="None" description="The amount of time the ghost must wait before performing another&#xA;walkby. The cooldown time starts when the ghost is uninstantiated." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

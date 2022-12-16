@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="crafting.crafting_ingredients" muid="ACEA2F52ED80EDF6">
+        <Class name="IngredientTooltipStyle" muid="EB14E0DB8AAECB57" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="DEFAULT_MISSING_INGREDIENTS" muid="14008F598FA48A43" enum_value="0" />
+
+            <EnumItem name="DISPLAY_RECIPE_DESCRIPTION" muid="689D3DB43DC59D6B" enum_value="1" />
+        </Class>
+
+        <Class name="IngredientTuning" muid="7C261AC569950E1A">
+            <TunableList name="INGREDIENT_QUALITY_MAPPING" class="TunableMapping" display="Ingredient Quality Mapping" muid="A4851A3EACAC8BA2" mapping_key="key" mapping_value="value" description="Mapping of all possible ingredient quality states to what possible&#xA;states will the ingredients have.&#xA;e.g. High quality ingredients need to be mapped to gardening high &#xA;quality, fish high quality or any state that will indicate what &#xA;high quality means on a different system." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="7E362A054A8E2814" Deprecated="False" filter="0" group="General">
+                    <Tunable type="object_state" name="key" class="TunableReference" display="Key" muid="CDF320528EB3E9D3" description="The states that will define the ingredient quality." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="76325DD9415E23E5" description="Definition of the ingredient quality state.  This will define&#xA;the quality boost on the recipe and the possible states an &#xA;ingredient can have to have this state." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="quality_boost" class="Tunable" default="1" display="Quality Boost" muid="CC17B4A4B4336F6D" description="Value that will be added to the quality commodity whenever&#xA;this state is added." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableList name="state_value_list" class="TunableList" display="State Value List" muid="43C8E84B2D72CA7E" description="List of ingredient states that will give this level of &#xA;ingredient quality." Deprecated="False" filter="0" group="General">
+                            <Tunable type="object_state" class="TunableReference" muid="F38F51503076B14" description="The states that will define the ingredient quality." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="INGREDIENT_STATE_SORT_MODIFIERS" class="TunableMapping" display="Ingredient State Sort Modifiers" muid="EF91BBF61B811191" mapping_key="key" mapping_value="value" description="List of ingredient states and the sort value to add to that ingredient.&#xA;The larger the number, the further down the list the ingredient will be sorted." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="4BBE23630D1C2779" Deprecated="False" filter="0" group="General">
+                    <Tunable type="object_state" name="key" class="TunableReference" display="Key" muid="910C8C2A8C99A129" description="The states that will define the ingredient quality." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                    <Tunable type="int" name="value" class="Tunable" default="None" display="Value" muid="E7020B4BD54040E4" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableEnum type="Tag" name="INGREDIENT_TAG" class="TunableEnumEntry" default="INVALID" display="Ingredient Tag" muid="CBAE15CEC342755" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag to look for when iterating through objects to know if they are &#xA;ingredients.&#xA;All ingredients should be tuned with this tag." Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="INGREDIENT_TAG_DISPLAY_MAPPING" class="TunableMapping" display="Ingredient Tag Display Mapping" muid="13A84FEC0DBDB11" mapping_key="key" mapping_value="value" description="Mapping of all object tags to their localized string that will display&#xA;on the ingredient list.&#xA;This will be used for displaying on the recipe's when an ingredient is &#xA;tuned by tag instead of object definition.&#xA;Example: Display objects of rag FISH as string &quot;Any Fish&quot;" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="FA40C49D577CA4D0" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Tag" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="49AE84FF1B7CA6EC" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag corresponding at an ingredient type that can be used in a&#xA;recipe." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="int" name="value" class="TunableLocalizedString" default="0x0" display="Value" muid="1F0B458A947DD970" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="INGREDIENT_TAG_SORT_MODIFIERS" class="TunableMapping" display="Ingredient Tag Sort Modifiers" muid="E2E816233F94AFFD" mapping_key="key" mapping_value="value" description="Mapping of object tags to the value that will be added together with ingredient quality to determine&#xA;sort order when considering which ingredients to use use in a recipe first. Lower numbers will be considered&#xA;first when taking required ingredients." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="ED7CF35B6E4F6063" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Tag" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="7AF59ABDFFCA8C0A" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag corresponding at an ingredient type that can be used in a&#xA;recipe." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="int" name="value" class="Tunable" default="None" display="Value" muid="7A0D7AF65E680C21" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="OPTIONAL_INGREDIENT_LIST_STRING" class="TunableLocalizedString" default="0x0" display="Optional Ingredient List String" muid="C5FA9E2F1D8791A5" description="The string for having an optional list of ingredients.&#xA;This will be shown on tooltips of pie menu recipe interactions.&#xA;Example: &quot;Optional: {0.String}&quot; &#xA;Tokens: &#xA;0 - String containing a list of ingredients." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="RECIPE_COMPLETE_INGREDIENT_STRING" class="TunableLocalizedString" default="0x0" display="Recipe Complete Ingredient String" muid="A4A1E91ED5745CAA" description="The string for having all of one ingredient type needed for a recipe.&#xA;This will be shown on tooltips of pie menu recipe interactions.&#xA;Example: &quot;&lt;span class=&quot;hasIngredients&quot;&gt;{0.String}&lt;/span&gt;&quot; &#xA;Tokens: &#xA;0 - String containing an ingredient and how many you own/need." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="RECIPE_INCOMPLETE_INGREDIENT_STRING" class="TunableLocalizedString" default="0x0" display="Recipe Incomplete Ingredient String" muid="DD5DEE096045A95F" description="The string for not having all of one ingredient type needed for a recipe.&#xA;This will be shown on tooltips of pie menu recipe interactions.&#xA;Example: &quot;&lt;span class=&quot;noIngredients&quot;&gt;{0.String}&lt;/span&gt;&quot; &#xA;Tokens: &#xA;0 - String containing an ingredient and how many you own/need." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="REQUIRED_INGREDIENT_LIST_STRING" class="TunableLocalizedString" default="0x0" display="Required Ingredient List String" muid="617C8559D9AB0CC2" description="The string for requiring a list of ingredients.&#xA;This will be shown on tooltips of pie menu recipe interactions.&#xA;Example: &quot;Required: {0.String}&quot; &#xA;Tokens: &#xA;0 - String containing a list of ingredients." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="SINGLE_INGREDIENT_TYPE_STRING" class="TunableLocalizedString" default="0x0" display="Single Ingredient Type String" muid="7E42DAC258A5C8A4" description="The string that contains an ingredient and how much of it the sim has&#xA;access to. This will be shown in tooltips for pie menu recipe&#xA;interactions. &#xA;Example: &quot;{0.String} - ({1.Number}/{2.Number})&quot;&#xA;Tokens: &#xA;0 - ingredient string &#xA;1 - number owned &#xA;2 - number needed" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

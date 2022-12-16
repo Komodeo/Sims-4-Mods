@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="traits.trait_tracker" muid="403E9E8B2838618D">
+        <Class name="TraitTracker" muid="68E586CE0AF6C8F2">
+            <TunableList name="DEFAULT_GENDER_OPTION_TRAITS" class="TunableMapping" display="Default Gender Option Traits" muid="CF37482126BF6828" mapping_key="key" mapping_value="value" description="A mapping from gender to default gender option traits. After loading the&#xA;sim's trait tracker, if no gender option traits are found (e.g. loading&#xA;a save created prior to them being added), the tuned gender option traits&#xA;for the sim's gender will be added." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="FF0A8399C4BCD94A" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Gender" name="key" class="TunableEnumEntry" default="MALE" display="Key" muid="25959309828C88C3" static_entries="sims-sim_info_types.Gender" description="The Sim's gender." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableSet" display="Value" muid="FE453F163615F9AB" description="The default gender option traits to be added for this gender." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="trait" class="TunableReference" muid="86C3FC07D97FD279" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="GENDER_TRAITS" class="TunableMapping" display="Gender Traits" muid="D144F067E019C584" mapping_key="key" mapping_value="value" description="A mapping from gender to trait. Any Sim with the specified gender will&#xA;have the corresponding gender trait." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="E982A51578FCF363" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Gender" name="key" class="TunableEnumEntry" default="MALE" display="Key" muid="B10861E3A807D5B7" static_entries="sims-sim_info_types.Gender" description="The Sim's gender." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="trait" name="value" class="TunableReference" display="Value" muid="FF1ED06189873F7E" description="The trait associated with the specified gender." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Trait" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="KNOWLEDGE_TRAIT_TYPES" class="TunableSet" display="Knowledge Trait Types" muid="708BA29BCCC9F91F" description="Sims are allowed to get knowledge about traits of these types." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="TraitType" class="TunableEnumEntry" default="PERSONALITY" muid="850705E33E1E1B93" static_entries="traits-trait_type.TraitType" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <TunableList name="SPECIES_EXTENDED_TRAITS" class="TunableMapping" display="Species Extended Traits" muid="77C647A80B32974D" mapping_key="key" mapping_value="value" description="A mapping from extended species to trait. Any Sim of the specified &#xA;extended species will have the corresponding extended species trait." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="39B6CD0F1084A3F8" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SpeciesExtended" name="key" class="TunableEnumEntry" default="SMALLDOG" display="Key" muid="E0B424AFCBBBFC61" static_entries="sims-sim_info_types.SpeciesExtended" description="The Sim's extended species." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="trait" name="value" class="TunableReference" display="Value" muid="FF89492DFFC5BC7" description="The trait associated with the specified extended species." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SPECIES_TRAITS" class="TunableMapping" display="Species Traits" muid="CB5A14F2193B543F" mapping_key="key" mapping_value="value" description="A mapping from species to trait. Any Sim of the specified species will&#xA;have the corresponding species trait." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="78C3BFA42320A07E" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Species" name="key" class="TunableEnumEntry" default="HUMAN" display="Key" muid="E6D3DC1408C1D555" static_entries="sims-sim_info_types.Species" description="The Sim's species." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="trait" name="value" class="TunableReference" display="Value" muid="9C36737A49CA7FC" description="The trait associated with the specified species." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="TRAIT_INHERITANCE" class="TunableList" display="Trait Inheritance" muid="24D5CBEF66C410ED" description="Define how specific traits are transferred to offspring. Define keys of&#xA;sets of traits resulting in the assignment of another trait, weighted&#xA;against other likely outcomes." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="CC09AC6A9045CA77" description="A set of trait requirements and outcomes. Please note that inverted&#xA;requirements are not necessary. The game will automatically swap&#xA;parents A and B to try to fulfill the constraints.&#xA;&#xA;e.g. Alien Inheritance&#xA;    Alien inheritance follows a simple set of rules:&#xA;     Alien+Alien always generates aliens&#xA;     Alien+None always generates part aliens&#xA;     Alien+PartAlien generates either aliens or part aliens&#xA;     PartAlien+PartAlien generates either aliens, part aliens, or regular Sims&#xA;     PartAlien+None generates either part aliens or regular Sims&#xA;     &#xA;    Given the specifications involving &quot;None&quot;, we need to probably&#xA;    blacklist the two traits to detect a case where only one of the&#xA;    two parents has a meaningful trait:&#xA;    &#xA;    a_whitelist = Alien&#xA;    b_whitelist = Alien&#xA;    outcome = Alien&#xA;    &#xA;    a_whitelist = Alien&#xA;    b_blacklist = Alien,PartAlien&#xA;    outcome = PartAlien&#xA;    &#xA;    etc..." Deprecated="False" filter="0" group="General">
+                    <TunableList name="outcomes" class="TunableList" display="Outcomes" muid="23F8724431F391B5" description="A weighted list of potential outcomes given that the&#xA;requirements have been satisfied." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="1D73296EDA5D8AD1" description="A weighted outcome. The weight is relative to other entries&#xA;within this outcome set." Deprecated="False" filter="0" group="General">
+                            <Tunable type="trait" name="trait" class="TunableReference" display="Trait" muid="9BED095835C969AE" description="The potential inherited trait." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                            <Tunable type="float" name="weight" class="Tunable" default="1" display="Weight" muid="EADD3B53F14B8D6B" description="The relative weight of this outcome versus other&#xA;outcomes in this same set." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                    <TunableList name="parent_a_blacklist" class="TunableList" display="Parent A Blacklist" muid="420D1F8582C53624" description="Parent A must not have ANY of these traits in order to generate this&#xA;outcome." Deprecated="False" filter="0" group="General">
+                        <Tunable type="trait" class="TunableReference" muid="9E01669C3B1B435" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                    </TunableList>
+                    <TunableList name="parent_a_whitelist" class="TunableList" display="Parent A Whitelist" muid="FE447EADDECD3C85" description="Parent A must have ALL these traits in order to generate this&#xA;outcome." Deprecated="False" filter="0" group="General">
+                        <Tunable type="trait" class="TunableReference" muid="EEB7C4BF28126ECB" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                    </TunableList>
+                    <TunableList name="parent_b_blacklist" class="TunableList" display="Parent B Blacklist" muid="283E36D79BD34C43" description="Parent B must not have ANY of these traits in order to generate this&#xA;outcome." Deprecated="False" filter="0" group="General">
+                        <Tunable type="trait" class="TunableReference" muid="3F5280CA7617E352" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                    </TunableList>
+                    <TunableList name="parent_b_whitelist" class="TunableList" display="Parent B Whitelist" muid="4F97D9396AE60A0E" description="Parent B must have ALL these traits in order to generate this&#xA;outcome." Deprecated="False" filter="0" group="General">
+                        <Tunable type="trait" class="TunableReference" muid="17E2AC5978D7A2B5" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

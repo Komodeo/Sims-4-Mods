@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="crafting.photography" muid="CDCEBE1F8B56E98A">
+        <Class name="Photography" muid="717AA0AA9F6FFD1A">
+            <TunableList name="BASE_PHOTO_QUALITY_MAP" class="TunableMapping" display="Base Photo Quality Map" muid="493804A683A7A98D" mapping_key="key" mapping_value="value" description="The mapping of CameraQuality value to an interval of quality values&#xA;that will be used to asign a random base quality value to a photo&#xA;as it is created." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="5CC458434BB6A04E" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="CameraQuality" name="key" class="TunableEnumEntry" default="CHEAP" display="Key" muid="D8A0388CECD86530" static_entries="crafting-photography_enums.CameraQuality" description="The CameraQuality value. If this photo has this CameraQuality,&#xA;value, then a random quality between the min value and max value&#xA;will be assigned to the photo." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableInterval" display="Value" muid="9C380555ED07E86B" description="The range of base quality values from which a random value will be&#xA;given to the photo." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="1ADCD732164858BA" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="upper_bound" class="TunableRange" default="100" display="Upper Bound" muid="D8C1AF66B05BF310" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="EMOTION_STATE_MAP" class="TunableMapping" display="Emotion State Map" muid="5C5D4F23E25880AA" mapping_key="key" mapping_value="value" description="The mapping of moods to states, used to give photo objects a mood&#xA;based state. These states are then used by the tooltip component to&#xA;display emotional content on the photo's tooltip." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="9CAB6B2912C9471F" Deprecated="False" filter="0" group="General">
+                    <Tunable type="mood" name="key" class="TunableReference" display="Key" muid="77536BA04FBFFB7C" description="The mood to associate with a state." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="object_state" name="value" class="TunableReference" display="Value" muid="B3510188CB586DBD" description="The state that represents the mood for the purpose of displaying&#xA;emotional content in a tooltip." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="FAIL_PHOTO_QUALITY_RANGE" class="TunableInterval" display="Fail Photo Quality Range" muid="CA7745DD0F54F2C7" description="The random quality statistic value that a failure photo will be&#xA;given between the min and max tuned values." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="70D2D81305D9A44D" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="upper_bound" class="TunableRange" default="100" display="Upper Bound" muid="F344D822640BDA15" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableEnum type="Tag" name="GROUP_PHOTO_X_ACTOR_TAG" class="TunableEnumEntry" default="INVALID" display="Group Photo X Actor Tag" muid="52FF7D696A55A1C7" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag to specify the photo studio interaction that the photo target sim&#xA;who should be considered the x actor will run." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+
+            <TunableEnum type="Tag" name="GROUP_PHOTO_Y_ACTOR_TAG" class="TunableEnumEntry" default="INVALID" display="Group Photo Y Actor Tag" muid="F272EEF6C103E3FF" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag to specify the photo studio interaction that the photo target sim&#xA;who should be considered the y actor will run." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+
+            <TunableEnum type="Tag" name="GROUP_PHOTO_Z_ACTOR_TAG" class="TunableEnumEntry" default="INVALID" display="Group Photo Z Actor Tag" muid="D7672A149291615A" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag to specify the photo studio interaction that the photo target sim&#xA;who should be considered the z actor will run." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+
+            <Tunable type="object" name="LARGE_LANDSCAPE_OBJ_DEF" class="TunableReference" display="Large Landscape Obj Def" muid="839340462ACAE514" description="Object definition for a large landscape photo." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <Tunable type="object" name="LARGE_PORTRAIT_OBJ_DEF" class="TunableReference" display="Large Portrait Obj Def" muid="BE844C61BE1B0E2E" description="Object definition for a large portrait photo." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <Tunable type="object" name="MEDIUM_LANDSCAPE_OBJ_DEF" class="TunableReference" display="Medium Landscape Obj Def" muid="316963660873EF4E" description="Object definition for a medium landscape photo." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <Tunable type="object" name="MEDIUM_PORTRAIT_OBJ_DEF" class="TunableReference" display="Medium Portrait Obj Def" muid="831345AEDD9499A4" description="Object definition for a medium portrait photo." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <TunableList name="MOOD_PARAM_TO_MOOD_CATEGORY_STATE" class="TunableMapping" display="Mood Param To Mood Category State" muid="DBFF5CD09E53E67F" mapping_key="key" mapping_value="value" description="If the player took a picture in a photo mode that supports mood&#xA;categories, we will perform a state change to the corresponding state&#xA;based on the mood that each picture was taken in." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="50E4FE0643AD2E85" Deprecated="False" filter="0" group="General">
+                    <Tunable type="str" name="key" class="Tunable" default="None" display="Key" muid="429424EF318FA5F4" description="The mood ASM parameter value to associate with a state." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="object_state" name="value" class="TunableReference" display="Value" muid="1F267A3272FD0E22" description="The state that represents the mood category." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="NUM_PHOTOS_PER_SESSION" class="Tunable" default="5" display="Num Photos Per Session" muid="DB36CED37AA8C6E7" description="Max possible photos that can be taken during one photo session. Once&#xA;this number has been reached, the photo session will exit." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableEnum type="Tag" name="PAINTING_INTERACTION_TAG" class="TunableEnumEntry" default="INVALID" display="Painting Interaction Tag" muid="BF5C61D10879E3A6" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag to specify a painting interaction." Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="PHOTO_OBJECT_LOOT_PER_TARGET" class="TunableList" display="Photo Object Loot Per Target" muid="605842CBE0D0EB5" description="A list of loots which will be applied once PER target. The participants&#xA;for each application will be Actor: photographer, Target: photograph&#xA;target and Object: the Photograph itself. If a photo interaction has 2&#xA;target sims, this loot will be applied twice." Deprecated="False" filter="0" group="General">
+                <Tunable type="action" class="TunableReference" muid="74AEACC178FBF63E" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+
+            <TunableList name="PHOTO_VALUE_MODIFIER_MAP" class="TunableMapping" display="Photo Value Modifier Map" muid="2269F6059BDD3B1C" mapping_key="key" mapping_value="value" description="The mapping of state values to Simoleon value modifiers.&#xA;The final value of a photo is decided based on its&#xA;current value multiplied by the sum of all modifiers for&#xA;states that apply to the photo. All modifiers are&#xA;added together first, then the sum will be multiplied by&#xA;the current price." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="7DC489DA72311BC2" Deprecated="False" filter="0" group="General">
+                    <Tunable type="object_state" name="key" class="TunableReference" display="Key" muid="FF72598D78FAEDC" description="The quality state values. If this photo has this state,&#xA;then a random modifier between min_value and max_value&#xA;will be multiplied to the current price." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                    <TunableTuple name="value" class="TunableInterval" display="Value" muid="1C34491D0FDB0A69" description="The maximum modifier multiplied to the current price based on the provided state value" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="3B8FCF4ED7D89804" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="63BDBF8DE5AC5AE2" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="PHOTO_VALUE_SKILL_CURVE" class="TunableTunableStatisticModifierCurve" display="Photo Value Skill Curve" muid="827B548532FC7A33" description="Allows you to adjust the final value of the photo based on the Sim's&#xA;level of a given skill." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="multiplier" class="TunableVariant" default="raw_value" display="Multiplier" muid="5D731F8563690108" description="Define how the multiplier will be applied." Deprecated="False" filter="0" group="General">
+                    <Tunable name="raw_value" class="TunableExistance" display="Raw Value" muid="7C8AB6595A32DA90" />
+                    <TunableList name="value_curve" class="TunableCurve" display="Value Curve" muid="923E60DC2F86A982" description="The multiplier will be determined by interpolating against a&#xA;curve. The user-value is used. This means that a curve for&#xA;skills should have levels as its x-axis." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableVector2" muid="D35BF12593902FE3" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="x" class="Tunable" default="0.0" display="x: Skill Level" muid="74FB618DD7A54399" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="y" class="Tunable" default="0.0" display="y: Simoleon Multiplier" muid="D8AF24E312DE82BF" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableVariant>
+                <Tunable type="statistic" name="statistic" class="TunableReference" display="Statistic" muid="303B5A176DCA784D" description="The payout amount will be multiplied by this statistic's value." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableTuple>
+
+            <TunableList name="PHOTOGRAPHY_LOOT_LIST" class="TunableList" display="Photography Loot List" muid="5AF21A820831C670" description="A list of loot operations to apply to the photographer when photo mode exits." Deprecated="False" filter="0" group="General">
+                <Tunable type="action" class="TunableReference" muid="BCA2E88364CAAF53" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+            </TunableList>
+
+            <Tunable type="statistic" name="PHOTOGRAPHY_SKILL" class="TunableReference" display="Photography Skill" muid="AC87516760F95976" description="A reference to the photography skill." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Skill" />
+
+            <Tunable type="float" name="QUALITY_MODIFIER_PER_SKILL_LEVEL" class="Tunable" default="0" display="Quality Modifier Per Skill Level" muid="E32742136CBFA682" description="For each level of skill in Photography, this amount will be added to&#xA;the quality statistic." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="object" name="SMALL_LANDSCAPE_OBJ_DEF" class="TunableReference" display="Small Landscape Obj Def" muid="BD3D7A6AF845842F" description="Object definition for a small landscape photo." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <Tunable type="object" name="SMALL_PORTRAIT_OBJ_DEF" class="TunableReference" display="Small Portrait Obj Def" muid="E3B385803024A60D" description="Object definition for a small portrait photo." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </Class>
+    </Module>
+</TuningRoot>

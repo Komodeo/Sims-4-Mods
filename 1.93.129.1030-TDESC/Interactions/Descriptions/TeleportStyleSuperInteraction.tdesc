@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="TeleportStyleSuperInteraction" module="interactions.base.teleport_interaction" muid="6EAE9D50C908BD16" description="A SuperInteraction that implements GoHere, which utilizes teleport styles&#xA;to get a Sim from one point to another, while implementing other space-&#xA;reserving utilities, such as jigs." instance_needs_reference="True" instance_subclasses_only="False" parents="TerrainSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="destination_jig" class="OptionalTunable" default="disabled" display="Destination Jig" muid="50E54F38A8CFE4BE" description="If a jig is needed to reserve space where the Sim will teleport to, &#xA;this should be enabled." Deprecated="False" filter="0" group="~Core~">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="DDCD0F061EC501DC" />
+            <Tunable type="object" name="enabled" class="TunableReference" display="Enabled" muid="85AEEE8039FF93B6" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="bool" name="destination_must_be_outside" class="Tunable" default="False" display="Destination Must Be Outside" muid="55E1306BDA4DD34B" description="Whether the jig can only be placed outside." Deprecated="False" filter="0" group="~Core~" />
+
+        <TunableVariant type="None" name="required_destination_surface" class="OptionalTunable" default="disabled" display="Required Destination Surface" muid="B6E161D338A20F29" description="If a destination routing surface is required, it should be&#xA;specified here.  If it is not specified, the routing surface&#xA;of the target will be used to place jigs or to specify a location&#xA;to teleport to." Deprecated="False" filter="0" group="~Core~">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="96FAA794FA33D4F2" />
+            <TunableEnum type="SurfaceType" name="enabled" class="TunableEnumEntry" default="SURFACETYPE_UNKNOWN" display="Enabled" muid="E1DD3C0679DB9D9C" static_entries="routing.SurfaceType" description="The routing surface that must be used when planning a teleport&#xA;destination." Deprecated="False" filter="0" group="General" invalid_entries="SURFACETYPE_UNKNOWN" />
+        </TunableVariant>
+
+        <TunableEnum type="TeleportStyle" name="teleport_style_tuning" class="TunableEnumEntry" default="NONE" display="Teleport Style Tuning" muid="511866938E936C1E" dynamic_entries="teleport-teleport_enums.TeleportStyle._elements" static_entries="teleport-teleport_enums.TeleportStyle" description="Teleport style that is used to get the Sim from their start to end&#xA;points." Deprecated="False" filter="0" group="~Core~" invalid_entries="NONE" pack_safe="True" />
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="AutonomousObjectTaggedPickerInteraction" module="interactions.base.picker_interaction" muid="5383B4175342C78C" description="Autonomous picker interaction that selects a random object with tag and within a radius" instance_needs_reference="True" instance_subclasses_only="False" parents="AutonomousObjectPickerInteraction, AutonomousPickerSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="allow_different_level" class="Tunable" default="False" display="Allow Different Level" muid="5890B13D76354F4B" description="If checked then the picked object can be on a different level (floor)&#xA;from the Sim doing the interaction." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Deleted name="basic_content" muid="A3A0AC1BD9BA541F" />
+
+        <TunableVariant type="None" name="blacklist_filter" class="OptionalTunable" default="disabled" display="Blacklist Filter" muid="781DAF8CC3F7DB1B" description="Either a list of tags or definitions that objects should be ignored." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="EE0B8D4A38AAD424" />
+            <TunableVariant type="None" name="enabled" class="ObjectDefinitonsOrTagsVariant" default="object_tags" display="Enabled" muid="33EEBCBD6A05AFE5" description="Either a list of tags or definitions that objects should be ignored." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="object_definitions" class="TunableObjectDefinitionsFilter" display="Object Definitions" muid="D9F0A04D0DEB028C" description="A Tunable Filter that filters based on specific object definitions." Deprecated="False" filter="0" group="General">
+                    <TunableList name="items_to_check" class="TunableList" display="Items To Check" muid="43E3FE7539453DEF" description="A List of the definitions that can be matched to fulfill the filter.&#xA;This list is considered a Match Any requirement." Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" class="TunableReference" muid="1A81DB9657E3D418" description="A reference to a definiton that can be matched as part of the &#xA;filter." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableTuple>
+                <TunableTuple name="object_tags" class="TunableObjectTagsFilter" display="Object Tags" muid="B36FB4FAD3EFE553" description="A Tunable Filter that filters based on a tag set." Deprecated="False" filter="0" group="General">
+                    <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="54224D157BB78636" description="A Set of tags that can be matched to fulfill the filter. The set&#xA;is considered a Match Any requirement." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="D0F681381C0ADA83" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A reference to a tag that can be matched as part of the filter." Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableVariant>
+
+        <Deleted name="ignore_group_socials" muid="2F7DA78FE3A52C4A" />
+
+        <Deleted name="joinable" muid="98366A7FDDA47AE8" />
+
+        <TunableList name="object_filter_test" class="TunableObjectTaggedObjectFilterTestSet" display="Object Filter Test" muid="3D2B117F66682D20" description="A list of test to verify object is valid to be selected for autonomous use." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableVariant type="None" class="TunableVariant" default="none" muid="4CDB071307F484A8" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="distance_test" class="TunableDistanceTest" display="Distance Test" muid="391EEB366BB179ED" description="A tunable factory that tests whether the distance between the actor and the&#xA;target is within a certain threshold." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="distance_threshold" class="TunableThreshold" display="Distance Threshold" muid="E57DCD38C73544A3" description="The distance threshold for this test. The distance between the&#xA;subject and the target must satisfy this condition in order of the&#xA;test to pass." Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="BA3D43B288C65744" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="45D2CCF9D54A730" description="The value of a threshold." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableVariant type="None" name="level_modifier" class="TunableVariant" default="no_modifier" display="Level Modifier" muid="A068D37F4B4BE3A6" description="Determine how difference in levels affects distance. A modifier of&#xA;10, for example, would mean that the distance between two objects is&#xA;increased by 10 meters for every floor between them." Deprecated="False" filter="0" group="General">
+                        <Tunable name="infinite" class="TunableExistance" display="Infinite" muid="2F50BCD314DC0E8F" />
+                        <Tunable name="no_modifier" class="TunableExistance" display="No Modifier" muid="DF10FB6E652E4870" />
+                        <Tunable type="float" name="specific" class="TunableRange" default="8" display="Specific" muid="AF0328D949F0E967" min="0" max="None" description="A meter modifier to add to the distance multiplied by the number&#xA;of floors between subject and target." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="object_count_threshold" class="OptionalTunable" default="disabled" display="Object Count Threshold" muid="4C86B5842C8D3816" description="The number of objects that must pass the distance test for the overall test to succeed. &#xA;&#xA;If enabled then the tuned number of objects must pass the distance test for the test to succeed.&#xA;If disabled then ALL of the objects must pass the distance test for the test to succeed." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="997291417AB07D75" />
+                        <TunableTuple name="enabled" class="TunableThreshold" display="Enabled" muid="87EDA52198AE4448" description="The number of objects that must pass the distance test in order for the test to succeed." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="3B96DC35F7317F0B" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="3B63B688A115EB93" description="The value of a threshold." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableEnum type="ParticipantType" name="subject" class="TunableEnumEntry" default="Actor" display="Subject" muid="18A617F8C8B806A8" static_entries="interactions.ParticipantType" description="The subject of the test." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="target" class="TunableVariant" default="participant_type" display="Target" muid="12E60F8ECA20E8B3" description="The object to find the distance to. &#xA;&#xA;participant_type: Allows you to specify the participant you want to check the distance to.&#xA;object_tags: Allows you to specify a list of tags to use to find objects to test the distance to." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="object_tags" class="TunableTuple" display="Object Tags" muid="CD82A178AF72BAE" Deprecated="False" filter="0" group="General">
+                            <TunableList name="tags" class="TunableTags" display="Tags" muid="21D08B92DD415650" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="18B79187DA4CE424" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Supplies the target(s) of the test using any object that matches the tuned tags." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="participant_type" class="TunableTuple" display="Participant Type" muid="8A87F2F8E061DD00" Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="FDF1F20FC8A7AC1F" static_entries="interactions.ParticipantType" description="Supplies the target(s) of the test using the tuned ParticipantType." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="4438B25358623E80" description="Reason of failure." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="1B097B78919A896B" />
+                        <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="B155848D3A329BCE" description="Reason of failure." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableTuple>
+                <Tunable name="none" class="TunableExistance" display="None" muid="C6F08A0B00F27F7A" />
+                <TunableTuple name="object_criteria_test" class="TunableObjectCriteriaTest" display="Object Criteria Test" muid="CF52B3609FA1677C" description="A test to look at all the objects and compare them to the tuned criteria." Deprecated="False" filter="0" group="General">
+                    <Tunable type="bool" name="completed" class="Tunable" default="False" display="Completed" muid="C6CFA49EBFC70DB1" description="If checked, any craftable object (such as a painting) must be finished&#xA;for it to be considered." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="desired_state_threshold" class="OptionalTunable" default="disabled" display="Desired State Threshold" muid="C961DF07C440AC25" description="A state threshold that the object must satisfy for this test to pass" Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="BCBFD59A50AACDB0" />
+                        <TunableTuple name="enabled" class="TunableThreshold" display="Enabled" muid="BA6A66CF2CD1E1B7" description="A state threshold that the object must satisfy for this test to pass" Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="DC9AF8C9A1CED1BC" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="object_state" name="value" class="TunableReference" display="Value" muid="F70D1FC97740FFBE" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <Tunable type="bool" name="on_active_lot" class="Tunable" default="False" display="On Active Lot" muid="DF40E7F41704F609" description="If checked, test whether or not the object is on the active&#xA;lot. If unchecked the object can be either on the active lot or&#xA;in the open streets area, we don't really care." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="bool" name="owned" class="Tunable" default="True" display="Owned" muid="1159C9F45A590F87" description="If checked will test if the object is owned by the active &#xA;household. If unchecked it doesn't matter who owns the object or&#xA;if it is owned at all." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="positional_relationship_test" class="TunableVariant" default="no_positional_relationship_test" display="Positional Relationship Test" muid="A0D6246CEE888279" description="The type of positional relationship test to run on the object with respect to &#xA;another object." Deprecated="False" filter="0" group="General">
+                        <Tunable name="no_positional_relationship_test" class="TunableExistance" display="No Positional Relationship Test" muid="7E49824F692A90B9" />
+                        <TunableTuple name="radius_test" class="Tunable_RadiusFactory" display="Radius Test" muid="DB3BB0593C15F613" description="The object must be within a certain radius of a&#xA;tuned participant in order for the test to pass." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="radius" class="TunableDistanceSquared" default="5.0" display="Radius" muid="A3A56FE06B996617" description="The radius, with the radius actor's position, that defines&#xA;the area within which the object is valid." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TunableEnum type="ParticipantType" name="radius_actor" class="TunableEnumEntry" default="ParticipantTypeSingle.Object" display="Radius Actor" muid="D015D1E89C243CBC" static_entries="interactions.ParticipantType" description="The actor whose position, with the radius, defines the&#xA;area within which the object is valid." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="tagged_object_on_same_level_test" class="Tunable_TaggedObjectOnSameLevelFactory" display="Tagged Object On Same Level Test" muid="D1CC59188030D2B9" description="The object must has at least one object with a tuned tag on the&#xA;same level as a tuned participant in order for the test to pass." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="ParticipantType" name="subject" class="TunableEnumEntry" default="ParticipantTypeSingle.Object" display="Subject" muid="B3993B75FBEBCD3E" static_entries="interactions.ParticipantType" description="The participant to test against. " Deprecated="False" filter="0" group="General" />
+                            <TunableEnum type="Tag" name="tag" class="TunableTag" default="INVALID" display="Tag" muid="1B717A0DB3DEDAA8" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A single tag to find an object matching to test against the participant. " Deprecated="False" dynamic_entries_prefix="" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableVariant type="None" name="sim_ownership" class="OptionalTunable" default="disabled" display="Sim Ownership" muid="3114F9F2D030DACC" description="If enabled, test whether or not the object is owned by the active &#xA;Sim.  If checked, test will pass if the Sim owns the object." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D3BF0E4ECF713C9E" />
+                        <Tunable type="bool" name="enabled" class="Tunable" default="True" display="Enabled" muid="E0AA6A4D62EDB4EE" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="bool" name="use_depreciated_values" class="Tunable" default="False" display="Use Depreciated Values" muid="95C7DD9815B0FD70" description="If checked, the value consideration for each checked object will at its depreciated amount.&#xA;This affects the &quot;All Objects&quot; test type, changing the total value considered to be at the&#xA;non-depreciated amount." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="value" class="OptionalTunable" default="disabled" display="Value" muid="5F138395F24DFDCB" description="A threshold test for the monetary value of a single object in order for it&#xA;to be considered." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="E556892C55485C19" />
+                        <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="2B2A9948E463EE7F" Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="67C6B910AA2B2137" description="Value/comparison pair used to define a Threshold." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="B4DBE1AF68992922" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="6605A8C4CCA57C65" description="The value of a threshold." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableVariant type="None" name="value_to_check" class="TunableVariant" default="catalog_value" display="Value To Check" muid="A1DEC8FCB26FD32B" Deprecated="False" filter="0" group="General">
+                                <Tunable name="catalog_value" class="TunableExistance" display="Catalog Value" muid="C496E22157C6714" />
+                                <Tunable name="current_value" class="TunableExistance" display="Current Value" muid="BC7C3BF280D36287" />
+                                <Tunable name="depreciated_value" class="TunableExistance" display="Depreciated Value" muid="EDD9A20D7346FF07" />
+                            </TunableVariant>
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableList>
+
+        <Deleted name="object_reservation_tests" muid="7D2169838073C71B" />
+
+        <Deleted name="outfit_change" muid="DA88EA0FCEA0116E" />
+
+        <Deleted name="outfit_priority" muid="D119EE5ECE5295B2" />
+
+        <Deleted name="post_guaranteed_autonomy_commodities" muid="7380264037443CCE" />
+
+        <Deleted name="post_run_autonomy_commodities" muid="FA7066F0807DA061" />
+
+        <Deleted name="pre_add_autonomy_commodities" muid="3774CEDB6424608D" />
+
+        <Deleted name="pre_run_autonomy_commodities" muid="A660992A220DEA07" />
+
+        <TunableVariant type="None" name="radius" class="OptionalTunable" default="enabled" display="Radius" muid="3F36CAFB4A24DDAA" description="Ensures objects are within a tuned radius.&#xA;&#xA;NOTE: THIS SHOULD ONLY BE DISABLED IF APPROVED BY A GPE.&#xA;Disabling this can have a serious performance impact since most &#xA;pickers will end up with way too many objects in them." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7A09C77954E7E10B" />
+            <Tunable type="int" name="enabled" class="TunableRange" default="5" display="Enabled" muid="E0E113822AE3DDEC" min="1" max="50" description="Object must be in a certain range for consideration." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="bool" name="require_on_offlot_parity" class="Tunable" default="False" display="Require On Offlot Parity" muid="6AFFE22B596CBAEB" description="If checked then we will not consider objects that are off the lot&#xA;unless the Sim running this interaction is also off.  We will&#xA;always consider objects on the lot." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="bool" name="supress_outside_if_modifier" class="Tunable" default="True" display="Supress Outside If Modifier" muid="557F482AB47F3276" description="If checked then we will not considered objects that are outside&#xA;if an outside autonomy modifier is in effect.&#xA;&#xA;If unchecked then in addition to considering objects that are outside&#xA;we will always score the interaction as if all objects are outside, &#xA;however we will still prefer objects that are inside, if any." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <TunableVariant type="None" name="whitelist_filter" class="ObjectDefinitonsOrTagsVariant" default="object_tags" display="Whitelist Filter" muid="5A0039D981314C07" description="Either a list of tags or definitions that objects can be considered." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple name="object_definitions" class="TunableObjectDefinitionsFilter" display="Object Definitions" muid="886B4067EEF3B13F" description="A Tunable Filter that filters based on specific object definitions." Deprecated="False" filter="0" group="General">
+                <TunableList name="items_to_check" class="TunableList" display="Items To Check" muid="2A1EDDA0A26AF577" description="A List of the definitions that can be matched to fulfill the filter.&#xA;This list is considered a Match Any requirement." Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" class="TunableReference" muid="6FB3FAD0DD30921B" description="A reference to a definiton that can be matched as part of the &#xA;filter." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="object_tags" class="TunableObjectTagsFilter" display="Object Tags" muid="D390E3BC621C2F5B" description="A Tunable Filter that filters based on a tag set." Deprecated="False" filter="0" group="General">
+                <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="92351F5C1AF4A2A2" description="A Set of tags that can be matched to fulfill the filter. The set&#xA;is considered a Match Any requirement." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="DC7431C7F7E03B0B" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A reference to a tag that can be matched as part of the filter." Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="CDCBCB7FCB26DCB5" new_muid="E57DCD38C73544A3" />
+            <Action type="kRename" old_muid="D52A2CB9CE1D3006" new_muid="FDF1F20FC8A7AC1F" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

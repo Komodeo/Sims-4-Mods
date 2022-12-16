@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="story_progression.story_progression_exclusivity" muid="61A5A1C665F776BF">
+        <Class name="StoryProgressionExclusivityCategory" muid="B07AB0B5651E7938" enum_bit_flag="True" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="D175B1C05F62C255" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="B088660B6CE83FE3" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="NEUTRAL" muid="84A811A18320618E" enum_value="0" />
+        </Class>
+
+        <Class name="StoryProgressionExclusivity" muid="3E452DB4B66C0D52">
+            <TunableList name="EXCLUSIVITY_RULES" class="TunableList" display="Exclusivity Rules" muid="72C4CD6456648B2C" description="A list of exclusivity rules.  Each exclusivity rule is a pair of  Story Progression&#xA;Exclusivity Categories.  Categories are bi directional so you do not need to tune both directions of&#xA;categories.&#xA;&#xA;Any rules that are tuned make it so that when seeding a new arc we will not seed the arc on Sims that have&#xA;an incompatible category on them or on the household.  With households we will check the exclusivity against&#xA;all of the arcs on Sims within the household.&#xA;&#xA;If an exclusivity pair is not tuned here that means that they are compatible.  The Neutral category is always&#xA;compatible with everything.&#xA;&#xA;Example:&#xA;If you want two groups of arcs to be incompatible with each other, tune each exclusivity category.&#xA;category 1: DEATH&#xA;category 2: CAREER&#xA;This will make it so that if a death arc is on a Sim then a career arc will not be added and vice versa if a&#xA;career arc is on a Sim then a death arc will not be added.&#xA;&#xA;If you want to create a mutually incompatible grouping of arcs, tune the same exclusivity category twice.&#xA;category 1: CAREER&#xA;category 2: CAREER&#xA;This will make it so that multiple different career arcs cannot be placed on the same Sim.  This can be used&#xA;to prevent adding a career and retiring/quitting a career to be tuned at the same time." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="AA84B762F0E44F6C" description="An exclusivity rule.&#xA;&#xA;Please read the Exclusivity Rules Definition for how to use this." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="StoryProgressionExclusivityCategory" name="category_1" class="TunableEnumEntry" default="NEUTRAL" display="Category 1" muid="4D8B28D9B36E0940" dynamic_entries="story_progression-story_progression_exclusivity.StoryProgressionExclusivityCategory._elements" static_entries="story_progression-story_progression_exclusivity.StoryProgressionExclusivityCategory" description="The first Exclusivity Category.&#xA;&#xA;Please read the Exclusivity Rules Definition for how to use this." Deprecated="False" filter="0" group="General" invalid_entries="NEUTRAL" />
+                    <TunableEnum type="StoryProgressionExclusivityCategory" name="category_2" class="TunableEnumEntry" default="NEUTRAL" display="Category 2" muid="AD1668EAD21DCD1E" dynamic_entries="story_progression-story_progression_exclusivity.StoryProgressionExclusivityCategory._elements" static_entries="story_progression-story_progression_exclusivity.StoryProgressionExclusivityCategory" description="The second. Exclusivity Category.&#xA;&#xA;Please read the Exclusivity Rules Definition for how to use this." Deprecated="False" filter="0" group="General" invalid_entries="NEUTRAL" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

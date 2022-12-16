@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="clans.clan_service" muid="A26110C4A1CEF563">
+        <Class name="ClanAllianceState" muid="EFAF48E7724582F9" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="ALLIED" muid="C210A980E6752E97" enum_value="0" />
+
+            <EnumItem name="FEUDING" muid="E395EF429A066A2D" enum_value="2" />
+
+            <EnumItem name="NEUTRAL" muid="2711A5DFA7EE4BE4" enum_value="1" />
+        </Class>
+
+        <Class name="ClanService" muid="E6EC9B154D0D7EA6">
+            <TunableList name="CLAN_DATA" class="TunableMapping" display="Clan Data" muid="6C3A4AB5257DD813" mapping_key="key" mapping_value="value" description="A mapping from clan to the different types of loots that need to be applied to clan members for clan&#xA;related operations." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="82F8FD9AE589447F" Deprecated="False" filter="0" group="General">
+                    <Tunable type="clan" name="key" class="TunableReference" display="Key" muid="8BF7997A0B27E9BF" description="A reference to a clan for which we are defining a rival clan and the various loots that need to be &#xA;applied." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="C6D7C5F0B3F989F8" Deprecated="False" filter="0" group="General">
+                        <Tunable type="action" name="demote_leader_loot" class="TunableReference" display="Demote Leader Loot" muid="DBCCD4C452EA1FA0" description="The loot to apply to the existing leader of a clan when they are being replaced by another Sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                        <Tunable type="sim_filter" name="find_new_clan_leader_filter" class="TunableReference" display="Find New Clan Leader Filter" muid="16AC1FE194C4D8C1" description="A reference to a sim filter that will be used to find a sim to make into the clan leader if the clan&#xA;currently has no leader. It is recommended that the sim filter does NOT create a sim from template to&#xA;prevent bugs where multiple sims could get turned into leaders." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <Tunable type="action" name="information_dialog_loot" class="TunableReference" display="Information Dialog Loot" muid="A417A9634C02EEF0" description="The loot to display clan information in a dialog." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                        <Tunable type="action" name="join_clan_loot" class="TunableReference" display="Join Clan Loot" muid="2970BC241CB70320" description="The loot to apply to a Sim when they join a clan." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                        <Tunable type="action" name="leave_clan_loot" class="TunableReference" display="Leave Clan Loot" muid="2179AADB12247BC6" description="The loot to apply to a Sim when they leave a clan." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                        <Tunable type="action" name="promote_leader_loot" class="TunableReference" display="Promote Leader Loot" muid="58B2C1AD1E5FAAD5" description="The loot to apply to a Sim when they are assigned leader of a clan." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                        <Tunable type="clan" name="rival_clan" class="TunableReference" display="Rival Clan" muid="9B9C78EC25904A41" description="A reference to another clan that will be treated as the rival clan for the given key." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="LEADER_CHECK_HOUR" class="TunableTimeOfDay" display="Leader Check Hour" muid="C768C5BE620384E6" description="The time of day to check for clans without a leader." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="hour" class="TunableRange" default="4" display="Hour" muid="DEC2D1432D49A85F" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="3DDEE6900AD85805" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableList name="NARRATIVE_TO_ALLIANCE_STATE_MAP" class="TunableMapping" display="Narrative To Alliance State Map" muid="47C84B6FFB258FEF" mapping_key="key" mapping_value="value" description="A mapping of narrative to the clan alliance state it represents. When the clan service detects a narrative&#xA;change, it will map the active narrative to one of the alliance states and update the UI if needed." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="E2835863002EBF20" Deprecated="False" filter="0" group="General">
+                    <Tunable type="narrative" name="key" class="TunableReference" display="Key" muid="C13A64022B281299" description="A reference to a narrative for which the clan service will attempt to update the UI." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableEnum type="ClanAllianceState" name="value" class="TunableEnumEntry" default="NEUTRAL" display="Value" muid="6C7FE2CE6761E6BB" static_entries="clans-clan_service.ClanAllianceState" description="The clan alliance state that the narrative corresponds to." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="A9F1951C2C4E4B94" />
+            <Action type="kRemove" old_muid="C7AC18E353438B7" />
+            <Action type="kRemove" old_muid="14F74146BEE5D0CA" />
+            <Action type="kRemove" old_muid="58C456EF36C8544B" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

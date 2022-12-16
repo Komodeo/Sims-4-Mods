@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="pie_menu_category" class="PieMenuCategory" module="interactions.pie_menu_category" muid="D388A981D3D74B8A" description="Base tunable class for Pie Menu Categories" instance_needs_reference="True" instance_subclasses_only="False" path="PieMenuCategories\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="_collapsible" class="Tunable" default="True" display="Collapsible" muid="6962566C2EB4B2D7" description="If enabled, when this category only has one item inside, that item will show on the pie menu without going through this category.&#xA;If disabled, the user will always go through this category, regardless of the number of entries within." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="int" name="_display_name" class="TunableLocalizedString" default="0x0" display="Display Name" muid="E57E021DC49A25DA" description="Localized name of this category" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="int" name="_display_priority" class="Tunable" default="1" display="Display Priority" muid="3A6419B1C02DF57A" description="The display priority of this category." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="ResourceKey" name="_icon" class="TunableResourceKey" default="None" display="Icon" muid="566A2FB63F135859" description="Icon to be displayed in the pie menu" allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" resource_types="0x2f7d0004" />
+
+        <Tunable type="pie_menu_category" name="_parent" class="TunableReference" display="Parent" muid="569F60538A35357B" description="Parent category." allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableEnum type="SpecialPieMenuCategoryType" name="_special_category" class="TunableEnumEntry" default="NO_CATEGORY" display="Special Category" muid="736F045D33496C13" static_entries="interactions-pie_menu_category.SpecialPieMenuCategoryType" description="Designate this category as a special category.  Most will be NO_CATEGORY." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="bool" name="always_show_disabled_interactions" class="Tunable" default="False" display="Always Show Disabled Interactions" muid="52AC305A4E989EB5" description="If enabled, display all disabled interactions under this category, &#xA;even if they all have the same disabled tooltip." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableList name="mood_overrides" class="TunableMapping" display="Mood Overrides" muid="26D6C775C9BEEE8F" mapping_key="mood" mapping_value="override_data" description="If sim matches mood, tooltip and display name of category will&#xA;be updated with tuned values." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="mood_to_override_data">
+            <TunableTuple class="TunableTuple" muid="4E21AA28D4798783" Deprecated="False" filter="0" group="General">
+                <Tunable type="mood" name="mood" class="TunableReference" display="Mood" muid="4837FA4BBF25E648" allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="override_data" class="text_overrides" display="Override Data" muid="F2004010D3788D3D" Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="name_override" class="TunableLocalizedString" default="0x0" display="Name Override" muid="A7FFB1125E9E5693" description="Localized name of this category" allow_none="True" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="tooltip" class="TunableLocalizedString" default="0x0" display="Tooltip" muid="2F20FF16512FBC6" description="Tooltip for the new category." allow_none="True" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

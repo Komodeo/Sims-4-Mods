@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="university_major" class="UniversityMajor" module="sims.university.university_tuning" muid="F427A1499BDB2F78" description="University Major tunable resource." instance_needs_reference="True" instance_subclasses_only="False" path="UniversityMajors\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="acceptance_score" class="TunableTuple" display="Acceptance Score" muid="5CB478C05C30C38C" description="Score requirement to be accepted in this major as prestige degree." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="score" class="TunableTunableMultiplier" display="Score" muid="7D1B0FDABEECF7B5" description="Define the base score and multiplier to calculate acceptance&#xA;score of a Sim." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="7D6A384D7DCA5E37" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="A38035C2FEF7C287" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="E092E29ACD829791" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="9D78942BE4F49BE6" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="E41FB3918595EA1D" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="score_threshold" class="TunableThreshold" display="Score Threshold" muid="7D31DC8F07A019B" description="The threshold to perform against the score to see if a Sim &#xA;can be accepted in this major." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="C65C63F771C62D2E" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="5A97E194E112A276" description="The value of a threshold." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableTuple>
+
+        <TdescFragTag name="basic_acceptance_tests" class="TunableTestSet" display="Basic Acceptance Tests" muid="91BCC3A2F17E6689" description="Tests that must be passed in order to be eligible for the basic university degrees." filter="0" group="General" />
+
+        <TunableList name="career_tracks" class="TunableList" display="Career Tracks" muid="C29C6FD7C5869399" description="List of career tracks for which the UI will indicate this major&#xA;will provide benefit.  Is not used to actually provide said benefit." Deprecated="False" export_modes="client_binary" filter="0" group="UI" unique_entries="true">
+            <Tunable type="career_track" class="TunableReference" muid="B6B489D5DD08ADAF" description="These are the career tracks that will benefit from this major." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableList name="courses" class="TunableList" display="Courses" muid="E0D81311820E2D97" min="1" description="List of courses, in order, for this major" Deprecated="False" filter="0" group="General">
+            <Tunable type="university_course_data" class="TunableReference" muid="610197377CFB4341" allow_none="False" Deprecated="False" filter="0" group="General" restrict="UniversityCourseData" />
+        </TunableList>
+
+        <Tunable type="int" name="display_description" class="TunableLocalizedString" default="0x0" display="Display Description" muid="602593067EF76D65" description="The major's description." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" />
+
+        <Tunable type="int" name="display_name" class="TunableLocalizedString" default="0x0" display="Display Name" muid="A307137487F45466" description="The major's name." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" />
+
+        <TunableList name="graduation_reward" class="TunableMapping" display="Graduation Reward" muid="D6A98EFB7C6D4B67" mapping_key="key" mapping_value="value" description="Loot on graduation at each university for each GPA threshold" Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="9AE945561407E98" Deprecated="False" filter="0" group="General">
+                <Tunable type="university" name="key" class="TunableReference" display="Key" muid="75AAB1B21532DE8F" allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableList" display="Value" muid="FDFBB87541D45AEC" description="Loot for each GPA range (lower bound inclusive, upper bound&#xA;exclusive." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="29087E10591868B2" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="gpa_range" class="TunableInterval" display="Gpa Range" muid="5477100F174D9F83" description="GPA range to receive this loot.&#xA;Lower bound inclusive, upper bound exclusive." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="8BB8771EAD7C648F" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableRange" default="10" display="Upper Bound" muid="FF4CCB48058E916" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableList name="loot" class="TunableList" display="Loot" muid="28E1E0C837A60793" Deprecated="False" filter="0" group="General">
+                            <Tunable type="action" class="TunableReference" muid="8D9244EAF2FA5942" description="The loot action applied." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableTuple name="icons" class="UniversityMajorIconTuple" display="Icons" muid="B551F83B252C7383" description="Display icons for this major." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI">
+            <Tunable type="ResourceKey" name="icon" class="TunableIcon" default="None" display="Icon" muid="210B96399D547577" description="The major's icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+            <Tunable type="ResourceKey" name="icon_high_res" class="TunableIcon" default="None" display="Icon High Res" muid="4B904E79C7ADE647" description="The major's high resolution icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+            <Tunable type="ResourceKey" name="icon_prestige" class="TunableIcon" default="None" display="Icon Prestige" muid="FF0A169A5B533063" description="The major's prestige icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+            <Tunable type="ResourceKey" name="icon_prestige_high_res" class="TunableIcon" default="None" display="Icon Prestige High Res" muid="2BE04A1EE39B575C" description="The major's prestige high resolution icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+        </TunableTuple>
+
+        <TunableList name="major_benefit_map" class="TunableMapping" display="Major Benefit Map" muid="1B707EDAC34D22F0" mapping_key="key" mapping_value="value" description="University specific major benefit description. Each university can &#xA;have its own description defined for this University Major." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" mapping_class="UniversityMajorBenefitMapping">
+            <TunableTuple class="TunableTuple" muid="48364F6054B8A090" Deprecated="False" filter="0" group="General">
+                <Tunable type="university" name="key" class="TunableReference" display="Key" muid="4FFC85D36D0E8167" allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="value" class="TunableLocalizedString" default="0x0" display="Value" muid="C98670442E69D067" description="Major benefit description." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

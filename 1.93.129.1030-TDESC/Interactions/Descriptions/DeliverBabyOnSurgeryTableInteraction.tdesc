@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="DeliverBabyOnSurgeryTableInteraction" module="interactions.utils.pregnancy_interactions" muid="A71A4FBD7F94FE55" description="Interaction for a pregnant sim to give birth on a surgery table." instance_needs_reference="True" instance_subclasses_only="False" parents="DeliverBabySuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableList name="_loot_per_baby" class="TunableList" display="Loot Per Baby" muid="806852B0960206D1" description="Loot that will be applied when a baby is born to a non NPC Sim. &#xA;Actor will be the mom and TargetSim will be the sim_info of the baby.&#xA;This will work for multiple babies as each loot will be applied to &#xA;each baby sim info.&#xA;&#xA;None of these loots will be applied to a baby born to an NPC Sim." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="E9758A4C9CB65508" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+        </TunableList>
+
+        <Tunable type="interaction" name="after_delivery_interaction" class="TunableReference" display="After Delivery Interaction" muid="39CDE2C0F924D175" description="The interaction to push on the Sim after delivering a baby at the&#xA;hospital." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+        <Tunable type="slot_type" name="bassinet_slot_type" class="TunableReference" display="Bassinet Slot Type" muid="C1734D9BDFB580CA" description="SlotType used to place the bassinet when it is created." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SlotType" />
+
+        <Tunable type="object" name="bassinet_to_use" class="TunableReference" display="Bassinet To Use" muid="54553015FC85584B" description="Bassinet with Baby object definition id." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="destroy_baby_in_bassinet_vfx" class="TunablePlayEffect" display="Destroy Baby In Bassinet Vfx" muid="26CAF9E8D787A350" description="The VFX to play when the baby is being destroyed during an NPC &#xA;birth sequence." Deprecated="False" filter="0" group="General">
+            <Tunable type="str" name="effect_name" class="Tunable" default="" display="Effect Name" muid="253C4FE8B29BD44A" description="The name of the effect to play." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="joint_name" class="OptionalTunable" default="Slot" display="Joint Name" muid="A3208FAB98B99AE4" description="Specify if the visual effect is attached to a slot and, if so, which&#xA;slot." Deprecated="False" filter="0" group="General">
+                <Tunable name="Current_Position" class="TunableExistance" display="Current Position" muid="C0ECBDF393B164CA" />
+                <Tunable type="str" name="Slot" class="TunableStringHash32" default="_FX_" display="Slot" muid="4A35C35892E2FCAC" description="The name of the slot this effect is attached to." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="bool" name="play_immediate" class="Tunable" default="False" display="Play Immediate" muid="7E4477B5A92B1D05" description="If checked, this effect will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. VFX will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableEnum type="ParticipantType" name="surgery_table_participant_type" class="TunableEnumEntry" default="Object" display="Surgery Table Participant Type" muid="C8A4BE2FD6D78B80" static_entries="interactions.ParticipantType" description="A reference to the ParticipantType that the surgery table will be&#xA;in this interaction." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

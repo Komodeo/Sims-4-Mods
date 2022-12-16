@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="AggregateSuperInteraction" module="objects.base_interactions" muid="14A7ED7D75FFEEEC" description="An interaction that runs only one of its composing interactions based on&#xA;priority and tests.  If there are multiple passing interactions at the same&#xA;priority level, the tie will be broken based on distance estimation." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableList name="aggregated_affordances" class="TunableList" display="Aggregated Affordances" muid="36BED27B9D3CA00D" description="A list of affordances composing this aggregate.  Distance&#xA;estimation will be used to break ties if there are multiple&#xA;valid interactions at the same priority level." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="3EF3D57EF3513E77" description="An affordance and priority entry." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="79FC463C42CCBE3C" description="The aggregated affordance." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="SuperInteraction" />
+                <Tunable type="int" name="priority" class="Tunable" default="0" display="Priority" muid="7013B5079CAEDC85" description="The relative priority of this affordance compared to&#xA;other affordances in this aggregate." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableEnum type="ParticipantType" name="sim_to_push_affordance_on" class="TunableEnumEntry" default="Actor" display="Sim To Push Affordance On" muid="63EDC46DF6645123" static_entries="interactions.ParticipantType" description="The Sim to push the affordance on.  If this is Actor, the&#xA;affordance will be pushed as a continuation of this." Deprecated="False" filter="0" group="Triggers" />
+
+        <Tunable type="bool" name="use_aggregated_affordance_constraints" class="Tunable" default="False" display="Use Aggregated Affordance Constraints" muid="8A32DB7BB24F0824" description="If enabled, this interaction will pull it's constraints from the&#xA;interaction constraints of the aggregated affordances. The benefit&#xA;is that we are compatible with interactions we intend to run, even&#xA;if they have constraints different from one another. This prevents&#xA;us from having to add a bunch of tests to those affordances and a&#xA;generic constraint here." Deprecated="False" filter="0" group="Constraints" />
+    </Instance>
+</TuningRoot>

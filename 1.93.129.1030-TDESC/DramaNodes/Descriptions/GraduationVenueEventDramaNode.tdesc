@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="drama_node" class="GraduationVenueEventDramaNode" module="venues.graduation_venue_event_drama_node" muid="1FFABC903D739F6F" description="The drama node type used to schedule and run the high school graduation event." instance_subclasses_only="False" parents="VenueEventDramaNode, BaseDramaNode" path="DramaNodes\Descriptions" use_guid_for_reference="True">
+        <Tunable type="sim_filter" name="graduating_npc_sim_filter" class="TunableReference" display="Graduating Npc Sim Filter" muid="4A2BA4ACCB3557C" description="Sim Filter used to identify Sims that are ready to be aged up for graduation." allow_none="False" Deprecated="False" filter="0" group="Graduation" />
+
+        <TunableTuple name="range_of_graduating_sims_allowed" class="TunableInterval" display="Range Of Graduating Sims Allowed" muid="99926645F0ECA85B" description="The minimum and maximum amount of Sims allowed to attend a graduation event." Deprecated="False" filter="0" group="Graduation">
+            <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="6DC25E77DFBF7EC8" min="1" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="upper_bound" class="TunableRange" default="5" display="Upper Bound" muid="29A1D9EECC939C13" min="None" max="20" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableList name="update_on_calendar_events" class="TunableSet" display="Update On Calendar Events" muid="9EE415D1B692EDB7" description="When any of these events fire the calendar entry will be re-evaluated &#xA;and either removed if necessary or added/update otherwise." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="TestEvent" class="TunableEnumEntry" default="Invalid" muid="1947E33CA571B3FC" dynamic_entries="event_testing-test_events.TestEvent._elements" static_entries="event_testing-test_events.TestEvent" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

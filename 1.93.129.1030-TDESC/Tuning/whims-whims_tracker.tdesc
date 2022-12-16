@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="whims.whims_tracker" muid="94FA7D55DD213A1F">
+        <Class name="WhimType" muid="88D8BB980BAB0611" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="CONFRONTATION" muid="7F4C9395ABDD8065" enum_value="4" />
+
+            <EnumItem name="INVALID" muid="8F8E794534E247C9" enum_value="0" />
+
+            <EnumItem name="LONG_TERM" muid="89BB3A057EAC49B6" enum_value="1" />
+
+            <EnumItem name="REACTIONARY" muid="F726069DBE2D8D90" enum_value="3" />
+
+            <EnumItem name="SHORT_TERM" muid="D075F699CD6CE7F" enum_value="2" />
+        </Class>
+
+        <Class name="WhimsTracker" muid="324293E2B3F425E">
+            <TunableList name="CONSTANT_WHIM_SETS" class="TunableSet" display="Constant Whim Sets" muid="1FEC0F64662642F5" description="A list of whim sets that will always be active." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="aspiration" class="TunableReference" muid="634803C681F430E2" description="A whim set that is always active." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectivelessWhimSet" />
+            </TunableList>
+
+            <TunableList name="WHIM_SLOTS" class="TunableList" display="Whim Slots" muid="B3B0BDF0247DD92B" description="A list of entries reserved, defined as what type of whim they should contain." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="WhimType" class="TunableEnumEntry" default="INVALID" muid="F106D34C97093186" static_entries="whims-whims_tracker.WhimType" description="The type of whim that the entry should contain." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+            </TunableList>
+
+            <TunableList name="WHIM_TYPE_CONFIGURATION" class="TunableMapping" display="Whim Type Configuration" muid="235DC1A32919DD63" mapping_key="key" mapping_value="value" description="Configuration data for each whim type." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="BC968E370D553EEF" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="WhimType" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="E707CF8A907F3007" static_entries="whims-whims_tracker.WhimType" description="The type of whim we are configuring." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="10F8D27ABA2245A9" description="The configuration for this whim type." Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="can_be_locked" class="Tunable" default="True" display="Can Be Locked" muid="DE9334C4BACCE91B" description="Can this type of whim be locked?" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="chance_to_populate" class="TunablePercent" default="100" display="Chance To Populate" muid="E7EA18F7D7C3C70E" min="0" max="100" description="The chance that an empty slot of this type will&#xA;be populated when we offer whims." Deprecated="False" filter="0" group="General" />
+                        <TunableList name="fallback_types" class="TunableList" display="Fallback Types" muid="3CD4A5926845F1B3" description="When we are selecting a new whim for a slot of this type and we&#xA;cannot find a valid whim of this type, what other types can&#xA;we search for as a fallback? If none are found (or no types&#xA;are added to this list) then the slot will remain empty.&#xA;The fallback types are tried in the order listed here." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="WhimType" class="TunableEnumEntry" default="INVALID" muid="A7E9008757A50B46" static_entries="whims-whims_tracker.WhimType" description="The fallback whim type." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="7F96C0BACE26F7C5" />
+            <Action type="kRemove" old_muid="3F06A9346E624536" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="1793DC06714FFE8" />
+            <Action type="kRemove" old_muid="5603FDA66D5F1B24" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="B2A6D6EB7E0139EA" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="CD0E3EC53B98A21F" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="1E1B6B96F45A0520" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

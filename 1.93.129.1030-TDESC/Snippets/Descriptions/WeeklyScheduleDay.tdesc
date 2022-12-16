@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="WeeklyScheduleDay" module="venues.weekly_schedule_zone_director" muid="B7C225D1B3F0CC4B" description="Structure containing a Schedule of situation sets for a day." instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableList name="long_term_situations" class="TunableList" display="Long Term Situations" muid="E53CA26C9D8988FF" description="Long term situations that exist outside the schedule." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="30FD8F4EBDC76EE7" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="count" class="TunableInterval" display="Count" muid="E6210041CA1A56C" description="Number of this situation to spin up." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="BDEB8BF52DB09525" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="B5DE8F884D5CF83A" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableList name="count_modifiers" class="TunableList" display="Count Modifiers" muid="205DB2A320EA3305" description="For each sim/siminfo that is a valid participant that &#xA;passes the test, reduce max and min count by 1.&#xA;  &#xA;Participant based on SingleSimResolver &#xA;using either sim in career event or active sim." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="A92FDA997BEFE315" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="ParticipantType" name="subject" class="TunableEnumEntry" default="Actor" display="Subject" muid="11FE2253F83FA19A" static_entries="interactions.ParticipantType" description="Who or what to apply this test to." Deprecated="False" filter="0" group="General" />
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="E6A4026D5A27B3F" description="Tests used to determine if specified participant(s)&#xA;should be counted." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="situation" name="situation" class="TunableReference" display="Situation" muid="5FC671E11CFCB70E" description="Situation to run." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="F101CB41287BF33D" description="Time when this situation should start running." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="hour" class="TunableRange" default="12" display="Hour" muid="EF87D4427A16CAE" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="9D48ED711982DDD5" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="stop_time" class="TunableTimeOfDay" display="Stop Time" muid="63DB21BF5D8E44D1" description="Time when this situation should stop running. 0:00 means&#xA;should stop at end of day midnight." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="hour" class="TunableRange" default="12" display="Hour" muid="C9C271F3DB5F7C11" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="BB8E7CB7D06C6EB3" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableTuple name="schedule" class="TunableTunableTimeOfDayMapping" display="Schedule" muid="658B5691D08F44D0" description="Each entry in the map has 3 columns. The first column is&#xA;the hour of the day (0-24), 2nd column is minute of that hour, and&#xA;the third maps to a weighted selection of situations for that time slot.&#xA;&#xA;The entry with starting hour that is closest to, but before&#xA;the current hour will be chosen.&#xA;&#xA;Given this tuning: &#xA;    hour_of_day           possible situation sets&#xA;    6                     [(w1, s1), (w2, s2)]&#xA;    10                    [(w1, s2)]&#xA;    14                    [(w2, s5)]&#xA;    20                    [(w9, s0)]&#xA;    &#xA;If the current hour is 11, hour_of_day will be 10 and desired is [(w1, s2)].&#xA;If the current hour is 19, hour_of_day will be 14 and desired is [(w2, s5)].&#xA;If the current hour is 23, hour_of_day will be 20 and desired is [(w9, s0)].&#xA;If the current hour is 2, hour_of_day will be 20 and desired is [(w9, s0)]. (uses 20 tuning because it is not 6 yet)&#xA;&#xA;The entries will be automatically sorted by time." Deprecated="False" filter="0" group="General">
+            <TunableList name="hours" class="TunableMapping" display="Hours" muid="B3CA3F32907DFF5D" mapping_key="hour_of_day" mapping_value="Minute_of_hour" description="Hours of the map." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="152203BA9AA3C930" Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="hour_of_day" class="TunableRange" default="0" display="Hour Of Day" muid="F1910E6ACBD7B2B7" min="0" max="23" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="Minute_of_hour" class="TunableMapping" display="Minute Of Hour" muid="D2ADE3E1E8440465" min="1" mapping_key="minute_of_hour" mapping_value="Situation_sets" description="Minutes of the map." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="732EC73347D53BC0" Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="minute_of_hour" class="TunableRange" default="0" display="Minute Of Hour" muid="3814A32FDD0AAB0C" min="0" max="59" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TunableList name="Situation_sets" class="TunableList" display="Situation Sets" muid="E10FF0D573D26CA" Deprecated="False" filter="0" group="General">
+                                <TunableTuple class="TunableTuple" muid="BE4F30A15876CBD4" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="snippet" name="situation_set" class="TunableReference" display="Situation Set" muid="F96A9004094A2EB0" description="Set of situations for this time period." allow_none="False" Deprecated="False" filter="0" group="General" restrict="WeeklyScheduleSituationSet" />
+                                    <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="7AC96BBF4B6DE7C2" description="Weight for this set of situations." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="75D7C7E22DF6400A" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="A5B82377CA46BE99" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                            <TunableTuple class="TunableTuple" muid="3B69B50A120E98FD" Deprecated="False" filter="0" group="General">
+                                                <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="14B25A41ACCCD765" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="8D6B765E8FA2657C" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                            </TunableTuple>
+                                        </TunableList>
+                                    </TunableTuple>
+                                </TunableTuple>
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="DBF9AE68809CD419" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="FA622AC5A4BF064B" new_muid="658B5691D08F44D0" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

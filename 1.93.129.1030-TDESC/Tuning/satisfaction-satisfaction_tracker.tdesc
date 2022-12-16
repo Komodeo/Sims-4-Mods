@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="satisfaction.satisfaction_tracker" muid="2E47A6B016B0B919">
+        <Class name="SatisfactionTracker" muid="DF02D26320E42579">
+            <Tunable type="int" name="MAX_POINTS" class="TunableRange" default="2147483647" display="Max Points" muid="828F9C5E6787D61" min="1" max="None" description="The maximum number of points a sim can have. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="SATISFACTION_STORE_ITEMS" class="TunableMapping" display="Satisfaction Store Items" muid="60DA1D837B868FA6" mapping_key="key" mapping_value="value" description="A list of Sim based Tunable Rewards offered from the Satisfaction Store." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="60BBB9BB4367CB98" Deprecated="False" filter="0" group="General">
+                    <Tunable type="reward" name="key" class="TunableReference" display="Key" muid="6A3850FCE520A859" description="The reward to offer." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="31D098E922E22D99" description="A collection of data about this reward." Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="SatisfactionAwardTypes" name="award_type" class="TunableEnumEntry" default="MONEY" display="Award Type" muid="EBD9B0966E31B80" static_entries="satisfaction-satisfaction_tracker.SatisfactionTracker.SatisfactionAwardTypes" description="The type of the award." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="cost" class="Tunable" default="100" display="Cost" muid="B2F318C24CA643CD" description="The cost to purchase the reward." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <Class name="SatisfactionAwardTypes" muid="C8C9256C555799A7" enum_bit_flag="False" enum_locked="False">
+                <EnumItem name="BUFF" muid="7DFB1A069A9D65B5" enum_value="1" />
+
+                <EnumItem name="CASPART" muid="44F89593DEA2429A" enum_value="4" />
+
+                <EnumItem name="MONEY" muid="F54F25651A7F84F4" enum_value="0" />
+
+                <EnumItem name="OBJECT" muid="1D50E7DF431807F2" enum_value="2" />
+
+                <EnumItem name="TRAIT" muid="779FC03F92D8D3B1" enum_value="3" />
+            </Class>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="1F758CFC426B0A51" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

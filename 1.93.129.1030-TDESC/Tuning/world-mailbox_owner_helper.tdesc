@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="world.mailbox_owner_helper" muid="5D6E6DD1B3EFAE84">
+        <Class name="MailboxOwnerHelper" muid="2C0029A64B983BC2">
+            <TunableList name="MAILBOX_TAGS" class="TunableSet" display="Mailbox Tags" muid="4658371618638240" description="Tags that considered mailboxes." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="35B51AA1A01AD25D" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="func" filter="0" group="General" />
+            </TunableList>
+
+            <TunableList name="OWNER_STATES" class="TunableList" display="Owner States" muid="44D783EA268355CC" description="A list of items and states used for setting ownership states&#xA;of plex mailboxes.&#xA;&#xA;This is contained within a list to protect against pack safe references." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="E540C0C5C9EA5C3F" description="A set of states that will be set depending on whether&#xA;the active household is the owner of a mailbox or not." Deprecated="False" filter="0" group="General">
+                    <Tunable type="object_state" name="active_state_value" class="TunableReference" display="Active State Value" muid="59F76A4691110CAE" description="State to use when owned by active household." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                    <Tunable type="object_state" name="default_state_value" class="TunableReference" display="Default State Value" muid="2877BA05E6634A04" description="Default state of mailbox, used if not owned by active household." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                    <TunableList name="definitions" class="TunableList" display="Definitions" muid="BE59A1C033E2B54" description="Only items with the specified definition(s) will have their states updated." Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" class="TunableReference" muid="9674BD5B33773478" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

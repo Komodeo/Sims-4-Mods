@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="DebugCreateSimWithGenderAndAgeInteraction" module="objects.terrain" muid="706D86E52CB8F856" description="Debug interaction to spawn a Sim with the given age and gender." instance_needs_reference="True" instance_subclasses_only="False" parents="TerrainImmediateSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableEnum type="Age" name="age" class="TunableEnumEntry" default="ADULT" display="Age" muid="622D22E6067AABA0" static_entries="sims-sim_info_types.Age" description="The age of the Sim to be created." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="breed_picker" class="OptionalTunable" default="disabled" display="Breed Picker" muid="51A144DE9E6D0252" description="Choose which breed you want either by specifying a picker to show or a specific breed to use.&#xA;&#xA;If disabled, breed will be random." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="90028797E7045E10" />
+            <TunableVariant type="None" name="enabled" class="TunableVariant" default="picker" display="Enabled" muid="635DDE4058C3492D" description="How to specify breed." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="picker" class="TunableTuple" display="Picker" muid="DEB4160D7BEC012" description="Use a picker to allow the user to specify what breed they would like." Deprecated="False" filter="0" group="General">
+                    <Tunable type="interaction" name="picker" class="TunableReference" display="Picker" muid="D58CEEF4C53A61FF" description="Reference to the picker interaction you would like to use in order to show the picker." allow_none="True" Deprecated="False" filter="0" group="General" restrict="BreedPickerSuperInteraction" />
+                </TunableTuple>
+                <TunableTuple name="specific_breed" class="TunableTuple" display="Specific Breed" muid="EDB293E6D8504BAC" description="Specify the tag associated with the specific type of breed you would like." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Tag" name="breed_tag" class="TunableTag" default="INVALID" display="Breed Tag" muid="9B15EFF256CE2602" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag of the breed you would like to use." Deprecated="False" dynamic_entries_prefix="breed" filter="0" group="General" invalid_entries="INVALID" />
+                </TunableTuple>
+            </TunableVariant>
+        </TunableVariant>
+
+        <TunableEnum type="Gender" name="gender" class="TunableEnumEntry" default="MALE" display="Gender" muid="28598B2A3AD6AFA9" static_entries="sims-sim_info_types.Gender" description="The gender of the Sim to be created." Deprecated="False" filter="0" group="General" />
+
+        <TunableEnum type="Species" name="species" class="TunableEnumEntry" default="HUMAN" display="Species" muid="7A1CCF7D772C460A" static_entries="sims-sim_info_types.Species" description="The species of the Sim to be created." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="F9C682EC7A2BC953" new_muid="D58CEEF4C53A61FF" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

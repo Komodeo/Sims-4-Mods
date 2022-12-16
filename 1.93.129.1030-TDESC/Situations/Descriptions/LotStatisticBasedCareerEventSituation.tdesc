@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="LotStatisticBasedCareerEventSituation" module="careers.lot_statistic_based_career_event_situation" muid="62F01A25994819DC" description="User facing situation for lot statistic based career events." instance_subclasses_only="False" parents="CareerEventSituation, SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="progress_meter_settings" class="TunableStatBasedSituationMeterData" display="Progress Meter Settings" muid="B9FCF29F0EF6400" description="The meter used to track the progress of the situation." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="_display_text" class="OptionalTunable" default="disabled" display="Display Text" muid="A329808A4417C0EC" description="Optional meter display text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8AE12EFBE88327F9" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="9C0F7BF4CE66BB3F" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableList name="_threshold_data" class="TunableList" display="Threshold Data" muid="486359D9AAF4D8CE" description="List of thresholds for this meter." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="77B61A906254F96D" Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="color" class="TunableColorSnippet" default="literal" display="Color" muid="6750F103C41C87C0" description="Color of meter at this specified threshold.&#xA;&#xA;Note: alpha value is not used.&#xA; (This may be tuned in place here using 'literal' or as a reference to a Color tuning snippet.)" Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="literal" class="TunableColor" default="none" display="Literal" muid="9D3CBED63F5A0CF7" description="A color." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="hex" class="TunableColorHex" display="Hex" muid="DF4633FE9E69162A" description="A color." Deprecated="False" filter="0" group="General">
+                                <Tunable type="str" name="hex_code" class="Tunable" default="#FFFFFFFF" display="Hex Code" muid="ECB880516CE0C624" description="An ARGB color in hex, same as one would use in HTML. A leading '0x' or '#' is allowed but not required. You can omit the alpha, in which case opaque is assumed." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableEnum type="Color" name="name" class="TunableEnumEntry" default="WHITE" display="Name" muid="F9AA75DE77344967" static_entries="sims4-color.Color" Deprecated="False" filter="0" group="General" />
+                            <Tunable name="none" class="TunableExistance" display="None" muid="FBD57D4D6A7E4185" />
+                            <TunableTuple name="rgb" class="TunableColorRGBA" display="Rgb" muid="64ACDBEE0087DAF6" description="A color." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="45A783FB2445C82B" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="F23C79EF7DA2EE3" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="6C40D3901FE6B469" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="A98610BDEE8E5E80" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                        <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="3FD7B5DB99A5008B" description="A reference to a Color tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Color" />
+                    </TunableVariant>
+                    <Tunable type="int" name="threshold_value" class="Tunable" default="0" display="Threshold Value" muid="F8F485A54752E2E2" description="Value at or above which this threshold exists. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableVariant type="None" name="_tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="48A83BCE0F66B261" description="Optional tooltip text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7F8E531C5F7CB573" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="54C65EAF58C3D76E" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="bool" name="auto_update_on_stat_change" class="Tunable" default="True" display="Auto Update On Stat Change" muid="AEB4B477AC4EAE9F" description="If set, the meter will automatically update when the associated&#xA;stat changes.  Unset this for cases when you want the situation&#xA;to control when the meter changes." Deprecated="False" filter="0" group="General" />
+            <Tunable type="statistic" name="stat" class="TunableReference" display="Stat" muid="362E3009D144BB09" description="Statistic this meter is based off of." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="statistic" name="progress_statistic" class="TunableReference" display="Progress Statistic" muid="107A1E40CE295532" description="The statistic that will be used to determine the progress of the situation.&#xA;This will be added to the lot when situation starts and will be removed when situation ends." allow_none="False" Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

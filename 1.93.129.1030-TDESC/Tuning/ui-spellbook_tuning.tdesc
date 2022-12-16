@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="ui.spellbook_tuning" muid="5BB2508487737661">
+        <Class name="SpellbookTuning" muid="61F9D2CC58C370E5">
+            <TunableList name="CATEGORY_DATAS" class="TunableList" display="Category Datas" muid="2C87E90B2D4C5AC5" description="A list of a spellbook category data." Deprecated="False" filter="0" group="UI">
+                <TunableTuple class="TunableSpellbookCategoryData" muid="D7E459BF5958FD4A" description="UI-specific data used to display a category in the spellbook." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="category_name" class="TunableLocalizedString" default="0x0" display="Category Name" muid="F61F1C032BEB2BDF" description="Name of this category" Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="content" class="TunableVariant" default="spells" display="Content" muid="696188D5AC68D53" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="potions" class="TunableTuple" display="Potions" muid="D61B796308230B4C" Deprecated="False" filter="0" group="General">
+                            <TunableList name="entries" class="TunableList" display="Entries" muid="A2500421AD5EEE6C" description="List of potions in this category." Deprecated="False" filter="0" group="General">
+                                <Tunable type="recipe" class="TunableReference" muid="90BF56315FE0C52B" description="The potion's recipe." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Recipe" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="spells" class="TunableTuple" display="Spells" muid="CD6B1B1C58E4F4E6" Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="BookCategoryDisplayType" name="category_type" class="TunableEnumEntry" default="WITCH_PRACTICAL_SPELL" display="Category Type" muid="F5B70E9DBE7AF81" static_entries="ui-book_tuning.BookCategoryDisplayType" description="The category this corresponds to." Deprecated="False" filter="0" group="General" invalid_entries="WITCH_POTION" />
+                            <TunableList name="entries" class="TunableList" display="Entries" muid="2A60900BC33F1BC6" description="List of spells in this category." Deprecated="False" filter="0" group="General">
+                                <Tunable type="spell" class="TunableReference" muid="3C51D3C594DDCCB7" description="The spell." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableTuple name="content_list" class="TunableTuple" display="Content List" muid="A14AA57E060A79C3" description="Tuning used for the content list." Deprecated="False" filter="0" group="General">
+                        <Tunable type="ResourceKey" name="icon" class="TunableIconAllPacks" default="None" display="Icon" muid="6F4C1DE94211429B" description="Icon used to display this category in the content list." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                        <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="20FB91240F2EEC9A" description="Tooltip used in the spellbook for this category.&#xA;If unset, no tooltip is shown." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9FCC25325E6835C9" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="C081568A4C76F91" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                    </TunableTuple>
+                    <TunableTuple name="front_page" class="TunableTuple" display="Front Page" muid="C0CB495370DBD18A" description="Tuning used for the first page of the category." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="category_description" class="OptionalTunable" default="disabled" display="Category Description" muid="21D10A7160D9E7B8" description="Description used in the spellbook.&#xA;If unset, description is not shown." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="395A41C896165F4F" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="2BD094E9E6D1B41" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <Tunable type="ResourceKey" name="icon" class="TunableIconAllPacks" default="None" display="Icon" muid="265A38CDEBA3B7F1" description="Icon used to display this category in first page." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                    </TunableTuple>
+                    <TunableTuple name="page" class="TunableTuple" display="Page" muid="76525E3BD324B98" description="Tuning used for pages other than the front page of the category." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="icon" class="OptionalTunable" default="disabled" display="Icon" muid="D75E4CD873478FB8" description="Icon shown on each page of this category." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="17B783C0925E3103" />
+                            <Tunable type="ResourceKey" name="enabled" class="TunableIconAllPacks" default="None" display="Enabled" muid="DB1DE411059BD57A" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                        </TunableVariant>
+                    </TunableTuple>
+                    <TunableTuple name="tab" class="TunableTuple" display="Tab" muid="4117B050595167D5" description="Tuning used to display the category on the tabs at the&#xA;top of the book." Deprecated="False" filter="0" group="General">
+                        <Tunable type="ResourceKey" name="icon" class="TunableIconAllPacks" default="None" display="Icon" muid="9CFFBB25DF214FD9" description="Icon used to display the category on a tab." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                        <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="81E3673D91776B3A" description="Tooltip used in the spellbook on the the tab for this category.&#xA;If unset, Category Name is used." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5152D741D33FAD3D" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="7BAAA58C06412A35" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="CATEGORY_ENTRY_COUNT" class="TunableRange" default="4" display="Category Entry Count" muid="69D9AA8A2861042E" min="1" max="None" description=",&#xA;Number of entries allotted for the subsequent pages of a category section." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="UI" />
+
+            <Tunable type="int" name="CATEGORY_FRONT_PAGE_ENTRY_COUNT" class="TunableRange" default="2" display="Category Front Page Entry Count" muid="6135B41A414B331C" min="0" max="None" description=",&#xA;Number of entries allotted for the front page of a category section." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="UI" />
+
+            <TunableTuple name="CATEGORY_LIST_DATA" class="TunableTuple" display="Category List Data" muid="9C3F9C655BCE1301" description="UI-specific data used to display second page of the spellbook." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="icon" class="OptionalTunable" default="disabled" display="Icon" muid="D9C7E9CF5BAE92E9" description="Icon used on the category list page of the spellbook." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="E38781E80140C581" />
+                    <Tunable type="ResourceKey" name="enabled" class="TunableIconAllPacks" default="None" display="Enabled" muid="5BFD8E3DB2E7DF5A" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                </TunableVariant>
+                <TunableVariant type="None" name="page_description" class="OptionalTunable" default="disabled" display="Page Description" muid="6A6B8A3490AF2E0F" description="Description used for this page in the spellbook.&#xA;If unset, description is not shown." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9F3FA5835E0F4ACB" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="A95FD95CC072F09F" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="int" name="title" class="TunableLocalizedString" default="0x0" display="Title" muid="690A41A7ADA11DE9" description="The title to use on the category list of the spellbook." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableTuple name="FRONT_PAGE_DATA" class="TunableTuple" display="Front Page Data" muid="22D18F85142E12" description="UI-specific data used to display front page." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="icon" class="OptionalTunable" default="disabled" display="Icon" muid="BC72C31E7E6B5D83" description="Image displayed on front page of spellbook.&#xA;If unset, image is not shown." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="777E9B32AA92C01D" />
+                    <Tunable type="ResourceKey" name="enabled" class="TunableIconAllPacks" default="None" display="Enabled" muid="377AF17163566AEA" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                </TunableVariant>
+                <TunableVariant type="None" name="page_description" class="OptionalTunable" default="disabled" display="Page Description" muid="B0B44CB45288C232" description="Description used for this page in the spellbook.&#xA;If unset, description is not shown." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C437B066839A507A" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="B8DA537BA5123552" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="int" name="title" class="TunableLocalizedString" default="0x0" display="Title" muid="8283AB78A9EF450C" description="The title to use on the front page of the spellbook." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <Tunable type="int" name="INGREDIENT_FORMAT" class="TunableLocalizedString" default="0x0" display="Ingredient Format" muid="698313A17D2BCF6C" description="The format used for ingredients in the spellbook.&#xA;First parameter will be name of ingredient, second will be quantity required.&#xA;e.g. {0.String}({1.Number}) = &quot;Frog(1)&quot;" Deprecated="False" filter="0" group="UI" />
+
+            <Tunable type="int" name="INGREDIENTS_LABEL" class="TunableLocalizedString" default="0x0" display="Ingredients Label" muid="60622FC39F71698F" description="Text used to display ingredients label for a spell or potion.&#xA;&#xA;e.g. &quot;Ingredients:&quot;" Deprecated="False" filter="0" group="UI" />
+
+            <TunableList name="POTION_DISPLAY_DATA" class="TunableMapping" display="Potion Display Data" muid="12120045FC2A922F" mapping_key="key" mapping_value="value" description="A mapping of a potion's recipe to it's spellbook display data. " Deprecated="False" filter="0" group="UI">
+                <TunableTuple class="TunableTuple" muid="8129F3FE7637F19E" Deprecated="False" filter="0" group="General">
+                    <Tunable type="recipe" name="key" class="TunableReference" display="Key" muid="F0AFEEF2726839F4" description="The potion's recipe." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Recipe" />
+                    <TunableTuple name="value" class="TunableSpellbookRecipeData" display="Value" muid="48F51FA44BE486DA" description="UI-specific data used to display a potion in the spellbook." Deprecated="False" filter="0" group="General">
+                        <Tunable type="ResourceKey" name="icon" class="TunableIconAllPacks" default="None" display="Icon" muid="9FA3FAC1F4C49E4F" description="Icon used to display this recipe in the spellbook." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                        <TunableVariant type="None" name="locked_description" class="OptionalTunable" default="disabled" display="Locked Description" muid="13FF47AAF2C0625B" description="Description used in the spellbook if potion is not yet unlocked.&#xA;If unset, uses potion_description." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4AD1E9040D129441" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="257A4D38DA49EB36" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="potion_description" class="OptionalTunable" default="disabled" display="Potion Description" muid="8B571C5EFB53E5AB" description="Description used in the spellbook.&#xA;If unset, uses the recipe description." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D37F017FE1273FCA" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="EF4BB9B1004981F9" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="84AA83972E1D2233" description="Tooltip used in the spellbook.&#xA;If unset, no tooltip is shown." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5F46C36238B23417" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="5F30466090F012FF" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="PROGRESS_LABEL" class="TunableLocalizedString" default="0x0" display="Progress Label" muid="81EF699090588EA3" description="Text used to display field name for progress into a specific&#xA;category.&#xA;&#xA;e.g. &quot;Learned:&quot;" Deprecated="False" filter="0" group="UI" />
+
+            <Tunable type="int" name="PROGRESS_TEXT_FORMAT" class="TunableLocalizedString" default="0x0" display="Progress Text Format" muid="E767085C0681336E" description="Text used to display the progress towards completing a specific&#xA;category.  Takes current items learned and and total available.&#xA;&#xA;e.g. &quot;{0.Number}/{1.Number}&quot;" Deprecated="False" filter="0" group="UI" />
+        </Class>
+    </Module>
+</TuningRoot>

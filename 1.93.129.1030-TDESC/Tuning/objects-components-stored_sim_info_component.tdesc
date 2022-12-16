@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.components.stored_sim_info_component" muid="C2061A01E6222A47">
+        <Class name="StoredSimInfoComponent" muid="E469DC6CFFFBD208">
+            <TunableList name="LOOTS_ON_OBJECT_REMOVE" class="TunableMapping" display="Loots On Object Remove" muid="EACDBB62594797A7" mapping_key="key" mapping_value="value" description="A mapping of object tag to loots. A list of loots will be apply to the object &#xA;that has the stored sim component when the object is removed." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="2AAAE8199C8CEBE6" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Tag" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="BE3085681AC585CA" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="what object to run loots." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="24AA6E811EB2CF65" description="loots to apply to the object when object is removed." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" class="TunableVariant" default="none" muid="F766BA23568B6E1A" description="A specific loot to apply." Deprecated="False" filter="0" group="General">
+                            <Tunable name="none" class="TunableExistance" display="None" muid="C2C319FDF4C0A348" />
+                            <TunableTuple name="remove_trait" class="TunableRemoveTraitLootOp" display="Remove Trait" muid="8D0768D8F62A3AD8" description="This loot will remove the specified trait" Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="chance" class="TunableSuccessChance" display="Chance" muid="C0CD724AD1D4D355" description="Percent chance that the loot action will be considered. The&#xA;chance is evaluated just before running the tests." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="float" name="base_chance" class="TunablePercent" default="100" display="Base Chance" muid="9031AF32F2BED471" min="0" max="100" description="The basic chance of success." Deprecated="False" filter="0" group="General" />
+                                    <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="15BC38B7182A035" description="A list of multipliers to apply to base_chance." Deprecated="False" filter="0" group="General">
+                                        <TunableTuple class="TunableTuple" muid="6387E48D55E4318E" Deprecated="False" filter="0" group="General">
+                                            <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="C6B81B4C74034BAE" min="0" max="None" description="The multiplier to apply to base_chance if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="8DAE475A96089E68" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                        </TunableTuple>
+                                    </TunableList>
+                                </TunableTuple>
+                                <TunableEnum type="ParticipantType" name="subject" class="TunableEnumEntry" default="Actor" display="Subject" muid="E6D4738B20A0E817" static_entries="interactions.ParticipantType" description="The sim(s) the operation is applied to." Deprecated="False" filter="0" group="General" />
+                                <TdescFragTag name="subject_filter_tests" class="TunableTestSet" display="Subject Filter Tests" muid="BF511550E00F9717" description="These tests will be run once per subject. If the subject &#xA;participant of this loot action resolves to multiple objects, each &#xA;of those objects will be tested individually. Any subject that &#xA;fails this test will be ignored by this loot. This will have no &#xA;effect on whether we consider the loot to have passed testing on&#xA;on other subjects or targets. We can use this in cases where we &#xA;want to give loot based on some criteria like &quot;All active household&#xA;members that are dogs get this loot&quot;.&#xA;&#xA;These tests will have no effect on &quot;run tests first&quot; as they are&#xA;only used for participant filtering and not to determine loot &#xA;success.&#xA;&#xA;The resolver used for these tests is a SingleObjectResolver based &#xA;on subject sim. This means that test should generally be &#xA;testing against &quot;Actor&quot; and should not assume the presence of &#xA;additional participants that may be present in the containing loot.&#xA;Ask a GPE if you have questions." filter="0" group="General" />
+                                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="1AFC919537ABD27C" description="The test to decide whether the loot action can be applied." filter="0" group="General" />
+                                <TunableVariant type="None" name="text" class="TunableVariant" default="use_default" display="Text" muid="ADF07BC2DD6912CE" description="Specify the display text to use for this tunable. This tuning&#xA;structure may be shared across multiple tunables. It is up to the&#xA;system consuming the tunable to determine in which ways the tuned&#xA;display text is used.&#xA;&#xA;e.g. Loot Operations&#xA; The adventure system auto-generates notifications based on the loot&#xA; that was awarded from a chance card. A loot's display text, if&#xA; used, will be an item in the generated bulleted list. The ability&#xA; to override display text allows tuners to set custom next in such&#xA; notifications.&#xA; &#xA;e.g. Reward Tuning&#xA; Rewards have display text so that, similarly to adventures, a&#xA; bulleted list of entries can be auto-generated when obtained by a&#xA; Sim. Use this tunable to control the text of such entries." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="no_text" class="TunableExistance" display="No Text" muid="EB39EC54D008D05C" />
+                                    <Tunable type="int" name="override" class="TunableLocalizedString" default="0x0" display="Override" muid="2CC48BECB2EF8A4" description="Specify a string override. The tokens are different depending on&#xA;the type of tunable." Deprecated="False" filter="0" group="General" />
+                                    <Tunable name="use_default" class="TunableExistance" display="Use Default" muid="385DDF0557F6370C" />
+                                </TunableVariant>
+                                <TunableVariant type="None" name="trait" class="TunableVariant" default="specific_trait" display="Trait" muid="271527911A7B8DB6" description="Type of trait removal to perform." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple name="random_personality_trait" class="Tunable_RemoveRandomPersonalityTrait" display="Random Personality Trait" muid="B1646FC41A956EB3" description="Remove a random personality trait." Deprecated="False" filter="0" group="General">
+                                        <TunableList name="traits_to_not_consider" class="TunableList" display="Traits To Not Consider" muid="ACFB253A97A6C3EE" description="Personality traits that should not be considered for removal. Leave&#xA;blank to consider all personality traits." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="trait" class="TunableReference" muid="ABEF920B3E86F65B" description="A personality trait that should not be removed." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                        </TunableList>
+                                    </TunableTuple>
+                                    <TunableTuple name="random_trait" class="Tunable_RemoveRandomTrait" display="Random Trait" muid="8D169369E17F7763" description="Remove a random trait, with a filter by type." Deprecated="False" filter="0" group="General">
+                                        <TunableEnum type="TraitType" name="trait_type" class="TunableEnumEntry" default="PERSONALITY" display="Trait Type" muid="362EC4D5DC6ECDBC" static_entries="traits-trait_type.TraitType" Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                    <TunableTuple name="specific_trait" class="Tunable_RemoveSpecificTrait" display="Specific Trait" muid="6118D63AC1AFB230" description="Remove the specified trait." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="trait" name="specific_trait" class="TunableReference" display="Specific Trait" muid="D1B7E67FDAA6C610" description="The trait to be removed." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    </TunableTuple>
+                                    <TunableTuple name="traits_of_type" class="Tunable_RemoveTraitsOfType" display="Traits Of Type" muid="533FCA64A60DA5C4" description="Remove all traits of a specific type." Deprecated="False" filter="0" group="General">
+                                        <TunableList name="trait_types" class="TunableEnumSet" display="Trait Types" muid="D1385DBD8C99ADDE" description="A set of trait types to find and remove." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                            <TunableEnum type="TraitType" class="TunableEnumEntry" default="GAMEPLAY" muid="2A0EE3A750E15640" static_entries="traits-trait_type.TraitType" Deprecated="False" filter="0" group="General" />
+                                        </TunableList>
+                                    </TunableTuple>
+                                </TunableVariant>
+                            </TunableTuple>
+                        </TunableVariant>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

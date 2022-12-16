@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="interactions.social.greeting_socials.greetings" muid="7ED97684005E733F">
+        <Class name="GreetingType" muid="D72DB3ECB1649F85" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="GREETING_GROUP" muid="A251C16B0F1485FB" enum_value="0" />
+
+            <EnumItem name="GREETING_TARGETED" muid="836F68C3AB1A630" enum_value="1" />
+        </Class>
+
+        <Class name="GreetingsSatisfyContraintTuning" muid="CDA3739BDD210EFF">
+            <TunableTuple name="CONE_CONSTRAINT" class="TunableCone" display="Cone Constraint" muid="51A63952AD9DB004" description="Cone constraint sim must&#xA;satisfy before running greeting social. &#xA;&#xA;This is intersected with facing, line of sight and adjustment&#xA;constraint which is also done through code." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="angle" class="TunableAngle" default="180.0" display="Angle" muid="F17650A6F4BA00D0" min="0.0" max="360.0" description="The cone angle in degrees." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="angular_cost_weight" class="TunableRange" default="2.25" display="Angular Cost Weight" muid="6956019AFCF409DA" min="0" max="None" description="The importance of the angular cost &#xA;function.&#xA; = 0: Not used&#xA; &gt; 1: Important on surfaces&#xA; &gt; 2: Important on grass" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="enables_height_scoring" class="Tunable" default="False" display="Enables Height Scoring" muid="BD205BC86001F7E5" description="If enabled, this constraint will &#xA;score goals using the height of&#xA;the surface.  The higher the goal&#xA;the cheaper it is." Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="ideal_angle" class="TunableRange" default="0.25" display="Ideal Angle" muid="191E87B5BD61A0E2" min="0" max="1" description="The angular extents of an ideal &#xA;region as a fraction of angle." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="ideal_radius_max" class="TunableRange" default="0.75" display="Ideal Radius Max" muid="1CD79DF681D47475" min="0" max="1" description="The radial upper bound of an ideal &#xA;region as a fraction of the &#xA;difference between max_radius and &#xA;min_radius." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="ideal_radius_min" class="TunableRange" default="0.25" display="Ideal Radius Min" muid="EB8A8EFAE042291F" min="0" max="1" description="The radial lower bound of an ideal &#xA;region as a fraction of the &#xA;difference between max_radius and &#xA;min_radius." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="max_radius" class="Tunable" default="4" display="Max Radius" muid="1FD2A71A9C16FE8F" description="The maximum cone radius." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="min_radius" class="Tunable" default="0.7" display="Min Radius" muid="B1EA7591AD812357" description="The minimum cone radius." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="multi_surface" class="Tunable" default="False" display="Multi Surface" muid="2F309710C69A8D33" description="If enabled, this constraint will be&#xA;considered for multiple surfaces.&#xA;&#xA;Example: You want a circle&#xA;constraint that can be both inside&#xA;and outside of a pool." Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="offset" class="TunableAngle" default="0.0" display="Offset" muid="AA87D6311A64ACF5" min="0.0" max="360.0" description="An offset (rotation) in degrees.&#xA;&#xA;By default the cone will face the &#xA;forward vector of the object.  Use&#xA;an offset to rotate the cone to &#xA;face a different direction. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="radial_cost_weight" class="TunableRange" default="2.25" display="Radial Cost Weight" muid="610AFEE42E50A3AE" min="0" max="None" description="The importance of the radial cost &#xA;function.&#xA; = 0: Not used&#xA; &gt; 1: Important on surfaces&#xA; &gt; 2: Important on grass" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="require_los" class="Tunable" default="True" display="Require Los" muid="7700FD0DB78ADD49" description="If checked, the Sim will require line of sight to the actor.  Positions where a Sim&#xA;can't see the actor (e.g. there's a wall in the way) won't be valid.&#xA;&#xA;NOTE: This will NOT work on a&#xA;constraint that is not used to&#xA;generate routing goals such as&#xA;broadcasters and reactions, use a&#xA;Line Of Sight Constraint instead.&#xA;This will work on constraints used&#xA;to keep Sims in an interaction." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+
+        <Class name="Greetings" muid="F137476E21C850EC">
+            <Tunable type="relbit" name="GREETED_RELATIONSHIP_BIT" class="TunableReference" display="Greeted Relationship Bit" muid="ACCD91C5764B221F" description="The relationship bit between greeted Sims." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RelationshipBit" />
+
+            <TunableList name="GROUP_GREETINGS" class="TunableList" display="Group Greetings" muid="C3FD5E0149496C51" description="Group greetings play on the Sim relative to a target Sim. These&#xA;greetings are only played on the actor. The PickedSim participant type&#xA;will contain all Sims that should greet the actor in return, so you can&#xA;make a reaction that greets the actor and push it from interactions in&#xA;this list." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="6CF5FC27C77AA32F" description="Prioritized greetings. Place content that is pack specific at a&#xA;higher priority." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="priority" class="Tunable" default="0" display="Priority" muid="1B1E050794E21CAE" description="The relative priority of this affordance compared to&#xA;other affordances in this list." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="snippet" name="tests_and_greetings" class="TunableReference" display="Tests And Greetings" muid="8059AFB2E73321AB" description="                " allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="TunableTestedGreetingGroup" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="TARGETED_GREETINGS" class="TunableList" display="Targeted Greetings" muid="8A5901964E4404AB" description="Targeted greetings play between two Sims and are only available in the&#xA;scenario that the actor wants to socialize with a target Sim that is&#xA;not already socializing. These can be touching socials like hugging or&#xA;hi fives." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="7E278ABD1C7723FD" description="Prioritized greetings. Place content that is pack specific at a&#xA;higher priority." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="priority" class="Tunable" default="0" display="Priority" muid="8D0B863522CF5164" description="The relative priority of this affordance compared to&#xA;other affordances in this list." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="snippet" name="tests_and_greetings" class="TunableReference" display="Tests And Greetings" muid="7C82F25EB9017073" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="TunableTestedGreetingTargeted" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

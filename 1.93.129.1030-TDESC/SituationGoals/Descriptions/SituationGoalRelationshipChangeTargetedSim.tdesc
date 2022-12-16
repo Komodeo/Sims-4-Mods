@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation_goal" class="SituationGoalRelationshipChangeTargetedSim" module="situations.situation_goal_targeted_sim" muid="458C1920F3979573" description="Situation Goal for running an interaction on targeted sim." instance_needs_reference="True" instance_subclasses_only="False" parents="SituationGoalTargetedSim, SituationGoal" path="SituationGoals\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="_goal_test" class="TunableRelationshipTest" display="Goal Test" muid="F5753C9A7C46DE1F" description="The relationship state that this goal will complete when&#xA;obtained." Deprecated="False" filter="0" group="General">
+            <Tunable type="bool" name="invert_num_relations" class="Tunable" default="False" display="Invert Num Relations" muid="96D70AE1397E406C" description="If checked then we will check that your Num Relations is less than or&#xA;equal to the value rather than the other way around." Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="prohibited_relationship_bits" class="TunableTuple" display="Prohibited Relationship Bits" muid="7AF477B97626FDAA" Deprecated="False" filter="0" group="General">
+                <TunableList name="match_all" class="TunableSet" display="Match All" muid="48B8ECB6C0888555" description="All of these relationship bits must match to fail the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="relbit" class="TunableReference" muid="C6E4961376F6D988" allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+                <TunableList name="match_any" class="TunableSet" display="Match Any" muid="6D1E8B1082B363AE" description="If any of these relationship bits match the test will fail." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="relbit" class="TunableReference" muid="4ED8595A125AEF3" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="relationship_score_interval" class="TunableInterval" display="Relationship Score Interval" muid="B91AD4B38C6E956" description="The range that the relationship score must be within in order for&#xA;this test to pass." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="lower_bound" class="TunableRange" default="-100.0" display="Lower Bound" muid="4927FBCC1DDA1239" min="-100.0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="upper_bound" class="TunableRange" default="100.0" display="Upper Bound" muid="FFD3043B7AA57EFF" min="None" max="100.0" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="required_relationship_bits" class="TunableTuple" display="Required Relationship Bits" muid="5F0F8AB5DEBBFD5C" Deprecated="False" filter="0" group="General">
+                <TunableList name="match_all" class="TunableSet" display="Match All" muid="1B68A03B411E302" description="All of these relationship bits must be present to pass the&#xA;test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="relbit" class="TunableReference" muid="92430458BAFDCD20" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+                <TunableList name="match_any" class="TunableSet" display="Match Any" muid="C6B579760680BAAE" description="Any of these relationship bits will pass the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="relbit" class="TunableReference" muid="CEE68A51BA258B8D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+            </TunableTuple>
+            <TunableEnum type="RelationshipTestEvents" name="test_event" class="TunableEnumEntry" default="AllRelationshipEvents" display="Test Event" muid="9C0689BA5F9F6AE9" static_entries="relationships-relationship_tests.RelationshipTestEvents" description="The event that we want to trigger this instance of the tuned test&#xA;on." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="test_incest" class="TunableVariant" default="disabled" display="Test Incest" muid="6FE3B3B291D2FCB6" description="Test for incest status. Test passes if this matches the two Sim's&#xA;incest status." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A9DC7C2D301F7159" />
+                <Tunable name="is incestuous" class="TunableExistance" display="Is Incestuous" muid="57AAEEBCBD900854" />
+                <Tunable name="is not incestuous" class="TunableExistance" display="Is Not Incestuous" muid="B4AD16DDD5171B60" />
+            </TunableVariant>
+            <Tunable type="statistic" name="track" class="TunableReference" display="Track" muid="E1B453113B47406D" description="If set, the test will use the relationship score between sims for&#xA;this track. If unset, the track defaults to the global module&#xA;tunable REL_INSPECTOR_TRACK." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipTrack" />
+        </TunableTuple>
+
+        <TunableTuple name="_relationship_pretest" class="TunableRelationshipTest" display="Relationship Pretest" muid="3B22A1CABFE222EB" description="The pretest of the relationship.  Only sim's who match this&#xA;relationship test when the test begins are valid to have their&#xA;relationship change complete the test." Deprecated="False" filter="0" group="General">
+            <Tunable type="bool" name="invert_num_relations" class="Tunable" default="False" display="Invert Num Relations" muid="AF00856ACCFB15AE" description="If checked then we will check that your Num Relations is less than or&#xA;equal to the value rather than the other way around." Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="prohibited_relationship_bits" class="TunableTuple" display="Prohibited Relationship Bits" muid="E3569302AA38869E" Deprecated="False" filter="0" group="General">
+                <TunableList name="match_all" class="TunableSet" display="Match All" muid="78F137861236C66B" description="All of these relationship bits must match to fail the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="relbit" class="TunableReference" muid="7ADC6C1862790DFE" allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+                <TunableList name="match_any" class="TunableSet" display="Match Any" muid="F9357D082C9E1A84" description="If any of these relationship bits match the test will fail." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="relbit" class="TunableReference" muid="3639BBE352FB2D0D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="relationship_score_interval" class="TunableInterval" display="Relationship Score Interval" muid="F0DA09FBDC2F3171" description="The range that the relationship score must be within in order for&#xA;this test to pass." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="lower_bound" class="TunableRange" default="-100.0" display="Lower Bound" muid="C444233DA108ADE8" min="-100.0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="upper_bound" class="TunableRange" default="100.0" display="Upper Bound" muid="57F9FD41BA5B792E" min="None" max="100.0" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="required_relationship_bits" class="TunableTuple" display="Required Relationship Bits" muid="192D44A0D1C8744B" Deprecated="False" filter="0" group="General">
+                <TunableList name="match_all" class="TunableSet" display="Match All" muid="B23298907E261730" description="All of these relationship bits must be present to pass the&#xA;test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="relbit" class="TunableReference" muid="4066DD15210744FC" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+                <TunableList name="match_any" class="TunableSet" display="Match Any" muid="9FD1797BF461B314" description="Any of these relationship bits will pass the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="relbit" class="TunableReference" muid="5723EB77BADDA9A" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+            </TunableTuple>
+            <TunableEnum type="RelationshipTestEvents" name="test_event" class="TunableEnumEntry" default="AllRelationshipEvents" display="Test Event" muid="134F57402CBE4C6E" static_entries="relationships-relationship_tests.RelationshipTestEvents" description="The event that we want to trigger this instance of the tuned test&#xA;on." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="test_incest" class="TunableVariant" default="disabled" display="Test Incest" muid="CF67B1A827B31202" description="Test for incest status. Test passes if this matches the two Sim's&#xA;incest status." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CDE39FFE1B9969D5" />
+                <Tunable name="is incestuous" class="TunableExistance" display="Is Incestuous" muid="F8836DD2A4AB60FE" />
+                <Tunable name="is not incestuous" class="TunableExistance" display="Is Not Incestuous" muid="A981C2F3F72827C6" />
+            </TunableVariant>
+            <Tunable type="statistic" name="track" class="TunableReference" display="Track" muid="D58120C73BF6A2FC" description="If set, the test will use the relationship score between sims for&#xA;this track. If unset, the track defaults to the global module&#xA;tunable REL_INSPECTOR_TRACK." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipTrack" />
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="zone_director" class="WeeklyScheduleZoneDirector" module="venues.weekly_schedule_zone_director" muid="63809144C8566F67" description="Zone Director with a weekly scheduler." instance_needs_reference="True" instance_subclasses_only="False" parents="ZoneDirectorBase" path="ZoneDirectors\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="allow_open_street_director" class="Tunable" default="False" display="Allow Open Street Director" muid="70DF98B6435D1B88" description="When set this will allow a weekly schedule zone director to start an open street &#xA;director. However if this is False then the open street zone director won't start up&#xA;and that can lead to things like seasonal conditional layers not spawning and such." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="scheduled_situations" class="TunableMapping" display="Scheduled Situations" muid="808A8AEF0252B5F7" mapping_key="key" mapping_value="value" description="Mapping of week to possible schedule of situations for that day of the week." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="55413F01DA982B68" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="Days" name="key" class="TunableEnumEntry" default="SUNDAY" display="Key" muid="4161601C6C57AAE5" static_entries="tunable_time.Days" description="Day of the week." Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableList" display="Value" muid="F46F8B6AC9AF5305" Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="9D73E320F6C27B16" Deprecated="False" filter="0" group="General">
+                        <Tunable type="snippet" name="schedule" class="TunableReference" display="Schedule" muid="54C1675F3DE3822B" description="A schedule for the day." allow_none="False" Deprecated="False" filter="0" group="General" restrict="WeeklyScheduleDay" />
+                        <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="400EBA7FEBFC98CE" description="Weight for this daily schedule." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="F6895A503D42E7F1" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="21CB427EF25E0E89" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                <TunableTuple class="TunableTuple" muid="C2576CD93526D389" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="70A0D555855FF0AE" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="C5F02F569B4ED38" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="D9FA9E9046AADAB3" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

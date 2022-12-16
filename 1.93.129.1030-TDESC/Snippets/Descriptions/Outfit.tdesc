@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="Outfit" module="snippets" muid="5E724E301F7766DD" instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="value" class="TunableOutfitGenerator" display="Value" muid="C9A172B788934749" description="A helper that generates outfits for a Sim. The tunables control aspects of&#xA;randomization, such as tags, weights, overrides, etc..." Deprecated="False" filter="0" group="General">
+            <TunableList name="body_type_chance_overrides" class="TunableMapping" display="Body Type Chance Overrides" muid="DF9476A7B8817EB0" mapping_key="key" mapping_value="value" description="Define body type chance overrides for the generate outfit. For&#xA;example, if BODYTYPE_HAT is mapped to 100%, then the outfit is&#xA;guaranteed to have a hat if any hat matches the specified tags.&#xA;&#xA;If used in an appearance modifier, these body types will contribute&#xA;to the flags that determine which body types can be generated,&#xA;regardless of their percent chance." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="8CE5783E0AFD1F77" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="BodyType" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="37692EC4368ECCC8" static_entries="sims-outfits-outfit_enums.BodyType" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="value" class="TunablePercent" default="100" display="Value" muid="810592A45AB75516" min="0" max="100" description="The chance that a part is applied to the corresponding body&#xA;type." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableList name="body_type_match_not_found_policy" class="TunableMapping" display="Body Type Match Not Found Policy" muid="F38871B7287BE166" mapping_key="key" mapping_value="value" description="The policy we should take for a body type that we fail to find a&#xA;match for. Primary example is to use MATCH_NOT_FOUND_KEEP_EXISTING&#xA;for generating a tshirt and making sure a sim wearing full body has&#xA;a lower body cas part.&#xA;&#xA;If used in an appearance modifier, these body types will contribute&#xA;to the flags that determine which body types can be generated." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="A98358042C98C09F" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="BodyType" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="BE9A7E3CCA0FDB95" static_entries="sims-outfits-outfit_enums.BodyType" Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="MatchNotFoundPolicy" name="value" class="TunableEnumEntry" default="MATCH_NOT_FOUND_UNSPECIFIED" display="Value" muid="4B1B709DC213AFDB" static_entries="sims-outfits-outfit_enums.MatchNotFoundPolicy" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableList name="filter_flag" class="TunableEnumFlags" default="USE_EXISTING_IF_APPROPRIATE,USE_VALID_FOR_LIVE_RANDOM" display="Filter Flag" muid="DACF46F7329EEFF4" description="Define how to handle part randomization for the generated outfit." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="OutfitFilterFlag" class="TunableEnumEntry" default="NONE" muid="180B2C687186C2F9" static_entries="sims-outfits-outfit_enums.OutfitFilterFlag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="86A7740ADCF18440" description="The set of tags used to generate the outfit. Parts must match the&#xA;specified tag in order to be valid for the generated outfit." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="8C568FD64B917E44" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="Uniform|OutfitCategory|Style|Situation" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+            </TunableList>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

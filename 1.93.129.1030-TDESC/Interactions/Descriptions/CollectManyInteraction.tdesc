@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="CollectManyInteraction" module="carry.put_down_interactions" muid="45C836A5694EA42" description="An interaction in which a Sim will collect all objects of the same time and&#xA;simulate holding them in a stack.  When picked up, the objects will be set&#xA;to transient, and if it doesn't already exist, a &quot;stack&quot; object will be&#xA;added to the world as the new carry target." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="aggregate_object" class="TunableVariant" default="no_aggregate_object" display="Aggregate Object" muid="1FE74747E3F4CE8D" description="The type of object to use as the aggregate object.  If a definition&#xA;is specified, the aggregate object will be created using that&#xA;definition.  If &quot;interaction_target&quot; is specified, the aggregate object&#xA;will be created using the definition of the interaction target." Deprecated="False" filter="0" group="General">
+            <TunableList name="definitions" class="TunableList" display="Definitions" muid="F1A8917616F072BB" description="A list of object definitions. One of them will be chosen &#xA;randomly and created as part of this interaction to represent &#xA;the many collected objects the participant has picked up." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="object" class="TunableReference" muid="C51C3F6B8D78B9C2" allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+            <Tunable name="interaction_target" class="TunableExistance" display="Interaction Target" muid="B6E8F6DE40ADADC9" />
+            <Tunable name="no_aggregate_object" class="TunableExistance" display="No Aggregate Object" muid="81136B884FF9AE3E" />
+        </TunableVariant>
+
+        <TunableEnum type="AggregateObjectOwnership" name="aggregate_object_owner" class="TunableEnumEntry" default="SAME_AS_TARGET" display="Aggregate Object Owner" muid="8484A657D05A40FF" static_entries="carry-put_down_interactions.AggregateObjectOwnership" description="Specify the owner of the newly created aggregate object." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="destroy_original_object" class="Tunable" default="True" display="Destroy Original Object" muid="95B618A7202274F" description="If checked, the original object (the target of this interaction),&#xA;will be destroyed and replaced with the specified aggregate object.&#xA;If unchecked, the aggregate object will be created in the Sim's&#xA;hand, but the original object will not be destroyed." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

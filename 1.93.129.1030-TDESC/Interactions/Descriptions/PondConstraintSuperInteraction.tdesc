@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="PondConstraintSuperInteraction" module="objects.pools.pond" muid="C1953942DB7AA1EA" description="Interaction that constrains an actor sim relative to the targeted pond." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="constraint_type" class="TunableVariant" default="inside_pond_constraint" display="Constraint Type" muid="BDE7F1FCB45F02D4" description="The type of constraint to use." Deprecated="False" filter="0" group="Constraints">
+            <TunableTuple name="inside_pond_constraint" class="TunableTuple" display="Inside Pond Constraint" muid="128A084C9B8FF5F8" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="max_water_depth" class="TunableRange" default="0.7" display="Max Water Depth" muid="5BAF89EB0FCE00BF" min="None" max="0.7" description="The maximum water depth required for the sim to stand when&#xA;running this interaction.&#xA;&#xA;This is capped at the maximum possible wading depth since&#xA;swimming in ponds is not currently supported, and having a &#xA;large allowed water depth range will impact performance. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="min_water_depth" class="TunableRange" default="0.1" display="Min Water Depth" muid="3AEA3886980E03CF" min="0.1" max="None" description="The minimum water depth required for the sim to stand when&#xA;running this interaction.&#xA;&#xA;Please note that the pond edges are based on water tiles,&#xA;which may be partially covered by terrain. Because of that,&#xA;this must be at least 0.1 if you want the sim to stand &#xA;inside the pond." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <Tunable name="outer_edge_constraint" class="TunableExistance" display="Outer Edge Constraint" muid="4D66E89FF871BE86" />
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="FA51FFAEF6E86385" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

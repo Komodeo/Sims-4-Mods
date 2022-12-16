@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="university" class="University" module="sims.university.university_tuning" muid="CF6CA103893BB464" description="Tuning structure that contains all the data that describes university." instance_needs_reference="True" instance_subclasses_only="False" path="Universities\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="_display_data" class="OptionalTunable" default="optional_display_mixin" display="Display Data" muid="27E62253EF2F185F" description="If enabled, specify display data for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="80A7F84611A391DF" />
+            <TunableTuple name="optional_display_mixin" class="OptionalDisplayMixinTunable" display="Optional Display Mixin" muid="C39423F874D7EF95" description="The instance's display data." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="instance_display_description" class="OptionalTunable" default="enabled_display_description" display="Instance Display Description" muid="290F5C26043C3D02" description="If enabled, specify a display description for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8C6BD1D591EC3AD3" />
+                    <Tunable type="int" name="enabled_display_description" class="TunableLocalizedString" default="0x0" display="Enabled Display Description" muid="58EB222B066A8FB3" description="The instance's description. " Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_icon" class="OptionalTunable" default="enabled_display_icon" display="Instance Display Icon" muid="ABBA18A441901457" description="If enabled, specify a display icon for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="99BDC0C733973810" />
+                    <Tunable type="ResourceKey" name="enabled_display_icon" class="TunableIcon" default="None" display="Enabled Display Icon" muid="ACA5E09476D97302" description="The instance's icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_name" class="OptionalTunable" default="enabled_display_name" display="Instance Display Name" muid="C81B8E5328DBF25D" description="If enabled, specify a display name for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F5DB3AF4AB8508F9" />
+                    <Tunable type="int" name="enabled_display_name" class="TunableLocalizedString" default="0x0" display="Enabled Display Name" muid="1ED82FC2525395D3" description="The instance's name." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_secondary_icon" class="OptionalTunable" default="disabled" display="Instance Display Secondary Icon" muid="9E96D581AE5B9344" description="If enabled, specify a secondary display icon for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F42BDF425F023BAB" />
+                    <Tunable type="ResourceKey" name="enabled_display_secondary_icon" class="TunableIcon" default="None" display="Enabled Display Secondary Icon" muid="CB41A256AB0BE50D" description="The instance's icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_tooltip" class="OptionalTunable" default="enabled_display_tooltip" display="Instance Display Tooltip" muid="DF555F4B627E5817" description="If enabled, specify a display tooltip for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5B4C47FE14A1E415" />
+                    <Tunable type="int" name="enabled_display_tooltip" class="TunableLocalizedString" default="0x0" display="Enabled Display Tooltip" muid="D586D42CA7FF05D4" description="The instance's tooltip. " Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="action" name="brochure_loot" class="TunableReference" display="Brochure Loot" muid="68AA2C940E1555FA" description="The loot to show university brochure." allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+
+        <Tunable type="str" name="mascot_label" class="Tunable" default="" display="Mascot Label" muid="4C860150D7C4CE09" description="Mascot label name to be used by enrollment wizard UI. " Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" />
+
+        <TunableList name="organizations" class="TunableList" display="Organizations" muid="EED3098A8D525A39" description="List of organizations which are available in this university." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" unique_entries="true">
+            <Tunable type="snippet" class="TunableReference" muid="7CA1A9C2ED23D456" allow_none="False" Deprecated="False" filter="0" group="General" restrict="Organization" />
+        </TunableList>
+
+        <TunableList name="prestige_degrees" class="TunableList" display="Prestige Degrees" muid="62BE8D1204035642" description="List of prestige degrees." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" unique_entries="true">
+            <Tunable type="university_major" class="TunableReference" muid="C81DB9C7616281CF" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

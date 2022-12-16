@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="drama_node" class="CalendarEventDramaNode" module="drama_scheduler.calendar_event_drama_node" muid="411753EB27C1DC1B" description="A drama node for scheduling something and displaying it on the calendar that&#xA;has no real functionality other than being there for other systems to test&#xA;against." instance_subclasses_only="False" parents="BaseDramaNode" path="DramaNodes\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="_simless" class="Tunable" default="True" display="Simless" muid="61C1BD9DB863D84F" description="If True, the drama node will behave simlessly and won't need (or use) the receiver sim." Deprecated="False" filter="0" group="Participant" />
+
+        <TunableVariant type="None" name="advance_notice_time" class="OptionalTunable" default="disabled" display="Advance Notice Time" muid="6F1E0DDE48EB466E" description="If enabled, a calender alarm will be triggered at the specified time&#xA;prior to the event." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="330B1694678B219A" />
+            <TunableTuple name="enabled" class="TunableTimeSpan" display="Enabled" muid="97A44B8502D3C90A" description="The amount of time between the alert and the start of the event." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="days" class="TunableRange" default="0" display="Days" muid="144454453565E0AA" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="hours" class="TunableRange" default="0" display="Hours" muid="E508471A2DF075F9" min="0" max="23" description="Number of hours" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minutes" class="TunableRange" default="0" display="Minutes" muid="75B659D9F72E28EC" min="0" max="59" description="Number of minutes" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="calendar_end_time_override" class="OptionalTunable" default="disabled" display="Calendar End Time Override" muid="3761C2D50DBB6726" description="If enabled, this will be the time of day shown in the calendar as the end time instead&#xA;of the time calculated from the start time." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C6474EC38444A73D" />
+            <TunableTuple name="enabled" class="TunableTimeOfDay" display="Enabled" muid="C1DA2E9582B75B98" description="The time of day to display as the end time for this event in the calendar." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="hour" class="TunableRange" default="12" display="Hour" muid="241DC2390081AF38" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="87400DE84E8563CA" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="calendar_start_time_override" class="OptionalTunable" default="disabled" display="Calendar Start Time Override" muid="3A2CD412F056ECC5" description="If enabled, this will be the time of day shown in the calendar as the start time instead&#xA;of the scheduled time." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4F52543EE05F9BE7" />
+            <TunableTuple name="enabled" class="TunableTimeOfDay" display="Enabled" muid="AA91040DE31D8D2A" description="The time this event will display as the start time in the calendar." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="hour" class="TunableRange" default="12" display="Hour" muid="A29367F3CF6CF716" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="A804113B2EE45078" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableList name="events_of_interest" class="TunableSet" display="Events Of Interest" muid="C3DBB596A7E0C99A" description="When any of these events fire, the sims of interest will be updated, and the event added/removed&#xA;from the calendar as appropriate" Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="TestEvent" class="TunableEnumEntry" default="Invalid" muid="741AF782F835367B" dynamic_entries="event_testing-test_events.TestEvent._elements" static_entries="event_testing-test_events.TestEvent" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <Deleted name="override_picked_sim_info_resolver" muid="ADD676914CEEF2EC" />
+
+        <Deleted name="picked_sim_info" muid="311CCDF603BA2B38" />
+
+        <Deleted name="sender_sim_info" muid="A8CA3367D16F1477" />
+
+        <Deleted name="sender_sim_info_type" muid="62BA685765021564" />
+
+        <TdescFragTag name="sim_of_interest_tests" class="TunableTestSet" display="Sim Of Interest Tests" muid="4EE454D76EA4FB16" description="Tests used to determine which active household sims this event&#xA;involves.  Any sim in the active household that passes the test &#xA;will be indicated as participating in the calendar.  If no household sims&#xA;Are participating, event won't be on calendar." filter="0" group="General" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="4E67498BB0756FC6" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="920EB5ACEFBB7116" />
+            <Action type="kRemove" old_muid="2376B9276243A1F3" />
+            <Action type="kRemove" old_muid="D8D1728099A87480" />
+            <Action type="kRemove" old_muid="DE9C7EDD3608CBFB" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="C28E8AC6CC787FC4" new_muid="3761C2D50DBB6726" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

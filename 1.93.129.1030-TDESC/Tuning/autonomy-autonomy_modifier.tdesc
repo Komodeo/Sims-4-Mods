@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="autonomy.autonomy_modifier" muid="25D63F1A4B0FBB2">
+        <Class name="SuperAffordanceSuppression" muid="C087A5DB7A25FB79" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="AUTONOMOUS_ONLY" muid="C6EEDFCEA0240FDF" enum_value="0" />
+
+            <EnumItem name="USE_AFFORDANCE_COMPATIBILITY_AND_WHITELIST" muid="20537D1F3744F697" enum_value="2" />
+
+            <EnumItem name="USER_DIRECTED" muid="C020987BEC6AA53A" enum_value="1" />
+        </Class>
+
+        <Class name="OffLotAutonomyRules" muid="A69DA9D39BC9D391" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="ANCHORED" muid="18D46A328F84A6D8" enum_value="5" />
+
+            <EnumItem name="DEFAULT" muid="5868105BE7A2E997" enum_value="0" />
+
+            <EnumItem name="OFF_LOT_ONLY" muid="A70FE395EEFA909" enum_value="2" />
+
+            <EnumItem name="ON_LOT_ONLY" muid="1817288AB7D7FEDB" enum_value="1" />
+
+            <EnumItem name="RESTRICTED" muid="7B3AFF6D9301F3D5" enum_value="4" />
+
+            <EnumItem name="UNLIMITED" muid="D1B71EBEA72CDFEC" enum_value="3" />
+        </Class>
+
+        <Class name="AutonomyModifier" muid="73E32AF24A75F25">
+            <TunableVariant type="None" name="ALWAYS_WHITELISTED_AFFORDANCES" class="TunableAffordanceFilterSnippet" default="literal" display="Always Whitelisted Affordances" muid="F65BE6FE4E7F4EB7" description="Any affordances tuned to be compatible with this filter will always be&#xA;allowed. This is useful for stuff like death and debug interactions,&#xA;which should never be disallowed by an autonomy modifier.&#xA; (This may be tuned in place here using 'literal' or as a reference to a AffordanceFilter tuning snippet.)" Deprecated="False" filter="0" group="General">
+                <TdescFragTag name="literal" class="_TunableAffordanceFilter" display="Literal" muid="540D81521DFBCE7C" description="An affordance filter." filter="0" group="General" />
+                <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="5889C855ED8195E4" description="A reference to a AffordanceFilter tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="AffordanceFilter" />
+            </TunableVariant>
+        </Class>
+    </Module>
+</TuningRoot>

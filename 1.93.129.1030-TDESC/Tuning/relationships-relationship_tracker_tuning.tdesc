@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="relationships.relationship_tracker_tuning" muid="168668F62E62B0CE">
+        <Class name="DefaultGenealogyLink" muid="DE425C94EFE204AF" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="C0E17D8E7C3BFACD" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="F113BC21B4621FCB" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="FamilyMember" muid="B7D07F0F59D58813" enum_value="1" />
+
+            <EnumItem name="Fiance" muid="2A0EE28A19DA7872" enum_value="3" />
+
+            <EnumItem name="Roommate" muid="1CB286D8FA786787" enum_value="0" />
+
+            <EnumItem name="Spouse" muid="D8B28540350B4812" enum_value="2" />
+        </Class>
+
+        <Class name="DefaultRelationshipInHousehold" muid="A9B78B28734B501B">
+            <TunableList name="RelationshipSetupMap" class="TunableMapping" display="Relationshipsetupmap" muid="8F77DEB719783CFD" mapping_key="Family Link" mapping_value="Default Relationship Setup" description="A mapping of the possible genealogy links in a family to the default &#xA;relationship values that we want to start our household members. " Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="A404E927A1AEF64" Deprecated="False" filter="0" group="General">
+                    <TunableList name="Default Relationship Setup" class="TunableTestedList" display="Default Relationship Setup" muid="90155723F5FA41D2" description="A list of relationship actions to apply." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="FA8C04C2BE44DBE3" description="An entry in this tested list." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="item" class="TunableDefaultRelationship" display="Item" muid="8DE797F4559943C5" description="A tuning structure that represents a collection of default relationship&#xA;settings that can be applied to sims in a household." Deprecated="False" filter="0" group="General">
+                                <TunableList name="random_relationship_bits" class="TunableList" display="Random Relationship Bits" muid="FD0910A7F6A69664" description="A list of random relationship bits that can be applied." Deprecated="False" filter="0" group="General">
+                                    <TunableList class="TunableList" muid="D15635D4519136CF" description="A list of relationship bits and weights that that relationship&#xA;bit can be chosen to add." Deprecated="False" filter="0" group="General">
+                                        <TunableTuple class="TunableTuple" muid="831AF5CC35D91219" description="A number of weighted relationship bits that have a chance&#xA;of being applied." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="relbit" name="bit" class="TunableReference" display="Bit" muid="57BC0430754B8AD" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipBit" />
+                                            <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="C206DDA10941BCB4" description="A tunable list of tests and multipliers to apply to the &#xA;weight of this relationship bit being applied." Deprecated="False" filter="0" group="General">
+                                                <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="9A937CEDD724BB84" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="5D1D3910A0D41C66" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                                    <TunableTuple class="TunableTuple" muid="830E833CD5EAC6FA" Deprecated="False" filter="0" group="General">
+                                                        <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="BCDA72373CC16B79" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="FCBFAA6F51ED8783" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                                    </TunableTuple>
+                                                </TunableList>
+                                            </TunableTuple>
+                                        </TunableTuple>
+                                    </TunableList>
+                                </TunableList>
+                                <TunableList name="relationship_bits" class="TunableSet" display="Relationship Bits" muid="A42DA4AABFA33DF6" description="A set of untracked relationship bits that are applied to the&#xA;relationship between the two sims. These are bits that are provided&#xA;outside of the relationship_track being set. E.g. everyone in the&#xA;household should have the Has Met bit and the spouse should have the&#xA;First Kiss bit." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <Tunable type="relbit" class="TunableReference" muid="2158FC2CC0B8A4C" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipBit" />
+                                </TunableList>
+                                <TunableList name="relationship_tracks" class="TunableList" display="Relationship Tracks" muid="4F314A85B3611184" description="A list of relationship track and value pairs. E.g. a spouse has&#xA;Romantic relationship track value of 75." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple class="TunableTuple" muid="3254B19ED67A554D" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="statistic" name="track" class="TunableReference" display="Track" muid="F1A5B445BF066C12" description="The relationship track that is added to the relationship&#xA;between the two sims." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipTrack" />
+                                        <Tunable type="int" name="value" class="Tunable" default="0" display="Value" muid="38A28F9BC802E58A" description="The relationship track is set to this value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableList>
+                            </TunableTuple>
+                            <Tunable type="bool" name="stop_processing" class="Tunable" default="False" display="Stop Processing" muid="723B10DC27EB6113" description="If checked, no other element from this list is considered if&#xA;this element passes its associated test." Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="test" class="TunableTestSet" display="Test" muid="78F37696C3252341" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                    <TunableEnum type="DefaultGenealogyLink" name="Family Link" class="TunableEnumEntry" default="Roommate" display="Family Link" muid="C9FAB1FCA835DCF7" dynamic_entries="relationships-relationship_tracker_tuning.DefaultGenealogyLink._elements" static_entries="relationships-relationship_tracker_tuning.DefaultGenealogyLink" description="A genealogy link between the two Sims in the household." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SPECIES_TO_FAMILY_MEMBER_LINK" class="TunableList" display="Species To Family Member Link" muid="1F86CA19B9449FC3" description="Define what the &quot;family member&quot; relationship, i.e. two Sims related by&#xA;blood or marriage within the same household translates to. For instance,&#xA;humans would use the regular &quot;FamilyMember&quot; link, but dogs would use a&#xA;dog specific link.&#xA;&#xA;It's assumed that the two sims involved are the same species." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="C2209391E10F07BE" description="An entry that defines the &quot;family member&quot; mapping for two Sims." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="DefaultGenealogyLink" name="genealogy_link" class="TunableEnumEntry" default="FamilyMember" display="Genealogy Link" muid="CBF6783DFAAB15FC" dynamic_entries="relationships-relationship_tracker_tuning.DefaultGenealogyLink._elements" static_entries="relationships-relationship_tracker_tuning.DefaultGenealogyLink" description="The default genealogy link to create between two Sims of the&#xA;specified species." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="Species" name="species" class="TunableEnumEntry" default="HUMAN" display="Species" muid="574D7EB9F44815BC" static_entries="sims-sim_info_types.Species" description="The species of the family members." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SPECIES_TO_ROOMATE_LINK" class="TunableList" display="Species To Roomate Link" muid="7CA3803DDA197280" description="Define what the &quot;roommate&quot; relationship, i.e. two Sims unrelated by&#xA;blood or marriage within the same household translates to. For instance,&#xA;two humans would use the regular &quot;Roommate&quot; link, but a human and a dog&#xA;would use an &quot;owner/pet&quot; link." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="249F7393BE14922A" description="An entry that defines the &quot;roommate&quot; mapping for two Sims." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="DefaultGenealogyLink" name="genealogy_link" class="TunableEnumEntry" default="Roommate" display="Genealogy Link" muid="FA5631519D5ECE0A" dynamic_entries="relationships-relationship_tracker_tuning.DefaultGenealogyLink._elements" static_entries="relationships-relationship_tracker_tuning.DefaultGenealogyLink" description="The default genealogy link to create between two Sims of the&#xA;specified species." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="Species" name="species_actor" class="TunableEnumEntry" default="HUMAN" display="Species Actor" muid="AD2912F7DC16B729" static_entries="sims-sim_info_types.Species" description="The species of the actor Sim, i.e. the Sim that is going to own&#xA;any applied bits." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <TunableEnum type="Species" name="species_target" class="TunableEnumEntry" default="HUMAN" display="Species Target" muid="36E5A757A959B77C" static_entries="sims-sim_info_types.Species" description="The species of the target Sim, i.e. the Sim that is going to be&#xA;the target of any bit applied to the actor." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

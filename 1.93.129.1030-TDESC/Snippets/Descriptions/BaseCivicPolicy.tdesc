@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="BaseCivicPolicy" module="civic_policies.base_civic_policy" muid="168D2A13AEC50091" description="Base class for Civic Policies.  Civic Policies are selectable things which&#xA;have some ongoing game impact.  The game mechanic for policy&#xA;involves voting, enacting, and repealing them." instance_needs_reference="True" instance_subclasses_only="False" parents="DisplaySnippet" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="daily_vote_random_range" class="TunableInterval" display="Daily Vote Random Range" muid="68E22DDE1ABBE18F" description="Range within which to randomize a daily vote count addition for this policy at&#xA;the start of each day during the voting period.  Only used if the policy is balloted." Deprecated="False" filter="0" group="General">
+            <Tunable type="int" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="BBF5862D0F685E71" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="B7431E6F65999B1F" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="initial_vote_random_range" class="TunableInterval" display="Initial Vote Random Range" muid="E58FBFF4EAC49F93" description="Range within which to randomize an initial vote count for this policy at&#xA;the start of the voting period.  Only used if the policy is balloted." Deprecated="False" filter="0" group="General">
+            <Tunable type="int" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="FE67CC18F41634E2" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="912A98E55A6E3594" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="statistic" name="vote_count_statistic" class="TunableReference" display="Vote Count Statistic" muid="136F2AD70736274D" description="The statistic keeping a vote count for this policy.  If not enacted,&#xA;votes in this statistic would be counting toward an enactment vote. If&#xA;enacted, votes would be counting toward a repeal vote." allow_none="False" Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

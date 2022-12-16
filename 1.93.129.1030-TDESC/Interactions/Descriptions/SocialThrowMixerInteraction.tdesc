@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="SocialThrowMixerInteraction" module="interactions.social.social_throw_mixer_interaction" muid="FA7EEDA0881E49C9" description="Social mixer interaction with the specific functionality to throw an&#xA;object between Sims." instance_needs_reference="True" instance_subclasses_only="False" parents="SocialMixerInteraction, MixerInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="social_group_scoring" class="OptionalTunable" default="disabled" display="Social Group Scoring" muid="EDF9E67D3B0B9AD9" description="If enabled, the thrower and target of this group will have an &#xA;additional score to be the next person that generates the social&#xA;adjustment.&#xA;The higher the value, the more likely they will move after this&#xA;mixer has ran." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="91E9FC1AEF6667BC" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="8FCC52F9A44AE2F4" description="Thrower and target tuning to affect the adjustment scoring." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="receiver_score" class="TunableRange" default="0" display="Receiver Score" muid="AC4E2133065AC09E" min="0" max="10" description="Score to be added on the weight the receiver of this&#xA;mixer to be more likely to move on the next social&#xA;adjustment. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="thrower_score" class="TunableRange" default="0" display="Thrower Score" muid="B5B346715E933413" min="0" max="10" description="Score to be added on the weight the thrower of this&#xA;mixer to be more likely to move on the next social&#xA;adjustment. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="throw_impact_data" class="OptionalTunable" default="disabled" display="Throw Impact Data" muid="214AAE7CE8DC4142" description="If enabled, the object thrown will trigger a reaction at a&#xA;specific timing of the throw on the target.&#xA;If disabled, throw will happen but target will not react." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="107475216A3ADBFD" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="AA4C19BD96516EE0" description="Specific tuning defining the target reaction." Deprecated="False" filter="0" group="General">
+                <Tunable type="str" name="asm_state_name" class="Tunable" default="None" display="Asm State Name" muid="17C6DB7E60B2834F" description="State name that will be called on the ASM of the mixer &#xA;when the impact happens." Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="destroy_event_id" class="TunableRange" default="668" display="Destroy Event Id" muid="2EAE5623C44BE74F" min="1" max="1000" description="Id number of the event the for the thrown object to be&#xA;destroyed.&#xA;By default, ballistic controller has an event at 668 at the&#xA;end of the throw, unless animation requests it, that&#xA;should be used. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="event_id" class="TunableRange" default="123" display="Event Id" muid="5B3529BD83832E19" min="1" max="1000" description="Id number of the event the ballistic controller will throw&#xA;to trigger the reaction." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="event_timing_offset" class="TunableRange" default="0.2" display="Event Timing Offset" muid="5A52AF52F38B6AFF" min="0.0" max="10.0" description="Offset in seconds when the event_id should trigger with&#xA;reference to the ending of the throw.&#xA;This means that a value of 0.2 will trigger this event 0.2&#xA;seconds before the object thrown hits its target. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="impact_effect" class="OptionalTunable" default="no_effect" display="Impact Effect" muid="C5FA9A383049E98D" description="When enabled, effect will play on the thrown object &#xA;position at the time given by event_timing_offset.&#xA;Effect will not be parented, this is to trigger effects&#xA;like a snowball explosion etc." Deprecated="False" filter="0" group="General">
+                    <Tunable name="no_effect" class="TunableExistance" display="No Effect" muid="A62372D8F40021A1" />
+                    <TunableTuple name="play_effect" class="TunablePlayEffect" display="Play Effect" muid="C2BCC45A0F04BA" description="Effect to play." Deprecated="False" filter="0" group="General">
+                        <Tunable type="str" name="effect_name" class="Tunable" default="" display="Effect Name" muid="86A2DEBC1D5FC5DA" description="The name of the effect to play." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="joint_name" class="OptionalTunable" default="Slot" display="Joint Name" muid="4554467D83F39200" description="Specify if the visual effect is attached to a slot and, if so, which&#xA;slot." Deprecated="False" filter="0" group="General">
+                            <Tunable name="Current_Position" class="TunableExistance" display="Current Position" muid="7878C5E3B998A411" />
+                            <Tunable type="str" name="Slot" class="TunableStringHash32" default="_FX_" display="Slot" muid="96FADD1B0619E9E9" description="The name of the slot this effect is attached to." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <Tunable type="bool" name="play_immediate" class="Tunable" default="False" display="Play Immediate" muid="A6FDBA2DCC520755" description="If checked, this effect will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. VFX will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+                <TunableList name="impact_offset" class="TunableMapping" display="Impact Offset" muid="8F99E65B95890BAF" mapping_key="key" mapping_value="value" description="Offsets for the impact position by age of the target Sim." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="EE6083B17CE5C1F4" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="Age" name="key" class="TunableEnumEntry" default="YOUNGADULT" display="Key" muid="5203BFADEF9E3BC7" static_entries="sims-sim_info_types.Age" description="Age for which this offset should be applied." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="value" class="TunableVector3" display="Value" muid="BD9821B1D7D13EEC" description="Offset from the impact position where the ballistic&#xA;controller should aim the object.&#xA;For example, for an impact on a Sims feet, offset should &#xA;be (0,0,0), but if we want a miss or another part we &#xA;may want to push it higher." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="7675CB78EF0E710" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="9659BD912C344C0E" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="z" class="Tunable" default="0.0" display="Z" muid="501816C9AF9F6453" description="z component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

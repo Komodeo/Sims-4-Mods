@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="tutorial" class="Tutorial" module="tutorials.tutorial" muid="BCAC70A5A857B55A" description="Main container class that holds all data for a tutorial." instance_subclasses_only="False" path="Tutorials\Descriptions" use_guid_for_reference="True">
+        <Tunable type="tutorial" name="category" class="TunableReference" display="Category" muid="1798340BC91240C0" description="The tutorial category in which this tutorial belongs.&#xA;This field has been deprecated in favor of tags. Only used as a fallback if the tags collection is empty." allow_none="True" Deprecated="True" export_modes="client_binary" filter="0" group="General" restrict="TutorialCategory" />
+
+        <Tunable type="int" name="name" class="TunableLocalizedString" default="0x0" display="Name" muid="B5DAB190009C881B" description="Name of the tutorial. i.e. if this is a tutorial about Build/Buy&#xA;you might put &quot;Build Buy Mode&quot;" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+
+        <TunableList name="slides" class="TunableList" display="Slides" muid="27BB445288D01793" description="These are the slides (images with a description) that create the&#xA;story for this tutorial. They will be shown in the order they are&#xA;provided, so the first slide in this list will be the first slide&#xA;of the tutorial." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <TunableTuple class="TunableTutorialSlideTuple" muid="1512CE3D25192B60" description="The text for this slide." Deprecated="False" filter="0" group="General">
+                <Tunable type="ResourceKey" name="image" class="TunableResourceKey" default="None" display="Image" muid="2FBE3EA7828E7FA3" description="The image for this slide." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                <Tunable type="ResourceKey" name="image_console" class="TunableResourceKey" default="None" display="Image (Console)" muid="E3F571C76096F350" description="The image for this slide on console.  If unset the Image will be used as a fallback." allow_none="True" Deprecated="False" export_modes="client_binary" filter="0" group="General" resource_types="0x2f7d0004" />
+                <Tunable type="ResourceKey" name="image_console_jp" class="TunableResourceKey" default="None" display="Image (Console; JP)" muid="63A14AF94FCA9075" description="The image for this slide on console for the JP SKU.  Fallback order is: Image (Console), Image." allow_none="True" Deprecated="False" export_modes="client_binary" filter="0" group="General" resource_types="0x2f7d0004" />
+                <TunableEnum type="TutorialPlatformFilter" name="platform_filter" class="TunableEnumEntry" default="ALL_PLATFORMS" display="Platform Filter" muid="B0AD74DDAB88B33C" static_entries="tutorials-tutorial.TutorialPlatformFilter" description="The platforms on which this slide is shown." Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+                <Tunable type="int" name="text" class="TunableLocalizedString" default="0x0" display="Text" muid="D6CD210B2FD04B88" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="tags" class="TunableTags" display="Tags" muid="7976478A54B34EA6" Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="FA4ED0D45C530F5E" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Set of lesson tags associated with this lesson." Deprecated="False" dynamic_entries_prefix="lesson" export_modes="client_binary" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+        </TunableList>
+
+        <Tunable type="int" name="ui_sort_order" class="Tunable" default="0" display="Ui Sort Order" muid="8FB83F0E1FA02ECE" description="Order in which this lesson is sorted against other lessons or subcategories within the same&#xA;category or subcategory.&#xA;If two lessons within a sub/category have the same sort order, the ordering is undefined." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="BD84ABEC33A543DA" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

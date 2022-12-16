@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.components.inventory_storage" muid="4F1808B2218C6900">
+        <Class name="InventoryStorage" muid="F5298DF7275E0F81">
+            <TunableList name="UI_FILTER_TYPES" class="TunableList" display="Ui Filter Types" muid="16885EEFEB9E9F19" description="A list of filter categories containing filter types used to filter the sim's&#xA;inventory in the UI. The inventory can also be sorted by filter type; &#xA;filters lower on this list will sort lower when sorted by filter type." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="InventoryUIFilterCategoryTuple" muid="8D5F62F29231A266" description="A category of filters in the UI. Contains a name and a list of filters." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                    <Tunable type="int" name="category_name" class="TunableLocalizedString" default="0x0" display="Category Name" muid="1817E8AAB69002AD" description="The name displayed in the UI for this filter category." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="filters" class="TunableList" display="Filters" muid="9D498E307B08B703" description="The filters used in this category. " Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="InventoryUIFilterTypeTuple" muid="ECDB9AFFB43CBB02" description="Data that defines a filter type in the inventory UI." Deprecated="False" filter="0" group="General">
+                            <Tunable type="str" name="debug_name" class="Tunable" default="NONE" display="Debug Name" muid="53032E129F369C44" description="A unique name used to select this inventory filter type through &#xA;the console command ui.inventory.set_sort_filter when the inventory&#xA;ui is open." Deprecated="False" filter="0" group="General" />
+                            <TunableList name="disqualifying_tags" class="TunableTags" display="Disqualifying Tags" muid="389DD44F783FBFF4" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="71A76252C38D86D4" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="If an object has any of these tags, it will fail this&#xA;filter even if it would otherwise pass." binary_type="uint32" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                            </TunableList>
+                            <Tunable type="int" name="filter_name" class="TunableLocalizedString" default="0x0" display="Filter Name" muid="31E0021D974E73A2" description="The name displayed in the UI for this filter type.            " Deprecated="False" filter="0" group="General" />
+                            <TunableList name="required_packs" class="TunableEnumSet" display="Required Packs" muid="517FDC87224B8417" description="If any packs are tuned here, at least one of them must&#xA;be present for this filter to appear in the UI." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Pack" class="TunableEnumEntry" default="BASE_GAME" muid="7466764D04D0A250" static_entries="sims4-common.Pack" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="tags" class="TunableTags" display="Tags" muid="76F7F2DBE3C6DC6F" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="AE1BFF20E7DB2BB6" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tags that should be considered part of this filter." binary_type="uint32" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="UI_SORT_TYPES" class="TunableList" display="Ui Sort Types" muid="2E89EC3857697BD0" description="A list of gameplay-based sort types used in the sim's inventory in the UI." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="InventoryUISortTypeTuple" muid="D41DE40555BDF160" description="Data that defines this sort for the inventory UI." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                    <Tunable type="str" name="debug_name" class="Tunable" default="NONE" display="Debug Name" muid="1C1CEAEFDEC99959" description="A unique name used to select this inventory sort type through &#xA;the console command ui.inventory.set_sort_filter when the inventory&#xA;ui is open." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="bool" name="is_ascending" class="Tunable" default="True" display="Is Ascending" muid="2D30083A0C201946" description="Whether a higher value from object_data will sort first.&#xA;If a high value means that the object should sort lower &#xA;(E.G. brokenness), this should be false." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="object_data" class="TunableVariant" default="states" display="Object Data" muid="746874127FF481E5" description="The object data that determines the sort order of&#xA;this sort type." Deprecated="False" filter="0" group="General">
+                        <TunableList name="states" class="TunableList" display="States" muid="5B6281F0E7671C5C" description="States whose values are used to sort on for this sort type. " Deprecated="False" filter="0" group="General">
+                            <Tunable type="object_state" class="TunableReference" muid="96E3700A26054289" description="A State to sort on." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectState" />
+                        </TunableList>
+                    </TunableVariant>
+                    <Tunable type="int" name="sort_name" class="TunableLocalizedString" default="0x0" display="Sort Name" muid="C09FEC003B08E0A6" description="The name displayed in the UI for this sort type." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="AutonomousSituationSimsPickerInteraction" module="interactions.picker.situation_picker_interaction" muid="9E7B3E1A4F0A64F2" description="Autonomous Situation Sim Picker Interaction.&#xA;&#xA;Allows customized pick strategies." instance_needs_reference="True" instance_subclasses_only="False" parents="AutonomousSimPickerSuperInteraction, AutonomousPickerSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="choice_strategy" class="TunableVariant" default="default_sim_picker" display="Choice Strategy" muid="BE9176CDB1A34501" description="Strategy to use for picking a Sim." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple name="default_sim_picker" class="TunableSimPickerEnumerationStrategy" display="Default Sim Picker" muid="5A548D7A30DECA4F" description="This strategy uses the sims picked by the filter to build the list of&#xA;choices." Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="vet_customer_picker" class="TunableVetCustomerPickerEnumerationStrategy" display="Vet Customer Picker" muid="4C6125F77DB008D" description="Vet venue-specific Sim picker strategy.&#xA;&#xA;Used in AutonomousSituationSimsPickerInteraction." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Deleted name="include_actor_sim" muid="390C603A995BF287" />
+
+        <Deleted name="include_instantiated_sims" muid="D2C2826656B7DB02" />
+
+        <Deleted name="include_target_sim" muid="B01F3599307966D" />
+
+        <Deleted name="include_uninstantiated_sims" muid="9617E5D804EB8978" />
+
+        <TunableList name="job_filter" class="TunableList" display="Job Filter" muid="FD86C1BA6E57E027" description="If provided, only looks for Sims with the specified jobs." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable type="situation_job" class="TunableReference" muid="40099CC0840EB7D7" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <Deleted name="sim_filter" muid="563DBD72116DD2E3" />
+
+        <Deleted name="sim_filter_household_override" muid="53F7BE69B4E52099" />
+
+        <Deleted name="sim_filter_requesting_sim" muid="34807A70DAEBCAFC" />
+
+        <Deleted name="test_compatibility" muid="6010A1D2F6C430A1" />
+
+        <TunableVariant type="None" name="valid_situations" class="SituationSearchByDefinitionOrTagsVariant" default="by_definition" display="Valid Situations" muid="AD5C8EF4A65096CC" description="Situations where the guest list will be collected to populate the picker." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple name="by_definition" class="TunableSituationByDefinition" display="By Definition" muid="CEA5A40E5796ECEB" description="A tunable which provides a way to search for situations a Sim is in&#xA;based off provided situation types, whether a situation matches&#xA;the given definitions, or to find all situations of the given&#xA;definitions." Deprecated="False" filter="0" group="General">
+                <TunableList name="situations" class="TunableSet" display="Situations" muid="EDDD9745A1779D1E" min="1" description="Situation types to match." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="situation" class="TunableReference" muid="C8ABF62E4E1FFBB3" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="by_tags" class="TunableSituationByTags" display="By Tags" muid="16F46579AE10C979" description="A tunable which provides a way to find all situations tagged &#xA;with any of the given tags, search for situations a Sim is in&#xA;based off provided situation tags, or test whether a situation &#xA;is tagged with any of the given tags." Deprecated="False" filter="0" group="General">
+                <TunableList name="situation_tags" class="TunableTags" display="Situation Tags" muid="D51C33BA0281C215" min="1" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="848E9EF16728DFF1" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Situation tags to match.&#xA;&#xA;A situation that matches ANY of these tags will match." Deprecated="False" dynamic_entries_prefix="situation" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

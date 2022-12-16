@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="StreetWeatherEffect" module="civic_policies.street_civic_policy_effect" muid="5DA1A22F3AF0ECC5" description="When enacted, creates a weather transition." instance_needs_reference="True" instance_subclasses_only="False" parents="StreetEffect" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="enact_data" class="Tunable_WeatherParamData" display="Enact Data" muid="B77A9538B5C8C473" description="The value of the parameter that will be sent when this effect is enacted." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="interpolation_time" class="TunableSimMinute" default="15.0" display="Interpolation Time" muid="B938B3F09D0A40C0" min="0.0" max="None" description="The time in sim minutes over which to transition to the new value,&#xA;if this occurs during simulation." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="new_value" class="Tunable" default="1.0" display="New Value" muid="BD41A7F7B9FCE820" description="The value that we will set this parameter to." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="repeal_data" class="Tunable_WeatherParamData" display="Repeal Data" muid="8CD5A4754EF182A" description="The value of the parameter that will be sent when this effect is repealed." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="interpolation_time" class="TunableSimMinute" default="15.0" display="Interpolation Time" muid="FF10C2E194FC3F13" min="0.0" max="None" description="The time in sim minutes over which to transition to the new value,&#xA;if this occurs during simulation." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="new_value" class="Tunable" default="1.0" display="New Value" muid="6BD1E34AC2A069BB" description="The value that we will set this parameter to." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableVariant type="None" name="weather_parameter_type" class="TunableVariant" default="none" display="Weather Parameter Type" muid="4DADCE745D5D47E9" description="The parameter that we wish to change." Deprecated="False" filter="0" group="General">
+            <TunableEnum type="CloudType" name="cloud_type" class="TunableEnumEntry" default="SKYBOX_INDUSTRIAL" display="Cloud Type" muid="3599F8FBF574627A" static_entries="weather-weather_enums.CloudType" Deprecated="False" filter="0" group="General" />
+            <Tunable name="none" class="TunableExistance" display="None" muid="5A1DF3AADE1A7C26" />
+            <TunableEnum type="WeatherEffectType" name="weather_effect_type" class="TunableEnumEntry" default="ECO_FOOTPRINT" display="Weather Effect Type" muid="31C0A7025E61C78D" static_entries="weather-weather_enums.WeatherEffectType" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="gameplay_scenarios.scenario" muid="DD73E9BE8FDF2477">
+        <Class name="Scenario" muid="4E126B24141A18F1">
+            <TunableTuple name="RECOMMENDED_SCENARIOS" class="RecommendedScenariosData" display="Recommended Scenarios" muid="813CB2919BB14772" description="Data associated with scenarios recommended to players." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                <TunableList name="recommended_scenarios_for_playstyles" class="TunableMapping" display="Recommended Scenarios For Playstyles" muid="591F10E98C1050AC" mapping_key="playstyle" mapping_value="recommended_scenarios" description="A mapping from playstyle to list of scenarios recommended for that playstyle." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="PlaystyleRecommendedScenariosData">
+                    <TunableTuple class="TunableTuple" muid="92A2529884B4E1A3" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="Playstyle" name="playstyle" class="TunableEnumEntry" default="INVALID" display="Playstyle" muid="FFAA5799A1058049" dynamic_entries="playstyles-playstyle_enums.Playstyle._elements" static_entries="playstyles-playstyle_enums.Playstyle" description="A playstyle." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                        <TunableList name="recommended_scenarios" class="TunableList" display="Recommended Scenarios" muid="3F52B7A6DA7C963" description="A list of scenarios recommended for players that match this playstyle." Deprecated="False" filter="0" group="General">
+                            <Tunable type="snippet" class="TunableReference" muid="53FFDAB51829B236" description="A scenario." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Scenario" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableList>
+                <TunableList name="recommended_scenarios_no_playstyle" class="TunableList" display="Recommended Scenarios No Playstyle" muid="B9A349049BA52920" description="A list of scenarios recommended for new players for whom we don't have&#xA;playstyle data yet." Deprecated="False" filter="0" group="General">
+                    <Tunable type="snippet" class="TunableReference" muid="C57A9A597310582" description="A scenario." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Scenario" />
+                </TunableList>
+            </TunableTuple>
+
+            <TunableList name="SCENARIO_CATEGORIES" class="TunableMapping" display="Scenario Categories" muid="5F2502FC411F655D" mapping_key="key" mapping_value="value" description="A mapping from category to category data." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="CategoryData">
+                <TunableTuple class="TunableTuple" muid="825D98C3A80C670F" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ScenarioCategory" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="EA322AAC11F7C143" dynamic_entries="gameplay_scenarios-scenario_enums.ScenarioCategory._elements" static_entries="gameplay_scenarios-scenario_enums.ScenarioCategory" description="The scenario category." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <TunableTuple name="value" class="CategoryDataTuple" display="Value" muid="1FCC06158770264" description="Data associated with the scenario category." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="category_description" class="TunableLocalizedString" default="0x0" display="Category Description" muid="E1F2B6732995965C" description="The player facing description for this scenario category." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="category_name" class="TunableLocalizedString" default="0x0" display="Category Name" muid="C7E179381B183A4A" description="The player facing name for this scenario category." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SCENARIO_DIFFICULTY_CATEGORIES" class="TunableMapping" display="Scenario Difficulty Categories" muid="7746AE4C0FF6EAF1" mapping_key="key" mapping_value="value" description="A mapping from difficulty category to difficulty data." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="DifficultyCategoryData">
+                <TunableTuple class="TunableTuple" muid="831E19D6F549C03A" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ScenarioDifficultyCategory" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="6234535B8C9D7862" dynamic_entries="gameplay_scenarios-scenario_enums.ScenarioDifficultyCategory._elements" static_entries="gameplay_scenarios-scenario_enums.ScenarioDifficultyCategory" description="The difficulty category." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <TunableTuple name="value" class="DifficultyCategoryDataTuple" display="Value" muid="3B5F14EFA3567731" description="Data associated with the difficulty category." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="player_facing_name" class="TunableLocalizedString" default="0x0" display="Player Facing Name" muid="79382A7356698949" description="The player facing name for this difficulty category." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="C3D0299FF3DF2FF6" />
+            <Action type="kRemove" old_muid="46C75C45A28B0258" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="C64FE121A199A89D" new_muid="3B5F14EFA3567731" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

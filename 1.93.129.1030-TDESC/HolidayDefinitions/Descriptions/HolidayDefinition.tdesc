@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="holiday_definition" class="HolidayDefinition" module="holidays.holiday_definition" muid="F18DFC3DF91D843D" description="Tuning structure that contains all the data that describes a holiday." instance_needs_reference="True" instance_subclasses_only="False" path="HolidayDefinitions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="_display_data" class="OptionalTunable" default="disabled" display="Display Data" muid="4484B9497EA781EB" description="If enabled, specify display data for this instance." Deprecated="False" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="24AD1D93381939AD" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="4D90BEEA4A72F5C3" description="The instance's display data." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="instance_display_icon" class="OptionalTunable" default="enabled" display="Instance Display Icon" muid="336A2903E41E5379" description="If enabled, specify a display icon for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="906FE2C31AB19116" />
+                    <Tunable type="ResourceKey" name="enabled" class="TunableIcon" default="None" display="Enabled" muid="767B24733F5AD3F" description="The instance's icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_name" class="OptionalTunable" default="enabled" display="Instance Display Name" muid="D57F1710A3D87284" description="If enabled, specify a display name for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5EBA567BF653F6E7" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="407C1B8957BCA0F7" description="The instance's name." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="ResourceKey" name="audio_sting" class="TunableResourceKey" default="None" display="Audio Sting" muid="D7D6D808DBE63689" description="The sound to play." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+
+        <TunableVariant type="None" name="calendar_alert_description" class="OptionalTunable" default="disabled" display="Calendar Alert Description" muid="8E8A28A7E39D5A34" description="If tuned, there will be a calendar alert description." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C272AE8050F69FFA" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="94FFA5F370717386" description="Description that shows up in the calendar alert.&#xA;0 - Holiday Name" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="bool" name="can_be_modified" class="Tunable" default="False" display="Can Be Modified" muid="B00C19281836ED21" description="If checked, this holiday can be modified by the player." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="decoration_preset" class="OptionalTunable" default="disabled" display="Decoration Preset" muid="197A9F1ABAF5179C" description="The decoration preset that this holiday is set to by default.&#xA;&#xA;If disabled, this holiday does not do decorations." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="2B5A2FADFEE27C43" />
+            <Tunable type="lot_decoration_preset" name="enabled" class="TunableReference" display="Enabled" muid="92DD41E3D81FF4A8" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="bool" name="time_off_school" class="Tunable" default="False" display="Time Off School" muid="26AC78FA60D863B2" description="If checked, Sims will have the day off from school for the holiday." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="time_off_work" class="Tunable" default="False" display="Time Off Work" muid="C2BAA10AE19EADC7" description="If checked, Sims will have the day off from work, both part time&#xA;and full time." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="traditions" class="TunableList" display="Traditions" muid="9A7499948353C6BA" max="5" description="List of default traditions for this holiday." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="holiday_tradition" class="TunableReference" muid="7CE127D5AEB47330" description="A default tradition for this holiday." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

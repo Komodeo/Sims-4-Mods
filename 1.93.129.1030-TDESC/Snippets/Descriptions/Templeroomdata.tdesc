@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="Templeroomdata" module="snippets" muid="97B705C12E73591B" instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="value" class="TunableTempleRoomData" display="Value" muid="B2B2944A888FB0B5" description="Tuning for an individual room in a temple." Deprecated="False" filter="0" group="General">
+            <TunableList name="gate" class="TunableSet" display="Gate" muid="15BB5A03F9D7C82E" description="A set of states in which the gate in this room can potentially&#xA;start." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="object_state" class="TunableReference" muid="5620A4F77FEBB835" description="A potential starting state for the gate in this room." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+            </TunableList>
+            <TunableList name="traps" class="TunableMapping" display="Traps" muid="FB789F8B5169D4E3" mapping_key="Trap" mapping_value="Potential Trigger Interactions" description="A mapping of trap objects to the interactions that can be used in&#xA;the pool potential of &quot;trigger&quot; interaction. A trap object will be&#xA;chosen at random from this mapping and placed at each placeholder&#xA;trap in this room. Once all trap objects have been chosen and placed&#xA;for a room, all of the mapped interactions will be collected and one&#xA;random interaction will be chosen as the &quot;trigger&quot; interaction." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="979411ACBA939016" Deprecated="False" filter="0" group="General">
+                    <TunableList name="Potential Trigger Interactions" class="TunableSet" display="Potential Trigger Interactions" muid="D8E471B03FB07ABD" description="A set of interactions that, if successfully completed on the&#xA;chosen trap object, will trigger the loot for the gate in this&#xA;room." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="interaction" class="TunableReference" muid="3FE5EBA7EAECAF31" description="One of the potential trigger interactions. This interaction&#xA;also needs to be tuned on the object chosen for this trap." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SuperInteraction" />
+                    </TunableList>
+                    <Tunable type="object" name="Trap" class="TunableReference" display="Trap" muid="42063B1F57D7DD4A" description="A reference to the trap object." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

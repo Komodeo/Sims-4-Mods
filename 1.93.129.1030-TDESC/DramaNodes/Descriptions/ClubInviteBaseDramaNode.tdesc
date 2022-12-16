@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="drama_node" class="ClubInviteBaseDramaNode" module="drama_scheduler.club_invite_drama_node" muid="CD444E73BE5189DB" description="A drama node that provides basic functionality for Sims inviting other Sims&#xA;to join Clubs, as well as Sims asking other Sims to join their Clubs." instance_subclasses_only="False" parents="BaseDramaNode" path="DramaNodes\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="dialog" class="TunableUiDialogOkCancel" display="Dialog" muid="EEE09440E375264C" description="The dialog that is displayed to the player Sim once this Drama Node&#xA;executes. Upon acceptance, the behavior specific to this Drama Node&#xA;executes." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="additional_texts" class="OptionalTunable" default="disabled" display="Additional Texts" muid="D7C93E075ECFD49C" description="If enabled, add additional text to the dialog" Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7DB10C388EF6E4DB" />
+                <TunableList name="enabled" class="TunableList" display="Enabled" muid="3736A78E4981CD1" Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="5D4C354806061166" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableVariant>
+            <Tunable type="bool" name="anonymous_target_sim" class="Tunable" default="False" display="Anonymous Target Sim" muid="3F04912556CD977F" description="If this dialog is using a target sim id to give a conversation type view and this is checked, then the&#xA;target sim icon will instead be replaced by an anonymous caller." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="audio_cancel" class="OptionalTunable" default="disabled" display="Audio Cancel" muid="E70D99F6658AF57B" description="If enabled, this is the audio event sent by the Cancel button." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D9D19C9ADE089565" />
+                <Tunable type="str" name="enabled" class="Tunable" default="" display="Enabled" muid="5C6EA5B1D5303CB4" description="The Cancel button audio event name." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableVariant type="None" name="audio_ok" class="OptionalTunable" default="disabled" display="Audio Ok" muid="AA32F336A0F7A5AB" description="If enabled, this is the audio event sent by the Ok button." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9AEAA5B6443850CF" />
+                <Tunable type="str" name="enabled" class="Tunable" default="" display="Enabled" muid="1E3E3A2354E3801" description="The Ok button audio event name." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableVariant type="None" name="audio_sting" class="OptionalTunable" default="disabled" display="Audio Sting" muid="F5153A6998A603C9" description="If enabled, play an audio sting when the dialog is shown." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F0131C92E30BF495" />
+                <TunableTuple name="enabled" class="TunablePlayAudio" display="Enabled" muid="7DF6D6CAB1B62D06" Deprecated="False" filter="0" group="General">
+                    <Tunable type="ResourceKey" name="audio" class="TunableResourceKey" default="None" display="Audio" muid="9D1FB707595EA9BE" description="The sound to play." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+                    <Tunable type="bool" name="immediate_audio" class="Tunable" default="False" display="Immediate Audio" muid="9C461EAAE860E3F2" description="If checked, this audio will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. Earbuds audio will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="joint_name_hash" class="OptionalTunable" default="disabled" display="Joint Name Hash" muid="CCA1D5C66A2A48F0" description="Specify if the audio is attached to a slot and, if so, which&#xA;slot. Otherwise the audio will be attached to the object's &#xA;origin." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="44BD4F40F34A0CA0" />
+                        <Tunable type="str" name="enabled" class="TunableStringHash32" default="None" display="Enabled" muid="38B16A3FF7CE279F" description="The name of the slot this audio is attached to." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="bool" name="play_on_active_sim_only" class="Tunable" default="False" display="Play On Active Sim Only" muid="B70D5920CD9A9B4" description="If enabled, and audio target is Sim, the audio will only be &#xA;played on selected Sim. Otherwise it will be played regardless &#xA;Sim is selected or not.&#xA;&#xA;If audio target is Object, always set this to False. Otherwise&#xA;the audio will never be played.&#xA;&#xA;ex. This will be useful for Earbuds where we want to hear the&#xA;music only when the Sim is selected." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableVariant>
+            <TunableVariant type="None" name="audio_sting_owner" class="OptionalTunable" default="disabled" display="Audio Sting Owner" muid="D7B309C85200ED86" description="If enabled, this will set the owner of the audio sting when the&#xA;dialog is shown." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="90AA67A87A74556B" />
+                <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="B162E9550A48E410" static_entries="interactions.ParticipantType" description="The participant of the interaction who will play the audio_sting." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableVariant type="None" name="background_audio" class="OptionalTunable" default="disabled" display="Background Audio" muid="485D4C1ED7031E7E" description="If enabled, play background audio while the dialog is open." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="54BE5217A963DCAC" />
+                <Tunable type="str" name="enabled" class="Tunable" default="" display="Enabled" muid="56556F4097186D27" description="The background audio event string." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableVariant type="None" name="background_image" class="OptionalTunable" default="disabled" display="Background Image" muid="F14FD1F91DEB4B46" description="If enabled, add a background image to the dialog.  This will only &#xA;be used in the case where dialog_bg_style is BG_DYNAMIC_IMAGE." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="689712B0CC78179B" />
+                <Tunable type="ResourceKey" name="enabled" class="TunableResourceKey" default="None" display="Enabled" muid="3AA2D4C0EED89E29" description="The background image for the family portrait." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+            </TunableVariant>
+            <TunableEnum type="UiDialogBGStyle" name="dialog_bg_style" class="TunableEnumEntry" default="BG_DEFAULT" display="Dialog Bg Style" muid="F45EA503C3E5C53D" static_entries="ui-ui_dialog.UiDialogBGStyle" description="The style background to apply to this dialog." Deprecated="False" filter="0" group="General" />
+            <TunableList name="dialog_options" class="TunableEnumFlags" default="DISABLE_CLOSE_BUTTON" display="Dialog Options" muid="9CEFA90CE86286FC" description="Options to apply to the dialog." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="UiDialogOption" class="TunableEnumEntry" default="DISABLE_CLOSE_BUTTON" muid="F23BD7C439FA71AA" static_entries="ui-ui_dialog.UiDialogOption" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+            <TunableEnum type="UiDialogStyle" name="dialog_style" class="TunableEnumEntry" default="DEFAULT" display="Dialog Style" muid="D11E8E55999C0A1" static_entries="ui-ui_dialog.UiDialogStyle" description="The style layout to apply to this dialog." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="icon" class="OptionalTunable" default="disabled" display="Icon" muid="1D5683F329A97845" description="If enabled, specify an icon to be displayed." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4A0A4F3B7B6E8D20" />
+                <TunableVariant type="None" name="enabled" class="TunableIconVariant" default="resource_key" display="Enabled" muid="C884138396865D39" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="career_icon_override" class="TunableCareerIconOverrideIconFactory" display="Career Icon Override" muid="BD643E811AAB7156" Deprecated="False" filter="0" group="General">
+                        <Tunable type="career" name="career_reference" class="TunableReference" display="Career Reference" muid="4818FA7754BF4EDD" description="The Career to override the icon." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="CD34FEB0AF2C36AE" description="The Participant who owns the career." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="7CC8411D407CC69C" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="lifestyle_brand" class="TunableLifestyleBrandIconFactory" display="Lifestyle Brand" muid="6F72E374D742698E" Deprecated="False" filter="0" group="General">
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="B31B0F93EEB9E78E" description="The Participant who owns the lifestyle brand we want to use." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="620859B9A20054E7" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="participant" class="TunableParticipantTypeIconFactory" display="Participant" muid="F151FC025BBBE549" description="The Sim who's thumbnail will be used." Deprecated="False" filter="0" group="General">
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="71A7B4753A743711" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantType" class="TunableEnumEntry" default="Invalid" muid="DEC6DFB35AF4614" static_entries="interactions.ParticipantType" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="privacy" class="TunablePrivacyIconFactory" display="Privacy" muid="8FD89596FDC76E18" description="Search an interaction's privacy liability to find violating Sims&#xA;and randomly select one to display an icon of." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="resource_key" class="TunableIconFactory" display="Resource Key" muid="9E4381CABB79C269" description="The icon image to be displayed." Deprecated="False" filter="0" group="General">
+                        <Tunable type="ResourceKey" name="key" class="TunableIcon" default="None" display="Key" muid="F4203AB731B679B8" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    </TunableTuple>
+                    <TunableTuple name="tradition" class="TunableHolidayIconFactory" display="Tradition" muid="43BAC13268176C5" Deprecated="False" filter="0" group="General">
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="11832A51B6AA296F" description="We use this participant's holiday tracker to get the icon." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="F9EDED79F684F06F" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableVariant>
+            <TunableVariant type="None" name="icon_override_participant" class="OptionalTunable" default="disabled" display="Icon Override Participant" muid="ACA6EDA7D8A8A2BD" description="If enabled, allows a different participant to be considered the&#xA;owner of this dialog. Typically, this will only affect the Sim&#xA;portrait used at the top of the dialog, but there could be other&#xA;adverse affects so be sure to talk to your UI partner before tuning&#xA;this." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9A933057523A0DAE" />
+                <TunableEnum type="ParticipantTypeSingleSim" name="enabled" class="TunableEnumEntry" default="Invalid" display="Enabled" muid="A5D86DDB194BA9EB" static_entries="interactions.ParticipantTypeSingleSim" description="The participant to be used as the owner of this dialog. If this&#xA;participant doesn't exist, the default owner will be used&#xA;instead." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="bool" name="is_special_dialog" class="Tunable" default="False" display="Is Special Dialog" muid="AB00F1E452C765A0" description="If checked, UI will treat this as a special ok or ok/cancel dialog &#xA;and represent the ok or ok/cancel options in a special way. &#xA;They will use the text as a tooltip for ok or ok/cancel options &#xA;and use particular icons for the buttons." Deprecated="False" filter="0" group="General" />
+            <TunableEnum type="PhoneRingType" name="phone_ring_type" class="TunableEnumEntry" default="NO_RING" display="Phone Ring Type" muid="3627BADC8A8077E4" static_entries="ui-ui_dialog.PhoneRingType" description="The phone ring type of this dialog.  If tuned to anything other&#xA;than None this dialog will only appear after clicking on the phone." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="secondary_icon" class="OptionalTunable" default="disabled" display="Secondary Icon" muid="115700D46241FC4E" description="If enabled, specify a secondary icon to be displayed. Only certain&#xA;dialog types may support this field." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="E45C718FF7EC2812" />
+                <TunableVariant type="None" name="enabled" class="TunableIconVariant" default="resource_key" display="Enabled" muid="E47B8FDA4377199E" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="career_icon_override" class="TunableCareerIconOverrideIconFactory" display="Career Icon Override" muid="97BB3B2DDFAD1058" Deprecated="False" filter="0" group="General">
+                        <Tunable type="career" name="career_reference" class="TunableReference" display="Career Reference" muid="D7721A4AD319FE81" description="The Career to override the icon." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="3516B8C7D56DF314" description="The Participant who owns the career." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="D24FC0EBB8269A7A" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="lifestyle_brand" class="TunableLifestyleBrandIconFactory" display="Lifestyle Brand" muid="89F6E1B3682E9E28" Deprecated="False" filter="0" group="General">
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="3B60E1DF03A44B7A" description="The Participant who owns the lifestyle brand we want to use." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="A29A9D51FE9C5F61" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="participant" class="TunableParticipantTypeIconFactory" display="Participant" muid="8ED1A96040F36560" description="The Sim who's thumbnail will be used." Deprecated="False" filter="0" group="General">
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="98C76A75FA360B14" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantType" class="TunableEnumEntry" default="Invalid" muid="FBB648185E237D93" static_entries="interactions.ParticipantType" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="privacy" class="TunablePrivacyIconFactory" display="Privacy" muid="9B48B5C77D518D6B" description="Search an interaction's privacy liability to find violating Sims&#xA;and randomly select one to display an icon of." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="resource_key" class="TunableIconFactory" display="Resource Key" muid="AA63EC55C4AAB1A3" description="The icon image to be displayed." Deprecated="False" filter="0" group="General">
+                        <Tunable type="ResourceKey" name="key" class="TunableIcon" default="None" display="Key" muid="770550570DF4DD01" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    </TunableTuple>
+                    <TunableTuple name="tradition" class="TunableHolidayIconFactory" display="Tradition" muid="5C2AFC150AF4B847" Deprecated="False" filter="0" group="General">
+                        <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="7B6249BEE34231DE" description="We use this participant's holiday tracker to get the icon." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="719BDFE688D15E38" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableVariant>
+            <TunableVariant type="None" name="secondary_picker_icon_data" class="OptionalTunable" default="disabled" display="Secondary Picker Icon Data" muid="AFF4E07DDE563680" description="If enabled, specify the texts to be displayed below the &#xA;secondary_icon image in the dialog panel." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F51597E1431E4800" />
+                <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="93C8C7B991C6F81" description="Tuning for the title and description texts to accompany the&#xA;secondary_icon image." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="description_text" class="TunableLocalizedString" default="0x0" display="Description Text" muid="F7FD05732FA98BAF" description="The dialog's title." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="title" class="TunableLocalizedString" default="0x0" display="Title" muid="29D6CAF10263D533" description="The dialog's title." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableVariant>
+            <TunableVariant type="None" name="text" class="TunableLocalizedStringFactoryVariant" default="single" display="Text" muid="FAF896D2E31751D4" description="The dialog's text." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="concatenation" class="TunableLocalizedStringFactoryConcatenation" display="Concatenation" muid="95F5574D94F23A64" description="A list of localized string concatenations. These strings will be joined together into single line-separated string" Deprecated="False" filter="0" group="General">
+                    <TunableList name="concatenations" class="TunableList" display="Concatenations" muid="6A58A8C75A77834E" Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" class="TunableLocalizedStringSnippet" default="literal" muid="785636575B6500F2" description="This may be tuned in place here using 'literal' or as a reference to a LocalizedString tuning snippet." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="literal" class="TunableLocalizedString" default="0x0" display="Literal" muid="733C30E82DE6C1B0" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="E44EDDF4BF542DC1" description="A reference to a LocalizedString tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LocalizedString" />
+                        </TunableVariant>
+                    </TunableList>
+                </TunableTuple>
+                <Tunable type="int" name="single" class="TunableLocalizedString" default="0x0" display="Single" muid="B9CBE4FBA2DC2327" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="variation" class="TunableLocalizedStringFactoryVariation" display="Variation" muid="1F13B8F17802468A" description="A list of possible localized string variations." Deprecated="False" filter="0" group="General">
+                    <TunableList name="variations" class="TunableList" display="Variations" muid="67E8A6925CC34639" Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="672C8C8B0E9D17FF" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+            <Tunable type="int" name="text_cancel" class="TunableLocalizedString" default="0xd078441a" display="Text Cancel" muid="C628E29E26B9AD6E" description="The Cancel button text." Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="text_ok" class="TunableLocalizedString" default="0xd977b872" display="Text Ok" muid="FD9F82457817B842" description="The OK button text." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="text_tokens" class="OptionalTunable" default="disabled" display="Text Tokens" muid="CEFF324ADEA0ED6D" description="If enabled, define text tokens to be used to localized text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A1A50D067DF98537" />
+                <TunableTuple name="enabled" class="TunableLocalizationTokens" display="Enabled" muid="D5000EC28C51637D" description="Define the text tokens that are available to all text fields in&#xA;the dialog, such as title, text, responses, default and initial&#xA;text values, tooltips, etc." Deprecated="False" filter="0" group="General">
+                    <TunableList name="tokens" class="TunableList" display="Tokens" muid="6008FD0AA2B5329E" description="A list of tokens that will be returned by this factory. Any string&#xA;that uses this token will have token '0' be set to the first&#xA;element, '1' to the second element, and so on. Do not let the list&#xA;inheritance values confuse you; regardless of what the list element&#xA;index is, the first element will always be 0, the second element 1,&#xA;and so on." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" class="TunableVariant" default="participant_type" muid="63F28C756955EA98" description="Define what the token at the specified index is." Deprecated="False" filter="0" group="General">
+                            <Tunable name="active_holiday" class="TunableExistance" display="Active Holiday" muid="44D8CCCC46DF52AC" />
+                            <TunableTuple name="animal_home" class="TunableTuple" display="Animal Home" muid="BA7048FCA6564DC1" description="Tokens for the animal home." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="animal_home_data" class="TunableVariant" default="max_capacity" display="Animal Home Data" muid="637A72BBD4E9E8C4" description="Data you'd like to fetch about the animal home." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="current_occupancy" class="TunableExistance" display="Current Occupancy" muid="64BF085863EC9802" />
+                                    <Tunable name="max_capacity" class="TunableExistance" display="Max Capacity" muid="C148D529A99F0C01" />
+                                </TunableVariant>
+                                <TunableEnum type="ParticipantTypeSingle" name="participant" class="TunableEnumEntry" default="ParticipantType.Object" display="Participant" muid="273424960E831F9" static_entries="interactions.ParticipantTypeSingle" description="The participant from whom we will fetch specified data.&#xA;This is expected to resolve to an Animal Home." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="associated_club" class="TunableTuple" display="Associated Club" muid="8F5014A80FCD128B" description="The token is a stored &quot;associated_club&quot; on this&#xA;interaction. Only works with ClubMixerInteractions or&#xA;ClubSuperInteractions." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="buck_amount" class="TunableTuple" display="Buck Amount" muid="F81707B9830EA8B3" description="The token is a number repesenting the amount of the &#xA;specified buck type the specified participant has." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="BucksType" name="bucks_type" class="TunableEnumEntry" default="INVALID" display="Bucks Type" muid="BD5C1A8286408AFB" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" Deprecated="False" filter="0" group="General" />
+                                <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="B1B7A9E8751FB6B8" static_entries="interactions.ParticipantType" description="The participant from whom we will fetch the specified&#xA;statistic's value." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="career_data" class="TunableTuple" display="Career Data" muid="B43A9F7F21F8FBDD" description="The token is a localized string, number, or Sim,&#xA;representing the specified career data for the specified&#xA;participant." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="career_data" class="TunableVariant" default="current_level_name" display="Career Data" muid="7171B593CA02F8C2" description="The piece of data to fetch." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="current_level_name" class="TunableExistance" display="Current Level Name" muid="F018CEC6F14050F" />
+                                    <Tunable name="current_level_salary" class="TunableExistance" display="Current Level Salary" muid="11B5C3EA1ABFB7E" />
+                                    <Tunable name="next_level_name" class="TunableExistance" display="Next Level Name" muid="E15B6EC049B530D3" />
+                                    <Tunable name="next_level_salary" class="TunableExistance" display="Next Level Salary" muid="2F1794E7F34E831" />
+                                    <Tunable name="previous_level_name" class="TunableExistance" display="Previous Level Name" muid="19624418EA55E866" />
+                                    <Tunable name="previous_level_salary" class="TunableExistance" display="Previous Level Salary" muid="B0BCBFF060FD5467" />
+                                </TunableVariant>
+                                <Tunable type="career" name="career_type" class="TunableReference" display="Career Type" muid="E45E56F7682B5F5F" description="The career we care about." allow_none="False" Deprecated="False" filter="0" group="General" />
+                                <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="7473E5BBC904F039" static_entries="interactions.ParticipantType" description="The participant's whose career data we care about." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="civic_policy" class="TunableTuple" display="Civic Policy" muid="C1F74F05B475055F" description="Tokens for the Civic Policy system." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="civic_policy_data" class="TunableVariant" default="voting_start_time" display="Civic Policy Data" muid="FE605AA8E5024C0A" description="The specific value to display." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="voting_end_time" class="TunableExistance" display="Voting End Time" muid="C5401DAB9315D76E" />
+                                    <Tunable name="voting_start_time" class="TunableExistance" display="Voting Start Time" muid="4D413DBB582583E0" />
+                                </TunableVariant>
+                            </TunableTuple>
+                            <Tunable name="current_trends" class="TunableExistance" display="Current Trends" muid="FA37700C494DD62A" />
+                            <TunableTuple name="definition" class="TunableTuple" display="Definition" muid="D929F703E652510A" description="A catalog definition to use as a token. This is useful if&#xA;you want to properly localize an object's name or&#xA;description." Deprecated="False" filter="0" group="General">
+                                <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="AABFCDF0C37614C1" allow_none="False" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="game_component_data" class="TunableTuple" display="Game Component Data" muid="FB942C5925A8F8B7" description="The token is a localized number or Sim representing &#xA;the specified game component data from game component." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="game_component_data" class="TunableVariant" default="high_score" display="Game Component Data" muid="342E08CDF8913E1" description="The piece of data to fetch." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="high_score" class="TunableExistance" display="High Score" muid="81E91D33135D2B14" />
+                                    <Tunable name="high_score_sim" class="TunableExistance" display="High Score Sim" muid="EC37F94615A20113" />
+                                </TunableVariant>
+                                <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="1465C394F04D2A69" static_entries="interactions.ParticipantType" description="The participant's from whom the game component data &#xA;we want to fetch." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="gig_history" class="TunableTuple" display="Gig History" muid="1DC009249899B215" description="The token used to display data from gig history." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="customer_participant" class="OptionalTunable" default="disabled" display="Customer Participant" muid="1A547A4900733F62" description="If enabled, this is the participant representing the customer in gig history.&#xA;If disabled, falls back to searching for any valid gig in history." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CF36FAE93F6C0EA3" />
+                                    <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="TargetSim" display="Enabled" muid="17963795D4E2F7F8" static_entries="interactions.ParticipantType" description="TargetSim searches for provided customer sim. Lot will search for the current lot." Deprecated="False" filter="0" group="General" />
+                                </TunableVariant>
+                                <TunableVariant type="None" name="gig_history_data" class="TunableVariant" default="gig_customer_name" display="Gig History Data" muid="423D03528BD70254" description="The piece of data to fetch." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="gig_customer_name" class="TunableExistance" display="Gig Customer Name" muid="313316C6E46D9C28" />
+                                    <Tunable name="gig_project_title" class="TunableExistance" display="Gig Project Title" muid="56A1C3223B218BBD" />
+                                </TunableVariant>
+                                <TunableEnum type="GigResult" name="max_gig_result" class="TunableEnumEntry" default="GREAT_SUCCESS" display="Max Gig Result" muid="42760C6B2661EDD5" static_entries="careers-career_enums.GigResult" description="The worst acceptable gig result to find." Deprecated="False" filter="0" group="General" />
+                                <TunableEnum type="GigResult" name="min_gig_result" class="TunableEnumEntry" default="CRITICAL_FAILURE" display="Min Gig Result" muid="C317D151BCC975A2" static_entries="careers-career_enums.GigResult" description="The worst acceptable gig result to find." Deprecated="False" filter="0" group="General" />
+                                <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="A35C0C6AF1F35B33" static_entries="interactions.ParticipantType" description="The participant whose gig history we will search." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="global_policy" class="TunableTuple" display="Global Policy" muid="4BE11621BEDBB063" description="The token used to display data from the tuned global policy." Deprecated="False" filter="0" group="General">
+                                <Tunable type="snippet" name="global_policy" class="TunableReference" display="Global Policy" muid="EE99EA28223286F6" description="The global policy from which data is displayed." allow_none="False" Deprecated="False" filter="0" group="General" restrict="GlobalPolicy" />
+                                <TunableEnum type="GlobalPolicyTokenType" name="token_property" class="TunableEnumEntry" default="NAME" display="Token Property" muid="4516F41C11AA57FB" static_entries="global_policies-global_policy_enums.GlobalPolicyTokenType" description="Which property from the Global Policy Token to use. NAME&#xA;will use the policy's display name, PROGRESS will use&#xA;the progress made over the max progress value. " Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <Tunable name="interaction_cost" class="TunableExistance" display="Interaction Cost" muid="9F9ECD580A3C1AFB" />
+                            <Tunable name="interaction_payout" class="TunableExistance" display="Interaction Payout" muid="8139EB8E631E637E" />
+                            <TunableTuple name="lifestyle_brand" class="TunableTuple" display="Lifestyle Brand" muid="21956AE9F0A9CAFF" description="The token used to display the name of a Lifestyle Brand &#xA;owned by a Sim." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="ParticipantTypeSingle" name="participant" class="TunableEnumEntry" default="ParticipantType.TargetSim" display="Participant" muid="803AC327BCC6C5F3" static_entries="interactions.ParticipantTypeSingle" description="The participant who owns the lifestyle brand." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="money_amount" class="TunableTuple" display="Money Amount" muid="21C986285C9AB617" description="The token is a number representing the amount of Simoleons&#xA;that were awarded in loot to the specified participant." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="23CCB1B178FE7278" static_entries="interactions.ParticipantType" description="The participant for whom we fetch the earned amount of&#xA;money." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="object_fashion_marketplace" class="TunableTuple" display="Object Fashion Marketplace" muid="1BE619A61FE57FF" description="Tokens for the object fashion marketplace component and &#xA;fashion marketplace system." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="object_fashion_marketplace_data" class="TunableVariant" default="expiration_time" display="Object Fashion Marketplace Data" muid="5E33883DE2762EC0" description="Please select what value you would like to use." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="buyer_name" class="TunableExistance" display="Buyer Name" muid="1B6249C37B83358B" />
+                                    <Tunable name="expiration_time" class="TunableExistance" display="Expiration Time" muid="23EE16BC10E648C9" />
+                                    <Tunable name="sale_price" class="TunableExistance" display="Sale Price" muid="AEDD9DEBA25265E4" />
+                                    <Tunable name="suggested_sale_price" class="TunableExistance" display="Suggested Sale Price" muid="4E42022E0A560DD7" />
+                                </TunableVariant>
+                            </TunableTuple>
+                            <TunableTuple name="object_marketplace" class="TunableTuple" display="Object Marketplace" muid="20DA49B674CED359" description="Tokens for the object marketplace component and marketplace&#xA;system." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="object_marketplace_data" class="TunableVariant" default="expiration_time" display="Object Marketplace Data" muid="E266A8CE471D66F7" description="Please select what value you would like to use." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="buyer_name" class="TunableExistance" display="Buyer Name" muid="15418D47EC555CB9" />
+                                    <Tunable name="expiration_time" class="TunableExistance" display="Expiration Time" muid="72000E299E01204" />
+                                    <Tunable name="sale_price" class="TunableExistance" display="Sale Price" muid="6D6E00E17034E9FC" />
+                                </TunableVariant>
+                            </TunableTuple>
+                            <TunableTuple name="object_property" class="TunableTuple" display="Object Property" muid="8655701A27F482D7" description="The token is a property of a game object.  This could be &#xA;catalog properties like its price or its rarity which is a &#xA;property given by a component." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="GameObjectProperty" name="obj_property" class="TunableEnumEntry" default="CATALOG_PRICE" display="Obj Property" muid="CCF80E17C996A193" static_entries="objects-game_object_properties.GameObjectProperty" description="The property of the object that we will request." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="object_state_value" class="TunableTuple" display="Object State Value" muid="94DC4214FD8CF168" description="The token is a string representing the value of a specific&#xA;state from the selected participant." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="4F8C02C0016BBCDB" static_entries="interactions.ParticipantType" description="The participant from whom we will fetch the specified&#xA;state's value." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="object_state" name="state" class="TunableReference" display="State" muid="850DC64ED18FDEE9" description="The state's whose value we want to fetch." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectState" />
+                            </TunableTuple>
+                            <TunableTuple name="participant_count" class="TunableTuple" display="Participant Count" muid="B9913BC9CEC22997" description="The number of participants of the specified type." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="objects" class="TunableObjectGeneratorVariant" default="from_participant" display="Objects" muid="DBC218B12B47FDE0" Deprecated="False" filter="0" group="General">
+                                    <TunableTuple name="from_gardening" class="Tunable_ObjectGeneratorFromGardening" display="From Gardening" muid="4A676CCE5427EF12" description="The generated objects are those gardening objects that are within the&#xA;specified distance from the tuned participant." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="float" name="distance" class="TunableRange" default="4" display="Distance" muid="D9C42549C7DC93E5" min="1.192092896e-07" max="None" description="The distance used to determine which objects are generated." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <TunableVariant type="None" name="object_type" class="TunableVariant" default="plants" display="Object Type" muid="7C21B088CC7EADAD" description="The type of gardening object to return." Deprecated="False" filter="0" group="General">
+                                            <TunableTuple name="harvestables" class="Tunable_ObjectTypeHarvestable" display="Harvestables" muid="8D5D531E09BF5BC9" description="Return all harvestables, i.e. all fruits/flowers parented to plants." Deprecated="False" filter="0" group="General" />
+                                            <TunableTuple name="plants" class="Tunable_ObjectTypePlant" display="Plants" muid="6B92BD27C8DCE734" description="Return all plants." Deprecated="False" filter="0" group="General" />
+                                        </TunableVariant>
+                                        <TunableEnum type="ParticipantTypeSingle" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="2119A756D0C7933B" static_entries="interactions.ParticipantTypeSingle" description="The object used as a center point for distance calculations." Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                    <TunableTuple name="from_participant" class="Tunable_ObjectGeneratorFromParticipant" display="From Participant" muid="6628A8B85E79A05C" description="Specify a participant type to generate objects based on this interaction." Deprecated="False" filter="0" group="General">
+                                        <TunableVariant type="None" name="in_slot" class="TunableVariant" default="use_participant" display="In Slot" muid="2598A99EFE73F1C5" description="slots of the participant object from which the target objects should be pulled." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="str" name="by_name" class="Tunable" default="_ctnm_" display="By Name" muid="BDA252AFBC72A768" description="The exact name of a slot on the parent object in which the object should be.  " Deprecated="False" filter="0" group="General" />
+                                            <Tunable type="slot_type" name="by_reference" class="TunableReference" display="By Reference" muid="62347BDD44DC720A" description="A particular slot type in which the object should be." allow_none="False" Deprecated="False" filter="0" group="General" />
+                                            <TunableList name="by_set_of_references" class="TunableSet" display="By Set Of References" muid="CAC89BA3BEB9926C" description="A set of references that the objects should be in." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                                <Tunable type="slot_type" class="TunableReference" muid="F2230784A25C9C99" allow_none="False" Deprecated="False" filter="0" group="General" />
+                                            </TunableList>
+                                            <Tunable name="use_participant" class="TunableExistance" display="Use Participant" muid="C495A3BB3F36AD67" />
+                                        </TunableVariant>
+                                        <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="ObjectChildren" display="Participant" muid="E50160A84FD26483" static_entries="interactions.ParticipantType" description="The participant determining which objects are to be generated." Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                    <TunableTuple name="from_stored_object_component" class="Tunable_ObjectGeneratorFromStoredObjectComponent" display="From Stored Object Component" muid="635E87D3E66DD3B1" description="Return the stored object of the specified type from the stored object&#xA;component of the specified participant.S" Deprecated="False" filter="0" group="General">
+                                        <TunableEnum type="ParticipantTypeSingle" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="4929A530F7AE1A95" static_entries="interactions.ParticipantTypeSingle" description="The participant from which the stored object is returned." Deprecated="False" filter="0" group="General" />
+                                        <TunableEnum type="StoredObjectType" name="stored_object_type" class="TunableEnumEntry" default="INVALID" display="Stored Object Type" muid="C51F158EA81D3A55" dynamic_entries="objects-components-stored_object_info_tuning.StoredObjectType._elements" static_entries="objects-components-stored_object_info_tuning.StoredObjectType" description="The type of object to apply loot actions to." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                                    </TunableTuple>
+                                </TunableVariant>
+                            </TunableTuple>
+                            <TunableTuple name="participant_type" class="TunableTuple" display="Participant Type" muid="36B86F3F7B5E9407" description="The token is a Sim or object participant from the&#xA;interaction." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="formatter" class="TunableObjectLocalizationTokenFormatterVariant" default="single" display="Formatter" muid="36BBDEE7AEFC0A1B" description="Define the format for this token." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple name="bullet_list" class="Tunable_TunableObjectLocalizationTokenFormatterBulletList" display="Bullet List" muid="21B1694B39C23AE7" description="The token is a string, which is a formatted bullet point list. Objects&#xA;are grouped by definition. The text for each item must be specified." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="int" name="bullet_text" class="TunableLocalizedString" default="0x0" display="Bullet Text" muid="7D9651D8AC50DBE2" description="The text for the bullet entry. The string is provided the&#xA;following tokens, in this order:&#xA; 0 An object representitive of the group&#xA; 1 The number of objects in the group" Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                    <TunableTuple name="single" class="Tunable_TunableObjectLocalizationTokenFormatterSingle" display="Single" muid="AFC7880464EAC4A9" description="The token is a single object name. If multiple participants are&#xA;returned, an arbitrary one is used. That is, unless the mismatch key is&#xA;specified. In that case, the string is used unless all of the&#xA;participants' definitions match." Deprecated="False" filter="0" group="General">
+                                        <TunableVariant type="None" name="mismatch_name" class="OptionalTunable" default="disabled" display="Mismatch Name" muid="F269B68811057076" description="If enabled, this is the object name to use when using a multi-&#xA;object participant yielding definitions with different names." Deprecated="False" filter="0" group="General">
+                                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CB2A9182BEE809AA" />
+                                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="DD9D95BA88E120EC" description="A localized string that may NOT require tokens." allow_catalog_name="True" Deprecated="False" filter="0" group="General" />
+                                        </TunableVariant>
+                                    </TunableTuple>
+                                </TunableVariant>
+                                <TunableVariant type="None" name="objects" class="TunableObjectGeneratorVariant" default="from_participant" display="Objects" muid="B16ACAB75E17771" Deprecated="False" filter="0" group="General">
+                                    <TunableTuple name="from_gardening" class="Tunable_ObjectGeneratorFromGardening" display="From Gardening" muid="D36758793659F9A1" description="The generated objects are those gardening objects that are within the&#xA;specified distance from the tuned participant." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="float" name="distance" class="TunableRange" default="4" display="Distance" muid="1362D3B11F1E87FE" min="1.192092896e-07" max="None" description="The distance used to determine which objects are generated." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <TunableVariant type="None" name="object_type" class="TunableVariant" default="plants" display="Object Type" muid="2E060AED7C515086" description="The type of gardening object to return." Deprecated="False" filter="0" group="General">
+                                            <TunableTuple name="harvestables" class="Tunable_ObjectTypeHarvestable" display="Harvestables" muid="82E437D77D22E3D2" description="Return all harvestables, i.e. all fruits/flowers parented to plants." Deprecated="False" filter="0" group="General" />
+                                            <TunableTuple name="plants" class="Tunable_ObjectTypePlant" display="Plants" muid="2875FFC8D4B13D55" description="Return all plants." Deprecated="False" filter="0" group="General" />
+                                        </TunableVariant>
+                                        <TunableEnum type="ParticipantTypeSingle" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="1BB9EA5FA7E64ED0" static_entries="interactions.ParticipantTypeSingle" description="The object used as a center point for distance calculations." Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                    <TunableTuple name="from_participant" class="Tunable_ObjectGeneratorFromParticipant" display="From Participant" muid="5B06F2DD554ED552" description="Specify a participant type to generate objects based on this interaction." Deprecated="False" filter="0" group="General">
+                                        <TunableVariant type="None" name="in_slot" class="TunableVariant" default="use_participant" display="In Slot" muid="335AE79CBE8C61D0" description="slots of the participant object from which the target objects should be pulled." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="str" name="by_name" class="Tunable" default="_ctnm_" display="By Name" muid="FCE54987EAB71D2C" description="The exact name of a slot on the parent object in which the object should be.  " Deprecated="False" filter="0" group="General" />
+                                            <Tunable type="slot_type" name="by_reference" class="TunableReference" display="By Reference" muid="FD9EED2D926C5542" description="A particular slot type in which the object should be." allow_none="False" Deprecated="False" filter="0" group="General" />
+                                            <TunableList name="by_set_of_references" class="TunableSet" display="By Set Of References" muid="93BB7FF1947441F7" description="A set of references that the objects should be in." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                                <Tunable type="slot_type" class="TunableReference" muid="3F4EE7DEA38EC8AB" allow_none="False" Deprecated="False" filter="0" group="General" />
+                                            </TunableList>
+                                            <Tunable name="use_participant" class="TunableExistance" display="Use Participant" muid="1EA4873F1BFCF294" />
+                                        </TunableVariant>
+                                        <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="21FE1BE315B0CAD8" static_entries="interactions.ParticipantType" description="The participant determining which objects are to be generated." Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                    <TunableTuple name="from_stored_object_component" class="Tunable_ObjectGeneratorFromStoredObjectComponent" display="From Stored Object Component" muid="4D10FA7A982B0404" description="Return the stored object of the specified type from the stored object&#xA;component of the specified participant.S" Deprecated="False" filter="0" group="General">
+                                        <TunableEnum type="ParticipantTypeSingle" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="F1624C778DA26E1A" static_entries="interactions.ParticipantTypeSingle" description="The participant from which the stored object is returned." Deprecated="False" filter="0" group="General" />
+                                        <TunableEnum type="StoredObjectType" name="stored_object_type" class="TunableEnumEntry" default="INVALID" display="Stored Object Type" muid="D6F67AB1EA5FF898" dynamic_entries="objects-components-stored_object_info_tuning.StoredObjectType._elements" static_entries="objects-components-stored_object_info_tuning.StoredObjectType" description="The type of object to apply loot actions to." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                                    </TunableTuple>
+                                </TunableVariant>
+                            </TunableTuple>
+                            <TunableTuple name="picked_part" class="TunableTuple" display="Picked Part" muid="8AB6BC7EEB957F4B" description="The token used to display the name of a picked part." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="scholarship_letter_component_data" class="TunableTuple" display="Scholarship Letter Component Data" muid="E5B3E3A786C55A48" description="The token can be used to get strings representing scholarship&#xA;information from the scholarship letter component of an object." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="ParticipantTypeObject" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="8EE8270FD7CC3BB" static_entries="interactions.ParticipantTypeObject" description="The participant from whom to get the scholarship letter&#xA;component data." Deprecated="False" filter="0" group="General" />
+                                <TunableVariant type="None" name="scholarship_letter_component_data" class="TunableVariant" default="applicant_name" display="Scholarship Letter Component Data" muid="F0ECC233380D217D" description="The piece of data to fetch." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="applicant_name" class="TunableExistance" display="Applicant Name" muid="5F18C4ADA132766E" />
+                                    <Tunable name="scholarship_amount" class="TunableExistance" display="Scholarship Amount" muid="25EBCFCBA64199F6" />
+                                    <Tunable name="scholarship_description" class="TunableExistance" display="Scholarship Description" muid="9FE8EBE4DDE52874" />
+                                    <Tunable name="scholarship_name" class="TunableExistance" display="Scholarship Name" muid="CA72B4B1C4210C36" />
+                                </TunableVariant>
+                            </TunableTuple>
+                            <TunableTuple name="sickness" class="TunableTuple" display="Sickness" muid="E9E10B85C2BD10BA" description="The token is the name of the sickness on the specified Sim." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="TargetSim" display="Participant" muid="5B52167D3C22E570" static_entries="interactions.ParticipantType" description="The participant who is sick." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="statistic_value" class="TunableTuple" display="Statistic Value" muid="A938085964B2E82D" description="The token is a number representing the value of a specific&#xA;statistic from the selected participant." Deprecated="False" filter="0" group="General">
+                                <Tunable type="bool" name="clamp_value_to_floor" class="Tunable" default="False" display="Clamp Value To Floor" muid="DF81D0554F2B387B" description="If True, the value will be clamped to its floor." Deprecated="False" filter="0" group="General" />
+                                <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="BA6B2B0207A9BE95" static_entries="interactions.ParticipantType" description="The participant from whom we will fetch the specified&#xA;statistic's value." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="statistic" name="statistic" class="TunableReference" display="Statistic" muid="324BF11548FA4AD6" description="The statistic's whose value we want to fetch." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="street" class="TunableTuple" display="Street" muid="CBD83DEAF4D37A1C" description="                    " Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="street" class="TunableTunableLocalizationStreetSelector" display="Street" muid="647670BF90F31F44" description="Using the Street Selector tuning, provide a token localization appropriate&#xA;street selection." Deprecated="False" filter="0" group="General">
+                                    <TunableVariant type="None" name="street" class="TunableVariant" default="literal" display="Street" muid="3CA1B4F8805FD7BF" description="Select what street to test." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="street" name="literal" class="TunableReference" display="Literal" muid="E6D4F9FD578F2886" description="Identify a specific Street." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                        <TunableTuple name="via_street_participant" class="TunableStreetParticipant" display="Via Street Participant" muid="393BA2F33DB8BDF3" description="Get the street participant." Deprecated="False" filter="0" group="General" />
+                                        <TunableVariant type="None" name="via_zone_source" class="TunableVariant" default="use_current_zone" display="Via Zone Source" muid="42CF1F62D610F595" description="Select the street to use by specifying a Zone Source." Deprecated="False" filter="0" group="General">
+                                            <TunableTuple name="use_current_zone" class="TunableActiveZone" display="Use Current Zone" muid="27EBC7243AC38372" description="Get the active zone." Deprecated="False" filter="0" group="General" />
+                                            <TunableTuple name="use_participant_home_zone" class="TunableParticipantHomeZone" display="Use Participant Home Zone" muid="3806E9C02D4D6BD9" description="Get a participant's home zone. Can be None if they don't have one." Deprecated="False" filter="0" group="General">
+                                                <TunableEnum type="ParticipantTypeSingleSim" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="A6C79E36CCA2DC9F" static_entries="interactions.ParticipantTypeSingleSim" description="Test against the participant's home zone. Townies' home zone will&#xA;be None." Deprecated="False" filter="0" group="General" />
+                                            </TunableTuple>
+                                            <TunableTuple name="use_pick_info" class="TunablePickInfoZone" display="Use Pick Info" muid="20CB31A0011A648E" description="Get the zone of the lot the user clicked on." Deprecated="False" filter="0" group="General" />
+                                            <TunableTuple name="use_picked_zone_ids" class="TunablePickedZoneIds" display="Use Picked Zone Ids" muid="BA6C9A8167EF6A9F" description="Get the zone from the interaction's picked_zone_ids participant. Usually&#xA;comes from a picker." Deprecated="False" filter="0" group="General" />
+                                        </TunableVariant>
+                                    </TunableVariant>
+                                </TunableTuple>
+                                <TunableVariant type="None" name="street_data" class="TunableVariant" default="policy_up_for_repeal" display="Street Data" muid="FDD495B7CA35D699" description="The piece of data to fetch." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="policy_up_for_repeal" class="TunableExistance" display="Policy Up For Repeal" muid="529A0A10442B657E" />
+                                    <Tunable name="random_losing_balloted_policy" class="TunableExistance" display="Random Losing Balloted Policy" muid="5110FCC715861F6C" />
+                                    <Tunable name="winning_balloted_policy" class="TunableExistance" display="Winning Balloted Policy" muid="CD5AF4911B526663" />
+                                </TunableVariant>
+                            </TunableTuple>
+                            <TunableTuple name="venue" class="TunableTuple" display="Venue" muid="B12D95CA29AB17A7" description="                    " Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="venue_data" class="TunableVariant" default="active_venue" display="Venue Data" muid="FFD485912FB28CFA" description="                        " Deprecated="False" filter="0" group="General">
+                                    <Tunable name="active_venue" class="TunableExistance" display="Active Venue" muid="833173B63FB30CDF" />
+                                    <Tunable name="source_venue" class="TunableExistance" display="Source Venue" muid="DA7C14F0B021EB0F" />
+                                </TunableVariant>
+                            </TunableTuple>
+                        </TunableVariant>
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+            <TunableVariant type="None" name="timeout_duration" class="OptionalTunable" default="disabled" display="Timeout Duration" muid="B3954C816146D0A" description="If enabled, override the timeout duration for this dialog in game&#xA;time." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D88BA24ECCCF681D" />
+                <Tunable type="float" name="enabled" class="TunableSimMinute" default="5" display="Enabled" muid="A7AD5265B343C0E4" min="5" max="None" description="The time, in sim minutes, that this dialog should time out." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableVariant type="None" name="title" class="OptionalTunable" default="disabled" display="Title" muid="13B1D1DD9BE2C3CB" description="If enabled, this dialog will include title text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9E92816DE2ACEEE3" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="6CC91BC10B6FABCA" description="The dialog's title." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableList name="ui_responses" class="TunableList" display="Ui Responses" muid="B5587EB8168DEF2" description="A list of buttons that are mapped to UI commands." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableUiDialogResponse" muid="D8D469C47B25164D" description="A dialog response." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="audio_event_name" class="OptionalTunable" default="disabled" display="Audio Event Name" muid="81AABD3844E00285" description="If enabled, this is the audio event sent by this button." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="24015AFAA8DF58A8" />
+                        <Tunable type="str" name="enabled" class="Tunable" default="" display="Enabled" muid="FC97012A13B2611" description="The button audio event name." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="response_command" class="OptionalTunable" default="disabled" display="Response Command" muid="480D88FFC3FF8B4" description="If enabled, specifies a command to be called by the client." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="83FCB4C30FDA23E2" />
+                        <TunableVariant type="None" name="enabled" class="TunableUIResponseCommandSnippet" default="literal" display="Enabled" muid="CFD76B43FED4F218" description="This may be tuned in place here using 'literal' or as a reference to a UIResponseCommand tuning snippet." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="literal" class="Tunable_UiResponseCommand" display="Literal" muid="C46985086E1DD712" description="A UI Response that sends a server command." Deprecated="False" filter="0" group="General">
+                                <TunableList name="arguments" class="TunableList" display="Arguments" muid="571CE273E0D31152" description="The arguments for this command. Arguments will be added after the&#xA;command." Deprecated="False" filter="0" group="General">
+                                    <TunableVariant type="None" class="TunableVariant" default="none" muid="F50B130908A42020" description="An argument being passed to the command." Deprecated="False" filter="0" group="General">
+                                        <TunableTuple name="boolean" class="TunableTuple" display="Boolean" muid="6BFA58B86FF47724" description="A boolean value." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="bool" name="arg_value" class="Tunable" default="False" display="Arg Value" muid="3A5E351A9874D36A" Deprecated="False" filter="0" group="General" />
+                                        </TunableTuple>
+                                        <TunableTuple name="floating_point" class="TunableTuple" display="Floating Point" muid="E16D99A3D890FB45" description="A floating point number." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="float" name="arg_value" class="Tunable" default="0.0" display="Arg Value" muid="81CC1770D18F0111" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        </TunableTuple>
+                                        <TunableTuple name="integer" class="TunableTuple" display="Integer" muid="D0015B41CFBD533F" description="An integer number." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="int" name="arg_value" class="Tunable" default="0" display="Arg Value" muid="E803BBF9E7D988A6" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        </TunableTuple>
+                                        <Tunable name="none" class="TunableExistance" display="None" muid="5668B3F9091F1D29" />
+                                        <TunableTuple name="participant_id" class="TunableUiResponseParticipantId" display="Participant Id" muid="E88DBA334B6F1058" description="UI Response argument that will resolve the participant specified." Deprecated="False" filter="0" group="General">
+                                            <TunableEnum type="UiResponseParticipant" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="D1275571D2DE1A6C" static_entries="ui-ui_dialog.UiResponseParticipant" description="The participant to resolve for this response argument.&#xA;The value sent will be the id of the specified participant.&#xA;If more than one participant is found, it will only send the id of the first participant found." Deprecated="False" filter="0" group="General" />
+                                        </TunableTuple>
+                                        <TunableTuple name="special_command_data" class="TunableTuple" display="Special Command Data" muid="59BED2EE0FEABCA5" description="This will use the data passed into the show_dialog()&#xA;function. This must be supported with GPE work, so&#xA;only use this if you have talked to a GPE." Deprecated="False" filter="0" group="General" />
+                                        <TunableTuple name="string" class="TunableTuple" display="String" muid="FD122809FC5CCC28" description="A string." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="str" name="arg_value" class="Tunable" default="" display="Arg Value" muid="ABC1825C139540A3" Deprecated="False" filter="0" group="General" />
+                                        </TunableTuple>
+                                    </TunableVariant>
+                                </TunableList>
+                                <Tunable type="str" name="command" class="Tunable" default="" display="Command" muid="D778F1D20FE34B83" description="The command." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="E9929FD6FC171378" description="A reference to a UIResponseCommand tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="UIResponseCommand" />
+                        </TunableVariant>
+                    </TunableVariant>
+                    <Tunable type="int" name="text" class="TunableLocalizedString" default="0x0" display="Text" muid="60FF410F99A82906" description="The prompt's text." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="UiDialogUiRequest" name="ui_request" class="TunableEnumEntry" default="NO_REQUEST" display="Ui Request" muid="E397163739877D79" static_entries="ui-ui_dialog.UiDialogResponse.UiDialogUiRequest" description="This prompt's associated UI action." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableVariant type="None" name="sender_sim_info" class="_DramaParticipant" default="participant_type" display="Sender Sim Info" muid="94BFFF5310355B56" description="Specify who the sending Sim must be. This is the Sim that will &quot;text&quot;&#xA;the Drama Node owner." Deprecated="False" filter="0" group="Participant">
+            <TunableTuple name="participant_type" class="TunableTuple" display="Participant Type" muid="A1DCD2087BEA0987" description="Use a specific participant type from the system that called&#xA;this drama node to resolve this drama participant." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="ParticipantType" name="participant_type" class="TunableEnumEntry" default="Actor" display="Participant Type" muid="E3D1E1A356326BDC" static_entries="interactions.ParticipantType" description="The participant type to use to resolve the drama node's&#xA;participant." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="sim_filter" class="TunableTuple" display="Sim Filter" muid="122C23DE9D073902" description="Use a sim filter relative to specific participant of the system&#xA;that called this drama node.  Usually this participant type&#xA;will be the same as the participant that is used for the&#xA;receiving sim, but there can be exceptions.  Ex. If a sim dies&#xA;you might want a sim who is a friend of the person who died to&#xA;send the message rather than a person who is a friend of the&#xA;player sim that will receive this message. " Deprecated="False" filter="0" group="General">
+                <TunableList name="blacklist_participants" class="TunableList" display="Blacklist Participants" muid="13FB60B405776FCF" description="A list of participants that will be blacklisted from the&#xA;filter." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ParticipantTypeSim" class="TunableEnumEntry" default="Actor" muid="E8262AD3F783801D" static_entries="interactions.ParticipantTypeSim" description="The participant type to blacklist for the filter." Deprecated="False" filter="0" group="General" />
+                </TunableList>
+                <TunableVariant type="None" name="constrained_sims" class="OptionalTunable" default="disabled" display="Constrained Sims" muid="D17375B0EDECF4FB" description="If enabled then we will also constrain the filter being run to the Sims within&#xA;this participant." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D96451B868F75AB3" />
+                    <TunableEnum type="ParticipantTypeSim" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="8639DE04D6566EEB" static_entries="interactions.ParticipantTypeSim" description="The participant that will be used as the constrained Sims." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableEnum type="ParticipantType" name="participant_type" class="TunableEnumEntry" default="Actor" display="Participant Type" muid="AE1D1508B86BEAE4" static_entries="interactions.ParticipantType" description="The participant type to use to request the filter." Deprecated="False" filter="0" group="General" />
+                <Tunable type="sim_filter" name="sim_filter" class="TunableReference" display="Sim Filter" muid="11DB5C2F2E0AFFF8" description="The sim filter that we will use to find the sim that will&#xA;be used for this drama node's participant." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="98FF0F1809AB122D" new_muid="1A547A4900733F62" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="98FF0F1809AB122D" new_muid="1A547A4900733F62" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="98FF0F1809AB122D" new_muid="1A547A4900733F62" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="98FF0F1809AB122D" new_muid="1A547A4900733F62" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="98FF0F1809AB122D" new_muid="1A547A4900733F62" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="98FF0F1809AB122D" new_muid="1A547A4900733F62" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

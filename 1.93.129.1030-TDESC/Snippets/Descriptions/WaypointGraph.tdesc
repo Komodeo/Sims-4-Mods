@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="WaypointGraph" module="snippets" muid="D5D845AA9620BF2B" instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="value" class="TunableTunableWaypointGraph" display="Value" muid="F0CEA7EBFAAAA791" description="Tuning for defining a graph of connected waypoints (locators)." Deprecated="False" filter="0" group="General">
+            <TunableList name="connections" class="TunableMapping" display="Connections" muid="1F140247F6DEA1DF" mapping_key="waypoint" mapping_value="connections" description="Defines the connections between waypoints in this graph." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="C01F4E9DC18C17C6" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="connections" class="TunableTunableWaypointWeightedSet" display="Connections" muid="54649466677B9287" description="Tuning for a weighted list of connections (linked waypoint locators)." Deprecated="False" filter="0" group="General">
+                        <TunableList name="connections" class="TunableList" display="Connections" muid="BC9D5013D11D9920" description="List of connected waypoints." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="A50B1ADBFDBD77B2" description="Pair of waypoint and a tested weight." Deprecated="False" filter="0" group="General">
+                                <Tunable type="locator" name="connected_waypoint" class="TunableReference" display="Connected Waypoint" muid="AA7C9CE3A76829EA" description="Waypoint reference." Deprecated="False" filter="0" group="General" />
+                                <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="A2C1ABC54F814798" description="A weight with testable multipliers that is used to &#xA;determine how likely this entry is to be picked when &#xA;selecting randomly." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="BDAF4705088B189B" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="A6336A46040748C0" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                        <TunableTuple class="TunableTuple" muid="87AEED5E126B76F4" Deprecated="False" filter="0" group="General">
+                                            <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="DAD6B1C77346152E" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="2CCA266FD77300C3" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                        </TunableTuple>
+                                    </TunableList>
+                                </TunableTuple>
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                    <Tunable type="locator" name="waypoint" class="TunableReference" display="Waypoint" muid="89C2295704C4BAF5" description="Waypoint reference." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <Tunable type="float" name="constraint_radius" class="TunableRange" default="1.5" display="Constraint Radius" muid="BCF6954201442ECB" min="0" max="None" description="The radius, in meters, for each of the generated waypoint&#xA;constraints." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

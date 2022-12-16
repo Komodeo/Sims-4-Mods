@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="clock" muid="5ED1A4CFA94D9F95">
+        <Class name="ClockSpeedMode" muid="28C27D76D59754F1" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="INTERACTION_STARTUP_SPEED" muid="CFC5158836F02788" enum_value="4" />
+
+            <EnumItem name="NORMAL" muid="59957F4442313A10" enum_value="1" />
+
+            <EnumItem name="PAUSED" muid="19D592910A214359" enum_value="0" />
+
+            <EnumItem name="SPEED2" muid="9AF29518216435D0" enum_value="2" />
+
+            <EnumItem name="SPEED3" muid="FA2191CAA8BC2768" enum_value="3" />
+
+            <EnumItem name="SUPER_SPEED3" muid="1D87117508398C81" enum_value="5" />
+        </Class>
+
+        <Class name="GameClock" muid="43DB57D75681916E">
+            <TunableTuple name="NEW_GAME_START_TIME" class="TunableTimeOfWeek" display="New Game Start Time" muid="6D8D5089EF65E8DB" description="The time the game starts at when a player starts a new game." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="Days" name="day" class="TunableEnumEntry" default="SUNDAY" display="Day" muid="8C4F0B09E6BE1110" static_entries="tunable_time.Days" description="Day of the week" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="hour" class="TunableRange" default="12" display="Hour" muid="B218E234FDF23EE1" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="6D5215B69071DCFD" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+
+        <Class name="ClockSpeedMultiplierType" muid="684342543B7B8954" enum_bit_flag="False" enum_locked="True">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="7A733D9A9AF0A838" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="D69A1667033CEE85" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="DEFAULT" muid="4280666C41867F35" enum_value="0" />
+
+            <EnumItem name="LOW_PERFORMANCE" muid="2347B8BF4A9075C2" enum_value="1" />
+        </Class>
+
+        <Class name="ClockSpeedMultipliers" muid="D5438BE43BD9F5FA">
+            <TunableList name="CLOCK_SPEED_TYPE_MULTIPLIER_MAP" class="TunableMapping" display="Clock Speed Type Multiplier Map" muid="B50FEC96122CCD66" mapping_key="Clock Speed Multiplier Type" mapping_value="Clock Speed Multipliers" description="A mapping of ClockSpeedMultiplierTypes to clock speed multipliers." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="FCE585CFCA374432" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ClockSpeedMultiplierType" name="Clock Speed Multiplier Type" class="TunableEnumEntry" default="DEFAULT" display="Clock Speed Multiplier Type" muid="1FA8AF98151F3EC9" dynamic_entries="clock.ClockSpeedMultiplierType._elements" static_entries="clock.ClockSpeedMultiplierType" description="The ClockSpeedMultiplier to which we apply the multipliers." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="Clock Speed Multipliers" class="TunableClockSpeedMultipliers" display="Clock Speed Multipliers" muid="6C1D7058CE4DF52C" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="speed_three_multiplier" class="Tunable" default="7.0" display="Speed Three Multiplier" muid="59FF947C00C27CFA" description="How much faster speed three goes than normal speed. The game clock will&#xA;have its speed multiplied by this number." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="speed_two_multiplier" class="Tunable" default="3.0" display="Speed Two Multiplier" muid="B33100E7A4E2308C" description="How much faster speed two goes than normal speed. The game clock will&#xA;have its speed multiplied by this number." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="super_speed_three_multiplier" class="Tunable" default="36.0" display="Super Speed Three Multiplier" muid="FFAF9B48276963B2" description="How much faster super speed three goes than normal speed. The&#xA;game clock will have its speed multiplied by this number." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="float" name="TUNABLE_INTERACTION_STARTUP_SPEED_MULTIPLIER" class="Tunable" default="5.0" display="Tunable Interaction Startup Speed Multiplier" muid="93F5E9BE7DF52AAE" description="How much faster preroll autonomy speed goes than normal speed." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

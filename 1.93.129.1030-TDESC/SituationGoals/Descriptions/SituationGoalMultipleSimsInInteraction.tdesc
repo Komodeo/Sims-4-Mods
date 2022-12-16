@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation_goal" class="SituationGoalMultipleSimsInInteraction" module="situations.situation_goal_multi_sim" muid="1520FA3A74109E98" description="A SituationGoal representing X Sims simultaneously running the same &#xA;interaction or a set of uniquely tagged interactions." instance_needs_reference="True" instance_subclasses_only="False" parents="SituationGoal" path="SituationGoals\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="_goal_test" class="TunableMultipleSimInteractionOfInterest" display="Goal Test" muid="DE29F78B384C4A22" description="A tunable defining parameters for interaction and/or interaction tags&#xA;available on sim_count number of sims simultaneously.&#xA;Note: If this is a joinable interaction, you MUST use tags, not affordances." Deprecated="False" filter="0" group="Tests">
+            <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="9FC62B16DB1D9122" description="The affordance in question that is being run by all the sims." allow_none="True" Deprecated="False" filter="0" group="General" restrict="SuperInteraction" />
+            <TunableVariant type="None" name="sim_count" class="TunableSituationGoalSimCountVariant" default="fixed" display="Sim Count" muid="A08B761FA9F089F0" description="The number of sims simultaneously running the appropriate interactions." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="fixed" class="TunableTunableSituationGoalSimCount_Fixed" display="Fixed" muid="4745EC0DEEC8157B" description="Required number of sims based on a fixed number." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="count" class="Tunable" default="2" display="Count" muid="773418674E259FA2" description="A fixed count of how many sims are required (default)." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="sims_in_situation" class="TunableTunableSituationGoalSimCount_SimsInSituation" display="Sims In Situation" muid="3C2D7B47D698789E" description="Required number of sims is based on sims in the situation (optionally also with a given job)." Deprecated="False" filter="0" group="General">
+                    <TunableList name="required_jobs" class="TunableList" display="Required Jobs" muid="515CF8777463FA76" description="If this list is non-empty then only sims with the given job(s) will be counted." Deprecated="False" filter="0" group="General">
+                        <Tunable type="situation_job" class="TunableReference" muid="1AF03DC6E618251F" allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="A91C65C5854E7C04" description="A set of tags that match the affordance being run by all the sims. " Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="B388DB2545CA5C46" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="interaction" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <Deleted name="_iterations" muid="FD8FA74DAB4E9A32" />
+
+        <Tunable type="bool" name="_select_all_instantiated_sims" class="Tunable" default="False" display="Select All Instantiated Sims" muid="E9B5D1A289DD0C7D" description="If true, the goal system selects all instantiated sims in the zone." Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="should_reevaluate_on_load" muid="76A0B63B143A7DC6" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="248104604BE08E0D" new_muid="E9B5D1A289DD0C7D" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

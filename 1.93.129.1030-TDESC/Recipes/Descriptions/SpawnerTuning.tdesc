@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="recipe" class="SpawnerTuning" module="objects.components.spawner_component" muid="3836750002259DF2" instance_subclasses_only="False" path="Recipes\Descriptions" use_guid_for_reference="True">
+        <TunableList name="object_reference" class="TunableList" display="Object Reference" muid="8CAFDBD04E587FB4" description="List of objects the spawner can create.  When the random check &#xA;picks this value from the weight calculation it will give all&#xA;the items tuned on this list." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" class="TunableVariant" default="object_definition" muid="D8E2B8CA5F35CFA3" description="Specify the means by which will the spawner will create the object." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="object_definition" class="TunableObjectCreator" display="Object Definition" muid="952483FDC7E894F8" description="Factory that provides a way to create an object from an object definition." Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="F24DDFB70FB790E9" description="The definition of the object to be created." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+                <TunableTuple name="recipe" class="TunableRecipeCreator" display="Recipe" muid="76E38C5EF9FF35C0" description="Factory that provides a way to create an object from a recipe." Deprecated="False" filter="0" group="General">
+                    <Tunable type="recipe" name="recipe" class="TunableReference" display="Recipe" muid="166D03B3002DAE8F" description="Recipe to produce an object with." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="weighted_quality" class="TunableList" display="Weighted Quality" muid="66209DDCCDA0A899" description="A list of weighted quality in which the object will be created.&#xA;&#xA;If empty, it will apply a default quality." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="BEDCD774D9750C75" description="A possible level of quality for this item that will be generated.&#xA;This will be randomly chosen based off weight against other items in the list." Deprecated="False" filter="0" group="General">
+                            <Tunable type="object_state" name="quality" class="TunableReference" display="Quality" muid="94F906717F7970EA" allow_none="False" Deprecated="False" filter="0" group="General" restrict="CommodityBasedObjectStateValue" />
+                            <Tunable type="int" name="weight" class="TunableRange" default="1" display="Weight" muid="12C834A660C3336E" min="1" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableList>
+
+        <Tunable type="float" name="spawn_chance" class="TunablePercent" default="100" display="Spawn Chance" muid="675E53986066D671" min="0" max="100" description="The chance that the spawned object will actually be created.&#xA;This is in case we want spawned objects to not be created in a &#xA;predictable behavior and the change of &quot;nothing happening&quot; be &#xA;available." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="spawn_times" class="OptionalTunable" default="No_custom_spawn_times" display="Spawn Times" muid="581B38DC172CF804" description="Schedule of when the spawners should trigger.&#xA;If this time is tuned spawners will trigger according to this &#xA;schedule instead of the spawner commodities.   &#xA;This should be used for spawners that are on the open neighborhood &#xA;so that those spawners are time based instead of commodity based." Deprecated="False" filter="0" group="General">
+            <Tunable name="No_custom_spawn_times" class="TunableExistance" display="No Custom Spawn Times" muid="B4786FE31A8DCE14" />
+            <TunableTuple name="Set_custom_spawn_times" class="TunableWeeklySchedule" display="Set Custom Spawn Times" muid="91A7769050DF1D25" description="A class representing a tuned weekly schedule. This class can be used&#xA;to start alarms that will be called based on the tuning.&#xA;&#xA;min_alarm_time_span: if set, if timespan until next alarm has a &#xA;timespan &lt; min_alarm_time_span, timespan till alarm will be set to min_alarm_time_span&#xA;&#xA;extra_data: extra data to pass back each time the alarm is called&#xA;&#xA;start_callback will take in parameters:&#xA;scheduler, Tuple of type AlarmData, extra_data&#xA;&#xA;where scheduler is this instance of the scheduler&#xA;start_time is chosen start time, end time is chosen end time&#xA;entry is the entry that specified in the start_time, end_time in schedule_entries_tuning&#xA;extra_data is the data passed in when creating the scheduler" Deprecated="False" filter="0" group="General">
+                <TunableList name="schedule_entries" class="TunableList" display="Schedule Entries" muid="4E9B8BD9E1C7AC52" description="A list of event schedules. Each event is a mapping of days of&#xA;the week to a start_time and duration." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableScheduleEntry" muid="AD519BE99324E756" description="A schedule. Define availability for days of the week. For the set of&#xA;specified days, define an hour of the day and a duration, in hours.&#xA;Optionally, specified if the start time is random within the tuned window." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="days_available" class="TunableAvailableDays" display="Days Available" muid="F64ECC143A13CA05" description="Which days of the week to include" Deprecated="False" filter="0" group="General">
+                            <Tunable type="bool" name="0 SUNDAY" class="Tunable" default="False" display="0 Sunday" muid="892152BEA9110781" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="1 MONDAY" class="Tunable" default="False" display="1 Monday" muid="89A4139E266EA7BB" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="2 TUESDAY" class="Tunable" default="False" display="2 Tuesday" muid="E743DBD800DE096" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="3 WEDNESDAY" class="Tunable" default="False" display="3 Wednesday" muid="1A2B049114A69F7B" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="4 THURSDAY" class="Tunable" default="False" display="4 Thursday" muid="A0E0FE0CA80BCBAE" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="5 FRIDAY" class="Tunable" default="False" display="5 Friday" muid="971FD26FF6301011" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="6 SATURDAY" class="Tunable" default="False" display="6 Saturday" muid="107105151E402B" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <Tunable type="float" name="duration" class="Tunable" default="1.0" display="Duration" muid="9C5CD4B6FCBF49D3" description="Duration of this work session in hours." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="random_start" class="Tunable" default="False" display="Random Start" muid="3FE6B8CAEB0D93E6" description="If checked, this schedule will have a random start time in the tuned&#xA;window each time." Deprecated="False" filter="0" group="General" />
+                        <TunableEnum type="CareerShiftType" name="schedule_shift_type" class="TunableEnumEntry" default="ALL_DAY" display="Schedule Shift Type" muid="776E9A335DCB89DB" static_entries="careers-career_enums.CareerShiftType" description="Shift Type for the schedule, this will be used for validations." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="A05BEA8E7FD74DB2" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="hour" class="TunableRange" default="9" display="Hour" muid="76314BD149F2EE01" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="A45022D7D3A6EE32" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="int" name="spawn_weight" class="TunableRange" default="1" display="Spawn Weight" muid="44340DC8D561721A" min="0" max="None" description="Weight that object will have on the probability calculation &#xA;of which object to spawn." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="spawner_option" class="TunableVariant" default="none" display="Spawner Option" muid="470D83DC557984A5" description="Type of spawners to create:&#xA;Ground type - Spawned object will appear on the floor at a tunable &#xA;radius from the spawner object.&#xA;Slot type - Spawned object will appear on an available slot of &#xA;a tunable slot type in the spawner object.&#xA;Interaction type - Spawned objects will appear on the inventory&#xA;when player makes a gather-harvest-scavenge interaction on them. " Deprecated="False" filter="0" group="General">
+            <TunableTuple name="ground_spawning" class="TunableTuple" display="Ground Spawning" muid="21F57E0BE315ADF0" Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="force_initialization_spawn" class="OptionalTunable" default="disabled" display="Force Initialization Spawn" muid="D2E8FC7BFE87E26B" description="If checked, objects with this component will force a &#xA;spawning of objects on initialization.  This is mainly used&#xA;for objects on the open street where we want to fake that &#xA;some time has already passed.  &#xA;Additionally, if checked, objects will force the states&#xA;on this list instead of the force_states list on the &#xA;general spawner tuning, this way we can add some custom&#xA;states only for the initialization spawn." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C8314C16940CB1AD" />
+                    <TunableList name="enabled" class="TunableList" display="Enabled" muid="BB761302E8A2987D" description="List of states the created object will have when&#xA;initialized." Deprecated="False" filter="0" group="General">
+                        <Tunable type="object_state" class="TunableReference" muid="62485A562202CA0" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                    </TunableList>
+                </TunableVariant>
+                <TunableList name="force_states" class="TunableList" display="Force States" muid="7DB17A681D06C96A" description="List of states the created object will be pushed to." Deprecated="False" filter="0" group="General">
+                    <Tunable type="object_state" class="TunableReference" muid="8F1DEE3983FED8A1" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                </TunableList>
+                <TunableTuple name="initial_location_offset" class="TunableTuple" display="Initial Location Offset" muid="F2BBE14D2EB76D48" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="default_offset" class="TunableVector3" display="Default Offset" muid="9AF36702FBE27B94" description="The default Vector3 offset from the location target's&#xA;position." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="4AEA31646BEC2AC6" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="7FA4B95724A25631" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="z" class="Tunable" default="0.0" display="Z" muid="B7B8887E721FABA3" description="z component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableVariant type="None" name="x_randomization_range" class="OptionalTunable" default="disabled" display="X Randomization Range" muid="6B43F123A9CE127B" description="A random number in this range will be applied to the&#xA;default offset along the x axis." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="402582056720B91" />
+                        <TunableTuple name="enabled" class="TunableInterval" display="Enabled" muid="5120D6122AFDDDF9" description="A random number in this range will be applied to the&#xA;default offset along the x axis." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="11A1455260ABAFD6" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableRange" default="0" display="Upper Bound" muid="9824D20A9ED9FC99" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableVariant type="None" name="z_randomization_range" class="OptionalTunable" default="disabled" display="Z Randomization Range" muid="8580138F71639DF2" description="A random number in this range will be applied to the&#xA;default offset along the z axis." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="63C23C1A36F98032" />
+                        <TunableTuple name="enabled" class="TunableInterval" display="Enabled" muid="8884912C8A27E638" description="A random number in this range will be applied to the&#xA;default offset along the z axis." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="27170D57993147DB" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableRange" default="0" display="Upper Bound" muid="E609FAE19379A17E" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableTuple>
+                <TunableTuple name="location_test" class="TunableTuple" display="Location Test" muid="F2478A8B3BC7AE97" Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="is_natural_ground" class="OptionalTunable" default="Don't_Test" display="Is Natural Ground" muid="C5A5A00958BB8BC7" description="If checked, will verify the spawned object is on &#xA;natural ground.&#xA;If unchecked will test the object is not on natural &#xA;ground" Deprecated="False" filter="0" group="General">
+                        <Tunable name="Don't_Test" class="TunableExistance" display="Don'T Test" muid="7F22EF873C7780E6" />
+                        <Tunable type="bool" name="enabled" class="Tunable" default="True" display="Enabled" muid="276F91583A6FF090" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="is_outside" class="OptionalTunable" default="Don't_Test" display="Is Outside" muid="83B20D288F74C6F7" description="If checked, will verify if the spawned object is &#xA;located outside. &#xA;If unchecked will test the object is not outside" Deprecated="False" filter="0" group="General">
+                        <Tunable name="Don't_Test" class="TunableExistance" display="Don'T Test" muid="AA25142378BC70C9" />
+                        <Tunable type="bool" name="enabled" class="Tunable" default="True" display="Enabled" muid="295F3E3B1DA90D5E" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableTuple>
+                <Tunable type="int" name="min_radius" class="TunableRange" default="0" display="Min Radius" muid="5E9E2450596A1C08" min="0" max="None" description="Minimum distance away from the portal location to&#xA;start looking for a good location." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="placement_scoring" class="TunableList" display="Placement Scoring" muid="7E5E23211BB06648" description="List of scoring functions used by FGL to determine&#xA;best places to put the object.&#xA;&#xA;Will only apply to off-lot spawners." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" class="TunablePlacementScoringFunction" default="radial_distance_scoring" muid="82801A5C0E936CFB" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="angular_scoring" class="TunableAngularScoring" display="Angular Scoring" muid="9D9167E3C852336E" description="Score by position within a given angle." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="max_distance" class="TunableAngle" default="57.29577951308232" display="Max Distance" muid="7511664943304089" min="0.0" max="360.0" description="Max distance from optimal angle before the score becomes zero." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="optimal_angle" class="TunableAngle" default="0.0" display="Optimal Angle" muid="E847C2CC7E1D5F5A" min="0.0" max="360.0" description="Optimal angle from the tested location. Will score highest." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="width" class="TunableAngle" default="0.0" display="Width" muid="BC21D9B6DF985E90" min="0.0" max="360.0" description="Absolute distance in meters from optimal angle &#xA;(relative to location orientation) where location will&#xA;attain the max score of 1.0 for this function." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="linear_distance_scoring" class="TunableLinearDistanceScoring" display="Linear Distance Scoring" muid="CA6A2A8B3A67E95F" description="Score by distance from a defined line." Deprecated="False" filter="0" group="General">
+                            <Tunable type="bool" name="ignore_surface" class="Tunable" default="False" display="Ignore Surface" muid="DE286AB9CD69BCF3" description="If unset, will ensure the location and the tested position&#xA;share the same routing surface.  Otherwise, scoring will not&#xA;care if the two positions have different surfaces." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="initial_point" class="TunableVector3" display="Initial Point" muid="C855119180F1E545" description="Position relative to starting location&#xA;used as first point in the line used for scoring." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="91B16527C38F2ABC" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="z" class="Tunable" default="0.0" display="Z" muid="47FA17B8E1770771" description="z component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <Tunable type="float" name="max_distance" class="Tunable" default="1" display="Max Distance" muid="D47625B0844E3442" description="Max distance from optimal before the score becomes zero." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="optimal_distance" class="Tunable" default="0" display="Optimal Distance" muid="6454D6306A4B1690" description="Optimal distance in meters from the tested location." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="secondary_point" class="TunableVector3" display="Secondary Point" muid="5DB07AD5A4D2A47E" description="Secondary point used to create a line from initial point.&#xA;This is relative to the starting location.&#xA;Distance from this line will be measured." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="x" class="Tunable" default="1.0" display="X" muid="3516F4CA461BEE26" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="z" class="Tunable" default="0.0" display="Z" muid="7A9280C42AAF5DB2" description="z component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                        <TunableTuple name="radial_distance_scoring" class="TunableRadialDistanceScoring" display="Radial Distance Scoring" muid="D51DF04F738DB138" description="Score by distance from starting point." Deprecated="False" filter="0" group="General">
+                            <Tunable type="bool" name="ignore_surface" class="Tunable" default="False" display="Ignore Surface" muid="D370F34E35078D77" description="If unset, will ensure the location and the tested position&#xA;share the same routing surface.  Otherwise, scoring will not&#xA;care if the two positions have different surfaces." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="max_distance" class="Tunable" default="1" display="Max Distance" muid="1D8044B02473BB4B" description="Max distance from optimal before the score becomes zero." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="optimal_distance" class="Tunable" default="1" display="Optimal Distance" muid="1C6B7EE061CFC511" description="Optimal distance in meters from the starting point." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="width" class="Tunable" default="0" display="Width" muid="AB5D703C09F98C43" description="Absolute distance from optimal width where location will&#xA;attain the max score of 1.0 for this function." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableList>
+                <Tunable type="int" name="radius" class="TunableRange" default="1" display="Radius" muid="8854465564F33D09" min="0" max="None" description="Max radius at which the spawned object should appear" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="restrictions" class="TunableList" display="Restrictions" muid="E140C4D273A490B8" description="List of orientation restrictions used by FGL &#xA;when searching for a place to put the object.&#xA;&#xA;Will only apply to off-lot spawners." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" class="TunableOrientationRestriction" default="absolute_orientation" muid="876D93B2C50BFF62" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="absolute_orientation" class="TunableOrientationRangeRestriction" display="Absolute Orientation" muid="DF907939115F4CB8" description="A tunable orientation restriction." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="angle" class="TunableInterval" display="Angle" muid="BDF3287134431953" description="Tunable angle range for orientation of the target&#xA;relative to the orientation of the original location." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="lower_bound" class="TunableAngle" default="0.0" display="Lower Bound" muid="4BD84DB329AEB725" min="None" max="360.0" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="upper_bound" class="TunableAngle" default="0.0" display="Upper Bound" muid="19A772FA4D02F18C" min="0.0" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <Tunable type="float" name="ideal_angle" class="TunableAngle" default="0.0" display="Ideal Angle" muid="59BD1400E2D49834" min="0.0" max="360.0" description="Ideal angle for orientation of the target." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="relative_facing_circle" class="TunableRelativeFacingCircleRestriction" display="Relative Facing Circle" muid="464B8BC47381F99F" description="Orientation facing in a radius around a circle." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="angle" class="TunableAngle" default="0.0" display="Angle" muid="DAF22A1BA0E27704" min="0.0" max="360.0" description="Facing range to the circle." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="radius" class="Tunable" default="1" display="Radius" muid="8B0B6CC9A0AC0F8A" description="Radius around the given point up to which will be tested." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="target_offset" class="TunableVector3" display="Target Offset" muid="EC04E871B6226F7E" description="Offset relative to starting point as center of circle." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="E4312C944FC84CAA" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="z" class="Tunable" default="0.0" display="Z" muid="CECDA9CBB24B0D" description="z component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                        <TunableTuple name="relative_facing_range" class="TunableRelativeFacingRangeRestriction" display="Relative Facing Range" muid="6EC178991BBC951D" description="A tunable relative facing orientation restriction." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="angle" class="TunableAngle" default="0.0" display="Angle" muid="81F26F72507A2895" min="0.0" max="360.0" description="Facing range to the object." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="target_offset" class="TunableVector3" display="Target Offset" muid="FACF0A9E59AA8ACC" description="Offset relative to starting point to face." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="C4776CE015EE65DE" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="z" class="Tunable" default="0.0" display="Z" muid="1D76632ECA55FFE6" description="z component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableList>
+                <TunableVariant type="None" name="starting_location" class="TunableVariant" default="spawner_location" display="Starting Location" muid="13576C7EB1CD57FA" description="The location at which we want to start attempting to place&#xA;the object we are creating." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="portal_location" class="TunableTuple" display="Portal Location" muid="BD16EC9A84D270C2" description="If selected the object will be spanwed near the&#xA;location of the specified portal type and start or end&#xA;location" Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="portal_direction" class="TunableVariant" default="there" display="Portal Direction" muid="F1F3A0E755C25854" description="Choose between the There and Back of the portal.&#xA;This will not work properly if the portal is&#xA;missing a Back and Back is specified here." Deprecated="False" filter="0" group="General">
+                            <Tunable name="back" class="TunableExistance" display="Back" muid="95447A140F90F4A6" />
+                            <Tunable name="there" class="TunableExistance" display="There" muid="39E22DC67E76A681" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="portal_location" class="TunableVariant" default="entry" display="Portal Location" muid="3CC5F58FCEF2E0D0" description="Choose between the entry and exit location of the&#xA;portal." Deprecated="False" filter="0" group="General">
+                            <Tunable name="entry" class="TunableExistance" display="Entry" muid="51FB15A752190A1E" />
+                            <Tunable name="exit" class="TunableExistance" display="Exit" muid="81B2189098349CB1" />
+                        </TunableVariant>
+                        <Tunable type="snippet" name="portal_type" class="TunableReference" display="Portal Type" muid="83B286AC1609CDA7" description="A reference to the type of portal to use for the&#xA;starting location." allow_none="False" Deprecated="False" filter="0" group="General" restrict="PortalData" />
+                    </TunableTuple>
+                    <TunableTuple name="spawner_location" class="TunableTuple" display="Spawner Location" muid="E74F192C49B5D63E" description="If selected the object will be spawned near the&#xA;location of the spawner object." Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="consider_source_object_footprint" class="Tunable" default="False" display="Consider Source Object Footprint" muid="1D9BE057DA89ECE0" description="If True, then the source object's footprints will&#xA;be considered in the creation of FGL context.&#xA;&#xA;Example: If the source is invisible, then setting&#xA;this to False would allow the spawned object to be&#xA;located at its spawner's location. If the source&#xA;is a visible object, then setting this to True would&#xA;force the spawned object to be offset by any existing&#xA;footprints on the source." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableTuple>
+            <TunableTuple name="interaction_spawning" class="TunableTuple" display="Interaction Spawning" muid="D3FB8CF5F22788CD" Deprecated="False" filter="0" group="General" />
+            <Tunable name="none" class="TunableExistance" display="None" muid="39249230E565F8E5" />
+            <TunableTuple name="slot_spawning" class="TunableTuple" display="Slot Spawning" muid="D2F062B66EF66797" Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="force_initialization_spawn" class="OptionalTunable" default="disabled" display="Force Initialization Spawn" muid="34FA6FDF821D5FFE" description="If enabled, objects with this component will force a &#xA;spawning of objects on initialization.  This is mainly used&#xA;for objects on the open street where we want to fake that &#xA;some time has already passed." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B0C7BB9AC72F990B" />
+                    <Tunable type="int" name="enabled" class="TunableRange" default="1" display="Enabled" muid="2278A5545E5DE6DF" min="1" max="None" description="The number of objects to be created." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="slot_type" name="slot_type" class="TunableReference" display="Slot Type" muid="D865E0DBF0E4C048" description="Slot type where spawned objects should appear" allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableList name="state_mapping" class="TunableMapping" display="State Mapping" muid="A697796586F2F490" mapping_key="key" mapping_value="value" description="Mapping of states from the spawner object into the possible&#xA;states that the spawned object may have" Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="D8972FA134CDF1EA" Deprecated="False" filter="0" group="General">
+                        <Tunable type="object_state" name="key" class="TunableReference" display="Key" muid="59701C08113C209E" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                        <TunableList name="value" class="TunableList" display="Value" muid="82715DAB8574B10A" description="List of possible children for a parent state" Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="8E0F1FD2C44E5ED1" description="Pair of weight and possible state that the spawned &#xA;object may have" Deprecated="False" filter="0" group="General">
+                                <Tunable type="object_state" name="child_state" class="TunableReference" display="Child State" muid="AAADADD460D89017" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                                <Tunable type="int" name="weight" class="TunableRange" default="1" display="Weight" muid="CA92CF8C4B597A9F" min="0" max="None" description="Weight that object will have on the probability calculation &#xA;of which object to spawn." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="873A025A8B0C3337" description="Conditional tests to determine if spawning occurs." filter="0" group="General" />
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="ObjectsInMultipleInventoriesPurchasePickerInteraction" module="interactions.base.picker_interaction" muid="AB2777AD189220F6" description="The picker interaction to select multiple objects from various inventories." instance_needs_reference="True" instance_subclasses_only="False" parents="PurchasePickerInteraction, PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="continuation" class="OptionalTunable" default="disabled" display="Continuation" muid="84AFDFE1D539B594" description="If enabled, you can tune a continuation to be pushed.&#xA;PickedObject will be the object that was selected" Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D765950C51E03049" />
+            <TunableList name="enabled" class="TunableContinuation" display="Enabled" muid="6B38F0AC979860B9" description="If specified, a continuation to push on the chosen object." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="983E64513FA62399" description="A continuation entry." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ParticipantType" name="actor" class="TunableEnumEntry" default="Actor" display="Actor" muid="BC2E06EA57361AC7" static_entries="interactions.ParticipantType" description="The Sim on which the affordance is pushed." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="408A58AFA8509423" description="The affordance to push as a continuation on the specified&#xA;actor Sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableVariant type="None" name="carry_target" class="OptionalTunable" default="disabled" display="Carry Target" muid="DB6FABD4B0DEA7B0" description="If enabled, specify a carry target for this continuation." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D47C07F4905CB0BE" />
+                        <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Object" display="Enabled" muid="5C70FA850538662" static_entries="interactions.ParticipantType" description="The participant the affordance will set as a carry target." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="inventory_carry_target" class="TunableVariant" default="None" display="Inventory Carry Target" muid="A2E032BB7963D53D" description="Item in inventory (of continuations actor) to use as carry&#xA;target for continuation if carry target is None" Deprecated="False" filter="0" group="General">
+                        <Tunable name="None" class="TunableExistance" display="None" muid="94FA7D4903A5247C" />
+                        <TunableTuple name="object_with_base_definition" class="TunableTuple" display="Object With Base Definition" muid="C06BA2F033E55ED3" Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="6D3690E0884D77BB" description="The base definition to look for inside inventory.&#xA;Objects that redirect (like counters) will match if base&#xA;definition is the same." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="object_with_definition" class="TunableTuple" display="Object With Definition" muid="7837320B93C7D6A2" Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="3DE5B69B030D382D" description="The exact object definition to look for inside&#xA;inventory." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="object_with_tag" class="CraftTaggedItemFactory" display="Object With Tag" muid="731FE8242B7C4B65" description="This option tests crafted item's tags against a list of possible tags" Deprecated="False" filter="0" group="General">
+                            <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="91558D634F32BF23" description="The tag of objects we want to test ownership of" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="2F71752A7DA1EE18" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                            <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="4AD8CF4F8CB5A1A7" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the objects on the lot." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <Tunable type="bool" name="preserve_preferred_object" class="Tunable" default="True" display="Preserve Preferred Object" muid="2405AEF1B6CFDE1B" description="If checked, the pushed interaction's preferred objects are&#xA;determined by the current preferred objects.&#xA;&#xA;If unchecked, the transition sequence would not award bonuses to&#xA;any specific part." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="bool" name="preserve_target_part" class="Tunable" default="False" display="Preserve Target Part" muid="CA3B1F2EFEF506CB" description="If checked, the pushed interaction will use the same target part&#xA;if applicable. Defaults to false because typically we will want&#xA;to let the transition select which part to use." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="interaction" name="si_affordance_override" class="TunableReference" display="Si Affordance Override" muid="7084CF626F5C5031" description="When the tuned affordance is a mixer for a different SI, use&#xA;this to specify the mixer's appropriate SI. This is useful for&#xA;pushing socials." allow_none="True" Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="ParticipantType" name="target" class="TunableEnumEntry" default="Object" display="Target" muid="82487EDFB441A3DE" static_entries="interactions.ParticipantType" description="The participant the affordance will target." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="inventory_item_test" class="TunableVariant" default="object" display="Inventory Item Test" muid="96D835B60BF58C10" description="A test to run on the objects in the inventory to determine&#xA;which objects will show up in the picker. An object test type&#xA;left un-tuned is considered any object." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple name="object" class="TunableObjectTypeFactory" display="Object" muid="24704079BB5234B8" Deprecated="False" filter="0" group="General">
+                <Tunable type="object" name="actual_object" class="TunableReference" display="Actual Object" muid="6A10FB8E8598531A" description="The object we want to test ownership of" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableTuple>
+            <TunableTuple name="tag_set" class="TunableObjectTagFactory" display="Tag Set" muid="E81FC9BC13F27A0D" Deprecated="False" filter="0" group="General">
+                <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="93758E2F66C21E87" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="968DA9FFDB8DCAC9" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+                <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="11E8B17A2F3DC916" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the objects on the lot." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="int" name="max_selectable_in_rows" class="Tunable" default="0" display="Max Selectable In Rows" muid="6F8C5DAF32AE80D8" description="Max number that can be selected in each row, using the smallest of this number and number&#xA;avalable. If 0 or less, there is no maximum number." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="int" name="max_selectable_rows" class="Tunable" default="0" display="Max Selectable Rows" muid="B42D9E5CA866B282" description="Max number of rows that can be selected, if at least one item is purchased in a row, that row is considered&#xA;selected. If 0 or less, there is no maximum number." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="bool" name="use_compressed_multiple_inventory_loot" class="Tunable" default="True" display="Use Compressed Multiple Inventory Loot" muid="1C3BD9E3C22420A3" description="If true, selected objects will remain compressed in inventory, and&#xA;can only be manipulated via compressed muiltiple inventory loots.&#xA;If false, selected object will be uncompressed into inventory, so &#xA;they may be accessed as PickedObjects.  This has performance &#xA;implications for both Gameplay and UI, so should only be used as a&#xA;stopgap, until an appropriate compressed multiple inventory loot&#xA;has been added, or if the number of selectable items is quite low." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <TunableVariant type="None" name="use_household_inventory" class="OptionalTunable" default="disabled" display="Use Household Inventory" muid="72B25395BCE16E23" description="If enabled, the actor who's household inventory to look for &#xA;items that pass the test." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="69D1187BEDA49EBB" />
+            <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="64A9B0911BABA28E" static_entries="interactions.ParticipantType" description="Subject on which the household inventory exists." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="use_sim_inventory" class="OptionalTunable" default="disabled" display="Use Sim Inventory" muid="1FCA5C8635EB0F8E" description="If enabled, the actor for who's inventory to look for items that pass &#xA;the test." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="93004461C49FE52A" />
+            <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="F453C931D16BA47" static_entries="interactions.ParticipantType" description="Subject on which the sim inventory exists." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

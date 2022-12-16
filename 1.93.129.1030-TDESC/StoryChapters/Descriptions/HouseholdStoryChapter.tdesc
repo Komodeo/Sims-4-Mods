@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="story_chapter" class="HouseholdStoryChapter" module="story_progression.story_progression_chapter" muid="D6711ED119856E2E" description="A Story Chapter for Households." instance_needs_reference="True" instance_subclasses_only="False" parents="BaseStoryChapter" path="StoryChapters\Descriptions" use_guid_for_reference="True">
+        <TunableList name="actions" class="TunableList" display="Actions" muid="21CAE49C2E740899" description="The actions that will be taken when this chapter runs." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" class="TunableVariant" default="move_in" muid="9E21E8B3669FD276" description="The action that will be taken when this chapter runs." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="move_in" class="TunableMoveInStoryProgressionAction" display="Move In" muid="7574F32FD2CAD88" description="Story progression action that moves a household into a zone." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="store_household_name_participant" class="OptionalTunable" default="disabled" display="Store Household Name Participant" muid="AC00B4C7A1BB830F" description="If enabled we will store off the affected household name for future use in tokens or other resolvers." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="99A4EEA5647F7E8C" />
+                        <TunableEnum type="ParticipantTypeSavedStoryProgressionString" name="enabled" class="TunableEnumEntry" default="SavedStoryProgressionString1" display="Enabled" muid="D3808221E0E5B965" static_entries="interactions.ParticipantTypeSavedStoryProgressionString" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="store_world_name_participant" class="OptionalTunable" default="disabled" display="Store World Name Participant" muid="B08EA90F20B75A0C" description="If enabled we will store off the target world name into the specified participant type for future use in tokens&#xA;or other resolvers." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="34548E3C4044CAB9" />
+                        <TunableEnum type="ParticipantTypeSavedStoryProgressionString" name="enabled" class="TunableEnumEntry" default="SavedStoryProgressionString1" display="Enabled" muid="CB4CD1B920B31138" static_entries="interactions.ParticipantTypeSavedStoryProgressionString" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="store_zone_participant" class="OptionalTunable" default="disabled" display="Store Zone Participant" muid="C8D899D905037CBB" description="If enabled we will store off the zone id participant for future&#xA;use in tokens or other resolvers." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4CBB680955506DFB" />
+                        <TunableEnum type="ParticipantTypeSavedStoryProgressionZone" name="enabled" class="TunableEnumEntry" default="SavedStoryProgressionZone1" display="Enabled" muid="CE34E026575BD04" static_entries="interactions.ParticipantTypeSavedStoryProgressionZone" description="The zone participant to save it into." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableTuple>
+                <TunableTuple name="move_out" class="TunableMoveOutStoryProgressionAction" display="Move Out" muid="B2632F1B446133E6" description="Story progression action that adds a Sim to the family." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="store_household_name_participant" class="OptionalTunable" default="disabled" display="Store Household Name Participant" muid="5426DCC1AA029800" description="If enabled we will store off the affected household name for future use in tokens or other resolvers." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A51C308CB22FB008" />
+                        <TunableEnum type="ParticipantTypeSavedStoryProgressionString" name="enabled" class="TunableEnumEntry" default="SavedStoryProgressionString1" display="Enabled" muid="4437A5CCF1CE91DC" static_entries="interactions.ParticipantTypeSavedStoryProgressionString" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="store_world_name_participant" class="OptionalTunable" default="disabled" display="Store World Name Participant" muid="613B6A59231B97E3" description="If enabled we will store off the target world name into the specified participant type for future use in tokens&#xA;or other resolvers." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="764D20B68C1EA8E9" />
+                        <TunableEnum type="ParticipantTypeSavedStoryProgressionString" name="enabled" class="TunableEnumEntry" default="SavedStoryProgressionString1" display="Enabled" muid="6DB8642697A194D6" static_entries="interactions.ParticipantTypeSavedStoryProgressionString" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableList>
+
+        <TunableList name="linked_chapters" class="StoryProgressionLinkedChapters" display="Linked Chapters" muid="8FDB0A9952A02BF2" description="A list of possible future chapters that are selected utilizing&#xA;a weighted random with tests." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="7DC8CB256C11EF8D" Deprecated="False" filter="0" group="General">
+                <Tunable type="story_chapter" name="possible_chapter" class="TunableReference" display="Possible Chapter" muid="31E3D6032D12DB00" description="A possible future Chapter." allow_none="False" Deprecated="False" filter="0" group="General" restrict="HouseholdStoryChapter" />
+                <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="251072FD7103A129" description="A weight with testable multipliers that is used to &#xA;determine how likely this entry is to be picked when &#xA;selecting randomly." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="563C29817AE397BA" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="EE68C77E1C35D31A" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="6589A6772DB72580" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="37C91F8A498FB11B" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="24781A3C04409CFA" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kUpdateVariantTypeField" target_muid="9E21E8B3669FD276" source_type_value="move_in" target_type_value="move_in" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="514ABCE9C6B4BF86" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

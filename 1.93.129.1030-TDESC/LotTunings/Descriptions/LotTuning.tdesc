@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="lot_tuning" class="LotTuning" module="world.lot_tuning" muid="FF69115C614389F9" description="Represents the gameplay tuning associated with a lot." instance_needs_reference="True" instance_subclasses_only="False" path="LotTunings\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="audio_sting" class="OptionalTunable" default="disabled" display="Audio Sting" muid="3E6C688BA1362178" description="If enabled then the specified audio sting will play at the end&#xA;of the camera lerp when the lot is loaded." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CA5465AF3021F2AA" />
+            <TunableTuple name="enabled" class="TunablePlayAudio" display="Enabled" muid="65D009F0AD9320C" description="The sound to play at the end of the camera lerp when the&#xA;lot is loaded." Deprecated="False" filter="0" group="General">
+                <Tunable type="ResourceKey" name="audio" class="TunableResourceKey" default="None" display="Audio" muid="2309EC914F50B763" description="The sound to play." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+                <Tunable type="bool" name="immediate_audio" class="Tunable" default="False" display="Immediate Audio" muid="A045FB7FBBA79765" description="If checked, this audio will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. Earbuds audio will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="joint_name_hash" class="OptionalTunable" default="disabled" display="Joint Name Hash" muid="D3A448CD1339824B" description="Specify if the audio is attached to a slot and, if so, which&#xA;slot. Otherwise the audio will be attached to the object's &#xA;origin." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4D09E20656177627" />
+                    <Tunable type="str" name="enabled" class="TunableStringHash32" default="None" display="Enabled" muid="3957F5DF9E2CEB42" description="The name of the slot this audio is attached to." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="bool" name="play_on_active_sim_only" class="Tunable" default="False" display="Play On Active Sim Only" muid="3FADE37782A491E8" description="If enabled, and audio target is Sim, the audio will only be &#xA;played on selected Sim. Otherwise it will be played regardless &#xA;Sim is selected or not.&#xA;&#xA;If audio target is Object, always set this to False. Otherwise&#xA;the audio will never be played.&#xA;&#xA;ex. This will be useful for Earbuds where we want to hear the&#xA;music only when the Sim is selected." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="bool" name="track_premade_status" class="Tunable" default="False" display="Track Premade Status" muid="1C490E1CEA45E452" description="If enabled, the lot will be flagged as no longer premade when the&#xA;player enters buildbuy on the lot or drops items/lots/rooms from&#xA;the gallery. Otherwise, the lot is still considered premade.&#xA;If disabled, the game won't care if this lot is premade or not.&#xA;&#xA;For example, the retail lots that were shipped with EP01 will track&#xA;the premade status so we know if objects should automatically be&#xA;set for sale." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="travel_audio_sting" class="OptionalTunable" default="disabled" display="Travel Audio Sting" muid="F6F91337CE085B8E" description="If enabled then the specified audio sting will play at the end&#xA;of the camera lerp after a travel.  If disabled, 'Audio Sting'&#xA;will play instead if it is enabled." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F55D2686D0C1D0F" />
+            <TunableTuple name="enabled" class="TunablePlayAudio" display="Enabled" muid="10E64C831F9690DC" description="The sound to play at when entering the lot after a travel." Deprecated="False" filter="0" group="General">
+                <Tunable type="ResourceKey" name="audio" class="TunableResourceKey" default="None" display="Audio" muid="7CE835B3E0C90AEB" description="The sound to play." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+                <Tunable type="bool" name="immediate_audio" class="Tunable" default="False" display="Immediate Audio" muid="40E593A02094842F" description="If checked, this audio will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. Earbuds audio will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="joint_name_hash" class="OptionalTunable" default="disabled" display="Joint Name Hash" muid="1AC5F53244F91F78" description="Specify if the audio is attached to a slot and, if so, which&#xA;slot. Otherwise the audio will be attached to the object's &#xA;origin." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7FE56D8E103E8DA1" />
+                    <Tunable type="str" name="enabled" class="TunableStringHash32" default="None" display="Enabled" muid="6D3571084E2288AC" description="The name of the slot this audio is attached to." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="bool" name="play_on_active_sim_only" class="Tunable" default="False" display="Play On Active Sim Only" muid="26C5E18683C496C" description="If enabled, and audio target is Sim, the audio will only be &#xA;played on selected Sim. Otherwise it will be played regardless &#xA;Sim is selected or not.&#xA;&#xA;If audio target is Object, always set this to False. Otherwise&#xA;the audio will never be played.&#xA;&#xA;ex. This will be useful for Earbuds where we want to hear the&#xA;music only when the Sim is selected." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="walk_by" name="walkby" class="TunableReference" display="Walkby" muid="32A7347B3847DBDF" allow_none="True" Deprecated="False" filter="0" group="General" restrict="WalkbyTuning" />
+
+        <Tunable type="walk_by" name="walkby_schedule" class="TunableReference" display="Walkby Schedule" muid="9D93C6456600A95E" allow_none="True" Deprecated="False" filter="0" group="General" restrict="SchedulingWalkbyDirector" />
+    </Instance>
+</TuningRoot>

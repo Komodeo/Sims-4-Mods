@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="relationship_lock" class="RelationshipBitLock" module="relationships.relationship_bit_lock" muid="A8757CCC9CD95161" description="A Relationship Bit Lock is a lock on relationship bits that prevents them&#xA;from changing for a certain amount of time.&#xA;&#xA;A Relationship Bit Lock is linked to Relationship Bit's through their&#xA;Group Id as the Bit Lock applies to all Relationship Bit's that use the&#xA;same group.&#xA;&#xA;A change of relationship implies an add of bit.  We only check the&#xA;relationship bit change" instance_subclasses_only="False" path="RelationshipLocks\Descriptions" use_guid_for_reference="True">
+        <TunableEnum type="RelationshipBitType" name="group_id" class="TunableEnumEntry" default="Invalid" display="Group Id" muid="A47234C34011723C" dynamic_entries="relationships-relationship_bit.RelationshipBitType._elements" static_entries="relationships-relationship_bit.RelationshipBitType" description="The group that this lock applies to.  No two locks can belong to&#xA;the same group." Deprecated="False" filter="0" group="General" invalid_entries="Invalid,NoGroup" />
+
+        <Tunable type="float" name="relock_percentage" class="TunablePercent" default="0" display="Relock Percentage" muid="B206C2E945269507" min="0" max="100" description="The percent chance that we will just relock this Relationship Bit&#xA;Lock and prevent a change when one attempts to occur.  If we are&#xA;relocked then we will not change the bit." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="float" name="timeout" class="TunableSimMinute" default="360" display="Timeout" muid="91D182A393940AC3" min="1" max="None" description="The amount of time in Sim minutes that this Relationship Bit Lock&#xA;will be locked before potentially allowing a Relationship Bit&#xA;Change." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="world.lot_tuning" muid="CB06481092EA5A46">
+        <Class name="LotTuningMaps" muid="4547BEE0B2DA7F56">
+            <TunableList name="LOT_TO_LOTTUNING_MAP" class="TunableMapping" display="Lot To Lottuning Map" muid="B3B4564710194183" mapping_key="Lot Description ID" mapping_value="Lot Tuning" description="Mapping of Lot Description ID to lot tuning. This is a reference to &#xA;a specific lot in one of our regions. e.g. Goth's mansion lot." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="E89C7044F5C71801" Deprecated="False" filter="0" group="General">
+                    <Tunable type="lotdescription" name="Lot Description ID" class="TunableReference" display="Lot Description Id" muid="FD2AD96FAA646BB7" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="lot_tuning" name="Lot Tuning" class="TunableReference" display="Lot Tuning" muid="6EDCC49767C5986D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LotTuning" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="REGION_TO_LOTTUNING_MAP" class="TunableMapping" display="Region To Lottuning Map" muid="C441EB8F3A216B79" mapping_key="Region Description ID" mapping_value="Lot Tuning" description="Mapping of Region Description ID to spawner tuning. Region and &#xA;neighborhood are analogous terms. e.g. Garden District.&#xA;&#xA;This represents the tuning for all lots in the region that does&#xA;not have a specific LotTuning specified for itself in either the &#xA;LOT_TO_LOTTUNING_MAP or via STREET_TO_LOTTUNING_MAP." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="32413CF51D40FE3F" Deprecated="False" filter="0" group="General">
+                    <Tunable type="lot_tuning" name="Lot Tuning" class="TunableReference" display="Lot Tuning" muid="374D3896C6052426" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LotTuning" />
+                    <Tunable type="regiondescription" name="Region Description ID" class="TunableReference" display="Region Description Id" muid="C9219B82FC35BC9D" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="STREET_TO_LOTTUNING_MAP" class="TunableMapping" display="Street To Lottuning Map" muid="17B66686F9AA88C" mapping_key="Street Description ID" mapping_value="Lot Tuning" description="Mapping of Street Description ID to lot tuning. Street and world&#xA;are analogous terms. e.g. suburbs street in Garden District.&#xA;&#xA;This represents the tuning for all lots within this street that does&#xA;not have a specific LotTuning specified for itself in the &#xA;LOT_TO_LOTTUNING_MAP." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="D95B16FEC3C15397" Deprecated="False" filter="0" group="General">
+                    <Tunable type="lot_tuning" name="Lot Tuning" class="TunableReference" display="Lot Tuning" muid="373D31D72F41F32F" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LotTuning" />
+                    <Tunable type="worlddescription" name="Street Description ID" class="TunableReference" display="Street Description Id" muid="68BD96F2046FF4D8" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+
+        <Class name="GlobalLotTuningAndCleanup" muid="4240C0602E1416B1">
+            <TunableList name="OBJECT_CLEANUP_TUNING" class="TunableList" display="Object Cleanup Tuning" muid="737EDE70E1004863" description="A list of actions to take when spinning up a zone in order to fix it&#xA;up based on statistic values that the lot has." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="3A31C703052140B5" Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="count" class="TunableVariant" default="all_items" display="Count" muid="7A59F7B006625040" description="The maximum number of items that will have the action run&#xA;on them. " Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="all_items" class="AllItems" display="All Items" muid="8B0EA8FA3A4012B0" description="Process all of the objects on the lot." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="statistic_difference" class="StatisticDifference" display="Statistic Difference" muid="13577E0AA9BF0260" description="Return the difference between two different statistics and use&#xA;that as the amount of objects to process.&#xA;If the statistics cannot be found the value 0 is used instead." Deprecated="False" filter="0" group="General">
+                            <Tunable type="statistic" name="statistic_1" class="TunableReference" display="Statistic 1" muid="FF57A99F55105EE6" description="The first statistic that will be used with the second statistic&#xA;in order to discover the number of objects on the lot to&#xA;process.&#xA;&#xA;If the statistic is not found then the number 0 is use instead." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="statistic" name="statistic_2" class="TunableReference" display="Statistic 2" muid="AEB5AA69CED9162D" description="The second statistic that will be used with the first statistic&#xA;in order to discover the number of objects on the lot to&#xA;process.&#xA;&#xA;If the statistic is not found then the number 0 is use instead." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="statistic_value" class="StatisticValue" display="Statistic Value" muid="8AB6A550615B59FD" description="Return the value of a statistic on the lot.  If the statistic&#xA;is not found then the number 0 is used instead." Deprecated="False" filter="0" group="General">
+                            <Tunable type="statistic" name="statistic" class="TunableReference" display="Statistic" muid="C29432B404664258" description="The statistic on the lot that will be used to determine the&#xA;number of objects to process.&#xA;If the statistic is not found then the number 0 is used instead." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableList name="possible_actions" class="TunableList" display="Possible Actions" muid="A2EB07DFDAF01838" description="The different possible actions that can be taken on objects on&#xA;the lot if tests pass." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="DBFC5D3D35356864" Deprecated="False" filter="0" group="General">
+                            <TunableList name="actions" class="TunableList" display="Actions" muid="BC922086EDE50988" description="A group of actions to be taken on the object." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" class="TunableVariant" default="set_state" muid="1C17C1E881806986" description="The actual action that will be performed on the&#xA;object if test passes." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple name="cleanup_vehicle" class="CleanupVehicle" display="Cleanup Vehicle" muid="3339E637BF9A03BA" description="Cleanup a vehicle that isn't being used by destroying it." Deprecated="False" filter="0" group="General" />
+                                    <TunableTuple name="destroy_object" class="DestroyObject" display="Destroy Object" muid="8063B3E676F7E27D" description="Destroy the object." Deprecated="False" filter="0" group="General" />
+                                    <TunableTuple name="set_state" class="SetState" display="Set State" muid="FAEA1A76B9591C7" description="Change the state of an object to the tuned state." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="object_state" name="state" class="TunableReference" display="State" muid="43123B5FCA670CF8" description="An state that we want to set the object to." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                                    </TunableTuple>
+                                    <TunableTuple name="statistic_change" class="StatisticChange" display="Statistic Change" muid="2030F5F7542643BA" description="Modify the statistic value of an object." Deprecated="False" filter="0" group="General">
+                                        <TunableVariant type="None" name="amount" class="TunableVariant" default="none" display="Amount" muid="7180F2B6A0A5BA47" description="The amount to modify the statistic by." Deprecated="False" filter="0" group="General">
+                                            <TunableTuple name="constant" class="ConstantAmount" display="Constant" muid="6BC340B0E38A86C2" description="A constant amount." Deprecated="False" filter="0" group="General">
+                                                <Tunable type="float" name="amount" class="Tunable" default="0.0" display="Amount" muid="B03B60CDA9A087EE" description="A constant amount to change the statistic by." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                            </TunableTuple>
+                                            <Tunable name="none" class="TunableExistance" display="None" muid="9CB22076152D148B" />
+                                            <TunableTuple name="statistic_based" class="StatisticBased" display="Statistic Based" muid="8259D1577097F118" description="An amount that is based on the statistic value of a statistic&#xA;on the lot." Deprecated="False" filter="0" group="General">
+                                                <Tunable type="float" name="multiplier" class="Tunable" default="1.0" display="Multiplier" muid="88EA405D9CDD81C6" description="A multiplier on the statistic value of the statistic on the lot." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                                <Tunable type="statistic" name="statistic" class="TunableReference" display="Statistic" muid="3C5BF6A3525DDF97" description="A statistic on the lot who's value will be used as the amount&#xA;to modify a statistic.&#xA;If no value is found the number 0 is used." allow_none="False" Deprecated="False" filter="0" group="General" />
+                                            </TunableTuple>
+                                        </TunableVariant>
+                                        <Tunable type="statistic" name="statistic" class="TunableReference" display="Statistic" muid="88AF499E507EBC61" description="The statistic to be changed on the object." allow_none="False" Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableVariant>
+                            </TunableList>
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="53FB880790CA5872" description="Tests that if they pass the object will be under&#xA;consideration for this action being done on them." filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="OBJECT_COUNT_TUNING" class="TunableMapping" display="Object Count Tuning" muid="6E13A03F3FC36AE9" mapping_key="key" mapping_value="value" description="Mapping between statistic and a set of tests that are run over the&#xA;objects on the lot on save.  The value of the statistic is set to the&#xA;number of objects that pass the tests." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="CAC8D6C61F950632" Deprecated="False" filter="0" group="General">
+                    <Tunable type="statistic" name="key" class="TunableReference" display="Key" muid="5FC56549F4776BB9" description="The statistic on the lot that will be set the value of the number&#xA;of objects that pass the test set that it is mapped to." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TdescFragTag name="value" class="TunableTestSet" display="Value" muid="1300B31D47580E35" description="Test set that will be run on all objects on the lot to determine&#xA;what the value of the key statistic should be set to." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SET_STATISTIC_TUNING" class="TunableList" display="Set Statistic Tuning" muid="4F8FA3823720326D" description="A list of statistics and values that they will be set to on the lot&#xA;while saving it when the lot was running.&#xA;&#xA;These values are set before counting by tests on objects." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="B79BB984244826A1" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="amount" class="Tunable" default="0.0" display="Amount" muid="F7E473E177490155" description="The value that the statistic will be set to." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="statistic" name="statistic" class="TunableReference" display="Statistic" muid="82AFBE79626B1D9B" description="The statistic that will have its value set." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

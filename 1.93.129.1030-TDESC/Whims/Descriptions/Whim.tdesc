@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="whim" class="Whim" module="whims.whim" muid="64BB23A99A1984DB" description="Tuning for a single whim goal." instance_needs_reference="True" instance_subclasses_only="False" path="Whims\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="chaining_whimset_chance_multiplier" class="OptionalTunable" default="disabled" display="Chaining Whimset Chance Multiplier" muid="20CB9A795F72CBFE" description="When this whim completes and if this field is tuned,&#xA;we will multiply this whim's source whimset's&#xA;'chance to be picked' by this multiplier. This&#xA;allows us to have a higher chance of &quot;chaining&quot;&#xA;whims from the same whimset, without outright&#xA;forcing it." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="89C5EAA7283ED5D6" />
+            <Tunable type="float" name="enabled" class="Tunable" default="1.0" display="Enabled" muid="45ED60644831EC92" description="The multiplier to apply to the whimset's&#xA;'chance to be picked'." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="commodity" class="OptionalTunable" default="disabled" display="Commodity" muid="5CA7ADD27267DEAC" description="If set, this whim will give a commodity when enabled." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="56E45D2042237A36" />
+            <Tunable type="statistic" name="enabled" class="TunableReference" display="Enabled" muid="9695FD2E2A7446BE" allow_none="False" Deprecated="False" filter="0" group="General" restrict="Commodity" />
+        </TunableVariant>
+
+        <Tunable type="int" name="fluff_description" class="TunableLocalizedString" default="0x0" display="Fluff Description" muid="A0CD48AB35B4E3EE" description="A description of the whim from the owning sim's perspective.&#xA;For example, if the whim is &quot;buy a pool&quot;, the fluff description might be&#xA;&quot;I've always wanted to swim in my own backyard. I should get a pool.&quot;" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="situation_goal" name="goal" class="TunableReference" display="Goal" muid="EB27CA3FC5FC23C4" description="The goal for this whim." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="super_affordances" class="TunableSet" display="Super Affordances" muid="772C900EDB1F054C" description="Super affordances this adds to the object." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="interaction" class="TunableReference" muid="688D662085E15E6E" description="A super affordance added to this object." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="SuperInteraction" />
+        </TunableList>
+
+        <TunableList name="target_super_affordances" class="TunableProvidedAffordances" display="Target Super Affordances" muid="D871A8F129F3945B" description="Super affordances this adds to the target." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="548A9F59F3DCCBE1" description="Tunables related to a specific affordance we are providing,&#xA;with the ability to override specifics about targets,&#xA;restrictions, and dependencies." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="6CA44F42688016E4" description="An affordance we make available. Pay attention to who this&#xA;affordance is provided on. See the provided affordances&#xA;description for more info." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <Tunable type="bool" name="allow_self" class="Tunable" default="False" display="Allow Self" muid="AC0F3D7D198E23FD" description="If set, the Sim running the providing interaction is&#xA;allowed to also run the provided interaction." Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="object_filter" class="TunableObjectFilterVariant" default="filter_by_sim" display="Object Filter" muid="283038443C7A7E91" description="Define the type of objects this affordance is provided on." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="allow_all" class="Tunable_FilterAllowAll" display="Allow All" muid="44173124A9234C2" description="No requirements. All objects are valid." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="filter_by_portal_flags" class="Tunable_FilterByPortalFlags" display="Filter By Portal Flags" muid="90EB07771352B803" description="Specify portal requirements for the object." Deprecated="False" filter="0" group="General">
+                        <TunableList name="portal_flags" class="TunableEnumFlags" display="Portal Flags" muid="CEC56A9D4BF24A22" description="The object must have any of these portal flags in order to&#xA;satisfy the requirement." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="PortalFlags" class="TunableEnumEntry" default="DEFAULT" muid="EB0F7A979B06F8EE" dynamic_entries="routing-portals-portal_tuning.PortalFlags._elements" static_entries="routing-portals-portal_tuning.PortalFlags" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="filter_by_sim" class="Tunable_FilterBySim" display="Filter By Sim" muid="C2254138D659E22E" description="Specify Sim or non-Sim requirements for the object. " Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="filter_by_state" class="Tunable_FilterByState" display="Filter By State" muid="A17184F5BABE4A3C" description="Specify state requirements for the object." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="states" class="TunableWhitelist" display="States" muid="304AF321014C4C95" description="The required states to pass this test." Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" name="threshold" class="OptionalTunable" default="threshold" display="Threshold" muid="FCAF5B7C17ED8B6B" description="Tunable option for how many items must be in the whitelist&#xA;for the whitelist to pass when testing a collection of items.&#xA;By default, only one object needs to be in the list." Deprecated="False" filter="0" group="General">
+                                <Tunable name="all_must_match" class="TunableExistance" display="All Must Match" muid="EDA87110D3D1C664" />
+                                <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="DA2802766E6C95DD" description="When testing a collection of items, the number of items in&#xA;that collection that are in the whitelist must pass this&#xA;threshold test for the whitelist to allow them all." Deprecated="False" filter="0" group="General">
+                                    <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="7753C6F206FAB946" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="AE52D96AB6C296C0" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableVariant>
+                            <TunableList name="whitelist" class="TunableSet" display="Whitelist" muid="568EB874AAC13E05" description="Whitelisted items." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="object_state" class="TunableReference" muid="34D6C7BE5202BCBA" description="The state value." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableTuple>
+                    <TunableTuple name="filter_by_tags" class="Tunable_FilterByTags" display="Filter By Tags" muid="BD0210CA08DE3172" description="Specify tag requirements for the object." Deprecated="False" filter="0" group="General">
+                        <TunableList name="tags" class="TunableSet" display="Tags" muid="59C1D17EB14CCC2F" min="1" description="The object must have any of these tags in order to satisfy the&#xA;requirement." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="74BC24F20AA2ADB5" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="filter_by_terrain" class="Tunable_FilterByTerrain" display="Filter By Terrain" muid="52124D8F975AB142" description="Specify a requirement of the object being the terrain." Deprecated="False" filter="0" group="General">
+                        <TunableList name="disallowed_surfaces" class="TunableSet" display="Disallowed Surfaces" muid="68DF67CE0B336D6B" description="Routing surfaces where the placement of this object should&#xA;fail." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="SurfaceType" class="TunableEnumEntry" default="SURFACETYPE_POOL" muid="9884C703EA3FCA95" static_entries="routing.SurfaceType" Deprecated="False" filter="0" group="General" invalid_entries="SURFACETYPE_UNKNOWN" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableEnum type="WhimType" name="type" class="TunableEnumEntry" default="INVALID" display="Type" muid="8F519373B0DF3B7E" static_entries="whims-whims_tracker.WhimType" description="The type of whim that this whim is." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="2A1ED2C55DA15CDA" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="F270EF988EB8477E" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="A6868CB5BA87AB0A" />
+            <Action type="kRemove" old_muid="134F22AAC3698E6" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

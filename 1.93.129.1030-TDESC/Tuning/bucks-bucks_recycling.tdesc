@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="bucks.bucks_recycling" muid="A0E0C936A0B1E1D4">
+        <Class name="BucksRecycling" muid="2431AE8E7E819315">
+            <TunableList name="RECYCLING_VALUE" class="TunableMapping" display="Recycling Value" muid="95AEACEF7C9752D9" mapping_key="Bucks Type" mapping_value="Recycled Value" description="Maps a buck type the parameters controlling object recycling value.&#xA;Recycling Formula:&#xA;Total = Base Value * Price Response Curve (Object Current Simoleon Value) * &#xA;    Object Recycle Value (Buck Type)" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="2BA5AA8E479047CE" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="BucksType" name="Bucks Type" class="TunableEnumEntry" default="INVALID" display="Bucks Type" muid="D4619F3283A2E836" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableTuple name="Recycled Value" class="TunableTuple" display="Recycled Value" muid="171ECB3375CC1EB3" description="Recycling parameters for this buck type." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="base_value" class="TunableRange" default="1.0" display="Base Value" muid="1CF68D63931EC2F6" min="0.0" max="None" description="Base multiplier for this buck type" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableList name="price_response_curve" class="TunableCurve" display="Price Response Curve" muid="8BC68201BD34B73C" description="Modulate the base value by the objects Simoleon value." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableVector2" muid="FF784FF833C148AB" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="x" class="Tunable" default="0.0" display="x: Object Price" muid="DD7504CE5472607D" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="y" class="Tunable" default="0.0" display="y: Base Multiplier" muid="7DBC8E9854EE9E5F" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="weather.weather_service" muid="70DE118CE0BEF6E5">
+        <Class name="WeatherService" muid="E0CE3374A3D08828">
+            <TunableTuple name="ACTIVE_LIGHTNING" class="TunableTuple" display="Active Lightning" muid="CEFE3A9498EDE2CC" description="Lightning information for active strikes." Deprecated="False" filter="0" group="General">
+                <TunableList name="creation_metrics" class="TunableList" display="Creation Metrics" muid="D29B4B335530EBC3" description="Metrics for determining how bolts are created at differing&#xA;ambient lightning ranges." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="8E5F3FE4AE4232F5" description="A tuple of ambient lightning range to metrics." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="chance" class="TunablePercent" default="10.0" display="Chance" muid="C31DF171C2AE0D07" min="0" max="100" description="Chance of spawning active lightning each check." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="interval" class="TunableInterval" display="Interval" muid="A19277FC075DFFE0" description="Range of minutes between creation checks at this amount&#xA;of ambient lightning." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableSimMinute" default="10" display="Lower Bound" muid="A335089152436DCB" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableSimMinute" default="20" display="Upper Bound" muid="FFE0A4B79F7EB443" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="value_range" class="TunableInterval" display="Value Range" muid="8C33C85FAB85EAFE" description="Ambient lightning range within which this metric is applied" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="0" display="Lower Bound" muid="9C12C4FF8DFD697D" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="100" display="Upper Bound" muid="484C4F39394A5ACD" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+
+            <TunableList name="COUNTS_AS_SHADE" class="TunableEnumSet" display="Counts As Shade" muid="D1F084895CA29941" description="A set of WeatherTypes that count as shade as far as is sun out&#xA;is concerned." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="WeatherType" class="TunableEnumEntry" default="UNDEFINED" muid="37398987FECEC7EC" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" Deprecated="False" filter="0" group="General" invalid_entries="UNDEFINED" />
+            </TunableList>
+
+            <TunableEnum type="WeatherType" name="EXTREME_COLD_WEATHER_TYPE" class="TunableEnumEntry" default="UNDEFINED" display="Extreme Cold Weather Type" muid="AF6797AE4CC3F55C" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" description="The weather type enum that is for extreme cold.&#xA;UI needs this tuning." Deprecated="False" export_modes="client_binary" filter="0" group="General" invalid_entries="UNDEFINED" />
+
+            <TunableEnum type="WeatherType" name="EXTREME_HEAT_WEATHER_TYPE" class="TunableEnumEntry" default="UNDEFINED" display="Extreme Heat Weather Type" muid="AEE8D23347577935" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" description="The weather type enum that is for extreme heat.&#xA;UI needs this tuning." Deprecated="False" export_modes="client_binary" filter="0" group="General" invalid_entries="UNDEFINED" />
+
+            <Tunable type="weather_forecast" name="FALLBACK_FORECAST" class="TunableReference" display="Fallback Forecast" muid="D4F2D0EAF45787C7" description="The weather forecast to use if no valid forecast is found." allow_none="False" Deprecated="False" filter="0" group="General" restrict="WeatherForecast" />
+
+            <Tunable type="float" name="FROST_GROUND_ACCUMULATION_MAX" class="Tunable100ConvertRange" default="10" display="Frost Ground Accumulation Max" muid="FBD6024A8C91E271" min="0" max="100" description="Maximum amount of accumulation for ground frost." Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="FROST_WINDOW_MELT_RATE" class="TunableTemperatureTuple" display="Frost Window Melt Rate" muid="8916EA898776A546" description="Rate per minute at each temperature that window frost melts.&#xA;Negative means it accumulates." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="burning" class="Tunable100ConvertRange" default="10.0" display="Burning" muid="5105D92A123D50EB" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="cold" class="Tunable100ConvertRange" default="1.0" display="Cold" muid="2986D6C5492DBE6A" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="cool" class="Tunable100ConvertRange" default="3.0" display="Cool" muid="66D7FA686E56023C" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="freezing" class="Tunable100ConvertRange" default="-0.1" display="Freezing" muid="3744FD91C1F74E7C" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="hot" class="Tunable100ConvertRange" default="9.0" display="Hot" muid="11614C07BFB1D549" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="warm" class="Tunable100ConvertRange" default="5.0" display="Warm" muid="939F9CBE69DF24F9" min="None" max="None" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableTuple name="ICY_CONDITIONS" class="TunableTuple" display="Icy Conditions" muid="9D91E5B09A5C715B" description="Icy conditions specific tuning." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="duration" class="TunableSimMinute" default="60.0" display="Duration" muid="870F92C1C1E3F97F" min="30.0" max="None" description="The amount of time (in sim mins) to run icy conditions for." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="start_in" class="TunableSimMinute" default="60.0" display="Start In" muid="AC81C86C57579007" min="0.0" max="None" description="The amount of time (in sim mins) to the start Icy conditions from stop&#xA;of snow accumulation." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="time_to_icy" class="TunableSimMinute" default="10.0" display="Time To Icy" muid="5F635C38D2944B8C" min="1.0" max="None" description="The amount of time (in sim mins) to from 0 to full ICY." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="time_to_icy_decay" class="TunableSimMinute" default="10.0" display="Time To Icy Decay" muid="AE24EB0400FA8F" min="1.0" max="None" description="The amount of time (in sim mins) to from full ICY (or current value) to zero." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="whitelisted_temperatures" class="TunableEnumSet" display="Whitelisted Temperatures" muid="9452634CB1CE74DE" description="Temperatures for which we allow Icy conditions." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Temperature" class="TunableEnumEntry" default="FREEZING" muid="8045E0388C0C89E3" static_entries="weather-weather_enums.Temperature" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+
+            <TunableList name="OUTDOOR_AUTONOMY_RAIN_PENALTIES" class="TunableWeatherAutonomyPenalties" display="Outdoor Autonomy Rain Penalties" muid="59A733F0BC12E2F0" description="A list of penalties modifiers for outside autonomy when it is raining.&#xA;score = score - score * modifier&#xA;&#xA;i.e. is sims score outside interactions at 10% of normal when it's&#xA;80-100 precipitation, then range would be 80-100, modifier would be 0.9" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="1DBCA41A3FBC8FBA" description="A tuple of precipitation range to modifier." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="modifier" class="Tunable" default="1.0" display="Modifier" muid="F187AB172BD48363" description="Multiplier to autonomy score by." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value_range" class="TunableInterval" display="Value Range" muid="666885E3DAC70F07" description="Precipitation range within which this penalty is applied" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="0" display="Lower Bound" muid="C4775D7D12290E9E" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="100" display="Upper Bound" muid="F6EF2D8306DAE098" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="OUTDOOR_AUTONOMY_RAIN_PENALTY_REDUCTIONS" class="TunableWeatherAutonomyPenaltyReductions" display="Outdoor Autonomy Rain Penalty Reductions" muid="DF267DA1DA154970" mapping_key="key" mapping_value="value" description="A mapping of traits to penalty modifiers for rain.&#xA;score = score - score * modifier * penalty reduction modifier&#xA;&#xA;i.e. if sim with the likes the outdoors trait is only half as affected&#xA;by the precipitation, key would be the likes the outdoors trait, value&#xA;would be 0.5" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="F41B4AC9257A169F" Deprecated="False" filter="0" group="General">
+                    <Tunable type="trait" name="key" class="TunableReference" display="Key" muid="D312AFC75678DAA" description="The trait the receives this modifier." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="float" name="value" class="Tunable" default="1.0" display="Value" muid="317D2D726154C7D7" description="Multiplier to modify penalty by." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="OUTDOOR_AUTONOMY_SNOW_PENALTIES" class="TunableWeatherAutonomyPenalties" display="Outdoor Autonomy Snow Penalties" muid="61464DEA9704686D" description="A list of penalties for outside autonomy when it is snowing.&#xA;score = score - score*modifier&#xA;&#xA;i.e. is sims score outside interactions at 10% of normal when it's&#xA;80-100 precipitation, then range would be 80-100, modifier would be 0.9" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="23770EFA3E0B8A84" description="A tuple of precipitation range to modifier." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="modifier" class="Tunable" default="1.0" display="Modifier" muid="F1F7816BE29B091" description="Multiplier to autonomy score by." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value_range" class="TunableInterval" display="Value Range" muid="C04D5D3C8642380A" description="Precipitation range within which this penalty is applied" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="0" display="Lower Bound" muid="3EFEED878E8D4136" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="100" display="Upper Bound" muid="B2FD9B7F5E9C2AF8" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="OUTDOOR_AUTONOMY_SNOW_PENALTY_REDUCTIONS" class="TunableWeatherAutonomyPenaltyReductions" display="Outdoor Autonomy Snow Penalty Reductions" muid="2DD006E22293A270" mapping_key="key" mapping_value="value" description="score = score - score * modifier * penalty reduction modifier&#xA;&#xA;i.e. if sim with the likes the outdoors trait is only half as affected&#xA;by the precipitation, key would be the likes the outdoors trait, value&#xA;would be 0.5" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="5DD03E4E590A62B1" Deprecated="False" filter="0" group="General">
+                    <Tunable type="trait" name="key" class="TunableReference" display="Key" muid="89C7B4023D020D22" description="The trait the receives this modifier." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="float" name="value" class="Tunable" default="1.0" display="Value" muid="E9306C5A238D16EC" description="Multiplier to modify penalty by." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="PUDDLES" class="TunableTuple" display="Puddles" muid="AD1DEF2ADCE68ABD" description="Puddle information" Deprecated="False" filter="0" group="General">
+                <TunableList name="creation_metrics" class="TunableList" display="Creation Metrics" muid="2A240F9EC6307765" description="metrics for determining how puddles are created at differing&#xA;precipitation ranges." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="FBCFCEBFFF7959C3" description="A tuple of precipitation range to metrics." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="chance" class="TunablePercent" default="10.0" display="Chance" muid="1996618DDFA7E114" min="0" max="100" description="Chance of spawning puddle each check." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="interval" class="TunableInterval" display="Interval" muid="E8085D8EF1DD7CAE" description="Range of minutes between creation checks at this amount&#xA;of precipitation." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="lower_bound" class="TunableRange" default="10" display="Lower Bound" muid="E5512FB4084E0F21" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="upper_bound" class="TunableRange" default="20" display="Upper Bound" muid="FB32154B0C1EA9FF" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="value_range" class="TunableInterval" display="Value Range" muid="69D8EBE197EBBCE8" description="Precipitation range within which this metric is applied" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="0" display="Lower Bound" muid="7D08AF8B01702CD6" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="100" display="Upper Bound" muid="12EC429EADE2264F" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="int" name="max" class="Tunable" default="10" display="Max" muid="1387BB14AB4E2775" description="Maximum number of rain-based puddles to exist at one time." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="natural_terrain_definitions" class="TunableList" display="Natural Terrain Definitions" muid="DCB0C8C5FFA628AA" description="This is a list of associated tests and lists of definitions that&#xA;will be used to create a puddle on natural terrain. i.e. mud&#xA;puddles. All of the definitions in the list will be considered&#xA;valid if all of the tests in the test set pass." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="66892A20D9FC5466" description="A list of definitions paired with a set of tests. The tests must&#xA;pass for the definitions in the list to be considered valid for&#xA;creating a puddle on natural terrain. i.e. mud puddles." Deprecated="False" filter="0" group="General">
+                        <TunableList name="definitions" class="TunableDefinitionList" display="Definitions" muid="428C71E9F8F79EA6" description="Definitions for which puddles can be created when associated&#xA;tests pass." Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" class="TunableReference" muid="534A795A82A5B576" description="The definition of the object." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="12327A59AA402530" description="Set of tests that must pass in order for the associated&#xA;definitions in the definition list to be considered valid for&#xA;puddle creation." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <TunableList name="tag" class="TunableTags" display="Tag" muid="D7630D29487D6655" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="D1B92BFC6184C598" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The set of tags that are used to determine which objects are treated as&#xA;rain-based puddles." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                </TunableList>
+                <TunableList name="unnatural_terrain_definitions" class="TunableList" display="Unnatural Terrain Definitions" muid="DE569C039CC474A6" description="This is a list of associated tests and lists of definitions that&#xA;will be used to create a puddle on natural terrain. i.e. water&#xA;puddles. All of the definitions in the list will be considered&#xA;valid if all of the tests in the test set pass.       " Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="1078130E717AA5B6" description="A set of definitions paired with a set of tests. The tests must&#xA;pass for the definitions in the list to be considered valid for&#xA;creating a puddle on unnatural terrain. i.e. water puddles." Deprecated="False" filter="0" group="General">
+                        <TunableList name="definitions" class="TunableDefinitionList" display="Definitions" muid="B86CE5A73FEB4542" description="Definitions for which puddles can be created when associated&#xA;tests pass." Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" class="TunableReference" muid="EA2AAB9088104882" description="The definition of the object." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="2E9CFD2AD57C2B87" description="Set of tests that must pass in order for the associated&#xA;definitions in the definition list to be considered valid for&#xA;puddle creation." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+
+            <Tunable type="float" name="SNOW_ACCUMULATION_RATE" class="Tunable" default="0.03" display="Snow Accumulation Rate" muid="3251EB6583ABDF88" description="Rate per minute per target precipitation amount that snow accumulates.&#xA;i.e. 0.03 means ~30 minutes to 100 coverage in 100 snow." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="SNOW_DRIFT" class="TunableTuple" display="Snow Drift" muid="58833A716ABAA55A" description="Snow drift information" Deprecated="False" filter="0" group="General">
+                <TunableList name="creation_metrics" class="TunableList" display="Creation Metrics" muid="686FC4FF9E5308F9" description="metrics for determining how drifts are created at differing&#xA;precipitation ranges." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="EEE16D7E96F02798" description="A tuple of precipitation range to metrics." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="chance" class="TunablePercent" default="10.0" display="Chance" muid="E5123D97E38B042E" min="0" max="100" description="Chance of spawning drift each check." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="interval" class="TunableInterval" display="Interval" muid="FBAEAC817E72D0B0" description="Range of minutes between creation checks at this amount&#xA;of precipitation." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="lower_bound" class="TunableRange" default="10" display="Lower Bound" muid="CD95C2F27EEE62A3" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="upper_bound" class="TunableRange" default="20" display="Upper Bound" muid="8F5FA46EA4600C54" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="value_range" class="TunableInterval" display="Value Range" muid="29F207C5A59B4015" description="Precipitation range within which this metric is applied" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="0" display="Lower Bound" muid="1107C0E7E383CA7" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="100" display="Upper Bound" muid="5F420455AC1ED030" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+                <TunableList name="definitions" class="TunableDefinitionList" display="Definitions" muid="557C1AE80216DF25" description="Definitions for which objects to be created as snow drifts" Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" class="TunableReference" muid="D14F46A149F1FF4C" description="The definition of the object." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+                <Tunable type="int" name="max" class="Tunable" default="10" display="Max" muid="C43BD987ED0F3BC8" description="Maximum number of snow drifts to exist at one time." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="tag" class="TunableTags" display="Tag" muid="D5303B97380EF1A5" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="12BDB3377E92A115" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The set of tags that are used to determine which objects are treated as&#xA;snow drifts." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                </TunableList>
+            </TunableTuple>
+
+            <Tunable type="float" name="SNOW_FRESHNESS_ACCUMULATION_RATE" class="Tunable" default="0.02" display="Snow Freshness Accumulation Rate" muid="879D91F9E26DF33E" description="Rate per minute per target precipitation amount that snow freshness &#xA;accumulates.&#xA;&#xA;Snow freshness decay rate is subtracted from this to get the final&#xA;decay/accumulation rate.&#xA;&#xA;i.e. 0.02 here with 1.0 freshness decay means it'll take 100 minutes to&#xA;accumulate to full at 100 snow.  (100 * 0.02 = 2.0 rate. 2.0 accumulation&#xA;rate - 1.0 decay rate = final rate 1.0.&#xA;&#xA;And at 50 precipitation the two rates will precisely cancel out." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="SNOW_FRESHNESS_DECAY_RATE" class="Tunable100ConvertRange" default="1" display="Snow Freshness Decay Rate" muid="EE2827C99FB29E16" min="None" max="None" description="Rate per minute that snow freshness decays.&#xA;&#xA;This is subtracted from the calculated accumulation rate to get the&#xA;final decay/accumulation rate.&#xA;&#xA;At 1 this means it'll take 100 minutes to go from full freshness to&#xA;full decay." Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="SNOW_MELT_RATE" class="TunableTemperatureTuple" display="Snow Melt Rate" muid="2B0182011871F264" description="Rate per minute at each temperature that snow melts.&#xA;Negative means it accumulates (i.e. frost) up to the frost limit" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="burning" class="Tunable100ConvertRange" default="10.0" display="Burning" muid="28D0EE18FB2E3D97" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="cold" class="Tunable100ConvertRange" default="1.0" display="Cold" muid="55F2D38049FB59B6" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="cool" class="Tunable100ConvertRange" default="3.0" display="Cool" muid="B4122F65750F041D" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="freezing" class="Tunable100ConvertRange" default="-0.03" display="Freezing" muid="AC3A2A02270C2DCA" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="hot" class="Tunable100ConvertRange" default="9.0" display="Hot" muid="EE849F046682E50B" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="warm" class="Tunable100ConvertRange" default="5.0" display="Warm" muid="1FF26FF951BF72B4" min="None" max="None" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <Tunable type="buff" name="TEMPERATURE_CONTROL_BUFF" class="TunableReference" display="Temperature Control Buff" muid="220D4A00E21539F0" description="If the enable temperature effects on Sims option is disabled,&#xA;this buff is applied to Sims. " allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <Tunable type="float" name="WATER_ACCUMULATION_RATE" class="Tunable" default="0.03" display="Water Accumulation Rate" muid="CEFC99E24CA5F92F" description="Rate per minute per target precipitation amount that water accumulates.&#xA;i.e. 0.03 means ~30 minutes to 100 coverage in 100 rain." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="WATER_EVAPORATION_RATE" class="TunableTemperatureTuple" display="Water Evaporation Rate" muid="9378BAFDDAA1F03F" description="Rate per minute at each temperature that water evaporates." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="burning" class="Tunable100ConvertRange" default="10.0" display="Burning" muid="E52A045E95CC953F" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="cold" class="Tunable100ConvertRange" default="1.0" display="Cold" muid="6E52EEB2063FBB6A" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="cool" class="Tunable100ConvertRange" default="3.0" display="Cool" muid="126210DD20622F15" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="freezing" class="Tunable100ConvertRange" default="1.0" display="Freezing" muid="A0A25E90833CF61E" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="hot" class="Tunable100ConvertRange" default="9.0" display="Hot" muid="7298CCFF17AE8BDE" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="warm" class="Tunable100ConvertRange" default="5.0" display="Warm" muid="71FD93B03F013098" min="None" max="None" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableTuple name="WATER_THAW_RATE" class="TunableTemperatureTuple" display="Water Thaw Rate" muid="E42AEA1DCBB97D1C" description="Rate per minute at each temperature that water thaws.&#xA;Negative means it freezes." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="burning" class="Tunable100ConvertRange" default="10.0" display="Burning" muid="476B4C979F19CF6A" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="cold" class="Tunable100ConvertRange" default="1.0" display="Cold" muid="90E25B6C8080631A" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="cool" class="Tunable100ConvertRange" default="3.0" display="Cool" muid="1F5A84C563B626EC" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="freezing" class="Tunable100ConvertRange" default="-0.1" display="Freezing" muid="382A26425CEFA594" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="hot" class="Tunable100ConvertRange" default="9.0" display="Hot" muid="722380F409AA0297" min="None" max="None" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="warm" class="Tunable100ConvertRange" default="5.0" display="Warm" muid="EF4781DAB6E1A7D0" min="None" max="None" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <Tunable type="float" name="WEATHER_AWARE_TIME_SLICE_SECONDS" class="TunableRealSecond" default="0.1" display="Weather Aware Time Slice Seconds" muid="C66398EDB727ABA3" min="None" max="None" description="The maximum alloted time for updating weather aware objects between time slices in seconds." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="WEATHER_ENDING_EVENT" class="TunableMapping" display="Weather Ending Event" muid="1B2A41AB515CAAEB" mapping_key="key" mapping_value="value" description="Tuning information on event that can happen when a specific weather &#xA;is done." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="AA2BD19D9E13FA8A" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="WeatherType" name="key" class="TunableEnumEntry" default="UNDEFINED" display="Key" muid="7D5FFFF0B9C2F5E4" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" description="Weather type that when completed will trigger additional &#xA;functionality." Deprecated="False" filter="0" group="General" invalid_entries="UNDEFINED" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="D81D6B68973FE25D" description="Information about event that should happen when the specified&#xA;weather ends. " Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="event_type" class="TunableVariant" default="none" display="Event Type" muid="6596E343EE0A8027" description="Possible ingredient mapping by object definition of by &#xA;catalog object Tag." Deprecated="False" filter="0" group="General">
+                            <Tunable name="none" class="TunableExistance" display="None" muid="98F641540949411F" />
+                            <TunableTuple name="spawn_rainbow" class="TunableSpawnRainbow" display="Spawn Rainbow" muid="A43FCDEBC0CDB6FD" description="Handles finding the location and creation of rainbows in the world." Deprecated="False" filter="0" group="General">
+                                <Tunable type="object" name="rainbow_definition" class="TunableReference" display="Rainbow Definition" muid="9BC5B5F33897D28D" description="Rainbow definition to be placed on the world." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                <Tunable type="int" name="spawn_max_radius" class="TunableRange" default="3" display="Spawn Max Radius" muid="DC2981588A299175" min="0" max="None" description="Max radius around the spawner object to search to place the new&#xA;object." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TunableList name="spawner_object_tag_set" class="TunableTags" display="Spawner Object Tag Set" muid="47025CDB842B981F" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="ABAB624212F7320D" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The set of tags that define the objects where the new object&#xA;should try to position itself." Deprecated="False" dynamic_entries_prefix="func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                                </TunableList>
+                                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="C493AC4BF44DB074" description="Tests to run to validate if the placement of the rainbow should&#xA;be valid.  This will run over the object being placed, so any&#xA;object tests will be valid." filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                        <Tunable type="float" name="trigger_chance" class="TunablePercent" default="10.0" display="Trigger Chance" muid="381A75B7CD28C52" min="0" max="100" description="Chance of spawning drift each check." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="WEATHER_OUFTIT_CHANGE_REASONS_TO_IGNORE" class="TunableEnumSet" display="Weather Ouftit Change Reasons To Ignore" muid="CEB49EAF0C33A2FE" description="A list of outfit change reasons that are exempt from testing for&#xA;weather." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="OutfitChangeReason" class="TunableEnumEntry" default="Invalid" muid="8D4E1B01C3B4A0D2" dynamic_entries="sims-outfits-outfit_enums.OutfitChangeReason._elements" static_entries="sims-outfits-outfit_enums.OutfitChangeReason" Deprecated="False" filter="0" group="General" invalid_entries="Invalid" />
+            </TunableList>
+
+            <TunableTuple name="WEATHER_OUTFIT_TESTS" class="TunableTuple" display="Weather Outfit Tests" muid="1AE0C907E491FC07" description="A default weather outfit test and a list of tests to use instead of the&#xA;default test for specific outfit change reasons." Deprecated="False" filter="0" group="General">
+                <TunableList name="default_outfit_change_tests" class="TunableMapping" display="Default Outfit Change Tests" muid="36E52E46C5B8B2AB" mapping_key="key" mapping_value="value" description="A map of outfit category to test set. If the test set passes&#xA;a Sim will change outfit to the corresponding outfit category.&#xA;This is the default set of tests that is run to determine outfit&#xA;change behavior based on weather." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="32ED27528AD4CEC" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="WeatherOutfitCategory" name="key" class="TunableEnumEntry" default="HOTWEATHER" display="Key" muid="3AEDEC715E04E876" static_entries="sims-outfits-outfit_enums.WeatherOutfitCategory" description="The outfit category to set if the test set passes" Deprecated="False" filter="0" group="General" />
+                        <TdescFragTag name="value" class="TunableTestSet" display="Value" muid="83889AEEE6FCD9A5" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <TunableList name="outfit_change_reason_tests" class="TunableList" display="Outfit Change Reason Tests" muid="79DDFB469836E922" description="The tests to run insted of the default test for specific outfit &#xA;change reasons." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="36B861296A542351" Deprecated="False" filter="0" group="General">
+                        <TunableList name="outfit_change_reasons" class="TunableEnumSet" display="Outfit Change Reasons" muid="286428EBBB68B9B0" description="The list of outfit change reasons for which we use the&#xA;specific tests instead of the default test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="OutfitChangeReason" class="TunableEnumEntry" default="Invalid" muid="C4B2215D88DE0A6E" dynamic_entries="sims-outfits-outfit_enums.OutfitChangeReason._elements" static_entries="sims-outfits-outfit_enums.OutfitChangeReason" Deprecated="False" filter="0" group="General" invalid_entries="Invalid" />
+                        </TunableList>
+                        <TunableList name="outfit_change_tests" class="TunableMapping" display="Outfit Change Tests" muid="59DB90493C3B5E89" mapping_key="key" mapping_value="value" description="A map of outfit category to test set. If the test set passes&#xA;a Sim will change outfit to the corresponding outfit category." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="54151C2451D9A084" Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="WeatherOutfitCategory" name="key" class="TunableEnumEntry" default="HOTWEATHER" display="Key" muid="517BD96353E88BD" static_entries="sims-outfits-outfit_enums.WeatherOutfitCategory" description="The outfit category to set if the test set passes" Deprecated="False" filter="0" group="General" />
+                                <TdescFragTag name="value" class="TunableTestSet" display="Value" muid="B950B93A427F08D8" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+
+            <TunableVariant type="None" name="WEATHER_TYPE_EXCLUSIVE_TEST" class="TunableExclusiveWeatherTypeVariant" default="single_entry" display="Weather Type Exclusive Test" muid="901ED697DE303278" description="Tests that specify the exclusive weather type based on the current&#xA;weather." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="single_entry" class="TunableExclusiveWeatherTypeLeaf" display="Single Entry" muid="FBEBFAA71D9FCB23" description="Leaf node of the Exclusive Weather Type tree" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="WeatherType" name="weather_type" class="TunableEnumEntry" default="UNDEFINED" display="Weather Type" muid="4234D123187A556B" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" description="The weather type." Deprecated="False" filter="0" group="General" invalid_entries="Freezing,Cold,Cool,Warm,Hot,Burning,UNDEFINED,AnySnow,AnyRain,Max_Snow_Accumulation,Max_Rain_Accumulation,AnyLightning,StruckByLightning" />
+                </TunableTuple>
+                <Tunable type="snippet" name="tested" class="TunableReference" display="Tested" muid="D85A2BAD2EE628A6" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ExclusiveWeatherTypeBranch" />
+            </TunableVariant>
+
+            <TunableList name="WEATHER_TYPE_MULTIPLE_TEST" class="TunableMapping" display="Weather Type Multiple Test" muid="372860E32B63382A" mapping_key="WeatherTypeKey" mapping_value="WeatherTypeTest" description="Tests that specify which non-exclusive weather types are true based&#xA;on the current weather." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="D316CD7FE70DFA37" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="WeatherType" name="WeatherTypeKey" class="TunableEnumEntry" default="UNDEFINED" display="Weathertypekey" muid="A88E6B1BF2D2894D" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" description="The weather type enum." Deprecated="False" filter="0" group="General" invalid_entries="Freezing,Cold,Cool,Warm,Hot,Burning,UNDEFINED,AnySnow,AnyRain,Max_Snow_Accumulation,Max_Rain_Accumulation,AnyLightning,StruckByLightning" />
+                    <TdescFragTag name="WeatherTypeTest" class="TunableTestSet" display="Weathertypetest" muid="D62D049773F4CA4B" description="At least one of these must pass for weather type to be true based&#xA;on the current weather.&#xA;&#xA;When test is true:&#xA;WeatherEnumTest will return true for that enum.&#xA;That enum will be sent to any objects with a weatheraware component&#xA;listening for that enum." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="WEATHER_TYPE_UI_INFO" class="TunableMapping" display="Weather Type Ui Info" muid="9129C62973EA29E0" mapping_key="WeatherTypeKey" mapping_value="WeatherTypeValue" description="Mapping of weather type enum to weather information. The information&#xA;includes the list of tests for the weather type, the type of weather &#xA;information and the corresponding UI information." Deprecated="False" filter="0" group="General" mapping_class="WeatherTypeTuple">
+                <TunableTuple class="TunableTuple" muid="C6B5ABD4818B4D3D" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="WeatherType" name="WeatherTypeKey" class="TunableEnumEntry" default="UNDEFINED" display="Weathertypekey" muid="5FCBFE00C355221D" dynamic_entries="weather-weather_enums.WeatherType._elements" static_entries="weather-weather_enums.WeatherType" description="The weather type enum." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="WeatherTypeValue" class="WeatherTypeValueTuple" display="Weathertypevalue" muid="2F8B2CDAE1A6837A" description="Test and UI information for this weather type." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="display_information" class="WeatherDisplayInformation" display="Display Information" muid="5BB7F57061D3B2CD" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                            <Tunable type="ResourceKey" name="icon" class="TunableIconAllPacks" default="None" display="Icon" muid="6E1B038404F93FD4" description="The icon of the weather type." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                            <Tunable type="ResourceKey" name="icon_large" class="TunableIconAllPacks" default="None" display="Icon Large" muid="CF3830C4D7E9BB47" description="Large icon of the weather type, used on the weather tooltip." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                            <Tunable type="int" name="name" class="TunableLocalizedString" default="0x0" display="Name" muid="DCAC5ABCA20973FE" description="The name of the weather type." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableEnum type="WeatherTypeGroup" name="weather_group_type" class="TunableEnumEntry" default="UNGROUPED" display="Weather Group Type" muid="8BF5E26AA2D78620" static_entries="weather-weather_enums.WeatherTypeGroup" description="What this weather type actually is. &#xA;Weather VS temperature VS lightning state etc..." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

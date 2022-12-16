@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.funds" muid="13A23B97492ED34B">
+        <Class name="FundsSource" muid="7D6222294BBAFAAD" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="BUCKS" muid="8BEE492B7A758E4D" enum_value="4" />
+
+            <EnumItem name="BUSINESS" muid="B7E466B502AF9088" enum_value="2" />
+
+            <EnumItem name="HOUSEHOLD" muid="8AB6FD9E29942D04" enum_value="0" />
+
+            <EnumItem name="NO_SOURCE" muid="C0E9A289D29B9977" enum_value="5" />
+
+            <EnumItem name="RETAIL" muid="D15B4C8E2BA9E902" enum_value="1" />
+
+            <EnumItem name="STATISTIC" muid="80CD73CAD8C61334" enum_value="3" />
+        </Class>
+
+        <Class name="FundsTuning" muid="27103FB3A0F05352">
+            <TunableList name="UNAFFORDABLE_TOOLTIPS" class="TunableMapping" display="Unaffordable Tooltips" muid="5948D7AF3CD5D4D" mapping_key="key" mapping_value="value" description="A mapping of tooltips for each of the funds sources when an interaction&#xA;cannot be performed due to lack of such funds. Each tooltip takes the&#xA;same tokens as the interaction." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="59CF6DC1F181B7F4" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="FundsSource" name="key" class="TunableEnumEntry" default="HOUSEHOLD" display="Key" muid="A4E7D2BED45DD41D" static_entries="sims-funds.FundsSource" description="The funds source." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="value" class="TunableLocalizedString" default="0x0" display="Value" muid="908651D742DA6E76" description="The tooltip to display when a Sim cannot run the specified&#xA;interaction due to lack of funds." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+
+        <Class name="_Funds" muid="E4178BFBF2F4B9D6">
+            <Tunable type="int" name="MAX_FUNDS" class="TunableRange" default="99999999" display="Max Funds" muid="D26290EF0837E117" min="0" max="2147483647" description="Max Funds a household can have.&#xA;&#xA;If this is tuned please update GlobalTunables.as in the UI code. There&#xA;is a constant there that matches this value and will need to be updated&#xA;if we ever retune this value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="FanMeetAndGreetSituation" module="celebrity_fans.fan_meet_and_greet_situation" muid="C12ACBD1EF0DA39D" instance_subclasses_only="False" parents="SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="bartender" class="TunableSituationJobAndRoleState" display="Bartender" muid="515AD334B1D2268" description="The job and role of the bartender of the event." Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="role_state" class="TunableReference" display="Role State" muid="61ECA5F42C0A015A" description="A role state the sim assigned to the job will perform" allow_none="False" Deprecated="False" filter="0" group="General" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="D67E6B4E80102AFC" description="A reference to a SituationJob that can be performed at this Situation." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="celebrity" class="TunableSituationJobAndRoleState" display="Celebrity" muid="8D3A61678664896F" description="The job and role of the main celebrity of the event." Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="role_state" class="TunableReference" display="Role State" muid="A8746DB080CBF64B" description="A role state the sim assigned to the job will perform" allow_none="False" Deprecated="False" filter="0" group="General" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="10F291E2DECF993E" description="A reference to a SituationJob that can be performed at this Situation." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="fan" class="TunableSituationJobAndRoleState" display="Fan" muid="88AA911EFD5441C5" description="The job and role of the fans of the event." Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="role_state" class="TunableReference" display="Role State" muid="88AC1CD3D57D46B9" description="A role state the sim assigned to the job will perform" allow_none="False" Deprecated="False" filter="0" group="General" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="D82C18795D7DCDD1" description="A reference to a SituationJob that can be performed at this Situation." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="statistic" name="fan_count_statistic" class="TunableReference" display="Fan Count Statistic" muid="479F92EA1CB3F895" description="The ranked statistic that we will use in order to determine how&#xA;many fans we want to invite to the event at minimum." allow_none="False" Deprecated="False" filter="0" group="Roles" restrict="RankedStatistic" />
+
+        <TunableList name="rank_to_fan_count" class="TunableMapping" display="Rank To Fan Count" muid="C6346A3287A9BD9C" mapping_key="key" mapping_value="value" description="A mapping between the rank level of the Fan Count Statistic and&#xA;the number of fans that we want at minimum." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="5E9AE3190E8178A0" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="key" class="TunableRange" default="0" display="Key" muid="EAAD2F5CB6EEF5EF" min="0" max="None" description="The statistic rank of the celebrity Sim." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="value" class="TunableRange" default="0" display="Value" muid="90D13BCC1168F8BF" min="0" max="None" description="The minimum number of fans we want to have based on the rank&#xA;level." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Deleted name="venue_invitation_message" muid="70C2111BB6A4366F" />
+
+        <Deleted name="venue_situation_player_job" muid="B48C1D360D622C30" />
+    </Instance>
+</TuningRoot>

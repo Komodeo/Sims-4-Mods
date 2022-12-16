@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="away_action" class="CareerTone" module="careers.career_interactions" muid="1790BFAB74BDCCDB" description="Specialized away action that acts as a Career Tone." instance_needs_reference="True" instance_subclasses_only="False" parents="AwayAction" path="AwayActions\Descriptions" use_guid_for_reference="True">
+        <TunableList name="dominant_tone_loot_actions" class="TunableList" display="Dominant Tone Loot Actions" muid="A3713C177BED7B5A" description="Loot to apply at the end of a work period if this tone ran for the&#xA;most amount of time out of all tones." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="EFA5F89A4278643D" allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions,RandomWeightedLoot" />
+        </TunableList>
+
+        <Tunable type="float" name="performance_multiplier" class="Tunable" default="1" display="Performance Multiplier" muid="FC9EE0355978B7E" description="Performance multiplier applied to work performance gain." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="periodic_sim_filter_loot" class="TunableList" display="Periodic Sim Filter Loot" muid="5112079E7E2FE20B" description="Loot to apply periodically to between the working Sim and other&#xA;Sims, specified via a Sim filter.&#xA;&#xA;Example Usages:&#xA;-Gain relationship with 2 coworkers every hour.&#xA;-Every hour, there is a 5% chance of meeting a new coworker." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="D6CBA97578A65C9F" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="chance" class="TunableSuccessChance" display="Chance" muid="33AE876ECE7F6E2E" description="Chance per hour of loot being applied." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="base_chance" class="TunablePercent" default="100" display="Base Chance" muid="90496B007828A035" min="0" max="100" description="The basic chance of success." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="BC3E136B66586897" description="A list of multipliers to apply to base_chance." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="B898C0B14FC7770B" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="B71A0CFAA411B239" min="0" max="None" description="The multiplier to apply to base_chance if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="B22423E674725B14" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+                <Tunable type="action" name="loot" class="TunableReference" display="Loot" muid="614E85765AEA7050" description="Loot actions to apply to the two Sims. The Sim in the &#xA;career is Actor, and if Targeted is enabled those Sims&#xA;will be TargetSim." allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+                <TunableVariant type="None" name="max_sims" class="OptionalTunable" default="disabled" display="Max Sims" muid="71E838F81B98A4C2" description="If enabled and the Sim filter finds more than the specified&#xA;number of Sims, the loot will only be applied a random&#xA;selection of this many Sims." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7D0AF2CA9B14F104" />
+                    <Tunable type="int" name="enabled" class="TunableRange" default="1" display="Enabled" muid="1A31F7B1C4D36EF8" min="1" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="sim_filter" name="sim_filter" class="TunableReference" display="Sim Filter" muid="67B2618F2851E77A" description="Filter for specifying who to set at target Sims for loot&#xA;application." allow_none="False" Deprecated="False" filter="0" group="General" restrict="TunableSimFilter" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

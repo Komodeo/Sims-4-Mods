@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="FilteredObjectPickerInteraction" module="interactions.picker.filtered_object_picker" muid="142E034E3AD2BBD7" description="Interaction that allows a player to pick an object in the world based on &#xA;tag/definition." instance_needs_reference="True" instance_subclasses_only="False" parents="ObjectPickerInteraction, PickerSingleChoiceSuperInteraction, PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="additional_tests" class="OptionalTunable" default="disabled" display="Additional Tests" muid="BE8DF9BE24231580" description="Additional tests to further trim Objects selected to show up in the picker." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6E7D0E3AE12838D1" />
+            <TdescFragTag name="enabled" class="TunableTestSetWithTooltip" display="Enabled" muid="F4E775F75EA014B3" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="Tests" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="default_selection_tests" class="OptionalTunable" default="disabled" display="Default Selection Tests" muid="352A20FFA5477CC2" description="Run tests on items to pre-select in the picker." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D86FBDF056DA9C5F" />
+            <TdescFragTag name="enabled" class="TunableTestSetWithTooltip" display="Enabled" muid="2B710B9D4EC6A553" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="Tests" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="include_participant_inventory" class="OptionalTunable" default="disabled" display="Include Participant Inventory" muid="B674A365C2F5C04E" description="if specified, include objects in the specified participants inventory" Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7FA60C3D7ED92245" />
+            <TunableEnum type="ParticipantTypeSingle" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="4CA3FD33E648EC87" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="object_filter" class="ObjectDefinitonsOrTagsVariant" default="object_tags" display="Object Filter" muid="EDC3FCDAAA8C08F" description="Filter to use to find an object." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple name="object_definitions" class="TunableObjectDefinitionsFilter" display="Object Definitions" muid="C80C74083E218C67" description="A Tunable Filter that filters based on specific object definitions." Deprecated="False" filter="0" group="General">
+                <TunableList name="items_to_check" class="TunableList" display="Items To Check" muid="D66B54ACAC3DC7F9" description="A List of the definitions that can be matched to fulfill the filter.&#xA;This list is considered a Match Any requirement." Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" class="TunableReference" muid="7AC8F39B2FBE716F" description="A reference to a definiton that can be matched as part of the &#xA;filter." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="object_tags" class="TunableObjectTagsFilter" display="Object Tags" muid="8DC83F08014EA815" description="A Tunable Filter that filters based on a tag set." Deprecated="False" filter="0" group="General">
+                <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="98EC3AF48784E1C6" description="A Set of tags that can be matched to fulfill the filter. The set&#xA;is considered a Match Any requirement." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="B4CBBB1F140CDE74" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A reference to a tag that can be matched as part of the filter." Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="on_off_lot_requirement" class="TunableVariant" default="on_lot" display="On Off Lot Requirement" muid="C5CD53F12FA114C0" description="Whether to accept objects on the active lot." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="anywhere" class="TunableExistance" display="Anywhere" muid="E60F1C49B3C56C75" />
+            <Tunable name="off_lot" class="TunableExistance" display="Off Lot" muid="68B52C2EDCD88BC0" />
+            <Tunable name="on_lot" class="TunableExistance" display="On Lot" muid="BE2644B49E67E244" />
+        </TunableVariant>
+
+        <TunableList name="use_household_inventory_definition_list" class="TunableList" display="Use Household Inventory Definition List" muid="ECB739C7A8D86DE9" description="Check for objects in HH inventory. We need to search by object definition here." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable type="object" class="TunableReference" muid="86CEAE58AE4F388A" description="Object Definition of items to be searched for." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="996D0EFE7660253A" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="E99808B0A1644065" new_muid="B674A365C2F5C04E" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

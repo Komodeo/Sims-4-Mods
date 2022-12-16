@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="region" class="Region" module="world.region" muid="58C998809BB9EC28" description="Represents the gameplay tuning associated with a region." instance_needs_reference="True" instance_subclasses_only="False" path="Regions\Descriptions" use_guid_for_reference="True">
+        <TunableList name="compatible_venues" class="TunableList" display="Compatible Venues" muid="9BD2B70AE941A5DE" description="A list of venues that are allowed to be set by the player in this&#xA;region." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+            <Tunable type="venue" class="TunableReference" muid="B817DE68B2FD0EA" description="A venue that the player can set in this region." allow_none="False" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableEnum type="OutfitCategory" name="default_outfit_category" class="TunableEnumEntry" default="EVERYDAY" display="Default Outfit Category" muid="D25E787AC9348826" static_entries="sims-outfits-outfit_enums.OutfitCategory" description="The default outfit category to set on the played Sim if they were in an invalid outfit category for this&#xA;region when they were last saved." Deprecated="False" filter="0" group="General" invalid_entries="CURRENT_OUTFIT" />
+
+        <TunableVariant type="None" name="fishing_data" class="OptionalTunable" default="disabled" display="Fishing Data" muid="1F64AA2EEF44BF1D" description="If enabled, define all of the data for fishing locations in this region.&#xA;Only used if objects are tuned to use region fishing data." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CCABB378FD5B5231" />
+            <TunableVariant type="None" name="enabled" class="TunableFishingDataSnippet" default="literal" display="Enabled" muid="F241EFF50E3EDA38" description="This may be tuned in place here using 'literal' or as a reference to a FishingData tuning snippet." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="literal" class="TunableTunedFishingData" display="Literal" muid="B1DEEBF8514E9E4A" description="Tuned fishing data for a particular fishing location." Deprecated="False" filter="0" group="General">
+                    <TunableList name="possible_fish" class="TunableList" display="Possible Fish" muid="A9C71C989914D94A" description="If the Sim catches a fish, we'll pick one of these based on their weights.&#xA;Higher weighted fish have a higher chance of being caught." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="DC19D7D8219C98BB" Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="fish" class="TunableReference" display="Fish" muid="3017CBF6138CEADB" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="98EC24C779C7A81C" description="A construct that determines a total multiplier value based on tunable tests." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="3376AD7C5AC24777" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="9E783F687DDEE93A" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple class="TunableTuple" muid="6D247C98F5F2F87D" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="B55ADA5C7C6A82C1" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="FEC4B3F0E47EA964" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                    <TunableList name="possible_treasures" class="TunableList" display="Possible Treasures" muid="6E9446E0340EA27F" description="If the Sim catches a treasure, we'll pick one of these based on their weights.&#xA;Higher weighted treasures have a higher chance of being caught." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="5738846C837F231A" Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="treasure" class="TunableReference" display="Treasure" muid="1A6C3C61454F273D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="DA5F20DF4C0D02CC" description="A construct that determines a total multiplier value based on tunable tests." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="22A4BE99908BBFC8" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="367BCD549B94AAE" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple class="TunableTuple" muid="ABB33B33B2D9B3AB" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="EE0FCCDB842E0803" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="A98DCE5C85409D38" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                    <TunableTuple name="weight_fish" class="TunableTunableMultiplier" display="Weight Fish" muid="535342F0ACE2065F" description="A tunable list of tests and multipliers to apply to the weight &#xA;used to determine if the Sim will catch a fish instead of treasure &#xA;or junk. This will be used in conjunction with the Weight Junk and &#xA;Weight Treasure." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="131D9C7850D6FC82" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="C62476B1E2FA194C" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="4A55429D5E5A7724" Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="BFDF220645489787" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="65C280B3764D9B3B" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="weight_junk" class="TunableTunableMultiplier" display="Weight Junk" muid="F4836436FDB5AA36" description="A tunable list of tests and multipliers to apply to the weight&#xA;used to determine if the Sim will catch junk instead of a fish or &#xA;treasure. This will be used in conjunction with the Weight Fish and &#xA;Weight Treasure." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="B008617A477631CC" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="D7C4E6E7A820FE50" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="6A871042EEF7201B" Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="E9C16AD5BCF6D8CD" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="983F8754D7D1D3C0" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="weight_treasure" class="TunableTunableMultiplier" display="Weight Treasure" muid="783B50C36C749E52" description="A tunable list of tests and multipliers to apply to the weight&#xA;used to determine if the Sim will catch a treasure instead of fish &#xA;or junk. This will be used in conjunction with the Weight Fish and &#xA;Weight Junk." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="C42C005B4BEB9497" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="5D16FC1B8025B4B9" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="3439193297180F6C" Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="CE2818CDA1435CA9" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="6346DC6ADD11812A" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+                <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="2CBE2301D00C79BC" description="A reference to a FishingData tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="FishingData" />
+            </TunableVariant>
+        </TunableVariant>
+
+        <TunableList name="gallery_download_venue_map" class="TunableMapping" display="Gallery Download Venue Map" muid="75E3BAD2EF2C9EB9" mapping_key="gallery_venue_type" mapping_value="region_venue_type" description="A map from gallery venue to instanced venue. We need to be able to&#xA;convert gallery venues into other venues that are only compatible&#xA;with that region." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="GalleryDownloadVenueMappingTuple">
+            <TunableTuple class="TunableTuple" muid="905401FBED91F4F2" Deprecated="False" filter="0" group="General">
+                <Tunable type="venue" name="gallery_venue_type" class="TunableReference" display="Gallery Venue Type" muid="1F73A17C62F10AD2" description="A venue type that exists in the gallery." allow_none="False" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" pack_safe="True" />
+                <Tunable type="venue" name="region_venue_type" class="TunableReference" display="Region Venue Type" muid="A675F26C61A716D0" description="The venue type that the gallery venue will become when it is&#xA;downloaded into this region." allow_none="False" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" pack_safe="True" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="bool" name="is_persistable" class="Tunable" default="False" display="Is Persistable" muid="F56C8392847DECCA" description="If true, we will create an instance for this region and save/load it. The instance has a commodity tracker&#xA;which can be used for region based commodities." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="is_summit_weather_enabled" class="Tunable" default="False" display="Is Summit Weather Enabled" muid="FED2323B3F72CD54" description="Whether this region has summit (EP10) weather enabled." Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="outfit_category_restrictions" class="TunableTuple" display="Outfit Category Restrictions" muid="CC23D3878E286771" description="A setting which specifies which outfits Sims are able to have in this region." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="allowed_outfits" class="TunableWhiteBlackList" display="Allowed Outfits" muid="E41428F0CDF03983" description="The outfit categories that are valid for this region." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="blacklist" class="OptionalTunable" default="nothing" display="Blacklist" muid="CCA921C25818A63E" description="When an item is tested against this white/black list, it is&#xA;only allowed if it is not in the blacklist. If no blacklist is&#xA;specified, no items are disallowed." Deprecated="False" filter="0" group="General">
+                    <Tunable name="nothing" class="TunableExistance" display="Nothing" muid="18D4093405104E38" />
+                    <TunableTuple name="specify" class="TunableBlacklist" display="Specify" muid="F25E699F9702BDC2" description="A tunable blacklist." Deprecated="False" filter="0" group="General">
+                        <TunableList name="blacklist" class="TunableSet" display="Blacklist" muid="B36145C4E2999704" description="Blacklisted items." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="OutfitCategory" class="TunableEnumEntry" default="EVERYDAY" muid="34BE6164ADD9B9C3" static_entries="sims-outfits-outfit_enums.OutfitCategory" Deprecated="False" filter="0" group="General" invalid_entries="CURRENT_OUTFIT" />
+                        </TunableList>
+                        <TunableVariant type="None" name="threshold" class="OptionalTunable" default="threshold" display="Threshold" muid="2B3379D74C36E2B3" description="Tunable option for how many items must be in the blacklist&#xA;for the blacklist to fail when testing a collection of items.&#xA;By default, only one object needs to be in the list." Deprecated="False" filter="0" group="General">
+                            <Tunable name="all_must_match" class="TunableExistance" display="All Must Match" muid="A08DD7DE03ECDA54" />
+                            <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="FA2AA3D52E372504" description="When testing a collection of items, the number of items in&#xA;that collection that are in the blacklist must pass this&#xA;threshold test for the blacklist to disallow them all." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="75A54ED2A1492A51" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="FF4363E607C5CD5" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableVariant>
+                <TunableVariant type="None" name="whitelist" class="OptionalTunable" default="everything" display="Whitelist" muid="242989F916A36A44" description="When an item is tested against this white/black list, it is&#xA;only allowed if it is in the whitelist. If no whitelist is&#xA;specified, all items are allowed." Deprecated="False" filter="0" group="General">
+                    <Tunable name="everything" class="TunableExistance" display="Everything" muid="3E408E4C61FE9970" />
+                    <TunableTuple name="specify" class="TunableWhitelist" display="Specify" muid="DA39489FD244452B" description="A tunable whitelist." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="threshold" class="OptionalTunable" default="threshold" display="Threshold" muid="79590CA864B1437" description="Tunable option for how many items must be in the whitelist&#xA;for the whitelist to pass when testing a collection of items.&#xA;By default, only one object needs to be in the list." Deprecated="False" filter="0" group="General">
+                            <Tunable name="all_must_match" class="TunableExistance" display="All Must Match" muid="B3D2B1D6ADE30DF7" />
+                            <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="4B0019811D5691D9" description="When testing a collection of items, the number of items in&#xA;that collection that are in the whitelist must pass this&#xA;threshold test for the whitelist to allow them all." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="C549C3B2129BDAE" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="32D89745850E8DED" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                        <TunableList name="whitelist" class="TunableSet" display="Whitelist" muid="9472D4E5578E8F8" description="Whitelisted items." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="OutfitCategory" class="TunableEnumEntry" default="EVERYDAY" muid="F7213573057E407D" static_entries="sims-outfits-outfit_enums.OutfitCategory" Deprecated="False" filter="0" group="General" invalid_entries="CURRENT_OUTFIT" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableTuple>
+            <TunableVariant type="None" name="required_outfit_category" class="OptionalTunable" default="disabled" display="Required Outfit Category" muid="517F2F5018069E1" description="If set, when a playable Sim spawns into this region, they are granted an outfit in this outfit category&#xA;if they do not have one set." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="FA2290B285D36BB8" />
+                <TunableTuple name="enabled" class="Tunable_RegionalRequiredOutfitGenerator" display="Enabled" muid="D1B03039E8CC0C6D" description="Defines the way we generate the required regional outfit for this region." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="generator" class="TunableOutfitSnippet" default="literal" display="Generator" muid="9ED10DAA69FD5F84" description="This may be tuned in place here using 'literal' or as a reference to a Outfit tuning snippet." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="literal" class="TunableOutfitGenerator" display="Literal" muid="BC8682441B139F29" description="A helper that generates outfits for a Sim. The tunables control aspects of&#xA;randomization, such as tags, weights, overrides, etc..." Deprecated="False" filter="0" group="General">
+                            <TunableList name="body_type_chance_overrides" class="TunableMapping" display="Body Type Chance Overrides" muid="A551137EDD9999B3" mapping_key="key" mapping_value="value" description="Define body type chance overrides for the generate outfit. For&#xA;example, if BODYTYPE_HAT is mapped to 100%, then the outfit is&#xA;guaranteed to have a hat if any hat matches the specified tags.&#xA;&#xA;If used in an appearance modifier, these body types will contribute&#xA;to the flags that determine which body types can be generated,&#xA;regardless of their percent chance." Deprecated="False" filter="0" group="General">
+                                <TunableTuple class="TunableTuple" muid="85F91CB24C58D5C9" Deprecated="False" filter="0" group="General">
+                                    <TunableEnum type="BodyType" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="77E9A7BF7CB49366" static_entries="sims-outfits-outfit_enums.BodyType" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="float" name="value" class="TunablePercent" default="100" display="Value" muid="2D67CCB672C511B" min="0" max="100" description="The chance that a part is applied to the corresponding body&#xA;type." Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableList>
+                            <TunableList name="body_type_match_not_found_policy" class="TunableMapping" display="Body Type Match Not Found Policy" muid="3941300D394B055A" mapping_key="key" mapping_value="value" description="The policy we should take for a body type that we fail to find a&#xA;match for. Primary example is to use MATCH_NOT_FOUND_KEEP_EXISTING&#xA;for generating a tshirt and making sure a sim wearing full body has&#xA;a lower body cas part.&#xA;&#xA;If used in an appearance modifier, these body types will contribute&#xA;to the flags that determine which body types can be generated." Deprecated="False" filter="0" group="General">
+                                <TunableTuple class="TunableTuple" muid="E8AC96D038B8B3F8" Deprecated="False" filter="0" group="General">
+                                    <TunableEnum type="BodyType" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="3F28083EA7A4128C" static_entries="sims-outfits-outfit_enums.BodyType" Deprecated="False" filter="0" group="General" />
+                                    <TunableEnum type="MatchNotFoundPolicy" name="value" class="TunableEnumEntry" default="MATCH_NOT_FOUND_UNSPECIFIED" display="Value" muid="A501A2BDD6301DE6" static_entries="sims-outfits-outfit_enums.MatchNotFoundPolicy" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableList>
+                            <TunableList name="filter_flag" class="TunableEnumFlags" default="USE_EXISTING_IF_APPROPRIATE,USE_VALID_FOR_LIVE_RANDOM" display="Filter Flag" muid="1AFC4267CA0DA556" description="Define how to handle part randomization for the generated outfit." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="OutfitFilterFlag" class="TunableEnumEntry" default="NONE" muid="EFA4BD17F8030EDA" static_entries="sims-outfits-outfit_enums.OutfitFilterFlag" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="tags" class="TunableSet" display="Tags" muid="C6E0414F507AA976" description="The set of tags used to generate the outfit. Parts must match the&#xA;specified tag in order to be valid for the generated outfit." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="48FF5EF5BB43546E" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="Uniform|OutfitCategory|Style|Situation" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="E4A8FBF33EEEC8A4" description="A reference to a Outfit tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Outfit" />
+                    </TunableVariant>
+                    <TunableEnum type="OutfitCategory" name="outfit_category" class="TunableEnumEntry" default="SWIMWEAR" display="Outfit Category" muid="4CD369E8A682DDD1" static_entries="sims-outfits-outfit_enums.OutfitCategory" description="The outfit category that is required for the region." Deprecated="False" filter="0" group="General" invalid_entries="CURRENT_OUTFIT,CAREER,SITUATION,SPECIAL" />
+                </TunableTuple>
+            </TunableVariant>
+            <Tunable type="bool" name="travel_groups_only" class="Tunable" default="False" display="Travel Groups Only" muid="6C14082DB633C386" description="When set, this applies only to Sims in travel groups." Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="bool" name="provides_sunlight" class="Tunable" default="True" display="Provides Sunlight" muid="BC9187BC720EF914" description="If enabled, this region provides sunlight between the tuned Sunrise&#xA;Time and Sunset Time. This is used for gameplay effect (i.e.&#xA;Vampires)." Deprecated="False" filter="0" group="Time" />
+
+        <TunableList name="region_buffs" class="TunableList" display="Region Buffs" muid="E962137B510ED1F5" description="A list of buffs that are added on Sims while they are instanced in&#xA;this region." Deprecated="False" filter="0" group="General">
+            <Tunable type="buff" class="TunableReference" muid="C010E03ACEF8087B" description="A buff that exists on Sims while they are instanced in this&#xA;region." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableEnum type="BucksType" name="region_currency_bucks_type" class="TunableEnumEntry" default="INVALID" display="Region Currency Bucks Type" muid="95F57779E78E08E2" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" description="If this is set to INVALID, this region will by default use Simoleon as&#xA;currency type. Otherwise it will use selected bucks type as currency type." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableEnum type="RegionType" name="region_type" class="TunableEnumEntry" default="REGIONTYPE_RESIDENTIAL" display="Region Type" muid="6C0FE2233D44CC36" static_entries="world-region.RegionType" description="The region type for this region.  Keep in sync with UI region&#xA;tuning in Tuning-&gt;ui.ui_tuning-&gt;UiTuning-&gt;Pack Specific Data-&gt;&#xA;[Pack] -&gt; Region List -&gt; region type" Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="seasonal_parameters" class="TunableMapping" display="Seasonal Parameters" muid="437D22C24FD5151B" mapping_key="key" mapping_value="value" description="            " Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="24AEFEFF01BB5CF1" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="SeasonParameters" name="key" class="TunableEnumEntry" default="LEAF_ACCUMULATION" display="Key" muid="5AA624D72D14D30B" static_entries="seasons-seasons_enums.SeasonParameters" description="The parameter that we wish to change." Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableList" display="Value" muid="1A24E0CD10A07C31" description="A list of the different seasonal parameter changes that we want to&#xA;send over the course of a year." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="E2C06AF4B627EC1D" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="SeasonType" name="season" class="TunableEnumEntry" default="SPRING" display="Season" muid="9BFBEA4E9FCBA88E" static_entries="seasons-seasons_enums.SeasonType" description="The Season that this change is in." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="time_in_season" class="TunableRange" default="0.0" display="Time In Season" muid="9EE245B78AA8C301" min="0.0" max="1.0" description="The time within the season that this will occur." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="value" class="Tunable" default="0.0" display="Value" muid="AC6739DCA968EF5E" description="The value that we will set this parameter to in the&#xA;season" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="seasonal_sunrise_time" class="TunableMapping" display="Seasonal Sunrise Time" muid="6DB30D1A07F8566F" mapping_key="key" mapping_value="value" description="A mapping between season and sunrise time.  If the current season&#xA;is not found then we will default to the tuned sunrise time." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="81A6A7DDA53FB0B2" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="SeasonType" name="key" class="TunableEnumEntry" default="SUMMER" display="Key" muid="BBD7526F8538D839" static_entries="seasons-seasons_enums.SeasonType" description="The season." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="TunableTimeOfDay" display="Value" muid="938C0B04F1292C64" description="The time, in Sim-time, the sun rises in this region, in this&#xA;season." Deprecated="False" filter="0" group="Time">
+                    <Tunable type="int" name="hour" class="TunableRange" default="6" display="Hour" muid="DC4231ADDD53425E" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="5880253797B1565B" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="seasonal_sunset_time" class="TunableMapping" display="Seasonal Sunset Time" muid="63DA6DAD30C30368" mapping_key="key" mapping_value="value" description="A mapping between season and sunset time.  If the current season&#xA;is not found then we will default to the tuned sunset time." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="464C13EB9F2C5C9" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="SeasonType" name="key" class="TunableEnumEntry" default="SUMMER" display="Key" muid="F65E7694267B4D6D" static_entries="seasons-seasons_enums.SeasonType" description="The season." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="TunableTimeOfDay" display="Value" muid="2207FED5017444E7" description="The time, in Sim-time, the sun sets in this region, in this&#xA;season." Deprecated="False" filter="0" group="Time">
+                    <Tunable type="int" name="hour" class="TunableRange" default="20" display="Hour" muid="7098C2B07165FD3E" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="B6EDE7993B3ACCB9" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="snow_behavior" class="TunableMapping" display="Snow Behavior" muid="1A1D7806F36587E7" mapping_key="key" mapping_value="value" description="Snow behavior for this location for the various seasons&#xA;Defaults to NO_SNOW if not tuned for the current season&#xA;If set to PERMANENT, it will also set initial water to frozen&#xA;and windows to frosted" Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="3E051113152539DA" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="SeasonType" name="key" class="TunableEnumEntry" default="SPRING" display="Key" muid="3DD1FB9665143F4D" static_entries="seasons-seasons_enums.SeasonType" description="The Season." Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="SnowBehavior" name="value" class="TunableEnumEntry" default="NO_SNOW" display="Value" muid="41E47BE0679672D7" static_entries="weather-weather_enums.SnowBehavior" description="How snow behaves during this season at this location" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableEnum type="SnowBehavior" name="snow_behavior_no_seasons" class="TunableEnumEntry" default="NO_SNOW" display="Snow Behavior No Seasons" muid="F11E122877F0EC1" static_entries="weather-weather_enums.SnowBehavior" description="How snow behaves during this season at this location" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="store_travel_group_placed_objects" class="Tunable" default="False" display="Store Travel Group Placed Objects" muid="96ADBDE6FC2D946B" description="If checked, any placed objects while in a travel group will be returned to household inventory once&#xA;travel group is disbanded." Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="sunrise_time" class="TunableTimeOfDay" display="Sunrise Time" muid="3D07B67DD284331" description="The time, in Sim-time, the sun rises in this region." Deprecated="False" filter="0" group="Time">
+            <Tunable type="int" name="hour" class="TunableRange" default="6" display="Hour" muid="798E17D34D519DA5" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="A87CFC862BA863B4" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="sunset_time" class="TunableTimeOfDay" display="Sunset Time" muid="7209BAC1A38A9EC9" description="The time, in Sim-time, the sun sets in this region." Deprecated="False" filter="0" group="Time">
+            <Tunable type="int" name="hour" class="TunableRange" default="20" display="Hour" muid="FFC72DDF058599D1" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="F97EE856F1268BCF" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="bool" name="supports_lunar_cycle" class="Tunable" default="True" display="Supports Lunar Cycle" muid="EC9EB8A195113C6C" description="Whether this region supports the lunar cycle. This affects whether world environment effects &#xA;are adjusted to the current lunar phase, and whether or not Sims that are instanced in this world &#xA;are awarded lunar effects during lunar phases. &#xA;&#xA;For example, worlds that have two moons disable the lunar cycle." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="tags" class="TunableList" display="Tags" muid="B6332F038F78C307" description="Tags that are used to group regions. Destination Regions will&#xA;likely have individual tags, but Home/Residential Regions will&#xA;share a tag." Deprecated="False" filter="0" group="General">
+            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="C608620C866F8608" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A Tag used to group this region. Destination Regions will&#xA;likely have individual tags, but Home/Residential Regions will&#xA;share a tag." Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableVariant type="None" name="tracked_terrain_tags" class="OptionalTunable" default="disabled" display="Tracked Terrain Tags" muid="548A0043B88D62F1" description="What terrain transitions should be tracked in this region. Used to tuned which terrains&#xA;are important and exist in this region." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="72EA0C06C0C2E97E" />
+            <TunableList name="enabled" class="TunableEnumSet" display="Enabled" muid="C9C0722C2EDA65AD" Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="TerrainTag" class="TunableEnumEntry" default="INVALID" muid="2F7336BDD2300FE4" static_entries="world-terrain_enums.TerrainTag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableVariant>
+
+        <Tunable type="int" name="travel_group_build_disabled_tooltip" class="TunableLocalizedString" default="0x0" display="Travel Group Build Disabled Tooltip" muid="2375AEE259732795" description="The string that will appear in the tooltip of the grayed out build&#xA;mode button if build is being disabled because of a travel group in&#xA;this region." allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableList name="weather" class="TunableMapping" display="Weather" muid="F1F2AA71A21736E8" mapping_key="key" mapping_value="value" description="Forecasts for this location for the various seasons" Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="55198E9D8185A877" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="SeasonType" name="key" class="TunableEnumEntry" default="SPRING" display="Key" muid="533AF2340A255F6B" static_entries="seasons-seasons_enums.SeasonType" description="The Season." Deprecated="False" filter="0" group="General" />
+                <Tunable type="snippet" name="value" class="TunableReference" display="Value" muid="675C99DD55486D51" description="The forecasts for the season by part of season" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="WeatherSeasonalForecasts" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="snippet" name="weather_no_seasons" class="TunableReference" display="Weather No Seasons" muid="B4049C05D4A0E2B3" description="Forecast(s) for this location for players without EP05 installed" allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="WeatherForcastList" />
+
+        <Tunable type="bool" name="weather_supports_fresh_snow" class="Tunable" default="True" display="Weather Supports Fresh Snow" muid="4E354DC76A167BD3" description="If enabled, this region supports fresh snow." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="welcome_wagon_replacement" class="OptionalTunable" default="disabled" display="Welcome Wagon Replacement" muid="87E0BEE31E6FB5FE" description="If enabled then we will replace the Welcome Wagon with a new situation.&#xA;&#xA;If the narrative is also set to replace the welcome wagon that will take precedent over this replacement." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="73151099DEBD103A" />
+            <Tunable type="situation" name="enabled" class="TunableReference" display="Enabled" muid="B3FC09407D23BDD5" description="The situation we will use to replace the welcome wagon." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="6433E472A4A05CB6" new_muid="B1DEEBF8514E9E4A" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

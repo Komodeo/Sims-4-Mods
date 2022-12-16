@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="ObjectRelationshipInteraction" module="relationships.object_relationship_interactions" muid="54B9BAD8B6BAED02" description="Interaction that lists all of the object relationship names (if set) for &#xA;the available object relationship tracks, and pushes the associated &#xA;interaction when the selected name is chosen." instance_needs_reference="True" instance_subclasses_only="False" parents="ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="custom_name_string_wrapper" class="OptionalTunable" default="disabled" display="Custom Name String Wrapper" muid="436AEB6AC4E48EDA" description="If tuned, if the object relationship name has been set&#xA;with the name component, then the display name of the interaction&#xA;will be wrapped into this string.&#xA;&#xA;It should be written like this, with the object name&#xA;token indexed at 0:&#xA;&quot;Summon 0.String&quot; " Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="DDE54D8F446498E4" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="41D1EDEE907BBF1" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableList name="object_variant_mapping" class="TunableMapping" display="Object Variant Mapping" muid="1F643BA4482B7B1E" mapping_key="key" mapping_value="value" description="Map of the possible object relationship tracks, each representing&#xA;an object, and the associated interaction that will be pushed when &#xA;selected." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="F4EC9ADA845D3431" Deprecated="False" filter="0" group="General">
+                <Tunable type="statistic" name="key" class="TunableReference" display="Key" muid="273525C5B700769D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectRelationshipTrack" />
+                <Tunable type="interaction" name="value" class="TunableReference" display="Value" muid="304B0B99E61A3679" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="SuperInteraction" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

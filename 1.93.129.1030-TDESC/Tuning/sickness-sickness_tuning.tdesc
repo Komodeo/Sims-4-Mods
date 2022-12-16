@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sickness.sickness_tuning" muid="99670632A2DCBD82">
+        <Class name="SicknessTuning" muid="472F4F8FE51A1D0C">
+            <TunableList name="EXAM_TYPES_TAGS" class="TunableTags" display="Exam Types Tags" muid="CAAAF6651413B5F8" Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="6B7DBA20AA743AF3" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tags that represent the different types of objects that are used&#xA;to run exams." Deprecated="False" dynamic_entries_prefix="interaction" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+            </TunableList>
+
+            <Tunable type="int" name="PREVIOUS_SICKNESSES_TO_TRACK" class="TunableRange" default="1" display="Previous Sicknesses To Track" muid="F0911DEB8B27E704" min="0" max="None" description="Number of previous sicknesses to track.  Can use this to help promote&#xA;variation of sicknesses a Sim receives over time." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="SICKNESS_CHANCE" class="TunableTestedSum" display="Sickness Chance" muid="B03D2A07030834E" description="Chance of any given Sim to become sick.  &#xA;&#xA;Chance is out of 100.&#xA;&#xA;When the sum of the base value and values from passed tests are&#xA;greater than 100, the Sim is guaranteed to become sick during a &#xA;sickness distribution pass.&#xA;&#xA;When 0 or below, the Sim will not get sick." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="base_value" class="Tunable" default="0" display="Base Value" muid="AB98F19E17ED226D" description="The basic value to return if no modifiers are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="modifiers" class="TunableList" display="Modifiers" muid="4F324AAC8191EA29" description="A list of modifiers to add to Base Value." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="A38F5C6001FD8B00" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="modifier" class="Tunable" default="0" display="Modifier" muid="D49A50A0807260BA" description="The value to apply add to Base Value if the associated&#xA;tests pass. Can be negative" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="EFD9C4D9F93B664C" description="A series of tests that must pass in order for the modifier&#xA;to be applied." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+
+            <TdescFragTag name="SICKNESS_TESTS" class="TunableTestSet" display="Sickness Tests" muid="F4966F895C8019B2" description="Test sets determining whether or not a given Sim may become sick at all.&#xA;These tests run before we attempt to roll on whether or not &#xA;the Sim can avoid becoming sick. &#xA;(ORs of ANDs)" filter="0" group="General" />
+
+            <TunableTuple name="SICKNESS_TIME_OF_DAY" class="TunableTimeOfDay" display="Sickness Time Of Day" muid="37D6FAD5162ABADD" description="Hour of day in which sicknesses will be distributed to Sims." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="hour" class="TunableRange" default="3" display="Hour" muid="992C6542472C860C" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="E8A1E80D783B7185" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+    </Module>
+</TuningRoot>

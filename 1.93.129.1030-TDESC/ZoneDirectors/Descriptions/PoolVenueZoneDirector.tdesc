@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="zone_director" class="PoolVenueZoneDirector" module="venues.pool_venue.pool_venue_zone_director" muid="790D251E15EE4BFF" description="Zone Director for the Pool Venue." instance_needs_reference="True" instance_subclasses_only="False" parents="SchedulingZoneDirector, ZoneDirectorBase" path="ZoneDirectors\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="place_all_user_sims_in_same_arrival_situation" class="Tunable" default="False" display="Place All User Sims In Same Arrival Situation" muid="15CFA4E69ABF1321" description="If this is enabled then all user sims will be placed in the same&#xA;situation instead of each in their own situation." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="place_travel_companion_in_same_arrival_situation" class="Tunable" default="False" display="Place Travel Companion In Same Arrival Situation" muid="8759D362A64EA480" description="If this is enabled, the travel companion will put into the same&#xA;situation with user sims. If this checked,&#xA;place_all_user_sims_in_same_arrival_situation has to be True as&#xA;well or there will be unit test error." Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="special_pool_schedule" class="TunableSituationWeeklySchedule" display="Special Pool Schedule" muid="F52BEFFF27A3BFD1" description="The schedule to trigger pool scheduled events (e.g. parties, etc)" Deprecated="False" filter="0" group="General">
+            <TunableList name="schedule_entries" class="TunableList" display="Schedule Entries" muid="33C9AA163D1819F3" description="A list of event schedules. Each event is a mapping of days of the&#xA;week to a start_time and duration." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableScheduleEntry" muid="F14368B0F2AFF429" description="A schedule. Define availability for days of the week. For the set of&#xA;specified days, define an hour of the day and a duration, in hours.&#xA;Optionally, specified if the start time is random within the tuned window." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="days_available" class="TunableAvailableDays" display="Days Available" muid="DEDBCB4ABF07C6F7" description="Which days of the week to include" Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="0 SUNDAY" class="Tunable" default="False" display="0 Sunday" muid="24819E539800923E" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="1 MONDAY" class="Tunable" default="False" display="1 Monday" muid="536966101543E4B8" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="2 TUESDAY" class="Tunable" default="False" display="2 Tuesday" muid="EF4E98022E4C2B3" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="3 WEDNESDAY" class="Tunable" default="False" display="3 Wednesday" muid="7DCFDB6EEA8724B8" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="4 THURSDAY" class="Tunable" default="False" display="4 Thursday" muid="FBA17F632AA89F68" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="5 FRIDAY" class="Tunable" default="False" display="5 Friday" muid="587BB993DEC4B0EF" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="6 SATURDAY" class="Tunable" default="False" display="6 Saturday" muid="C34EBA838BBCA3DC" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <Tunable type="float" name="duration" class="Tunable" default="1.0" display="Duration" muid="8710B7FD107E42C3" description="Duration of this work session in hours." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="bool" name="random_start" class="Tunable" default="False" display="Random Start" muid="2EB9E1B8550AA44C" description="If checked, this schedule will have a random start time in the tuned&#xA;window each time." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="CareerShiftType" name="schedule_shift_type" class="TunableEnumEntry" default="ALL_DAY" display="Schedule Shift Type" muid="44457AAFB3A13B4D" static_entries="careers-career_enums.CareerShiftType" description="Shift Type for the schedule, this will be used for validations." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="situation" name="situation" class="TunableReference" display="Situation" muid="89808C2010E5AE8C" description="The situation to start according to the tuned schedule." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="35FF0ADFF4DB0FB0" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="hour" class="TunableRange" default="9" display="Hour" muid="C188E576480E97B3" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="7CB9866A1FB9693D" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableVariant type="None" name="travel_companion_arrival_situation" class="OptionalTunable" default="disabled" display="Travel Companion Arrival Situation" muid="F6D97CAA291BEECA" description="If enabled then Sims that aren't controllable that travel with the&#xA;users Sims will be placed in the tuned situation on arrival. If&#xA;place_travel_companion_in_same_arrival_situation is checked, this&#xA;needs to be disable or there will be unit test error." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="66FCD937B026C19C" />
+            <Tunable type="situation" name="enabled" class="TunableReference" display="Enabled" muid="19F43190DB87BCCD" description="If the user invites NPC's to travel with them to this lot then&#xA;this is the situation that they will be added to." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="situation" name="user_sim_arrival_situation" class="TunableReference" display="User Sim Arrival Situation" muid="BE8AD8510BAD5959" description="The situation to place all of the Sims from the users household&#xA;in when they arrive." allow_none="False" Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

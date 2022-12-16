@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="bucks.club_bucks_tracker" muid="F909F4CFB7FDCC8F">
+        <Class name="ClubBucksTracker" muid="42C790D681031A0A">
+            <TunableList name="BUCKS_TRACKER_REWARDS_CATEGORIES" class="TunableMapping" display="Bucks Tracker Rewards Categories" muid="8D7D9FA7C396FD1E" mapping_key="key" mapping_value="value" description="Ordered list of Club Bucks Reward categories that will appear in the &#xA;Club Bucks rewards UI along with the perks that belong in the category." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="CategoryMapping">
+                <TunableTuple class="TunableTuple" muid="198BAD2C26D8385E" Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="key" class="Tunable" default="0" display="Key" muid="D8CD46D67461F5FB" description="An integer value used to set the specific order of the categories&#xA;in the UI. the lower numbers are displayed first in the UI." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="RewardCategoryInfoTuple" display="Value" muid="CCB9076340171480" description="Tuning structure holding all of the localized string data for the &#xA;tuned Perk Category.        " Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="category_name" class="TunableLocalizedString" default="0x0" display="Category Name" muid="FE6AEFCB443B388B" description="This is the localized name of the category that will show up &#xA;in the club bucks UI." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="category_tooltip" class="TunableLocalizedString" default="0x0" display="Category Tooltip" muid="7FD5E5FC39B646CA" description="This is the description that will show up when the user hovers&#xA;over the catgory name for a while." Deprecated="False" filter="0" group="General" />
+                        <TunableList name="rewards" class="TunableMapping" display="Rewards" muid="2372DE5C77242BCD" mapping_key="key" mapping_value="value" description="An ordered list of the rewards that will appear in this&#xA;category." Deprecated="False" filter="0" group="General" mapping_class="RewardCategoryMapping">
+                            <TunableTuple class="TunableTuple" muid="BFF2FAB4352DE4B2" Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="key" class="Tunable" default="0" display="Key" muid="96E4A87483138AA" description="An integer value used to order the appearance of the rewards&#xA;inside of the category. The smaller numbers are sorted to&#xA;the front of the list." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bucks_perk" name="value" class="TunableReference" display="Value" muid="7373149888549A7C" description="The Buck Perk (reward) to display in the category panel of&#xA;the UI." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

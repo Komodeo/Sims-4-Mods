@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="situations.ambient.ambient_service" muid="661149E4CC2C8321">
+        <Class name="_AmbientSourceGhost" muid="C1D01803A3CB70C0">
+            <TunableList name="DESIRED_GHOST_COUNT_PER_URNSTONE" class="TunableCurve" display="Desired Ghost Count Per Urnstone" muid="7C6CDDF07A80F912" description="This curve describes the maximum number of ghosts we want in the world&#xA;based on the number of valid urnstones in the world. If there are more&#xA;urnstones than the maximum number tuned on the X axis, we will just use&#xA;the final Y value." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableVector2" muid="CB851960AEBE5222" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="x: Valid Urnstones" muid="44B54A2FD7C6A3F1" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="y: Desired Ghost Count" muid="892916AFE251D2B6" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="GHOST_SITUATIONS" class="TunableTestedList" display="Ghost Situations" muid="D24B96785B058064" description="A list of possible ghost situations, tested aginst the Sim we want to&#xA;spawn." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="55FB1D5757769307" description="An entry in this tested list." Deprecated="False" filter="0" group="General">
+                    <Tunable type="situation" name="item" class="TunableReference" display="Item" muid="1B105CC8916C87D4" description="The ghost situation to spawn." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="bool" name="stop_processing" class="Tunable" default="False" display="Stop Processing" muid="9D11484D6FD55CC2" description="If checked, no other element from this list is considered if&#xA;this element passes its associated test." Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="test" class="TunableTestSet" display="Test" muid="4D9DBB3EA9F9ECF1" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="float" name="WALKBY_ALLOWED_DURATION" class="TunableRange" default="5" display="Walkby Allowed Duration" muid="FD70388CF6673D81" min="0" max="23" description="The amount of time, in sim hours, past the 'Walkby Start Time' that the&#xA;ghost walkbys can start." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="WALKBY_ALLOWED_START_TIME" class="TunableTimeOfDay" display="Walkby Allowed Start Time" muid="AD0DD35778D4DB5B" description="The time of the day (24hr) when NPC ghosts can start doing walkbys." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="hour" class="TunableRange" default="21" display="Hour" muid="2C15C0CB9DBEE983" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="D91A2B3F4A98AEE0" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+
+        <Class name="AmbientService" muid="316297A5CA45C5A8">
+            <TunableList name="SOCIAL_AFFORDANCES" class="TunableList" display="Social Affordances" muid="A4AA41C10AF5F6FE" description="When selected for a walkby social the sim runs one of the social&#xA;affordances in this list." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="303EAD8B66E9BF35" allow_none="False" Deprecated="False" filter="0" group="General" restrict="SocialSuperInteraction" />
+            </TunableList>
+
+            <Tunable type="float" name="SOCIAL_CHANCE_TO_START" class="TunablePercent" default="100" display="Social Chance To Start" muid="B88057D59CC19D55" min="0" max="100" description="This is the percentage chance, per pair of properly positioned sims,&#xA;that a social will be started on an ambient service ping.&#xA;&#xA;The number of pairs of sims is multiplied by this tunable to get the overall&#xA;chance of a social starting.&#xA;&#xA;For the purposes of these examples, we assume that the tuned value is 25%&#xA;&#xA;1 pair of sims -&gt; 25%.&#xA;2 pairs of sims -&gt; 50%&#xA;4 pairs of sims -&gt; 100%." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="SOCIAL_COOLDOWN" class="TunableSimMinute" default="60" display="Social Cooldown" muid="DA0C7560B3A11809" min="30" max="480" description="The minimum amount of time from the end of one social&#xA;until the walkby sim can perform another social. If it is too small&#xA;sims may socialize, stop, then start socializing again." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="SOCIAL_MAX_DURATION" class="TunableSimMinute" default="60" display="Social Max Duration" muid="30111FD798843B35" min="1" max="180" description="The maximum amount of time the sims can socialize." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="SOCIAL_MAX_START_DISTANCE" class="TunableDistanceSquared" default="10" display="Social Max Start Distance" muid="C618915AD4473AC9" description="Walkby Sims must be less than this distance apart for a social&#xA;to be started." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="SOCIAL_VIEW_CONE_ANGLE" class="TunableAngle" default="180.0" display="Social View Cone Angle" muid="18AD1E7B28A3CC9" min="0.0" max="360.0" description="For 2 sims to be able to socialize at least one sim must be in the&#xA;view cone of the other. This tunable defines the view cone as an angle&#xA;in degrees centered straight out in front of the sim. 0 degrees would &#xA;make the sim blind, 360 degrees means the sim can see in all directions." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="situation" name="TEST_WALKBY_SITUATION" class="TunableReference" display="Test Walkby Situation" muid="D89AE1C206A349FB" description="A walkby situation for testing." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

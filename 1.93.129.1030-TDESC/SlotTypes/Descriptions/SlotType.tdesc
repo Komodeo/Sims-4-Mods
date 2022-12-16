@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="slot_type" class="SlotType" module="objects.slots" muid="7D0C9E78689C51B8" description="A class defining a type of object slot." instance_base_game_only="True" instance_needs_reference="True" instance_subclasses_only="False" path="SlotTypes\Descriptions">
+        <TunableVariant type="None" name="bone_name_hash" class="OptionalTunable" default="not_referenced_by_animation" display="Bone Name Hash" muid="2B8C66A67F8D5509" description="The name of the bone this slot is associated to." Deprecated="False" filter="0" group="General">
+            <Tunable name="not_referenced_by_animation" class="TunableExistance" display="Not Referenced By Animation" muid="BFAEDB74DC7FAAFC" />
+            <Tunable type="str" name="referenced_by_animation" class="TunableStringHash32" default="None" display="Referenced By Animation" muid="8C258FF9A70AD559" description="The name of the bone this slot is associated to." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="bool" name="implies_owner_object_is_surface" class="Tunable" default="True" display="Implies Owner Object Is Surface" muid="3721C9EAEDB2DDAA" description="This should be checked if the existence of this slot type on an&#xA;object means that object will under some circumstances need to be &#xA;considered a surface. Surfaces are usually used as additional &#xA;actors in ASMs (for instance, the eat ASM has a table actor in &#xA;addition to the sitTemplate/chair and sim).&#xA;&#xA;Generally speaking, this should be checked when a sim might need to&#xA;interact with this slot. Examples are food slots, deco slots sims&#xA;can put things into, and similar.&#xA;&#xA;This should not be checked when a slot is used only for build-buy &#xA;or is un-interactable. Examples are slots for chairs (unless we add&#xA;the ability for sims to place chairs), slots for modular furniture,&#xA;and deco(rative) slots that are not sim-interactable." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="implies_slotted_object_has_surface" class="Tunable" default="True" display="Implies Slotted Object Has Surface" muid="3897BE2A72E0BA63" description="This should be checked if the owner of this slot should be &#xA;considered a surface for any object using this SlotType. &quot;Using&quot; in&#xA;this case means that the SlotType sets of the slotted object and&#xA;the RuntimeSlot it is placed in both continue this SlotType.&#xA;&#xA;If an object shares multiple SlotTypes with the RuntimeSlot it is &#xA;placed in, only one of those SlotTypes need imply &quot;has_surface&quot; for&#xA;it to be true.&#xA;&#xA;Objects that cannot support surfaces (such as non-posture-graph&#xA;objects) will ignore this tuning." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="shared_slot_object_tags" class="TunableTags" display="Shared Slot Object Tags" muid="C49C1FFB6545CC2F" Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="B641F50AC0CB5E9F" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="For the purpose of interaction constraints expecting an object in a specific slottype , any object&#xA;with one of the specified tags will be treated as slotted into all the slots of this type &#xA;that share the same position across all the parts of an object.&#xA;&#xA;e.g. a cut cake interaction requiring the cake in a animationSlot_SitShared will work on parts&#xA;1, 7, and 8 even though the cake is slotted into the slot in part 8 because the slots all&#xA;share the same position, and the cakes have the appropriate tag." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+        </TunableList>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="2B3B3E29DA15078E" new_muid="3721C9EAEDB2DDAA" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="DCF41928113395EB" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

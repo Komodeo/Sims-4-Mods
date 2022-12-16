@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="DebugSetupLotInteraction" module="objects.terrain" muid="7F94EC285D05FE94" description="Debug interaction on the ground to create a defined set of objects for smoke&#xA;testing." instance_needs_reference="True" instance_subclasses_only="False" parents="TerrainImmediateSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="setup_lot_destroy_old_objects" class="Tunable" default="False" display="Setup Lot Destroy Old Objects" muid="B46359CF22FFC76F" description="Destroy objects previously created by this interaction." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="setup_lot_objects" class="TunableList" display="Setup Lot Objects" muid="D50F27C4244E8C4" Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="B2AB93B332332066" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="angle" class="TunableRange" default="0" display="Angle" muid="6035479528FC3887" min="-360" max="360" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="children" class="TunableList" display="Children" muid="F945D9E4BE230E0A" Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="CFBAD5D6F1B04D64" Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="bone_name" class="OptionalTunable" default="disabled" display="Bone Name" muid="6E5E81DA299D300D" description="If specified, restrict slot selection to one with this exact bone name." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7E6329B7DACAF705" />
+                            <Tunable type="str" name="enabled" class="Tunable" default="_ctnm_chr_" display="Enabled" muid="66C049C4D0943F18" description="If specified, restrict slot selection to one with this exact bone name." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="D962C7A63A9CB82F" description="The child object to create.  It will appear in the first available slot in which it fits, subject to additional restrictions specified in the other values of this tuning." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        <TunableList name="init_state_values" class="TunableList" display="Init State Values" muid="BBA1B1B2DF43AE7" description="List of states the children object will be set to." Deprecated="False" filter="0" group="General">
+                            <Tunable type="object_state" class="TunableReference" muid="3F89E8A0DC539A74" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                        </TunableList>
+                        <TunableVariant type="None" name="part_index" class="OptionalTunable" default="disabled" display="Part Index" muid="3EC46D5E0E5EA360" description="If specified, restrict slot selection to the given part index." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="230661BA720E9521" />
+                            <Tunable type="int" name="enabled" class="Tunable" default="0" display="Enabled" muid="24BE360B709AD1C0" description="If specified, restrict slot selection to the given part index." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="slot_type" class="OptionalTunable" default="disabled" display="Slot Type" muid="4E23BFA38158037D" description="If specified, restrict slot selection to ones that support this type of slot." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="812758BDEB17531E" />
+                            <Tunable type="slot_type" name="enabled" class="TunableReference" display="Enabled" muid="3DFEFC145DB72BE4" description="If specified, restrict slot selection to ones that support this type of slot." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="660270F24D3D41D8" allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableList name="init_state_values" class="TunableList" display="Init State Values" muid="BC365C69946BC926" description="List of states the created object will be pushed to." Deprecated="False" filter="0" group="General">
+                    <Tunable type="object_state" class="TunableReference" muid="B2277E5978663C47" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                </TunableList>
+                <TunableTuple name="position" class="TunableVector2" display="Position" muid="985B1BF6D8056D9B" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="4A9F5C795C11D539" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="F66AD4B788F1F13E" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

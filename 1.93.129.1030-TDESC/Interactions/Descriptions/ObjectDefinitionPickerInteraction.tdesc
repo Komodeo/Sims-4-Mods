@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="ObjectDefinitionPickerInteraction" module="objects.definition_picker_interaction" muid="99F6BFC1192A8106" description="Interaction that allows a player to pick an object based on tag/definition." instance_needs_reference="True" instance_subclasses_only="False" parents="ObjectPickerInteraction, PickerSingleChoiceSuperInteraction, PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableList name="additional_object_tags_or_definition" class="TunableList" display="Additional Object Tags Or Definition" muid="82424A3BFE901A7" description="Like Object Tags or Definition, but is a list to allow for specifying more object tags&#xA;and definitions." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableVariant type="None" class="ObjectDefinitionPickerVariant" default="all_items" muid="5CA8BAFC15406B87" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="all_items" class="TunableDefinitionsFromTags" display="All Items" muid="6E7CF8AA54D43474" description="Look through all the items and populate any with these tags.&#xA;&#xA;This should be accompanied with specific filtering tags in&#xA;Object Populate Filter to get a good result." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="filter_tags" class="OptionalTunable" default="all_definitions" display="Filter Tags" muid="E91BC306917C42DA" description="An optional filter that if enabled will filter out the allowed items&#xA;based on the filter." Deprecated="False" filter="0" group="General">
+                        <Tunable name="all_definitions" class="TunableExistance" display="All Definitions" muid="2B41A1DC95EB2208" />
+                        <TunableList name="specific_definitions" class="TunableSet" display="Specific Definitions" muid="D1944FD9F2D1534" min="1" description="A list of category tags to to search to build object picker&#xA;list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="615C469006FE6446" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableVariant>
+                </TunableTuple>
+                <TunableTuple name="random_items" class="TunableDefinitionsRandom" display="Random Items" muid="ECCCB56F530F2074" description="Randomly selects items based on a weighted list." Deprecated="False" filter="0" group="General">
+                    <TunableList name="item_list" class="TunableList" display="Item List" muid="3A69DC7A35FB9C83" min="1" description="The list of items available for purchase." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="5C1E441354D3BF7F" description="A weighted list of items to be available." Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="item" class="TunableReference" display="Item" muid="52BF04A02641727A" description="An item that is potentially available." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <Tunable type="int" name="weight" class="TunableRange" default="1" display="Weight" muid="B56FC0A60AEB167B" min="1" max="None" description="How likely this item to be picked." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                    <Tunable type="int" name="items_avaiable" class="TunableRange" default="1" display="Items Avaiable" muid="C0B48DDAB25F2027" min="1" max="None" description="The number of items available." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="specific_items" class="TunableDefinitionsExplicit" display="Specific Items" muid="2996A00CD161AEB7" description="A list of specific items that is populated in this&#xA;dialog." Deprecated="False" filter="0" group="General">
+                    <TunableList name="item_list" class="TunableSet" display="Item List" muid="54A701B41FD30AF4" min="1" description="The list of items available for purchase." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="object" class="TunableReference" muid="5983AF9EFE362170" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                </TunableTuple>
+                <TunableTuple name="tested_items" class="TunableDefinitionsTested" display="Tested Items" muid="DFDECD65DE4C6E39" description="Test items that are able to be displayed within the picker." Deprecated="False" filter="0" group="General">
+                    <TunableList name="item_list" class="TunableList" display="Item List" muid="CB5370A026030FED" min="1" description="The list of items available for purchase." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="AB20CCA562962C13" description="A pair of items and tests to run in order to see if those items would be available." Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="item" class="TunableReference" display="Item" muid="5971C425A2596099" description="An item that is potentially available." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="5EA9FB71FEE42D7B" description="A set of tests to run to see if this item would be available." filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableList>
+
+        <TunableList name="definition_to_loot" class="TunableList" display="Definition To Loot" muid="766E206FE5439D7F" description="Does a definition test to see loot should be applied to subjects." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple class="TunableTuple" muid="2103BB6E7E94EAFC" description="Loot to apply if definition id passes." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="definition_id_test" class="TunableDefinitionIdFilter" display="Definition Id Test" muid="45EDE11AFA62104" description="Definition to test for." Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="A358049ED33C7EE0" description="The object must have this definition." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <Tunable type="action" name="loot_to_apply" class="TunableReference" display="Loot To Apply" muid="417075BF64C89889" description="Loot to apply." allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="object_tags_or_definition" class="ObjectDefinitionPickerVariant" default="all_items" display="Object Tags Or Definition" muid="E832A4F27E0B5306" Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple name="all_items" class="TunableDefinitionsFromTags" display="All Items" muid="D88C493CAC19B138" description="Look through all the items and populate any with these tags.&#xA;&#xA;This should be accompanied with specific filtering tags in&#xA;Object Populate Filter to get a good result." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="filter_tags" class="OptionalTunable" default="all_definitions" display="Filter Tags" muid="1F09B54F512E2E12" description="An optional filter that if enabled will filter out the allowed items&#xA;based on the filter." Deprecated="False" filter="0" group="General">
+                    <Tunable name="all_definitions" class="TunableExistance" display="All Definitions" muid="53877E461D55A56E" />
+                    <TunableList name="specific_definitions" class="TunableSet" display="Specific Definitions" muid="88B218F59AF9304F" min="1" description="A list of category tags to to search to build object picker&#xA;list." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="E063A59762791616" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for" Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableVariant>
+            </TunableTuple>
+            <TunableTuple name="random_items" class="TunableDefinitionsRandom" display="Random Items" muid="E78EAA4F238AB9DE" description="Randomly selects items based on a weighted list." Deprecated="False" filter="0" group="General">
+                <TunableList name="item_list" class="TunableList" display="Item List" muid="27D0AF94BA03C1E9" min="1" description="The list of items available for purchase." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="CDCF115B239DB164" description="A weighted list of items to be available." Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" name="item" class="TunableReference" display="Item" muid="C8C0B221223D7B82" description="An item that is potentially available." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <Tunable type="int" name="weight" class="TunableRange" default="1" display="Weight" muid="A188042ADF208416" min="1" max="None" description="How likely this item to be picked." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="int" name="items_avaiable" class="TunableRange" default="1" display="Items Avaiable" muid="F6070858092972F9" min="1" max="None" description="The number of items available." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="specific_items" class="TunableDefinitionsExplicit" display="Specific Items" muid="9D2845F61271428A" description="A list of specific items that is populated in this&#xA;dialog." Deprecated="False" filter="0" group="General">
+                <TunableList name="item_list" class="TunableSet" display="Item List" muid="95BA4E13D0A6DC14" min="1" description="The list of items available for purchase." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="object" class="TunableReference" muid="5B8EEFFC4E8BB11B" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="tested_items" class="TunableDefinitionsTested" display="Tested Items" muid="C57F29C2328BCFD4" description="Test items that are able to be displayed within the picker." Deprecated="False" filter="0" group="General">
+                <TunableList name="item_list" class="TunableList" display="Item List" muid="FE43D67E465D6C41" min="1" description="The list of items available for purchase." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="8E51DCE11877489C" description="A pair of items and tests to run in order to see if those items would be available." Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" name="item" class="TunableReference" display="Item" muid="2A8F2B2F2692E1AC" description="An item that is potentially available." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="6EE808C7DDD26765" description="A set of tests to run to see if this item would be available." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="A72165CBA19EF207" new_muid="E832A4F27E0B5306" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

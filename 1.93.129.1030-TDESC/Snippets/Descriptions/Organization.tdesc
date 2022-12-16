@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="Organization" module="display_snippet_tuning" muid="629324C7E6E9C801" description="Container for Organization Information." instance_needs_reference="True" instance_subclasses_only="False" parents="DisplaySnippet" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="hidden" class="Tunable" default="False" display="Hidden" muid="68F70E7D3CA1B7C9" description="If True, then the organization is hidden from the organization panel." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableVariant type="None" name="no_events_are_scheduled_string" class="OptionalTunable" default="disabled" display="No Events Are Scheduled String" muid="14590C83256B3B26" description="If enabled and the organization has no scheduled events, this text&#xA;will be displayed in the org panel background." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D3F740B65396D886" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="5ACEE201C92DCC72" description="The string to show in the organization panel if there are no scheduled&#xA;events." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="sim_filter" name="organization_filter" class="TunableReference" display="Organization Filter" muid="7C2EC8A8E089B3FD" description="Terms to add a member to the Organization's membership list." allow_none="False" Deprecated="False" filter="0" group="General" restrict="TunableSimFilter" />
+
+        <TunableList name="organization_task_data" class="TunableList" display="Organization Task Data" muid="6B08EBA0D3A33868" description="List of possible tested organization tasks that can be offered to &#xA;active organization members." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="ECAD924B356C9C59" description="Tuple of test and aspirations that is run on activating&#xA;organization tasks." Deprecated="False" filter="0" group="General">
+                <Tunable type="aspiration" name="organization_task" class="TunableReference" display="Organization Task" muid="D9951DE023A14523" description="An aspiration to use for task completion." allow_none="False" Deprecated="False" filter="0" group="General" restrict="AspirationOrganizationTask" />
+                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="E7CEBCC0CC752129" description="Tests run when the task is activated. If tests do not pass,&#xA;the tasks are not considered for assignment." filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="statistic" name="progress_statistic" class="TunableReference" display="Progress Statistic" muid="26F7867FC18D008" description="The Ranked Statistic represents Organization Progress." allow_none="False" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" restrict="RankedStatistic" />
+    </Instance>
+</TuningRoot>

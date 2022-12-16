@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="career" class="DetectiveCareer" module="careers.detective.detective_career" muid="FE1193EDF5F59873" description="The Detective active career." instance_subclasses_only="False" parents="Career" path="Careers\Descriptions" use_guid_for_reference="True">
+        <TunableList name="clue_incompatibility" class="TunableMapping" display="Clue Incompatibility" muid="BF6106DB65FA9A8E" mapping_key="clue" mapping_value="incompatible_clues" description="Clues that are incompatible with each other." Deprecated="False" filter="0" group="Career">
+            <TunableTuple class="TunableTuple" muid="B4D5DD85148DFA2E" Deprecated="False" filter="0" group="General">
+                <Tunable type="detective_clue" name="clue" class="TunableReference" display="Clue" muid="80086E6BF9D35755" description="The clue that is incompatible with other clues." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableList name="incompatible_clues" class="TunableList" display="Incompatible Clues" muid="806CD2FA197890B" description="The clues that are incompatible with the clue used as the&#xA;key here." Deprecated="False" filter="0" group="General">
+                    <Tunable type="detective_clue" class="TunableReference" muid="D59D75C4B1D50450" allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="crime_scene_events" class="TunableList" display="Crime Scene Events" muid="4C4089123394242" description="The career events for each of the different types of crime scene." Deprecated="False" filter="0" group="Career">
+            <Tunable type="career_event" class="TunableReference" muid="1A63885FA4244892" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <Tunable type="sim_filter" name="criminal_filter" class="TunableReference" display="Criminal Filter" muid="2AF5CBB88A57879E" description="The filter to use when spawning a criminal. The filter terms are a&#xA;randomly generated set of clues." allow_none="False" Deprecated="False" filter="0" group="Career" restrict="DynamicSimFilter" />
+
+        <Tunable type="trait" name="criminal_trait" class="TunableReference" display="Criminal Trait" muid="597F7D4D2D0BC537" description="A trait that is awarded to the criminal. The trait is added when the&#xA;criminal is selected, and is removed when a new criminal is selected&#xA;or the career is quit by the Sim." allow_none="False" Deprecated="False" filter="0" group="Career" restrict="Trait" />
+
+        <Tunable type="sim_filter" name="decoy_filter" class="TunableReference" display="Decoy Filter" muid="AF2433FD212CA42D" description="The filter to use when spawning decoys. The filter terms are a&#xA;subset of the discovered clues." allow_none="False" Deprecated="False" filter="0" group="Career" restrict="DynamicSimFilter" />
+
+        <Tunable type="int" name="number_of_clues" class="TunableRange" default="5" display="Number Of Clues" muid="515BB0D1C59A44D3" min="1" max="None" description="The number of clues per crime that the player will be given." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Career" />
+
+        <Tunable type="int" name="number_of_decoys_per_undiscovered_clue" class="TunableRange" default="2" display="Number Of Decoys Per Undiscovered Clue" muid="B1F5F0ED6F87F115" min="1" max="None" description="The number of Sims to spawn as decoys for each clue that the&#xA;detective has not yet discovered." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Career" />
+
+        <TunableList name="text_clues" class="TunableList" display="Text Clues" muid="EC615B118ECBFA36" description="A list of groups of mutually exclusive clues that the player can&#xA;discover in the course of solving a crime. Only one clue will be&#xA;chosen from each group. (e.g. if all hair-color clues are in one&#xA;group, only one hair-color clue will be chosen so there aren't&#xA;conflicting clues)" Deprecated="False" filter="0" group="Career">
+            <TunableList class="TunableList" muid="ED70E84CACC448AB" description="A group of mutually incompatible clues. Only one clue will be&#xA;chosen from this group." Deprecated="False" filter="0" group="General">
+                <Tunable type="detective_clue" class="TunableReference" muid="5E705B64EC269A65" description="The clue information and filter term." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableList>
+    </Instance>
+</TuningRoot>

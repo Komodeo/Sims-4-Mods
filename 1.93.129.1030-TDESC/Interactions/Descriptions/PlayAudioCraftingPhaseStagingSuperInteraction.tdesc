@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="PlayAudioCraftingPhaseStagingSuperInteraction" module="crafting.music_interactions" muid="EF73A4519E798E2E" description="This interaction is used for Writing Songs." instance_needs_reference="True" instance_subclasses_only="False" parents="CraftingPhaseStagingSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <Tunable type="int" name="audio_start_event" class="Tunable" default="100" display="Audio Start Event" muid="DB077592FF130023" description="The script event to listen for from animation so we know when to&#xA;start the music and vocals." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="int" name="audio_stop_event" class="Tunable" default="101" display="Audio Stop Event" muid="35573A878CAEC444" description="The script event to listen for from animation so we know when to&#xA;stop the music and vocals." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableEnum type="ParticipantTypeSingle" name="instrument_participant" class="TunableEnumEntry" default="Object" display="Instrument Participant" muid="66D431BBA1AAD3C4" static_entries="interactions.ParticipantTypeSingle" description="The participant that the music will play on." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="mouthpiece_target" class="OptionalTunable" default="disabled" display="Mouthpiece Target" muid="A836EFC83E77A800" description="The participant of mine that mouthpieces must target as their mouthpiece&#xA;target.  e.g. if they are targeting the actor sim of this interaction, &#xA;their mouthpiece target would be targetsim, my mouthpiece target &#xA;would be actor.  If all of us are targeting a certain object then&#xA;both would be object." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4323016489840DDE" />
+            <TunableEnum type="ParticipantTypeSingle" name="enabled" class="TunableEnumEntry" default="Object" display="Enabled" muid="9A8B675BDC12C2E4" static_entries="interactions.ParticipantTypeSingle" description="The participant of mine that mouthpieces must target." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableList name="music_styles" class="TunableList" display="Music Styles" muid="3610241CF22CEAD6" description="List of music styles that are available for this interaction." Deprecated="False" filter="0" group="General">
+            <Tunable type="recipe" class="TunableReference" muid="1CAE5CE8F674664D" description="A music style available for this interaction." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="MusicStyle" />
+        </TunableList>
+
+        <Tunable type="bool" name="play_multiple_clips" class="Tunable" default="False" display="Play Multiple Clips" muid="57C1C561BFC8911" description="If true, the Sim will continue playing until the interaction is&#xA;cancelled or exit conditions are met. " Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="use_buffer" class="Tunable" default="True" display="Use Buffer" muid="80DC6D79DC8989D2" description="If true, this interaction will add the buffer tuned on the music&#xA;track to the length of the track.  This is tunable because some&#xA;interactions, like Practice, use shorter audio clips that don't&#xA;require the buffer." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

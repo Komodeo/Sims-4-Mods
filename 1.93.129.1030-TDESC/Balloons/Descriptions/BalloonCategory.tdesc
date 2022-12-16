@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="balloon" class="BalloonCategory" module="balloon.balloon_category" muid="2AA4EE0A8719449D" description="Represents tuning for a balloon category." instance_needs_reference="True" instance_subclasses_only="False" path="Balloons\Descriptions" use_guid_for_reference="True">
+        <Tunable type="float" name="balloon_chance" class="TunablePercent" default="100" display="Balloon Chance" muid="32137116DD63B742" min="0" max="100" description="The chance that a balloon from the list is actually shown." Deprecated="False" filter="0" group="General" />
+
+        <TunableEnum type="BalloonTypeEnum" name="balloon_type" class="TunableEnumEntry" default="THOUGHT" display="Balloon Type" muid="2A04F4DA8836E084" static_entries="balloon-balloon_enums.BalloonTypeEnum" description="The visual style of the balloon background." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="balloons" class="TunableList" display="Balloons" muid="B2A3C55E99063A3" description="The list of possible balloons." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableBalloonVariant" muid="D2431D1E5E667F28" description="A variant of either a single icon or a category of icons. Optionally, test whether&#xA;this element should be available." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="item" class="TunableVariant" default="balloon_icon" display="Item" muid="4963CF4CCD1A8B21" Deprecated="False" filter="0" group="General">
+                    <Tunable type="balloon" name="balloon_category" class="TunableReference" display="Balloon Category" muid="42018CF84244CEBA" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableTuple name="balloon_icon" class="TunableBalloonIcon" display="Balloon Icon" muid="403F9918911B19B5" description="The tuning for the actual balloon icon." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="category_icon" class="OptionalTunable" default="no_category_icon" display="Category Icon" muid="55663571670EF547" description="If enabled balloon will display an additional category icon." Deprecated="False" filter="0" group="General">
+                            <Tunable name="no_category_icon" class="TunableExistance" display="No Category Icon" muid="A53939DE1C7B57EC" />
+                            <TunableVariant type="None" name="show_category_icon" class="TunableIconVariant" default="resource_key" display="Show Category Icon" muid="CF8ACA8DAEF27B95" description="The Icon that will be showed within the balloon." Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="career_icon_override" class="TunableCareerIconOverrideIconFactory" display="Career Icon Override" muid="3F9D6BCA2717944F" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="career" name="career_reference" class="TunableReference" display="Career Reference" muid="9288D0F80BCC3BD8" description="The Career to override the icon." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="E8A4076112CF69FE" description="The Participant who owns the career." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="8F61A84C4EE914D5" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                                    </TunableList>
+                                </TunableTuple>
+                                <TunableTuple name="lifestyle_brand" class="TunableLifestyleBrandIconFactory" display="Lifestyle Brand" muid="85BA2BE831C2250C" Deprecated="False" filter="0" group="General">
+                                    <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="8019413C4BF7114D" description="The Participant who owns the lifestyle brand we want to use." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="1A653EBD2B730221" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                                    </TunableList>
+                                </TunableTuple>
+                                <TunableTuple name="participant" class="TunableParticipantTypeIconFactory" display="Participant" muid="E89A683BC95F8D85" description="The Sim who's thumbnail will be used." Deprecated="False" filter="0" group="General">
+                                    <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="CF2FDC5CEC77F26A" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <TunableEnum type="ParticipantType" class="TunableEnumEntry" default="Invalid" muid="4968C9A7540A79DA" static_entries="interactions.ParticipantType" Deprecated="False" filter="0" group="General" />
+                                    </TunableList>
+                                </TunableTuple>
+                                <TunableTuple name="privacy" class="TunablePrivacyIconFactory" display="Privacy" muid="C190CE16667B5DA8" description="Search an interaction's privacy liability to find violating Sims&#xA;and randomly select one to display an icon of." Deprecated="False" filter="0" group="General" />
+                                <TunableTuple name="resource_key" class="TunableIconFactory" display="Resource Key" muid="FE7ECA2476165800" description="The icon image to be displayed." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="ResourceKey" name="key" class="TunableIcon" default="None" display="Key" muid="409A7CB94994C48F" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                </TunableTuple>
+                                <TunableTuple name="tradition" class="TunableHolidayIconFactory" display="Tradition" muid="704E53C8CB4DE029" Deprecated="False" filter="0" group="General">
+                                    <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="F79839E054DE367F" description="We use this participant's holiday tracker to get the icon." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="B9904A81042BF826" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                                    </TunableList>
+                                </TunableTuple>
+                            </TunableVariant>
+                        </TunableVariant>
+                        <Tunable type="ResourceKey" name="debug_overlay_override" class="TunableResourceKey" default="None" display="Debug Overlay Override" muid="6249A09B61370492" description="The overlay for the balloon in debug, if present. This overlay will&#xA;be placed on the balloon instead of overlay in debug only." allow_none="True" Deprecated="False" filter="1" group="General" resource_types="0x2f7d0004" />
+                        <TunableVariant type="None" name="icon" class="TunableIconVariant" default="resource_key" display="Icon" muid="DB36C324C78B095F" description="The Icon that will be showed within the balloon." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="career_icon_override" class="TunableCareerIconOverrideIconFactory" display="Career Icon Override" muid="A2C1368CD88EF53" Deprecated="False" filter="0" group="General">
+                                <Tunable type="career" name="career_reference" class="TunableReference" display="Career Reference" muid="3FF976F522E1056D" description="The Career to override the icon." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="BB22D3BC46BA2B03" description="The Participant who owns the career." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="FF12D3BED347C131" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                            </TunableTuple>
+                            <TunableTuple name="lifestyle_brand" class="TunableLifestyleBrandIconFactory" display="Lifestyle Brand" muid="6B5D2C65FC75C9F1" Deprecated="False" filter="0" group="General">
+                                <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="3983E0CC50453FFE" description="The Participant who owns the lifestyle brand we want to use." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="FDAB4765AB15C70E" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                            </TunableTuple>
+                            <TunableTuple name="participant" class="TunableParticipantTypeIconFactory" display="Participant" muid="1DC5A1AC3750ACFC" description="The Sim who's thumbnail will be used." Deprecated="False" filter="0" group="General">
+                                <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="3E372FC0ED580A19" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="ParticipantType" class="TunableEnumEntry" default="Invalid" muid="D47C17474A322E25" static_entries="interactions.ParticipantType" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                            </TunableTuple>
+                            <TunableTuple name="privacy" class="TunablePrivacyIconFactory" display="Privacy" muid="4E7F07A3A6E3FD3A" description="Search an interaction's privacy liability to find violating Sims&#xA;and randomly select one to display an icon of." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="resource_key" class="TunableIconFactory" display="Resource Key" muid="F6E0E25B41B41C2C" description="The icon image to be displayed." Deprecated="False" filter="0" group="General">
+                                <Tunable type="ResourceKey" name="key" class="TunableIcon" default="None" display="Key" muid="5EB51BF3255D3DF9" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                            </TunableTuple>
+                            <TunableTuple name="tradition" class="TunableHolidayIconFactory" display="Tradition" muid="D12922F1647CE078" Deprecated="False" filter="0" group="General">
+                                <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="2D0BBCE00D8672C6" description="We use this participant's holiday tracker to get the icon." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="7D64BE99E02252BC" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableVariant>
+                        <Tunable type="ResourceKey" name="overlay" class="TunableResourceKey" default="None" display="Overlay" muid="35D150FBEBE030F3" description="The overlay for the balloon, if present." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <Tunable type="float" name="weight" class="TunableRange" default="1" display="Weight" muid="B3E1570CD9F1FC82" min="1" max="None" description="The weight to assign to this balloon." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableVariant>
+                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="450800CCF65ADD49" description="A set of tests that are run when selecting the balloon icon.  If the&#xA;tests do not pass then this balloon icon will not be selected." filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

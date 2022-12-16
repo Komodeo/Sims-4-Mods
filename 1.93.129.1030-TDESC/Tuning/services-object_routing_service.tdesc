@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="services.object_routing_service" muid="28E38E96BABDD6A">
+        <Class name="ObjectRoutingService" muid="AC1DBF560CFBD53F">
+            <Tunable type="float" name="CACHE_INVALIDATION_TIME" class="TunableSimMinute" default="15" display="Cache Invalidation Time" muid="A55E0A9ADE7C5AFA" min="1" max="None" description="The interval used to clear the cache&#xA;The cache is used to store valid targets when calling ObjectRouteFromTargetObject _find_target&#xA;by tuning object type (cleaner, fixer, gardening, party bots for example)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="OBJECT_ROUTING_HARD_CAP" class="Tunable" default="30" display="Object Routing Hard Cap" muid="F15B5831F884CBD0" description="Hard cap defining how many objects can be routing simultaneously." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="OBJECT_ROUTING_SOFT_CAP_THRESHOLD" class="Tunable" default="5" display="Object Routing Soft Cap Threshold" muid="9CC6D96E783B5994" description="Used to determine the SoftCap for how many objects can be routing simultaneously.&#xA;SoftCap = SimCap - SimsInZone + OBJECT_ROUTING_SOFT_CAP_THRESHOLD.&#xA;Only CRITICAL priority ObjectRoutingBehaviors can bypass this soft cap." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="PROMOTION_WAIT_DURATION" class="TunableSimMinute" default="5" display="Promotion Wait Duration" muid="344358F164411B7C" min="1" max="None" description="When an ObjectRoutingBehavior is blocked from routing due to being at the routing SoftCap,&#xA;how many sim minutes to wait before promoting the behavior's priority." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="ROUTE_WAIT_DURATION" class="TunableSimMinute" default="1" display="Route Wait Duration" muid="93067AFB425E09C4" min="1" max="None" description="When an ObjectRoutingBehavior is blocked from routing due to being at the routing SoftCap,&#xA;how many sim minutes to wait before trying again." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

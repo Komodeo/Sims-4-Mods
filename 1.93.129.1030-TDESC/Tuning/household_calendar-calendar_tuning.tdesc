@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="household_calendar.calendar_tuning" muid="18408526AA5E683D">
+        <Class name="CalendarTuning" muid="F746A95824E76140">
+            <TunableList name="CALENDAR_FILTER_DATA" class="TunableList" display="Calendar Filter Data" muid="C6D40E4AE194CCF4" description="A List of Categories and Filters for use in filtering the Calendar data in the SchedulePane." Deprecated="False" export_modes="client_binary" filter="0" group="UI">
+                <TunableTuple class="CalendarCategoryTuple" muid="E0730442F8AF9589" description="A tuple of Category and the filters for the category." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="category_name" class="TunableLocalizedString" default="0x0" display="Category Name" muid="CE5B38BC4C81D61A" description="The string to be used for the name of the category these filters belong to." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="filters" class="TunableList" display="Filters" muid="C47BF6EAF0EDC9C9" description="Filter data used in the calendar" Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="CalendarFilterTuple" muid="FCCE4C5963009DA9" description="Defines a single filter in the Calendar's filter component." Deprecated="False" filter="0" group="General">
+                            <TunableList name="entry_types" class="TunableEnumSet" display="Entry Types" muid="CE85F5BF496379C2" description="The entries which will be captured by this filter." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="DramaNodeUiDisplayType" class="TunableEnumEntry" default="NO_UI" muid="A61DDE9371C33BCD" static_entries="drama_scheduler-drama_enums.DramaNodeUiDisplayType" Deprecated="False" filter="0" group="General" invalid_entries="NO_UI" />
+                            </TunableList>
+                            <Tunable type="int" name="filter_name" class="TunableLocalizedString" default="0x0" display="Filter Name" muid="680CAFBA4F311E75" description="The name for this filter displayed in the calendar's filter component." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_birthday_filter" class="Tunable" default="False" display="Is Birthday Filter" muid="F9E455B135DB04C0" description="If enabled, birthday entries will be captured by this filter." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_favorite_filter" class="Tunable" default="False" display="Is Favorite Filter" muid="D3C18014815FCC52" description="If enabled, only favorited entries which also match the other criteria, will be captured by this filter." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="is_work_filter" class="Tunable" default="False" display="Is Work Filter" muid="1703F6683A7AF01C" description="If enabled, work entries will be captured by this filter." Deprecated="False" filter="0" group="General" />
+                            <TunableVariant type="None" name="region_resource" class="OptionalTunable" default="disabled" display="Region Resource" muid="2D69709D1EBB108B" description="If enabled, only entries from zones within this region will be captured by this fiter." Deprecated="False" filter="0" group="General">
+                                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="E87FD165171A196F" />
+                                <Tunable type="regiondescription" name="enabled" class="TunableReference" display="Enabled" muid="4630D651C25EAE9E" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableVariant>
+                            <TunableList name="required_packs" class="TunableEnumSet" display="Required Packs" muid="56C53CA21FA62997" description="If any packs are tuned here, at least one of them must&#xA;be present for this filter to appear in the UI." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Pack" class="TunableEnumEntry" default="BASE_GAME" muid="EF38B63D37F160E4" static_entries="sims4-common.Pack" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="80FC2BFE131E5C8E" new_muid="680CAFBA4F311E75" />
+            <Action type="kRename" old_muid="95BDDFABF3B06A6B" new_muid="F9E455B135DB04C0" />
+            <Action type="kRename" old_muid="872B81C7D1686E07" new_muid="D3C18014815FCC52" />
+            <Action type="kRename" old_muid="BB64D2AB3E3250A4" new_muid="1703F6683A7AF01C" />
+            <Action type="kRename" old_muid="77D883F93F055DF" new_muid="CE85F5BF496379C2" />
+            <Action type="kRename" old_muid="D5B514BB26A964B4" new_muid="56C53CA21FA62997" />
+            <Action type="kRename" old_muid="D277B690536ACC0" new_muid="2D69709D1EBB108B" />
+            <Action type="kRemove" old_muid="1AC6587C33164C61" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

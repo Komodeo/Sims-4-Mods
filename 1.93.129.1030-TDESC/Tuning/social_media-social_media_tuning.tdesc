@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="social_media.social_media_tuning" muid="30FF002B33E57639">
+        <Class name="SocialMediaTunables" muid="E4534E4EB92B3AA2">
+            <Tunable type="int" name="FEED_POSTS_NUMBER_CAP" class="TunableRange" default="30" display="Feed Posts Number Cap" muid="979F13B56EF0A6E9" min="0" max="None" description="Cap for how many posts the Feed will show and the service will save." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="FOLLOWERS_CONTEXTUAL_POST_BASE_STAT" class="TunableRange" default="50" display="Followers Contextual Post Base Stat" muid="87CAC5F0B527CAF3" min="0" max="None" description="How many followers will be gained by making a contextual post." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="FOLLOWERS_NPC_REACTION_GAIN" class="TunableRange" default="10" display="Followers Npc Reaction Gain" muid="F99B90AEA86EC70C" min="0" max="None" description="Number of followers that will be gained by an NPC reaction to a &#xA;player's post." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="FOLLOWERS_PERCENTAGE_LOST_PER_DAY" class="TunableRange" default="1" display="Followers Percentage Lost Per Day" muid="CDDE636C0377A3FF" min="0" max="100" description="Percentage of followers lost per day from current follower count." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="FOLLOWERS_POSTING_MODIFIER" class="TunableList" display="Followers Posting Modifier" muid="4FD73BB1E078ADCD" description="Modifiers for followers calculation." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="306B0F137F38606C" Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="max" class="TunableRange" default="0" display="Max" muid="BC5757755F39265F" min="0" max="None" description="Max of the post range for this modifier." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="min" class="TunableRange" default="0" display="Min" muid="9C150B0F6C0AFD58" min="0" max="None" description="Min of the post range for this modifier." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="modifier" class="TunableRange" default="1.0" display="Modifier" muid="B7FBC9F9E14D93AC" min="None" max="None" description="Modifier to be applied for followers calculation." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="FOLLOWERS_RECOUNT_TIME_OF_DAY" class="TunableTimeOfDay" display="Followers Recount Time Of Day" muid="14EC64F5ED28C5C7" description="The time of day in hours to calculate current followers." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="hour" class="TunableRange" default="6" display="Hour" muid="67843C8BA2A5C94E" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="811A0FCD35769F27" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <Tunable type="int" name="FOLLOWERS_REGULAR_POST_BASE_STAT" class="TunableRange" default="50" display="Followers Regular Post Base Stat" muid="3ABEDAE7B2B8407C" min="0" max="None" description="How many followers will be gained by making a regular post." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="statistic" name="FOLLOWERS_TRACKING_COMMODITY" class="TunableReference" display="Followers Tracking Commodity" muid="CBA1CF62992C2DFF" description="Commodity to assign for tracking Social Media followers." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Commodity" />
+
+            <Tunable type="interaction" name="NEW_DIRECT_MESSAGE_PICKER_INTERACTION" class="TunableReference" display="New Direct Message Picker Interaction" muid="8DFF939F1D029265" description="The interaction to bring a new direct message picker up." allow_none="False" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+
+            <Tunable type="interaction" name="NEW_EVENT_POST_PICKER_INTERACTION" class="TunableReference" display="New Event Post Picker Interaction" muid="6FF6DDBE51B627AD" description="The interaction to bring a new post picker up." allow_none="False" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+
+            <Tunable type="interaction" name="NEW_FRIEND_PICKER_INTERACTION" class="TunableReference" display="New Friend Picker Interaction" muid="E6CFBA91B01E25D4" description="The interaction to bring a new Sim friend picker up." allow_none="False" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+
+            <Tunable type="interaction" name="NEW_MESSAGE_TYPE_PICKER_INTERACTION" class="TunableReference" display="New Message Type Picker Interaction" muid="35C3CB527D91B5C7" description="The interaction to bring a new type of message picker up." allow_none="False" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+
+            <Tunable type="interaction" name="NEW_POST_PICKER_INTERACTION" class="TunableReference" display="New Post Picker Interaction" muid="CDFA2943737BEFCB" description="The interaction to bring a new post picker up." allow_none="False" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+
+            <Tunable type="statistic" name="NPC_POSTING_COMMODITY" class="TunableReference" display="Npc Posting Commodity" muid="1F123F6EB3CEE5A5" description="Commodity to assign to NPC friends for Social Media posting." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Commodity" />
+
+            <Tunable type="interaction" name="OPEN_SOCIAL_MEDIA_PHONE_INTERACTION" class="TunableReference" display="Open Social Media Phone Interaction" muid="CE126AA524966C44" description="The phone interaction to open the social media dialog.&#xA;Used to infer which interaction to badge." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <Tunable type="int" name="REACTIONS_PER_POST_NUMBER_CAP" class="TunableRange" default="10" display="Reactions Per Post Number Cap" muid="1403002108939CD4" min="0" max="None" description="Cap for how many reactions each post can have." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="SOCIAL_MEDIA_FRIENDS_NUMBER_CAP" class="TunableRange" default="30" display="Social Media Friends Number Cap" muid="CD6F043F85EC0596" min="0" max="None" description="Cap for how many Social Media Friends a sim can have." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="SOCIAL_MEDIA_NARRATIVE_TUNING" class="TunableList" display="Social Media Narrative Tuning" muid="D67C186A0818B3A1" description="Tuning to show the narratives in a picker." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="EC7B43A656C8709B" Deprecated="False" filter="0" group="General">
+                    <TunableList name="blacklist_rel_bit" class="TunableList" display="Blacklist Rel Bit" muid="84597B661265E2BC" description="The relationship bits that will be blacklisted for this narrative." Deprecated="False" filter="0" group="General">
+                        <Tunable type="relbit" class="TunableReference" muid="C4788A236D47EEA1" allow_none="False" Deprecated="False" filter="0" group="General" restrict="RelationshipBit" />
+                    </TunableList>
+                    <TunableEnum type="SocialMediaNarrative" name="narrative" class="TunableEnumEntry" default="FRIENDLY" display="Narrative" muid="2FFC80F25D637EFF" static_entries="social_media.SocialMediaNarrative" description="A SocialMediaNarrative enum entry." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="picker_description" class="TunableLocalizedString" default="0x0" display="Picker Description" muid="C24CD46501F74B29" description="The description used in the picker for this narrative." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="picker_icon" class="TunableIconVariant" default="resource_key" display="Picker Icon" muid="90EB5A3A74CF6D10" description="The icon used in the picker for this narrative." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="career_icon_override" class="TunableCareerIconOverrideIconFactory" display="Career Icon Override" muid="B9F0475672E6C7" Deprecated="False" filter="0" group="General">
+                            <Tunable type="career" name="career_reference" class="TunableReference" display="Career Reference" muid="FF20B41622200C9E" description="The Career to override the icon." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="F0F6F52598EE9D8E" description="The Participant who owns the career." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="B8D2F9973F26D10A" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="lifestyle_brand" class="TunableLifestyleBrandIconFactory" display="Lifestyle Brand" muid="8FBAF91EE8BB548B" Deprecated="False" filter="0" group="General">
+                            <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="EC57542E138DBF91" description="The Participant who owns the lifestyle brand we want to use." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="3D8F2C0E1E7118AB" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="participant" class="TunableParticipantTypeIconFactory" display="Participant" muid="2AEA6DBCB82EF94F" description="The Sim who's thumbnail will be used." Deprecated="False" filter="0" group="General">
+                            <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="F14069E539986E83" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="ParticipantType" class="TunableEnumEntry" default="Invalid" muid="DB05937E7456034A" static_entries="interactions.ParticipantType" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="privacy" class="TunablePrivacyIconFactory" display="Privacy" muid="E53DA6942B83518" description="Search an interaction's privacy liability to find violating Sims&#xA;and randomly select one to display an icon of." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="resource_key" class="TunableIconFactory" display="Resource Key" muid="C329F90325569238" description="The icon image to be displayed." Deprecated="False" filter="0" group="General">
+                            <Tunable type="ResourceKey" name="key" class="TunableIconAllPacks" default="None" display="Key" muid="5AF5A8391AB783F0" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                        </TunableTuple>
+                        <TunableTuple name="tradition" class="TunableHolidayIconFactory" display="Tradition" muid="CE2EF5DED9B89347" Deprecated="False" filter="0" group="General">
+                            <TunableList name="participant_type" class="TunableEnumFlags" default="Actor" display="Participant Type" muid="B6144F67D1DF8C9C" description="We use this participant's holiday tracker to get the icon." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="ParticipantTypeSingle" class="TunableEnumEntry" default="Actor" muid="D79264CAE3823B18" static_entries="interactions.ParticipantTypeSingle" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableVariant>
+                    <Tunable type="int" name="picker_name" class="TunableLocalizedString" default="0x0" display="Picker Name" muid="CDC6B05A7CC2B27F" description="The name used in the picker for this narrative." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="picker_tooltip" class="TunableLocalizedString" default="0x0" display="Picker Tooltip" muid="396A1642D0628256" description="The tooltip used in the picker for this narrative." Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="targeted_availability_tests" class="TunableTestSet" display="Targeted Availability Tests" muid="E4F77FEED3F7E927" description="A set of tests that must pass in order for this narrative to be available. These &#xA;tests will only be run when there is an Actor and a Target Sim." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SOCIAL_MEDIA_POST_REACTIONS" class="TunableList" display="Social Media Post Reactions" muid="7286FC4C4E590336" description="A set of Reactions for Social Media Posts." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                <TunableTuple class="SocialMediaPostReactionsList" muid="40C79798D4280D00" Deprecated="False" filter="0" group="General">
+                    <Tunable type="ResourceKey" name="icon" class="TunableIcon" default="None" display="Icon" muid="D9A5F91F5D86CF8C" description="The icon to associate with this reaction." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    <Tunable type="int" name="name" class="TunableLocalizedString" default="0x0" display="Name" muid="BD5D8549A086F0B2" description="The name to associate with this reaction." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="SocialMediaNarrative" name="narrative" class="TunableEnumEntry" default="FRIENDLY" display="Narrative" muid="A9694A3B1B5E617F" static_entries="social_media.SocialMediaNarrative" description="A SocialMediaNarrative enum entry." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="SocialMediaPolarity" name="polarity" class="TunableEnumEntry" default="POSITIVE" display="Polarity" muid="18A5F75D14129A55" static_entries="social_media.SocialMediaPolarity" description="A SocialMediaPolarity enum entry." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SOCIAL_MEDIA_REACTIONS_OUTCOMES" class="TunableList" display="Social Media Reactions Outcomes" muid="FFEC8A969E3723ED" description="A set of Reactions for Social Media Posts." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="3109100CF66D2E97" Deprecated="False" filter="0" group="General">
+                    <TunableList name="loots_on_reaction" class="TunableList" display="Loots On Reaction" muid="F2676DB9E738A4D1" description="Loots applied when the reaction is made." Deprecated="False" filter="0" group="General">
+                        <Tunable type="action" class="TunableReference" muid="7AE10FBE4512CC06" description="A loot applied when the reaction is made." allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+                    </TunableList>
+                    <TunableEnum type="SocialMediaPolarity" name="post_polarity" class="TunableEnumEntry" default="POSITIVE" display="Post Polarity" muid="84FC4B45A4893F9A" static_entries="social_media.SocialMediaPolarity" description="The SocialMediaPolarity to match in the post." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="SocialMediaNarrative" name="reaction_narrative" class="TunableEnumEntry" default="FRIENDLY" display="Reaction Narrative" muid="46DD4538FF44AC6" static_entries="social_media.SocialMediaNarrative" description="The SocialMediaNarrative to match in the reaction." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="relbit" name="SOCIAL_MEDIA_REL_BIT" class="TunableReference" display="Social Media Rel Bit" muid="B8819DF638C4C9C9" description="The relationship bit that will be used to track Social Media friends." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RelationshipBit" />
+
+            <TunableList name="TYPES_OF_POSTS" class="TunableList" display="Types Of Posts" muid="CE955CEB77E51831" description="A set of the different Posts that can be made in Social Media." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="3AC2F1C0AE603755" Deprecated="False" filter="0" group="General">
+                    <TunableList name="content" class="TunableList" display="Content" muid="833D9FECF96C7623" description="The list of strings that can be randomly used for this post." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="6DA80A353FC5F875" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                    <TunableVariant type="None" name="context_post" class="OptionalTunable" default="disabled" display="Context Post" muid="D8D4D58CB39E8D6D" description="The Buff that will allow for this contextual post to be made." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F1633242FC488F3F" />
+                        <Tunable type="buff" name="enabled" class="TunableReference" display="Enabled" muid="26FA57175E611CD6" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Buff" />
+                    </TunableVariant>
+                    <TunableList name="loots_on_post" class="TunableList" display="Loots On Post" muid="4073CCBBF7A62C43" description="Loots applied to the actor when the post is made." Deprecated="False" filter="0" group="General">
+                        <Tunable type="action" class="TunableReference" muid="85430935F0536AA2" description="A loot applied to the actor when the post is made." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                    </TunableList>
+                    <TunableEnum type="SocialMediaNarrative" name="narrative" class="TunableEnumEntry" default="FRIENDLY" display="Narrative" muid="5A5C5413DC9B1AF9" static_entries="social_media.SocialMediaNarrative" description="A SocialMediaNarrative enum entry." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="SocialMediaPolarity" name="polarity" class="TunableEnumEntry" default="POSITIVE" display="Polarity" muid="26F1E941A1699694" static_entries="social_media.SocialMediaPolarity" description="A SocialMediaPolarity enum entry." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="SocialMediaPostType" name="post_type" class="TunableEnumEntry" default="DEFAULT" display="Post Type" muid="12ABFE132405DD3E" static_entries="social_media.SocialMediaPostType" description="A SocialMediaPostType enum entry." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="target_loots_on_post" class="TunableList" display="Target Loots On Post" muid="64D090556D24541D" description="Loots applied to the target when the post is made." Deprecated="False" filter="0" group="General">
+                        <Tunable type="action" class="TunableReference" muid="823D2ED6C223F070" description="A loot applied to the target when the post is made." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="C60F90EA5C50480" new_muid="7286FC4C4E590336" />
+            <Action type="kRename" old_muid="6093570C8B14B2AC" new_muid="CE955CEB77E51831" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="7B0D7AF16D418DCD" new_muid="12ABFE132405DD3E" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="D48E7524C0604909" new_muid="14EC64F5ED28C5C7" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="1BD5E47B6D60CF41" new_muid="40C79798D4280D00" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="7A3F0ECFE2EF94F6" new_muid="8DFF939F1D029265" />
+            <Action type="kRename" old_muid="D1403D372FFF7B00" new_muid="6FF6DDBE51B627AD" />
+            <Action type="kRename" old_muid="D9A8AB08D8179383" new_muid="E6CFBA91B01E25D4" />
+            <Action type="kRename" old_muid="7291D284FB498C99" new_muid="35C3CB527D91B5C7" />
+            <Action type="kRename" old_muid="2A30B1B8990CB87B" new_muid="CDFA2943737BEFCB" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kUpdateVariantTypeField" target_muid="D8D4D58CB39E8D6D" source_type_value="enabled" target_type_value="enabled" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="716B3E3B109AC457" />
+            <Action type="kRemove" old_muid="62C9A202DFD949C0" />
+            <Action type="kRemove" old_muid="A06B5E06D1F8B0DB" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="B15C4301CBDDB122" new_muid="5AF5A8391AB783F0" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="E1AF63F56C7029FF" />
+            <Action type="kRemove" old_muid="786ACCBA6105F7E5" />
+            <Action type="kRemove" old_muid="735FE0C5BD5B729F" />
+            <Action type="kRemove" old_muid="37D592661AC8426B" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

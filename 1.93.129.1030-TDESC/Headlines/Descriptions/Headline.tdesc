@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="headline" class="Headline" module="headlines.headline" muid="2FF67A29B831D8DE" description="A category of headline." instance_needs_reference="True" instance_subclasses_only="False" path="Headlines\Descriptions" use_guid_for_reference="True">
+        <TunableList name="levels" class="TunableMapping" display="Levels" muid="ECAD859DC8E312F8" mapping_key="key" mapping_value="value" description="Different Headline update levels." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="HeadlineLevelMapping">
+            <TunableTuple class="TunableTuple" muid="17082394AC6C5987" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="key" class="Tunable" default="1" display="Key" muid="41C87CA5521119AA" description="The level key." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="HeadlineUpdateData" display="Value" muid="8F8BAD97047590D3" description="Level data." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="color" class="TunableColorRGBA" display="Color" muid="27FB4F5354E528C4" description="The color of the headline." Deprecated="False" filter="0" group="UI">
+                        <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="7991FE616B8B2108" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="65D5E05F95210117" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="796F547A56791675" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="733540168AC33E26" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableEnum type="FXType" name="fx" class="TunableEnumEntry" default="NO_EFFECT" display="Fx" muid="76F6E1C4B2110A9F" static_entries="headlines-headline.FXType" description="The fx on the flash timeline that should be used." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="ResourceKey" name="icon" class="TunableIcon" default="None" display="Icon" muid="5B7265F098A906B3" description="The icon that we will use for this update." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    <Tunable type="float" name="maximum_value" class="Tunable" default="1.0" display="Maximum Value" muid="7EF0D73F636AAF48" description="The maximum value that this update level will be used." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="minimum_value" class="Tunable" default="0.0" display="Minimum Value" muid="9AC51E73F28E62C0" description="The minimum value that this update level will be used." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="int" name="priority" class="Tunable" default="0" display="Priority" muid="3A3334B0061AB583" description="The display priority of this headline so that if multiple headlines&#xA;are triggered at the same time, this value will be used to&#xA;determine which one has priority of another.  Lower values indicate&#xA;a higher priority." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="bool" name="show_during_sim_info_creation" class="Tunable" default="True" display="Show During Sim Info Creation" muid="EC67331AACFB00E1" description="If true, this headline will be shown on sims when they are first &#xA;created. One case in which this will occur is if a SimFilter had to&#xA;create a new sim for a situation. If false, will not show the&#xA;headline." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="text" class="HeadlineTextOptionalTunable" default="disabled" display="Text" muid="4E7C145482285E2F" description="If enabled then this headline will have text displayed along the&#xA;icon." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="801E560F600E6C56" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="72D1C4393DA36DCD" description="The text to display along the icon on this headline." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

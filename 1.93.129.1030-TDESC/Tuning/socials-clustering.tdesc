@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="socials.clustering" muid="7CE19DEF86425672">
+        <Class name="SocialGroupClusterService" muid="957B3B7FE4074E41">
+            <TunableTuple name="CLUSTER_REQUEST" class="TunableObjectClusterRequest" display="Cluster Request" muid="7F36B7A5646ECFC3" description="Specify how social clusters are generated." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="density_epsilon" class="TunableDistanceSquared" default="2.82" display="Density Epsilon" muid="F8E68E73259FCEC" description="A constant that defines whether or not two objects are reachable." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="facing_angle" class="OptionalTunable" default="disabled" display="Facing Angle" muid="6D917F1EE54B3B33" description="If set, then objects in a cluster must satisfy facing requirements." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="84693E0B6702705" />
+                    <Tunable type="float" name="enabled" class="TunableAngle" default="180.0" display="Enabled" muid="95A12F24C1D8AAFC" min="0.0" max="360.0" description="An angle that defines the facing requirements for the purposes&#xA;of clustering and centroid facing." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableTuple name="line_of_sight_constraint" class="TunableLineOfSightData" display="Line Of Sight Constraint" muid="941527654EBC637B" description="The line of sight parameters for generated clusters." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="boundary_epsilon" class="Tunable" default="0.01" display="Boundary Epsilon" muid="FCD6EB402DEF6593" description="The LOS origin is allowed to be outside of the boundary by this&#xA;amount." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="facing_offset" class="Tunable" default="0.1" display="Facing Offset" muid="C5202CBF774E3CD5" description="The LOS origin is offset from the object origin by this amount&#xA;(mainly to avoid intersecting walls)." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="map_divisions" class="Tunable" default="30" display="Map Divisions" muid="20CDC791C9E1BD92" description="The number of points around the object to check collision from.&#xA;More points means higher accuracy." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="max_line_of_sight_radius" class="Tunable" default="10" display="Max Line Of Sight Radius" muid="2F1B58C053598AC" description="The maximum possible distance from this object than an&#xA;interaction can reach." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="simplification_ratio" class="Tunable" default="0.35" display="Simplification Ratio" muid="A3FC97F226AD5A77" description="A factor determining how much to combine edges in the line of&#xA;sight polygon." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <Tunable type="int" name="minimum_size" class="TunableRange" default="3" display="Minimum Size" muid="35F1DD2B96EEBC7" min="2" max="None" description="The minimum required size for clusters. Group of objects less than&#xA;this constant will not form clusters." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="radius_buffer" class="TunableRange" default="0.5" display="Radius Buffer" muid="F7BDA16610B6BE8" min="0" max="None" description="An additional distance (in meters) that will be added to the radius&#xA;of a cluster. The size of a cluster is based on the objects in it.&#xA;We need to add an additional amount to ensure that the object is&#xA;included in the (non-exact) circle constraint." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+    </Module>
+</TuningRoot>

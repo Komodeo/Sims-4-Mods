@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="situations.situation_manager" muid="3416C452FD9938EF">
+        <Class name="SituationManager" muid="14311D82011D32D6">
+            <Tunable type="situation" name="DEFAULT_LEAVE_NOW_MUST_RUN_SITUATION" class="TunableReference" display="Default Leave Now Must Run Situation" muid="CDD05CDD09E84EE" description="The situation type that drives the sim off the lot pronto." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SingleSimLeaveSituation" />
+
+            <Tunable type="situation" name="DEFAULT_LEAVE_SITUATION" class="TunableReference" display="Default Leave Situation" muid="DA96D5BF533050F2" description="The situation type for the background leave situation.&#xA;It collects sims who are not in other situations and&#xA;asks them to leave periodically." allow_none="False" Deprecated="False" filter="0" group="General" restrict="LeaveSituation" />
+
+            <Tunable type="drama_node" name="DEFAULT_PLAYER_PLANNED_DRAMA_NODE" class="TunableReference" display="Default Player Planned Drama Node" muid="8EE835563D417BA" description="The drama node that will be scheduled when a player plans an event for the future." allow_none="False" Deprecated="False" filter="0" group="General" restrict="PlayerPlannedDramaNode" />
+
+            <Tunable type="situation" name="DEFAULT_TRAVEL_SITUATION" class="TunableReference" display="Default Travel Situation" muid="AE67D61FB0DA3024" description="The default situation for when you &#xA;are simply traveling with a group &#xA;of Sims." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="situation" name="DEFAULT_VISIT_SITUATION" class="TunableReference" display="Default Visit Situation" muid="DD2E41D5C44B5C5F" description="The default visit situation used when you ask someone to &#xA;hang out or invite them in." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="LEAVE_INTERACTION_TAGS" class="TunableSet" display="Leave Interaction Tags" muid="1F7CC8D5227699EB" description="The tags indicating leave lot interactions, but not &#xA;leave lot must run interactions.&#xA;These are used to determine if a leave lot interaction is running&#xA;or cancel one if it is." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="F887A4D41C5567BB" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="interaction" filter="1" group="General" />
+            </TunableList>
+
+            <TunableList name="SITUATION_CATEGORY_PLAYER_PLANNED_DRAMA_NODE" class="TunableMapping" display="Situation Category Player Planned Drama Node" muid="FFA11C476170C3C5" mapping_key="situation_category" mapping_value="drama_node" description="A mapping of Situaiton Categories to Player Planned Drama Nodes used for scheduling.&#xA;If the Situation Category is found in this mapping, the corresponding Drama Node is used.&#xA;If the Situation Category is not found in this mapping, the tuned Default Player Planned Drama Node is used." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="1522C1C399AA5D17" Deprecated="False" filter="0" group="General">
+                    <Tunable type="drama_node" name="drama_node" class="TunableReference" display="Drama Node" muid="245BCA01CE3E2703" description="The drama node that will be scheduled when a player plans an event for the future." allow_none="False" Deprecated="False" filter="0" group="General" restrict="PlayerPlannedDramaNode" />
+                    <TunableEnum type="SituationCategoryUid" name="situation_category" class="TunableEnumEntry" default="DEFAULT" display="Situation Category" muid="D1C82074932EA912" dynamic_entries="situations-situation_types.SituationCategoryUid._elements" static_entries="situations-situation_types.SituationCategoryUid" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="SUPER_SPEED_THREE_REQUEST_BUFF" class="TunableBuffReference" display="Super Speed Three Request Buff" muid="FD4074B3AF919873" description="The buff to apply to the Sim when we're trying to make them run the&#xA;leave situation from a super speed three request." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="buff_reason" class="OptionalTunable" default="disabled" display="Buff Reason" muid="E42252EF03935C70" description="If set, specify a reason why the buff was added." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D38B852381725551" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="D8E95DEF963C9663" description="The reason the buff was added. This will be displayed in the&#xA;buff tooltip." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="32429D70359692EF" description="Buff that will get added to sim." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+    </Module>
+</TuningRoot>

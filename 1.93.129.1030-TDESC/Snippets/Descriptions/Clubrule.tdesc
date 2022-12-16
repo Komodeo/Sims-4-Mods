@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="Clubrule" module="snippets" muid="A1399703463EC2CD" instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="value" class="TunableClubRule" display="Value" muid="4CC57DE6D14ACA64" description="A tuning structure that defines a single club rule." Deprecated="False" filter="0" group="General">
+            <Tunable type="club_interaction_group" name="action" class="TunableReference" display="1. Action" muid="A0443218268F909" description="The ClubInteractionGroup that this rule applies to." allow_none="False" Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="restriction" class="TunableVariant" default="Encouraged" display="3. Restriction" muid="3F83E9597CD62D62" description="Whether this rule encourages or discourages its action." Deprecated="False" filter="0" group="General">
+                <Tunable name="Discouraged" class="TunableExistance" display="Discouraged" muid="1802CB6F5338315E" />
+                <Tunable name="Encouraged" class="TunableExistance" display="Encouraged" muid="F61B85042693A4D9" />
+            </TunableVariant>
+            <TunableVariant type="None" name="with_whom" class="OptionalTunable" default="disabled" display="2. With Whom" muid="B79B237580BCFE27" description="If specified, this rule will only apply to cases where the&#xA;actions set in &quot;1_action&quot; are targeting a Sim that matches&#xA;these criteria." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B2E7F5E2D26F9C5A" />
+                <TunableVariant type="None" name="enabled" class="TunableClubRuleCriteriaVariant" default="skill" display="Enabled" muid="C62E609693F39A73" description="If specified, this rule will only apply to cases where the&#xA;actions set in &quot;1_action&quot; are targeting a Sim that matches&#xA;these criteria." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="age" class="TunableClubRuleCriteriaAge" display="Age" muid="5E1FD281ADD62E40" description="Age-based criteria." Deprecated="False" filter="0" group="General">
+                        <TunableList name="ages" class="TunableEnumSet" display="Ages" muid="39CAFBC4AD062760" description="In order to pass this criteria, the target Sim must be one of the&#xA;specified ages." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Age" class="TunableEnumEntry" default="ADULT" muid="829D7015527F8888" static_entries="sims-sim_info_types.Age" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="career" class="TunableClubRuleCriteriaCareer" display="Career" muid="46A5EC28572B5AC2" description="Career-based criteria." Deprecated="False" filter="0" group="General">
+                        <TunableList name="careers" class="TunableList" display="Careers" muid="E9BC9E07283373BE" min="1" description="In order to pass this criteria, the target Sim must have one of&#xA;these Careers." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="career" class="TunableReference" muid="26724D8FAA7815EA" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Career" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="club_membership" class="TunableClubRuleCriteriaClubMembership" display="Club Membership" muid="553E054E36BB012B" description="Club membership-based criteria." Deprecated="False" filter="0" group="General">
+                        <TunableList name="required_club_seeds" class="TunableSet" display="Required Club Seeds" muid="EE46114490A3F77E" description="In order to pass this criteria, the target Sim must be a member of&#xA;one the specified Clubs." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="club_seed" class="TunableReference" muid="3D8918A3208883DD" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="fame_rank" class="TunableClubRuleCriteriaFameRank" display="Fame Rank" muid="328413E22DB5E7D2" description="Fame based club rule criteria." Deprecated="False" filter="0" group="General">
+                        <TunableList name="fame_rank_requirements" class="TunableEnumSet" display="Fame Rank Requirements" muid="78C5CFCF077A9EBF" description="In order to pass this criteria, the Sim must have a fame rank&#xA;that has been selected." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="FameRank" class="TunableEnumEntry" default="FAME_RANK_1" muid="75AAA151B8C77668" dynamic_entries="clubs-club_tuning.FameRank._elements" static_entries="clubs-club_tuning.FameRank" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="household_value" class="TunableClubRuleCriteriaHouseholdValue" display="Household Value" muid="2B2D3FD4EE618D68" description="Household value-based criteria." Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="HouseholdValueCategory" name="household_value" class="TunableEnumEntry" default="AVERAGE" display="Household Value" muid="B9BE265C69F2491E" static_entries="clubs-club_tuning.HouseholdValueCategory" description="In order to pass this criteria, the target sim must have a&#xA;household value in this enum value's associated interval." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="relationship" class="TunableClubRuleCriteriaRelationship" display="Relationship" muid="8BC88A2DC50DBC4D" description="Relationship-based criteria." Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="MaritalStatus" name="marital_status" class="TunableEnumEntry" default="MARRIED" display="Marital Status" muid="4E681E9D02EC9A92" static_entries="clubs-club_tuning.MaritalStatus" description="Marital status a Sim must have in order to pass this criteria." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="skill" class="TunableClubRuleCriteriaSkill" display="Skill" muid="7DC589DDBD84EE1D" description="Skill-based criteria." Deprecated="False" filter="0" group="General">
+                        <TunableList name="skills" class="TunableList" display="Skills" muid="9F5577DB3C46C9C2" min="1" description="In order to pass this criteria, the target Sim must have one of&#xA;these skills with a skill level of at least the value specified in&#xA;MINIMUM_CRITERIA_SKILL_LEVEL." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="statistic" class="TunableReference" muid="83F738321DFF866D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Skill" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="trait" class="TunableClubRuleCriteriaTrait" display="Trait" muid="FD8A751C828C3E48" description="Trait-based criteria." Deprecated="False" filter="0" group="General">
+                        <TunableList name="traits" class="TunableList" display="Traits" muid="6BE767B304B75F8C" min="1" description="In order to pass this criteria, the target Sim must have one of&#xA;these Traits." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="trait" class="TunableReference" muid="C794F7A7A65AC7F5" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableVariant>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

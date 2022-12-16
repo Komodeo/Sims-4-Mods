@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="HospitalPatientSituation" module="situations.complex.hospital_patient_situation" muid="85215266D90F74CC" description="Situation used to control the progression a hospital patient goes through&#xA;when a user Sim is working at the Doctor active career." instance_subclasses_only="False" parents="PatientSituationBase, SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <Tunable type="float" name="admitted_duration_for_time_jump" class="TunableSimMinute" default="180" display="Admitted Duration For Time Jump" muid="29BF812FE5C5996" min="None" max="None" description="The amount of time allowed to pass before a Sim in the admitted&#xA;state will be ignored on load with a time jump." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Timeout And Time Jump" />
+
+        <Tunable type="role_state" name="admitted_role_state" class="TunableReference" display="03_admitted_role_state" muid="31ED893C977F432" description="A reference to the hospital patients admitted&#xA;role state while in the situation. This is the&#xA;state where the patient is assigned to a bed &#xA;and the doctor is actively trying to diagnose&#xA;the issue." allow_none="False" Deprecated="False" filter="0" group="Job and State" restrict="RoleState" />
+
+        <Tunable type="float" name="diagnosed_duration_for_time_jump" class="TunableSimMinute" default="180" display="Diagnosed Duration For Time Jump" muid="C1DF23D20BD0F265" min="None" max="None" description="The amount of time allowed to pass before a Sim in the diagnosed&#xA;state will be ignored on load with a time jump." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Timeout And Time Jump" />
+
+        <Tunable type="role_state" name="diagnosed_role_state" class="TunableReference" display="04_diagnosed_role_state" muid="4E3421246DE015D0" description="A reference to the hospital patients diagnosed&#xA;role state while in the situation. This is&#xA;the state where the patient has been diagnosed &#xA;but it still waiting for the doctor to treat&#xA;them." allow_none="False" Deprecated="False" filter="0" group="Job and State" restrict="RoleState" />
+
+        <TunableTuple name="go_to_diagnosed_interactions" class="TunableInteractionOfInterest" display="Go To Diagnosed Interactions" muid="76D4B51190C363F5" description="The interactions to look for when a Sim has been diagnosed by a &#xA;doctor and is now waiting for treatment." Deprecated="False" filter="0" group="State Advancement">
+            <TunableList name="affordances" class="TunableList" display="Affordances" muid="282F80B898D0180C" description="The Sim must have started either any affordance in this list or an&#xA;interaction matching one of the tags in this tunable's Tags&#xA;field." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="7225B98E9CE280D0" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="98FD92C4AFF269DC" description="The Sim must have run either an interaction matching one of these&#xA;Tags or an affordance from the list of Affordances in this&#xA;tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="1EC3E5400E5B38B9" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <Tunable type="bool" name="pre_diagnosed" class="Tunable" default="False" display="Pre Diagnosed" muid="D0122070F84EBCCF" description="If this is true then when the Sim is pre-rolled it will skip to the&#xA;_DiagnosedState(). &#xA;&#xA;If it is False then it will default to pre-rolling&#xA;the Sim to _AdmittedState()." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

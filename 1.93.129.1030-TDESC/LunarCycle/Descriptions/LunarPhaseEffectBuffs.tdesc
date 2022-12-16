@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="lunar_cycle" class="LunarPhaseEffectBuffs" module="lunar_cycle.lunar_phase_effect" muid="B9818576CF76526B" description="Buffs to apply on lunar phases and the expected length of this effect, which will determine how long the applied&#xA;buffs should last." instance_needs_reference="True" instance_subclasses_only="False" parents="LunarPhaseEffect" path="LunarCycle\Descriptions" use_guid_for_reference="True">
+        <TunableList name="effect_buffs" class="TunableList" display="Effect Buffs" muid="31C0F9D819DB8DC8" description="List of buffs to attempt to apply during this lunar phase.  If a buff reason tooltip is tuned for a&#xA;successfully applied buff, that tooltip is used to populate a lunar effect tooltip in the UI." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="_TunableLunarEffectBuffReference" muid="75999DA8E1A47650" Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="buff_reason" class="OptionalTunable" default="disabled" display="Buff Reason" muid="42B9E05794F01801" description="If set, specify a reason why the buff was added." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="EBF0507C10873C42" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="828A5878AAF13F12" description="The reason the buff was added. This will be displayed in the&#xA;buff tooltip." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="33F4B7D8E84D064E" description="Buff that will get added to sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <TunableVariant type="None" name="tooltip_text" class="OptionalTunable" default="disabled" display="Tooltip Text" muid="ED86F523BDFE4BD" description="If set, specify a tooltip text to describe the effect in lunar cycle tooltip &#xA;when this buff is active on the Sim." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="1995825CCE946076" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="462081625F20CB6E" description="The description of the lunar effect. This will be displayed in the lunar cycle tooltip." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="float" name="effect_duration" class="TunableSimMinute" default="240" display="Effect Duration" muid="4A94ECCE9C856992" min="1" max="1440" description="The duration of the effect.  This duration will be enforced so that the buffs are aligned with &#xA;the expected length of the lunar effect.&#xA;&#xA;e.g. lunar effect was expected to be started at 8pm and last 180 minutes.  Sim is created/spun up and&#xA;gets a lunar effect buff applied at 9:15pm.  The lunar effect buff will be updated so it properly ends&#xA;at 11pm, as expected by the lunar effect duration." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="A813243E870D45EA" new_muid="75999DA8E1A47650" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

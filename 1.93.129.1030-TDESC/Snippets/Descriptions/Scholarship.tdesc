@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="Scholarship" module="display_snippet_tuning" muid="874E345E96CAFC78" description="Container for Scholarship Information." instance_needs_reference="True" instance_subclasses_only="False" parents="DisplaySnippet" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="amount" class="TunableVariant" default="none" display="Amount" muid="F14B6B4FE78D98CC" description="If fixed_amount, use the tuned value when receiving the scholarship.&#xA;If evaluation_type, use the evaluation type to determine what the value of &#xA;the scholarship should be. " Deprecated="False" filter="0" group="General">
+            <TunableTuple name="evaluation_type" class="TunableTuple" display="Evaluation Type" muid="79E3BDD038E82EFE" Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="fixed_amount" class="TunableTuple" display="Fixed Amount" muid="2BCF2669C8F9C83C" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="amount" class="TunableRange" default="50" display="Amount" muid="889C4E76DDEA7C5A" min="1" max="None" description="The amount of money to award a Sim if they receive this scholarship." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <Tunable name="none" class="TunableExistance" display="None" muid="7D68A0C8580E42C1" />
+        </TunableVariant>
+
+        <TunableTuple name="evaluation_type" class="TunableScholarshipEvaluationType" display="Evaluation Type" muid="E06E31B812FF9D6C" description="The evaluation type used by this scholarship." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="evaluation_type" class="TunableVariant" default="none" display="Evaluation Type" muid="6483880BB01330D0" description="The evaluation type that determines whether or not a Sim will earn&#xA;a scholarship.            " Deprecated="False" filter="0" group="General">
+                <TunableTuple name="merit" class="TunableMeritEvaluation" display="Merit" muid="C322E05B093C279A" description="Merit scholarships are granted on enrollment. If a student has qualified for&#xA;a prestige degree, they have earned the corresponding Merit Scholarship." Deprecated="False" filter="0" group="General">
+                    <TunableList name="prestige_majors" class="TunableList" display="Prestige Majors" muid="F6DDC7596F6FA90A" description="All prestige majors considered towards the merit scholarship." Deprecated="False" filter="0" group="General">
+                        <Tunable type="university_major" class="TunableReference" muid="1B4E83A3B1D86C92" description="The Major a student Sim must have qualified for at enrollment in order&#xA;to qualify for this scholarship." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableTuple>
+                <TunableTuple name="need" class="TunableNeedEvaluation" display="Need" muid="53B7B623CE6DA70" description="Need scholarships are granted based on the total value of the household. Use&#xA;the base success chance to define the initial chance of success and tested&#xA;multipliers against the household value." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="success_chance" class="TunableTunableMultiplier" display="Success Chance" muid="503E5DA249512A84" description="Base success percentage and tested multipliers that evaluate to the&#xA;sum chance of earning the scholarship." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="3F82C6F61DA1A14A" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="A92971F9AC04A2B4" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="B764C990350DCD38" Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="585A01CA4B45D820" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="948F9DAD1BB750A3" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+                <Tunable name="none" class="TunableExistance" display="None" muid="88C7DF7D9786043F" />
+                <TunableTuple name="other" class="TunableOtherEvaluation" display="Other" muid="495099CA6492A9C3" description="Use any test criteria to generate a scholarship evaluation type." Deprecated="False" filter="0" group="General">
+                    <Tunable type="test_based_score" name="additive_chance_scores" class="TunableReference" display="Additive Chance Scores" muid="CF37538ADA956AE8" description="For each passing score, the sum is added onto the base&#xA;scholarship acceptance chance." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="base_chance" class="TunablePercent" default="20" display="Base Chance" muid="88F56E22236AF200" min="0" max="100" description="The base chance a scholarship is earned." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableVariant>
+        </TunableTuple>
+
+        <TunableTuple name="maintenance_type" class="TunableScholarshipMaintenaceType" display="Maintenance Type" muid="B5CD212E952D20BD" description="The maintenance requirement of this scholarship." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="maintenance_type" class="TunableVariant" default="none" display="Maintenance Type" muid="87B9155A9A419E4" description="The type of requirement needed for a student to retain scholarship&#xA;benefits throughout the university term." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="academic" class="TunableTuple" display="Academic" muid="D44603071DB781CB" description="The scholarship is dependent on staying enrolled in school.&#xA;&#xA;Dropping out, getting suspended or graduating all will cause the&#xA;Sim to lose the active scholarship status." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="activity" class="TunableTuple" display="Activity" muid="1F955E7AF4528AE8" description="The scholarship is dependent on staying enrolled in an after-school&#xA;activity.&#xA;&#xA;If the sim is accepted to this scholarship on enrollment, they&#xA;will automatically be enrolled in this activity at the beginning&#xA;of the term. Dropping out of the activity will cause them to lose&#xA;this scholarship." Deprecated="False" filter="0" group="General">
+                    <Tunable type="career" name="activity" class="TunableReference" display="Activity" muid="4C262181E3FFD020" description="The activity that this scholarship is dependent on." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <Tunable name="none" class="TunableExistance" display="None" muid="DF26ACA8C2C54E13" />
+            </TunableVariant>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="mood" class="Mood" module="statistics.mood" muid="40B935BF6E539DF1" description="A basic mood." instance_needs_reference="True" instance_subclasses_only="False" path="Moods\Descriptions" use_guid_for_reference="True">
+        <TunableList name="audio_stings_on_add" class="TunableList" display="Audio Stings On Add" muid="3CF45E25EF609D21" description="The audio to play when a mood or it's intensity changes. Tune one&#xA;for each intensity on the mood" Deprecated="False" filter="0" group="General">
+            <Tunable type="ResourceKey" class="TunableResourceKey" default="None" muid="7166F4804B6AA7CF" description="The sound to play." Deprecated="False" export_modes="client_binary" filter="0" group="General" resource_types="0x39b2aa4a" />
+        </TunableList>
+
+        <TunableTuple name="base_color" class="TunableColorRGBA" display="Base Color" muid="D3AA7CD5ECF1BE57" description="The base color for the ghost shader." Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts">
+            <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="3FC79187AFD87FC8" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="68F09EDF8BAB2740" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="792206691CF1CAF5" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="5EE77407655F90AD" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableEnum type="BuffPolarity" name="buff_polarity" class="TunableEnumEntry" default="NEUTRAL" display="Buff Polarity" muid="F5D2AA07A33B1E12" static_entries="buffs.BuffPolarity" description="Setting the polarity will determine how up/down arrows&#xA;appear for any buff that provides this mood." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI" />
+
+        <TunableList name="buffs" class="TunableList" display="Buffs" muid="A00BF0EA3B0CF57A" description="A list of buffs that will be added while this mood is the active mood&#xA;on a Sim. &#xA;The first item is applied for the initial intensity, and each&#xA;subsequent item replaces the previous buff as the intensity levels up." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableBuffReference" muid="5018FF9A958B9EF5" Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="buff_reason" class="OptionalTunable" default="disabled" display="Buff Reason" muid="C3B47DDB445B6DC2" description="If set, specify a reason why the buff was added." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="699265262C3C1CDC" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="96F91F8F85EAF494" description="The reason the buff was added. This will be displayed in the&#xA;buff tooltip." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="5D4D0CE874AE0E66" description="Buff that will get added to sim." allow_none="True" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="colored_ghost_list" class="TunableList" display="Colored Ghost List" muid="15413F158606F83D" description="List of colored ghost tuning for this mood.&#xA;Client will go through this list and find the first trait in this list the ghost equipped,&#xA;then use that entry to apply the special ghost color settings." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <TunableTuple class="TraitColoredGhostTuple" muid="373D1717E56A8E92" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="color_saturation" class="TunableRange" default="0.0" display="Color Saturation" muid="73B52905959A180D" min="0.0" max="10.0" description="Color saturation for ghost. Ranged from 0~10, 0: mono, 10:colored" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="edge_color_brightness" class="TunableRange" default="0.0" display="Edge Color Brightness" muid="63E6205F9622EF80" min="0.0" max="10.0" description="Edge color brightness. Ranged from 0~10." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="trait" name="trait" class="TunableReference" display="Trait" muid="B1A87DD9B4C48384" description="The ghost having this trait will have their special color settings." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="descriptions" class="TunableList" display="Descriptions" muid="EFADCB6C45E33AE0" description="Description for the UI tooltip, per intensity." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="488ABD05C430197A" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <TunableList name="descriptions_age_override" class="TunableMapping" display="Descriptions Age Override" muid="80F04B657CFD6610" mapping_key="Age" mapping_value="description_text" description="Mapping of age to descriptions text for mood.  If age does not&#xA;exist in mapping will use default description text." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="DescriptionsAgeOverrideMappingTuple">
+            <TunableTuple class="TunableTuple" muid="569BA27D243EC90B" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="Age" name="Age" class="TunableEnumEntry" default="CHILD" display="Age" muid="F541903B8440C5B5" static_entries="sims-sim_info_types.Age" Deprecated="False" filter="0" group="General" />
+                <TunableList name="description_text" class="TunableList" display="Description Text" muid="F55682433F18A58" description="Description for the UI tooltip, per intensity." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="5B70A00ABBCC6B8F" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableTuple name="descriptions_trait_override" class="TunableMoodDescriptionTraitOverride" display="Descriptions Trait Override" muid="3083FE6FE2807433" description="Trait override for mood descriptions.  If a Sim has this trait&#xA;and there is not a valid age override for the Sim, this&#xA;description text will be used." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <TunableList name="descriptions" class="TunableList" display="Descriptions" muid="F475C738A826142B" description="Description for the UI tooltip, per intensity." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="E319644292F1F4D3" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableList>
+            <Tunable type="trait" name="trait" class="TunableReference" display="Trait" muid="E8231FB59B78DF36" allow_none="True" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="edge_color" class="TunableColorRGBA" display="Edge Color" muid="96C440C65590B246" description="The edge color for the ghost shader." Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts">
+            <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="A3BA607B8DFB4ED7" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="3081B067533625AB" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="BFF2C9DC94AF86C8" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="EC11D8737A489BF" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="statistic" name="environment_scoring_commodity" class="TunableReference" display="Environment Scoring Commodity" muid="931CF36635E05D45" description="Defines the ranges and corresponding buffs to apply for this&#xA;mood's environmental contribution.&#xA;&#xA;Be sure to tune min, max, and the different states. The&#xA;convergence value is what will remove the buff. Suggested to be&#xA;0." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Commodity" />
+
+        <Tunable type="float" name="filter_param_desaturation" class="TunableRange" default="0.0" display="Filter Param Desaturation" muid="BE177737F1F75E2C" min="0.0" max="1.0" description="0 - 1. Controls the amount of color retained by objects behind the ghost.&#xA;0 = all color retained, 1 = no color retained." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts" />
+
+        <Tunable type="float" name="filter_param_lens_distortion" class="Tunable" default="0.0" display="Filter Param Lens Distortion" muid="2028CA2D645539C4" description="Controls lens distortion effect on the ghost.&#xA;0 = no effect, higher value = more distortion" tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts" />
+
+        <Tunable type="float" name="filter_param_noise_distortion" class="Tunable" default="0.0" display="Filter Param Noise Distortion" muid="3D4CB80BBEB05AC9" description="Controls the amount of distortion obtained from the noise texture.&#xA;0 = no effect, Higher value = more distortion" tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts" />
+
+        <Tunable type="float" name="filter_param_noise_jumpiness" class="Tunable" default="0.0" display="Filter Param Noise Jumpiness" muid="4CE941A3F0008570" description="Controls the rate at which the input from the noise texture jumps around at random.&#xA;0 = no jumpiness, Higher value = more jumpiness" tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts" />
+
+        <Tunable type="float" name="filter_param_noise_scale_x" class="Tunable" default="1.0" display="Filter Param Noise Scale X" muid="763644D39FB78691" description="Scales the input from the noise texture horizontally." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts" />
+
+        <Tunable type="float" name="filter_param_noise_scale_y" class="Tunable" default="1.0" display="Filter Param Noise Scale Y" muid="4A78468475273284" description="Scales the input from the noise texture vertically." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts" />
+
+        <Tunable type="float" name="filter_param_noise_scroll_y" class="Tunable" default="0.0" display="Filter Param Noise Scroll Y" muid="561401F48CAB2B19" description="Controls the rate at which the input from the noise texture scrolls vertically.&#xA;0 = no scrolling, Negative value = scrolls up, Positive value = scrolls down." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts" />
+
+        <Tunable type="float" name="filter_param_opacity_offset" class="Tunable" default="0.0" display="Filter Param Opacity Offset" muid="2B2AF2EB50FFF68A" description="Controls the ghost's opacity.  Higher value = more opacity." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts" />
+
+        <TunableList name="icons" class="TunableList" display="Icons" muid="BAD23888D901211C" description="Icon for the UI tooltip, per intensity." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <Tunable type="ResourceKey" class="TunableResourceKey" default="None" muid="1A7681FAF8D778F7" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+        </TunableList>
+
+        <TunableList name="intensity_thresholds" class="TunableList" display="Intensity Thresholds" muid="BA8F63D508323FBB" description="List of thresholds at which the intensity of this mood levels up.&#xA;If empty, this mood has a single threshold and all mood tuning lists should&#xA;have a single item in them.&#xA;For each threshold added, you may add a new item to the Buffs, Mood Names,&#xA;Portrait Pose Indexes and Portrait Frames lists." Deprecated="False" filter="0" group="General">
+            <Tunable type="int" class="Tunable" default="None" muid="5324E5E8ED655271" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <Tunable type="bool" name="is_changeable" class="Tunable" default="False" display="Is Changeable" muid="4712FDD6CFA4635E" description="If this is checked, any buff with this mood will change to&#xA;the highest current mood of the same polarity.  If there is no mood&#xA;with the same polarity it will default to use this mood type" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="mood_asm_param" class="OptionalTunable" default="Determined_By_Other_Moods" display="Mood Asm Param" muid="B8ED701B8E8B5F98" description="If set, then this mood will specify an asm parameter to affect&#xA;animations. If not set, then the ASM parameter will be determined by&#xA;the second most prevalent mood." Deprecated="False" filter="0" group="General">
+            <Tunable name="Determined_By_Other_Moods" class="TunableExistance" display="Determined By Other Moods" muid="A2D651F5CC71D931" />
+            <Tunable type="str" name="Specify" class="Tunable" default="" display="Specify" muid="AC7651A6B58C4E6E" description="The ASM parameter for Sim's mood, if not set, will use 'xxx'&#xA;from instance name pattern with 'mood_xxx'." choice_query="SwingSupport:EnumNames(mood)" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableList name="mood_colors" class="TunableList" display="Mood Colors" muid="FCA560BFD3E87FF9" description="A list of the colors displayed on the steel series mouse when the&#xA;active Sim has this mood.  The first item is applied for the&#xA;initial intensity, and each  subsequent item replaces the color as&#xA;the intensity levels up." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableVector3" muid="943EEE97A9A99970" description="Color." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="478585921C17065A" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="51FEC74066094FF6" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="z" class="Tunable" default="0.0" display="Z" muid="A6D25B9A7FC2124E" description="z component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="mood_frequencies" class="TunableList" display="Mood Frequencies" muid="DA95D23430EDDBAC" description="A list of the flash frequencies on the steel series mouse when the&#xA;active Sim has this mood.   The first item is applied for the&#xA;initial intensity, and each  subsequent item replaces the value as&#xA;the intensity levels up.  0 =&gt; solid color, otherwise, value =&gt;&#xA;value hertz." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" class="Tunable" default="0.0" muid="CA7160BCCDFFDF9E" description="Hertz." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+        </TunableList>
+
+        <TunableList name="mood_names" class="TunableList" display="Mood Names" muid="6A63496F2685F782" description="A list of localized names of this mood.&#xA;The first item is applied for the initial intensity, and each&#xA;subsequent item replaces the name as the intensity levels up." Deprecated="False" export_modes="server_xml,client_binary" filter="0" group="General">
+            <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="AC2E2C7B38C85139" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <Tunable type="ResourceKey" name="noise_texture" class="TunableResourceKey" default="None" display="Noise Texture" muid="4D67B4B6A1FB348D" description="Optional texture used to apply noise effects to the ghost." allow_none="True" Deprecated="False" export_modes="client_binary" filter="0" group="Ghosts" resource_types="0xb2d882" />
+
+        <TunableList name="portrait_frames" class="TunableList" display="Portrait Frames" muid="2C19BAE499FC10CE" description="A list of the frame labels (NOT numbers!) from the UI .fla file that the&#xA;portrait should be set to when this mood is active. Determines&#xA;background color, font color, etc.&#xA;The first item is applied for the initial intensity, and each&#xA;subsequent item replaces the pose as the intensity levels up." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <Tunable type="str" class="Tunable" default="" muid="3E011AA1BE3100DC" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <TunableList name="portrait_pose_indexes" class="TunableList" display="Portrait Pose Indexes" muid="845998B9A00D1A46" description="A list of the indexes of the pose passed to thumbnail generation on the&#xA;client to pose the Sim portrait when they have this mood.&#xA;You can find the list of poses in tuning&#xA;(Client_ThumnailPoses)&#xA;The first item is applied for the initial intensity, and each&#xA;subsequent item replaces the pose as the intensity levels up." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <Tunable type="int" class="Tunable" default="0" muid="ACC5767A0DC530B8" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <TunableList name="thumbnail_vfx_list" class="TunableList" display="Thumbnail Vfx List" muid="4866899E492E84F0" description="List of effects that will be rendered for a Robot Sims thumbnail&#xA;for this mood." Deprecated="False" export_modes="client_binary" filter="0" group="Robots">
+            <TunableTuple class="MoodVFXInfoTuple" muid="197DDFC17D7CA295" description="The name of the effect to play and the joint name it should be&#xA;attached to." Deprecated="False" filter="0" group="General">
+                <Tunable type="str" name="effect_name" class="Tunable" default="" display="Effect Name" muid="4D392BEB018E2A81" description="The name of the effect to play." Deprecated="False" filter="0" group="General" />
+                <Tunable type="str" name="joint_name" class="Tunable" default="" display="Joint Name" muid="5D05DC0E7105FD7A" description="The joint name this effect is attached to." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="whim_set" class="OptionalTunable" default="disabled" display="Whim Set" muid="2F2FEC1745E45024" description="If enabled then this mood will offer a whim set to the Sim when it&#xA;is active." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="739DBEE49691E3AE" />
+            <Tunable type="aspiration" name="enabled" class="TunableReference" display="Enabled" muid="1390B1D79A494F7" description="A whim set that is active when this mood is active." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectivelessWhimSet" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

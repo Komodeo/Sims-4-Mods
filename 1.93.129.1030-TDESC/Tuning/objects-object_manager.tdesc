@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.object_manager" muid="EDCBFE7D4C410838">
+        <Class name="ObjectManager" muid="53276764E5A73131">
+            <TunableTuple name="BED_TAGS" class="TunableTuple" display="Bed Tags" muid="870CB54FC16EC977" description="Tags to check on an object to determine what type of bed an object is." Deprecated="False" filter="0" group="General">
+                <TunableList name="beds" class="TunableSet" display="Beds" muid="33C78E181568DA83" description="Tags that consider an object as a bed other than double beds." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="A553F5998843DAF9" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="buycat|buycatee|buycatss|func" filter="0" group="General" />
+                </TunableList>
+                <TunableList name="double_beds" class="TunableSet" display="Double Beds" muid="1B5E43E0B4AF4CA1" description="Tags that consider an object as a double bed" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="C194EE2C9372B0C0" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="buycat|buycatee|buycatss|func" filter="0" group="General" />
+                </TunableList>
+                <TunableList name="kid_beds" class="TunableSet" display="Kid Beds" muid="4F20C60734034652" description="Tags that consider an object as a kid bed" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="DBB69E130D404D72" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="buycat|buycatee|buycatss|func" filter="0" group="General" />
+                </TunableList>
+                <TunableList name="other_sleeping_spots" class="TunableSet" display="Other Sleeping Spots" muid="52CC92C4BED2D87F" description="Tags that considered sleeping spots." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="3F88085F286DC460" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="buycat|buycatee|buycatss|func" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+
+            <Tunable type="int" name="FIREMETER_DISPOSABLE_OBJECT_CAP" class="Tunable" default="5" display="Firemeter Disposable Object Cap" muid="B55B60CDEAB5C0FF" description="Number of disposable objects a lot can have at any given moment." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="GLOBAL_SPAWN_FIREMETER" class="TunableTuple" display="Global Spawn Firemeter" muid="D4B0E308672F28D6" description="This firemeter is to control the amount of objects can be spawned (usually spawned by system).&#xA;For example we can tag SP18 Specters as Func_SystemSpawned_Haunted so we can limit the number&#xA;using Object Spawn Firemeter Test when it's spawned by system." Deprecated="False" filter="0" group="General">
+                <TunableList name="firemeter_entries" class="TunableMapping" display="Firemeter Entries" muid="3674AC4CBB51A915" mapping_key="tag" mapping_value="settings" Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="1DB72A374D58A3A4" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="settings" class="TunableTuple" display="Settings" muid="AB5ED75BA15FF6F1" Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="tag_weight" class="TunableRange" default="0" display="Tag Weight" muid="320F4F0E747273DF" min="0" max="None" description="The weight assigned to this tag, say if we have 3 objects having weights 2,3,4, and the first two &#xA;passed tests, and we have overall_quota 50, then the quota of first two tags will be 20 and 30" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="tests_to_opt_in" class="TunableTestSet" display="Tests To Opt In" muid="A18CF6237F3F7C31" description="These tests need to pass for the tag to be opted in for weight calculation. If tests fail, quota &#xA;for this tag will be 0." filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableEnum type="Tag" name="tag" class="TunableEnumWithFilter" default="INVALID" display="Tag" muid="B1285D40AEF8F9DF" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="This is the tag of system spawned objects, we should make sure they have the prefix &quot;Func_SystemSpawned&quot;." Deprecated="False" dynamic_entries_prefix="Func_SystemSpawned" filter="0" group="General" invalid_entries="INVALID" />
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="int" name="overall_quota" class="TunableRange" default="0" display="Overall Quota" muid="CFE7CA9290B6E026" min="0" max="None" description="This is the total number of all system spawned objects we need to enforce in our game at any point." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableList name="HOUSEHOLD_INVENTORY_OBJECT_TAGS" class="TunableTags" display="Household Inventory Object Tags" muid="2A65619092DF00E0" Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="4E542AA9B7CF068C" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="List of tags to apply to every household inventory proxy object." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+            </TunableList>
+
+            <TunableList name="INVALID_UNPARENTED_OBJECT_TAGS" class="TunableTags" display="Invalid Unparented Object Tags" muid="E52E672E1144CA16" Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="60BA6A996FA43B9" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Objects with these tags should not exist without a parent. An obvious&#xA;case is for transient objects. They should only exist as a carried object,&#xA;thus parented to a sim, when loading into a save game." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

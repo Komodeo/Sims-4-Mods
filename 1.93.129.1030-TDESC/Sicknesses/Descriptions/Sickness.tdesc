@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="sickness" class="Sickness" module="sickness.sickness" muid="BA1E0A95206A9733" description="Sickness tunable resource." instance_subclasses_only="False" path="Sicknesses\Descriptions" use_guid_for_reference="True">
+        <TunableList name="associated_buffs" class="TunableSet" display="Associated Buffs" muid="9B1FCEE4D4EE626C" description="The associated buffs that will be added to the Sim when the sickness&#xA;is applied, and removed when the sickness is removed." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="buff" class="TunableReference" muid="C3ADC5A423DC968A" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableList name="associated_statistics" class="TunableSet" display="Associated Statistics" muid="A65338CC193E9618" description="The associated stats that will be added to the Sim when the sickness&#xA;is applied, and removed when the sickness is removed.&#xA;&#xA;These are added at the statistic's default value." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="statistic" class="TunableReference" muid="92A272C20F4110F" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <TunableList name="available_treatment_lists" class="TunableSet" display="Available Treatment Lists" muid="6AF8419C055A4692" description="Treatments that are available for this sickness." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="snippet" class="TunableReference" muid="5A483A5E168F810A" description="A reference to a AffordanceList tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="AffordanceList" />
+        </TunableList>
+
+        <TunableList name="available_treatments" class="TunableSet" display="Available Treatments" muid="7B9572CD9F0E11A6" description="Treatments that are available for this sickness." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="interaction" class="TunableReference" muid="16145B4D5D634A68" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <Tunable type="bool" name="considered_sick" class="Tunable" default="True" display="Considered Sick" muid="D6F557ACD9EF7CD5" description="Considered as sickness.  Most sickness should have this tuned.&#xA;Examinations, which are pseudo-sicknesses will have this tuned false.&#xA;&#xA;If this is checked, the sickness will pass is_sick tests." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="correct_treatments" class="TunableSet" display="Correct Treatments" muid="41C9A152D1F539BB" description="Treatments that can cure this sickness.  These sicknesses&#xA;will never be ruled out as exams are performed." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="interaction" class="TunableReference" muid="E1EBA43C604A0CCF" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <Tunable type="statistic" name="diagnosis_stat" class="TunableReference" display="Diagnosis Stat" muid="7D7EDEE819ECDF6F" description="Statistic we are using to track diagnostic progress for this sickness.&#xA;This is used for the threshold actions checks." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="float" name="difficulty_rating" class="TunableRange" default="5" display="Difficulty Rating" muid="BD5AF760FD5119AD" min="0" max="10" description="The difficulty rating for treating this sickness." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="UI" />
+
+        <Tunable type="int" name="display_name" class="TunableLocalizedString" default="0x0" display="Display Name" muid="67E7CDC1C31C55C2" description="The sickness's display name. This string is provided with the owning&#xA;Sim as its only token." Deprecated="False" filter="0" group="UI" />
+
+        <Tunable type="bool" name="distribute_manually" class="Tunable" default="False" display="Distribute Manually" muid="C294374EA035787B" description="If checked, this is not distributed by the sickness service,&#xA;and must be done by a game system or loot." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="examination_loots" class="TunableMapping" display="Examination Loots" muid="5ADB5B9B17B70D44" mapping_key="key" mapping_value="value" description="Mapping of examination result types to loots to apply&#xA;as a result of the interaction." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="515211DA24E8E21E" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="DiagnosticActionResultType" name="key" class="TunableEnumEntry" default="DEFAULT" display="Key" muid="DD9F6F435C560F6E" dynamic_entries="sickness-sickness_enums.DiagnosticActionResultType._elements" static_entries="sickness-sickness_enums.DiagnosticActionResultType" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="Tunable_DiagnosticActionLoots" display="Value" muid="C75D3395DD06876F" description="Loots that will get awarded when a diagnostic interaction occurs." Deprecated="False" filter="0" group="General">
+                    <TunableList name="default_loots" class="TunableSet" display="Default Loots" muid="9112A4088418FF87" description="Default loots to apply." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="action" class="TunableReference" muid="7C924E5847333823" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                    <TunableList name="interaction_overrides" class="TunableMapping" display="Interaction Overrides" muid="1E7A38712A1C4E1A" mapping_key="key" mapping_value="value" description="Overrides by specific interaction.  This can be used to&#xA;adjust loots depending on a treatment or examination as it&#xA;applies to a sickness." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="1860C8AB5F4B2475" Deprecated="False" filter="0" group="General">
+                            <Tunable type="interaction" name="key" class="TunableReference" display="Key" muid="6E6B99C20DC020A8" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <TunableList name="value" class="TunableSet" display="Value" muid="3F2DC843B36722EF" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="action" class="TunableReference" muid="6FD796C2F3CFE7A6" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TdescFragTag name="restrictions" class="TunableTestSet" display="Restrictions" muid="2B038827561F7395" description="Test set specifying whether or not this sickness can be applied.&#xA;One set of tests must pass in order for the sickness to be valid.&#xA;(This is an OR of ANDS.)" filter="0" group="General" />
+
+        <TunableList name="sickness_tags" class="TunableTags" display="Sickness Tags" muid="56896C31D7E98BEC" Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="E93B4E58034A3F7E" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tags that help categorize this sickness." Deprecated="False" dynamic_entries_prefix="Sickness" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+        </TunableList>
+
+        <TunableList name="symptoms" class="TunableSet" display="Symptoms" muid="D2C10E2D95EE40E8" description="Symptoms associated with this sickness.  When the sickness&#xA;is applied to a Sim, all symptoms are applied." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="sickness" class="TunableReference" muid="DD6E7D7DF9B461FF" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Symptom" />
+        </TunableList>
+
+        <TunableList name="threshold_actions" class="TunableMapping" display="Threshold Actions" muid="BC3D9BB0D628D332" mapping_key="key" mapping_value="value" description="After passing specific values of the diagnosis stat, perform&#xA;the appropriate actions." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="9A405D9DF0F5829B" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="key" class="Tunable" default="None" display="Key" muid="6E139BEB9307372F" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableList" display="Value" muid="A19586B4FF885FCE" description="List of actions to process when this threshold is reached &#xA;or passed." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" class="_DiagnosticThresholdActions" default="discover_symptom" muid="43F84D00FEB260D2" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="apply_loots" class="Tunable_ApplyLootThresholdAction" display="Apply Loots" muid="EF3156427A1E45E4" description="This action applies a specific set of loots to the patient.&#xA;&#xA;This can be used in threshold actions so we can apply loots&#xA;at specific thresholds.  For the loots, the patient Sim will be TargetSim." Deprecated="False" filter="0" group="General">
+                            <TunableList name="loots_to_apply" class="TunableSet" display="Loots To Apply" muid="BB87F92DCEA7ED2" description="The loots to apply." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="action" class="TunableReference" muid="C89873C2529A90B7" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="discover_sickness" class="Tunable_DiscoverSicknessThresholdAction" display="Discover Sickness" muid="F6754AC2502E30D4" description="This action discovers the sickness." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="discover_symptom" class="Tunable_DiscoverSymptomThresholdAction" display="Discover Symptom" muid="1603F2E3DCE5B112" description="This action discovers a specific symptom of this sickness." Deprecated="False" filter="0" group="General">
+                            <Tunable type="sickness" name="symptom" class="TunableReference" display="Symptom" muid="D2BFD374C6687809" description="Symptom discovered by this threshold action." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Symptom" />
+                        </TunableTuple>
+                        <TunableTuple name="rule_out_treatment" class="Tunable_RuleOutTreatmentThresholdAction" display="Rule Out Treatment" muid="D0823EE89DB30272" description="This action rules out a treatment for this sickness.&#xA;&#xA;It will only rule out treatments that haven't been performed, ruled out,&#xA;and will never rule out a treatment that can cure the sickness.&#xA;&#xA;If any tags are specified, it will only rule out treatments that contain any &#xA;of the specified tags, otherwise it will rule out treatments based on the&#xA;interaction category tags of the exam performed." Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" name="rule_out_reason" class="OptionalTunable" default="interaction_tags" display="Rule Out Reason" muid="6D58AD61D8FE4343" description="The reason based on which treatments are ruled out.&#xA;&#xA;By default, it will rule out treatments that contain any of the&#xA;interaction category tags of the exam that was performed. This can&#xA;be overridden to rule out treatments with specific tags." Deprecated="False" filter="0" group="General">
+                                <Tunable name="interaction_tags" class="TunableExistance" display="Interaction Tags" muid="5F42EA453D2BD41F" />
+                                <TunableList name="specified_tags" class="TunableTags" display="Specified Tags" muid="1ECD388F02ED82FC" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="43D375A613BF16BF" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Only rule out treatments with one of the specified tags." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                                </TunableList>
+                            </TunableVariant>
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="bool" name="track_in_history" class="Tunable" default="True" display="Track In History" muid="EF33457684714C46" description="If checked, this is tracked in sickness history." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="treatment_loots" class="TunableMapping" display="Treatment Loots" muid="A239DED7344B262A" mapping_key="key" mapping_value="value" description="Mapping of treatment result types to loots to apply&#xA;as a result of the interaction." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="623530FDF280E95B" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="DiagnosticActionResultType" name="key" class="TunableEnumEntry" default="DEFAULT" display="Key" muid="57AF79B82B0F01B8" dynamic_entries="sickness-sickness_enums.DiagnosticActionResultType._elements" static_entries="sickness-sickness_enums.DiagnosticActionResultType" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="Tunable_DiagnosticActionLoots" display="Value" muid="F616AD7312F7E95D" description="Loots that will get awarded when a diagnostic interaction occurs." Deprecated="False" filter="0" group="General">
+                    <TunableList name="default_loots" class="TunableSet" display="Default Loots" muid="4CB4217F28AC63F4" description="Default loots to apply." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="action" class="TunableReference" muid="669545CFC8A8160" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                    <TunableList name="interaction_overrides" class="TunableMapping" display="Interaction Overrides" muid="DA5B48677870FB10" mapping_key="key" mapping_value="value" description="Overrides by specific interaction.  This can be used to&#xA;adjust loots depending on a treatment or examination as it&#xA;applies to a sickness." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="EAEE7E76832DD02C" Deprecated="False" filter="0" group="General">
+                            <Tunable type="interaction" name="key" class="TunableReference" display="Key" muid="76E6E9FB0398D5D4" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            <TunableList name="value" class="TunableSet" display="Value" muid="372207F7E0BB8892" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="action" class="TunableReference" muid="C27584710747417D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableTuple name="weight" class="TunableTestedSum" display="Weight" muid="624FEDDF196C7A5B" description="Weighted value of this sickness versus other valid sicknesses that&#xA;are possible for the Sim to apply a sickness to.&#xA;&#xA;Tests, if defined here, may adjust the weight in addition &#xA;to the tuned base value." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="base_value" class="Tunable" default="0" display="Base Value" muid="571B1BAE19A7194B" description="The basic value to return if no modifiers are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <TunableList name="modifiers" class="TunableList" display="Modifiers" muid="C05D56973347E631" description="A list of modifiers to add to Base Value." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="B7052216FED14628" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="modifier" class="Tunable" default="0" display="Modifier" muid="E4752A3BCA1FE37A" description="The value to apply add to Base Value if the associated&#xA;tests pass. Can be negative" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="718BFE7A454375AF" description="A series of tests that must pass in order for the modifier&#xA;to be applied." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

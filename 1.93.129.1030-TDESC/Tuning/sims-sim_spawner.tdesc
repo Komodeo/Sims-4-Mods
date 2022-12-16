@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.sim_spawner" muid="7C603D363716BB3C">
+        <Class name="Language" muid="8D909D9BEC28C6D" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="DB3D449428B37F2D" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="B64B6B71F7B5CF22" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="ENGLISH" muid="C7FD6ABC5494EDBE" enum_value="0" />
+        </Class>
+
+        <Class name="SimSpawner" muid="417EBE113380778F">
+            <TunableList name="LOCALE_MAPPING" class="TunableMapping" display="Locale Mapping" muid="FBBC82DBFD782521" mapping_key="locale_string" mapping_value="language" description="A mapping of locale in terms of string to a sim name language in the&#xA;Language enum. This allows us to use the same random sim name&#xA;list for multiple locales. You can add new Language enum entries&#xA;in sims.sim_spawner's Language" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="TunableLocaleMappingTuple">
+                <TunableTuple class="TunableTuple" muid="3A6EC90022878030" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Language" name="language" class="TunableEnumEntry" default="ENGLISH" display="Language" muid="2E71AA2A4A833610" dynamic_entries="sims-sim_spawner.Language._elements" static_entries="sims-sim_spawner.Language" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+                    <Tunable type="str" name="locale_string" class="Tunable" default="None" display="Locale String" muid="46C877671D3C588" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="NAME_TYPES_WITH_OPTIONAL_NAMES" class="TunableSet" display="Name Types With Optional Names" muid="578CEFD914B5AD5C" description="A set of name types with optional last names, along with a percentage chance to actually assign a last name&#xA;instead of leaving it blank. " Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" unique_entries="true">
+                <TunableTuple class="TunableRandomNameEntryTuple" muid="6B2696F60E537D8A" description="Pairing of SimNameType that has an optional name with a percentage chance they actually have the optional&#xA;name instead of just having nothing.&#xA;Example: When a random name is assigned, if the name type is in this list, there will be a percentage&#xA;chance that the name being assigned will have a last name if there are choices to choose from." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="chance_of_random_last_name" class="TunableRange" default="0" display="Chance Of Random Last Name" muid="39FBCF30098F238B" min="0" max="100" description="Percent chance that a Sim with an optional name receives that optional name instead of just not having &#xA;a name at all." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="SimNameType" name="name_type" class="TunableEnumEntry" default="DEFAULT" display="Name Type" muid="31E7751DE2F63F06" dynamic_entries="sims-sim_spawner_enums.SimNameType._elements" static_entries="sims-sim_spawner_enums.SimNameType" binary_type="uint32" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="RANDOM_NAME_TUNING" class="TunableMapping" display="Random Name Tuning" muid="F9B9F6044F3F35FC" mapping_key="language" mapping_value="random_name_tuning" description="A mapping of sim name language to lists of random family name and first&#xA;names appropriate for that language. This is used to generate random sim&#xA;names appropriate for each account's specified locale." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="TunableRandomNameMappingTuple">
+                <TunableTuple class="TunableTuple" muid="D9E5999E2E8794CA" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Language" name="language" class="TunableEnumEntry" default="ENGLISH" display="Language" muid="CC54EFDE7EE2AEC2" dynamic_entries="sims-sim_spawner.Language._elements" static_entries="sims-sim_spawner.Language" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+                    <TunableTuple name="random_name_tuning" class="TunableRandomNamesForLanguage" display="Random Name Tuning" muid="2EA6A7408D881B5C" description="A list of random names to be used for a specific language." Deprecated="False" filter="0" group="General">
+                        <TunableList name="female_first_names" class="TunableList" display="Female First Names" muid="CA92CDD4973B1746" description="A list of the random female first names that can be assigned&#xA;in CAS or to randomly generated NPCs." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="str" class="Tunable" default="" muid="13F5C93833D6A111" description="A random female first name." Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                        <TunableList name="female_last_names" class="TunableList" display="Female Last Names" muid="B15EAB06BF875B99" description="If the specified languages differentiate last names&#xA;according to gender, this list has to be non-empty. For&#xA;every last name specified in the 'last_names' list, there&#xA;must be a corresponding last name in this list.&#xA;&#xA;Randomly generated NPCs and NPC offspring will select the&#xA;corresponding female version if necessary." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="str" class="Tunable" default="" muid="1D1863B5D2B7C0C3" description="The female version of the last name at the corresponding&#xA;index in the 'last_name' list." Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                        <TunableList name="last_names" class="TunableList" display="Last Names" muid="9258C9BA42553B98" description="A list of the random last names that can be assigned in CAS or&#xA;to randomly generated NPCs." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="str" class="Tunable" default="" muid="3A3EBD27B76CD165" description="A random last name." Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                        <TunableList name="male_first_names" class="TunableList" display="Male First Names" muid="760590C7FBE100BD" description="A list of the random male first names that can be assigned&#xA;in CAS or to randomly generated NPCs." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="str" class="Tunable" default="" muid="AB8453444E88DE0" description="A random male first name." Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SIM_NAME_TYPE_TO_LOCALE_NAMES" class="TunableMapping" display="Sim Name Type To Locale Names" muid="CAFB83A5A44D6110" mapping_key="name_type" mapping_value="name_type_random_names" description="A mapping of SimNameType to locale-specific names. Normally, Sims pull&#xA;from Random Name Tuning. But if specified with a SimNameType, they will&#xA;instead pull from this mapping of names." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="TunableNameTypeToRandomNamesMappingTuple">
+                <TunableTuple class="TunableTuple" muid="2AF0E3627A98180E" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SimNameType" name="name_type" class="TunableEnumEntry" default="DEFAULT" display="Name Type" muid="329C135ABF4EDC30" dynamic_entries="sims-sim_spawner_enums.SimNameType._elements" static_entries="sims-sim_spawner_enums.SimNameType" binary_type="uint32" Deprecated="False" filter="0" group="General" invalid_entries="DEFAULT" />
+                    <TunableList name="name_type_random_names" class="TunableMapping" display="Name Type Random Names" muid="F8A4565C6930744E" mapping_key="language" mapping_value="random_name_tuning" Deprecated="False" filter="0" group="General" mapping_class="TunableRandomNameMappingTuple">
+                        <TunableTuple class="TunableTuple" muid="4A06BDB507C074B6" Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="Language" name="language" class="TunableEnumEntry" default="ENGLISH" display="Language" muid="BAC65863D649CBD9" dynamic_entries="sims-sim_spawner.Language._elements" static_entries="sims-sim_spawner.Language" Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="random_name_tuning" class="TunableRandomNamesForLanguage" display="Random Name Tuning" muid="128F91990414B891" description="A list of random names to be used for a specific language." Deprecated="False" filter="0" group="General">
+                                <TunableList name="female_first_names" class="TunableList" display="Female First Names" muid="DAA7EF72E1AA0823" description="A list of the random female first names that can be assigned&#xA;in CAS or to randomly generated NPCs." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <Tunable type="str" class="Tunable" default="" muid="9A52FCDB3085E56E" description="A random female first name." Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="female_last_names" class="TunableList" display="Female Last Names" muid="6E08858B95F83E23" description="If the specified languages differentiate last names&#xA;according to gender, this list has to be non-empty. For&#xA;every last name specified in the 'last_names' list, there&#xA;must be a corresponding last name in this list.&#xA;&#xA;Randomly generated NPCs and NPC offspring will select the&#xA;corresponding female version if necessary." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <Tunable type="str" class="Tunable" default="" muid="CE0FA32DE197A420" description="The female version of the last name at the corresponding&#xA;index in the 'last_name' list." Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="last_names" class="TunableList" display="Last Names" muid="C4DC5861C46FB37A" description="A list of the random last names that can be assigned in CAS or&#xA;to randomly generated NPCs." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <Tunable type="str" class="Tunable" default="" muid="3813A51299A93923" description="A random last name." Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="male_first_names" class="TunableList" display="Male First Names" muid="38D51C0012157076" description="A list of the random male first names that can be assigned&#xA;in CAS or to randomly generated NPCs." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <Tunable type="str" class="Tunable" default="" muid="A487984C8E22399F" description="A random male first name." Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SPECIES_TO_NAME_TYPE" class="TunableMapping" display="Species To Name Type" muid="C396075C35699C3" mapping_key="species" mapping_value="species_name_type" description="A mapping of species type to the type of names to use for that species. " Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="TunableSpeciesToNameTypeMappingTuple">
+                <TunableTuple class="TunableTuple" muid="754923346371CC90" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SpeciesExtended" name="species" class="TunableEnumEntry" default="HUMAN" display="Species" muid="71C963BBDFCF5C00" static_entries="sims-sim_info_types.SpeciesExtended" binary_type="uint32" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <TunableEnum type="SimNameType" name="species_name_type" class="TunableEnumEntry" default="DEFAULT" display="Species Name Type" muid="4D357A3920D3C39" dynamic_entries="sims-sim_spawner_enums.SimNameType._elements" static_entries="sims-sim_spawner_enums.SimNameType" binary_type="uint32" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="797171A3940C532F" new_muid="31E7751DE2F63F06" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

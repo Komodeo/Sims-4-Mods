@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="drama_scheduler.drama_node" muid="CC7849E6A13BDF0F">
+        <Class name="BaseDramaNode" muid="D31A12D19544CB28">
+            <TunableList name="COOLDOWN_GROUPS" class="TunableMapping" display="Cooldown Groups" muid="205840C2373D9528" mapping_key="key" mapping_value="value" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="9933C2FB92D85BAD" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="CooldownGroup" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="FDE85F2C4ADD4576" dynamic_entries="drama_scheduler-drama_enums.CooldownGroup._elements" static_entries="drama_scheduler-drama_enums.CooldownGroup" description="The cooldown group that this cooldown is a part of." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <TunableTuple name="value" class="_DramaNodeCooldown" display="Value" muid="2094B4754810417A" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="CooldownOption" name="cooldown_option" class="TunableEnumEntry" default="ON_RUN" display="Cooldown Option" muid="16B436B459BC3432" static_entries="drama_scheduler-drama_enums.CooldownOption" description="When this drama node should be put on cooldown." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="duration" class="OptionalTunable" default="duration" display="Duration" muid="46D8CE8593949D9" description="If this drama node will be put on cooldown for a duration or put on cooldown permanently." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="duration" class="TunableRange" default="1" display="Duration" muid="CAC51A97D86668CB" min="0" max="None" description="The amount of time in hours after being given this node from&#xA;scoring that it will not be chosen." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable name="permanent" class="TunableExistance" display="Permanent" muid="AD23F17B3D3F7730" />
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="96FDDCA85D03C3CA" />
+            <Action type="kRemove" old_muid="59B0DAB427B885A0" />
+            <Action type="kRemove" old_muid="6C9C27C647045389" />
+            <Action type="kRemove" old_muid="D9356FDEB0210332" />
+            <Action type="kRemove" old_muid="63E7516D3F6EAACF" />
+            <Action type="kRemove" old_muid="35FCB823CD2D0B0F" />
+            <Action type="kRemove" old_muid="DCAE965089ADF431" />
+            <Action type="kRemove" old_muid="EDC643EF40F8AAD3" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

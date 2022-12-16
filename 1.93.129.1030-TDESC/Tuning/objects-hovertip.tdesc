@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.hovertip" muid="A975403956C98900">
+        <Class name="HovertipStyle" muid="642E4F21FFB72EAB" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="HOVER_TIP_COLLECTION" muid="99BABB64335CB07D" enum_value="4" />
+
+            <EnumItem name="HOVER_TIP_CONSUMABLE_CRAFTABLE" muid="EE6712B915EEFAF6" enum_value="2" />
+
+            <EnumItem name="HOVER_TIP_CUSTOM_OBJECT" muid="67D4B9D5A127CBBA" enum_value="5" />
+
+            <EnumItem name="HOVER_TIP_DEFAULT" muid="DAB9C5F07F752F7A" enum_value="1" />
+
+            <EnumItem name="HOVER_TIP_DISABLED" muid="3C13CC857361D550" enum_value="0" />
+
+            <EnumItem name="HOVER_TIP_GARDENING" muid="532679A491F14AAA" enum_value="3" />
+
+            <EnumItem name="HOVER_TIP_ICON_TITLE_DESCRIPTION" muid="7F61CDBD7119E778" enum_value="6" />
+
+            <EnumItem name="HOVER_TIP_OBJECT_RELATIONSHIP" muid="2613135BA70B1F69" enum_value="7" />
+        </Class>
+
+        <Class name="TooltipFields" muid="B80291BB92A45612" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="crafted_by_text" muid="1788D1A374D515D7" enum_value="8" />
+
+            <EnumItem name="header" muid="B361426AF61CBB26" enum_value="6" />
+
+            <EnumItem name="percentage_left" muid="9C67471527BABDC2" enum_value="3" />
+
+            <EnumItem name="quality_description" muid="DCE7101417DE1806" enum_value="5" />
+
+            <EnumItem name="rarity_text" muid="25B748C21B9AF6FD" enum_value="9" />
+
+            <EnumItem name="recipe_description" muid="51542673E7C156EB" enum_value="1" />
+
+            <EnumItem name="recipe_name" muid="A5059CBC48FAA1D4" enum_value="0" />
+
+            <EnumItem name="rel_override_id" muid="A04AC2F3BCE6C62D" enum_value="25" />
+
+            <EnumItem name="relic_description" muid="FE7834557D7B1FD1" enum_value="22" />
+
+            <EnumItem name="season_text" muid="B1CA09164A6A0397" enum_value="23" />
+
+            <EnumItem name="simoleon_custom_text" muid="7C10E3750948EE45" enum_value="27" />
+
+            <EnumItem name="simoleon_text" muid="8CC24E8A0C464002" enum_value="10" />
+
+            <EnumItem name="spoiled_time_text" muid="716898D41332FD7E" enum_value="24" />
+
+            <EnumItem name="style_name" muid="64DC621BC6D7F58B" enum_value="4" />
+
+            <EnumItem name="subtext" muid="D00C84D5729486F8" enum_value="7" />
+        </Class>
+
+        <Class name="TooltipFieldConcatenationType" muid="4A5D361402826057" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="CONCATENATE_AFTER" muid="A9D823347EEF2635" enum_value="1" />
+
+            <EnumItem name="CONCATENATE_BEFORE" muid="B8DE7CA4027F40B2" enum_value="0" />
+        </Class>
+
+        <Class name="HovertipTuning" muid="C2F467449AF85BCB">
+            <TunableList name="HOVERTIP_RESTRICTIONS" class="TunableList" display="Hovertip Restrictions" muid="8342ACBE991FC4CC" description="List of skill dependencies for tooltip fields.  This will show the &#xA;tagged fields only if the selected sim matches the skill requirement&#xA;tuned. &#xA;e.g.  Only sims with gardening level 2 can see all the sub_icon data&#xA;of a plant.&#xA;PS: This tunable is on expert mode since on field_name refers to &#xA;field names on a protobuff, this should only be tuned by a GPE or with &#xA;a GPE help.  " Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="1" group="General">
+                <TunableTuple class="TunableHovertipTuple" muid="B094C5F066CE3D22" Deprecated="False" filter="0" group="General">
+                    <Tunable type="str" name="field_name" class="Tunable" default="" display="Field Name" muid="FEABA824304A285E" description="This field refers to the field name of the protobuff which should&#xA;only be showed on a tooltip if the skill requirements are met." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="HovertipStyle" name="hovertip_style" class="TunableEnumEntry" default="HOVER_TIP_DEFAULT" display="Hovertip Style" muid="43F9A6D19923F540" static_entries="objects-hovertip.HovertipStyle" description="Style of the hovertip that will apply this restriction." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="index" class="Tunable" default="0" display="Index" muid="33948E91F7854490" description="Index of field_name to hide.&#xA;If field name to hide is a list.  Passing an index will cause&#xA;the hovertip to hide this index value out of that list.&#xA;e.g.  Gardening icons will always send 4 icons which some &#xA;are only visible depending ont he skill level." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="statistic" name="skill" class="TunableReference" display="Skill" muid="652B3AA98B0FCD66" description="What skill (Reference) to test for" allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="skill_points" class="Tunable" default="0" display="Skill Points" muid="5F980FA798EE20E4" description="Skill points to test for.  If the skill_point is tuned to 0, no &#xA;skill test will be run, it will just test that the Sim&#xA;has the skill." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

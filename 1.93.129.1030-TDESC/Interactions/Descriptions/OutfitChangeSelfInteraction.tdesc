@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="OutfitChangeSelfInteraction" module="sims.outfits.outfit_interactions" muid="FDB846D0C6EA5520" description="Change outfit super interaction that will use generate change outfit &#xA;affordances to all depending on the outfits available for change." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableList name="body_type_chance_overrides" class="TunableMapping" display="Body Type Chance Overrides" muid="E662CCB4B5799B39" mapping_key="key" mapping_value="value" description="Define body type chance overrides for the generate outfit. For&#xA;example, if BODYTYPE_HAT is mapped to 100%, then the outfit is&#xA;guaranteed to have a hat if any hat matches the specified tags.&#xA;&#xA;If used in an appearance modifier, these body types will contribute&#xA;to the flags that determine which body types can be generated,&#xA;regardless of their percent chance." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="F9FD97A6013CFC6D" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="BodyType" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="65A2920B91DDFC97" static_entries="sims-outfits-outfit_enums.BodyType" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="value" class="TunablePercent" default="100" display="Value" muid="C980D76A78A3540B" min="0" max="100" description="The chance that a part is applied to the corresponding body&#xA;type." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="body_type_match_not_found_policy" class="TunableMapping" display="Body Type Match Not Found Policy" muid="F6B2BCDE420EE628" mapping_key="key" mapping_value="value" description="The policy we should take for a body type that we fail to find a&#xA;match for. Primary example is to use MATCH_NOT_FOUND_KEEP_EXISTING&#xA;for generating a tshirt and making sure a sim wearing full body has&#xA;a lower body cas part.&#xA;&#xA;If used in an appearance modifier, these body types will contribute&#xA;to the flags that determine which body types can be generated." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="E6B060778EC39A5E" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="BodyType" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="D7B6A17F6ECF4E4C" static_entries="sims-outfits-outfit_enums.BodyType" Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="MatchNotFoundPolicy" name="value" class="TunableEnumEntry" default="MATCH_NOT_FOUND_UNSPECIFIED" display="Value" muid="60F7A12146BE642C" static_entries="sims-outfits-outfit_enums.MatchNotFoundPolicy" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="filter_flag" class="TunableEnumFlags" default="USE_EXISTING_IF_APPROPRIATE,USE_VALID_FOR_LIVE_RANDOM" display="Filter Flag" muid="9921B7A34BD489D" description="Define how to handle part randomization for the generated outfit." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="OutfitFilterFlag" class="TunableEnumEntry" default="NONE" muid="D4AFFDE08F8E5D6D" static_entries="sims-outfits-outfit_enums.OutfitFilterFlag" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <TunableEnum type="OutfitCategory" name="outfit_change_category" class="TunableEnumEntry" default="EVERYDAY" display="Outfit Change Category" muid="C6E5E7A4C3E77F22" static_entries="sims-outfits-outfit_enums.OutfitCategory" description="The outfit category the change will be tied to." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="outfit_change_type" class="TunableVariant" default="none" display="Outfit Change Type" muid="F8DC02E91C79AF68" description="Possible ingredient mapping by object definition of by &#xA;catalog object Tag." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="from_outfit_tags" class="TunableOutfitChangeTags" display="From Outfit Tags" muid="D25B9F66F045750A" description="Handles generation of outfit change interactions based on the tuned &#xA;outfit tags." Deprecated="False" filter="0" group="General">
+                <TunableList name="outfit_change_data" class="TunableList" display="Outfit Change Data" muid="2158C3798F5C835" description="List of data corresponding at possible outfits and tests that will&#xA;generate change outfit affordances." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="9F22828A25C681F0" description="Outfits and tests that will generate the change outfit&#xA;interactions." Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="Tag" name="outfit_tag" class="TunableTag" default="INVALID" display="Outfit Tag" muid="378CB7DA2F097581" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Outfit tag that will generate the outfit change &#xA;interactions." Deprecated="False" dynamic_entries_prefix="Uniform|OutfitCategory|Style|Situation" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                        <TdescFragTag name="outfit_tests" class="TunableTestSet" display="Outfit Tests" muid="ED7DB6EBB1BA28F1" description="Tests the Sim should pass to be able to change into the&#xA;outfit." filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="from_situation" class="TunableOutfitChangeSituation" display="From Situation" muid="2942B58DD98077F1" description="Handles generation of outfit change interactions based on the tuned &#xA;situations." Deprecated="False" filter="0" group="General">
+                <TunableList name="situation_tags" class="TunableTags" display="Situation Tags" muid="4ECE0F39BA746513" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="15D245B30AE79E06" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tags for situations that will be considered for the outfit&#xA;interactions." Deprecated="False" dynamic_entries_prefix="situation" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                </TunableList>
+            </TunableTuple>
+            <Tunable name="none" class="TunableExistance" display="None" muid="2DFD502387C03182" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="xevt_id" class="OptionalTunable" default="disabled" display="Xevt Id" muid="29DCED70CB3508B9" description="If enabled, the outfit change will run at the specified xevt,&#xA;otherwise the outfit change will run at the end of the &#xA;interaction's basic content." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="907B0021C77084AF" />
+            <Tunable type="int" name="enabled" class="Tunable" default="100" display="Enabled" muid="80DE1B646D8B768A" description="Xevt id to trigger outfit change on." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

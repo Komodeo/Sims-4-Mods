@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="lunar_cycle.lunar_cycle_tuning" muid="C8F5797B74B0BC6C">
+        <Class name="LunarCycleTuning" muid="FA020923D8B6455F">
+            <TunableEnum type="LunarPhaseType" name="INITIAL_LUNAR_PHASE" class="TunableEnumEntry" default="NEW_MOON" display="Initial Lunar Phase" muid="2FD399DEC8F328FB" static_entries="lunar_cycle-lunar_cycle_enums.LunarPhaseType" description="The lunar phase that the player begins in upon first activating the feature from new game or &#xA;game content installation." Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="LUNAR_PHASE_MAP" class="TunableMapping" display="Lunar Phase Map" muid="DCDB96DC9417443C" mapping_key="key" mapping_value="value" description="A mapping of enum to the content instance of a lunar phase." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="229EAA22AE735AA" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="LunarPhaseType" name="key" class="TunableEnumEntry" default="NEW_MOON" display="Key" muid="9B9747CA41C99734" static_entries="lunar_cycle-lunar_cycle_enums.LunarPhaseType" description="The lunar phase." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="lunar_cycle" name="value" class="TunableReference" display="Value" muid="76E4380A9F84D48D" description="Content of this lunar phase as specified by the given lunar phase instance tuning." allow_none="False" Deprecated="False" filter="0" group="General" restrict="LunarPhase" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="PHASE_CHANGE_TIME_OF_DAY" class="TunableRange" default="7" display="Phase Change Time Of Day" muid="7008B3ED47F774F7" min="0" max="23" description="Hour of the day during which the phase change occurs, at this time all lunar effects for the next 24 hours&#xA;will be scheduled; any other changes such as objects needing to switch states during a phase change will also &#xA;occur at this time." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

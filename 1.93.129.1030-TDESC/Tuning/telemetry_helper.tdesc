@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="telemetry_helper" muid="34B099EC20CF78A0">
+        <Class name="TelemetryTuning" muid="4F6A16AA558AD82C">
+            <Tunable type="int" name="BUFF_ALARM_TIME" class="TunableRange" default="60" display="Buff Alarm Time" muid="4F78A0DCB4340275" min="1" max="None" description="Integer value in sim minutes in which the buff alarm will trigger to &#xA;send a telemetry report of current active buff's on the household sims." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="EMOTION_REL_ALARM_TIME" class="TunableRange" default="60" display="Emotion Rel Alarm Time" muid="2018EA1ABE1BE0BA" min="1" max="None" description="Integer value in sim minutes in which the emotion and relationship &#xA;alarm will trigger to send a telemetry report of the emotion and &#xA;relationship status of the household sims." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="HOOK_ACTIONS" class="TunableList" display="Hook Actions" muid="2CCB4EE50780B48B" description="List of hook actions that we want to drop or collect to create rules &#xA;to disable them from triggering." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="5C54428129FB0D16" description="Hook actions." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="RuleAction" name="action" class="TunableEnumEntry" default="DROP" display="Action" muid="3878D156683C0623" static_entries="sims4-telemetry.RuleAction" description="Action to take for the specified tags. &#xA;COLLECT to enable the hook.&#xA;DROP to disable the hook." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="str" name="group_tag" class="Tunable" default="" display="Group Tag" muid="1EE46DBA8F7B497E" description="Group identifier of the hook where the action should be &#xA;applied.&#xA;Can be empty if we want to apply an action by only module or &#xA;hook tag.&#xA;e.g. 'WHIM'" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="str" name="hook_tag" class="Tunable" default="" display="Hook Tag" muid="A78C253D35C0AC9D" description="Tag identifier of the hook where the action should be &#xA;applied.&#xA;Can be empty if we want to apply an action by only module or &#xA;group tag.&#xA;e.g. 'WADD'" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="str" name="module_tag" class="Tunable" default="" display="Module Tag" muid="D0AE625DF1DAD389" description="Module identifier of the hook where the action should be &#xA;applied.&#xA;Can be empty if we want to apply an action by only group or &#xA;hook tag. &#xA;e.g. 'GAME'.  " Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="priority" class="Tunable" default="0" display="Priority" muid="23B7A765A5B0EDD" description="Priority for this rule to apply.  The rules are sorted in &#xA;priority order (lowest priority first).  The the first rule &#xA;that matches a hook causes the hook to be blocked or collected, &#xA;depending on the value of action. &#xA;e.g. We can have an action to COLLECT hook {GAME, WHIM, WADD} &#xA;with priority 0, and an action to DROP hooks with module 'GAME'&#xA;{GAME, '', ''} with priority 1, this means the collected hook&#xA;action will have more importance than the rule to drop all &#xA;GAME hooks.                " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

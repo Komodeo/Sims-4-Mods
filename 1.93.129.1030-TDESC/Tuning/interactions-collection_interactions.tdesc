@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="interactions.collection_interactions" muid="E09BE7915138BAD6">
+        <Class name="CollectionInteractionData" muid="2969F63CE71B1A12">
+            <TunableList name="COLLECTION_COMBINING_TUNING" class="TunableMapping" display="Collection Combining Tuning" muid="173A9E0CA1EA92C1" mapping_key="key" mapping_value="value" description="Mapping of collectible id, to states that we allow for collectible&#xA;combining." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="76D3F6203EF5F9FE" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="CollectionIdentifier" name="key" class="TunableEnumEntry" default="Unindentified" display="Key" muid="94FC6C7043174EEB" dynamic_entries="objects-collection_manager.CollectionIdentifier._elements" static_entries="objects-collection_manager.CollectionIdentifier" description="ID of the collectible that can be combined." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="D88BF49D4D644E62" description="Possible states that can be combined on a collectible.&#xA;Mapping of state values that can be combined to get a new state" Deprecated="False" filter="0" group="General">
+                        <TunableList name="combination_mapping" class="TunableList" display="Combination Mapping" muid="3CE61E67A2FF5AB3" description="Mapping of possible father-mother states to which new&#xA;state can they generate on the newly created collectible.&#xA;e.g.  If collectible A has green color state, and collectible&#xA;B has blue color states the resulting state can be a Green &#xA;color state.  This means the outcome of the interaction will&#xA;look for a collectible that has this resulting state value." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="AFCD7B659A3E11CA" description="State combinations to create a new state on the &#xA;result collectible." Deprecated="False" filter="0" group="General">
+                                <Tunable type="object_state" name="father_state" class="TunableReference" display="Father State" muid="85CFC5EEB2AC1E41" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                                <Tunable type="object_state" name="mother_state" class="TunableReference" display="Mother State" muid="CC6473776EE27319" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                                <Tunable type="object_state" name="resulting_state" class="TunableReference" display="Resulting State" muid="D98D06A0B8B36E20" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                            </TunableTuple>
+                        </TunableList>
+                        <TunableList name="states_to_combine" class="TunableList" display="States To Combine" muid="981E1557B91EB800" description="Any states tuned here will be transfered from the combine &#xA;collectibles to the resulting object.&#xA;For example: Frogs will transfer their color and pattern &#xA;states." Deprecated="False" filter="0" group="General">
+                            <Tunable type="object_state" class="TunableReference" muid="2019D3D4515F15CD" description="State that can be inherited by the new collectible." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectState" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

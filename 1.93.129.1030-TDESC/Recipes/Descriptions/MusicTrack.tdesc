@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="recipe" class="MusicTrack" module="crafting.music" muid="691CFD753E709E9" description="A musical instrument song that may be performed and/or written by a Sim." instance_subclasses_only="False" path="Recipes\Descriptions" use_guid_for_reference="True">
+        <Tunable type="float" name="buffer" class="TunableRealSecond" default="0" display="Buffer" muid="6B2914884A4AE1AA" min="None" max="None" description="A buffer added to the track length.  This is used to prevent the&#xA;audio from stopping before it's finished." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="check_for_unlock" class="Tunable" default="False" display="Check For Unlock" muid="B577505CC0E83D53" description="Whether or not to check the Sim's Unlock Component to determine if&#xA;they can play the song.  Currently, only clips that are meant to be&#xA;unlocked by the Write Song interaction should have this set to true." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="float" name="length" class="TunableRealSecond" default="30" display="Length" muid="B9C9AFE871715DD8" min="0" max="None" description="The length of the clip in real seconds.  This should be a part of&#xA;the propx's file name." Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="moods" class="TunableList" display="Moods" muid="C9FD5D2C4ECFCBD8" description="A list of moods that will be used to determine which song a Sim will&#xA;play autonomously.  If a Sim doesn't know any songs that their&#xA;current mood, they'll play anything." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General">
+            <Tunable type="mood" class="TunableReference" muid="AF7205709D173251" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <TunableVariant type="None" name="music_clip" class="OptionalTunable" default="disabled" display="Music Clip" muid="686DA33F9BBFB319" description="If enabled, the music clip for music interactions. If disabled,&#xA;make sure you have vocals tuned." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5CBA87F036259E72" />
+            <Tunable type="ResourceKey" name="enabled" class="TunableResourceKey" default="None" display="Enabled" muid="B241919834D4DE5C" description="The propx file of the music clip to play." Deprecated="False" filter="0" group="General" resource_types="0x39b2aa4a" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="music_track_name" class="OptionalTunable" default="enabled" display="Music Track Name" muid="87CB50AAB2F523C2" description="If the clip is of a song, this is its name. The name is shown in the&#xA;Pie Menu when picking specific songs to play.&#xA;&#xA;If the clip isn't a song, like clips used for the Practice or Write&#xA;Song interactions, this does not need to be tuned." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CD4EC2DFC0813B27" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="EB43BA3EAC932C58" description="The track's name." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="FC90CB4001A95CBC" description="Tests to verify if this song is available for the Sim to play." filter="0" group="General" />
+
+        <TunableList name="vocals" class="TunableMapping" display="Vocals" muid="D0A409E55A9F35CE" mapping_key="participant" mapping_value="vocal_tracks" description="A mapping of participants and their potential vocal tracks. Each&#xA;participant that has a vocal track that tests successfully will&#xA;sing when the music starts.&#xA;&#xA;Note: The interaction's resolver will be passed into the vocal&#xA;track tests, so use the same participant in those tests." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="DF41FBA3A5E40CF3" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="ParticipantTypeSim" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="1196DEDC2B1352CA" static_entries="interactions.ParticipantTypeSim" description="The participant who should sing vocals when the music starts." Deprecated="False" filter="0" group="General" />
+                <TunableList name="vocal_tracks" class="TunableList" display="Vocal Tracks" muid="ECF04AC8DBCD7FFF" description="If this music track has vocals, add them here.  The first track that&#xA;passes its test will be used.  If no tracks pass their test, none&#xA;will be used." Deprecated="False" filter="0" group="General">
+                    <Tunable type="recipe" class="TunableReference" muid="EFF044A9D29C5463" allow_none="False" Deprecated="False" filter="0" group="General" restrict="VocalTrack" />
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

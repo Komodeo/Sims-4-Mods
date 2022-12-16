@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation_goal" class="SituationGoalSimoleonsCollected" module="situations.situation_goal_simoleons_collected" muid="8C439E31B3A06011" description="Situation Goal for collecting Simoleons from a situation." instance_needs_reference="True" instance_subclasses_only="False" parents="SituationGoal" path="SituationGoals\Descriptions" use_guid_for_reference="True">
+        <Deleted name="_post_tests" muid="2F4304F0CEBA9892" />
+
+        <Tunable type="int" name="amount_to_collect" class="TunableRange" default="100" display="Amount To Collect" muid="A15988F23829F447" min="1" max="None" description="The amount of Simoleons collected from all relevant activities for &#xA;this goal to pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="test_events_to_collect" class="TunableMapping" display="Test Events To Collect" muid="901EC3FE0B0C96DF" mapping_key="key" mapping_value="value" description="A mapping of test event -&gt; score achieved when successfully ran." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="391FBCB1475B4C9F" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="TestEvent" name="key" class="TunableEnumEntry" default="Invalid" display="Key" muid="3B613C2768BDFD03" dynamic_entries="event_testing-test_events.TestEvent._elements" static_entries="event_testing-test_events.TestEvent" description="The event to listen to for goal completion." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="TunableTuple" display="Value" muid="1E1ECCD279911843" description="A tuple of the Simoleon amount to increment and other checks &#xA;to make on the event before it satisfies the goal." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="interaction" class="OptionalTunable" default="disabled" display="Interaction" muid="A9AB6875E3F9800B" description="When enabled, there will be a test to verify that the &#xA;interaction sending the associated test event is the same&#xA;as the tuned interaction." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B408E93F04C76D05" />
+                        <Tunable type="interaction" name="enabled" class="TunableReference" display="Enabled" muid="BACACA9A77D8DAC0" description="The interaction to require the event to come from in&#xA;order for it to satisfy the goal." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="int" name="simoleons" class="TunableRange" default="1" display="Simoleons" muid="88C69BAAFD6F20D4" min="1" max="None" description="The Simoleon amount the interaction results when completed." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

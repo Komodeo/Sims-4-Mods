@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="broadcaster" class="BroadcasterClubRule" module="clubs.club_tuning" muid="8C160776DD410B5F" description="A broadcaster attached to interactions affected by Club Rules that ties&#xA;into the Club system and applies appropriate effects to Sims following or&#xA;breaking rules." instance_needs_reference="True" instance_subclasses_only="False" parents="Broadcaster" path="Broadcasters\Descriptions" use_guid_for_reference="True">
+        <Deleted name="clock_type" muid="6E3F2F7783C0B985" />
+
+        <Deleted name="effects" muid="EDE819AFDFBA1C76" />
+
+        <TunableTuple name="negative_effect" class="TunableBroadcasterEffectClubRule" display="Negative Effect" muid="6D4B69A100F070F8" description="A broadcaster effect to run on Sims who witness a Sim running a&#xA;discouraged Club Rule." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="affected_object_cap" class="OptionalTunable" default="disabled" display="Affected Object Cap" muid="E2E1C77824B72BCE" description="If enabled, specify the maximum number of objects that can&#xA;be affected by this particular effect, per broadcaster. This&#xA;is a soft- cap, since the data does not persist across&#xA;multiple broadcaster requests nor save games." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="2D46F653138592C1" />
+                <Tunable type="int" name="enabled" class="TunableRange" default="1" display="Enabled" muid="62FE210123021754" min="1" max="None" description="The maximum number of objects that can be affected by&#xA;this broadcaster." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TunableVariant type="None" name="excluded_participants" class="OptionalTunable" default="disabled" display="Excluded Participants" muid="F4484119183AEC54" description="If enabled, these participants will be excluded from this broadcaster effect." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="FC52310262E50BC7" />
+                <TunableList name="enabled" class="TunableEnumFlags" default="Actor,TargetSim" display="Enabled" muid="93F50651F867D799" description="A set of Participants that will be excluded from having this effect&#xA;applied to them. If the broadcaster comes from an interaction,&#xA;these participants will come from that interaction." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="ParticipantType" class="TunableEnumEntry" default="Invalid" muid="6E635025D236C794" static_entries="interactions.ParticipantType" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableVariant>
+            <TunableList name="loot_list" class="TunableList" display="Loot List" muid="53FC6135E4D9A757" description="A list of loot operations." Deprecated="False" filter="0" group="General">
+                <Tunable type="action" class="TunableReference" muid="90A43AC51DD41008" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+            </TunableList>
+            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="E95B8BD0B3F2995A" description="Tests that must pass in order for the broadcaster effect to be&#xA;applied." filter="0" group="General" />
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

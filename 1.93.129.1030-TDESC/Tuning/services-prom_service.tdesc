@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="services.prom_service" muid="E9B75727378B851F">
+        <Class name="PromRelationshipBitType" muid="702398A9C8402F32" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="INVITED" muid="F30FCB8B897F162B" enum_value="1" />
+
+            <EnumItem name="SKIP_PROM_PACT" muid="348E5BBBB07FE89E" enum_value="2" />
+        </Class>
+
+        <Class name="PromService" muid="82EF5D03A19B79">
+            <TunableList name="PROM_PACT_BROKEN_LOOTS" class="TunableList" display="Prom Pact Broken Loots" muid="F8DA313C273F351B" description="A list of loot actions to apply if the prom pact between two sims is &#xA;broken (one of the sims attended prom). Subject is the pact breaker,&#xA;target is the other sim in the pact." Deprecated="False" filter="0" group="General">
+                <Tunable type="action" class="TunableReference" muid="1EEF4321FF50ECDF" description="Loot action to apply if the pact is broken. " allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+            </TunableList>
+
+            <TunableList name="PROM_PACT_FULFILLED_LOOTS" class="TunableList" display="Prom Pact Fulfilled Loots" muid="152CC0D04275D25A" description="A list of loot actions to apply if the prom pact between two sims is &#xA;fulfilled (prom was canceled or neither sim attended). " Deprecated="False" filter="0" group="General">
+                <Tunable type="action" class="TunableReference" muid="A4B461F207080B52" description="Loot action to apply if the pact is fulfilled. " allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+            </TunableList>
+
+            <Tunable type="venue" name="PROM_SUBVENUE" class="TunableReference" display="Prom Subvenue" muid="24FCB3F40EE74A6B" description="A reference to the prom subvenue type." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <TunableTuple name="RESTORE_VENUE_DELAY" class="TunableTimeSpan" display="Restore Venue Delay" muid="9CF293AA47F4CE41" description="A delay in minutes to restore the venue when the situation ends." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="days" class="TunableRange" default="0" display="Days" muid="246889E3760F6FB" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="hours" class="TunableRange" default="0" display="Hours" muid="9137376CD6B990BB" min="0" max="23" description="Number of hours" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minutes" class="TunableRange" default="1" display="Minutes" muid="BFEC58C1D0DDAFB0" min="0" max="59" description="Number of minutes" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableList name="TEEN_LOOTS_ON_PROM_TIME" class="TunableList" display="Teen Loots On Prom Time" muid="1EAD4ECC517A244C" description="A list of loot actions to apply to played teens when it is time for prom, &#xA;regardless if prom happens or not." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="38C070E962824454" Deprecated="False" filter="0" group="General">
+                    <Tunable type="action" name="loots" class="TunableReference" display="Loots" muid="37410E2B1ED64109" description="A list of loot actions to apply to the teen and the target (if enabled)." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                    <TunableVariant type="None" name="target_relationship_test" class="OptionalTunable" default="disabled" display="Target Relationship Test" muid="3304B3AF78CDFE61" description="If enabled, only sims that pass this relationship test will be considered&#xA;for this loot. Sims that do not pass the test will not have loots applied&#xA;to them." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="1BECA0E79C3FD816" />
+                        <TunableTuple name="enabled" class="TunableRelationshipTest" display="Enabled" muid="D4258050E2991DC2" description="The relationship test sims will have to pass to be considered for this loot." Deprecated="False" filter="0" group="General">
+                            <Tunable type="bool" name="invert_num_relations" class="Tunable" default="False" display="Invert Num Relations" muid="BC58C462B8C2B16F" description="If checked then we will check that your Num Relations is less than or&#xA;equal to the value rather than the other way around." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="num_relations" class="Tunable" default="0" display="Num Relations" muid="AB6AFA613E9A3D7B" description="Number of Sims with specified relationships required to pass,&#xA;default(0) is all known relations.&#xA;&#xA;If value set to 1 or greater, then test is looking at least that&#xA;number of relationship to match the criteria.&#xA;&#xA;If value is set to 0, then test will pass if relationships being&#xA;tested must match all criteria of the test to succeed.  For&#xA;example, if interaction should not appear if any relationship&#xA;contains a relationship bit, this value should be 0." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="prohibited_relationship_bits" class="TunableTuple" display="Prohibited Relationship Bits" muid="2C30369EBC550BCB" Deprecated="False" filter="0" group="General">
+                                <TunableList name="match_all" class="TunableSet" display="Match All" muid="69CA008236BD78ED" description="All of these relationship bits must match to fail the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <Tunable type="relbit" class="TunableReference" muid="B91093D3B498B64B" allow_none="False" Deprecated="False" filter="0" group="General" />
+                                </TunableList>
+                                <TunableList name="match_any" class="TunableSet" display="Match Any" muid="A03D290090D5450C" description="If any of these relationship bits match the test will fail." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <Tunable type="relbit" class="TunableReference" muid="7D00045A9B010203" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                </TunableList>
+                            </TunableTuple>
+                            <TunableTuple name="relationship_score_interval" class="TunableInterval" display="Relationship Score Interval" muid="A5746B01156A1A0A" description="The range that the relationship score must be within in order for&#xA;this test to pass." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="lower_bound" class="TunableRange" default="-100.0" display="Lower Bound" muid="3BAA438541D77E12" min="-100.0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="upper_bound" class="TunableRange" default="100.0" display="Upper Bound" muid="63DA01078AD8FC7C" min="None" max="100.0" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="required_relationship_bits" class="TunableTuple" display="Required Relationship Bits" muid="E4DA2E8750902D64" Deprecated="False" filter="0" group="General">
+                                <TunableList name="match_all" class="TunableSet" display="Match All" muid="FCD7D32CCE0E956C" description="All of these relationship bits must be present to pass the&#xA;test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <Tunable type="relbit" class="TunableReference" muid="59D63D077B745FB8" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                </TunableList>
+                                <TunableList name="match_any" class="TunableSet" display="Match Any" muid="82919E7A81CE8A29" description="Any of these relationship bits will pass the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                    <Tunable type="relbit" class="TunableReference" muid="B851834B76CADAE4" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                </TunableList>
+                            </TunableTuple>
+                            <TunableEnum type="RelationshipTestEvents" name="test_event" class="TunableEnumEntry" default="AllRelationshipEvents" display="Test Event" muid="E8D2874A014E227E" static_entries="relationships-relationship_tests.RelationshipTestEvents" description="The event that we want to trigger this instance of the tuned test&#xA;on." Deprecated="False" filter="0" group="General" />
+                            <TunableVariant type="None" name="test_incest" class="TunableVariant" default="disabled" display="Test Incest" muid="5C4221678397A324" description="Test for incest status. Test passes if this matches the two Sim's&#xA;incest status." Deprecated="False" filter="0" group="General">
+                                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="62FEB91D4C841857" />
+                                <Tunable name="is incestuous" class="TunableExistance" display="Is Incestuous" muid="FB6EC6E9181BAC05" />
+                                <Tunable name="is not incestuous" class="TunableExistance" display="Is Not Incestuous" muid="D833E23747688713" />
+                            </TunableVariant>
+                            <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="31EF09CE28A58C50" description="Reason of failure." Deprecated="False" filter="0" group="General">
+                                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F90EEBFB954DE3F2" />
+                                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="9330E73E738D25A8" description="Reason of failure." Deprecated="False" filter="0" group="General" />
+                            </TunableVariant>
+                            <Tunable type="statistic" name="track" class="TunableReference" display="Track" muid="B9CF26C61C72542F" description="If set, the test will use the relationship score between sims for&#xA;this track. If unset, the track defaults to the global module&#xA;tunable REL_INSPECTOR_TRACK." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipTrack" />
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="233FF5068C2C7411" />
+            <Action type="kRemove" old_muid="2536318AD36C86E2" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="A10DC47D4F21EB3B" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kUpdateVariantTypeField" target_muid="1B680A6C7F74F6E9" source_type_value="enabled" target_type_value="enabled" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kUpdateVariantTypeField" target_muid="1B680A6C7F74F6E9" source_type_value="enabled" target_type_value="enabled" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="F7E57F9E020D3E61" />
+            <Action type="kRemove" old_muid="1B680A6C7F74F6E9" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="9E9B905FBCF593FF" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="DE6D2F201959414B" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="77E2D0343B8D4168" />
+            <Action type="kRemove" old_muid="E24F379ECB47950D" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

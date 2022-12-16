@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="StreetInstancedSimLootEffect" module="civic_policies.street_civic_policy_effect" muid="1DD90C89D1D98F93" description="Provide sims a set of loot on instanced sims on the street." instance_needs_reference="True" instance_subclasses_only="False" parents="StreetEffect" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableList name="enact_loot" class="TunableList" display="Enact Loot" muid="BCC9E0D8BFB0B98" description="Loots applied when a sim is instanced on a street where this effect&#xA;is enacted." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="F3A040ADD332DBBC" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+        </TunableList>
+
+        <TunableList name="repeal_loot" class="TunableList" display="Repeal Loot" muid="5938769860E0D694" description="Loots applied when a sim is de-instanced on a street where this&#xA;effect is enacted. " Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="614B5005AB3868DC" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+        </TunableList>
+
+        <TunableVariant type="None" name="scheduled_loot" class="OptionalTunable" default="disabled" display="Scheduled Loot" muid="4BB0DBD237DF380F" description="While enacted, loot to award on a schedule." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="94D6CAD5FBCCCF11" />
+            <TunableTuple name="enabled" class="TunableScheduledLoot" display="Enabled" muid="F3C0338D8A4B74E1" description="Weekly Scheduled Loot" Deprecated="False" filter="0" group="General">
+                <TunableList name="loot" class="TunableList" display="Loot" muid="C083CAFBE3CD5D6F" description="Loot applied when the effect is enacted." Deprecated="False" filter="0" group="General">
+                    <Tunable type="action" class="TunableReference" muid="35FF6D055590599" description="Loot applied when the effect is enacted." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                </TunableList>
+                <TunableTuple name="schedule_data" class="TunableWeeklySchedule" display="Schedule Data" muid="90B5BBE848C31F27" description="The information to schedule points during the week that&#xA;the Street Policy Effect, if enacted, will award loot." Deprecated="False" filter="0" group="General">
+                    <TunableList name="schedule_entries" class="TunableList" display="Schedule Entries" muid="3B9073A631BFB618" description="A list of event schedules. Each event is a mapping of days of&#xA;the week to a start_time and duration." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableScheduleEntry" muid="F2ADB0ECF9476932" description="A schedule. Define availability for days of the week. For the set of&#xA;specified days, define an hour of the day and a duration, in hours.&#xA;Optionally, specified if the start time is random within the tuned window." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="days_available" class="TunableAvailableDays" display="Days Available" muid="A13724B6442CC3DA" description="Which days of the week to include" Deprecated="False" filter="0" group="General">
+                                <Tunable type="bool" name="0 SUNDAY" class="Tunable" default="False" display="0 Sunday" muid="1AD6D742CEA0B6DD" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="1 MONDAY" class="Tunable" default="False" display="1 Monday" muid="661B90657384085D" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="2 TUESDAY" class="Tunable" default="False" display="2 Tuesday" muid="90F9C9E2C47EFC78" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="3 WEDNESDAY" class="Tunable" default="False" display="3 Wednesday" muid="9D14DA4C5782404" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="4 THURSDAY" class="Tunable" default="False" display="4 Thursday" muid="9E93DA691D8878F9" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="5 FRIDAY" class="Tunable" default="False" display="5 Friday" muid="D6ACEAF2EAE110E2" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="6 SATURDAY" class="Tunable" default="False" display="6 Saturday" muid="FAF9E70E118422FB" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <Tunable type="float" name="duration" class="Tunable" default="1.0" display="Duration" muid="7EBAED076189403C" description="Duration of this work session in hours." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="random_start" class="Tunable" default="False" display="Random Start" muid="3A17ACCEDBF95D55" description="If checked, this schedule will have a random start time in the tuned&#xA;window each time." Deprecated="False" filter="0" group="General" />
+                            <TunableEnum type="CareerShiftType" name="schedule_shift_type" class="TunableEnumEntry" default="ALL_DAY" display="Schedule Shift Type" muid="37D267B761403480" static_entries="careers-career_enums.CareerShiftType" description="Shift Type for the schedule, this will be used for validations." Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="DE64FA430D3775DB" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="hour" class="TunableRange" default="9" display="Hour" muid="44A5751448EB7D0" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="4F32A893E6D6325B" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="object" class="Puddle" module="objects.puddles.puddle" muid="1E614E539DEFE86F" instance_needs_reference="True" instance_subclasses_only="False" parents="GameObject, ScriptObject" path="Objects\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="evaporation_data" class="TunableTuple" display="Evaporation Data" muid="E38224AF04598E8E" description="This is the information for evaporation.  This controls how long this&#xA;puddle takes to evaporate." Deprecated="False" filter="0" group="Puddles">
+            <Tunable type="statistic" name="commodity" class="TunableReference" display="Commodity" muid="22673A4FCE031FA3" description="The commodity used for evaporation." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Commodity" />
+            <TunableTuple name="initial_value" class="TunableInterval" display="Initial Value" muid="CF2D55CDC83D5D84" description="Initial value of this commodity.  Time it takes to evaporate&#xA;will be based on how fast this commodity decays.&#xA;(Based on loot given in weather aware component)" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="lower_bound" class="TunableRange" default="30" display="Lower Bound" muid="910705A23EBCB9E7" min="1" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="upper_bound" class="TunableRange" default="60" display="Upper Bound" muid="75FF96A96448C441" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableTuple>
+
+        <TunableTuple name="evaporation_outcome" class="TunableTuple" display="Evaporation Outcome" muid="66A05D2339C35BC3" Deprecated="False" filter="0" group="Puddles">
+            <Tunable type="int" name="nothing" class="TunableRange" default="5" display="Nothing" muid="AA26416AEDB532C9" min="1" max="None" description="Relative chance of nothing." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="plant" class="TunableRange" default="1" display="Plant" muid="4D487FD57134967E" min="0" max="None" description="Relative chance of plant." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="weeds" class="TunableRange" default="2" display="Weeds" muid="5F71721DAAD76385" min="0" max="None" description="Relative chance of weeds." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="indoor_evaporation_time" class="TunableInterval" display="Indoor Evaporation Time" muid="CAC19BECF9B459C8" description="Number of SimMinutes this puddle should take to evaporate when &#xA;created indoors." Deprecated="False" filter="0" group="XXX Deprecated">
+            <Tunable type="float" name="lower_bound" class="TunableSimMinute" default="200" display="Lower Bound" muid="3EC64E9378346102" min="1" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="upper_bound" class="TunableSimMinute" default="300" display="Upper Bound" muid="EC60D52E75EE94E9" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="intial_stat_value" class="TunableTuple" display="Intial Stat Value" muid="9E071464EFC4122A" description="This is the starting value for the stat specified.  This controls &#xA;how long it takes to mop this puddle." Deprecated="False" filter="0" group="Puddles">
+            <Tunable type="statistic" name="stat" class="TunableReference" display="Stat" muid="928F2A8E56215044" description="The stat used for mopping puddles." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Statistic" />
+            <Tunable type="int" name="value" class="Tunable" default="-20" display="Value" muid="E6F63668757DD9B7" description="The initial value this puddle should have for the mopping stat.&#xA;The lower the value (-100,100), the longer it takes to mop up." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="outdoor_evaporation_time" class="TunableInterval" display="Outdoor Evaporation Time" muid="632B8C045E5647D1" description="Number of SimMinutes this puddle should take to evaporate when &#xA;created outdoors." Deprecated="False" filter="0" group="XXX Deprecated">
+            <Tunable type="float" name="lower_bound" class="TunableSimMinute" default="30" display="Lower Bound" muid="30ED1022F422FBC" min="1" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="upper_bound" class="TunableSimMinute" default="60" display="Upper Bound" muid="32CCB4BA65A5384B" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="puddle_grow_chance" class="TunableTunableMultiplier" display="Puddle Grow Chance" muid="2D4E42BFC71871AC" description="The chance of puddle to grow." Deprecated="False" filter="0" group="Puddles">
+            <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="35BA32E97EA286D0" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="7D3BF246575DEC8E" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="2CC742716DDFA44F" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="49F742298A35DB66" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="540DFF73447B77FA" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableEnum type="PuddleLiquid" name="puddle_liquid" class="TunableEnumEntry" default="INVALID" display="Puddle Liquid" muid="B5D6CEE5B019F7AE" dynamic_entries="objects-puddles.PuddleLiquid._elements" static_entries="objects-puddles.PuddleLiquid" description="The liquid that the puddle is made of." Deprecated="False" filter="0" group="Puddles" invalid_entries="INVALID" />
+
+        <TunableEnum type="PuddleSize" name="puddle_size" class="TunableEnumEntry" default="NoPuddle" display="Puddle Size" muid="8210CC1C87FE495E" static_entries="objects-puddles.PuddleSize" description="The size of the puddle." Deprecated="False" filter="0" group="Puddles" invalid_entries="NoPuddle" />
+    </Instance>
+</TuningRoot>

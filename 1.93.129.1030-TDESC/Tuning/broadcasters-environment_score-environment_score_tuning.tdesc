@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="broadcasters.environment_score.environment_score_tuning" muid="83B97FD278791C39">
+        <Class name="EnvironmentScoreTuning" muid="E5D8A6B33FE7E430">
+            <TunableTuple name="BUILD_OBJECTS_ENVIRONMENT_SCORING" class="TunableTuple" display="Build Objects Environment Scoring" muid="EC549A63153F203B" description="Defines the statistics which track the value of positive and negative&#xA;environmental contribution from build objects." Deprecated="False" filter="0" group="General">
+                <Tunable type="statistic" name="negative_environment_scoring" class="TunableReference" display="Negative Environment Scoring" muid="CCBDE0442BD2EF9C" description="Negative environmental statistic." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Statistic" />
+                <Tunable type="statistic" name="positive_environment_scoring" class="TunableReference" display="Positive Environment Scoring" muid="89BDC0BA11E62A6F" description="Positive environmental statistic." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Statistic" />
+            </TunableTuple>
+
+            <Tunable type="interaction" name="DISABLE_AFFORDANCE" class="TunableReference" display="Disable Affordance" muid="1911F847F132B884" description="The interaction that will turn off Environment Score for a particular&#xA;object. This interaction should set a state on the object that will&#xA;have multipliers of 0 and adders of 0 for all moods." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="object_state" name="DISABLED_STATE_VALUE" class="TunableReference" display="Disabled State Value" muid="A8AEA8BA41E67348" description="A state value that indicates the object should not be contributing&#xA;Environment Score." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+
+            <Tunable type="interaction" name="ENABLE_AFFORDANCE" class="TunableReference" display="Enable Affordance" muid="24D2036780BBDA99" description="The interaction that will turn on Environment Score for a particular&#xA;object. This interaction should set a state on the object that will&#xA;have multipliers of 1 and adders of 0 for all moods." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="object_state" name="ENABLED_STATE_VALUE" class="TunableReference" display="Enabled State Value" muid="A230888AE7472082" description="A state value that indicates the object should be contributing&#xA;Environment Score." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+
+            <Tunable type="broadcaster" name="ENVIRONMENT_SCORE_BROADCASTER" class="TunableReference" display="Environment Score Broadcaster" muid="42A2AF9208C2E882" description="The singleton broadcaster that groups all scoring objects. The&#xA;constraints on this broadcaster determine the constraint within which a&#xA;Sim is affected by environment score." allow_none="False" Deprecated="False" filter="0" group="General" restrict="BroadcasterEnvironmentScore" />
+
+            <TunableList name="ENVIRONMENT_SCORE_MOODS" class="TunableMapping" display="Environment Score Moods" muid="1E3C76AB84C90D7F" mapping_key="object_tag" mapping_value="mood" description="Tags on Objects correspond to a particular Mood.&#xA;        &#xA;When an object is going to contribute to the environment score, put a&#xA;tag in it's catalog object, and make sure that tag points to a Mood&#xA;here." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="929C9E70F9FE58F" Deprecated="False" filter="0" group="General">
+                    <Tunable type="mood" name="mood" class="TunableReference" display="Mood" muid="2B932C86C1FE6DEE" description="The mood that the Sim must be in for an object that emits this mood&#xA;to score. Corresponds to the mood_tag." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Mood" />
+                    <TunableEnum type="Tag" name="object_tag" class="TunableEnumEntry" default="INVALID" display="Object Tag" muid="A851E9CC48FC73B5" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The Tag that corresponds to mood and environmental scoring data." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="statistic" name="NEGATIVE_ENVIRONMENT_SCORING" class="TunableReference" display="Negative Environment Scoring" muid="88C2DF481D9E22B2" description="Defines the ranges and corresponding buffs to apply for negative&#xA;environmental contribution.&#xA;&#xA;Be sure to tune min, max, and the different states. The convergence&#xA;value is what will remove the buff. Suggested to be 0." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Commodity" />
+
+            <Tunable type="statistic" name="POSITIVE_ENVIRONMENT_SCORING" class="TunableReference" display="Positive Environment Scoring" muid="8FCB743B0784A711" description="Defines the ranges and corresponding buffs to apply for positive&#xA;environmental contribution.&#xA;&#xA;Be sure to tune min, max, and the different states. The convergence&#xA;value is what will remove the buff. Suggested to be 0." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Commodity" />
+        </Class>
+    </Module>
+</TuningRoot>

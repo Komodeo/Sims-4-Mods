@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.university.university_tuning" muid="9CC30421E0771D56">
+        <Class name="University" muid="6A1E39B4700AC526">
+            <TunableList name="ALL_DEGREES" class="TunableList" display="All Degrees" muid="79BF051D9FA2DB13" description="A list of all available degrees that will be available in all &#xA;university." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="university_major" class="TunableReference" muid="35648AA893A91541" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+
+            <TunableList name="ALL_UNIVERSITIES" class="TunableList" display="All Universities" muid="A1C2287DDFAEF19E" description="A list of all available universities in the game." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="university" class="TunableReference" muid="7EDC722159830C0E" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+
+            <TunableTuple name="COURSE_ELECTIVES" class="TunableTuple" display="Course Electives" muid="DA1CBC0833487DA4" description="Tuning structure holding all electives data." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="elective_change_frequency" class="TunableRange" default="1" display="Elective Change Frequency" muid="EDC28BD8D4B6081F" min="1" max="50" description="The frequency, in Sim days, at which the electives option will&#xA;regenerate." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="elective_count" class="TunableInterval" display="Elective Count" muid="18584C0FCDC1A5A0" description="The number of elective courses to choose for enrollment from the &#xA;elective list. Random number will be chosen from the interval." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="lower_bound" class="TunableRange" default="8" display="Lower Bound" muid="50E9FF1394C91347" min="1" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="upper_bound" class="TunableRange" default="10" display="Upper Bound" muid="DCC8F32B2650D2EB" min="None" max="100" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableList name="electives" class="TunableList" display="Electives" muid="60914834C86F7655" description="A list of weighted elective courses that will be available in &#xA;all university." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="E4ACD9A6BCA2212F" description="Weighted elective course data." Deprecated="False" filter="0" group="General">
+                        <Tunable type="university_course_data" name="elective" class="TunableReference" display="Elective" muid="B900202F21FACABE" description="Elective course data." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <TunableTuple name="weight" class="TunableTunableMultiplier" display="Weight" muid="FA149B80715FC866" description="The weight of this elective relative to other electives &#xA;in this list." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="990C60AA55BD83D9" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="2710381E57D69732" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                <TunableTuple class="TunableTuple" muid="7E4040BAA2F60175" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="AA4CDF23C3E5E632" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="B8501ED41BEB261C" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+
+            <TunableList name="PROFESSOR_ARCHETYPES" class="TunableMapping" display="Professor Archetypes" muid="7870314BFDE2221" mapping_key="key" mapping_value="value" description="A mapping of school to professor archetypes so that we can get&#xA;professors with the correct skill set for the college they will be&#xA;teaching at." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="53E05C53F3921E80" Deprecated="False" filter="0" group="General">
+                    <Tunable type="university" name="key" class="TunableReference" display="Key" muid="AFECB2BB6A0C5A23" description="The university that the professor archetype will belong to." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="7250B356BF556DBB" description="A list of Sim Filters used to find sims that match a certain archetype&#xA;and make them a professor by giving them the correct trait." Deprecated="False" filter="0" group="General">
+                        <Tunable type="sim_filter" class="TunableReference" muid="375106345B89ABCC" description="A single Sim filter defining a professor archetype to search for.&#xA;&#xA;A search will be run using this filter as the archetype when&#xA;creating a professor and if no Sims match or can be conformed to&#xA;this filter then a new Sim will be created using the tuned Sim &#xA;Template." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SKILL_TO_MAJOR_TUNING" class="TunableMapping" display="Skill To Major Tuning" muid="C44355601E191B21" mapping_key="key" mapping_value="value" description="A mapping of Skill -&gt; Majors that we can use to determine what the &#xA;appropriate major is for an existing Sim. Each Skill can be mapped to &#xA;a list of Majors. If more than one is specified then a random major &#xA;will be chosen if the Sim is being assigned a major based on that skill." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="A3B69745FA8696E9" Deprecated="False" filter="0" group="General">
+                    <Tunable type="statistic" name="key" class="TunableReference" display="Key" muid="ADE552C493CF9B2E" description="The skill being used to assign the major." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Skill" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="63869190B9E09AB7" min="1" description="The set of majors to choose from when assigning a major based on &#xA;the associated skill type. If this has more than one entry then&#xA;one of the majors will be chosen at random." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="university_major" class="TunableReference" muid="55179ACC25624601" description="The university major to enroll the Sim in." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

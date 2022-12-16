@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="world.region" muid="4CB1FF2CC21D6627">
+        <Class name="RegionType" muid="6DB43A8957E4FFAA" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="REGIONTYPE_DESTINATION" muid="928F36723B0E0AC5" enum_value="2" />
+
+            <EnumItem name="REGIONTYPE_NONE" muid="4C46B8B74C3D4ED1" enum_value="0" />
+
+            <EnumItem name="REGIONTYPE_RESIDENTIAL" muid="F53D302D1D384500" enum_value="1" />
+        </Class>
+
+        <Class name="Region" muid="E449F7E25D97D1F6">
+            <TunableList name="REGION_DESCRIPTION_TUNING_MAP" class="TunableMapping" display="Region Description Tuning Map" muid="A43AF1564ABF0E87" mapping_key="RegionDescription" mapping_value="Region" description="A mapping between Catalog region description and tuning instance. This&#xA;way we can find out what region description the current zone belongs to&#xA;at runtime then grab its tuning instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="RegionDescriptionMappingTuple">
+                <TunableTuple class="TunableTuple" muid="D953170F3795BBDB" Deprecated="False" filter="0" group="General">
+                    <Tunable type="region" name="Region" class="TunableReference" display="Region" muid="8FFA3AD6D4650FDC" description="Region Tuning instance. This is retrieved at runtime based on what&#xA;the active zone's region description is." allow_none="False" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="regiondescription" name="RegionDescription" class="TunableReference" display="Regiondescription" muid="7DDD105965A8B466" description="Catalog-side Region Description." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

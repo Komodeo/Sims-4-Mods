@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="ui.pack_specific_tuning" muid="FB1B7CF7E47E9610">
+        <Class name="PackSpecificTuning" muid="7801D20D8C85EACD">
+            <TunableList name="VENUE_PACK_TUNING" class="TunableMapping" display="Venue Pack Tuning" muid="8EDE082F1576EE17" mapping_key="venue_id" mapping_value="data" description="Venue tuning that is needed by UI when that venue's pack is not installed." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="VenuePackTuning">
+                <TunableTuple class="TunableTuple" muid="3CBF0C08D1C092F0" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="data" class="VenueDataTuple" display="Data" muid="888650A0B30B4891" description="Venue data that is shown in the UI when this venue's pack is not installed." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="gallery_download_venue" class="OptionalTunable" default="disabled" display="Gallery Download Venue" muid="53E3F234B3C56FC5" description="If tuned, the tuned venue tuning will be substituted if this&#xA;venue is downloaded from the gallery by a player who is not&#xA;entitled to it. The default behavior is to substitute the&#xA;generic venue. This tuned venue will also determine download&#xA;compatibility (for instance, only residential venues can be &#xA;downloaded to owned residential venues)." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5EADBFE87A91966" />
+                            <Tunable type="venue" name="enabled" class="TunableReference" display="Enabled" muid="A10A52AC210ACAD1" allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableList name="venue_flags" class="TunableEnumFlags" display="Venue Flags" muid="D106427F88E72271" description="Venue flags used to mark a venue with specific properties." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="VenueFlags" class="TunableEnumEntry" default="NONE" muid="A0CAFE5FA63A5DB7" static_entries="venues-venue_enums.VenueFlags" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                        <Tunable type="int" name="venue_name" class="TunableLocalizedString" default="0x0" display="Venue Name" muid="47FED5C1F35F1EAD" description="Name that will be displayed for the venue when the pack containing &#xA;that venue is not installed" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <Tunable type="venue" name="venue_id" class="TunableReference" display="Venue Id" muid="8F435554AC280A7B" description="Reference to the venue that this data represents" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

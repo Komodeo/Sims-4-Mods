@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="AutonomousObjectPickerInteraction" module="interactions.base.picker_interaction" muid="4E8E92F64077C43A" description="Interaction to autonomously select an item and push a continuation about&#xA;that item." instance_needs_reference="True" instance_subclasses_only="True" parents="AutonomousPickerSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="continuation" class="OptionalTunable" default="disabled" display="Continuation" muid="D2BF43CF4EDC9983" description="If enabled, you can tune a continuation to be pushed.&#xA;PickedObject will be the object that was selected" Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="BB6032C2A5DA0C66" />
+            <TunableList name="enabled" class="TunableContinuation" display="Enabled" muid="F6B80690A9A0D4BF" description="If specified, a continuation to push on the chosen object." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="6F529D0AE82AE973" description="A continuation entry." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ParticipantType" name="actor" class="TunableEnumEntry" default="Actor" display="Actor" muid="F7E68D5A616DA94A" static_entries="interactions.ParticipantType" description="The Sim on which the affordance is pushed." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="23E4B98073A64D0E" description="The affordance to push as a continuation on the specified&#xA;actor Sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableVariant type="None" name="carry_target" class="OptionalTunable" default="disabled" display="Carry Target" muid="AD963AFDC59151A5" description="If enabled, specify a carry target for this continuation." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="82284F1FF05B4B17" />
+                        <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Object" display="Enabled" muid="D4A8B8FE5A1BADBB" static_entries="interactions.ParticipantType" description="The participant the affordance will set as a carry target." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="inventory_carry_target" class="TunableVariant" default="None" display="Inventory Carry Target" muid="482E0E376760BFC8" description="Item in inventory (of continuations actor) to use as carry&#xA;target for continuation if carry target is None" Deprecated="False" filter="0" group="General">
+                        <Tunable name="None" class="TunableExistance" display="None" muid="E9D97B29667A2F58" />
+                        <TunableTuple name="object_with_base_definition" class="TunableTuple" display="Object With Base Definition" muid="626E2C466370771" Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="F427A72945C09D7E" description="The base definition to look for inside inventory.&#xA;Objects that redirect (like counters) will match if base&#xA;definition is the same." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="object_with_definition" class="TunableTuple" display="Object With Definition" muid="F4B8B1385ED5C028" Deprecated="False" filter="0" group="General">
+                            <Tunable type="object" name="definition" class="TunableReference" display="Definition" muid="C834E52A2F2C2C3F" description="The exact object definition to look for inside&#xA;inventory." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="object_with_tag" class="CraftTaggedItemFactory" display="Object With Tag" muid="3E16BBA88F7A9394" description="This option tests crafted item's tags against a list of possible tags" Deprecated="False" filter="0" group="General">
+                            <TunableList name="tag_set" class="TunableSet" display="Tag Set" muid="681CF732B47B0186" description="The tag of objects we want to test ownership of" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="DC54925CEBB4BA95" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="What tag to test for" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                            <TunableEnum type="TagTestType" name="test_type" class="TunableEnumEntry" default="CONTAINS_ANY_TAG_IN_SET" display="Test Type" muid="B459D924BB3B2110" static_entries="objects-object_tests.TagTestType" description="How to test the tags in the tag set against the objects on the lot." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                    <Tunable type="bool" name="preserve_preferred_object" class="Tunable" default="True" display="Preserve Preferred Object" muid="8943C30D0B8A511E" description="If checked, the pushed interaction's preferred objects are&#xA;determined by the current preferred objects.&#xA;&#xA;If unchecked, the transition sequence would not award bonuses to&#xA;any specific part." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="bool" name="preserve_target_part" class="Tunable" default="False" display="Preserve Target Part" muid="B9AB0E50ADBA5097" description="If checked, the pushed interaction will use the same target part&#xA;if applicable. Defaults to false because typically we will want&#xA;to let the transition select which part to use." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="interaction" name="si_affordance_override" class="TunableReference" display="Si Affordance Override" muid="C6C5624A1D137C6E" description="When the tuned affordance is a mixer for a different SI, use&#xA;this to specify the mixer's appropriate SI. This is useful for&#xA;pushing socials." allow_none="True" Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="ParticipantType" name="target" class="TunableEnumEntry" default="Object" display="Target" muid="F26A6CB21F11817A" static_entries="interactions.ParticipantType" description="The participant the affordance will target." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableVariant>
+
+        <Tunable type="bool" name="single_push_continuation" class="Tunable" default="False" display="Single Push Continuation" muid="6969F4672AACC981" description="If enabled, only the first continuation that can be successfully&#xA;pushed will run. Otherwise, all continuations are pushed such that&#xA;they run in order." Deprecated="False" filter="0" group="Picker Tuning" />
+    </Instance>
+</TuningRoot>

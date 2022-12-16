@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="lunar_cycle" class="LunarPhase" module="lunar_cycle.lunar_phase" muid="10227BF2A5E05C9D" description="The definition of content of a lunar phase." instance_base_game_only="True" instance_needs_reference="True" instance_subclasses_only="False" path="LunarCycle\Descriptions" use_guid_for_reference="True">
+        <TunableList name="effects_by_hour_offset" class="TunableMapping" display="Effects By Hour Offset" muid="3098AB418AF16FBA" mapping_key="key" mapping_value="value" description="A mapping of hour into the current phase to effects that will be applied at that hour of the phase.&#xA;&#xA;This is relative to the lunar cycle 'Phase Change Time of Day' tuning." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="C03DFCCDFE2D9B8C" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="key" class="TunableRange" default="0" display="Key" muid="6BCE67A9CFF175EE" min="0" max="23" description="Hour offset into the current phase." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableList" display="Value" muid="D416B0301851A429" description="Effects to apply at the given hour offset." Deprecated="False" filter="0" group="General">
+                    <Tunable type="lunar_cycle" class="TunableReference" muid="41C09ED7A458062B" description="Lunar Effect" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LunarPhaseEffect" />
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="length_option_duration_map" class="TunableMapping" display="Length Option Duration Map" muid="9DB5D30956ECC352" mapping_key="key" mapping_value="value" description="A mapping of how long this phase is when a specific length option is set." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="89C43E64A0CB7D17" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="LunarCycleLengthOption" name="key" class="TunableEnumEntry" default="FULL_LENGTH" display="Key" muid="8D0CF19C76D909C9" static_entries="lunar_cycle-lunar_cycle_enums.LunarCycleLengthOption" description="The length option." Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="B2BA2A0834C27BC7" min="0" max="None" description="The length of this phase (in Sim days) for the given option." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="pre_phase_effects_by_hour_offset" class="TunableMapping" display="Pre Phase Effects By Hour Offset" muid="9B2A5C4818F6A21B" mapping_key="key" mapping_value="value" description="A mapping of hour into the current phase to effects that will be applied at that hour of the phase.&#xA;&#xA;This is relative to the lunar cycle 'Phase Change Time of Day' tuning.&#xA;&#xA;This list of effects affect the phase IMMEDIATELY PRECEDING this tuned phase, if this content &#xA;is not the active phase yet but will be within the next 24 hours.&#xA;&#xA;e.g. these effects are tuned on FULL_MOON, they apply if today is WAXING_GIBBOUS, which is the phase &#xA;preceding the FULL_MOON phase.  This can be used for effects such as popping a TNS noting there is &#xA;an upcoming full moon coming tomorrow night.  " Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="F1428EEB00084119" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="key" class="TunableRange" default="0" display="Key" muid="76BE579D37BE823E" min="0" max="23" description="Hour offset into the current phase." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableList" display="Value" muid="9A4D3C2AC9FF5A00" description="Effects to apply at the given hour offset." Deprecated="False" filter="0" group="General">
+                    <Tunable type="lunar_cycle" class="TunableReference" muid="32FB3E84FBF82C4F" description="Lunar Effect" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LunarPhaseEffect" />
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="SwitchLightAndStateImmediateInteraction" module="objects.lighting.lighting_object_interactions" muid="C517EBB12B4F2604" description="An interaction that immediately changes objects' state at the same time&#xA;based on the specific tags and changes the dimmer value of environment&#xA;lights or particular set of lights." instance_needs_reference="True" instance_subclasses_only="False" parents="SwitchLightImmediateInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="state_settings" class="TunableObjectStateHelper" display="State Settings" muid="AE0378A86EFA13DB" description="Find objects in the same room or lot based on the tags and &#xA;set state to the desired state." Deprecated="False" filter="0" group="General">
+            <Tunable type="object_state" name="desired_state" class="TunableReference" display="Desired State" muid="A8CBDF306408E7DB" description="State that will be set to the objects." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+            <TunableList name="object_tags" class="TunableTags" display="Object Tags" muid="6D99DDECAC63140B" Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="4843B84B69F9D8" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Find all of the objects based on these tags." Deprecated="False" dynamic_entries_prefix="func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+            </TunableList>
+            <TunableVariant type="None" name="object_target" class="TunableObjectTargetVariant" default="room_objects" display="Object Target" muid="2427E32E075331A5" description="Define the set of objects that this interaction is applied to." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="all_objects" class="Tunable_ObjectTargetAll" display="All Objects" muid="84822963A6C7C9EE" description="The target are all objects. Find all objects that have the tags." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="room_objects" class="Tunable_ObjectTargetRoom" display="Room Objects" muid="D33BA6C82A398387" description="The target are all objects in the same room as the interaction target&#xA;that have the tags." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="F681E6986604F793" description="If pass these tests, the object's state will be changed to&#xA;Desired State." filter="0" group="General" />
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

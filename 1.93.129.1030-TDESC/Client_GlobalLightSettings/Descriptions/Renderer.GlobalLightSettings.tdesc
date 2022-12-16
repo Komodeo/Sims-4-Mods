@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="Renderer_GlobalLightSettings" class="Renderer.GlobalLightSettings" module="client.renderer" muid="ED38A1FEA52496B6" description="" export_modes="client_binary" path="Client_GlobalLightSettings\Descriptions">
+        <TunableTuple name="AcidRainColor" class="TunableVector3" display="Acid rain color multiplier" muid="687F9F5C294354B2" description="Multiply with current rain color.">
+            <Tunable type="float" name="x" class="Tunable" default="None" muid="F12DAEF008B08E7E" description="red" />
+            <Tunable type="float" name="y" class="Tunable" default="None" muid="5F11DDA986349816" description="green" />
+            <Tunable type="float" name="z" class="Tunable" default="None" muid="B8E04BEF7F4A75C7" description="blue" />
+        </TunableTuple>
+
+        <Tunable type="float" name="AmbienceHeightSpread" class="Tunable" default="None" display="Interior: Vertical gradient intensity" muid="7C94FC38BDB9DB54" description="Controls the gradient of ambient light according to height within a room. The ambient light effect scales from this value to full (1) at the ceiling." />
+
+        <Tunable type="float" name="AmbienceMaximum" class="Tunable" default="None" display="Interior: Ambient maximum" muid="F9B61F7704AD3A58" description="Sets the maximum amount of ambient light, as a brightness value." />
+
+        <Tunable type="float" name="AmbienceMinimum" class="Tunable" default="None" display="Interior: Ambient minimum" muid="863928EF60F4BFB8" description="Sets the minimum amount of ambient light as a fraction of the 'brady bunch blue' color." />
+
+        <Tunable type="float" name="AmbientScale" class="Tunable" default="None" display="Interior: Ambient light scale" muid="80B4ED2B53B81BB6" description="Scales the contribution of lights to the ambient light applied to parts of the room not directly affected by any light." />
+
+        <TunableTuple name="BradyBunchBlue" class="TunableVector3" display="Interior: BBB ambient RGB" muid="595BC866EB6B9509" description="Sets the 'brady bunch blue' color used in dark interior areas.">
+            <Tunable type="float" name="x" class="Tunable" default="None" muid="2330CA545490518F" />
+            <Tunable type="float" name="y" class="Tunable" default="None" muid="5646A500A740A3D1" />
+            <Tunable type="float" name="z" class="Tunable" default="None" muid="A454711F0C73E1C4" />
+        </TunableTuple>
+
+        <Tunable type="bool" name="EnableLightRigBBBOnLightMaps" class="Tunable" default="None" display="BBB rig: Enable on walls/floors" muid="FC552AB6B4CD06C0" description="Enables the BBB rig used in darkness on walls/floors. (It is always enabled on objects.)" />
+
+        <Tunable type="float" name="ExteriorDropShadowDimming" class="Tunable" default="None" display="Object: Exterior Drop Shadow Dimming" muid="51CAC5BB1CA4FF25" description="Sets the fraction of shadow darkening removed from exterior drop shadows." />
+
+        <TunableList name="LightingSolverLODs" class="TunableList" display="Lighting solver tuning" muid="E0B652C70EE0243D" description="Inactive and active lot tuning settings for the lighting solver, which computes room lighting and lot lightmaps.">
+            <TunableTuple class="Renderer.LightingSolverLODTuning" muid="D86879D4D694D772">
+                <Tunable type="int" name="LightMapSubdivision" class="Tunable" default="None" display="Light map subdivision" muid="5FEB1C38ED2DAEA4" description="Number of texels per meter in the lot lightmaps, where 1 = 1m resolution. Use bigger numbers for higher resolution lightmaps, lower numbers for speed. Valid range: 1-16." />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="float" name="LightIntensityScale" class="Tunable" default="None" display="General: Light intensity multiplier" muid="746BCF08E9A1D583" description="Global scaling factor on all light intensity values. 1.0 applies intensities as-is." />
+
+        <Tunable type="float" name="LightInteriorCounterDirectionScale" class="Tunable" default="None" display="Light rig: Interior auto counter light strength" muid="198115F1A5045C2F" description="Amount of counter lighting applied to the back side object to prevent the light-opposed side from being too dark." />
+
+        <Tunable type="float" name="LightRigBBBAmbientDimming" class="Tunable" default="None" display="BBB rig: Dark light ambient dimming" muid="1EE44EEFA747EF80" description="Dims ambient when the BBB light rig is ramped up." />
+
+        <TunableTuple name="LightRigBBBObjectLight1" class="Renderer.BBBLight" display="BBB rig: object Light 1" muid="4DAE7E9FCB746B85" description="First directional light of object light rig used for darkness.">
+            <TunableTuple name="Color" class="TunableVector3" display="Color" muid="2F35FB9377998714" description="Sets the 'brady bunch blue' color used for darkness.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="52E2B5517A446A46" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="489FF7998F7E9B25" />
+                <Tunable type="float" name="z" class="Tunable" default="None" muid="31C9A9DEFB12BE25" />
+            </TunableTuple>
+            <TunableTuple name="Direction" class="TunableVector2" display="Direction" muid="A41A23264E9CA60" description="Yaw and pitch for light direction.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="D3686919606634E" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="29225D019A6EA76" />
+            </TunableTuple>
+            <Tunable type="float" name="Intensity" class="Tunable" default="None" muid="E62E57D1888DEE2F" description="Light intensity (scaling factor on color)." />
+        </TunableTuple>
+
+        <TunableTuple name="LightRigBBBObjectLight2" class="Renderer.BBBLight" display="BBB rig: object Light 2" muid="AF768B054E66115" description="Second directional light of object light rig used for darkness.">
+            <TunableTuple name="Color" class="TunableVector3" display="Color" muid="B26FFCB54C368DA4" description="Sets the 'brady bunch blue' color used for darkness.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="CC046E8D98AA1087" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="7CC88A1ACFFBEAE0" />
+                <Tunable type="float" name="z" class="Tunable" default="None" muid="EA9269D9EE43DEFA" />
+            </TunableTuple>
+            <TunableTuple name="Direction" class="TunableVector2" display="Direction" muid="A0F598422FCB8C59" description="Yaw and pitch for light direction.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="B972C3AAA805DA9A" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="12E7F32B25333A7D" />
+            </TunableTuple>
+            <Tunable type="float" name="Intensity" class="Tunable" default="None" muid="B244B3BEA5704D29" description="Light intensity (scaling factor on color)." />
+        </TunableTuple>
+
+        <TunableTuple name="LightRigBBBObjectLight3" class="Renderer.BBBLight" display="BBB rig: object Light 3" muid="F4109AE238994E7" description="Third directional light of object light rig used for darkness.">
+            <TunableTuple name="Color" class="TunableVector3" display="Color" muid="9948CC4511DB80F" description="Sets the 'brady bunch blue' color used for darkness.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="501659FC91441183" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="5B3FFFCFCFBD7EED" />
+                <Tunable type="float" name="z" class="Tunable" default="None" muid="41A82ECF5D9A596F" />
+            </TunableTuple>
+            <TunableTuple name="Direction" class="TunableVector2" display="Direction" muid="B7142B28EA558644" description="Yaw and pitch for light direction.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="AB548104E07A70F8" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="2A6092E3B8998DBE" />
+            </TunableTuple>
+            <Tunable type="float" name="Intensity" class="Tunable" default="None" muid="13A14067D8402E78" description="Light intensity (scaling factor on color)." />
+        </TunableTuple>
+
+        <Tunable type="float" name="LightRigBBBThreshold" class="Tunable" default="None" display="BBB rig: Dark light threshold" muid="820B95C35E41649B" description="Controls the lower brightness limit below which an object is considered to be in darkness and 'brady bunch blue' is added." />
+
+        <TunableTuple name="LightRigBBBWallFloorLight1" class="Renderer.BBBLight" display="BBB rig: wall/floor Light 1" muid="3A3E587A3BF3C0CC" description="First directional light of wall/floor light rig used for darkness.">
+            <TunableTuple name="Color" class="TunableVector3" display="Color" muid="90E827EA51505776" description="Sets the 'brady bunch blue' color used for darkness.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="8D42D8F56236461E" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="DD5CA7B896223047" />
+                <Tunable type="float" name="z" class="Tunable" default="None" muid="E923968410BCBED5" />
+            </TunableTuple>
+            <TunableTuple name="Direction" class="TunableVector2" display="Direction" muid="3B5D2C1A6E9D636C" description="Yaw and pitch for light direction.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="AA53E3E9881FA133" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="28CD67EB96B3FCB6" />
+            </TunableTuple>
+            <Tunable type="float" name="Intensity" class="Tunable" default="None" muid="87C47DCB2E2C175F" description="Light intensity (scaling factor on color)." />
+        </TunableTuple>
+
+        <TunableTuple name="LightRigBBBWallFloorLight2" class="Renderer.BBBLight" display="BBB rig: wall/floor Light 2" muid="F89860BDAF8FB824" description="Second directional light of wall/floor light rig used for darkness.">
+            <TunableTuple name="Color" class="TunableVector3" display="Color" muid="EE4285962B2EE323" description="Sets the 'brady bunch blue' color used for darkness.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="EE7CE920B0B4F959" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="1540CD31AC6F0605" />
+                <Tunable type="float" name="z" class="Tunable" default="None" muid="37B2F4237DB99E08" />
+            </TunableTuple>
+            <TunableTuple name="Direction" class="TunableVector2" display="Direction" muid="FA9EEE2EE5C2891B" description="Yaw and pitch for light direction.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="D1118BC9316542AA" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="F4AE2FE2B3E7F259" />
+            </TunableTuple>
+            <Tunable type="float" name="Intensity" class="Tunable" default="None" muid="534AE3984B1DB3DF" description="Light intensity (scaling factor on color)." />
+        </TunableTuple>
+
+        <TunableTuple name="LightRigBBBWallFloorLight3" class="Renderer.BBBLight" display="BBB rig: wall/floor Light 3" muid="48937A0E16CFF979" description="Third directional light of wall/floor light rig used for darkness.">
+            <TunableTuple name="Color" class="TunableVector3" display="Color" muid="4B44716F9B842E0" description="Sets the 'brady bunch blue' color used for darkness.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="7B8A9B66223554A1" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="28A721C52BD56ED8" />
+                <Tunable type="float" name="z" class="Tunable" default="None" muid="4823F6A1C510B000" />
+            </TunableTuple>
+            <TunableTuple name="Direction" class="TunableVector2" display="Direction" muid="F8121A95816789A0" description="Yaw and pitch for light direction.">
+                <Tunable type="float" name="x" class="Tunable" default="None" muid="2CA885F904076B41" />
+                <Tunable type="float" name="y" class="Tunable" default="None" muid="F1ABA5A31AAD3DE4" />
+            </TunableTuple>
+            <Tunable type="float" name="Intensity" class="Tunable" default="None" muid="B3842D732830D670" description="Light intensity (scaling factor on color)." />
+        </TunableTuple>
+
+        <Tunable type="float" name="LightRigMaximum" class="Tunable" default="None" display="Light rig: Maximum brightness" muid="D45755E4971CF0FE" description="Limits the brightness of all lights in an object's light rig to prevent an object from blowing out." />
+
+        <Tunable type="float" name="LightRigMinspecAmbientFactor" class="Tunable" default="None" display="LR Minspec: Ambient factor" muid="98B268CE97EB9F02" description="Scales the contribution of lights to the ambient term. Higher values are uniformly brighter." />
+
+        <Tunable type="float" name="LightRigMinspecAmbientLimit" class="Tunable" default="None" display="LR Minspec: Ambient limit" muid="3C2A2CCBCC6275FC" description="Limits the ambient component, on a scale of 0-1." />
+
+        <Tunable type="float" name="LightRigMinspecBaseAmbient" class="Tunable" default="None" display="LR Minspec: Base ambient" muid="997746BD6D6D3831" description="Amount of base ambient to add, on top of the computed interior ambient and light colors." />
+
+        <Tunable type="float" name="LightRigMinspecDirectionalFactor" class="Tunable" default="None" display="LR Minspec: Directional factor" muid="52BFA44A3462C386" description="Scales the contribution of lights to the signed directional term. Higher values intensify the lighting on the front side and darken it on the back side." />
+
+        <Tunable type="float" name="LightRigMinspecDirectionalLimit" class="Tunable" default="None" display="LR Minspec: Directional limit" muid="89F5B94E0EC8CE89" description="Limits the signed directional component, on a scale of 0-1." />
+
+        <Tunable type="float" name="LightRigMinspecMaxDirectionalToAmbientRatio" class="Tunable" default="None" display="LR Minspec: Max Directional/Ambient ratio" muid="1D7E0A41A99FFEFF" description="Limits the directional color magnitude to a multiple of the ambient magnitude. Higher values allow more darkening of the back side of the object." />
+
+        <Tunable type="float" name="LightRigScale" class="Tunable" default="None" display="Light rig: Brightness scale" muid="335BA1026FCE0BF8" description="Scales the brightness of all light contributions on an object. This is applied before the maximum brightness limit." />
+
+        <Tunable type="float" name="MaximumLightmapTexelIntensity" class="Tunable" default="None" display="General: Maximum lightmap texel intensity" muid="69DA3B6F3CE11C8B" description="Sets a hard limit on the brightness of the lightmap, without renormalization (local effect only, without brightening or darkening the whole room)." />
+
+        <Tunable type="float" name="MaximumRoomBrightestPoint" class="Tunable" default="None" display="General: Maximum brightest point" muid="8651845737DBE824" description="Sets an upper bound on brightness within a room, above which lights are reduced in intensity." />
+
+        <Tunable type="float" name="MinimumRoomBrightestPoint" class="Tunable" default="None" display="General: Minimum brightest point" muid="B931C08C63ED8C36" description="Sets a lower bound on brightness within a room, below which lights are increased in intensity." />
+
+        <Tunable type="float" name="NearbyLightDimming" class="Tunable" default="None" display="General: Nearby Lamp Light Dimming Fraction" muid="6CAB084EE6EA77AA" description="The fraction by which a light is dimmed by incident lamp luminance. The Formula is 1/(1 + factor * Dot(IncidentLight, kLuma)" />
+
+        <Tunable type="float" name="NearbyWindowDimming" class="Tunable" default="None" display="General: Nearby Window Light Dimming Fraction" muid="3B19DCCEAFB593DC" description="The fraction by which a light is dimmed by incident window luminance. The Formula is 1/(1 + factor * Dot(IncidentLight, kLuma)" />
+
+        <TunableTuple name="OpaqueWindowColor" class="TunableVector3" display="Window: Opaque window color" muid="D3BB64D76B48855B" description="Sets the opaque window/door light color.">
+            <Tunable type="float" name="x" class="Tunable" default="None" muid="1C9DA663468ACC98" description="red" />
+            <Tunable type="float" name="y" class="Tunable" default="None" muid="D3456C8E9B02CB0" description="green" />
+            <Tunable type="float" name="z" class="Tunable" default="None" muid="D2C50E554CEA82E2" description="blue" />
+        </TunableTuple>
+
+        <Tunable type="float" name="RugLightmapDimming" class="Tunable" default="None" display="Object: Rug lightmap dimming" muid="325FA2DDA7FE991F" description="Sets the fraction of lightmap light received by a rug." />
+
+        <Tunable type="float" name="SunlightScale" class="Tunable" default="None" display="General: Sunlight scale" muid="FDBF6760D163E338" description="Scales the directional light component of the sun." />
+
+        <Tunable type="float" name="VertexColorScale" class="Tunable" default="None" display="Light rig: Lamp vertex self-illum. scale" muid="9873DEE033EB81B9" description="Scales the amount of self-illumination applied to turned-on lamps through the per-vertex lamp mask in the model." />
+
+        <Tunable type="float" name="WindowAreaConversionFactor" class="Tunable" default="None" display="Window: Area scale factor" muid="3D31B0FB8B08FE5C" description="Scales how much window area affects light from the sky. This is the same as applying a scale to both sunny and far side diffuse brightness." />
+
+        <Tunable type="float" name="WindowDarkSideScale" class="Tunable" default="None" display="Window: Dark-side brightness" muid="25A5E74DA9C0276D" description="Scales the light from the sky coming through the windows facing away from the sun during the day." />
+
+        <Tunable type="float" name="WindowDesaturateSkyColor" class="Tunable" default="None" display="Window: Sky color desaturation" muid="C206CA9AB663BA17" description="Controls saturation of sky color applied through window light." />
+
+        <Tunable type="float" name="WindowSillShadowDistance" class="Tunable" default="None" display="Window: Sill shadow distance" muid="DFCCA96A992A959D" description="Distance at which sky and spill light from a window is attenuated to simulate shadowing from the window sill." />
+
+        <Tunable type="float" name="WindowSpillMultiplier" class="Tunable" default="None" display="Window: Spill scale" muid="330ADD9F492190D7" description="Controls the amount of light emitted out of a window from a lit room at night time." />
+
+        <Tunable type="float" name="WindowSunBrightness" class="Tunable" default="None" display="Window: Sun hotspot brightness" muid="FF40E67E09B3818C" description="Scales the light from the sun coming through the window during the day." />
+
+        <Tunable type="float" name="WindowSunHeading" class="Tunable" default="None" display="Window: Sun heading" muid="5CBF22E0E56A07A7" description="Heading of fixed sun direction for sunlight coming through a window." />
+
+        <Tunable type="float" name="WindowSunPitch" class="Tunable" default="None" display="Window: Sun pitch" muid="7F223124DD9D0077" description="Pitch of fixed sun direction for sunlight coming through a window." />
+
+        <Tunable type="float" name="WindowSunSideScale" class="Tunable" default="None" display="Window: Sun-side brightness" muid="8754FC2FBC4AD99F" description="Scales the light from the sky coming through the windows facing toward the sun during the day." />
+    </Instance>
+</TuningRoot>

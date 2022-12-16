@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="BirthdayPartySituation" module="situations.complex.birthday_party" muid="834FF97743CB1F32" instance_subclasses_only="False" parents="SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="bartender" class="TunableTuple" display="Bartender" muid="A57939CF82B3A63A" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="bartender_pre_reception_role_state" class="TunableReference" display="Bartender Pre Reception Role State" muid="F538156B51A38F25" description="Bartender's role state to prepare drinks and socialize with guests." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="bartender_reception_role_state" class="TunableReference" display="Bartender Reception Role State" muid="EE2D4D09DEEC2E8C" description="Bartender's role state to prepare drinks, socialize, etc. during the reception." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="828359E803F60CCF" description="The SituationJob for the Bartender." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <TunableTuple name="caterer" class="TunableTuple" display="Caterer" muid="F63E32A179F1E8CF" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="caterer_prep_role_state" class="TunableReference" display="Caterer Prep Role State" muid="5B3FA1206861CC67" description="Caterer's role state for preparing cake and meal for guests." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="caterer_serve_role_state" class="TunableReference" display="Caterer Serve Role State" muid="CB442D655C7F9A3E" description="Caterer's role state for serving the guests." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="11B44AAF6B0A16A8" description="The SituationJob for the caterer." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <TunableTuple name="celebrant" class="TunableTuple" display="Celebrant" muid="91A04160636A78FA" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="celebrant_gather_role_state" class="TunableReference" display="Celebrant Gather Role State" muid="8807A8C7649B7147" description="Celebrant's role state before the celebration (gather phase)." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="celebrant_reception_role_state" class="TunableReference" display="Celebrant Reception Role State" muid="5525FFE2AB60C013" description="Celebrant's role state after the celebration (eat, drink, socialize, dance)." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="97422ED2F68FE97D" description="The SituationJob for the celebrant." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <TunableTuple name="entertainer" class="TunableTuple" display="Entertainer" muid="8DD85DA08CF2CA7F" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="entertainer_prep_reception_state" class="TunableReference" display="Entertainer Prep Reception State" muid="A2D4A4DD2754AF61" description="Entertainer's role state before reception." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="entertainer_reception_role_state" class="TunableReference" display="Entertainer Reception Role State" muid="779F275ADA0C67DF" description="Entertainer's role state during reception." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="9593DACC86776563" description="The SituationJob for the entertainer." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <TunableTuple name="guest" class="TunableTuple" display="Guest" muid="A84C267657C6E114" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="guest_gather_impatient_role_state" class="TunableReference" display="Guest Gather Impatient Role State" muid="2CD46991BF52FD0A" description="Guest's role state if it is taking too long for the celebration to start." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="guest_gather_role_state" class="TunableReference" display="Guest Gather Role State" muid="DF137929FD5FA8BF" description="Guest's role state before the celebration (gather phase)." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="guest_reception_role_state" class="TunableReference" display="Guest Reception Role State" muid="AA3B11AC5AE7692" description="Guest's role state after the celebration (now they can eat the cake)." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="2E7E3ECA98548396" description="The SituationJob for the Guests." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <Tunable type="float" name="guests_become_impatient_timeout" class="TunableSimMinute" default="120" display="Guests Become Impatient Timeout" muid="4745A9B464451C43" min="None" max="None" description="If the celebration is not started in this amount of time the guests will grow impatient." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Triggers" />
+
+        <TunableTuple name="start_reception" class="TunableInteractionOfInterest" display="Start Reception" muid="453E8DBCD9851FEC" description="This is a birthday cake interaction where starting this interaction starts &#xA;the cake reception phase." Deprecated="False" filter="0" group="Triggers">
+            <TunableList name="affordances" class="TunableList" display="Affordances" muid="182FB7D4E58D1161" description="The Sim must have started either any affordance in this list or an&#xA;interaction matching one of the tags in this tunable's Tags&#xA;field." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="FBC7CE6D9590B300" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="3B4A945757213810" description="The Sim must have run either an interaction matching one of these&#xA;Tags or an affordance from the list of Affordances in this&#xA;tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="1E2D9E00FF4EF063" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <Deleted name="venue_invitation_message" muid="ACB0E6D621A9C624" />
+
+        <Deleted name="venue_situation_player_job" muid="9CF34B255101EE79" />
+    </Instance>
+</TuningRoot>

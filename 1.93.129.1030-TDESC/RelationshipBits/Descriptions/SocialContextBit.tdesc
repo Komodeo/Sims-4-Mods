@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="relbit" class="SocialContextBit" module="relationships.relationship_bit" muid="D0EBF48306653A68" description="A relationship bit specifically intended to represent social context." instance_needs_reference="True" instance_subclasses_only="False" parents="RelationshipBit" path="RelationshipBits\Descriptions" use_guid_for_reference="True">
+        <Tunable type="float" name="attention_cost" class="Tunable" default="0" display="Attention Cost" muid="AD932BD2F321543D" description="Any Sim in this social context will add this amount to the attention&#xA;cost of any social super interaction they are running." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="size_limit" class="OptionalTunable" default="disabled" display="Size Limit" muid="6C3A8EC2A172EE55" description="If enabled, this bit will only be available if the owner Sim is in a&#xA;social context with the specified number of Sims. If there are more&#xA;Sims than the specified limit, the bit will transform to another&#xA;form, i.e. to a different bit." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="1D379CEC9F56DF11" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="7E279BA52749962E" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="size" class="TunableRange" default="2" display="Size" muid="8638A24804786B62" min="0" max="None" description="The maximum number of Sims that can share a social context&#xA;in order for this bit to be visible." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="relbit" name="transformation" class="TunableReference" display="Transformation" muid="837930FB0AAB7E8D" description="The bit that is going to replace this bit if the size limit&#xA;is violated." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SocialContextBit" />
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

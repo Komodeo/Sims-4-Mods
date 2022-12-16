@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="career_gig" class="DecoratorGig" module="careers.decorator_career_gig" muid="362B2FAD8A412367" description="Tuning specific to a decorator career gig. These are career events&#xA;which gives the sim pay if they complete it." instance_subclasses_only="False" parents="ActiveGig, Gig" path="CareerGigs\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="_decorator_gig_tuning" class="OptionalTunable" default="disabled" display="Decorator Gig Tuning" muid="F6873A544FE50E0" description="Tuning specific to decorator gigs. Leave un-tuned if this gig is&#xA;not a decorator one." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B289DE981239DF2B" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="2A049E033E3C43A8" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="base_score" class="Tunable" default="100" display="Base Score" muid="544E933DEB816B0D" description="Base score to which we will apply all the modifiers and&#xA;then use to get a gig result." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="budget_over_score" class="Tunable" default="1" display="Budget Over Score" muid="B5E83F136DD26FD0" description="Score for going over budget used." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="budget_scoring" class="TunableList" display="Budget Scoring" muid="7E31A07E2670DEFE" description="List of [+/-min %, +/-max %, score] to score the amount of budget used." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="82834A7F27F94662" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="max" class="TunablePercent" default="0" display="Max" muid="7D8CB95C85966419" min="0" max="100" description="Max percentage of budget used." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="min" class="TunablePercent" default="0" display="Min" muid="828057427864F9A4" min="0" max="100" description="Min percentage of budget used." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="score" class="Tunable" default="1" display="Score" muid="A8A8E788BFC4D511" description="Score for the percentage of budget used." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <TunableTuple name="client_filter" class="TunableTuple" display="Client Filter" muid="27104CD34CB15F8B" description="Tuning for client/customer." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="current_client_rel_bit" class="OptionalTunable" default="disabled" display="Current Client Rel Bit" muid="A00D8B9D16DF757A" description="If tuned, this rel bit will be applied on the client." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CFDF8D0C7E5E26D5" />
+                        <Tunable type="relbit" name="enabled" class="TunableReference" display="Enabled" muid="2FDD76570CA243D0" description="Rel bit to apply." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RelationshipBit" />
+                    </TunableVariant>
+                </TunableTuple>
+                <TunableVariant type="None" name="commercial_venue_zone" class="RequiredCareerEventZoneTunableVariant" default="any" display="Commercial Venue Zone" muid="210FD0D30BBF5DE3" description="The commercial zone type for this gig .&#xA;The decorator Sim will automatically travel to this zone&#xA;at the beginning of the work shift." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="any" class="TunableRequiredCareerEventZoneAny" display="Any" muid="16FF28DB360578F6" description="No required career event zone." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="career_customer_lot" class="TunableRequiredCareerEventZoneCustomerLot" display="Career Customer Lot" muid="37B98CC14BEE817C" description="Require career event zone to be the Customer's household for the tuned Career." Deprecated="False" filter="0" group="General">
+                        <Tunable type="career" name="career" class="TunableReference" display="Career" muid="64ADD2009B6CD374" description="The career used to look up the client's lot." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="home_zone" class="TunableRequiredCareerEventZoneHome" display="Home Zone" muid="FC3B72C4347BC21E" description="Require career event zone to be the Sim's home zone." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="lot_description" class="TunableRequiredCareerEventZoneLotDescription" display="Lot Description" muid="FEDB50C48C97C486" description="Specify the required career event zone by lot description." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="house_description" class="OptionalTunable" default="disabled" display="House Description" muid="BF419564B8A51A4C" description="If tuned, this house description will be used for this career event.&#xA;For example, for the acting career loads into the same lot but different&#xA;houses (studio sets). " Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5B06EECBF0C04CEC" />
+                            <Tunable type="housedescription" name="enabled" class="TunableReference" display="Enabled" muid="460EFA3517ABADC5" description="House description used for this career event." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <Tunable type="lotdescription" name="lot_description" class="TunableReference" display="Lot Description" muid="F3C5474A3222F872" description="Lot description of required zone." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="random_lot" class="TunableRequiredCareerEventZoneRandom" display="Random Lot" muid="544CAD697B3EE35C" description="Travel to a random zone, with weighting according to the tuning." Deprecated="False" filter="0" group="General">
+                        <TunableList name="random_weight_terms" class="TunableList" display="Random Weight Terms" muid="7404FE74A23877F0" description="A list of tests to use and the weights to add for each test.&#xA;By default, zones start with a weight of 1.0 and this can be&#xA;increased through these tests." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="7B2AB3204498C567" Deprecated="False" filter="0" group="General">
+                                <Tunable type="bool" name="negate" class="Tunable" default="False" display="Negate" muid="4374DD7C913DFB99" description="If checked, extra weight will be applied to zones that do NOT&#xA;pass this test, instead of zones that do pass." Deprecated="False" filter="0" group="General" />
+                                <TunableVariant type="None" name="test" class="TunableVariant" default="venue_type" display="Test" muid="9223DB879387D1C3" Deprecated="False" filter="0" group="General">
+                                    <TunableTuple name="belongs_to_active_player" class="TunableZoneTestActivePlayer" display="Belongs To Active Player" muid="1B5FF62748A55709" description="A zone test to check if the zone belongs to the active player. " Deprecated="False" filter="0" group="General" />
+                                    <TunableTuple name="is_active_zone" class="TunableZoneTestActiveZone" display="Is Active Zone" muid="1569D9B3D254EC1F" description="A zone test to check if the zone is currently the active zone. " Deprecated="False" filter="0" group="General" />
+                                    <TunableTuple name="is_npc_household" class="TunableZoneTestNpc" display="Is Npc Household" muid="1B6908B2C75BF231" description="A zone test to check if the zone belongs to an NPC household. " Deprecated="False" filter="0" group="General" />
+                                    <TunableTuple name="is_owned_by_any_household" class="TunableZoneTestOwnedByHousehold" display="Is Owned By Any Household" muid="3A94ADE49FD5A7A3" description="A zone test to check if the zone is owned by any household. " Deprecated="False" filter="0" group="General" />
+                                    <TunableTuple name="is_plex" class="TunableZoneTestIsPlex" display="Is Plex" muid="2D100EC911C52449" description="A zone test to check if the zone is a plex. " Deprecated="False" filter="0" group="General" />
+                                    <TunableTuple name="venue_type" class="TunableZoneTestVenueType" display="Venue Type" muid="48F4A7A645C51576" description="A zone test for a specific list of venue types. " Deprecated="False" filter="0" group="General">
+                                        <TunableList name="venues" class="TunableList" display="Venues" muid="36E9683572E3A8CA" description="If the venue is in this list, the test passes." Deprecated="False" filter="0" group="General">
+                                            <Tunable type="venue" class="TunableReference" muid="802CA6E4B01E5191" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                        </TunableList>
+                                    </TunableTuple>
+                                </TunableVariant>
+                                <TunableVariant type="None" name="weight" class="TunableVariant" default="add_weight" display="Weight" muid="8022B16CB9E5994D" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="float" name="add_weight" class="TunableRange" default="1.0" display="Add Weight" muid="C45804781A1065C3" min="0.0" max="None" description="The amount of extra weight to add to the probability of zones&#xA;that pass this test." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable name="forbid" class="TunableExistance" display="Forbid" muid="CEF3C141F956C832" />
+                                </TunableVariant>
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+                <TunableEnum type="DecoratorGigLotType" name="decorator_gig_lot_type" class="TunableEnumEntry" default="RESIDENTIAL" display="Decorator Gig Lot Type" muid="CBB421D7FD26761C" static_entries="careers-career_enums.DecoratorGigLotType" description="The type of lot for this decorator gig this is." Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="DecoratorGigType" name="decorator_gig_type" class="TunableEnumEntry" default="ROOM_RENOVATION" display="Decorator Gig Type" muid="6442807170B4D93" static_entries="careers-career_enums.DecoratorGigType" description="The type of decorator gig this is." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="decorator_gig_type_icon" class="TunableTuple" display="Decorator Gig Type Icon" muid="27C3FCC6EC1CA570" Deprecated="False" filter="0" group="General">
+                    <Tunable type="ResourceKey" name="icon" class="TunableIcon" default="None" display="Icon" muid="DCFFD25B01CD54A4" description="The icon to associate with type of decorator gig." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    <Tunable type="int" name="name" class="TunableLocalizedString" default="0x0" display="Name" muid="AA657AF5556E7B55" description="The name to associate with type of decorator gig." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableEnum type="Tag" name="dependent_situation_tag" class="TunableTag" default="INVALID" display="Dependent Situation Tag" muid="116F5841A920FC97" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Any situation running on the owner of this gig when this&#xA;gig is cleaned up will be destroyed. Use this to cleanup&#xA;decorator related situations that are not directly tied&#xA;to this gig's career event. " Deprecated="False" dynamic_entries_prefix="Situation" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                <Tunable type="int" name="gig_budget_modulo" class="Tunable" default="1" display="Gig Budget Modulo" muid="EFAE55DC663A9DF" description="Number to use to apply a modulo operation to the random &#xA;budget created from the range so it looks like a real budget." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="gig_budget_range" class="TunableTuple" display="Gig Budget Range" muid="98D60F37320F0706" description="Indicates the amount of simoleons the player has to work with&#xA;to complete the decoration. We will choose a random number &#xA;from it at the moment of creating the gig." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="max" class="Tunable" default="0" display="Max" muid="69B1B8A67DFC3136" description="Max for budget." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="min" class="Tunable" default="0" display="Min" muid="AA524EFE952B987B" description="Min for budget." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableVariant type="None" name="gig_short_title" class="OptionalTunable" default="disabled" display="Gig Short Title" muid="21F7A17B6765875E" description="If enabled, the string used as the project title in gig history." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="BB63EDFBF9DD6645" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="214BED3E647E117A" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="individual_gig_score_stat" class="OptionalTunable" default="disabled" display="Individual Gig Score Stat" muid="E41355DA5E1A6B04" description="If enabled, creates statistic used to apply individual gig score to clients." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="ADA309C580FB0B81" />
+                    <Tunable type="statistic" name="enabled" class="TunableReference" display="Enabled" muid="717FDC420E89D90F" description="Statistic used to apply individual gig score to clients." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableList name="new_object_tags" class="TunableTags" display="New Object Tags" muid="95C33E793EC8D9E" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="16C1D58ADA09288F" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Any object bought through BB will get this tag applied to it&#xA;any time the Customer's lot is loaded while this Gig is active.&#xA;These tags do not persist through save/load." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                </TunableList>
+                <Tunable type="int" name="picker_localization_rarity" class="TunableLocalizedString" default="0x0" display="Picker Localization Rarity" muid="CC8AC82875644370" description="The string to show the gig pay on the picker." Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="picker_localization_second_rarity" class="TunableLocalizedString" default="0x0" display="Picker Localization Second Rarity" muid="353D51ED1C29EA5B" description="The string to show the gig budget on the picker." Deprecated="False" filter="0" group="General" />
+                <TunableList name="preference_scoring_weight" class="TunableList" display="Preference Scoring Weight" muid="4B1C3F561558CA8B" description="List of [trait_type, weight] used to weight each hit on the &#xA;gig preferences list. &#xA;trait_type in this case will be Like or Dislike." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="AB45ED3E86552FF2" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="TraitType" name="trait_type" class="TunableEnumEntry" default="PERSONALITY" display="Trait Type" muid="B281B97E5585EE8E" static_entries="traits-trait_type.TraitType" description="The trait type to check." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="weight" class="Tunable" default="1" display="Weight" muid="7F1CBD49282D72B3" description="The relative weight of this trait." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="int" name="preferences_number" class="Tunable" default="0" display="Preferences Number" muid="4FD72C244B133824" description="Number of preferences for this gig." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="restricted_to_level" class="OptionalTunable" default="No_Level_Restrictions" display="Restricted To Level" muid="227CD26DF6903015" description="If enabled, the decorator sim will only be allowed to modify&#xA;the tuned level of the customer's lot." Deprecated="False" filter="0" group="General">
+                    <Tunable name="No_Level_Restrictions" class="TunableExistance" display="No Level Restrictions" muid="702F49D27ACAABA5" />
+                    <TunableVariant type="None" name="Restricted_To_Level" class="TunableVariant" default="specific_floor" display="Restricted To Level" muid="B50ABAE1B2F879CE" description="Number of the level the decorations are restricted to.&#xA;0 is the ground floor, 1 is the second floor, -1 is the&#xA;basement, etc." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="bottom_floor" class="TunableTuple" display="Bottom Floor" muid="FC4A042B052F9EEE" description="Used when the gig wants to add a new floor at the lowest basement level." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="specific_floor" class="TunableTuple" display="Specific Floor" muid="8A1C87E94C3AF576" description="Specify a floor for this gig." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="floor" class="TunableRange" default="0" display="Floor" muid="DB526A82177FC24C" min="-4" max="3" description="The floor for this gig. 0 is the ground floor, 1 is the second floor, -1 is the first&#xA;basement floor, etc." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="top_floor" class="TunableTuple" display="Top Floor" muid="65DC1E1F74D891B1" description="Used when the gig wants to add a new floor at the top-most level." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableVariant>
+                <TunableList name="scoring_results" class="TunableList" display="Scoring Results" muid="3BB2945F901A8487" description="Gig Result based on final score" Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="CCF35DF13FEC5F1A" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="max" class="Tunable" default="0" display="Max" muid="35D1DB581D8E150D" description="Max of the score range for this result." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="min" class="Tunable" default="0" display="Min" muid="D0617790A4403B55" description="Min of the score range for this result." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableEnum type="GigResult" name="result_type" class="TunableEnumEntry" default="SUCCESS" display="Result Type" muid="115E7B8F89C9A1AA" static_entries="careers-career_enums.GigResult" description="The GigResult enum that represents the outcome of the Gig." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <TunableVariant type="None" name="tiles_number_restriction" class="OptionalTunable" default="Restricted_To_Tile_Count" display="Tiles Number Restriction" muid="C935117ABE2124E4" description="If enabled, the decorator sim will only be able to modify the&#xA;tile count of the customer's lot by the tuned amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="No_Tile_Restrictions" class="TunableExistance" display="No Tile Restrictions" muid="33B52A58636D12CD" />
+                    <Tunable type="int" name="Restricted_To_Tile_Count" class="TunableRange" default="0" display="Restricted To Tile Count" muid="52C14F074F50F1DE" min="0" max="None" description="Indicates the number of tiles the player is allowed to add to the lot for this gig. 0 means the&#xA;player can't add any tiles." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableVariant>
+
+        <Deleted name="additional_pay_per_overmax_level" muid="220A5BC73683A21C" />
+
+        <Deleted name="end_of_gig_overmax_notification" muid="62432C9CCB571FDE" />
+
+        <Deleted name="end_of_gig_overmax_rewardless_notification" muid="AA2F5DDD74C46D8A" />
+
+        <TunableVariant type="None" name="gig_assignment_aspiration" class="OptionalTunable" default="disabled" display="Gig Assignment Aspiration" muid="1CFA5662603DF3F6" description="An aspiration to use as the assignment for this gig. The objectives&#xA;of this aspiration" Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="AFF9ADBC7E77E4AF" />
+            <Tunable type="aspiration" name="enabled" class="TunableReference" display="Enabled" muid="2D013F5AC05EE2CA" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="AspirationGig" />
+        </TunableVariant>
+
+        <Deleted name="gig_cast" muid="B1307E2A346583FE" />
+
+        <Deleted name="gig_cast_rel_bit_collection_id" muid="13789D19407C2D5E" />
+
+        <Tunable type="int" name="gig_picker_localization_format" class="TunableLocalizedString" default="0x0" display="Gig Picker Localization Format" muid="3051C6EE2BEC5301" description="String used to format the description in the gig picker." allow_none="True" Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="odd_job_tuning" muid="C35C1C7F7CFCA0AD" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="1CB595D473BB8177" />
+            <Action type="kRemove" old_muid="58283E82A89B19B2" />
+            <Action type="kRemove" old_muid="27C9957051DAC1DE" />
+            <Action type="kRemove" old_muid="5D4843ECFA04D034" />
+            <Action type="kRemove" old_muid="3A063B7E52C52729" />
+            <Action type="kRemove" old_muid="B2C1B01BE0680172" />
+            <Action type="kRemove" old_muid="DB8AD50A53403A46" />
+            <Action type="kRemove" old_muid="9AB37B27C0718825" />
+            <Action type="kRemove" old_muid="D13DCB5A7C8EB054" />
+            <Action type="kRemove" old_muid="81B00DD47110245D" />
+            <Action type="kRemove" old_muid="4ACE7906AB4950C2" />
+            <Action type="kRemove" old_muid="3DDCCAC6953D6C7A" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="F43D4A378A69EF83" />
+            <Action type="kRemove" old_muid="8D9987D07EC62AD7" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="DA3A6DE4030F59BF" new_muid="F6873A544FE50E0" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="4E697FF6514FD92B" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="D2A1C9A461BB0654" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="rabbit_hole" class="RabbitHole" module="rabbit_hole.rabbit_hole" muid="33D9C70F49A4C9D1" description="A rabbit hole. Holds all the information relevant to a type of rabbit hole." instance_needs_reference="True" instance_subclasses_only="False" path="RabbitHoles\Descriptions" use_guid_for_reference="True">
+        <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="16C23DE554E41C08" description="The rabbit hole affordance. This affordance must have a tuned rabbit&#xA;hole liability and must use a rabbit hole exit condition." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="away_action" class="OptionalTunable" default="enabled" display="Away Action" muid="6731E16E3E31DD8A" description="If tuned, an away action for the rabbit holed sim info to run. If&#xA;not tuned, no away actions will be started." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6696E6640164F3D1" />
+            <Tunable type="away_action" name="enabled" class="TunableReference" display="Enabled" muid="A62DFF3611E4FA63" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableList name="exit_conditions" class="TunableList" display="Exit Conditions" muid="3DA306A8205B07F1" description="A list of exit conditions for this rabbit hole. When exit&#xA;conditions are met then the rabbit hole ends." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="AEB9E0D9042E7B76" Deprecated="False" filter="0" group="General">
+                <TunableList name="conditions" class="TunableList" display="Conditions" muid="739C1728F967719D" description="A list of conditions that all must be satisfied for the&#xA;group to be considered satisfied." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" class="TunableRabbitHoleCondition" default="stat_based" muid="7FB2281513736B94" description="A condition that must be satisfied." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="stat_based" class="TunableStatisticCondition" display="Stat Based" muid="4ECEFD5F74BDB455" Deprecated="False" filter="0" group="General">
+                            <Tunable type="bool" name="absolute" class="Tunable" default="True" display="Absolute" muid="B2BBA5683D7AAE4A" description="True = treat the threshold value as an absolute commodity value.  Otherwise, it is relative to the Sim's start value." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="statistic" name="stat" class="TunableReference" display="Stat" muid="D73AA598836DFCEE" description="The commodity we are gaining." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="D58545A41C0148A8" description="A commodity value and comparison that defines the exit condition hits (or hit commodity.maximum)." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="65D8B754E02FE5E9" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="7533AE8F0FFB6856" description="The value of a threshold." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableEnum type="ParticipantType" name="who" class="TunableEnumEntry" default="Actor" display="Who" muid="5FFCD823D18CF973" static_entries="interactions.ParticipantType" description="Who or what to apply this test to" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableVariant>
+                </TunableList>
+                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="77E2D5A78874591F" description="A set of tests. If these tests do not pass, this condition&#xA;will not be attached." filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="go_home_and_attend" class="OptionalTunable" default="disabled" display="Go Home And Attend" muid="48AE9C20C62E3FD0" description="&quot;&#xA;If tuned, this affordance will run when a sim needs to go home to&#xA;attend a rabbit hole. If not tuned, the sim will use the generic&#xA;travel. This only needs to be tuned in cases where we need special&#xA;travel behavior (like different constraints)." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A923481477A5F665" />
+            <Tunable type="interaction" name="enabled" class="TunableReference" display="Enabled" muid="D259802AC8B4D6CE" allow_none="False" Deprecated="False" filter="0" group="General" restrict="GoHomeTravelInteraction" />
+        </TunableVariant>
+
+        <TunableList name="loot_list" class="TunableList" display="Loot List" muid="255519EB2499E3A" description="Loots to apply to rabbit holed sim after they leave the &#xA;rabbit hole. Won't be applied if the rabbit hole is cancelled." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="BC52F58A9EBCFB0D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+        </TunableList>
+
+        <TunableList name="tested_affordances" class="TunableList" display="Tested Affordances" muid="48257C58C7B45D2A" description="A list of test sets to run to choose the affordance to do for this&#xA;rabbit hole. If an affordance is found from this list, the sim will be&#xA;instantiated into this zone if not already and pushed to do the found&#xA;affordance, so tests should fail out if you do not want a sim to move&#xA;zones.&#xA;&#xA;If no affordance is found from this list that pass the&#xA;tests, normal rabbit hole affordance behavior will take over, running&#xA;either 'affordance' if at home or 'go_home_and_attend' if not at home.&#xA;&#xA;These tests are run when Sim is being added to a rabbit hole and also&#xA;on zone spin-up to check if we need to bring this Sim into the new zone to&#xA;put them into the rabbit hole in the new zone." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="82085E79CEBEE439" Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="A78E450B9F67D21C" description="The rabbit hole affordance for this test set. This affordance must have a tuned rabbit&#xA;hole liability and must use a rabbit hole exit condition. " allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="DB69C67421A50EE8" description="A set of tests that if passed will make this the affordance that is&#xA;run for the rabbit hole." filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableEnum type="RabbitHoleTimingPolicy" name="time_tracking_policy" class="TunableEnumEntry" default="COUNT_ACTIVE_TIME" display="Time Tracking Policy" muid="ADDF781AE6B1E9CD" static_entries="rabbit_hole-rabbit_hole.RabbitHoleTimingPolicy" description="This option determines how a rabbit hole will keep track of &#xA;duration:&#xA;COUNT_ALL_TIME - This rabbit hole's duration will begin when this&#xA;rabbit hole is first pushed. This should be used if the rabbit&#xA;hole's duration is supposed to point to a specific time. For&#xA;instance, if I know a sim has an audition between 1pm-2pm, I will&#xA;push them into a rabbit hole at 1pm with a duration of 1 hour. Now&#xA;imagine my sim is busy at class till 1:45pm. When they are done &#xA;with class, they should go to the audition. At this point, there&#xA;should be 15 minutes left in the audition and not 1 hour left. This&#xA;is because we decided to COUNT_ALL_TIME for the audition rabbit &#xA;hole.&#xA;COUNT_ACTIVE_TIME - This rabbit hole's duration will begin when the&#xA;sim enters it. Continuing from the above example, the audition&#xA;rabbit hole would end at 2:45pm and not 2:00pm if it had been tuned&#xA;to COUNT_ACTIVE_TIME since it only became active at 1:45pm." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

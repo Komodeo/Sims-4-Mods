@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="weather_event" class="WeatherEvent" module="weather.weather_event" muid="D3C6F44BE560515" description="Weather Event tunable resource." instance_needs_reference="True" instance_subclasses_only="False" path="WeatherEvents\Descriptions" use_guid_for_reference="True">
+        <TunableList name="cloud_states" class="TunableMapping" display="Cloud States" muid="814F6934BB094E10" min="1" mapping_key="key" mapping_value="value" description="The types of clouds for this weather event." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="F54671B313032409" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="CloudType" name="key" class="TunableEnumEntry" default="PARTLY_CLOUDY" display="Key" muid="D4A74FBF4A20C6F2" static_entries="weather-weather_enums.CloudType" description="The type of clouds." Deprecated="False" filter="0" group="General" invalid_entries="STRANGE,VERY_STRANGE" />
+                <TunableTuple name="value" class="TunableWeatherElementTuple" display="Value" muid="3DBD6EA4858A6705" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="end_delay" class="TunableSimMinute" default="1" display="End Delay" muid="7F25EC5668C29F29" min="0" max="None" description="Delay in sim minutes before element ends.  Used if existing weather is more&#xA;severe than new weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="end_rate" class="Tunable100ConvertRange" default="3.3" display="End Rate" muid="63F6BA8D0837F4E5" min="0" max="None" description="Rate at which ramp doown occurs.  Used if existing weather is more&#xA;severe than new weather." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="range" class="TunableInterval" display="Range" muid="81EEBAF10BEFB469" description="Range." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="100" display="Lower Bound" muid="8D5D6A9187ECDF74" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="100" display="Upper Bound" muid="2A57D6C1269FD199" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <Tunable type="float" name="start_delay" class="TunableSimMinute" default="1" display="Start Delay" muid="3CAF2AA182C3C76F" min="0" max="None" description="Delay in sim minutes before change starts.  Used if new weather is more&#xA;severe than existing weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="start_rate" class="Tunable100ConvertRange" default="3.3" display="Start Rate" muid="729AAE26B141F976" min="0" max="None" description="Rate at which ramp up occurs.  Used if new weather is more&#xA;severe than existing weather." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="lightning" class="OptionalTunable" default="disabled" display="Lightning" muid="AEE8468DAD18570E" description="The amount of lightning for this weather event." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="28FD2645D854772" />
+            <TunableTuple name="enabled" class="TunableWeatherElementTuple" display="Enabled" muid="25FC7507C373E6E4" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="end_delay" class="TunableSimMinute" default="1" display="End Delay" muid="FBBAFEE7C4A73DE8" min="0" max="None" description="Delay in sim minutes before element ends.  Used if existing weather is more&#xA;severe than new weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="end_rate" class="Tunable100ConvertRange" default="3.3" display="End Rate" muid="74EBA490BE20D9DC" min="0" max="None" description="Rate at which ramp doown occurs.  Used if existing weather is more&#xA;severe than new weather." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="range" class="TunableInterval" display="Range" muid="913EAAE474B1FA1" description="Range." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="40" display="Lower Bound" muid="A0D30A116A3084B8" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="60" display="Upper Bound" muid="F87576EF17774AF9" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <Tunable type="float" name="start_delay" class="TunableSimMinute" default="1" display="Start Delay" muid="A75CD8D08560009C" min="0" max="None" description="Delay in sim minutes before change starts.  Used if new weather is more&#xA;severe than existing weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="start_rate" class="Tunable100ConvertRange" default="3.3" display="Start Rate" muid="4F3897E923D40DB" min="0" max="None" description="Rate at which ramp up occurs.  Used if new weather is more&#xA;severe than existing weather." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="precipitation" class="OptionalTunable" default="disabled" display="Precipitation" muid="287848FD31BD90A3" description="The amount/type of precipitation for this weather event." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="14817EB891B67B2C" />
+            <TunableTuple name="enabled" class="TunableWeatherElementTuple" display="Enabled" muid="67E9C74255F79BEF" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="end_delay" class="TunableSimMinute" default="1" display="End Delay" muid="EA2AA2275A68F15E" min="0" max="None" description="Delay in sim minutes before element ends.  Used if existing weather is more&#xA;severe than new weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="end_rate" class="Tunable100ConvertRange" default="3.3" display="End Rate" muid="8EF1C45ED4695CA0" min="0" max="None" description="Rate at which ramp doown occurs.  Used if existing weather is more&#xA;severe than new weather." Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="PrecipitationType" name="precipitation_type" class="TunableEnumEntry" default="RAIN" display="Precipitation Type" muid="8ECFA2BFA317C7C2" static_entries="weather-weather_enums.PrecipitationType" description="The type of precipitation." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="range" class="TunableInterval" display="Range" muid="E168A252B58F03C5" description="Range." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="40" display="Lower Bound" muid="6052DA542ECB9FB1" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="60" display="Upper Bound" muid="A99040EA1B48C3EA" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <Tunable type="float" name="start_delay" class="TunableSimMinute" default="1" display="Start Delay" muid="9CB2972A25655CE9" min="0" max="None" description="Delay in sim minutes before change starts.  Used if new weather is more&#xA;severe than existing weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="start_rate" class="Tunable100ConvertRange" default="3.3" display="Start Rate" muid="EC58D8D523F2B4B1" min="0" max="None" description="Rate at which ramp up occurs.  Used if new weather is more&#xA;severe than existing weather." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="prescribed_weather_type" class="OptionalTunable" default="disabled" display="Prescribed Weather Type" muid="E6C396CC52BE4667" description="The types of prescribed weather this forecast counts as" Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8F2C2E70DB1228A4" />
+            <TunableTuple name="enabled" class="TuningPrescribedWeatherType" display="Enabled" muid="F835F8611CB31A89" Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="blizzard" class="Tunable" default="False" display="Blizzard" muid="D8EC85D5CE063D9B" description="If checked this forecast will be unavailable if blizzard is disabled" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="rain" class="Tunable" default="False" display="Rain" muid="C23CF95911B91C76" description="If checked this forecast will be unavailable if rain is disabled" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="snow" class="Tunable" default="False" display="Snow" muid="C63BA34A890A65CD" description="If checked this forecast will be unavailable if snow is disabled" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="storm" class="Tunable" default="False" display="Storm" muid="2BCA58F08D1E877D" description="If checked this forecast will be unavailable if storm is disabled" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="thunder_snow_storms" class="Tunable" default="False" display="Thunder Snow Storms" muid="8E2B4820DB1DBCFC" description="If checked this forecast will be unavailable if thunder snow storms are disabled in the options menu." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableEnum type="Temperature" name="temperature" class="TunableEnumEntry" default="WARM" display="Temperature" muid="8C52B4B013E90035" static_entries="weather-weather_enums.Temperature" description="The temperature." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="thunder" class="OptionalTunable" default="disabled" display="Thunder" muid="8FFDA2FDB0804E9E" description="The amount of thunder for this weather event." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="58822CE6EBE4FE12" />
+            <TunableTuple name="enabled" class="TunableWeatherElementTuple" display="Enabled" muid="49132CDE3653B451" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="end_delay" class="TunableSimMinute" default="1" display="End Delay" muid="76F78EBECD9BBCC1" min="0" max="None" description="Delay in sim minutes before element ends.  Used if existing weather is more&#xA;severe than new weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="end_rate" class="Tunable100ConvertRange" default="3.3" display="End Rate" muid="721B24CB2C345EED" min="0" max="None" description="Rate at which ramp doown occurs.  Used if existing weather is more&#xA;severe than new weather." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="range" class="TunableInterval" display="Range" muid="D579BA48F773705F" description="Range." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="40" display="Lower Bound" muid="36DFF24C3AE94F1F" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="60" display="Upper Bound" muid="4022131D78EA2583" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <Tunable type="float" name="start_delay" class="TunableSimMinute" default="1" display="Start Delay" muid="820875379F3F9ED3" min="0" max="None" description="Delay in sim minutes before change starts.  Used if new weather is more&#xA;severe than existing weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="start_rate" class="Tunable100ConvertRange" default="3.3" display="Start Rate" muid="41C98FF4DB3D0E33" min="0" max="None" description="Rate at which ramp up occurs.  Used if new weather is more&#xA;severe than existing weather." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="wind" class="OptionalTunable" default="disabled" display="Wind" muid="15EFDBCA6F0F579A" description="The amount of wind for this weather event." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="23AC919730BA476B" />
+            <TunableTuple name="enabled" class="TunableWeatherElementTuple" display="Enabled" muid="FAEC0EE8E0E40E7F" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="end_delay" class="TunableSimMinute" default="1" display="End Delay" muid="C2F02F33C5B9EF99" min="0" max="None" description="Delay in sim minutes before element ends.  Used if existing weather is more&#xA;severe than new weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="end_rate" class="Tunable100ConvertRange" default="3.3" display="End Rate" muid="E2A1DE35662CEA9" min="0" max="None" description="Rate at which ramp doown occurs.  Used if existing weather is more&#xA;severe than new weather." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="range" class="TunableInterval" display="Range" muid="66B982769606ED0E" description="Range." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="lower_bound" class="Tunable100ConvertRange" default="40" display="Lower Bound" muid="A1BE8B0A229A19A8" min="0" max="None" description="The lower bound of the interval." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="upper_bound" class="Tunable100ConvertRange" default="60" display="Upper Bound" muid="B512A9FBFA98656D" min="None" max="100" description="The upper bound of the interval." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <Tunable type="float" name="start_delay" class="TunableSimMinute" default="1" display="Start Delay" muid="798283808E0E4E47" min="0" max="None" description="Delay in sim minutes before change starts.  Used if new weather is more&#xA;severe than existing weather." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="start_rate" class="Tunable100ConvertRange" default="3.3" display="Start Rate" muid="1CAA0A4D67735266" min="0" max="None" description="Rate at which ramp up occurs.  Used if new weather is more&#xA;severe than existing weather." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

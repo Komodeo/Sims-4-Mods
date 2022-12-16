@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="call_to_action" class="CallToAction" module="call_to_action.call_to_action" muid="4CFBC2F8906D733" description="A specific Call To Action.  (Highlight designed to attract players attention&#xA;and get him to perform an interaction on the specified object)" instance_subclasses_only="False" path="CallsToAction\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="_color" class="TunableColor" default="none" display="Color" muid="33C7523508AA2CAB" description="The color of the call to action." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="hex" class="TunableColorHex" display="Hex" muid="55C6A51A25F80002" description="A color." Deprecated="False" filter="0" group="General">
+                <Tunable type="str" name="hex_code" class="Tunable" default="#FFFFFFFF" display="Hex Code" muid="D8B2B77E30FD914" description="An ARGB color in hex, same as one would use in HTML. A leading '0x' or '#' is allowed but not required. You can omit the alpha, in which case opaque is assumed." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableEnum type="Color" name="name" class="TunableEnumEntry" default="WHITE" display="Name" muid="F1425163ED5C7709" static_entries="sims4-color.Color" Deprecated="False" filter="0" group="General" />
+            <Tunable name="none" class="TunableExistance" display="None" muid="85FC31976A5ACD4" />
+            <TunableTuple name="rgb" class="TunableColorRGBA" display="Rgb" muid="A661404B3D80D55D" description="A color." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="58D3DA46D18FFEC9" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="259FFFD3B60D59C" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="72CF7145385FCD05" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="582D7217735856A5" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="int" name="_max_highlighted_objects" class="TunableRange" default="0" display="Max Highlighted Objects" muid="2CC042E8B0009DE9" min="0" max="None" description="The maximum number of objects that will be highlighted by this call to action.&#xA;0 means no limit." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="_on_active_lot" class="Tunable" default="True" display="On Active Lot" muid="7F0BBC61FF15C0AF" description="Whether or not objects on active lot should be highlighted." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="_on_open_street" class="Tunable" default="True" display="On Open Street" muid="B0B8668F15AEECE7" description="Whether or not objects on open street should be highlighted." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="float" name="_pulse_frequency" class="TunableRange" default="1.0" display="Pulse Frequency" muid="A7A81F480F08EFFF" min="0.1" max="None" description="The frequency at which the highlight pulses." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="_sim_filter" class="OptionalTunable" default="disabled" display="Sim Filter" muid="4F46435CD806BF1A" description="Filter to select one or more sims to recieve the CTA." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="3F3001209E02106A" />
+            <Tunable type="sim_filter" name="enabled" class="TunableReference" display="Enabled" muid="9CB98252B759BBDF" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="TunableSimFilter" />
+        </TunableVariant>
+
+        <TunableList name="_sim_tests" class="TunableList" display="Sim Tests" muid="130B2D6DFC0A749D" description="Tests used to determine which sims to allow in the call to action." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="18A34BAE971FB321" description="A combination of a test and information to choose a sim as the test target." Deprecated="False" filter="0" group="General">
+                <Tunable type="snippet" name="scenario_role" class="TunableReference" display="Scenario Role" muid="25917623118B46D1" description="When set and Target Type is SCENARIO_SIM this will be the role used to determine&#xA;what sim to target for the test." allow_none="True" Deprecated="False" filter="0" group="General" restrict="ScenarioRole" />
+                <TunableEnum type="CallToActionActorType" name="target_type" class="TunableEnumEntry" default="ACTIVE_SIM" display="Target Type" muid="ADDFEBF28CB740DB" static_entries="call_to_action-call_to_action.CallToActionActorType" description="How to determine which sim should be chosen as the target of this test." Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="test" class="TunableCallToActionTestVariant" default="none" display="Test" muid="430FD639D275BF5D" description="A tunable test support for choosing sims to be highlighted" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="has_buff" class="TunableBuffTest" display="Has Buff" muid="CF19D5942F05F02F" description="Test whether or not a participant has or doesn't have specific buffs." Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="apply_whitelist_on_individual_basis" class="Tunable" default="True" display="Apply Whitelist On Individual Basis" muid="CA69C10706A82233" description="If checked, will require that each target has at least one&#xA;whitelisted buff. If unchecked, will require only a single target to&#xA;have at least one whitelisted trait." Deprecated="False" filter="0" group="General" />
+                        <TunableList name="blacklist" class="TunableSet" display="Blacklist" muid="692843FE5DAE0E25" description="The Sim must not have any buff in this list to pass the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="buff" class="TunableReference" muid="42FA9812D8963BBC" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                        <TunableList name="blacklist_tags" class="TunableTags" display="Blacklist Tags" muid="2A71C834A2229D40" Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="EB2C745EFCE029FD" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The Sim must not have any buff that matches any of these tags to pass the test." Deprecated="False" dynamic_entries_prefix="buff" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                        </TunableList>
+                        <TunableEnum type="ParticipantType" name="subject" class="TunableEnumEntry" default="Actor" display="Subject" muid="6272BF4BABDCD004" static_entries="interactions.ParticipantType" description="Who or what to apply this test to." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="732DE35AF8459727" description="Reason of failure." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8A5BF13FDACD2DB8" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="8D744498E5EC0DB0" description="Reason of failure." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="whitelist" class="OptionalTunable" default="disabled" display="Whitelist" muid="80FC12624EDEA286" description="If enabled, participant will test for buff's on the whitelist." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7BD23B04B9ACE53C" />
+                            <TunableList name="enabled" class="TunableSet" display="Enabled" muid="2B79D0A5B781E8D4" description="The participant must have at least one buff in this list to pass the&#xA;test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="buff" class="TunableReference" muid="ECF2BCDB1C1CA522" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableVariant>
+                        <TunableVariant type="None" name="whitelist_tags" class="OptionalTunable" default="disabled" display="Whitelist Tags" muid="CA9016E551420761" description="If enabled, participant will test for buffs which match tags in the defined set." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="1AA32804843EC703" />
+                            <TunableList name="enabled" class="TunableTags" display="Enabled" muid="BCD76A0713A5B54B" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="5D3676363523E182" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The participant must have at least one buff which matches a tag in this list to pass the test." Deprecated="False" dynamic_entries_prefix="buff" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                            </TunableList>
+                        </TunableVariant>
+                    </TunableTuple>
+                    <TunableTuple name="has_job" class="TunableSituationJobTest" display="Has Job" muid="141582041AAAA8C8" description="Require the tuned participant to have a specific situation job.&#xA;If multiple participants, ALL participants must have the required&#xA;job to pass." Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="negate" class="Tunable" default="False" display="Negate" muid="A334C27943473D07" description="If checked then the test result will be reversed, so it will&#xA;test to see if they are not in a job or not in role state&#xA;that has matching tags." Deprecated="False" filter="0" group="General" />
+                        <TunableList name="role_tags" class="TunableSet" display="Role Tags" muid="FA64CE8D9760389E" description="The  participant must have a job that matches the role_tags or&#xA;have the situation_job." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="4AFC5E784402701A" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                        <TunableList name="situation_jobs" class="TunableSet" display="Situation Jobs" muid="EA230110B4DD3AAF" description="The participant must have this job in this list or a job that&#xA;matches the role_tags." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <Tunable type="situation_job" class="TunableReference" muid="B43C72D216572C94" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                        <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="A17D1E113C303264" description="Reason of failure." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="199C7B0DA4560AF0" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="EC66A30B770CD648" description="Reason of failure." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                    </TunableTuple>
+                    <Tunable name="none" class="TunableExistance" display="None" muid="8B4BE5D7A30C7F2C" />
+                    <TunableTuple name="relationship" class="TunableRelationshipTest" display="Relationship" muid="98C2C8CFAE96FC0C" description="Gate availability by a relationship status." Deprecated="False" filter="0" group="General">
+                        <Tunable type="bool" name="invert_num_relations" class="Tunable" default="False" display="Invert Num Relations" muid="273E7564FFB86633" description="If checked then we will check that your Num Relations is less than or&#xA;equal to the value rather than the other way around." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="num_relations" class="Tunable" default="0" display="Num Relations" muid="41BA322C96C401C8" description="Number of Sims with specified relationships required to pass,&#xA;default(0) is all known relations.&#xA;&#xA;If value set to 1 or greater, then test is looking at least that&#xA;number of relationship to match the criteria.&#xA;&#xA;If value is set to 0, then test will pass if relationships being&#xA;tested must match all criteria of the test to succeed.  For&#xA;example, if interaction should not appear if any relationship&#xA;contains a relationship bit, this value should be 0." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="prohibited_relationship_bits" class="TunableTuple" display="Prohibited Relationship Bits" muid="3D9FD61530057BE2" Deprecated="False" filter="0" group="General">
+                            <TunableList name="match_all" class="TunableSet" display="Match All" muid="81641DCEAFD0A02F" description="All of these relationship bits must match to fail the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="C2B83351EB626C6C" allow_none="False" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableList name="match_any" class="TunableSet" display="Match Any" muid="3AF1100D4624CA33" description="If any of these relationship bits match the test will fail." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="242B661D219405AE" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableTuple name="relationship_score_interval" class="TunableInterval" display="Relationship Score Interval" muid="E9D51F117D7F78CF" description="The range that the relationship score must be within in order for&#xA;this test to pass." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableRange" default="-100.0" display="Lower Bound" muid="6843114DFFA86817" min="-100.0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableRange" default="100.0" display="Upper Bound" muid="A635D2F6CA9C2070" min="None" max="100.0" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="required_relationship_bits" class="TunableTuple" display="Required Relationship Bits" muid="3D8D53E97486296C" Deprecated="False" filter="0" group="General">
+                            <TunableList name="match_all" class="TunableSet" display="Match All" muid="D1042761B44EB01A" description="All of these relationship bits must be present to pass the&#xA;test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="8E16509314C3657B" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                            <TunableList name="match_any" class="TunableSet" display="Match Any" muid="C00E3D196DFD98BE" description="Any of these relationship bits will pass the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="relbit" class="TunableReference" muid="E0F913732FBBD1E4" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableTuple>
+                        <TunableEnum type="RelationshipTestEvents" name="test_event" class="TunableEnumEntry" default="AllRelationshipEvents" display="Test Event" muid="1196244B4DAD6F6" static_entries="relationships-relationship_tests.RelationshipTestEvents" description="The event that we want to trigger this instance of the tuned test&#xA;on." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="test_incest" class="TunableVariant" default="disabled" display="Test Incest" muid="BADAF7BC769563FA" description="Test for incest status. Test passes if this matches the two Sim's&#xA;incest status." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D557D9EA22A93641" />
+                            <Tunable name="is incestuous" class="TunableExistance" display="Is Incestuous" muid="D4EECAF88D6121DA" />
+                            <Tunable name="is not incestuous" class="TunableExistance" display="Is Not Incestuous" muid="1670C690D7C0DB03" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="CE254AEB089D7D1C" description="Reason of failure." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B79A56E270770D94" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="8E082A0583228323" description="Reason of failure." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <Tunable type="statistic" name="track" class="TunableReference" display="Track" muid="46DC8CD8907130EA" description="If set, the test will use the relationship score between sims for&#xA;this track. If unset, the track defaults to the global module&#xA;tunable REL_INSPECTOR_TRACK." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RelationshipTrack" />
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="_tags" class="TunableTags" display="Tags" muid="A0D417EDFD857BAB" Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="A9CD12CF98C0A302" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The set of tags that are used to determine which objects to highlight." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+        </TunableList>
+
+        <Tunable type="float" name="_thickness" class="TunableRange" default="0.002" display="Thickness" muid="69C3A78784028141" min="0.001" max="0.005" description="The thickness of the highlight." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="_tutorial_text" class="OptionalTunable" default="disabled" display="Tutorial Text" muid="B3D0CFCF5A1A6D9C" description="Text for a tutorial call to action.  If this is enabled, the&#xA;CTA will be a tutorial CTA with the specified text." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C1B0D8813D129AE4" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="1043AFB74AE0D1F2" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="highlighted_object_vfx" class="OptionalTunable" default="disabled" display="Highlighted Object Vfx" muid="ADD0D314159B2DC1" description="If enabled, we will play an effect on the objects highlighted by this call to action." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="389D18F0BCEF278E" />
+            <TunableVariant type="None" name="enabled" class="TunablePlayEffectVariant" default="no_effect" display="Enabled" muid="75C4D74A0E35A7CE" description="Effect to play on the objects when they are highlighted." Deprecated="False" filter="0" group="General">
+                <Tunable name="no_effect" class="TunableExistance" display="No Effect" muid="ED13A83A74E63616" />
+                <TunableTuple name="play_effect" class="TunablePlayEffect" display="Play Effect" muid="FC63283C53669EAD" description="Distributable Primitive-like object (it supports the running/stop/write API)&#xA;that represents a visual effect parented to a game object.&#xA;&#xA;Call start() to start the effect and stop() to stop it." Deprecated="False" filter="0" group="General">
+                    <Tunable type="str" name="effect_name" class="Tunable" default="" display="Effect Name" muid="58EAFD8E214FB138" description="The name of the effect to play." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="joint_name" class="OptionalTunable" default="Slot" display="Joint Name" muid="EBCFC01181CA5ECB" description="Specify if the visual effect is attached to a slot and, if so, which&#xA;slot." Deprecated="False" filter="0" group="General">
+                        <Tunable name="Current_Position" class="TunableExistance" display="Current Position" muid="8DD5E9D832BCEA01" />
+                        <Tunable type="str" name="Slot" class="TunableStringHash32" default="_FX_" display="Slot" muid="A35305573C463DA" description="The name of the slot this effect is attached to." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="bool" name="play_immediate" class="Tunable" default="False" display="Play Immediate" muid="662F8B7C05357345" description="If checked, this effect will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. VFX will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="play_multiple_effects" class="TunablePlayMultipleEffects" display="Play Multiple Effects" muid="A474411538514849" description="Play multiple visual effects." Deprecated="False" filter="0" group="General">
+                    <TunableList name="vfx_list" class="TunableList" display="Vfx List" muid="55F4CBB404279BEF" description="A list of effects to play" Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunablePlayEffect" muid="CAEEE3EFE0361204" description="A single effect to play." Deprecated="False" filter="0" group="General">
+                            <Tunable type="str" name="effect_name" class="Tunable" default="" display="Effect Name" muid="46AAD8371BC4D6E7" description="The name of the effect to play." Deprecated="False" filter="0" group="General" />
+                            <TunableVariant type="None" name="joint_name" class="OptionalTunable" default="Slot" display="Joint Name" muid="479689A9EE7A7A47" description="Specify if the visual effect is attached to a slot and, if so, which&#xA;slot." Deprecated="False" filter="0" group="General">
+                                <Tunable name="Current_Position" class="TunableExistance" display="Current Position" muid="17A51BCC23B05484" />
+                                <Tunable type="str" name="Slot" class="TunableStringHash32" default="_FX_" display="Slot" muid="5FCBB0B6408AF6F5" description="The name of the slot this effect is attached to." Deprecated="False" filter="0" group="General" />
+                            </TunableVariant>
+                            <Tunable type="bool" name="play_immediate" class="Tunable" default="False" display="Play Immediate" muid="31C89BE0DF580513" description="If checked, this effect will be triggered immediately, nothing&#xA;will block.&#xA;&#xA;ex. VFX will be played immediately while &#xA;the Sim is routing or animating." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableVariant>
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="F5DF9C01097D6B91" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

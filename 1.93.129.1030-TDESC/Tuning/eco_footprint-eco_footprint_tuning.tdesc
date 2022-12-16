@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="eco_footprint.eco_footprint_tuning" muid="9A248A244C35C9DB">
+        <Class name="EcoFootprintTunables" muid="D799EF7A7AF23997">
+            <TunableTuple name="ECO_FOOTPRINT_STATE_DATA" class="TunableTuple" display="Eco Footprint State Data" muid="8A2AB4278F3990AF" description="Tuning that defines the different Eco Footprint States,&#xA;their effects, and the thresholds on the lot/street footprint&#xA;statistics that determine when a street or lot is considered green,&#xA;neutral, or industrial." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="additional_footprint_change_on_state_change" class="TunableRange" default="0" display="Additional Footprint Change On State Change" muid="80105086E1117DA0" min="0" max="None" description="A value that is multiplied by the direction of the street &#xA;footprint's convergence and added to the street footprint&#xA;whenever the state changes. The purpose of this value is to&#xA;prevent rapid flickering between states when the street eco &#xA;footprint value is borderline by nudging the eco footprint further&#xA;in its current direction." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="eco_footprint_states" class="TunableMapping" display="Eco Footprint States" muid="66BB6453B490242" mapping_key="Eco Footprint State Type" mapping_value="Eco Footprint State" description="A mapping from EcoFootprintStateType to EcoFootprintState." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="6473A43FBB85ACD5" Deprecated="False" filter="0" group="General">
+                        <Tunable type="snippet" name="Eco Footprint State" class="TunableReference" display="Eco Footprint State" muid="8301D7B1D9C66CE5" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="EcoFootprintState" />
+                        <TunableEnum type="EcoFootprintStateType" name="Eco Footprint State Type" class="TunableEnumEntry" default="NEUTRAL" display="Eco Footprint State Type" muid="FF968BDB34C874B0" static_entries="eco_footprint-eco_footprint_enums.EcoFootprintStateType" description="An EcoFootprintStateType." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="int" name="green_threshold" class="Tunable" default="-400" display="Green Threshold" muid="6C6678C738210B50" description="The number at or below which a street or lot is considered&#xA;green." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="industrial_threshold" class="Tunable" default="400" display="Industrial Threshold" muid="781CD5FE39B8466D" description="The number at or above which a street or lot is considered&#xA;industrial." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableList name="ECO_FOOTPRINT_UI_TUNABLES" class="TunableMapping" display="Eco Footprint Ui Tunables" muid="BA3BA699AA588ACA" mapping_key="key" mapping_value="value" description="Mapping of ECO_FOOTPRINT state to UI tunables." Deprecated="False" export_modes="client_binary" filter="0" group="UI" mapping_class="EcoFootprintUITuningMapping">
+                <TunableTuple class="TunableTuple" muid="D9B900ED3BB83B05" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="EcoFootprintStateType" name="key" class="TunableEnumEntry" default="NEUTRAL" display="Key" muid="2DD42121ACAB276C" static_entries="eco_footprint-eco_footprint_enums.EcoFootprintStateType" Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="EcoFootprintStateTuningTuple" display="Value" muid="A0DF76D07FD907DF" Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="HUD_tooltip_description_text" class="TunableLocalizedString" default="0x0" display="Hud Tooltip Description Text" muid="88308C4FD70A8E80" description="Tooltip description text for the eco footprint tooltip for this eco footprint state.  This tooltip is&#xA;displayed when mousing over the TimeControls widget in live mode." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="ResourceKey" name="icon" class="TunableIconAllPacks" default="None" display="Icon" muid="B7C46235A2553012" description="Icon associated with this eco footprint state." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                        <Tunable type="int" name="name_text" class="TunableLocalizedString" default="0x0" display="Name Text" muid="6150C53C743F7999" description="Name text for this eco footprint state." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="street_descriptor_tuning" class="StreetDescriptorTuningTuple" display="Street Descriptor Tuning" muid="76DE5E0EBB4086B6" description="Tunables associated with eco footprint street descriptors.  Street Descriptors are displayed on the map&#xA;when mousing over a street in the eco footprint toggle mode." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="background_color" class="TunableColorRGBA" display="Background Color" muid="4F9B0F201C8F716D" description="Street descriptor background color for this eco footprint state." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="B8D85DE85177D5F3" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="6A73455E47D08846" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="431ABAD121273DD7" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="61081776605E8C28" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <Tunable type="int" name="description_text" class="TunableLocalizedString" default="0x0" display="Description Text" muid="E4B08D113A7EE874" description="Street descriptor description text for this eco footprint state.  " Deprecated="False" filter="0" group="General" />
+                            <TunableTuple name="description_text_color" class="TunableColorRGBA" display="Description Text Color" muid="5764EC456900F49C" description="Street descriptor description text color for this eco footprint state." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="17271B031B090DEE" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="1B88BBDCB0264120" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="A1BB6FF58A749255" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="487FBD0B75858B3B" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableTuple name="name_text_color" class="TunableColorRGBA" display="Name Text Color" muid="C602FE078327C65B" description="Street descriptor name text color for this eco footprint state." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="AA03651C397FC86F" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="46CA059D9B516BBC" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="E5E190EBACC63240" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="9AD73E0E2EB39991" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                        <TunableTuple name="street_highlight_color" class="TunableColorRGBA" display="Street Highlight Color" muid="375D9A4D3598F069" description="Street highlight color displayed in the eco footprint toggle mode on the map for this eco footprint state." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="ECF63CE6DD898311" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="E744BF02F77A8FFF" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="65077C67C7BC6BB2" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="11DAAFFB873B2AF9" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="statistic" name="LOT_FOOTPRINT" class="TunableReference" display="Lot Footprint" muid="58C0522526261FDD" description="A reference to the lot-level statistic. The aggregate of all lot &#xA;footprints on a street will determine the convergence point of&#xA;the street's eco footprint. " allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Commodity" />
+
+            <TunableTuple name="STREET_CONVERGENCE_UPDATE_TUNING" class="TunableTuple" display="Street Convergence Update Tuning" muid="BB4913EE49203ED" description="Tuning that determines how the street footprint convergence is&#xA;calculated. " Deprecated="False" filter="0" group="General">
+                <TunableList name="convergence_rate_tuning" class="TunableMapping" display="Convergence Rate Tuning" muid="C24410DE79BBFF22" min="2" mapping_key="key" mapping_value="value" description="Mapping that maps the convergence direction to modifiers to apply&#xA;to the rate of convergence when converging in that direction." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="AD47034B314B086E" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="EcoFootprintDirection" name="key" class="TunableEnumEntry" default="AT_CONVERGENCE" display="Key" muid="7C80054C92847E8" static_entries="eco_footprint-eco_footprint_enums.EcoFootprintDirection" description="An EcoFootprintDirection." Deprecated="False" filter="0" group="General" invalid_entries="AT_CONVERGENCE" />
+                        <TunableTuple name="value" class="TunableTuple" display="Value" muid="4B394F688DA3381E" description="Tuple for modifiers to apply." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="per_lot_modifiers" class="TunableTunableMultiplier" display="Per Lot Modifiers" muid="9E3906AD1789FA3D" description="Tested multipliers applied on a per lot basis to the&#xA;convergence rate of the street's&#xA;eco footprint.  Picked Zone ID will be the zone_id of the&#xA;zone in question." Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="BEAECC9CEBDD4AFE" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="8E807C7CF7049CE3" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple class="TunableTuple" muid="B24877BD852350F0" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="A892954ED798CD95" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                        <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="E8A93CEAD0E7503F" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+                <TunableList name="played_lot_weight" class="TunableCurve" display="Played Lot Weight" muid="7B5FF47EEA4CBB3E" description="A curve that defines the impact of a played lot on the street &#xA;footprint's convergence relative to unplayed lots.&#xA;&#xA;The way we define a played lot is any lot with a household&#xA;that has been played. Unplayed lots are everything else.&#xA;&#xA;The input to the curve is the percentage of played lots on the&#xA;street. The output should be a value between 0 and 1 that &#xA;weights the relative impact of played lots." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableVector2" muid="190392BCBD0CD745" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="268F1989267DD5E" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="F5D120783CAC668A" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <TunableTuple name="tested_sums" class="TunableTestedSum" display="Tested Sums" muid="FD5D50A09B36F461" description="Tested sums added to the convergence point of the street's eco&#xA;footprint.&#xA;&#xA;These are added after the tested multipliers are applied to the&#xA;convergence point. " Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="base_value" class="Tunable" default="0" display="Base Value" muid="F0332BAEBA7A4DF5" description="The basic value to return if no modifiers are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="modifiers" class="TunableList" display="Modifiers" muid="A77118FBAB77161C" description="A list of modifiers to add to Base Value." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="4CAF617C93C4C11E" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="modifier" class="Tunable" default="0" display="Modifier" muid="293AECB3A65BCE42" description="The value to apply add to Base Value if the associated&#xA;tests pass. Can be negative" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="27F727107E1918D8" description="A series of tests that must pass in order for the modifier&#xA;to be applied." filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+                <TunableTuple name="update_interval" class="TunableTimeSpan" display="Update Interval" muid="4D7116220BD235FA" description="How often the street footprint's convergence is recalculated&#xA;in sim hours." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="days" class="TunableRange" default="0" display="Days" muid="CD5C97C4A4538639" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="hours" class="TunableRange" default="1" display="Hours" muid="545ABAB6393F6036" min="0" max="23" description="Number of hours" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="minutes" class="TunableRange" default="0" display="Minutes" muid="C19BA5F3DDF5C108" min="0" max="59" description="Number of minutes" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+
+            <Tunable type="statistic" name="STREET_FOOTPRINT" class="TunableReference" display="Street Footprint" muid="53FC03ABE22D7470" description="A reference to the commodity that will control the eco footprint&#xA;state. The street footprint commodity converges toward the&#xA;aggregate of the lot footprints. " allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Commodity" />
+        </Class>
+    </Module>
+</TuningRoot>

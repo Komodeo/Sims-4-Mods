@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.attractors.attractor_manager_mixin" muid="2826099FF0B89FC6">
+        <Class name="AttractorManagerMixin" muid="E3C6F568321F52D5">
+            <TunableList name="ATTRACTOR_OBJECT_TAGS" class="TunableSet" display="Attractor Object Tags" muid="7D92B8F87C0089AF" description="One or more tags that indicate an object is a type of attractor point.&#xA;We use attractor points to push Sims near things and reference specific&#xA;geography in the world." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="1CDEF28A6363BDF7" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A specific tag." Deprecated="False" dynamic_entries_prefix="AtPo" filter="0" group="General" invalid_entries="INVALID" />
+            </TunableList>
+
+            <TunableList name="SPAWN_POINT_ATTRACTORS" class="TunableMapping" display="Spawn Point Attractors" muid="7A8C7A78F0642712" mapping_key="spawn point tag" mapping_value="attractor point definition" description="Mapping from spawn point tags to attractor objects so we can create&#xA;attractor points at spawn points." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="6F9DE7A57538C003" Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" name="attractor point definition" class="TunableReference" display="Attractor Point Definition" muid="26A133D85BAE8C2E" description="The object we want to create on the Spawn Point." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableEnum type="Tag" name="spawn point tag" class="TunableEnumEntry" default="INVALID" display="Spawn Point Tag" muid="E50C24D7839ED6E4" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag on the spawn point." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

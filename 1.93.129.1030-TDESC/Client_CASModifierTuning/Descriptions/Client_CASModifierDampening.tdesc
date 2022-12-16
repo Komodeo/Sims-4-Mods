@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="casmodifiertuning" class="Client_CASModifierDampening" module="casmodifiertuning.Client_CASModifierDampening" muid="92E9C7F71B018C3E" description="Controls the dampening applied on on modifiers" export_modes="client_binary,server_binary" path="Client_CASModifierTuning\Descriptions">
+        <TunableList name="Modifiers" class="TunableList" display="ModifierList" muid="C5A503FF4597CF5A" description="List of modifiers">
+            <TunableTuple name="ModifierData" class="Client_CASModifierDampening.ModifierData" muid="4512A03B4AE6A865" description="Parameters for a single modifier.">
+                <Tunable type="float" name="BonyLimit" class="Tunable" default="2.0" muid="D93ECCC44FF594DF" description="Maximum combined amount of the modifier and the bony physique value.  Default is 2.0 (both modifier and physique can be at 1.0 - undampened).  Minimum is 1.0 (At a physique value of 1.0, the modifier value is forced to 0.0)." />
+                <Tunable type="float" name="FitLimit" class="Tunable" default="2.0" muid="354CAD98F81C14AB" description="Maximum combined amount of the modifier and the fit physique value.  Default is 2.0 (both modifier and physique can be at 1.0 - undampened).  Minimum is 1.0 (At a physique value of 1.0, the modifier value is forced to 0.0)." />
+                <Tunable type="float" name="HeavyLimit" class="Tunable" default="2.0" muid="F3C752E72BAF03E1" description="Maximum combined amount of the modifier and the heavy physique value.  Default is 2.0 (both modifier and physique can be at 1.0 - undampened).  Minimum is 1.0 (At a physique value of 1.0, the modifier value is forced to 0.0)." />
+                <Tunable type="float" name="LeanLimit" class="Tunable" default="2.0" muid="142ADC8430178873" description="Maximum combined amount of the modifier and the lean physique value.  Default is 2.0 (both modifier and physique can be at 1.0 - undampened).  Minimum is 1.0 (At a physique value of 1.0, the modifier value is forced to 0.0)." />
+                <Tunable type="str" name="ModifierName" class="Tunable" default="modifier_ name" muid="FDA83931A9A5A6AC" description="Modifier name.  This must be prefixed with the name of the .modifiers.xml where this modifier is defined.  For example: 'yfHeadModifier_Brows_Arched' or 'ymHeadBelly_Big'." binary_type="HashCode64" />
+                <TunableList name="SculptLimits" class="TunableList" display="SculptList" muid="51B4B525250802E8" description="List of sculpts that dampen the modifier">
+                    <TunableTuple name="SculptLimit" class="Client_CASModifierDampening.SculptLimitData" muid="E0CB18937717E8AF" description="Dampening amount for a single sculpt.">
+                        <Tunable type="float" name="Limit" class="Tunable" default="1.0" muid="E42682F69EA0F04C" min="0" max="1" description="Maximum value that the modifier can have when this sculpt is present.  Default is 1.0 (no dampening).  Minimum is 0.0 (modifier is fully dampened with this sculpt)." />
+                        <Tunable type="float" name="MinValue" class="Tunable" default="0.0" muid="1A42282A390E71F9" min="0" max="1" description="Minimum value that the modifier can have when this sculpt is present." />
+                        <Tunable type="str" name="SculptName" class="Tunable" default="sculpt_ name" muid="A95385FB64F906FA" description="Sculpt name.  This must be prefixed with the name of the .sculpts.xml where this sculpt is defined.  For example: 'yfHeadSculpt_Eyes_European05'." binary_type="HashCode64" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableEnum type="OccultType" name="OccultType" class="TunableEnumEntry" default="HUMAN" display="Occult Type" muid="71AA3A8D9579AADC" static_entries="sims-occult-occult_enums.OccultType" description="The occult type this modifier tuning is specific to." group="Occult" pack_safe="true" />
+
+        <TunableEnum type="SpeciesExtended" name="Species" class="TunableEnumEntry" default="HUMAN" display="Species" muid="44B2F0DF903FD771" static_entries="sims-sim_info_types.SpeciesExtended" description="The species this modifier tuning is specific to." export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

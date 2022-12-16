@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.global_gender_preference_tuning" muid="1F8EF8420195D686">
+        <Class name="GenderPreference" muid="C7C7AA87A9C63CF" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="BISEXUAL" muid="6B3F569384EEB706" enum_value="3" />
+
+            <EnumItem name="HETEROSEXUAL" muid="577839EEB8F96AE7" enum_value="1" />
+
+            <EnumItem name="HOMOSEXUAL" muid="A97FDE9ED2AE6DED" enum_value="2" />
+
+            <EnumItem name="LIKES_NEITHER" muid="193D71F88222B5CC" enum_value="0" />
+        </Class>
+
+        <Class name="SexualityStatus" muid="AF29A846CDF3E274" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="EXPLORING" muid="63576EBE30311E58" enum_value="1" />
+
+            <EnumItem name="NOT_EXPLORING" muid="4A8B6B4088EED19A" enum_value="0" />
+        </Class>
+
+        <Class name="GenderPreferenceType" muid="9F47D6632D76ECEC" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="INVALID" muid="DEF582444646BBDB" enum_value="0" />
+
+            <EnumItem name="ROMANTIC" muid="8A704A2DF4AE01AD" enum_value="1" />
+
+            <EnumItem name="WOOHOO" muid="4879035AD90D49F" enum_value="2" />
+        </Class>
+
+        <Class name="GlobalGenderPreferenceTuning" muid="36A6F48145DD59BF">
+            <Tunable type="float" name="ENABLE_AUTOGENERATION_SAME_SEX_PREFERENCE_THRESHOLD" class="Tunable" default="1.0" display="Enable Autogeneration Same Sex Preference Threshold" muid="71A9D406D23D9C08" description="A value that, once crossed, indicates the player's allowance of same-&#xA;sex relationships with townie auto-generation." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="ENABLED_AUTOGENERATION_EXPLORING_SEXUALITY_WEIGHTS" class="TunableList" display="Enabled Autogeneration Exploring Sexuality Weights" muid="B37E8DB5D9140AAF" description="An alternative weightings list for the weighted random choice of sexuality&#xA;exploration after a romantic same-sex relationship has been kindled." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="C891A015B2EA7522" description="A mapping between whether we're exploring sexuality and the desired weight." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SexualityStatus" name="exploring_sexuality" class="TunableEnumEntry" default="EXPLORING" display="Exploring Sexuality" muid="AA46E0A7DA2FFECE" static_entries="sims-global_gender_preference_tuning.SexualityStatus" description="Whether Sim should be exploring or not exploring their sexuality." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="weight" class="Tunable" default="0" display="Weight" muid="F35499417F084115" description="The weight to denote the percentage of NPCs we want to exist with this trait." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="ENABLED_AUTOGENERATION_SAME_SEX_PREFERENCE_WEIGHTS" class="TunableList" display="Enabled Autogeneration Same Sex Preference Weights" muid="BE7355F5B4534341" description="An alternative weightings list for the weighted random choice of sexual&#xA;preference after a romantic same-sex relationship has been kindled." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="2E5168232F83B678" description="A mapping between gender and desired weight." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="GenderPreference" name="gender_preference" class="TunableEnumEntry" default="LIKES_NEITHER" display="Gender Preference" muid="2767CD4E212731EF" static_entries="sims-global_gender_preference_tuning.GenderPreference" description="The gender to index the gender preference to." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="weight" class="Tunable" default="0" display="Weight" muid="799ECDE315AE8B1B" description="The weight to denote the percentage of NPCs we want to exist with this gender preference." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="EXPLORING_SEXUALITY_TRAITS_MAPPING" class="TunableMapping" display="Exploring Sexuality Traits Mapping" muid="52C6206DFD1A8988" mapping_key="key" mapping_value="value" description="A mapping between the exploring enum to expected traits for easy lookup." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="A5DA386BEAE6C823" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SexualityStatus" name="key" class="TunableEnumEntry" default="EXPLORING" display="Key" muid="8BA24CF60F057674" static_entries="sims-global_gender_preference_tuning.SexualityStatus" description="Whether Sim should be exploring or not exploring their sexuality." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="trait" name="value" class="TunableReference" display="Value" muid="75F96B039B0B0CB1" description="The matching trait representative of exploring or not exploring sexuality." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="EXPLORING_SEXUALITY_WEIGHTS" class="TunableList" display="Exploring Sexuality Weights" muid="3687AA8619315132" description="A weightings list for the weighted random choice of exploring sexuality." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="5F055F0F6C7D61B7" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SexualityStatus" name="exploring_sexuality" class="TunableEnumEntry" default="EXPLORING" display="Exploring Sexuality" muid="F56746A0776C40DA" static_entries="sims-global_gender_preference_tuning.SexualityStatus" description="Whether Sim should be exploring or not exploring their sexuality." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="weight" class="Tunable" default="0" display="Weight" muid="BE8F0DD70AA6D6C" description="The weight to denote the percentage of NPCs we want to exist with this trait." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="trait" name="FEMALE_CLOTHING_PREFERENCE_TRAIT" class="TunableReference" display="Female Clothing Preference Trait" muid="547012B1FF9209E1" description="The trait that signifies that this sim prefers to wear female clothing." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="GENDER_PREFERENCE" class="TunableMapping" display="Gender Preference" muid="FCDFDBEF4786255A" mapping_key="key" mapping_value="value" description="A mapping between gender and the gender preference statistic for easy lookup." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="6EC19FBA0B9394FD" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Gender" name="key" class="TunableEnumEntry" default="MALE" display="Key" muid="3FE462A7FD8C3A8D" static_entries="sims-sim_info_types.Gender" description="The gender to index the gender preference to." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="statistic" name="value" class="TunableReference" display="Value" muid="BB3A5CD5762A2025" description="The statistic that represents the matching gender preference." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="GENDER_PREFERENCE_MAPPING" class="TunableMapping" display="Gender Preference Mapping" muid="4F9FA63431CB22CD" mapping_key="key" mapping_value="value" description="A mapping between gender preference and matching orientation for easy lookup&#xA;(e.g. a heterosexual female Sim will be attracted to only male Sims.)" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="9F7CA95762FB328B" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="GenderPreference" name="key" class="TunableEnumEntry" default="LIKES_NEITHER" display="Key" muid="898680DB1E852D02" static_entries="sims-global_gender_preference_tuning.GenderPreference" description="The gender preference to match attraction to." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableMapping" display="Value" muid="75D0DBB52B17EA68" mapping_key="key" mapping_value="value" description="Mapping between gender of a particular orientation and their preferences." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="5DE48829D163FB4B" Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="Gender" name="key" class="TunableEnumEntry" default="MALE" display="Key" muid="EF660DB1F747A250" static_entries="sims-sim_info_types.Gender" description="The gender of the &quot;actor.&quot;" Deprecated="False" filter="0" group="General" />
+                            <TunableList name="value" class="TunableSet" display="Value" muid="9D7F4CAEB91F6C1C" Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Gender" class="TunableEnumEntry" default="MALE" muid="A5B0124803323146" static_entries="sims-sim_info_types.Gender" description="Which genders we expect this Sim with this preference to be attracted to." Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="float" name="GENDER_PREFERENCE_THRESHOLD" class="Tunable" default="0" display="Gender Preference Threshold" muid="F8BD89A2C1639C12" description="The threshold in which this sim will consider having an appropriate&#xA;gender preference. Note that being GREATER THAN OR EQUAL TO this &#xA;threshold will indicate the Sim has an attraction to the respective &#xA;gender and will have the appropriate attraction trait, whereas LESS THAN &#xA;will indicate the opposite (that they have the NotAttracted trait)." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="GENDER_PREFERENCE_WEIGHTS" class="TunableList" display="Gender Preference Weights" muid="2A61FC4F65A5F302" description="A weightings list for the weighted random choice of sexual preference." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="9CDEDFF487B2957C" description="A mapping between gender and the gender preference statistic for easy lookup." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="GenderPreference" name="gender_preference" class="TunableEnumEntry" default="LIKES_NEITHER" display="Gender Preference" muid="F3D891C85A2CD0C6" static_entries="sims-global_gender_preference_tuning.GenderPreference" description="The gender to index the gender preference to." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="weight" class="Tunable" default="0" display="Weight" muid="C344038528C7E76D" description="The weight to denote the percentage of NPCs we want to exist with this gender preference." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="trait" name="MALE_CLOTHING_PREFERENCE_TRAIT" class="TunableReference" display="Male Clothing Preference Trait" muid="57BD28DF7199B05" description="The trait that signifies that this sim prefers to wear male clothing." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="ROMANTIC_PREFERENCE_TRAITS_MAPPING" class="TunableMapping" display="Romantic Preference Traits Mapping" muid="B7E323D3E7F81136" mapping_key="key" mapping_value="value" description="A mapping between gender and the romantic orientation traits for easy lookup." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="CA1841FD9E7A8294" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Gender" name="key" class="TunableEnumEntry" default="MALE" display="Key" muid="3495104401092615" static_entries="sims-sim_info_types.Gender" description="The gender to index the attraction trait to." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="1C4DF5BCE1EA181B" description="A tuple of traits representing that the Sim is attracted and not attracted, respectively." Deprecated="False" filter="0" group="General">
+                        <Tunable type="trait" name="is_attracted_trait" class="TunableReference" display="Is Attracted Trait" muid="8C98C2A226913891" description="Reference to the trait that denotes that the Sim is attracted to this gender." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="trait" name="not_attracted_trait" class="TunableReference" display="Not Attracted Trait" muid="C792920EB3A3799F" description="Reference to the trait that denotes that the Sim is not attracted to this gender." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="WOOHOO_PREFERENCE_TRAITS_MAPPING" class="TunableMapping" display="Woohoo Preference Traits Mapping" muid="8367973F82FFF1C6" mapping_key="key" mapping_value="value" description="A mapping between gender and the woohoo orientation traits for easy lookup." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="D624B83CB3B96C33" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Gender" name="key" class="TunableEnumEntry" default="MALE" display="Key" muid="90D3D1E66C2ACD83" static_entries="sims-sim_info_types.Gender" description="The gender to index the attraction trait to." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="2F9C18CCF8E3C457" description="A tuple of traits representing that the Sim is attracted and not attracted, respectively." Deprecated="False" filter="0" group="General">
+                        <Tunable type="trait" name="is_attracted_trait" class="TunableReference" display="Is Attracted Trait" muid="AEDF18558461EE38" description="Reference to the trait that denotes that the Sim is attracted to this gender." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="trait" name="not_attracted_trait" class="TunableReference" display="Not Attracted Trait" muid="361F5A791FAF9CE6" description="Reference to the trait that denotes that the Sim is not attracted to this gender." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="233F2FF6DDC307C7" new_muid="ECE069715011E2BF" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="DB40B76E4EA92708" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="10EFFD8A47933BF7" new_muid="AA46E0A7DA2FFECE" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="2283F7C4D1AEF0A7" />
+            <Action type="kRename" old_muid="1B8840C2338ACA57" new_muid="B7E323D3E7F81136" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

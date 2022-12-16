@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="GlobalPolicy" module="global_policies.global_policy_tuning" muid="16C1214F14B04975" description="Tuning for Global Policies." instance_needs_reference="True" instance_subclasses_only="False" parents="DisplaySnippet" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <Tunable type="int" name="decay_days" class="TunableRange" default="5" display="Decay Days" muid="74718D9BC331D63A" min="0" max="None" description="The number of days it will take for the global policy to revert to&#xA;not-complete. Decay begins when the policy is completed." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="global_policy_effects" class="TunableList" display="Global Policy Effects" muid="81BC6035E21310F3" description="Actions to apply when the global policy is enacted." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" class="GlobalPolicyEffectVariants" default="shut_off_utilities" muid="FDFF6B97E42F6706" description="The action to apply." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="bill_reduction" class="TunableBillReduction" display="Bill Reduction" muid="1CB28F7C4646A243" description="An effect that, when turned on, modifies the bill amount for all households&#xA;by the tuned percentage." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="percent_reduction" class="TunableTuple" display="Percent Reduction" muid="90A2E38B75E561D7" description="A mapping of bill reduction reason to percent reduction. Reasons for bill&#xA;reduction can be added to sims.bills tuning." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="reduction_amount" class="TunablePercent" default="50" display="Reduction Amount" muid="5BB8E5B8E27BB6B6" min="0" max="100" description="Percent by which all household bills are reduced." Deprecated="False" filter="0" group="General" />
+                        <TunableEnum type="BillReductionEnum" name="reduction_reason" class="TunableEnumEntry" default="GlobalPolicy_ControlInvasiveSpecies" display="Reduction Reason" muid="D22C67C8BF1E7F2E" dynamic_entries="sims-bills.BillReductionEnum._elements" static_entries="sims-bills.BillReductionEnum" description="Reason for bill reduction." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+                <TunableTuple name="shut_off_utilities" class="TunableScheduleUtilityShutOff" display="Shut Off Utilities" muid="28B0372F64298FAD" description="An effect that when turned on, uses the tuned weekly schedule to have a daily&#xA;chance to turn off and on the tuned utility.  " Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="chance" class="OptionalTunable" default="disabled" display="Chance" muid="84A22E3627295D76" description="The percent chance that, after an effect is turned on, that utility&#xA;will turn off day-to-day. " Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="1C6C0E38483DF947" />
+                        <Tunable type="float" name="enabled" class="TunablePercent" default="10" display="Enabled" muid="EE71914ADF9EC6EF" min="0" max="100" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableTuple name="schedule_data" class="TunableWeeklySchedule" display="Schedule Data" muid="E54FCFC97C91E5F6" description="The information to schedule points during the week that&#xA;the Global Policy Effect, if enacted, will turn off the tuned&#xA;utility." Deprecated="False" filter="0" group="General">
+                        <TunableList name="schedule_entries" class="TunableList" display="Schedule Entries" muid="AB510DA1E0F0A829" description="A list of event schedules. Each event is a mapping of days of&#xA;the week to a start_time and duration." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableScheduleEntry" muid="C69678585D48371D" description="A schedule. Define availability for days of the week. For the set of&#xA;specified days, define an hour of the day and a duration, in hours.&#xA;Optionally, specified if the start time is random within the tuned window." Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="days_available" class="TunableAvailableDays" display="Days Available" muid="1E18D72F827CF853" description="Which days of the week to include" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="bool" name="0 SUNDAY" class="Tunable" default="False" display="0 Sunday" muid="B589DD38CF0D10C7" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="1 MONDAY" class="Tunable" default="False" display="1 Monday" muid="8352B867BFF63DD9" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="2 TUESDAY" class="Tunable" default="False" display="2 Tuesday" muid="9D4305D018C89197" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="3 WEDNESDAY" class="Tunable" default="False" display="3 Wednesday" muid="94FEF3DD0AC94DF6" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="4 THURSDAY" class="Tunable" default="False" display="4 Thursday" muid="5F357097FC1DC52E" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="5 FRIDAY" class="Tunable" default="False" display="5 Friday" muid="3DD9668A6C83F6A7" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="6 SATURDAY" class="Tunable" default="False" display="6 Saturday" muid="4ED00F0AB2CE34F3" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                                <Tunable type="float" name="duration" class="Tunable" default="1.0" display="Duration" muid="A36DA6C10408DBE7" description="Duration of this work session in hours." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="random_start" class="Tunable" default="False" display="Random Start" muid="3BDB20C14902CC52" description="If checked, this schedule will have a random start time in the tuned&#xA;window each time." Deprecated="False" filter="0" group="General" />
+                                <TunableEnum type="CareerShiftType" name="schedule_shift_type" class="TunableEnumEntry" default="ALL_DAY" display="Schedule Shift Type" muid="4698439C39D2FE30" static_entries="careers-career_enums.CareerShiftType" description="Shift Type for the schedule, this will be used for validations." Deprecated="False" filter="0" group="General" />
+                                <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="7E5304DAA5D4A372" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="int" name="hour" class="TunableRange" default="9" display="Hour" muid="42E9A80E05A7B2AA" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="10654E9C9D331452" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableList name="utilities" class="TunableList" display="Utilities" muid="AFF4BE2D4C7FB12" description="A list of utilities to shut off." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableShutOffUtilityModifier" muid="421EC3C100B00EA" description="A modifier for shutting off a household utility." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="UtilityShutoffReasonPriority" name="shutoff_reason" class="TunableEnumEntry" default="NO_REASON" display="Shutoff Reason" muid="880BA9E0B4A4D816" dynamic_entries="sims-household_utilities-utility_types.UtilityShutoffReasonPriority._elements" static_entries="sims-household_utilities-utility_types.UtilityShutoffReasonPriority" description="The priority of our shutoff reason. This determines how important&#xA;the shutoff tooltip is relative to other reasons the utility is&#xA;being shutoff." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="shutoff_tooltip" class="TunableLocalizedString" default="0x0" display="Shutoff Tooltip" muid="7BB9C4A032F3BA87" description="A tooltip to show when an interaction cannot be run due to this&#xA;utility being shutoff." Deprecated="False" filter="0" group="General" />
+                            <TunableEnum type="Utilities" name="utility" class="TunableEnumEntry" default="POWER" display="Utility" muid="516521D1B7911521" dynamic_entries="sims-household_utilities-utility_types.Utilities._elements" static_entries="sims-household_utilities-utility_types.Utilities" description="The household utility we want to modify." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableList>
+
+        <TunableList name="loot_on_complete" class="TunableList" display="Loot On Complete" muid="B638A1B24A73271B" description="A list of loot actions that will be run when the policy is complete." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="357F9DFD1518E6C1" description="The loot action will target the active Sim." allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+        </TunableList>
+
+        <TunableList name="loot_on_decay" class="TunableList" display="Loot On Decay" muid="8CA12AF2C5AA8AC" description="A list of loot actions that will be run when the policy decays." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="3E4BBE29A80B6547" description="The loot action will target the active Sim." allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+        </TunableList>
+
+        <Tunable type="int" name="progress_initial_value" class="TunableRange" default="0" display="Progress Initial Value" muid="F194283B6A2969CB" min="0" max="None" description="The initial value of global policy progress. Progress begins when&#xA;the policy is first set to in-progress." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="int" name="progress_max_value" class="TunableRange" default="100" display="Progress Max Value" muid="6B963D64BD83AE75" min="1" max="None" description="The max value of global policy progress. Once the policy progress&#xA;reaches the max threshold, global policy state becomes complete." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

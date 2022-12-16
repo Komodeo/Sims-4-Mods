@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="HolidaySituation" module="holidays.holiday_situation" muid="DFE44291F902DFD" description="Holiday situation is the user-facing situation for the holiday." instance_subclasses_only="False" parents="SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <Deleted name="_buff" muid="9201F2F274031C0C" />
+
+        <Deleted name="_cost" muid="63864C007081B7FA" />
+
+        <Deleted name="_icon" muid="EC8575AC5A537B77" />
+
+        <Deleted name="_implies_greeted_status" muid="5E979B64582D7AE3" />
+
+        <Deleted name="_initiating_sim_tests" muid="BCB31F5758598654" />
+
+        <Deleted name="_main_goal_visibility_test" muid="A4C1E332619ECD51" />
+
+        <TunableTuple name="_progress_meter_settings" class="TunableValueBasedSituationMeterData" display="Progress Meter Settings" muid="778D41A82CA5D8C2" description="The meter used to track the holiday score. The min and max value&#xA;of this meter is locked to 0-100 as the score is reported to UI as&#xA;a percentage based on the number of traditions a Sim cares about." Deprecated="False" filter="0" group="Situation">
+            <TunableVariant type="None" name="_display_text" class="OptionalTunable" default="disabled" display="Display Text" muid="74C905343FF934FA" description="Optional meter display text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="BFD2FAF1B25A862F" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="CB704BB35D79AB" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="int" name="_max_value" class="Tunable" default="100" display="Max Value" muid="2D2FB36EC92930BD" description="Maximum value of the meter." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="_min_value" class="Tunable" default="0" display="Min Value" muid="FD9D5FBFC32F608" description="Minimum value of the meter." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <TunableList name="_threshold_data" class="TunableList" display="Threshold Data" muid="C12B11E403A8856F" description="List of thresholds for this meter." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="62D01D3912A1B622" Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="color" class="TunableColorSnippet" default="literal" display="Color" muid="A6841D69392A5596" description="Color of meter at this specified threshold.&#xA;&#xA;Note: alpha value is not used.&#xA; (This may be tuned in place here using 'literal' or as a reference to a Color tuning snippet.)" Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="literal" class="TunableColor" default="none" display="Literal" muid="E51FAF79F469A46B" description="A color." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="hex" class="TunableColorHex" display="Hex" muid="6097EDFA6F3F61A7" description="A color." Deprecated="False" filter="0" group="General">
+                                <Tunable type="str" name="hex_code" class="Tunable" default="#FFFFFFFF" display="Hex Code" muid="EDC0038F52A8F4AD" description="An ARGB color in hex, same as one would use in HTML. A leading '0x' or '#' is allowed but not required. You can omit the alpha, in which case opaque is assumed." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <TunableEnum type="Color" name="name" class="TunableEnumEntry" default="WHITE" display="Name" muid="E6A576A1168A3BFA" static_entries="sims4-color.Color" Deprecated="False" filter="0" group="General" />
+                            <Tunable name="none" class="TunableExistance" display="None" muid="A4F3FB7272A8F571" />
+                            <TunableTuple name="rgb" class="TunableColorRGBA" display="Rgb" muid="F609BE9133B4A54D" description="A color." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="a" class="TunableRange" default="255" display="A" muid="3236F41E0AD1BE76" min="0" max="255" description="alpha value (0-255) (0 is transparent, 255 is opaque)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="b" class="TunableRange" default="255" display="B" muid="D4FD899D22911616" min="0" max="255" description="blue value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="g" class="TunableRange" default="255" display="G" muid="1AD1813F4076A607" min="0" max="255" description="green value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="r" class="TunableRange" default="255" display="R" muid="9FD889BD1EC95EE3" min="0" max="255" description="red value (0-255)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableVariant>
+                        <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="9F1C78F94DB9EADA" description="A reference to a Color tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Color" />
+                    </TunableVariant>
+                    <Tunable type="int" name="threshold_value" class="Tunable" default="0" display="Threshold Value" muid="372BEEBCB7821F4A" description="Value at or above which this threshold exists. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableVariant type="None" name="_tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="981B774B2B34B64A" description="Optional tooltip text." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="44D04A5B0D167FB9" />
+                <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="6994EFFD27F6EAB3" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+        </TunableTuple>
+
+        <Deleted name="_relationship_between_job_members" muid="D054DCCBE7C5D116" />
+
+        <Deleted name="_resident_job" muid="234AC6A7A7193625" />
+
+        <Deleted name="category" muid="B290BE9996E59218" />
+
+        <Deleted name="compatible_venues" muid="62F5EDDCB830C2B7" />
+
+        <Deleted name="creation_ui_option" muid="FA2142A35DE3C4BE" />
+
+        <Deleted name="duration" muid="59CA7E6902C0126E" />
+
+        <Deleted name="entitlement" muid="E70A87F1B608D3C0" />
+
+        <Deleted name="exclusivity" muid="9CC89FEDD39818EE" />
+
+        <Deleted name="force_invite_only" muid="C508A567666549BC" />
+
+        <Deleted name="goal_button_text" muid="6ED150EAB9DEA784" />
+
+        <Deleted name="goal_sub_text" muid="6300C4256E49BFD3" />
+
+        <Deleted name="highlight_first_incomplete_minor_goal" muid="48112A73A2CC0B53" />
+
+        <TunableTuple name="holiday_situation_job_and_role_state" class="TunableSituationJobAndRoleState" display="Holiday Situation Job And Role State" muid="566917603518FFCD" description="The Situation Job and Role State for the Sim celebrating the holiday." Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="role_state" class="TunableReference" display="Role State" muid="2FC4FBD51E686296" description="A role state the sim assigned to the job will perform" allow_none="False" Deprecated="False" filter="0" group="General" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="DE7A2FBF0A744458" description="A reference to a SituationJob that can be performed at this Situation." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Deleted name="job_display_ordering" muid="323C251017E1C0E8" />
+
+        <Deleted name="main_goal" muid="9BAE140736C29BCF" />
+
+        <Deleted name="main_goal_audio_sting" muid="BD4F20531E03FE31" />
+
+        <Deleted name="max_participants" muid="E7482D5CE3B95E63" />
+
+        <Deleted name="minor_goal_chains" muid="78300637E113F726" />
+
+        <Deleted name="recommended_job_object_notification" muid="465F1D5FB710EE64" />
+
+        <Deleted name="recommended_job_object_text" muid="38BFD11BB9A477A" />
+
+        <Deleted name="screen_slam_bronze" muid="133BB8B5B0AB8E1F" />
+
+        <Deleted name="screen_slam_gold" muid="946EB30FEDB1DCE9" />
+
+        <Deleted name="screen_slam_no_medal" muid="84A6CE530BB53C80" />
+
+        <Deleted name="screen_slam_silver" muid="4030436DD5F3FA5C" />
+
+        <Deleted name="situation_display_type_override" muid="867C5820E37E8D09" />
+
+        <Deleted name="targeted_situation" muid="C14850E7275635D0" />
+
+        <Deleted name="venue_invitation_message" muid="270CC32366516979" />
+
+        <Deleted name="venue_situation_player_job" muid="87D38E3F9A18D0B7" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="DAC9E943CECC8E23" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

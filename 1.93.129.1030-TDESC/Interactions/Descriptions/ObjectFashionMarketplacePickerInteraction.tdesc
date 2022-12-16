@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="ObjectFashionMarketplacePickerInteraction" module="interactions.picker.object_fashion_marketplace_picker_interaction" muid="10F65906979913AF" description="A picker for buying objects from the fictional object fashion marketplace." instance_needs_reference="True" instance_subclasses_only="False" parents="PurchasePickerInteraction, PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <Tunable type="int" name="default_description_text" class="TunableLocalizedString" default="0x0" display="Default Description Text" muid="B471551AE5933C3D" description="Description text for picker rows that are available. Tokens:&#xA;0: String, the username of the fictional seller." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <TunableList name="fashion_tags" class="TunableSet" display="Fashion Tags" muid="18BE75C864143986" min="1" description="Tags that determine what recipes will provide objects that appear&#xA;in this picker." Deprecated="False" filter="0" group="Picker Tuning" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="AED4F7E63ED7ED92" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="recipe_fashion" filter="0" group="General" invalid_entries="INVALID" />
+        </TunableList>
+
+        <Tunable type="int" name="items_available" class="TunableRange" default="1" display="Items Available" muid="3A1097580412150" min="1" max="None" description="The number of items available in the picker." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Deleted name="purchase_list_option" muid="7E410B14F514C907" />
+
+        <TunableEnum type="Tag" name="purchased_tag" class="TunableTag" default="INVALID" display="Purchased Tag" muid="BBEB05EFD8B1998E" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A tag." Deprecated="False" dynamic_entries_prefix="inventory_fashion" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+
+        <TunableList name="quality_weights" class="TunableList" display="Quality Weights" muid="9DA43D03BCD4F845" description="Weights and qualities for determining the quality of objects in&#xA;the picker." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple class="TunableTuple" muid="F834C2D1D1BBA60A" Deprecated="False" filter="0" group="General">
+                <Tunable type="object_state" name="state_value" class="TunableReference" display="State Value" muid="74A8719CFF253D22" description="The quality state value." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                <Tunable type="float" name="weight" class="Tunable" default="1" display="Weight" muid="3C61B075FFB48BBD" description="A weight that will make this quality more likely to appear." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableTuple name="refresh_period" class="TunableTimeSpan" display="Refresh Period" muid="D652413C202CE096" description="This picker's items will refresh every refresh_period time. They&#xA;will also refresh if the game is reloaded." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable type="int" name="days" class="TunableRange" default="0" display="Days" muid="6EF9940FB1E98837" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="hours" class="TunableRange" default="1" display="Hours" muid="59B178236F57D1F0" min="0" max="23" description="Number of hours" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="int" name="minutes" class="TunableRange" default="0" display="Minutes" muid="9C4561BBC3DFC449" min="0" max="59" description="Number of minutes" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="int" name="sold_description_text" class="TunableLocalizedString" default="0x0" display="Sold Description Text" muid="48F0D8093A5A0307" description="Description text for picker rows that display sold items." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="ResourceKey" name="sold_icon" class="TunableIcon" default="None" display="Sold Icon" muid="BC13B5C986BF8F5F" description="An icon override for picker rows that display sold items." Deprecated="False" filter="0" group="Picker Tuning" resource_types="0x2f7d0004" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="C1E4A6F7E6CCF5C8" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="4BD0C758589E205E" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

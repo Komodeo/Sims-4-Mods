@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="PickServiceNpcSuperInteraction" module="situations.service_npcs.service_npc_interactions" muid="C5787C047AD6CE38" description="A picker interaction that shows an object dialog that contains a list of&#xA;service npcs that can be hired. Service npcs that can be recurring will &#xA;get 2 entries in the dialog - a one time one and a recurring one." instance_needs_reference="True" instance_subclasses_only="False" parents="PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <Tunable type="int" name="display_price_fee_and_hourly_cost" class="TunableLocalizedString" default="0x0" display="Display Price Fee And Hourly Cost" muid="DF0008EBC0D73C47" description="Formatting for cost of the service if it has an upfront cost AND an&#xA;hourly cost&#xA;Parameters: 0 is upfront cost of service. 1 is hourly cost of service" Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="int" name="display_price_flat_rate" class="TunableLocalizedString" default="0x0" display="Display Price Flat Rate" muid="146ED2AA3093019C" description="Formatting for cost of the service if it has just a one time flat fee.&#xA;Parameters: 0 is flat rate cost of the service" Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="int" name="display_price_free" class="TunableLocalizedString" default="0x0" display="Display Price Free" muid="EC666B584DFDC9E0" description="Description text if the service has zero upfront cost and zero hourly cost." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <Tunable type="int" name="display_price_hourly_cost" class="TunableLocalizedString" default="0x0" display="Display Price Hourly Cost" muid="E5A746025D2EFD5C" description="Formatting for cost of the service if it is purely hourly&#xA;Parameters: 0 is hourly cost of the service" Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <TunableList name="non_service_npcs" class="TunableList" display="Non Service Npcs" muid="40BDACF34A5C36DC" description="A List of non service NPCs that can be hired using the&#xA;'Hire A Service' UI." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="246C18FFB235459B" description="The Data needed to display the non service NPC in the &#xA;'Hire A Service' UI." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="cost_string" class="TunableVariant" default="disabled" display="Cost String" muid="ECBF9988499F73A8" description="When enabled, the tuned string will be shown as the cost&#xA;of hiring this NPC." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="cost_amount" class="Tunable" default="0" display="Cost Amount" muid="22C07B208EBA3341" description="                        " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F3790615011051E5" />
+                    <Tunable type="int" name="no_cost_string" class="TunableLocalizedString" default="0x0" display="No Cost String" muid="F8AC09D0F05734CD" description="The description to be used for this NPC in the &#xA;if there isn't a cost associated with it" Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableList name="free_service_traits" class="TunableList" display="Free Service Traits" muid="DC316306C2C93E81" description="If any Sim in the household has one of these traits, the &#xA;non service npc will be free." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="trait" class="TunableReference" muid="3FA966C0CECDC5E" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+                <Tunable type="interaction" name="hire_interaction" class="TunableReference" display="Hire Interaction" muid="8A05C48D47D2BE31" description="The affordance to push the sim making the call when hiring this&#xA;service npc from a picker dialog from the phone." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <Tunable type="ResourceKey" name="icon" class="TunableIconAllPacks" default="None" display="Icon" muid="52A0A72BB3286E59" description="The icon to be displayed in 'Hire a Service' UI" Deprecated="False" filter="0" group="UI" pack_safe="True" resource_types="0x2f7d0004" />
+                <Tunable type="int" name="name" class="TunableLocalizedString" default="0x0" display="Name" muid="C82177C00D616B6B" description="The name to be displayed for this NPC in the 'Hire a Service'&#xA;UI." Deprecated="False" filter="0" group="General" />
+                <TdescFragTag name="tests" class="TunableGlobalTestSet" display="Tests" muid="8CD659D90D436620" description="A set of global tests that are always run before other tests. All&#xA;tests must pass in order for the interaction to run." filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="service_npcs" class="TunableList" display="Service Npcs" muid="64060123F1AE2FFF" description="A list of the service npcs that will show up in the dialog picker" Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple class="TunableTuple" muid="F7305D73DC0CD132" description="Tuple of service npcs data about those NPCs being pickable." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="already_hired_tooltip" class="TunableLocalizedString" default="0x0" display="Already Hired Tooltip" muid="91783E1306CE3DF4" description="Tooltip that displays if the service has already been&#xA;hired." Deprecated="False" filter="0" group="General" />
+                <Tunable type="service_npc" name="service_npc" class="TunableReference" display="Service Npc" muid="2179525F4560C804" description="The service npcs that will show up in the picker." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ServiceNpcHireable" />
+                <TdescFragTag name="tests" class="TunableGlobalTestSet" display="Tests" muid="1E3C1513EB4E2A29" description="A set of tests that determine if this service npc will show up&#xA;as available or greyed out in the picker." filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

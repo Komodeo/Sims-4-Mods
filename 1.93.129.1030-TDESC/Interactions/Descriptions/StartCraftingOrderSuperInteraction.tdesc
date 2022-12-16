@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="StartCraftingOrderSuperInteraction" module="crafting.crafting_interactions" muid="53082F64A3A9DE7D" instance_needs_reference="True" instance_subclasses_only="False" parents="StartCraftingSuperInteraction, PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <Deleted name="basic_reserve_object" muid="9BA65CD441E4B350" />
+
+        <TunableEnum type="ParticipantType" name="crafter" class="TunableEnumEntry" default="Object" display="Crafter" muid="874DD37F676C02EC" static_entries="interactions.ParticipantType" description="Who or what to apply this test to" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="ingredient_source" class="OptionalTunable" default="disabled" display="Ingredient Source" muid="4C7BAE135C344424" description="The ingredient source from which to get crafting ingredients from." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="EE14E4913942398F" />
+            <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="E238D5B9CDA18C32" static_entries="interactions.ParticipantType" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="interaction" name="order_craft_affordance" class="TunableReference" display="Order Craft Affordance" muid="503AA7B6FA01C24E" description="The affordance used to order the chosen craft" allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="interaction" name="order_wait_affordance" class="TunableReference" display="Order Wait Affordance" muid="6D9DEFD255E92B2D" description="The affordance used to wait for an ordered craft" allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="tooltip_crafting_almost_done" class="OptionalTunable" default="hidden" display="Tooltip Crafting Almost Done" muid="4AEEE918C0CFB3D1" description="If enabled and the crafter is crafting a recipe on its final&#xA;phase, the order will be greyed out with this tooltip." Deprecated="False" filter="0" group="General">
+            <Tunable name="hidden" class="TunableExistance" display="Hidden" muid="169C18D1BCE194F5" />
+            <Tunable type="int" name="tooltip" class="TunableLocalizedString" default="0x6ee82937" display="Tooltip" muid="1EEA257AAB0A9378" description="&quot;&#xA;Grayed-out tooltip message when another order can't be added because the crafter is almost done." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

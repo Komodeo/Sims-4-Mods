@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="restaurants.chefs_choice" muid="EBE2ABBE9307B6C9">
+        <Class name="ChefsChoice" muid="3A8384C92C5A1EA4">
+            <TunableEnum type="Tag" name="DESSERT_COURSE" class="TunableEnumWithFilter" default="INVALID" display="Dessert Course" muid="7CB1476B8CB21AD0" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The dessert course so Sims can order dessert with their meals." Deprecated="False" dynamic_entries_prefix="recipe_course" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+
+            <TunableEnum type="Tag" name="DRINK_COURSE" class="TunableEnumWithFilter" default="INVALID" display="Drink Course" muid="7D2B5806E712738D" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The drink course so Sims can order drinks with their meals." Deprecated="False" dynamic_entries_prefix="recipe_course" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+
+            <TunableList name="FOOD_COURSES" class="TunableList" display="Food Courses" muid="2FC02EA1FF7ACDE4" description="A List of all the courses to search through in order to find what an &#xA;NPC will order." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="AE955631FE704546" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A food course that an NPC can order." Deprecated="False" dynamic_entries_prefix="recipe_course" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+            </TunableList>
+
+            <TunableList name="NPC_ORDER_MAP" class="TunableMapping" display="Npc Order Map" muid="86C75449A8C89C01" mapping_key="key" mapping_value="value" description="A mapping of tags to weighted tests. If an item on the menu has the&#xA;designated tag, it will start with the tuned base weight and then each&#xA;passing test will add the tested-weight to the total weight for that&#xA;food object. Once all food objects have been weighed for a given&#xA;category (apps, entrees, etc.), a weighted random determines the&#xA;winner." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="3AA5AC1D0C3F931E" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Tag" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="E35FAD41592C89D5" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="If the food item has this tag, we will apply the corresponding base&#xA;weight to it and the sum of the weights of any passing tests run on&#xA;this object." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="9CCAFFDF00CB6F99" description="The base weight and weighted tests to run." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="base_weight" class="TunableRange" default="1.0" display="Base Weight" muid="66B144367C7C16C2" min="0" max="None" description="The base weight of this food object. Even if no tests pass,&#xA;this weight will be applied for use with the weighted random&#xA;selection." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <TunableList name="weighted_tests" class="TunableList" display="Weighted Tests" muid="7AD9DDA268EAA666" description="A list of tests and weights. For each passed test, the&#xA;corresponding weight is added to the base weight of the food&#xA;object." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="1E4FAB56E52674F9" description="Tests and weights. If the test passes, the weight is added&#xA;to the base weight of the food object." Deprecated="False" filter="0" group="General">
+                                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="7AE8EE4A6F01BB1" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="General" />
+                                <Tunable type="float" name="weight" class="Tunable" default="1.0" display="Weight" muid="524A58955BC81354" description="The weight to add to the base weight of the food object&#xA;if the corresponding tests pass. A negative value is&#xA;valid." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="recipe" name="WATER_ORDER_FOR_BACKUP" class="TunableReference" display="Water Order For Backup" muid="3819BD86DBEB6485" description="A reference to the water order that should be available when nothing&#xA;else is available." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Recipe" />
+        </Class>
+    </Module>
+</TuningRoot>

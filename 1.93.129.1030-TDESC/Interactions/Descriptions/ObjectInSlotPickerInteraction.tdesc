@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="ObjectInSlotPickerInteraction" module="interactions.base.picker_interaction" muid="8D31356B9B6A899F" description="The picker interaction to select a certain object from a subject's&#xA;children." instance_needs_reference="True" instance_subclasses_only="False" parents="ObjectPickerInteraction, PickerSingleChoiceSuperInteraction, PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="required_slot_types" class="OptionalTunable" default="disabled" display="Required Slot Types" muid="5D032DCDD698A449" description="If enabled, the child object must be in one of these slot types in&#xA;order to show up in the picker." Deprecated="False" filter="0" group="Picker Tuning">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="278984F3B55D307" />
+            <TunableList name="enabled" class="TunableSet" display="Enabled" muid="53F944CFCA0F6721" min="1" description="The child object must be parented to one of these slots in&#xA;order to show up in the picker." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableStringHash32" default="_ctnm_SimInteraction_" muid="64C13644428AFCAF" description="The hashed name of the slot." Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableVariant>
+
+        <TdescFragTag name="slot_obj_test" class="TunableTestSet" display="Slot Obj Test" muid="76B2AF4B109974CE" description="A set of tests to run on each object in the parents slots before&#xA;it will be shown in the picker dialog. Only tests with&#xA;ParticipantType.Object will work." filter="0" group="Picker Tuning" />
+
+        <TunableEnum type="ParticipantType" name="subject_with_slots" class="TunableEnumEntry" default="Object" display="Subject With Slots" muid="6FC9B80D2E253488" static_entries="interactions.ParticipantType" description="Subject on which the slots exist." Deprecated="False" filter="0" group="Picker Tuning" />
+    </Instance>
+</TuningRoot>

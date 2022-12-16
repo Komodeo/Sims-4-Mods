@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="world.ocean_tuning" muid="A39982F26CC7CC98">
+        <Class name="OceanTuning" muid="D50E829B13AD994D">
+            <TunableEnum type="Tag" name="BEACH_LOCATOR_TAG" class="TunableTag" default="INVALID" display="Beach Locator Tag" muid="8446DED117D8FAF5" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag we can use to get the beach locator definition." Deprecated="False" dynamic_entries_prefix="" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+
+            <TunableList name="OCEAN_DATA" class="TunableMapping" display="Ocean Data" muid="AFCB54F542D3DE64" mapping_key="species" mapping_value="age_data" description="The species-age mapping to ocean data. This defines what&#xA;ages and species can wade in the water and what the water level&#xA;restrictions are as well as beach portal access objects." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="3D66A4AD19DE1B17" Deprecated="False" filter="0" group="General">
+                    <TunableList name="age_data" class="TunableList" display="Age Data" muid="4B740D5F265D4A46" description="The ages and their data." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="6365AA2E9368495F" description="The ages and their ocean data." Deprecated="False" filter="0" group="General">
+                            <TunableList name="ages" class="TunableEnumSet" display="Ages" muid="A764CA0631BCF7CE" description="The age of the actor." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <TunableEnum type="Age" class="TunableEnumEntry" default="BABY" muid="90C822A65172C045" static_entries="sims-sim_info_types.Age" Deprecated="False" filter="0" group="General" />
+                            </TunableList>
+                            <TunableTuple name="ocean_data" class="TunableTuple" display="Ocean Data" muid="711EBDA53FDEE49C" description="The ocean data for this Age." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="beach_portal_data" class="OptionalTunable" default="disabled" display="Beach Portal Data" muid="3C384567C3D211E" description="An optional portal definition to allow sims to swim in&#xA;the ocean. Without this, Sims at this age and species&#xA;cannot swim in the ocean." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4A4FC14E09296E31" />
+                                    <Tunable type="snippet" name="enabled" class="TunableReference" display="Enabled" muid="CD2FF501579E35AB" description="The portals this age/species will use to swim in the ocean." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="PortalData" />
+                                </TunableVariant>
+                                <TunableVariant type="None" name="swimwear_change_outfit_reason" class="OptionalTunable" default="disabled" display="Swimwear Change Outfit Reason" muid="881FDB75F81B5755" description="If enabled, the outfit change reason that determines which outfit&#xA;category a Sim automatically changes into when &#xA;entering water." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B847AE388BD9A813" />
+                                    <TunableEnum type="OutfitChangeReason" name="enabled" class="TunableEnumEntry" default="Invalid" display="Enabled" muid="844F9EE0EB28B9C3" dynamic_entries="sims-outfits-outfit_enums.OutfitChangeReason._elements" static_entries="sims-outfits-outfit_enums.OutfitChangeReason" Deprecated="False" filter="0" group="General" invalid_entries="Invalid" />
+                                </TunableVariant>
+                                <Tunable type="float" name="swimwear_change_water_depth" class="TunableRange" default="0.1" display="Swimwear Change Water Depth" muid="2CAC0DF70E6EDCB" min="0" max="None" description="If a Sim's path includes water where the depth is at&#xA;least the tuned value, in meters, they will switch into&#xA;the outfit based on the outfit change reasonat the &#xA;start of the path." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TunableTuple name="wading_interval" class="TunableInterval" display="Wading Interval" muid="B58669393212793C" description="The wading interval for Sims at this age and species. The lower&#xA;bound indicates the minimum water height required to apply the&#xA;wading walkstyle, and the upper bound indicates the maximum&#xA;height we can walk into the water until we can potentially&#xA;swim." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="float" name="lower_bound" class="TunableRange" default="0.1" display="Lower Bound" muid="28D35E2FCA23A21A" min="0.01" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="float" name="upper_bound" class="TunableRange" default="1.0" display="Upper Bound" muid="B440298C8B55E462" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                                <Tunable type="float" name="water_depth_error" class="TunableRange" default="0.05" display="Water Depth Error" muid="B058CEB8932D6C75" min="0.01" max="None" description="The error, in meters, that we allow for the swimming beach&#xA;portals." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableList>
+                    <TunableEnum type="SpeciesExtended" name="species" class="TunableEnumEntry" default="HUMAN" display="Species" muid="B154E7CE4887D5F" static_entries="sims-sim_info_types.SpeciesExtended" description="The extended species that this data is for." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

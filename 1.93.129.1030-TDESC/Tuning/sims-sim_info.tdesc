@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.sim_info" muid="DD7B53DFB5709DFE">
+        <Class name="SimInfo" muid="E1EC5E472F9C327E">
+            <Tunable type="interaction" name="APPLY_DEFAULT_AWAY_ACTION_INTERACTION" class="TunableReference" display="Apply Default Away Action Interaction" muid="ACC4F6158D6D54AD" description="Interaction that will be used to apply the default away action onto the&#xA;sim info." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ApplyDefaultAwayActionInteraction" />
+
+            <TunableList name="AWAY_ACTIONS" class="TunableMapping" display="Away Actions" muid="87780035BAB4FFBB" mapping_key="key" mapping_value="value" description="A mapping between affordances and lists of away actions.  The&#xA;affordances are used to generate AoPs with each of the away actions." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="6E41E3CB8C23CA46" Deprecated="False" filter="0" group="General">
+                    <Tunable type="interaction" name="key" class="TunableReference" display="Key" muid="E28D3A4943D443E" description="The interaction that will be used to create AoPs from the away list&#xA;of away actions that it is mapped to." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="55B7F85D84C1780C" description="A list of away actions that are available for the player to select&#xA;from and apply to the sim." Deprecated="False" filter="0" group="General">
+                        <Tunable type="away_action" class="TunableReference" muid="E9088C7B14025E7C" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="AwayAction" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="DEFAULT_AWAY_ACTION" class="TunableMapping" display="Default Away Action" muid="23EB6C6CCE506BC6" mapping_key="key" mapping_value="value" description="Map of commodities to away action.  When the default away action is&#xA;asked for we look at the ad data of each commodity and select the away&#xA;action linked to the commodity that is advertising the highest." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="B5CAF37B163A7B2A" Deprecated="False" filter="0" group="General">
+                    <Tunable type="statistic" name="key" class="TunableReference" display="Key" muid="F861802D8B855948" description="The commodity that we will look at the advertising value for." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Commodity" />
+                    <Tunable type="away_action" name="value" class="TunableReference" display="Value" muid="7BDF02F8E7F2D647" description="The away action that will applied if the key is the highest&#xA;advertising commodity of the ones listed." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="AwayAction" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="ResourceKey" name="DEFAULT_THUMBNAIL" class="TunableResourceKey" default="None" display="Default Thumbnail" muid="32473C9843B21992" description="Icon to be displayed for the Buff." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+
+            <TunableList name="INITIAL_STATISTICS" class="TunableList" display="Initial Statistics" muid="E7777C0053142675" description="A list of statistics that will be added to each sim info on its&#xA;creation." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="2E0B148995B2634" Deprecated="False" filter="0" group="General">
+                    <Tunable type="statistic" name="statistic" class="TunableReference" display="Statistic" muid="A92BF08BA21001D0" description="A statistic that will be added to each sim info upon creation." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableVariant type="None" name="tests" class="OptionalTunable" default="disabled" display="Tests" muid="E7B61F6EE0C39977" description="If enabled, the statistic will only be added to each sim info&#xA;if the tests pass." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5CF2691FC1763D6F" />
+                        <TunableList name="enabled" class="TunableSimTestList" display="Enabled" muid="FC72BC68E22CF872" description="A list of tests.  All tests must succeed to pass the TestSet." Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" class="TunableSimTestVariant" default="sim_info" muid="BE84C963F1B336E2" description="A single tunable test." Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="sim_info" class="TunableSimInfoTest" display="Sim Info" muid="1BAB89E6199707DF" description="The SimInfo tests some of the basic aspects of a Sim, such as their age,&#xA;gender, or species." Deprecated="False" filter="0" group="General">
+                                    <TunableVariant type="None" name="ages" class="OptionalTunable" default="unspecified" display="Ages" muid="21A0C5DB793B83D" description="The Sim must be one of the specified ages." Deprecated="False" filter="0" group="General">
+                                        <TunableList name="specified" class="TunableEnumSet" default="TEEN,YOUNGADULT,ADULT,ELDER" display="Specified" muid="38DD82B35A0F26ED" description="The Sim must be one of the specified ages." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                            <TunableEnum type="Age" class="TunableEnumEntry" default="ADULT" muid="B01A4F354AC6B5E2" static_entries="sims-sim_info_types.Age" Deprecated="False" filter="0" group="General" />
+                                        </TunableList>
+                                        <Tunable name="unspecified" class="TunableExistance" display="Unspecified" muid="3104720764995B6E" />
+                                    </TunableVariant>
+                                    <TunableVariant type="None" name="can_age_up" class="OptionalTunable" default="unspecified" display="Can Age Up" muid="E4A357D493534E64" description="Whether the Sim is eligible to advance to the next age." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="bool" name="specified" class="Tunable" default="None" display="Specified" muid="673930F4A398CF3" description="Whether the Sim is eligible to advance to the next age." Deprecated="False" filter="0" group="General" />
+                                        <Tunable name="unspecified" class="TunableExistance" display="Unspecified" muid="E7977D9CF3F0EDEA" />
+                                    </TunableVariant>
+                                    <TunableVariant type="None" name="gender" class="OptionalTunable" default="unspecified" display="Gender" muid="73D92155F1CB704E" description="The Sim must be of the specified gender." Deprecated="False" filter="0" group="General">
+                                        <TunableEnum type="Gender" name="specified" class="TunableEnumEntry" default="None" display="Specified" muid="20160A66861E56E1" static_entries="sims-sim_info_types.Gender" description="The Sim must be of the specified gender." Deprecated="False" filter="0" group="General" />
+                                        <Tunable name="unspecified" class="TunableExistance" display="Unspecified" muid="9BBBF93C6AA7ACBA" />
+                                    </TunableVariant>
+                                    <TunableVariant type="None" name="has_been_played" class="OptionalTunable" default="disabled" display="Has Been Played" muid="B6E8CF388E0032" description="Whether the Sim has ever been played as a Playable Sim.&#xA;If enabled and true, the Sim must have been played by the player.&#xA;If enabled and false, the Sim must never have been played.&#xA;If disabled, this portion of the Sim Info test will be ignored." Deprecated="False" filter="0" group="General">
+                                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4011E3FEFECD9420" />
+                                        <Tunable type="bool" name="enabled" class="Tunable" default="False" display="Enabled" muid="419F9E4E07AB95B6" description="Whether the Sim has ever been played as a Playable Sim.&#xA;If enabled and true, the Sim must have been played by the player.&#xA;If enabled and false, the Sim must never have been played.&#xA;If disabled, this portion of the Sim Info test will be ignored." Deprecated="False" filter="0" group="General" />
+                                    </TunableVariant>
+                                    <TunableVariant type="None" name="is_active_sim" class="OptionalTunable" default="disabled" display="Is Active Sim" muid="DCAB1AF0E597DC1D" description="Whether the Sim must be the active selected Sim.&#xA;If enabled and true, the sim must active for this test to pass.&#xA;If enabled and false, the sim must not be active for this test to pass.&#xA;If disabled, this portion of the Sim Info test will be ignored." Deprecated="False" filter="0" group="General">
+                                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="F81F0D2429731A2A" />
+                                        <Tunable type="bool" name="enabled" class="Tunable" default="True" display="Enabled" muid="CD5C7C8A6F5C8A84" description="Whether the Sim must be the active selected Sim.&#xA;If enabled and true, the sim must active for this test to pass.&#xA;If enabled and false, the sim must not be active for this test to pass.&#xA;If disabled, this portion of the Sim Info test will be ignored." Deprecated="False" filter="0" group="General" />
+                                    </TunableVariant>
+                                    <TunableEnum type="MatchType" name="match_type" class="TunableEnumEntry" default="MATCH_ALL" display="Match Type" muid="A4B6998DC606D151" static_entries="sims-sim_info_tests.MatchType" description="When testing multiple participants if MATCH_ALL is set, then all the&#xA;participants need to pass the test.&#xA; &#xA;If MATCH_ANY is set, test will pass as soon as one of them meet the&#xA;criteria" Deprecated="False" filter="0" group="General" />
+                                    <TunableVariant type="None" name="npc" class="OptionalTunable" default="disabled" display="Npc" muid="49A08145D846F71A" description="Whether the Sim must be an NPC or Playable Sim.&#xA;If enabled and true, the sim must be an NPC for this test to pass.&#xA;If enabled and false, the sim must be playable, non-NPC sim for this test to pass.&#xA;If disabled, this portion of the Sim Info test will be ignored.&#xA;&#xA;Note: NPC in this case means a Sim that is not currently&#xA;controllable (selectable), or Not Player Controllable. If you&#xA;need to know if the Sim has ever been played, use 'Has Been&#xA;Played'" Deprecated="False" filter="0" group="General">
+                                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="DF84FCBC7B1A8A35" />
+                                        <Tunable type="bool" name="enabled" class="Tunable" default="False" display="Enabled" muid="34A2CDD5820A6C06" description="Whether the Sim must be an NPC or Playable Sim.&#xA;If enabled and true, the sim must be an NPC for this test to pass.&#xA;If enabled and false, the sim must be playable, non-NPC sim for this test to pass.&#xA;If disabled, this portion of the Sim Info test will be ignored.&#xA;&#xA;Note: NPC in this case means a Sim that is not currently&#xA;controllable (selectable), or Not Player Controllable. If you&#xA;need to know if the Sim has ever been played, use 'Has Been&#xA;Played'" Deprecated="False" filter="0" group="General" />
+                                    </TunableVariant>
+                                    <TunableVariant type="None" name="species" class="TunableVariant" default="unspecified" display="Species" muid="F75F495D1C519F51" Deprecated="False" filter="0" group="General">
+                                        <TunableTuple name="specified" class="Tunable_SpeciesTestSpecies" display="Specified" muid="A7DEDB17535312D1" description="The Sim must be one of the specified species. Species are consolidated, e.g.&#xA;large/small dog are both DOG." Deprecated="False" filter="0" group="General">
+                                            <TunableList name="species" class="TunableEnumSet" display="Species" muid="C1B522DD9D413C58" description="The Sim must be one of the specified species. Species are&#xA;consolidated, e.g. large/small dog are both DOG." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                                <TunableEnum type="Species" class="TunableEnumEntry" default="HUMAN" muid="8F433EEE9692CC96" static_entries="sims-sim_info_types.Species" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                                            </TunableList>
+                                        </TunableTuple>
+                                        <TunableTuple name="specified_extended" class="Tunable_SpeciesTestExtendedSpecies" display="Specified Extended" muid="12DF18CC60B0F51B" description="The Sim must be one of the specified species. Species are *not* consolidated,&#xA;e.g. large/small dog are different species." Deprecated="False" filter="0" group="General">
+                                            <TunableList name="species" class="TunableEnumSet" display="Species" muid="5A146D7041EA919E" description="The Sim must be one of the specified species. Species are *not*&#xA;consolidated, e.g. large/small dog are different species." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                                <TunableEnum type="SpeciesExtended" class="TunableEnumEntry" default="Species.HUMAN" muid="AF4A0FDCE6874C54" static_entries="sims-sim_info_types.SpeciesExtended" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                                            </TunableList>
+                                        </TunableTuple>
+                                        <Tunable name="unspecified" class="TunableExistance" display="Unspecified" muid="39D00D28E23BF891" />
+                                    </TunableVariant>
+                                    <TunableEnum type="ParticipantType" name="who" class="TunableEnumEntry" default="Actor" display="Who" muid="A775F7E04F9ABEAF" static_entries="interactions.ParticipantType" description="Who or what to apply this test to" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                                <TunableTuple name="trait" class="TunableTraitTest" display="Trait" muid="8B5A84C0FC338773" description="Test to require a Sim to have or not have certain specific traits." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="bool" name="apply_thresholds_on_individual_basis" class="Tunable" default="True" display="Apply Thresholds On Individual Basis" muid="B4E069E0D7E6DCA6" description="If checked then Num Whitelist Required and Num Blacklist Allowed&#xA;will be applied to each individual participant from the subject.&#xA;If unchecked then it will apply the values to the total whitelist&#xA;and blacklist matches on the group.&#xA;&#xA;IMPORTANT!!!&#xA;In the case of objectives this should probably be set to false&#xA;since we know that this is coming from only one sim and that we&#xA;want to use the value that comes out of the test result numeric.&#xA;This isn't just locked to being this value since there are valid&#xA;cases within that system when you are looking at a group of sims&#xA;and could want to test that one of your sims passes.  Ex. Having&#xA;a ghost sim in the household." Deprecated="False" filter="0" group="General" />
+                                    <TunableList name="blacklist_trait_types" class="TunableEnumSet" display="Blacklist Trait Types" muid="E13E7CF900C7A428" description="The Sim is required to not have traits of these types to pass this &#xA;test. Should Num Blacklist Allowed be specified, then the Sim is &#xA;allowed to have up to that amount of blacklisted traits before &#xA;failing this test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <TunableEnum type="TraitType" class="TunableEnumEntry" default="PERSONALITY" muid="67554E63C4319C30" static_entries="traits-trait_type.TraitType" Deprecated="False" filter="0" group="General" />
+                                    </TunableList>
+                                    <TunableList name="blacklist_traits" class="TunableList" display="Blacklist Traits" muid="EBFC60B262D4BBE8" description="The is required to not have traits from this list in order to pass&#xA;this test. Should num_blacklist_allowed be specified, then the Sim&#xA;is allowed to have up to that amount of blacklisted traits before&#xA;failing this test." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="trait" class="TunableReference" muid="F6BA9B06BD7D8FC" description="A blacklist trait." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    </TunableList>
+                                    <Tunable type="int" name="num_blacklist_allowed" class="Tunable" default="0" display="Num Blacklist Allowed" muid="34E8E40B8BC914D1" description="The threshold of blacklist traits owned by the specified Sim that&#xA;will trigger a test failure." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="num_whitelist_required" class="Tunable" default="1" display="Num Whitelist Required" muid="6381A786F221C92F" description="The number of whitelist traits that the specified Sim is required to&#xA;have in order to pass this test." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <TunableEnum type="ParticipantType" name="subject" class="TunableEnumEntry" default="Actor" display="Subject" muid="B7FE6F2850162645" static_entries="interactions.ParticipantType" description="The participant that is to be the subject of the test." Deprecated="False" filter="0" group="General" />
+                                    <TunableList name="whitelist_trait_types" class="TunableEnumSet" display="Whitelist Trait Types" muid="9FE4C19384E3739A" description="The Sim is required to have the specified number of traits with &#xA;these types in order to pass the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                        <TunableEnum type="TraitType" class="TunableEnumEntry" default="PERSONALITY" muid="C9A5E451F4E0C6CF" static_entries="traits-trait_type.TraitType" Deprecated="False" filter="0" group="General" />
+                                    </TunableList>
+                                    <TunableList name="whitelist_traits" class="TunableList" display="Whitelist Traits" muid="AC2A7B706FC75796" description="The Sim is required to have the specified number of traits from this&#xA;list in order to pass the test." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="trait" class="TunableReference" muid="F540D5AF0704D790" description="A whitelist trait. Please note: for pack-safe entries that are&#xA;not loaded, the game will behave as if the entry doesn't exist.&#xA;This allows you to specify a pack trait and required count of 1&#xA;and always fail the test should the appropriate pack not be&#xA;installed." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                    </TunableList>
+                                </TunableTuple>
+                            </TunableVariant>
+                        </TunableList>
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="MAXIMUM_SAFE_FITNESS_VALUE" class="Tunable" default="90" display="Maximum Safe Fitness Value" muid="9FDB9D2FFF8DB29" description="This is the value over which a Sim's fitness will always decay.  When a&#xA;Sim's fitness is set initially inside of CAS, it will not decay below&#xA;that value unless it is higher than this tunable. Sims with an initial&#xA;fitness value higher than this tunable will see their fitness commodity&#xA;decay towards this point.&#xA;&#xA;EXAMPLE: MAXIMUM_SAFE_FITNESS_VALUE is set to 90, and a Sim is created&#xA;in CAS with a fitness value of 100.  Their fitness commodity will decay&#xA;towards 90.  Another Sim is created with a fitness value of 80.  Their&#xA;fitness commodity will decay towards 80." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="PHYSIQUE_CHANGE_AFFORDANCES" class="TunableTuple" display="Physique Change Affordances" muid="22BEA78844638324" description="Affordances to run when a Sim's physique changes." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" name="FAT_CHANGE_MAX_NEGATIVE_AFFORDANCE" class="TunableReference" display="Fat Change Max Negative Affordance" muid="5615F7B3A28B75D9" description="Affordance to run when a Sim's fat changes to maximum negative effect." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="FAT_CHANGE_MAX_POSITIVE_AFFORDANCE" class="TunableReference" display="Fat Change Max Positive Affordance" muid="22BC7001D465ACAA" description="Affordance to run when a Sim's fat changes to maximum positive effect." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="FAT_CHANGE_NEGATIVE_AFFORDANCE" class="TunableReference" display="Fat Change Negative Affordance" muid="B250C02965E94888" description="Affordance to run when a Sim's fat changes to negative effect." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="FAT_CHANGE_NEUTRAL_AFFORDANCE" class="TunableReference" display="Fat Change Neutral Affordance" muid="7B991BF50BE730F1" description="Affordance to run when a Sim's fat changes to neutral effect." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="FAT_CHANGE_POSITIVE_AFFORDANCE" class="TunableReference" display="Fat Change Positive Affordance" muid="AB6A9F8AF1DE6D7E" description="Affordance to run when a Sim's fat changes to positive effect." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="FIT_CHANGE_NEGATIVE_AFFORDANCE" class="TunableReference" display="Fit Change Negative Affordance" muid="68D15E3E150C8CF8" description="Affordance to run when a Sim's fitness changes to negative effect." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="FIT_CHANGE_NEUTRAL_AFFORDANCE" class="TunableReference" display="Fit Change Neutral Affordance" muid="E6B5CA9BFC275CC1" description="Affordance to run when a Sim's fitness changes to neutral effect." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="interaction" name="FIT_CHANGE_POSITIVE_AFFORDANCE" class="TunableReference" display="Fit Change Positive Affordance" muid="38D72B5BDF01EA55" description="Affordance to run when a Sim's fitness changes to positive effect." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableList name="SIM_DEFINITIONS" class="TunableMapping" display="Sim Definitions" muid="699F0DF6FD5F5E16" mapping_key="key" mapping_value="value" description="A Map from Species to base definition object." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="CF01DB01C1102BC" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SpeciesExtended" name="key" class="TunableEnumEntry" default="HUMAN" display="Key" muid="520C77550C15CCF3" static_entries="sims-sim_info_types.SpeciesExtended" description="Species this definition is for." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="object" name="value" class="TunableReference" display="Value" muid="9B40AD9E3930B4E5" description="The definition used to instantiate Sims." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Sim" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SIM_SKEWER_AFFORDANCES" class="TunableList" display="Sim Skewer Affordances" muid="86C67E77F597404C" description="A list of affordances that will test and be available when the player&#xA;clicks on a Sim's interaction button in the Sim skewer." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="308B5709AF3FD293" description="An affordance shown when the player clicks on a sim's&#xA;interaction button in the Sim skewer." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <TunableList name="STATIC_COMMODITIES_WHILE_INSTANCED" class="TunableList" display="Static Commodities While Instanced" muid="D1DDCE1FCD0A3987" description="A list of static commodities that are added to every sim info when they are&#xA;instanced and removed when they become uninstanced. " Deprecated="False" filter="0" group="General">
+                <Tunable type="scommodity" class="TunableReference" muid="CC4E0F0917943F4C" description="A static commodity that is added to each sim info on its creation." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="B230E93A0192E0AB" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="B230E93A0192E0AB" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

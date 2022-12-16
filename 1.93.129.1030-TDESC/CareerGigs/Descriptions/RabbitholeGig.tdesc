@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="career_gig" class="RabbitholeGig" module="careers.rabbithole_career_gig" muid="726C38ABA0836BF4" description="Tuning specific to a rabbithole career gig." instance_subclasses_only="False" parents="Gig" path="CareerGigs\Descriptions" use_guid_for_reference="True">
+        <Deleted name="audio_on_prep_task_completion" muid="C983BCAB24F618C9" />
+
+        <Deleted name="career_events" muid="1D8DAD678A6AD5F9" />
+
+        <Deleted name="end_of_gig_dialog" muid="6682EA966EC5F7A" />
+
+        <Deleted name="gig_cast" muid="2BC9B7D9E864FB9" />
+
+        <Deleted name="gig_cast_rel_bit_collection_id" muid="F4AD197EA5066634" />
+
+        <Tunable type="int" name="gig_picker_localization_format" class="TunableLocalizedString" default="0x0" display="Gig Picker Localization Format" muid="BA74CFFFCD4E0C7A" description="String used to format the description in the gig picker. Currently&#xA;has tokens for name, payout, gig time, tip title, and tip text." Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="gig_prep_tasks" muid="7E640A3235BE8073" />
+
+        <TunableTuple name="negative_mood_tuning" class="TunableTuple" display="Negative Mood Tuning" muid="362ABFB02FEC60F6" description="Tuning for the negative mood test.  If the Sim has the any of the &#xA;negative mood buffs (the Buff test passes), the failure chance &#xA;tunable will be used to determine whether or not to apply the &#xA;FAILURE outcome." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="failure_chance" class="TunablePercent" default="0.0" display="Failure Chance" muid="7934F85177EDA733" min="0" max="100" description="Chance of a FAILURE outcome if the negative mood test passes." Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="negative_mood_test" class="TunableBuffTest" display="Negative Mood Test" muid="7F71FAAF19FF5019" description="Test whether or not a participant has or doesn't have specific buffs." Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="apply_whitelist_on_individual_basis" class="Tunable" default="True" display="Apply Whitelist On Individual Basis" muid="56C6E2A98A0D18B7" description="If checked, will require that each target has at least one&#xA;whitelisted buff. If unchecked, will require only a single target to&#xA;have at least one whitelisted trait." Deprecated="False" filter="0" group="General" />
+                <TunableList name="blacklist" class="TunableSet" display="Blacklist" muid="EBFE2ACD459C83BE" description="The Sim must not have any buff in this list to pass the test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <Tunable type="buff" class="TunableReference" muid="ABF95633809D7890" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableList>
+                <TunableList name="blacklist_tags" class="TunableTags" display="Blacklist Tags" muid="472FB759ED6FAFBA" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="38DB11D6B6E77F4F" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The Sim must not have any buff that matches any of these tags to pass the test." Deprecated="False" dynamic_entries_prefix="buff" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                </TunableList>
+                <TunableEnum type="ParticipantType" name="subject" class="TunableEnumEntry" default="Actor" display="Subject" muid="F987B28264B6BC1D" static_entries="interactions.ParticipantType" description="Who or what to apply this test to." Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="9993CE7199BBF0C5" description="Reason of failure." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8B519646B77B3C9B" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="342DFDF271F8DDBD" description="Reason of failure." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="whitelist" class="OptionalTunable" default="disabled" display="Whitelist" muid="A5B6D7A42B6CCFB6" description="If enabled, participant will test for buff's on the whitelist." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B5E3C3FA0C4FD96C" />
+                    <TunableList name="enabled" class="TunableSet" display="Enabled" muid="9B0A00C81E19BE40" description="The participant must have at least one buff in this list to pass the&#xA;test." Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <Tunable type="buff" class="TunableReference" muid="62DEFEF39B76E3F9" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                </TunableVariant>
+                <TunableVariant type="None" name="whitelist_tags" class="OptionalTunable" default="disabled" display="Whitelist Tags" muid="4744124D79CB8E5C" description="If enabled, participant will test for buffs which match tags in the defined set." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D99E6A1B2023734D" />
+                    <TunableList name="enabled" class="TunableTags" display="Enabled" muid="66F61F2109559108" Deprecated="False" filter="0" group="General" unique_entries="true">
+                        <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="4B693A2D9EE16D0B" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The participant must have at least one buff which matches a tag in this list to pass the test." Deprecated="False" dynamic_entries_prefix="buff" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                    </TunableList>
+                </TunableVariant>
+            </TunableTuple>
+        </TunableTuple>
+
+        <Deleted name="payout_stat_data" muid="FDE5F53D755B3EBE" />
+
+        <TunableVariant type="None" name="recommended_skill_tuning" class="OptionalTunable" default="disabled" display="Recommended Skill Tuning" muid="AE7C403DB81D8536" description="Tuning for the (optional) recommended skill.  If the Sim has this&#xA;skill, the outcome will depend on the Sim's skill level relative &#xA;to the recommended skill level." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="43A3984E7ED39FB2" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="388850CE99EC3D20" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="critical_failure_skill_level_delta" class="Tunable" default="0" display="Critical Failure Skill Level Delta" muid="B8C76D043C45B66C" description="The difference in skill levels lower than the recommended&#xA;skill level for a Sim to qualify for a CRITICAL FAILURE &#xA;outcome." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="failure_chance_multiplier" class="Tunable" default="0.0" display="Failure Chance Multiplier" muid="72D59F0B71CFD722" description="The multiplier for determining the chance the Sim will&#xA;receive the FAILURE outcome." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="great_success_chance_multiplier" class="Tunable" default="0.0" display="Great Success Chance Multiplier" muid="309808ABDB8E7048" description="The multiplier for determining the chance the Sim will&#xA;receive the GREAT_SUCCESS outcome." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="recommended_skill_test" class="TunableSkillRangeTest" display="Recommended Skill Test" muid="30EAFB72BAF4B8CC" description="The recommended skill test for this gig.  For Home &#xA;Assignment gigs, the skill range min and max should be the &#xA;same." Deprecated="False" filter="0" group="General">
+                    <Tunable type="statistic" name="skill" class="TunableReference" display="Skill" muid="DFBD59CDC767CAF6" description="The skill to test against. &#xA;&#xA;Should the Sim not have the specified skill, or should the skill not&#xA;be available because of pack restrictions, this Sim will be&#xA;considered at level 0." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Skill" />
+                    <TunableVariant type="None" name="skill_range" class="TunableVariant" default="interval" display="Skill Range" muid="258824A160A06DCA" description="A skill range defined by either an interval or a threshold." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="interval" class="TunableSkillInterval" display="Interval" muid="469A0113BC6BA6A7" description="A TunableThreshold that is specifically used in Skill Range Tests to determine if a skill meets the required skill level." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="skill_interval" class="TunableInterval" display="Skill Interval" muid="A58166870CB0731B" description="The range (inclusive) a skill level must be in to pass this test." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="ECE0FEB6C5EE52FF" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="upper_bound" class="TunableRange" default="10" display="Upper Bound" muid="732F01B36B0F3E46" min="None" max="20" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                        <TunableTuple name="threshold" class="TunableSkillThreshold" display="Threshold" muid="6EAA4716A9FFEC68" description="A TunableThreshold that is specifically used in Skill Range Tests to determine if a skill meets the required skill level.&quot; " Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="skill_threshold" class="TunableThreshold" display="Skill Threshold" muid="48808E61B96B41C0" description="The Threshold for the skill level to be valid." Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="B9158DBFF244CAFB" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="value" class="Tunable" default="0" display="Value" muid="647399E7808FA33B" description="The value of a threshold." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableTuple>
+                    </TunableVariant>
+                    <TunableEnum type="ParticipantType" name="subject" class="TunableEnumEntry" default="Actor" display="Subject" muid="82C1C9D6018EE5BD" static_entries="interactions.ParticipantType" description="The subject of this test." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="CF7085B1EDCD8C02" description="Reason of failure." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="568D5F9BA62504A8" />
+                        <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="D9E1738301DC9DAF" description="Reason of failure." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="bool" name="use_effective_skill_level" class="Tunable" default="False" display="Use Effective Skill Level" muid="E8E88ED98FE37CBD" description="If checked, then instead of using the skill's actual level, the test&#xA;will use the skill's effective level for the purpose of satisfying&#xA;the specified criteria." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

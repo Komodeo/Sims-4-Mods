@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="routing.object_routing.object_routing_priority" muid="4ADBE43BFF7ECE30">
+        <Class name="ObjectRoutingPriority" muid="E150F66433092DB8" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="FCD704A945E98CBF" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="7F425BF0ECEB5AC8" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="CRITICAL" muid="F1E1176159033DDC" enum_value="1" />
+
+            <EnumItem name="NONE" muid="A6FE506239ACFA1C" enum_value="0" />
+        </Class>
+
+        <Class name="ObjectRoutingPriorityTuning" muid="CB0AF4CB39EB5C93">
+            <TunableList name="PRIORITY_SCORE_VALUE" class="TunableMapping" display="Priority Score Value" muid="766C14DC35C6EB89" mapping_key="key" mapping_value="value" description="A mapping of ObjectRoutingPriority to a numerical value." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="8A112ADA40C936BF" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ObjectRoutingPriority" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="F3BE05CA5C3683BB" dynamic_entries="routing-object_routing-object_routing_priority.ObjectRoutingPriority._elements" static_entries="routing-object_routing-object_routing_priority.ObjectRoutingPriority" Deprecated="False" filter="0" group="General" invalid_entries="NONE,CRITICAL" />
+                    <Tunable type="float" name="value" class="TunableRange" default="1" display="Value" muid="8FC1FD02EAAA51CC" min="0" max="None" description="The value associated with this ObjectRoutingPriority. ObjectRoutingBehaviors with a higher value&#xA;priority will be allowed to route more often when at the routing SoftCap." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

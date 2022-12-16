@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="casproxyparttuning" class="Client_CASProxyPartTuning" module="casproxyparttuning.Client_CASProxyPartTuning" muid="595A478D786D50B1" description="CAS proxy parts per age/gender." export_modes="client_binary" path="Client_CASProxyPartTuning\Descriptions">
+        <TunableList name="Ages" class="TunableSet" display="Ages" muid="E4FE215009764701" description="Valid ages for this" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Age" class="TunableEnumEntry" default="None" muid="C328434B30B7FCF8" static_entries="sims-sim_info_types.Age" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+        </TunableList>
+
+        <TunableList name="bodytype_to_caspart_map" class="TunableMapping" display="BodyTypes" muid="416C3C16ADA757AD" mapping_key="CASPartType" mapping_value="ProxyPartValue" description="List of body types paired with cas part." mapping_class="ProxyPartMapping.MapEntry">
+            <TunableTuple name="MapEntry" class="ProxyPartMapping.MapEntry" muid="4812E754506C9078">
+                <TunableEnum type="CASPartType" name="CASPartType" class="TunableEnumEntry" default="UPPER_BODY" display="CASPart Type" muid="C4ED9284D1B74C34" static_entries="sims-outfits-outfit_enums.BodyType" description="The cas part type to be mapped." />
+                <Tunable type="caspart" name="ProxyPartValue" class="TunableReference" display="Cas Part" muid="D2A7C5C5BFAA8D4B" description="The proxy cas part id." filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="Genders" class="TunableSet" display="Genders" muid="B35D83CE4E9E7254" description="Trait allowed gender, empty set means not specified" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Gender" class="TunableEnumEntry" default="None" muid="10F25D973A0DD84" static_entries="sims-sim_info_types.Gender" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

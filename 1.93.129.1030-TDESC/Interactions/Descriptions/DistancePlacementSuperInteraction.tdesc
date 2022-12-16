@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="DistancePlacementSuperInteraction" module="interactions.base.distance_placement_interaction" muid="AB4572A10AF06DB9" description="A Super Interaction that throws a carried object at a distance from the Sim." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="bounce_jig" class="TunableSocialJigExplicit" display="Bounce Jig" muid="BC8D9D50376E6D28" description="The jig to use for the object's bounce, where actor b is the&#xA;object's final resting position, and actor a is where the initial&#xA;bounce occurs, relative to the final position.&#xA;&#xA;The actor offsets will setup the distance of the bounce. If the&#xA;offsets are both 0, then there will be no bounce. The offset for&#xA;actor a will determine where the first bounce occurs." Deprecated="False" filter="0" group="Constraints">
+            <TunableTuple name="actor_a" class="TunablePositionAndOrientation" display="Actor A" muid="ED35036FED9D9BA" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="position" class="TunableVector2" display="Position" muid="7EF738D50BA32136" description="Position of this actor in the scene." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="F5BB70F7FB9E78D1" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="1799AC6F4B6DE55" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <Tunable type="float" name="rotation" class="TunableAngle" default="0.0" display="Rotation" muid="B3CED6715FA4A649" min="0.0" max="360.0" description="Angle of this actor in the scene." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="actor_a_reserved_space" class="TunableReservedSpace" display="Actor A Reserved Space" muid="A08925332BCDF434" description="The clearance required for the actor Sim." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="back" class="Tunable" default="1.0" display="Back" muid="4864F786380BA3EC" description="Space to be reserved in back of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="front" class="Tunable" default="1.0" display="Front" muid="9861B82D58690CF3" description="Space to be reserved in front of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="left" class="Tunable" default="1.0" display="Left" muid="51C883C93F10681" description="Space to be reserved to the left of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="right" class="Tunable" default="1.0" display="Right" muid="3F59259D4D91B7E6" description="Space to be reserved to the right of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableList name="actor_b" class="TunableList" display="Actor B" muid="E8916FA8F8C48006" min="1" description="A list of valid positions the target Sim may be in. Only one is&#xA;ultimately picked." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunablePositionAndOrientation" muid="7607687649D2605B" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="position" class="TunableVector2" display="Position" muid="9F4F2416D36F8433" description="Position of this actor in the scene." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="62DB7AB5ECEF40CC" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="877CC03317542ED7" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <Tunable type="float" name="rotation" class="TunableAngle" default="0.0" display="Rotation" muid="14C825E516325BED" min="0.0" max="360.0" description="Angle of this actor in the scene." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableTuple name="actor_b_reserved_space" class="TunableReservedSpace" display="Actor B Reserved Space" muid="6E668693752D3DEA" description="The clearance required for the target Sim." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="back" class="Tunable" default="1.0" display="Back" muid="25DB00895FB26EFD" description="Space to be reserved in back of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="front" class="Tunable" default="1.0" display="Front" muid="1816AF902A5C0AB9" description="Space to be reserved in front of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="left" class="Tunable" default="1.0" display="Left" muid="AABCB904BF24CCFB" description="Space to be reserved to the left of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="right" class="Tunable" default="1.0" display="Right" muid="C69D0720751557BF" description="Space to be reserved to the right of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableTuple>
+
+        <Tunable type="int" name="facing_radius" class="TunableRange" default="1" display="Facing Radius" muid="18F6C34B23118A1" min="1" max="None" description="Facing constraint radius that will be used for the Sim looking &#xA;at the target position where the object will be placed." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Constraints" />
+
+        <Tunable type="float" name="facing_range" class="TunableAngle" default="22.5" display="Facing Range" muid="9E669A28529CD662" min="0.0" max="360.0" description="The max angle offset (in radians), the Sim can face away from the&#xA;object." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="minimum_requirement_jig" class="OptionalTunable" default="disabled" display="Minimum Requirement Jig" muid="935BC394EEC75D61" description="If enabled, we will use a jig to guarantee that we find a place to&#xA;throw the ball from. From there, we find the furthest throw." Deprecated="False" filter="0" group="Constraints">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="72A68793BBAD5E32" />
+            <TunableTuple name="enabled" class="TunableSocialJigExplicit" display="Enabled" muid="BCDA0BB32B0E8656" description="The jig to use so we can find a good place to start our throw&#xA;from. Doesn't really matter which actor A and B are, as long as&#xA;there is enough distance between them for a throw. After we&#xA;place this jig, we FGL from that location to find the longest&#xA;throw possible." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="actor_a" class="TunablePositionAndOrientation" display="Actor A" muid="47C2C83AE39A317C" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="position" class="TunableVector2" display="Position" muid="A240F62D92D8A17" description="Position of this actor in the scene." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="ACD9306090F6B007" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="C96E9D8E68A8DBAA" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <Tunable type="float" name="rotation" class="TunableAngle" default="0.0" display="Rotation" muid="7D30B0FE941802F8" min="0.0" max="360.0" description="Angle of this actor in the scene." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="actor_a_reserved_space" class="TunableReservedSpace" display="Actor A Reserved Space" muid="85B6A35D9E387925" description="The clearance required for the actor Sim." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="back" class="Tunable" default="1.0" display="Back" muid="7B1F68115998E52B" description="Space to be reserved in back of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="front" class="Tunable" default="1.0" display="Front" muid="6A06A22CFABAB87C" description="Space to be reserved in front of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="left" class="Tunable" default="1.0" display="Left" muid="4A2294EB1C225C3C" description="Space to be reserved to the left of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="right" class="Tunable" default="1.0" display="Right" muid="EC1650F49DB0E630" description="Space to be reserved to the right of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableList name="actor_b" class="TunableList" display="Actor B" muid="A556AFA09E844430" min="1" description="A list of valid positions the target Sim may be in. Only one is&#xA;ultimately picked." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunablePositionAndOrientation" muid="CB4526C91502E8B6" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="position" class="TunableVector2" display="Position" muid="ED2F571D74BDB41D" description="Position of this actor in the scene." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="7A266CCCE941A1A4" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="F6EBC13C09ECBC4B" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <Tunable type="float" name="rotation" class="TunableAngle" default="0.0" display="Rotation" muid="B022E27AA6C3107A" min="0.0" max="360.0" description="Angle of this actor in the scene." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableList>
+                <TunableTuple name="actor_b_reserved_space" class="TunableReservedSpace" display="Actor B Reserved Space" muid="6D9E291C7B275C38" description="The clearance required for the target Sim." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="back" class="Tunable" default="1.0" display="Back" muid="52E5AB60FA6B684" description="Space to be reserved in back of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="front" class="Tunable" default="1.0" display="Front" muid="BC44C7F28AAEB14B" description="Space to be reserved in front of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="left" class="Tunable" default="1.0" display="Left" muid="8C9B815D19BACE05" description="Space to be reserved to the left of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="right" class="Tunable" default="1.0" display="Right" muid="9B57AE555B5ED7A3" description="Space to be reserved to the right of the actor." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableTuple name="placement_distance" class="TunableInterval" display="Placement Distance" muid="5D9C07EFEE4043EF" description="Distance in meters where the object will be placed." Deprecated="False" filter="0" group="Constraints">
+            <Tunable type="float" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="102952DFAB5D3F74" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="upper_bound" class="TunableRange" default="10" display="Upper Bound" muid="470B30258FE6336C" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableTuple name="raytest_offset" class="TunableInterval" display="Raytest Offset" muid="79171FB1CE3FD953" description="Offset in meters from the ground from where the raytest should start&#xA;and stop.&#xA;i.e. If you're testing if the Sim should see the target position &#xA;from its eye level, you may want a value around the 1.7 (for an &#xA;adult)." Deprecated="False" filter="0" group="Constraints">
+            <Tunable type="float" name="lower_bound" class="TunableRange" default="1.5" display="Lower Bound" muid="9325F75CF47B45C8" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="upper_bound" class="TunableRange" default="1.5" display="Upper Bound" muid="BAF868E07A076561" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Tunable type="float" name="raytest_radius" class="TunableAngle" default="5.729577951308232" display="Raytest Radius" muid="65511907C78553E0" min="5.729577951308232" max="360.0" description="Radius of the ray test check that will be used to validate if the&#xA;Sim can see the target position where the object will be placed." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Constraints" />
+
+        <Tunable type="str" name="thrown_object_actor_name" class="Tunable" default="carryObject" display="Thrown Object Actor Name" muid="31A198A09148BAF5" description="Offset in meters from the ground from where the raytest should &#xA;end." Deprecated="False" filter="0" group="Animation" />
+    </Instance>
+</TuningRoot>

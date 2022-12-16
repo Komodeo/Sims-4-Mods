@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation_goal" class="SituationGoalMultipleSimsWithBuff" module="situations.situation_goal_multi_sim" muid="67AD26F3DAD612D4" description="A SituationGoal representing X Sims simultaneously with the given buff." instance_needs_reference="True" instance_subclasses_only="False" parents="SituationGoal" path="SituationGoals\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="_give_goal_even_if_it_would_auto_pass" class="Tunable" default="False" display="Give Goal Even If It Would Auto Pass" muid="31D5F130F1787F1F" description="If checked then this goal will be given even if the goal would&#xA;instantly complete.  An example wanting this is the Play Date&#xA;Where there is only one possible goal and we want to give the&#xA;player the score for completing it." Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="_goal_test" class="TunableMultipleSimBuffOfInterest" display="Goal Test" muid="4B676632FA3167BA" description="A tunable defining a buff that is being shared by sim_count number of&#xA;sims at the same time." Deprecated="False" filter="0" group="Tests">
+            <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="5DCC30F88621F1D0" description="The buff that we are hoping for the sims to have." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Buff" />
+            <TunableVariant type="None" name="sim_count" class="TunableSituationGoalSimCountVariant" default="fixed" display="Sim Count" muid="1ED8A973F91F8411" description="The number of sims with the buff at the same time." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="fixed" class="TunableTunableSituationGoalSimCount_Fixed" display="Fixed" muid="DB3A3D16C7CC3DB" description="Required number of sims based on a fixed number." Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="count" class="Tunable" default="2" display="Count" muid="ED882EF4735F6059" description="A fixed count of how many sims are required (default)." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+                <TunableTuple name="sims_in_situation" class="TunableTunableSituationGoalSimCount_SimsInSituation" display="Sims In Situation" muid="731997935B10F09A" description="Required number of sims is based on sims in the situation (optionally also with a given job)." Deprecated="False" filter="0" group="General">
+                    <TunableList name="required_jobs" class="TunableList" display="Required Jobs" muid="4D34E7B0A5858DE1" description="If this list is non-empty then only sims with the given job(s) will be counted." Deprecated="False" filter="0" group="General">
+                        <Tunable type="situation_job" class="TunableReference" muid="507A82EFA42C6ADF" allow_none="False" Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableVariant>
+        </TunableTuple>
+
+        <Deleted name="_iterations" muid="D69528BC95C378FE" />
+
+        <Tunable type="bool" name="_select_all_instantiated_sims" class="Tunable" default="False" display="Select All Instantiated Sims" muid="926D13EDCA960A24" description="If true, the goal system selects all instantiated sims in the zone." Deprecated="False" filter="0" group="General" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRename" old_muid="BD8369ABCC595516" new_muid="926D13EDCA960A24" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

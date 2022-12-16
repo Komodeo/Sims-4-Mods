@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="postures.posture_graph" muid="ABF4304185100141">
+        <Class name="TransitionSpec" muid="5CA483E930B12938">
+            <Tunable type="float" name="DISTANCE_TO_FADE_SIM_OUT" class="Tunable" default="5.0" display="Distance To Fade Sim Out" muid="5ECEFEB3E3523F35" description="Distance at which a Sim will start fading out if tuned as such." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+
+        <Class name="PostureGraphService" muid="FD25D9CD9E08A7FB">
+            <TunableList name="CARRIED_DEFAULT_AFFORDANCES" class="TunableMapping" display="Carried Default Affordances" muid="5D3BF4F4552C36D6" mapping_key="key" mapping_value="value" description="The interactions for Sims' default &quot;Be Carried&quot; postures. These&#xA;interactions are used whenever Sims are transitioning into such&#xA;postures." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="98FEDCB3B1E58078" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Species" name="key" class="TunableEnumEntry" default="HUMAN" display="Key" muid="AED25E2B75EA48D5" static_entries="sims-sim_info_types.Species" description="The species that this affordance is intended for." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="interaction" name="value" class="TunableReference" display="Value" muid="A77411694D8255F5" description="The default interaction to push for Sims of this species." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="INCREMENTAL_REBUILD_THRESHOLD" class="Tunable" default="10" display="Incremental Rebuild Threshold" muid="127DC92D0116B6DB" description="The posture graph will do a full rebuild when exiting build/buy if&#xA;there have been more than this number of modifications to the posture&#xA;graph. Otherwise, an incremental rebuild will be done, which is much&#xA;faster for small numbers of operations, but slower for large numbers.&#xA;Talk to a gameplay engineer before changing this value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="POSTURE_PROVIDING_AFFORDANCES" class="TunableList" display="Posture Providing Affordances" muid="CBAC12D29423429" description="Additional posture providing interactions that are not tuned on any&#xA;object. This allows us to add additional postures for sims to use.&#xA;Example: Kneel on floor." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="51C9A6EEE35E38F7" description="Interaction that provides a posture." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+
+            <TunableList name="SIM_DEFAULT_AFFORDANCES" class="TunableMapping" display="Sim Default Affordances" muid="8CF7FF91EA029961" mapping_key="key" mapping_value="value" description="The interactions for Sims' default postures. These interactions are used&#xA;to kickstart Sims; are pushed on them after resets, and are used as the&#xA;default cancel replacement interaction." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="BF76614ED321B084" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Species" name="key" class="TunableEnumEntry" default="HUMAN" display="Key" muid="DEAE1EF0A1CBC1B5" static_entries="sims-sim_info_types.Species" description="The species that this affordance is intended for." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="interaction" name="value" class="TunableReference" display="Value" muid="7DD318455F6F3015" description="The default interaction to push for Sims of this species." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SWIM_DEFAULT_AFFORDANCES" class="TunableMapping" display="Swim Default Affordances" muid="871E965151D9D814" mapping_key="key" mapping_value="value" description="The interactions for Sims' default swimming postures. These interactions&#xA;are used as a Sim's default affordance while in a pool." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="4BBD9CBBF75323DD" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Species" name="key" class="TunableEnumEntry" default="HUMAN" display="Key" muid="FED89327481B2A6E" static_entries="sims-sim_info_types.Species" description="The species that this affordance is intended for." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="interaction" name="value" class="TunableReference" display="Value" muid="F6789F23A94E908D" description="The default interaction to push for Sims of this species." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="6F3ECB3EBA0FA5FF" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

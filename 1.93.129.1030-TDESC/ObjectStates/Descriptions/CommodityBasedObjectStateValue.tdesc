@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="object_state" class="CommodityBasedObjectStateValue" module="objects.components.state" muid="B529959CD22E83B0" description="Represents one value a particular state may take.  Used with a continuous&#xA;commodity this version of a value is tuned with a range that provides a&#xA;fuzzy-logic feel to the player." instance_subclasses_only="False" parents="ObjectStateValue" path="ObjectStates\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="default_value" class="OptionalTunable" default="use_range_average" display="Default Value" muid="DD1C9AAFE7377EAB" description="default commodity value when set to this state.&#xA;If disabled use average of range" Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="use_default_value" class="Tunable" default="0" display="Use Default Value" muid="37C0BA36AC884F9" description="default commodity value when set to this state.&#xA;If disabled use average of range" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable name="use_range_average" class="TunableExistance" display="Use Range Average" muid="E03FEDB06DDDDF05" />
+        </TunableVariant>
+
+        <TunableTuple name="range" class="TunableInterval" display="Range" muid="A77355B1BECABC1A" description="The commodity range this state maps to. The ranges between the commodity&#xA;values must have some overlap in order for the state to transition properly.&#xA;For instance, let's say you have two states, DIRTY and CLEAN. If you set the&#xA;DIRTY state to have a range between 0 and 20, and you set CLEAN state to have&#xA;a range of 21 to 100, the states will not change properly because of the void&#xA;created (between 20 and 21). At the very least, the lower bounds of one needs&#xA;to be the same as the upper bound for the next (i.e. DIRTY from 0 to 20 and&#xA;CLEAN from 20 to 100)." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="1C34E5F46C8ED07" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="upper_bound" class="TunableRange" default="0" display="Upper Bound" muid="C4BB859D89188033" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <Deleted name="value" muid="34FF7264E42210E5" />
+    </Instance>
+</TuningRoot>

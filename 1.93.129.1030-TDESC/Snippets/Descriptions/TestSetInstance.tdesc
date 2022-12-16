@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="snippet" class="TestSetInstance" module="event_testing.tests" muid="C66CB291924B1127" description="Allow a test set to be referenced.&#xA;&#xA;This is a full test set that is reference-able in OE, allowing a test set &#xA;to be a single entry in a test set. Unlike the rest of the test variants, &#xA;which are instantiated at time of use, this one is still a class at the &#xA;time of use. This is why we're using __new__(). This allows us to call &#xA;this like a function and still get the desired results." instance_needs_reference="True" instance_subclasses_only="False" path="Snippets\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="invert_test" class="OptionalTunable" default="disabled" display="Invert Test" muid="6B00CD683153FBB1" description="If enabled, the results of running the test(s) will be negated" Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="EBDACA18A5EFD9F4" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="ED8F0A7653A0E1C5" description="Properties that are only used if the results of the test are inverted" Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="tooltip" class="OptionalTunable" default="disabled" display="Tooltip" muid="81ADCA512151437F" description="If enabled, the provided tooltip will be the failure message in the &#xA;case where the test set passes, but inversion is enabled, so the &#xA;end result is failure. &#xA;&#xA;We do not propagate a tooltip when tests pass, only failed tests" Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6B2DAF894F020885" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="E9458F145D8693BB" description="Tooltip to show when a test passes, but has been inverted to fail" Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TdescFragTag name="test" class="TunableTestSetWithTooltip" display="Test" muid="760D2F04DF41340F" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

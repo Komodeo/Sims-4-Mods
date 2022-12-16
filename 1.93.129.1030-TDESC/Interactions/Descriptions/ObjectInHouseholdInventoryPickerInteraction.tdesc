@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="ObjectInHouseholdInventoryPickerInteraction" module="interactions.base.picker_interaction" muid="225DBD50A86A3BB8" description="The picker interaction to select a certain object from a subject's household&#xA;inventory." instance_needs_reference="True" instance_subclasses_only="False" parents="ObjectPickerInteraction, PickerSingleChoiceSuperInteraction, PickerSuperInteraction, ImmediateSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableEnum type="ParticipantType" name="inventory_subject" class="TunableEnumEntry" default="Actor" display="Inventory Subject" muid="9186D5B7A618F0DE" static_entries="interactions.ParticipantType" description="Subject on which the household inventory exists." Deprecated="False" filter="0" group="Picker Tuning" />
+
+        <TunableList name="valid_tags" class="TunableSet" display="Valid Tags" muid="CC20FDB16163E5CA" description="If object defintion has any tags in the list then it is a valid object to consider for picker." Deprecated="False" filter="0" group="Picker Tuning" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="69E212EF784D8181" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="Func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

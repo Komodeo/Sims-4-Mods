@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="RunSituationSuperInteraction" module="interactions.run_situation" muid="47225F960CF0333B" description="This interaction will spin up the family meal situation." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="host_sim" class="OptionalTunable" default="enabled" display="Host Sim" muid="BA4E7A5234740D54" description="The participant type that will be made the host. If disabled, the&#xA;host will be None which is okay in circumstances where there is no&#xA;need for a host (i.e. a walkbye or a ghost situation)." Deprecated="False" filter="0" group="Situation">
+            <TunableList name="enabled" class="TunableEnumFlags" default="Actor" display="Enabled" muid="90315E0E478C4021" description="The participant type that will be made the host." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="ParticipantType" class="TunableEnumEntry" default="Invalid" muid="981EEE039F4A216C" static_entries="interactions.ParticipantType" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+            <Tunable name="NoHost" class="TunableExistance" display="Nohost" muid="3EAF1AAA6A36986B" />
+        </TunableVariant>
+
+        <Tunable type="bool" name="invite_only" class="Tunable" default="False" display="Invite Only" muid="BA9871B273DF06E3" description="If checked then the situation guest list will be invite only." Deprecated="False" filter="0" group="Situation" />
+
+        <TunableList name="job_mapping" class="TunableMapping" display="Job Mapping" muid="958C298E93723155" mapping_key="key" mapping_value="value" description="This is a mapping of participant type to situation job.  These must match up with &#xA;the jobs in the actual situation." Deprecated="False" filter="0" group="Situation">
+            <TunableTuple class="TunableTuple" muid="6457D5A359A955AC" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="ParticipantType" name="key" class="TunableEnumEntry" default="Actor" display="Key" muid="D36052DDAB462D2A" static_entries="interactions.ParticipantType" description="The participant type that will be given this job." Deprecated="False" filter="0" group="General" />
+                <Tunable type="situation_job" name="value" class="TunableReference" display="Value" muid="1DE93D04D5D01696" description="The situation job applied to this participant type.  This MUST&#xA;be a valid job for the situation." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="situation" name="situation" class="TunableReference" display="Situation" muid="472CBCCFBD767B80" description="The situation to launch upon execution of this interaction." allow_none="False" Deprecated="False" filter="0" group="Situation" />
+
+        <TunableVariant type="None" name="ui_options" class="TunableVariant" default="disabled" display="Ui Options" muid="3B467CF16026BF72" description="Options for setting up the situation UI." Deprecated="False" filter="0" group="Situation">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="AFA05E47EB57893A" />
+            <TunableTuple name="user_facing" class="TunableTuple" display="User Facing" muid="B049EDD19C7EC468" description="Enable the user facing situation UI, displaying the situation name,&#xA;goals, and scoring where appropriate. " Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="scoring_enabled" class="Tunable" default="True" display="Scoring Enabled" muid="68D295F29961C116" description="If disabled, will only show the situation name and time." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

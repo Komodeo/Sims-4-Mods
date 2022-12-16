@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="sim_template" class="PremadeSimTemplate" module="world.premade_sim_template" muid="280579EA0D58AFBE" description="A sim template for creating premade Sims to populate premade households." instance_subclasses_only="False" parents="TunableSimTemplate" path="SimTemplates\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="_sim_creation_info" class="PremadeSimCreator" display="Sim Creation Info" muid="D5038491936C2DE4" description="Sim creation info for the premade Sim." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="breed_name" class="OptionalTunable" default="no_breed_name" display="Breed Name" muid="E504529344ED14A0" description="The Sim's breed name." Deprecated="False" filter="0" group="General">
+                <Tunable name="no_breed_name" class="TunableExistance" display="No Breed Name" muid="B91BFB0D87EBBD1" />
+                <Tunable type="int" name="specify_breed_name" class="TunableLocalizedString" default="0x0" display="Specify Breed Name" muid="6F01594832C539A4" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="int" name="first_name" class="TunableLocalizedString" default="0x0" display="First Name" muid="DD31D981BEC6D1D1" description="The Sim's first name." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="last_name" class="OptionalTunable" default="specify_last_name" display="Last Name" muid="B4E6B516B0D28C5C" description="The Sim's last name." Deprecated="False" filter="0" group="General">
+                <Tunable name="no_last_name" class="TunableExistance" display="No Last Name" muid="83137D60D549CBEE" />
+                <Tunable type="int" name="specify_last_name" class="TunableLocalizedString" default="0x0" display="Specify Last Name" muid="152CE0AFE3E59A34" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+            <Tunable type="ResourceKey" name="resource_key" class="TunableResourceKey" default="None" display="Resource Key" muid="4DA65DAA0468C8C" description="The SimInfo file to use." Deprecated="False" filter="0" group="General" resource_types="0x25ed6f4" />
+        </TunableTuple>
+
+        <TunableVariant type="None" name="career_level" class="OptionalTunable" default="disabled" display="Career Level" muid="FA5CB09D87358C8D" description="If specified, the premade Sim will be in the career at this career&#xA;level." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="3D490598FC5D2808" />
+            <Tunable type="career_level" name="enabled" class="TunableReference" display="Enabled" muid="85F4BB771B80D074" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="career_lot" class="OptionalTunable" default="disabled" display="Career Lot" muid="4B232E77EE1B3AD1" description="If specified and Sim is initialized with a career, the premade Sim's career location will be initially set &#xA;to the zone associated with the provided premade lot description." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="E3DDC9C18E4C7F54" />
+            <Tunable type="lotdescription" name="enabled" class="TunableReference" display="Enabled" muid="513C9D72AEFD24F4" description="The lot to be initially associated with the Sim's career" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="clan_info" class="OptionalTunable" default="disabled" display="Clan Info" muid="6102B765017898A4" description="If enabled, the premade Sim will be assigned to a clan." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="110431199FEE104" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="6D4F79C7C2BDCC1C" Deprecated="False" filter="0" group="General">
+                <Tunable type="clan" name="clan" class="TunableReference" display="Clan" muid="936531DEA84B8132" description="The clan this premade Sim should be assigned to." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="leader" class="Tunable" default="False" display="Leader" muid="956FFCE82ABBADE0" description="If enabled, this premade Sim will be assigned as the leader of the specified clan." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableList name="clubs" class="TunableList" display="Clubs" muid="1E33095239C3D245" description="Clubs this premade Sim is part of." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="3BA61F875DEB4CD0" Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="leader" class="Tunable" default="False" display="Leader" muid="84044DAEC44168AA" description="If enabled, this Sim will be the leader of the club." Deprecated="False" filter="0" group="General" />
+                <Tunable type="club_seed" name="seed" class="TunableReference" display="Seed" muid="5C3AC7918A74F80B" description="The club seed for the premade Sim to be in." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableVariant type="None" name="occult" class="OptionalTunable" default="disabled" display="Occult" muid="D99145B73252E701" description="Whether or not the Sim will have an occult." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="52759B3D8429700C" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="EE046C99B2A26F63" Deprecated="False" filter="0" group="General">
+                <Tunable type="ResourceKey" name="occult_sim_info" class="TunableResourceKey" default="None" display="Occult Sim Info" muid="E80CC8FF2F894584" description="The SimInfo file to use for the occult form of this Sim. It&#xA;is assumed that the sim info provided with the Sim Creation&#xA;Info is the base/non-occult form." Deprecated="False" filter="0" group="General" resource_types="0x25ed6f4" />
+                <TunableEnum type="OccultType" name="occult_type" class="TunableEnumEntry" default="HUMAN" display="Occult Type" muid="DF0979F783261DD3" static_entries="sims-occult-occult_enums.OccultType" description="The occult type this sim info represents. You do not need to tune&#xA;the occult traits on the Sim Template. The traits will be added as&#xA;a result of this tuning being set." Deprecated="False" filter="0" group="General" invalid_entries="HUMAN" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="pregnancy" class="OptionalTunable" default="disabled" display="Pregnancy" muid="E95624DE99019D44" description="Whether or not the sim will be pregnant." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A8B6764F4EA67DE1" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="6C8D054A5CFF9640" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="PregnancyOrigin" name="origin" class="TunableEnumEntry" default="DEFAULT" display="Origin" muid="B3E8C47E0E41735" dynamic_entries="sims-pregnancy-pregnancy_enums.PregnancyOrigin._elements" static_entries="sims-pregnancy-pregnancy_enums.PregnancyOrigin" description="Define the origin of this pregnancy. This value is used to determine&#xA;some of the random elements at birth." Deprecated="False" filter="0" group="General" />
+                <Tunable type="sim_template" name="other_parent" class="TunableReference" display="Other Parent" muid="E663F89C34EF456" description="The other sim whose traits will be passed on to the offspring." allow_none="False" Deprecated="False" filter="0" group="General" restrict="PremadeSimTemplate" />
+                <Tunable type="float" name="progress" class="TunablePercent" default="25" display="Progress" muid="93DE772CB8ACED04" min="0" max="100" description="Progress into the pregnancy, where 0% is recently conceived&#xA;to 100% where labor can happen at any second." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="primary_aspiration" class="OptionalTunable" default="disabled" display="Primary Aspiration" muid="99866C524570FDF5" description="Specify the Sims primary aspiration." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B4CA108FB8891391" />
+            <Tunable type="aspiration_track" name="enabled" class="TunableReference" display="Enabled" muid="3527350A23B93213" description="The track to give the sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

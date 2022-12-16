@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="slot_type_set" class="SlotTypeSet" module="objects.slots" muid="D67535932B74B657" description="A class defining a combination of object slot types." instance_base_game_only="True" instance_subclasses_only="False" path="SlotTypeSets\Descriptions">
+        <Tunable type="bool" name="allow_distant_relative_intersection" class="Tunable" default="False" display="Allow Distant Relative Intersection" muid="855B505B9B316B11" description="True if objects slotted to this slot should be allowed to&#xA;overlap with other objects that are slotted to a common ancestor,&#xA;or slotted to something slotted to a common ancestor, etc." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="bool" name="client_only_parenting" class="Tunable" default="False" display="Client Only Parenting" muid="7608CEC08DDD398B" description="True if the object being slotted should bypass much of the server side parenting and hierarchy as possible.." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="int" name="custom_error_text" class="TunableLocalizedString" default="0x0" display="Custom Error Text" muid="10047EBF5D6171B4" description="Override error text to display if an object fails placement due to not matching this slot" allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="bool" name="dont_propagate_ops" class="Tunable" default="False" display="Dont Propagate Ops" muid="8201D585BED1ACF5" description="True if object operations performed on the parent should not transfer to children slotted to this&#xA;slot. EG: If the parent is deleted or moved, the child is simply unparented and remains on the lot in place." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="bool" name="force_full_footprint_checks" class="Tunable" default="False" display="Force Full Footprint Checks" muid="DE15011561C7B012" description="True if the object being slotted needs to do full footprint checks with the parent, children, siblings and environment.." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="bool" name="parent_snaps_to_child" class="Tunable" default="False" display="Parent Snaps To Child" muid="906BD589D6F2F73F" description="True if, when the user picks up and moves an object with this slot around, the parent will snap&#xA;to available nearby unslotted children. The child is slotted to the parent in-place (not moved)" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="bool" name="prevent_sibling_intersection" class="Tunable" default="False" display="Prevent Sibling Intersection" muid="E7A8F17BDA634C50" description="True if objects slotted to this slot should not follow&#xA;the normal rule of blindly allowing intersections with&#xA;other objects slotted to the same parent at different heights." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="float" name="search_radius" class="Tunable" default="0.5" display="Search Radius" muid="83ED6521C1404AA1" description="Number of meters to search for co-located slots with different orientations." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableList name="slot_types" class="TunableSet" display="Slot Types" muid="80DB0B87247540BA" description="The slot types comprising this set." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" unique_entries="true">
+            <Tunable type="slot_type" class="TunableReference" muid="718F6A1AA0CA7911" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <Tunable type="bool" name="user_facing" class="Tunable" default="True" display="User Facing" muid="CFB775D296147EB8" description="True if this slot will be available for slotting &#xA;objects by the player through livedrag or Build &#xA;buy.  &#xA;False if its only through gameplay interactions." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

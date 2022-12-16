@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.baby.baby_tuning" muid="7AC1415002D32BD7">
+        <Class name="BabySkinTone" muid="46C25E92207BC45B" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="ADULT_SIM" muid="E4038FB66728496E" enum_value="15" />
+
+            <EnumItem name="ALIEN_BLUE" muid="541ACD133A343429" enum_value="6" />
+
+            <EnumItem name="ALIEN_BLUE_LIGHT" muid="1EACB752088E323" enum_value="7" />
+
+            <EnumItem name="ALIEN_GREEN" muid="E0EE63D1E3A57939" enum_value="8" />
+
+            <EnumItem name="ALIEN_GREEN_LIGHT" muid="5CD00F249BEE2E4D" enum_value="9" />
+
+            <EnumItem name="ALIEN_PURPLE" muid="173082C7F04EF771" enum_value="10" />
+
+            <EnumItem name="ALIEN_PURPLE_LIGHT" muid="852CF36A5CC7909" enum_value="11" />
+
+            <EnumItem name="ALIEN_TEAL" muid="4F098CDDE391A376" enum_value="12" />
+
+            <EnumItem name="ALIEN_TEAL_LIGHT" muid="4DE3FCFFD0A71D15" enum_value="13" />
+
+            <EnumItem name="ALIEN_WHITE" muid="64D0A4E37F4A611A" enum_value="14" />
+
+            <EnumItem name="BLUE" muid="1FFF6079861E8660" enum_value="3" />
+
+            <EnumItem name="DARK" muid="5A7A2981608282C5" enum_value="2" />
+
+            <EnumItem name="GREEN" muid="A647446B92C12A2D" enum_value="4" />
+
+            <EnumItem name="LIGHT" muid="878FD629EBF87B25" enum_value="0" />
+
+            <EnumItem name="MEDIUM" muid="25803F01B74158F6" enum_value="1" />
+
+            <EnumItem name="RED" muid="B3C809BD7260860" enum_value="5" />
+        </Class>
+
+        <Class name="BabyTuning" muid="808CD19DED0B4704">
+            <TunableList name="BABY_BASSINET_DEFINITION_MAP" class="TunableMapping" display="Baby Bassinet Definition Map" muid="A59A9415137EE2CA" mapping_key="Baby" mapping_value="EmptyBassinet" description="The corresponding mapping for each definition pair of empty bassinet and&#xA;bassinet with baby inside. The reason we need to have two of definitions&#xA;is one is deletable and the other one is not." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="C3D7623E6FC9DFF3" Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" name="Baby" class="TunableReference" display="Baby" muid="FAF7B21E803491E6" description="The definition of an object that is a bassinet containing a fully&#xA;functioning baby." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="object" name="EmptyBassinet" class="TunableReference" display="Emptybassinet" muid="5D936CC86F2C70A" description="The definition of an object that is an empty bassinet." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="object_state" name="BABY_CLOTH_STATE" class="TunableReference" display="Baby Cloth State" muid="D9DF6BEC3173F6FF" description="The object state that determines baby cloth value." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectState" />
+
+            <TunableList name="BABY_CLOTH_STATE_MAP" class="TunableMapping" display="Baby Cloth State Map" muid="3019B7218448869F" mapping_key="key" mapping_value="value" description="A mapping from current BABY_CLOTH_STATE value to cloth string." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="D79910BF15B71D4C" Deprecated="False" filter="0" group="General">
+                    <Tunable type="object_state" name="key" class="TunableReference" display="Key" muid="ECA4821DB3547B7A" description="The state value that will be looked for on the baby." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                    <Tunable type="str" name="value" class="Tunable" default="" display="Value" muid="47DCBCF430EFC1C1" description="The cloth that will be used if the state value key is present." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="BABY_DEFAULT_BASSINETS" class="TunableList" display="Baby Default Bassinets" muid="55728477D2D57802" description="A list of trait to default bassinet definitions. This is used when&#xA;generating default bassinets for specific babies. The list is evaluated&#xA;in order. Should no element be selected, an entry from&#xA;BABY_BASSINET_DEFINITION_MAP is selected instead." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="A136AD78D13718B9" description="Should the baby have any of the specified traits, select a bassinet&#xA;from the list of bassinets." Deprecated="False" filter="0" group="General">
+                    <TunableList name="bassinets" class="TunableList" display="Bassinets" muid="738DE38DF341702" description="Should this entry be selected, a random bassinet from this list&#xA;is chosen." Deprecated="False" filter="0" group="General">
+                        <Tunable type="object" class="TunableReference" muid="F74646F343E1AF75" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                    <TunableList name="traits" class="TunableList" display="Traits" muid="8E7C8B9EF777379B" description="This entry is selected should the Sim have any of these traits." Deprecated="False" filter="0" group="General">
+                        <Tunable type="trait" class="TunableReference" muid="83F6094626F8EB5B" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Trait" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="BABY_DEFAULT_CLOTH" class="TunableTuple" display="Baby Default Cloth" muid="94F149DA1E61FF44" description="Tuning for the default cloth value for different babies." Deprecated="False" filter="0" group="General">
+                <Tunable type="str" name="alien" class="Tunable" default="" display="Alien" muid="19302B9922FDA07F" description="The cloth that will be used by default for an alien baby." Deprecated="False" filter="0" group="General" />
+                <Tunable type="str" name="boy" class="Tunable" default="" display="Boy" muid="2398A88B380C113E" description="The cloth that will be used by default for a boy baby." Deprecated="False" filter="0" group="General" />
+                <Tunable type="str" name="girl" class="Tunable" default="" display="Girl" muid="4CACFA73AE769ACD" description="The cloth that will be used by default for a girl baby." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableList name="BABY_SKIN_TONE_TO_CAS_SKIN_TONE" class="TunableMapping" display="Baby Skin Tone To Cas Skin Tone" muid="23DB5A2F59FA3A71" mapping_key="key" mapping_value="value" description="A mapping from the Skin Tone enum to a CAS skin tone ID." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="BabySkinToneToCasTuple">
+                <TunableTuple class="TunableTuple" muid="E53D3DEF9F58FF37" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="BabySkinTone" name="key" class="TunableEnumEntry" default="MEDIUM" display="Key" muid="A9A8A129B000C46C" static_entries="sims-baby-baby_tuning.BabySkinTone" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="D2A8F8456E40FC68" description="The skin tone CAS reference." Deprecated="False" filter="0" group="General">
+                        <Tunable type="skintone" class="TunableReference" muid="1DBFC4A6E1018467" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="object" name="BABY_THUMBNAIL_DEFINITION" class="TunableReference" display="Baby Thumbnail Definition" muid="B01DC489E05BA785" description="The thumbnail definition for client use only." allow_none="False" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

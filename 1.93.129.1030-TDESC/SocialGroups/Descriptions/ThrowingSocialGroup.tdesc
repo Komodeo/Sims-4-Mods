@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="social_group" class="ThrowingSocialGroup" module="socials.throwing_group" muid="6D345F0C65258F04" description="A Social Group that contains a group of Sims throwing objects at each &#xA;other." instance_needs_reference="True" instance_subclasses_only="False" parents="SocialGroup" path="SocialGroups\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="adjustment_interval" class="TunableInterval" display="Adjustment Interval" muid="70EABF073A1F9C6" description="How long Sims wait before adjusting positions." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="lower_bound" class="TunableSimMinute" default="2" display="Lower Bound" muid="DDBE44BB4776E53C" min="None" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="upper_bound" class="TunableSimMinute" default="5" display="Upper Bound" muid="B22024B2A610F0A1" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+
+        <TunableList name="adjustment_mixers" class="TunableList" display="Adjustment Mixers" muid="79C583C4AE5F07CE" description="List of mixers that we push as possible adustment options.  Sims&#xA;should not try to adjust right after running these mixers." Deprecated="False" filter="0" group="General">
+            <Tunable type="interaction" class="TunableReference" muid="F7CDBB19822044FF" description="Adjustment mixer reference." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="MixerInteraction" />
+        </TunableList>
+
+        <Deleted name="include_default_facing_constraint" muid="D8C3BF2AA80CFE6D" />
+
+        <TunableTuple name="scoring_function" class="TunableThrowingGroupCostFunction" display="Scoring Function" muid="863BFC9463EA6F4B" description="The scoring function for this group." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="adjustment_distance" class="TunableRange" default="5.0" display="Adjustment Distance" muid="E9AD3E17C44FDFD8" min="0" max="None" description="Any position that requires the Sim to be at a distance less than&#xA;this value will be penalized." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="location_tests" class="TunableTuple" display="Location Tests" muid="A5EA0A53A5ACF076" description="Tests to run on the goal location to validate if it should be&#xA;discouraged when using this social group." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="validate_is_outside" class="OptionalTunable" default="disabled" display="Validate Is Outside" muid="4E1BF5124B29490B" description="If enabled goals that do not match the outside condition will&#xA;be discouraged." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="176025BD117EE589" />
+                    <Tunable type="bool" name="enabled" class="Tunable" default="False" display="Enabled" muid="67DA60A9020E1DB3" description="If True goals outside will be encouraged, if false only&#xA;goals on the inside will be encouraged." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="validate_snowmask" class="OptionalTunable" default="disabled" display="Validate Snowmask" muid="71EB30AFF24FBC2E" description="If enabled goals that do not match the snowmask value will&#xA;be discouraged.  This is used for winter to guarantee cases&#xA;like snowball fight the Sims readjust and move around in places&#xA;where there is snow." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="E4145E7ABDDDBE45" />
+                    <Tunable type="float" name="enabled" class="Tunable" default="0.5" display="Enabled" muid="E854B94669E7F3F0" description="Value snowmask should be greater than to pass this test." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+            <Tunable type="float" name="maximum_distance" class="TunableRange" default="10.0" display="Maximum Distance" muid="8755F92007232B7C" min="0" max="None" description="Any distance to another Sim over this amount will be penalized." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <Tunable type="float" name="minimum_distance" class="TunableRange" default="3.0" display="Minimum Distance" muid="DF722DEDD5F1FB9E" min="0" max="None" description="Any distance to another Sim under this amount will be penalized." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="fame.fame_tuning" muid="EC7669571949AF55">
+        <Class name="FameTunables" muid="86C8535AB0B7CCDA">
+            <Tunable type="bucks_perk" name="CAREER_HOPPER_PERK" class="TunableReference" display="Career Hopper Perk" muid="E64BDAFDB0CC34AE" description="A reference to the Career Hopper perk. You shouldn't need to tune this.&#xA;If you do please see your GPE partner." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <Tunable type="float" name="CHANCE_TO_WEAR_TRAILBLAZER_OUTFIT" class="TunablePercent" default="50" display="Chance To Wear Trailblazer Outfit" muid="D6CED249D520E9C4" min="0" max="100" description="a percentage chance for a sim in a situation without an overriding&#xA;outfit will wear the same outfit as a trend setting sim." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="action" name="END_FEUD_LOOT" class="TunableReference" display="End Feud Loot" muid="9B23B10FD945B4BE" description="The loot to apply in order to remove the feud and clean up all of the&#xA;stuff that comes along with ending a feud." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <TunableEnum type="TestEvent" name="FAME_MOMENT_EVENT" class="TunableEnumEntry" default="Invalid" display="Fame Moment Event" muid="77D2B85DB917DA29" dynamic_entries="event_testing-test_events.TestEvent._elements" static_entries="event_testing-test_events.TestEvent" description="The event to register for when waiting for a Fame Moment to occur." Deprecated="False" filter="0" group="General" />
+
+            <TunableEnum type="BucksType" name="FAME_PERKS_BUCKS_TYPE" class="TunableEnumEntry" default="INVALID" display="Fame Perks Bucks Type" muid="205CE48C4480C39E" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" description="A reference to the bucks type used for Fame Perks." Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <Tunable type="statistic" name="FAME_RANKED_STATISTIC" class="TunableReference" display="Fame Ranked Statistic" muid="BD1684D8818ECE43" description="The ranked statistic that is to be used for tracking fame progress.&#xA;&#xA;This should not need to be tuned at all. If you think you need to tune&#xA;this please speak with a GPE before doing so." allow_none="False" Deprecated="False" export_modes="client_binary" filter="0" group="General" pack_safe="True" restrict="RankedStatistic" />
+
+            <Tunable type="bucks_perk" name="LIFESTYLE_BRAND_PERK" class="TunableReference" display="Lifestyle Brand Perk" muid="D0C7C719002B82FD" description="A reference to the perk that is used to unlock the lifestyle brand &#xA;interactions." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <TunableList name="PARENT_FAME_AGE_UP_BONUS" class="TunableMapping" display="Parent Fame Age Up Bonus" muid="18C873402B727BD1" mapping_key="key" mapping_value="value" description="This is a mapping of difference in Fame Rank Level between the Sim and&#xA;the highest fame parent, and the amount of fame to award the Sim as a&#xA;bonus.&#xA;&#xA;The calculation looks something like this:&#xA;&#xA;Sim A is aging up and is Fame Rank 1.&#xA;Sim A's Father is Fame Rank 3.&#xA;Sim A's mother is Fame Rank 4.&#xA;&#xA;The value we will use for the calculation is Sim A's Parent with the &#xA;most Fame minus Sim A's Fame. In this case this is Sim A's mom has the&#xA;highest Rank Fame so we will use her value, 4. Subtracting 1 from 4 &#xA;results in a difference of 3. &#xA;&#xA;Using 3 as the lookup we find the amount of Fame the child gets just&#xA;for their parent being famous and add that amount to their Fame." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="68FFFC953FB5F6C7" Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="key" class="TunableRange" default="1" display="Key" muid="91C747DE6FEB7EDA" min="0" max="5" description="The difference in Fame between the parent and child." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="value" class="TunableRange" default="10" display="Value" muid="DD4FD145493F9989" min="0" max="None" description="The amount of Fame to award the child." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="relbit" name="SHUNNED_REL_BIT" class="TunableReference" display="Shunned Rel Bit" muid="D2FC8F437DF1FB14" description="A reference to the relbit that identifies that a sim is being shunned &amp;#xA;by another sim in the relationship panel." allow_none="False" Deprecated="False" export_modes="client_binary" filter="0" group="General" pack_safe="True" />
+
+            <TunableList name="TRAILBLAZER_EFFECT_AVAILABLE_TESTS" class="TrailblazerEffectAvailableTestList" display="Trailblazer Effect Available Tests" muid="9E7E73883C3899A0" description="A set of tests, all of which must pass in order for the trailblazer perk to be able to activate." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" class="TrailblazerEffectAvailableTestVariant" default="region" muid="69601486C8229F0F" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="region" class="TunableRegionTest" display="Region" muid="5DD995F4E190941F" description="A test to check which region the actor sim is in." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="blacklist" class="OptionalTunable" default="disabled" display="Blacklist" muid="7EE69DB255DDB0D1" description="If enabled then we will check a blacklist of regions in insure that&#xA;the sim is not within one of them." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="DF93AECC91661F13" />
+                            <TunableList name="enabled" class="TunableSet" display="Enabled" muid="3F81D1B87EAE0E7" description="A set of regions that the sim being tested must not be within." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="region" class="TunableReference" muid="F82A6DF9959BBFC8" description="A region that the sim being tested in must not be within." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableVariant>
+                        <TunableVariant type="None" name="subject" class="OptionalTunable" default="disabled" display="Subject" muid="A6A78474E0CDA8BE" description="If enabled then we will test the region of the specified&#xA;participant type.  Otherwise we will test the current region." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="DAE135CD72444AEB" />
+                            <TunableEnum type="ParticipantTypeActorTargetSim" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="1F3572E3513E2316" static_entries="interactions.ParticipantTypeActorTargetSim" description="Who do we want to run this test on." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="whitelist" class="OptionalTunable" default="disabled" display="Whitelist" muid="E330DFD78A5BE5E6" description="If enabled then we will check a whitelist of regions in insure that&#xA;the sim is within one of them." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8A40E2E97C3D7EA0" />
+                            <TunableList name="enabled" class="TunableSet" display="Enabled" muid="276D37555BF72E30" description="A set of regions that the sim being tested must be within." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="region" class="TunableReference" muid="CBF0B99A30269C75" description="A region that the sim being tested in must be within." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableList>
+
+            <Tunable type="bucks_perk" name="TRAILBLAZER_PERK" class="TunableReference" display="Trailblazer Perk" muid="42C725BD5FC9A32D" description="A reference to the perk that is used to identify a Sim as being a &#xA;trailblazer when it is unlocked in that Sims bucks tracker." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </Class>
+
+        <Class name="LifestyleBrandTargetMarket" muid="D665E2AFB34126CC" enum_bit_flag="False" enum_locked="True">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="4908587FE10625E7" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="96DBC852F7A82427" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="INVALID" muid="87F8216841D3554A" enum_value="0" />
+        </Class>
+
+        <Class name="LifestyleBrandProduct" muid="4D8B37030212CDC6" enum_bit_flag="False" enum_locked="True">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="24B117E466C1C738" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="4726F10DA50CF88D" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="INVALID" muid="E665DFDE02289E6B" enum_value="0" />
+        </Class>
+    </Module>
+</TuningRoot>

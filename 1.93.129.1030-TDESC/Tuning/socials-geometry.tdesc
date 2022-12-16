@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="socials.geometry" muid="92EA4A216486B466">
+        <Class name="SocialGeometry" muid="1DB6D996E145FB41">
+            <Tunable type="float" name="DEFAULT_SCORE_CUTOFF" class="TunableRange" default="0.8" display="Default Score Cutoff" muid="2F4C07BC41E6569C" min="0" max="1.0" description="Transforms scoring below cutoff * max_score are filtered out when joining / adjusting position" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="GROUP_ANGLE_CURVE" class="TunableCurve" display="Group Angle Curve" muid="202396950EBF8B6F" description="A curve defining the score for two Sims with this facing angle (in radians).&#xA;&#xA;An angle of zero (on the x-axis) means a Sims is facing another Sim, while&#xA;PI means a Sim is facing away.  Higher values (on the y-axis) encourage&#xA;that angular facing." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableVector2" muid="C2C51E97836B1F0" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="952E1472D09ED93E" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="C54444AC90352298" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="GROUP_DISTANCE_CURVE" class="TunableCurve" display="Group Distance Curve" muid="C531AFF08708E8C2" description="A curve defining the score for standing a given distance away from other&#xA;Sims in the social group.&#xA;&#xA;Higher values (on the y-axis) encourage standing at that distance (on the&#xA;x-axis) away from other Sims." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableVector2" muid="EAAEE47F1AB11C3C" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="1C2D6CABD3251F53" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="7D400F3367B08732" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="NON_GROUP_DISTANCE_CURVE" class="TunableCurve" display="Non Group Distance Curve" muid="800FBAA7FB469A43" description="A curve defining the score for standing a given distance away from other&#xA;Sims *not* in the social group.&#xA;&#xA;Higher values (on the y-axis) encourage standing at that distance (on the&#xA; x-axis) away from other Sims." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableVector2" muid="FD073A17E0795670" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="7672621E99E00E1E" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="18A07E54AB6A7441" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="float" name="NON_OVERLAPPING_SCORE_MULTIPLIER" class="Tunable" default="0.05" display="Non Overlapping Score Multiplier" muid="A1277D9E94DD9F76" description="Minimum score multiplier for non-overlapping fields" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="OVERLAP_SCORE_MULTIPLIER" class="Tunable" default="1.0" display="Overlap Score Multiplier" muid="C6A8D6381C6B39CE" description="p&#xA;Higher values raise the importance of the &quot;personal space&quot; component of the&#xA;social scoring function." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="SCORE_OFFSET_FOR_CURRENT_POSITION" class="Tunable" default="0.5" display="Score Offset For Current Position" muid="DAEE739134178B91" description="An additional score to apply to points that are virtually identical to the&#xA;Sim's current position if the Sim already has an entry in the geometry.&#xA;&#xA;Larger numbers provide more friction that will prevent Sims from moving&#xA;away from their current position unless the score of the new point makes&#xA;moving worthwhile." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="SCORE_STRENGTH_MULTIPLIER" class="Tunable" default="3" display="Score Strength Multiplier" muid="5BB31323A6E15F09" description="Values &gt; 1 will cause Sims to go further out of their way to be in perfect social arrangements.&#xA;This helps overcome distance attenuation for social adjustment since we want Sims to care more&#xA;about where they are positioned than how far they have to go to improve that position." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

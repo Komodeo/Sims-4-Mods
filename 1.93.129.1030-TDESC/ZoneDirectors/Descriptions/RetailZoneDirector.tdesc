@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="zone_director" class="RetailZoneDirector" module="retail.retail_zone_director" muid="5B11B9C2AF028152" description="Zone director for retail lots." instance_needs_reference="True" instance_subclasses_only="False" parents="SchedulingZoneDirector, ZoneDirectorBase" path="ZoneDirectors\Descriptions" use_guid_for_reference="True">
+        <TunableList name="customer_count_curb_appeal_curve" class="TunableCurve" display="Customer Count Curb Appeal Curve" muid="7A698AD19DF6D9D3" description="The number of customers we want on the lot based on the curb appeal of&#xA;the lot. This only determines how many customers we want on the lot.&#xA;The type of customer is driven by the Customer Data Map and the average&#xA;value of sellable items on the lot." Deprecated="False" filter="0" group="Business">
+            <TunableTuple class="TunableVector2" muid="62BC3A3DC96D5624" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="x" class="Tunable" default="0.0" display="x: Curb Appeal" muid="A162C0C99381FE50" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="y" class="Tunable" default="0.0" display="y: Customer Count" muid="290EC9BA1867EF42" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="float" name="customer_situation_interval" class="TunableSimMinute" default="10" display="Customer Situation Interval" muid="EBF50CDEAC182E13" min="None" max="None" description="The amount of time, in Sim minutes, between attempts to create new&#xA;customer situations." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Business" />
+
+        <TunableList name="customer_situations" class="TunableMapping" display="Customer Situations" muid="160776B81D8F3959" mapping_key="Markup Multiplier" mapping_value="value" description="A mapping that defines which customer situations are spawned based&#xA;on certain properties of the retail lot." Deprecated="False" filter="0" group="Business">
+            <TunableTuple class="TunableTuple" muid="EEE76BA86C68F8C1" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="Markup Multiplier" class="Tunable" default="1" display="Markup Multiplier" muid="9E8521292C14C7C4" description="The store's price multiplier." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableList" display="Value" muid="642CD339C21A1452" description="A list of tuple defining the customer data for this multiplier." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="49B1A731EB20AA9A" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="required_median_value" class="TunableInterval" display="Required Median Value" muid="ED67A3805E5AF4DF" description="The median value of all items in the store must fall within&#xA;this interval, which is inclusive." Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="lower_bound" class="TunableRange" default="0" display="Lower Bound" muid="72D420042345A4C2" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="upper_bound" class="TunableRange" default="3.402823466e+38" display="Upper Bound" muid="97B4DA6903B98AE9" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableList name="weighted_situations" class="TunableList" display="Weighted Situations" muid="1AF78FD0F54508A5" description="A list of situations that are available in the specified&#xA;markup and price range combination. The situations are&#xA;weighted relative to one another within this list." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="6DEC96387D08C56E" Deprecated="False" filter="0" group="General">
+                                <Tunable type="situation" name="situation" class="TunableReference" display="Situation" muid="DC6E65D4E2810E65" description="The situation defining the customer's behavior." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="RetailCustomerSituation" />
+                                <Tunable type="float" name="weight" class="Tunable" default="1" display="Weight" muid="AD50F13AF1313990" description="This situation's weight, relative to other&#xA;situations in this list." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="employee_situation_data" class="TunableMapping" display="Employee Situation Data" muid="39A061C1176CFA82" mapping_key="Business_Employee_Type" mapping_value="Employee_Situation_Data" description="A mapping of Business Employee Type to the data required by the zone&#xA;director for starting situations." Deprecated="False" filter="0" group="Business">
+            <TunableTuple class="TunableTuple" muid="A87D231C2E71A81D" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="BusinessEmployeeType" name="Business_Employee_Type" class="TunableEnumEntry" default="INVALID" display="Business Employee Type" muid="5411BE75AC205186" dynamic_entries="business-business_enums.BusinessEmployeeType._elements" static_entries="business-business_enums.BusinessEmployeeType" description="The Business Employee Type." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                <TunableTuple name="Employee_Situation_Data" class="TunableTuple" display="Employee Situation Data" muid="38FB1A173C122719" description="The situation data, per business employee type, for this zone director." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="npc_employee_situation_count" class="TunableVariant" default="tuned_count" display="Npc Employee Situation Count" muid="94AA687193E9F44A" description="The number of situations to create at an NPC-owned business&#xA;lot." Deprecated="False" filter="0" group="General">
+                        <Tunable name="defer_to_zone_director" class="TunableExistance" display="Defer To Zone Director" muid="819E190042FFC41B" />
+                        <Tunable type="int" name="tuned_count" class="TunableRange" default="3" display="Tuned Count" muid="FF87F3C3B2FB419B" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="167EFF468E9B9959" description="The Situation Job for this employee type." allow_none="False" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="employee_situations" class="TunableList" display="Employee Situations" muid="7E4BBDE357AD13A2" description="The list of possible employee situations. Right now, one will be&#xA;assigned at random when the employee comes to work." Deprecated="False" filter="0" group="Business">
+            <Tunable type="situation" class="TunableReference" muid="F646A16CB6B7515F" allow_none="False" Deprecated="False" filter="0" group="General" restrict="RetailEmployeeSituation" />
+        </TunableList>
+
+        <Tunable type="situation" name="npc_employee_situation" class="TunableReference" display="Npc Employee Situation" muid="2AD2FBB51C45C12" description="The situation NPC employees will run." allow_none="False" Deprecated="False" filter="0" group="Business" restrict="RetailEmployeeSituation" />
+    </Instance>
+</TuningRoot>

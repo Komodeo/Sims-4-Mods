@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="thriftstoretuning" class="Client_ThriftStoreTuning" module="thriftstoretuning.Client_ThriftStoreTuning" muid="3C8895911C4171FA" description="Tuning data related to EP12 thrift store" export_modes="client_binary" path="Client_ThriftStoreTuning\Descriptions">
+        <Tunable type="int" name="BaseCost" class="Tunable" default="10" muid="6CCFEBCBAB571594" description="Base cost of all parts in the thrift store." />
+
+        <TunableTuple name="Rarity" class="Client_ThriftStoreTuning.RarityData" muid="752A98B49EB24B80" description="Data related to an item's rarity in the thrift store.">
+            <Tunable type="int" name="CostMultiplier" class="Tunable" default="20" muid="2C33CBB4834F5CF4" description="Value used to multiply the rarity portion of an item's cost." />
+            <TunableList name="RarityExclusiveTags" class="TunableList" muid="4152149EE95182AF" description="Exclusive Rarity Tags.">
+                <TunableEnum type="Tag" name="Tag" class="TunableEnumEntry" default="INVALID" muid="2023A1B60C88322" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" binary_type="uint32" dynamic_entries_prefix="fashion_rarity" invalid_entries="INVALID" />
+            </TunableList>
+            <TunableList name="RarityTagData" class="TunableMapping" muid="93DEE7BB7682FA39" mapping_key="Tag" mapping_value="Value" description="Tuning data associated with a given rarity tag." mapping_class="Client_ThriftStoreTuning.RarityMapEntry">
+                <TunableTuple class="Client_ThriftStoreTuning.RarityMapEntry" muid="501F777004C6EBA7">
+                    <TunableEnum type="Tag" name="Tag" class="TunableEnumEntry" default="INVALID" muid="B39369F8493A0BE8" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" binary_type="uint32" dynamic_entries_prefix="fashion_rarity" invalid_entries="INVALID" />
+                    <TunableTuple name="Value" class="Client_ThriftStoreTuning.Rarity" muid="AC66CA3C412BAF1">
+                        <Tunable type="int" name="Cost" class="Tunable" default="1" muid="EDB6FF502E555793" description="Cost of parts with the given rarity tag." />
+                        <Tunable type="int" name="SortOrder" class="Tunable" default="0" muid="5046BEB7C4325683" description="Value used to determine relative rarity of given tag (lower value = less rare)." />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableTuple name="Trend" class="Client_ThriftStoreTuning.TrendData" muid="F98EB24C1B2A3D1A" description="Data related to an item's trend in the thrift store.">
+            <Tunable type="int" name="CostMultiplier" class="Tunable" default="10" muid="4B496A411FBFDFDA" description="Value used to multiply the trend portion of an item's cost." />
+            <TunableList name="TrendTagData" class="TunableMapping" muid="802B5087C1C4D526" mapping_key="Tag" mapping_value="Cost" description="Tuning data associated with a given trend tag." mapping_class="Client_ThriftStoreTuning.TrendMapEntry">
+                <TunableTuple class="Client_ThriftStoreTuning.TrendMapEntry" muid="EF30A9D6D75E0F9E">
+                    <Tunable type="int" name="Cost" class="Tunable" default="1" muid="4C22BD4B4C1D0181" description="Cost of parts with the given trend tag." />
+                    <TunableEnum type="Tag" name="Tag" class="TunableEnumEntry" default="INVALID" muid="74FA2DAD816F322F" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" binary_type="uint32" dynamic_entries_prefix="style" invalid_entries="INVALID" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="open_street_director" class="JungleOpenStreetDirector" module="open_street_director.jungle_open_street_director" muid="308B2115FA63B100" description="The open street director class used for the Jungle Adventure pack." instance_needs_reference="True" instance_subclasses_only="False" parents="OpenStreetDirectorBase" path="OpenStreetDirectors\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="clear_path_interaction" class="TunableInteractionOfInterest" display="Clear Path Interaction" muid="C0186A7F4A8FA3CC" description="A reference to the interaction that a Sim runs in order to clear&#xA;the path obstacle so they can use the portal." Deprecated="False" filter="0" group="General">
+            <TunableList name="affordances" class="TunableList" display="Affordances" muid="FBCDE7F258862FB8" description="The Sim must have started either any affordance in this list or an&#xA;interaction matching one of the tags in this tunable's Tags&#xA;field." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="47756E92B57AD8C0" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="FDD07F0235A4F116" description="The Sim must have run either an interaction matching one of these&#xA;Tags or an affordance from the list of Affordances in this&#xA;tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="26BDAE6701729677" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <Tunable type="int" name="num_of_paths_available" class="TunableRange" default="1" display="Num Of Paths Available" muid="9A6E21923FFEA698" min="0" max="None" description="The number of paths that are available when a vacation group &#xA;arrives in the jungle for the first time." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="statistic" name="path_clearing_commodity" class="TunableReference" display="Path Clearing Commodity" muid="44601554DCE70017" description="The commodity that has to reach 100 in order for a path to be&#xA;considered clear." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <TunableList name="path_obstacle_data" class="TunableMapping" display="Path Obstacle Data" muid="8EF8EA19CD005763" mapping_key="obstacle_tag_id" mapping_value="obstacle_data" description="Tuned data for the path obstacles in the open street. &#xA;&#xA;This includes which conditional layer the path obstacle is attached&#xA;to and what state that layer is in when the obstacle is locked." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="35CEB84DD3C60CBB" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="obstacle_data" class="TunableTuple" display="Obstacle Data" muid="6E51E12F48645576" description="All of the data associated with the path obstacle." Deprecated="False" filter="0" group="General">
+                    <Tunable type="bool" name="always_available" class="Tunable" default="False" display="Always Available" muid="C82CDA0B06BC1CA3" description="If True then this particular path obstacle is always &#xA;available to be cleared and traveled through.&#xA;&#xA;If False then this path obstacle is subject to randomly&#xA;being available or unavailable depending on the travel&#xA;group." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="layers" class="TunableList" display="Layers" muid="2377EC8BC989CEB3" description="A list of conditional layers and the status the layer starts&#xA;in (visible/hidden) that are associated with this path&#xA;obstacle." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="82A5E9DA623BE00A" description="Data about which conditional layer the obstacle is associated&#xA;with and what state it is in." Deprecated="False" filter="0" group="General">
+                            <Tunable type="conditional_layer" name="conditional_layer" class="TunableReference" display="Conditional Layer" muid="99BF16559362D453" description="A reference to the Conditional Layer found in the open streets." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="immediate" class="Tunable" default="False" display="Immediate" muid="A39D3C0911BF4FCB" description="If checked then the layer will load immediately. If&#xA;not checked then the layer will load over time." Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="visible" class="Tunable" default="True" display="Visible" muid="BC9B76A2B0BD870B" description="Whether or not the conditional layer is show/hidden when&#xA;the corresponding path obstacle is locked.&#xA;&#xA;Checked signifies that the layer is visible when the&#xA;obstacle is locked.&#xA;&#xA;Unchecked signifies that the layer is hidden when the &#xA;obstacle is locked." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+                <TunableEnum type="Tag" name="obstacle_tag_id" class="TunableTag" default="INVALID" display="Obstacle Tag Id" muid="929798A92AA8F4A2" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="A tag for a specific path obstacle object that we might want&#xA;to mark blocked or access_PermanentlyBlocked. " Deprecated="False" dynamic_entries_prefix="Func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="object_state" name="path_unlocked_state" class="TunableReference" display="Path Unlocked State" muid="94BC313467333DC" description="The state the blocked path obstacles should be set to if they are &#xA;unlocked." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+
+        <Tunable type="object_state" name="permanently_blocked_state" class="TunableReference" display="Permanently Blocked State" muid="D708DE07C8ED5B12" description="The state the blocked path obstacles should be set to if they &#xA;cannot be cleared." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+
+        <Tunable type="object_state" name="treasure_chest_closed_state" class="TunableReference" display="Treasure Chest Closed State" muid="147AADE6FF854857" description="The state that a treasure chest is in when it is still closed." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+
+        <Tunable type="object_state" name="treasure_chest_open_state" class="TunableReference" display="Treasure Chest Open State" muid="EA62FBEC8F6EAE19" description="The state that a treasure chest is in when it has already been &#xA;opened." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+
+        <TunableEnum type="Tag" name="treasure_chest_tag" class="TunableTag" default="INVALID" display="Treasure Chest Tag" muid="A9F11CF8709D874D" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag used to identify a treasure chest." Deprecated="False" dynamic_entries_prefix="" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="story_chapter" class="BaseStoryChapter" module="story_progression.story_progression_chapter" muid="11A60A48A9BE3362" description="The Base Story Chapter from which all story arcs are derived.  All subclasses&#xA;provide separate story progression actions available as well as separate functionality&#xA;for distributing loots, drama nodes, etc. to better match with the type of tracker they&#xA;are a part of.  Example: households can not get pregnant and when they hand out loots it&#xA;is to the entire household rather than just a single Sim." instance_needs_reference="True" instance_subclasses_only="True" path="StoryChapters\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="discovery" class="OptionalTunable" default="disabled" display="Discovery" muid="EB367115DBC639D8" description="Tuning data for when this chapter's history is discovered by the player." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="95465C37F25FC005" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="B8C40346F2D91F57" Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="string" class="TunableLocalizedStringFactoryVariant" default="single" display="String" muid="9BBF0BD2B9F2171" description="String to display when this chapter's history is discovered by the player." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="concatenation" class="TunableLocalizedStringFactoryConcatenation" display="Concatenation" muid="78783A7B267832F9" description="A list of localized string concatenations. These strings will be joined together into single line-separated string" Deprecated="False" filter="0" group="General">
+                        <TunableList name="concatenations" class="TunableList" display="Concatenations" muid="E260A6D5A6FE8342" Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" class="TunableLocalizedStringSnippet" default="literal" muid="84D2486F5966A195" description="This may be tuned in place here using 'literal' or as a reference to a LocalizedString tuning snippet." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="literal" class="TunableLocalizedString" default="0x0" display="Literal" muid="564C7D60F73CAEB6" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="snippet" name="reference" class="TunableReference" display="Reference" muid="E59F05A108B0274" description="A reference to a LocalizedString tuning snippet." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LocalizedString" />
+                            </TunableVariant>
+                        </TunableList>
+                    </TunableTuple>
+                    <Tunable type="int" name="single" class="TunableLocalizedString" default="0x0" display="Single" muid="C7DBB6404309388" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="variation" class="TunableLocalizedStringFactoryVariation" display="Variation" muid="DE47974A5A1F260E" description="A list of possible localized string variations." Deprecated="False" filter="0" group="General">
+                        <TunableList name="variations" class="TunableList" display="Variations" muid="BB469AA0D8C47A14" Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="79723A9BD28760A8" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+                <TunableList name="token_participants" class="TunableList" display="Token Participants" muid="D5A2F377B4B7FE00" description="Expected participants required to generate tokens used to localize this string.  The order of &#xA;participants in this list will define the token indices starting from index 3 (this string is assumed&#xA;to be triggered as interaction loot so 0 is used for the interaction actor sim, 1 is used for &#xA;interaction target, 2 is used for the chapter's owning sim/household).  Tuning to define what data &#xA;will be stored in each participant can be tuned in this chapter's actions." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="ParticipantTypeSavedStoryProgression" class="TunableEnumEntry" default="SavedStoryProgressionSim1" muid="842CA18A2D30B7A5" static_entries="interactions.ParticipantTypeSavedStoryProgression" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableList name="drama_nodes" class="TunableList" display="Drama Nodes" muid="FB77C95B24C8B0B5" description="A list of additional drama nodes that we will score and schedule&#xA;when this chapter is complete." Deprecated="False" filter="0" group="General">
+            <Tunable type="drama_node" class="TunableReference" muid="2AC72608592200B3" description="A drama node that we will score and schedule when this chapter is complete." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <TunableList name="loot_list" class="TunableList" display="Loot List" muid="4C2C628C5CB0145C" description="A list of loot that will be applied when chapter is complete.&#xA;This will be applied after the actions are applied." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="83424549552A20C0" description="An individual loot that will be applied when the chapter&#xA;has been completed." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+        </TunableList>
+
+        <TdescFragTag name="preconditions" class="TunableTestSet" display="Preconditions" muid="6908FE70A4B62D27" description="A set of tests that need to pass before this chapter can progress." filter="0" group="General" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="CD836153039B46A8" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="B2E9CE4F4DDA50E4" new_muid="D5A2F377B4B7FE00" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

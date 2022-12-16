@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.suntan.suntan_tracker" muid="2C5F25BA5032FB58">
+        <Class name="SuntanTracker" muid="ED0421E464171E50">
+            <Tunable type="object_state" name="TAN_LEVEL_OBJECT_STATE" class="TunableReference" display="Tan Level Object State" muid="269C77FEB0AD9E5" description="The object state that represents a Sims tan level." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectState" />
+
+            <TunableList name="TAN_LEVEL_TO_STATE_MAP" class="TunableMapping" display="Tan Level To State Map" muid="4CA2B051E2B97629" mapping_key="key" mapping_value="value" description="Map of tan level to object state that corresponds to that tan level.&#xA;Used on save/load to set the state of the Sim object to persist the&#xA;tan state correctly." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="76B4EB90B59A2FDB" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="TanLevel" name="key" class="TunableEnumEntry" default="NO_TAN" display="Key" muid="7719C39E651DEA02" static_entries="sims-suntan-suntan_tuning.TanLevel" description="Tan level that needs to be persisted." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="object_state" name="value" class="TunableReference" display="Value" muid="FE4EB8ED8E62177C" description="The object state value that represents the persisted tan level&#xA;that needs to be set on load." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="buff" name="TAN_PRANK_BUFF" class="TunableReference" display="Tan Prank Buff" muid="8A99D851294C1543" description="A Sim that has this buff will generate new tan lines based on their&#xA;current outfit when changing tan level." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <TunableList name="TAN_PRANK_CAS_PARTS" class="TunableList" display="Tan Prank Cas Parts" muid="B532ED1E874BAEB4" description="A list of CAS parts from which a random entry is selected if a Sim has&#xA;been pranked to generate tan lines." Deprecated="False" filter="0" group="General">
+                <Tunable type="caspart" class="TunableReference" muid="6770848F73A65F08" description="CAS part to use to generate tan lines for a Sim that has been&#xA;pranked." Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+
+            <Tunable type="buff" name="UPDATE_TAN_LINES_BUFF" class="TunableReference" display="Update Tan Lines Buff" muid="7D5BE1D920F984C0" description="A Sim that has this buff will generate new tan lines based on their&#xA;current outfit when changing tan level." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </Class>
+    </Module>
+</TuningRoot>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="services.style_service" muid="880F2D5F8C45A65E">
+        <Class name="StyleService" muid="1245DAE87FB55534">
+            <TunableList name="STYLE_OUTFIT_DEFAULT" class="TunableMapping" display="Style Outfit Default" muid="435D88A9077F3525" min="2" mapping_key="key" mapping_value="value" description="The mapping between gender and default outfit information" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="3E1E9B307BDD1414" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Gender" name="key" class="TunableEnumEntry" default="MALE" display="Key" muid="DADBFDE651B7BDFE" static_entries="sims-sim_info_types.Gender" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="ResourceKey" name="value" class="TunableResourceKey" default="None" display="Value" muid="7F57D2F67421CDEB" description="The SimInfo file to use when editing outfits." Deprecated="False" filter="0" group="General" resource_types="0x25ed6f4" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="float" name="STYLE_OUTFIT_SELECTION_ODDS" class="TunablePercent" default="20" display="Style Outfit Selection Odds" muid="EA5ADFED017E248C" min="0" max="100" description="Chance a situation sim will wear a styled outfit" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="STYLED_OUTFITS_AVAILABLE_TESTS" class="StyleServiceAvailableTestList" display="Styled Outfits Available Tests" muid="F2B52DFF8E353B0E" description="A set of tests, all of which must pass in order for styled outfits to be available to be applied on Sims." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" class="StyleServiceAvailableTestVariant" default="region" muid="D73E89EAFD67090" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="region" class="TunableRegionTest" display="Region" muid="FAED445D368859C6" description="A test to check which region the actor sim is in." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="blacklist" class="OptionalTunable" default="disabled" display="Blacklist" muid="26C5EF6FB222E69A" description="If enabled then we will check a blacklist of regions in insure that&#xA;the sim is not within one of them." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="524765572A6B448" />
+                            <TunableList name="enabled" class="TunableSet" display="Enabled" muid="F292AF63B3EC0755" description="A set of regions that the sim being tested must not be within." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="region" class="TunableReference" muid="C5F5E1C2B5E98B4B" description="A region that the sim being tested in must not be within." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableVariant>
+                        <TunableVariant type="None" name="subject" class="OptionalTunable" default="disabled" display="Subject" muid="68182AA279ADAC08" description="If enabled then we will test the region of the specified&#xA;participant type.  Otherwise we will test the current region." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="2540D65B3BB500A0" />
+                            <TunableEnum type="ParticipantTypeActorTargetSim" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="59AAEDFB9CFE783F" static_entries="interactions.ParticipantTypeActorTargetSim" description="Who do we want to run this test on." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="whitelist" class="OptionalTunable" default="disabled" display="Whitelist" muid="C83E656ABDAA1990" description="If enabled then we will check a whitelist of regions in insure that&#xA;the sim is within one of them." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7BC4EF8F7712AA0E" />
+                            <TunableList name="enabled" class="TunableSet" display="Enabled" muid="5B239C0567B8BA13" description="A set of regions that the sim being tested must be within." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="region" class="TunableReference" muid="52177491475BCE74" description="A region that the sim being tested in must be within." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableList>
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

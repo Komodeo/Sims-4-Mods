@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="celebrity_fans.fan_tuning" muid="5DCD4A9F123902AB">
+        <Class name="FanTuning" muid="BE7C0BE768C5BA51">
+            <TunableEnum type="Tag" name="FAN_SITUATION_TAG" class="TunableTag" default="INVALID" display="Fan Situation Tag" muid="118CF14100062DAE" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag which delineates which situations are fan situations." Deprecated="False" dynamic_entries_prefix="Situation" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+
+            <TunableEnum type="Tag" name="FAN_TARGETTING_TAG" class="TunableTag" default="INVALID" display="Fan Targetting Tag" muid="8E6DC0745A8DBAB2" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag applied to celebrities that can be targeted by fans.&#xA;&#xA;Used in conjunction with autonomy modifiers so we can consider&#xA;celebrities without caring about whether or not they are on or off lot." Deprecated="False" dynamic_entries_prefix="Func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+
+            <Tunable type="situation" name="FANNABLE_CELEBRITY_SITUATION" class="TunableReference" display="Fannable Celebrity Situation" muid="89311B767ACF1EAF" description="Situation that will store all celebrity Sims that can be used to&#xA;spawn fan or stan situations. " allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="FannableCelebritySimsSituation" />
+
+            <TunableList name="STAN_DISABLING_BITS" class="TunableSet" display="Stan Disabling Bits" muid="86E084C6D8C6697B" description="Rel bits, which if any are found on the stan, prevents the stan&#xA;from kicking off their situation. &#xA;&#xA;Used to prevent a stan from being too stanny. " Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="relbit" class="TunableReference" muid="7C3E29C23C36CEC9" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+
+            <Tunable type="sim_filter" name="STAN_FILTER" class="TunableReference" display="Stan Filter" muid="BFFC85C5D998F849" description="Filter used to find the stan for a given Sim.  This should &#xA;only contain the minimum required filter terms for a Stan." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+
+            <Tunable type="bucks_perk" name="STAN_PERK" class="TunableReference" display="Stan Perk" muid="6DF131B6844B9ABE" description="Perk used to determine if a Sim is stannable." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </Class>
+    </Module>
+</TuningRoot>

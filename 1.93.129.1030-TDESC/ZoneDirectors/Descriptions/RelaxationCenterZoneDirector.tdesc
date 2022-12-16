@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="zone_director" class="RelaxationCenterZoneDirector" module="venues.relaxation_center_zone_director" muid="D68C8C809374F42D" description="Zone Director for relaxation center." instance_needs_reference="True" instance_subclasses_only="False" parents="SchedulingZoneDirector, ZoneDirectorBase" path="ZoneDirectors\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="place_all_user_sims_in_same_arrival_situation" class="Tunable" default="False" display="Place All User Sims In Same Arrival Situation" muid="D08C82F498C87E6D" description="If this is enabled then all user sims will be placed in the same&#xA;situation instead of each in their own situation." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="place_travel_companion_in_same_arrival_situation" class="Tunable" default="False" display="Place Travel Companion In Same Arrival Situation" muid="4ADFF546D0CD1536" description="If this is enabled, the travel companion will put into the same&#xA;situation with user sims. If this checked,&#xA;place_all_user_sims_in_same_arrival_situation has to be True as&#xA;well or there will be unit test error." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="travel_companion_arrival_situation" class="OptionalTunable" default="disabled" display="Travel Companion Arrival Situation" muid="43A5EBE1DE70228E" description="If enabled then Sims that aren't controllable that travel with the&#xA;users Sims will be placed in the tuned situation on arrival. If&#xA;place_travel_companion_in_same_arrival_situation is checked, this&#xA;needs to be disable or there will be unit test error." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7AB21E75E7E2AA22" />
+            <Tunable type="situation" name="enabled" class="TunableReference" display="Enabled" muid="5FA1E6F9BA7F6847" description="If the user invites NPC's to travel with them to this lot then&#xA;this is the situation that they will be added to." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="situation" name="user_sim_arrival_situation" class="TunableReference" display="User Sim Arrival Situation" muid="E20BB2E0E55EBDF8" description="The situation to place all of the Sims from the users household&#xA;in when they arrive." allow_none="False" Deprecated="False" filter="0" group="General" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="9869AAD175341F55" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="retail.retail_customer_situation" muid="9224E529F487E84D">
+        <Class name="RetailCustomerSituation" muid="FA59AC8D5950EB5E">
+            <Tunable type="float" name="CONTINUE_SHOPPING_THRESHOLD" class="TunableSimMinute" default="30" display="Continue Shopping Threshold" muid="D8C86E1C013281BE" min="None" max="None" description="If the customer has this much time or more left in their total shop&#xA;time, they'll start the browse/buy process over again after purchasing&#xA;something. If they don't have this much time remaining, they'll quit&#xA;shopping." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="PRICE_RANGE" class="TunableTuple" display="Price Range" muid="86CF4F7005B5FF25" description="Statistics that are set to the min and max price range statistics.&#xA;These are automatically added to the customer in this situation and&#xA;will be updated accordingly.&#xA;&#xA;The stats should not be persisted -- the situation will readd them&#xA;on load." Deprecated="False" filter="0" group="General">
+                <Tunable type="statistic" name="max" class="TunableReference" display="Max" muid="204F61FEB134950B" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Statistic" />
+                <Tunable type="statistic" name="min" class="TunableReference" display="Min" muid="7DDA91C3823B5C12" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Statistic" />
+            </TunableTuple>
+
+            <TunableList name="PURCHASE_INTENT_CHANCE_CURVE" class="TunableCurve" display="Purchase Intent Chance Curve" muid="9F516C83BA3B2622" description="A mapping of Purchase Intent Statistic value to the chance (0-1) that&#xA;the customer will buy something during the buy state." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableVector2" muid="F5FD7DFB3541B135" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="x: Purchase Intent" muid="FF2A2DF83089D801" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="y: Chance" muid="EF3F9B4A2F60F7C3" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="statistic" name="PURCHASE_INTENT_STATISTIC" class="TunableReference" display="Purchase Intent Statistic" muid="510AB091C5ED0F55" description="A statistic added to customers that track their intent to purchase&#xA;something. At the minimum value they will leave, and at max value they&#xA;will immediately try to buy something. Somewhere in between, there's a&#xA;chance for them to not buy something when they go to the buy state." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Statistic" />
+        </Class>
+    </Module>
+</TuningRoot>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="career_gig" class="HomeAssignmentGig" module="careers.home_assignment_career_gig" muid="FEA33D1A04394A4" description="Tuning specific to a home assignment career gig. These gigs use the gig time&#xA;as a deadline before which a sim must complete an aspiration/assignment." instance_subclasses_only="False" parents="Gig" path="CareerGigs\Descriptions" use_guid_for_reference="True">
+        <Deleted name="audio_on_prep_task_completion" muid="327374D6BEED3CCC" />
+
+        <TunableVariant type="None" name="bonus_gig_aspiration_tuning" class="OptionalTunable" default="disabled" display="Bonus Gig Aspiration Tuning" muid="C57122912DD98ABD" description="Tuning for the bonus gig aspiration.  This is optional, but if the&#xA;aspiration is completed, it results in a chance for a better&#xA;outcome." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="107362C00092F71A" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="CD944C547F308E77" Deprecated="False" filter="0" group="General">
+                <Tunable type="aspiration" name="bonus_gig_aspiration" class="TunableReference" display="Bonus Gig Aspiration" muid="6D8A5D71D59B8926" description="The bonus aspiration to use as part of this gig's &#xA;assignments." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Aspiration" />
+                <Tunable type="float" name="great_success_chance" class="TunablePercent" default="0.0" display="Great Success Chance" muid="E6C8D85C1CAEE4AF" min="0" max="100" description="Chance of a SUCCESS outcome being upgraded to &#xA;GREAT_SUCCESS." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Deleted name="career_events" muid="F43A922D7F863B6A" />
+
+        <Deleted name="end_of_gig_dialog" muid="CE2C28061C2AE450" />
+
+        <Tunable type="aspiration" name="gig_assignment_aspiration" class="TunableReference" display="Gig Assignment Aspiration" muid="618E1868D77BFDAC" description="An aspiration to use as the assignment for this gig. The objectives&#xA;of this aspiration" allow_none="False" Deprecated="False" filter="0" group="General" restrict="AspirationGig" />
+
+        <Deleted name="gig_cast" muid="7D03AFE01B1E30DC" />
+
+        <Deleted name="gig_cast_rel_bit_collection_id" muid="BFD9562B22F2CEFD" />
+
+        <Tunable type="int" name="gig_picker_localization_format" class="TunableLocalizedString" default="0x0" display="Gig Picker Localization Format" muid="697D48181C934C53" description="String used to format the description in the gig picker. Currently&#xA;has tokens for name, payout, gig time, tip title, and tip text." Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="gig_prep_tasks" muid="C1FDABA280773F7D" />
+
+        <TunableVariant type="None" name="great_success_remaining_time" class="OptionalTunable" default="disabled" display="Great Success Remaining Time" muid="C093FF456CD5DA62" description="If the aspiration for this gig is completed with more than this&#xA;amount of time left, the gig will be considered a great success." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6D31D4405CA95ECA" />
+            <TunableTuple name="enabled" class="TunableTimeSpan" display="Enabled" muid="FDAA25DCD564A341" description="A duration that may be specified in weeks/days/hours/minutes." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="days" class="TunableRange" default="0" display="Days" muid="F84E96BF1459FFEF" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="hours" class="TunableRange" default="0" display="Hours" muid="29899518EFDD727D" min="0" max="23" description="Number of hours" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minutes" class="TunableRange" default="0" display="Minutes" muid="E84AD865D4D02815" min="0" max="59" description="Number of minutes" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Deleted name="payout_stat_data" muid="B3692A4FD1E622C2" />
+    </Instance>
+</TuningRoot>

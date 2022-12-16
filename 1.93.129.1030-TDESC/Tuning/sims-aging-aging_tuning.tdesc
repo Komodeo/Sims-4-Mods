@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.aging.aging_tuning" muid="D493FCA1EBAB5B93">
+        <Class name="AgingTuning" muid="578D7092D2D7EF2E">
+            <Tunable type="float" name="AGE_PROGRESS_UPDATE_TIME" class="Tunable" default="0.2" display="Age Progress Update Time" muid="CD010DBB71BAC8F6" description="The update rate, in Sim Days, of age progression in the UI." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableEnum type="AgeSpeeds" name="AGE_SPEED_SETTING" class="TunableEnumEntry" default="NORMAL" display="Age Speed Setting" muid="2B6ED9AB4F206B31" static_entries="sims-aging-aging_enums.AgeSpeeds" description="The speed at which all Sims (human, cat, dog, fox) age. Specific values tuned on aging_transition." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="AGE_SUPPRESSION_ALARM_TIME" class="TunableSimMinute" default="5" display="Age Suppression Alarm Time" muid="B8D4F866DA777227" min="1" max="None" description="Amount of time in sim seconds to suppress aging." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="AGING_DATA" class="TunableMapping" display="Aging Data" muid="7164AD2539D18573" mapping_key="key" mapping_value="value" description="On a per-species level, define all age-related data." Deprecated="False" filter="0" group="General" mapping_class="AgingDataMapping">
+                <TunableTuple class="TunableTuple" muid="6C20FFDC89D860BD" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Species" name="key" class="TunableEnumEntry" default="HUMAN" display="Key" muid="EF0F54B2F650CE7C" static_entries="sims-sim_info_types.Species" description="The species this aging data applies to." binary_type="uint32" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <TunableTuple name="value" class="TunableAgingData" display="Value" muid="5A463A008703BE2" description="Control how Sims age. The tuning defines what ages are available to them,&#xA;and how aging is applied to and affects them." Deprecated="False" filter="0" group="General">
+                        <Tunable type="interaction" name="age_up_interaction" class="TunableReference" display="Age Up Interaction" muid="3B1A14DEB88099E6" description="The default interaction that ages Sims up. This is called when Sims&#xA;auto-age or when the &quot;Age Up&quot; cheat is invoked." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <TunableList name="ages" class="TunableMapping" display="Ages" muid="5BE8196CB58F83BF" min="1" mapping_key="key" mapping_value="value" description="All available ages for this Sim, and any data associated with that&#xA;specific age." Deprecated="False" filter="0" group="General" mapping_class="AvailableAgeDataMapping">
+                            <TunableTuple class="TunableTuple" muid="336377AD0228F326" Deprecated="False" filter="0" group="General">
+                                <TunableEnum type="Age" name="key" class="TunableEnumEntry" default="ADULT" display="Key" muid="A2C95BCFE57506DA" static_entries="sims-sim_info_types.Age" description="The available age for the Sim." binary_type="uint32" Deprecated="False" filter="0" group="General" />
+                                <TunableTuple name="value" class="AvailableAgeDataTuple" display="Value" muid="F07C6EF0BE701E4A" description="Any further data associated with this age." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="ResourceKey" name="cas_icon" class="TunableIcon" default="None" display="Cas Icon" muid="997BAE7ACE683F05" description="Icon to be displayed in the ui for the age." Deprecated="False" export_modes="client_binary" filter="0" group="General" resource_types="0x2f7d0004" />
+                                    <Tunable type="ResourceKey" name="cas_icon_selected" class="TunableIcon" default="None" display="Cas Icon Selected" muid="FBA40C52BD9EB3DB" description="Icon to be displayed in the UI for the age when buttons are&#xA;selected." Deprecated="False" export_modes="client_binary" filter="0" group="General" resource_types="0x2f7d0004" />
+                                    <Tunable type="int" name="cas_name" class="TunableLocalizedString" default="0x0" display="Cas Name" muid="97291C0E5C79C07F" description="The name to be displayed in the UI for the age." Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+                                    <Tunable type="int" name="personality_trait_count" class="TunableRange" default="3" display="Personality Trait Count" muid="FA1E941DD8CF4594" min="0" max="None" description="The number of traits available to a Sim of this age." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+                                    <Tunable type="snippet" name="transition" class="TunableReference" display="Transition" muid="A06E6A7713B76BDA" description="The transition data associated with this age, such as&#xA;dialogs, notifications, durations, etc..." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="AgingTransition" />
+                                </TunableTuple>
+                            </TunableTuple>
+                        </TunableList>
+                        <TunableList name="bonus_days" class="TunableMapping" display="Bonus Days" muid="4324F1A4A09674DB" mapping_key="key" mapping_value="value" description="Specify how much bonus time is added to elder Sims&#xA;possessing these traits." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="2728E4C0F3C68C9" Deprecated="False" filter="0" group="General">
+                                <Tunable type="trait" name="key" class="TunableReference" display="Key" muid="FE7067A7E0952869" description="The trait associated with this modifier." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="50FD40ED661034B0" description="The modifier associated with this trait." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                        <Tunable type="interaction" name="old_age_interaction" class="TunableReference" display="Old Age Interaction" muid="44BB53248F5D03E1" description="The default interaction that transitions a Sim from old age to&#xA;death." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <TunableEnum type="DeathType" name="old_age_npc_death_type_fallback" class="TunableEnumEntry" default="NONE" display="Old Age Npc Death Type Fallback" muid="F5FF717C28298963" dynamic_entries="interactions-utils-death.DeathType._elements" static_entries="interactions-utils-death.DeathType" description="Used if the Old Age Interaction is not a death interaction.  In that&#xA;case, the non-instanced NPCs are not running the interaction but also&#xA;can't get their death type from the interaction's tuning.  This value&#xA;is used as a fallback.  The NPC's death type set to this value, and &#xA;it will effectively become a ghost." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="AGING_SAVE_LOCK_TOOLTIP" class="TunableLocalizedString" default="0x0" display="Aging Save Lock Tooltip" muid="96F6C6E7A777D64E" description="The tooltip to show in situations where save-lock during Age Up is&#xA;necessary, i.e. when babies or non-NPC Sims age up.&#xA;&#xA;This tooltip is provided one token: the Sim that is aging up." Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="91976E766E58CF79" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="91976E766E58CF79" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="1986FB68D08AC63B" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="7E9BACEAC9D2028F" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="3AF8CCAA5556E374" />
+            <Action type="kRemove" old_muid="3A8F3791959FE54D" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="C414B405A38B2587" />
+            <Action type="kRemove" old_muid="439931D8C45CDBD2" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

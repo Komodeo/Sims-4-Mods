@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="autonomy.autonomy_modes" muid="34FE886E1DCF2DB8">
+        <Class name="AutonomyMode" muid="C3AF28194DFDD98F">
+            <TunableList name="AUTOMATED_RANDOMIZATION_LIST" class="TunableMapping" display="Automated Randomization List" muid="D9E1A2CABA2F8FAC" mapping_key="key" mapping_value="value" description="A mapping of the commodities used for determinisitc randomization.  This is used by the automation&#xA;system in the min spec perf tests." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="11F9E35CBD27B9D3" Deprecated="False" filter="0" group="General">
+                    <Tunable type="statistic" name="key" class="TunableReference" display="Key" muid="BDC40753F3588749" description="The statistic we are operating on." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="value" class="Tunable" default="1" display="Value" muid="1B0CC08423E1E1BD" description="The number of times per loop to assign this to a Sim." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="float" name="AUTONOMY_DELAY_AFTER_USER_INTERACTION" class="TunableSimMinute" default="25" display="Autonomy Delay After User Interaction" muid="F85F1C8A20CFA87" min="None" max="None" description="The amount of time, in sim minutes, before a sim that performs a user-direction &#xA;interaction will run autonomy." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="FULL_AUTONOMY_ATTENTION_COST" class="TunableWeightedUtilityCurve" display="Full Autonomy Attention Cost" muid="B47BC5F2F4D65335" description="A curve that maps the total attention cost with a score multiplier.  This value will be &#xA;multiplied with the typical autonomy score to account for multi-tasking costs." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableVector2" muid="BF331243B32F77D6" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="DB52852F0F5E64B0" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="27E866FB1482582E" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="FULL_AUTONOMY_DELAY" class="TunableInterval" display="Full Autonomy Delay" muid="65E73F7CE253C8F3" description="Amount of time, in sim minutes, between full autonomy runs.  System will randomize between &#xA;min and max each time" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="lower_bound" class="TunableSimMinute" default="15" display="Lower Bound" muid="A26ADBE2F8B9A54E" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="upper_bound" class="TunableSimMinute" default="30" display="Upper Bound" muid="E2CC909E618EBB35" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableTuple name="FULL_AUTONOMY_DELAY_WITH_NO_PRIMARY_SIS" class="TunableInterval" display="Full Autonomy Delay With No Primary Sis" muid="34155D9159F46B75" description="The amount of time, in sim minutes, to wait before running autonomy if a sim &#xA;is not in any primary SI's and hasn't run a user-directed action since &#xA;AUTONOMY_DELAY_AFTER_USER_INTERACTION." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="lower_bound" class="TunableSimMinute" default="1.5" display="Lower Bound" muid="CF02398C82C6C82D" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="upper_bound" class="TunableSimMinute" default="2.5" display="Upper Bound" muid="9D01501BE406E8F3" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableTuple name="FULL_AUTONOMY_DELAY_WITH_NO_RESULT" class="TunableInterval" display="Full Autonomy Delay With No Result" muid="3AA0CC3AEFF21DE4" description="The amount of time, in sim minutes, to wait before running autonomy if a sim's &#xA;autonomy returned None." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="lower_bound" class="TunableSimMinute" default="20" display="Lower Bound" muid="43E374D97D39E7D3" min="1" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="upper_bound" class="TunableSimMinute" default="30" display="Upper Bound" muid="D61BC35B6DC398A0" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <Tunable type="float" name="FULL_AUTONOMY_DESIRE_TO_JOIN_PLAYER_PARTIES" class="Tunable" default="0" display="Full Autonomy Desire To Join Player Parties" muid="5A0E81BF116CF613" description="This weight is multiplied with the affordance score if the target party has &#xA;any sims that are not autonomous." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="FULL_AUTONOMY_INTERACTION_PRIORITY_RANKING" class="TunableMapping" display="Full Autonomy Interaction Priority Ranking" muid="678C47E3137D5EF9" mapping_key="key" mapping_value="value" description="Mapping to decide the order autonomous interaction will be chosen for&#xA;full autonomy ping." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="D8E77D035831D2E1" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="AutonomyInteractionPriority" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="CCF7A34E63C3595A" dynamic_entries="autonomy-autonomy_interaction_priority.AutonomyInteractionPriority._elements" static_entries="autonomy-autonomy_interaction_priority.AutonomyInteractionPriority" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="int" name="value" class="Tunable" default="0" display="Value" muid="D78EB5038D7C859A" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="float" name="FULL_AUTONOMY_MULTIPLIER_FOR_SOLVING_THE_SAME_STAT" class="Tunable" default="0.25" display="Full Autonomy Multiplier For Solving The Same Stat" muid="42EA773D0B515C77" description="If a sim is currently solving a motive, this value will be multiplied into the &#xA;commodity score of any other interactions.  This will force sims to live with &#xA;their decisions rather than always looking for the best thing." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="FULL_AUTONOMY_MULTITASKING_PERCENTAGE_BONUS" class="TunableCurve" display="Full Autonomy Multitasking Percentage Bonus" muid="CCE003D789CF083F" description="A curve that maps the commodity desire score with a percentage bonus applied to the &#xA;base multitasking chance." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableVector2" muid="B18EBEEA7A95FF01" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="7985901EE7141BD2" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="2E81BEA41ADB4952" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="float" name="FULL_AUTONOMY_OPTIMISTIC_SCORE_THRESHOLD" class="Tunable" default="0.5" display="Full Autonomy Optimistic Score Threshold" muid="4837D9BA896402CB" description="Before computing the routing distance to an object, we calculate an 'optimistic' score,&#xA;which assumes that an object is right next to a Sim and won't invalidate any of their&#xA;current interactions.  If the optimistic score is lower than this fraction of the best&#xA;scoring affordance so far the Sim will not bother estimating routing distance." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="FULL_AUTONOMY_STATISTIC_SCORE_VARIANCE" class="Tunable" default="0.9" display="Full Autonomy Statistic Score Variance" muid="3DC3A4D5579A6E5A" description="The percentage variance that a statistic can have from the top stat before it is &#xA;not considered for the first round of scoring." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="MAX_REAL_SECONDS_UNTIL_TIMESLICING_IS_REMOVED" class="TunableRealSecond" default="1" display="Max Real Seconds Until Timeslicing Is Removed" muid="C9A642175D4CC" min="None" max="None" description="The amount of time before autonomy stops timeslicing and forces the autonomy request to &#xA;run unimpeded." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="NUMBER_OF_DUPLICATE_AFFORDANCE_TAGS_TO_SCORE" class="Tunable" default="3" display="Number Of Duplicate Affordance Tags To Score" muid="A9EB7CA85DC5CC4D" description="If an affordance is tuned with duplicate_affordance_group set to anything &#xA;except INVALID, this is the number of affordances that share this tag that&#xA;will be scored. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="OFF_LOT_OBJECT_SCORE_MULTIPLIER" class="Tunable" default="0.5" display="Off Lot Object Score Multiplier" muid="BE3CFA88FBF6F0C0" description="The autonomy score multiplier for off-lot object when a sim &#xA;is on the active lot." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="POSTURE_CHANGE_OPPORTUNITY_COST_MULTIPLIER" class="Tunable" default="1.5" display="Posture Change Opportunity Cost Multiplier" muid="A9D1822F1D8D4475" description="Multiplier to apply to the total opportunity cost of an aop when choosing that aop would&#xA;force the Sim to change postures.  This makes the concept of changing postures less &#xA;attractive to Sims." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="SUBACTION_AUTONOMY_CONTENT_SCORE_UTILITY_CURVE" class="TunableWeightedUtilityCurve" display="Subaction Autonomy Content Score Utility Curve" muid="FCE07AE7A1B304" description="A curve that maps the content score to the provided utility." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableVector2" muid="B1A5AA128EB6EB90" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="2A5869382A5FFAE6" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="3F381AC4EC003DBD" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SUBACTION_GROUP_WEIGHTING" class="TunableMapping" display="Subaction Group Weighting" muid="67B1D130375A6E07" mapping_key="key" mapping_value="value" description="Mapping of mixer interaction group tags to scores.  This is used by subaction autonomy&#xA;to decide which set of mixers to run.  See the mixer_group entry in the sub_action tunable&#xA;on any mixer for details as to how the system works." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="1BB817660DC858B" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="MixerInteractionGroup" name="key" class="TunableEnumEntry" default="DEFAULT" display="Key" muid="D6E3A80F667D82D1" dynamic_entries="interactions.MixerInteractionGroup._elements" static_entries="interactions.MixerInteractionGroup" description="The mixer group this score applies to." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="value" class="Tunable" default="1" display="Value" muid="ED5B0299C3E37C3E" description="The weight of this group." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="float" name="SUBACTION_MOTIVE_UTILITY_FALLBACK_SCORE" class="Tunable" default="0.1" display="Subaction Motive Utility Fallback Score" muid="ECCFF6854D177BE6" description="If score for sub-action motive utility is zero, use this value as the best score." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

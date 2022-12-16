@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="ui.ui_tuning" muid="90A5730EFE6DBA73">
+        <Class name="PackTypes" muid="CB708C82AA8844D2" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="BASE" muid="4175AD7A38074ACB" enum_value="0" />
+
+            <EnumItem name="EXPANSION_PACK" muid="C49F610EBA7F94D6" enum_value="1" />
+
+            <EnumItem name="FREE_PACK" muid="4826DB0A36B3F848" enum_value="4" />
+
+            <EnumItem name="GAME_PACK" muid="D2DCC61CCE045CC3" enum_value="2" />
+
+            <EnumItem name="STUFF_PACK" muid="F97DFD7B4FF7AA37" enum_value="3" />
+        </Class>
+
+        <Class name="PackSubTypes" muid="BD779D3177A40EBB" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="FULL" muid="6EBAF38C0911B9D8" enum_value="0" />
+
+            <EnumItem name="KIT" muid="5E3CB15374995CDF" enum_value="1" />
+        </Class>
+
+        <Class name="Platform" muid="6E54F885BE840141" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="CONSOLE" muid="F721C4A93282927E" enum_value="1" />
+
+            <EnumItem name="DESKTOP" muid="F93F241C0E633355" enum_value="0" />
+
+            <EnumItem name="PS4" muid="3393321D9886FF26" enum_value="2" />
+
+            <EnumItem name="XB1" muid="5308C8775A4DDBF1" enum_value="3" />
+        </Class>
+
+        <Class name="InputMethod" muid="597C3880A5055893" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="ANY" muid="184B35147CF9D196" enum_value="0" />
+
+            <EnumItem name="CONTROLLER" muid="670A83DED0C48ABC" enum_value="2" />
+
+            <EnumItem name="KBM" muid="6CDB531D114C3218" enum_value="1" />
+        </Class>
+
+        <Class name="BrandedLogoBackground" muid="F6235FA0A1F50740" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="DARK" muid="7A6ACB3E66937576" enum_value="1" />
+
+            <EnumItem name="LIGHT" muid="EB739B8BA55A6350" enum_value="0" />
+        </Class>
+
+        <Class name="BrandedStyle" muid="90C1C04BF8ECB8D2" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="TOP_LEFT_ICON" muid="23DD5BCFE4F4FFBF" enum_value="1" />
+
+            <EnumItem name="TOP_WIDE" muid="F98C4D905022422" enum_value="0" />
+        </Class>
+
+        <Class name="MultiPickerStyle" muid="9F022D21E878CE25" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="DEFAULT" muid="9001CB5B18D03B45" enum_value="0" />
+
+            <EnumItem name="PHOTO_PAIR_SELECT" muid="DBFE248012A0197B" enum_value="2" />
+
+            <EnumItem name="PHOTOPAIR_ORGANIZE_DELETE" muid="DB6FAD1536B7116B" enum_value="1" />
+        </Class>
+
+        <Class name="MultiPickerFilterType" muid="AD405C4112AB9D24" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="NO_FILTER" muid="D532E41E61314157" enum_value="0" />
+
+            <EnumItem name="RELBIT_FILTER" muid="F2E567C951DD5297" enum_value="1" />
+
+            <EnumItem name="TOPIC_FILTER" muid="B9750FA4EEC3AD71" enum_value="2" />
+        </Class>
+
+        <Class name="UiTuning" muid="C696172989284259">
+            <TunableList name="BRANDED_TAG_DATA" class="TunableList" display="Branded Tag Data" muid="8C0DA21F11A2CDA2" description="A list of tag to data used to show a branded logo on the item" Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                <TunableTuple class="BrandedTagEntry" muid="ED6A8647A4DCFCBF" description="Tuning for branded logo to use." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="BrandedLogoBackground" name="background_type" class="TunableEnumEntry" default="LIGHT" display="Background Type" muid="681501F70E6A52ED" static_entries="ui-ui_tuning.BrandedLogoBackground" description="Background to be used for it" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="ResourceKey" name="icon" class="TunableIcon" default="None" display="Icon" muid="B1D9858D3F0103CE" description="Icon to be displayed on the item" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    <TunableEnum type="BrandedStyle" name="style" class="TunableEnumEntry" default="TOP_WIDE" display="Style" muid="A1BC905BE9517761" static_entries="ui-ui_tuning.BrandedStyle" description="The style that defines where in the thumbnail we place this branding." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="Tag" name="tag" class="TunableTag" default="INVALID" display="Tag" muid="8FD3EF885181EBD0" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Tag to use for the brand to be displayed" Deprecated="False" dynamic_entries_prefix="" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                    <TunableVariant type="None" name="tooltip_text" class="OptionalTunable" default="disabled" display="Tooltip Text" muid="55035981568FF5D9" description="Text for the tooltip shown when hovering the brand icon." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="2F88E99537F3F8A9" />
+                        <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="568AAE9767A1D42A" description="Text for the tooltip shown when hovering the brand icon." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableVariant type="None" name="tooltip_title" class="OptionalTunable" default="disabled" display="Tooltip Title" muid="5C5C2A327108EE97" description="Title for the tooltip shown when hovering the brand icon." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="77410CD8D849FBC4" />
+                        <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="CECAD41D7A260E67" description="Title for the tooltip shown when hovering the brand icon." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="interaction" name="BRING_HERE_INTERACTION" class="TunableReference" display="Bring Here Interaction" muid="3446000F389EEA38" description="An affordance to push on household members to summon them to the&#xA;current lot if they are not instanced." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="BUNDLE_SPECIFIC_DATA" class="TunableMapping" display="Bundle Specific Data" muid="F09E9057EFCA2566" mapping_key="key" mapping_value="value" description="Mapping from an MTX Bundle to its associated data. This is for bundles that&#xA;should appear in the ui, but are not packs. This includes main menu icons,&#xA;description, and the action associated with that bundle." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="BundleSpecificDataTuple">
+                <TunableTuple class="TunableTuple" muid="CF6FE948A14B322C" Deprecated="False" filter="0" group="General">
+                    <Tunable type="mtxbundle" name="key" class="TunableReference" display="Key" muid="70522AD765E328B7" description="The MTX bundle id for the associated data." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableTuple name="value" class="TunableBundleDataTuple" display="Value" muid="5B57FAC34094E522" description="Each bundle has icons and a description, as well as an&#xA;data for the action performed when the bundle is interacted &#xA;with either the PromotionDialog or the PackDisplayPanel." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="action" class="TunableVariant" default="url" display="Action" muid="840CA0D00853118F" description="The action that should be performed when this bundle is interacted with&#xA;in either the PromotionDialog or the PackDisplayPanel." Deprecated="False" filter="0" group="General">
+                            <TunableTuple name="promo_data" class="TunablePromoDataTuple" display="Promo Data" muid="F91A967A4236FC0D" description="Data that populates PromotionDialog." Deprecated="False" filter="0" group="General">
+                                <Tunable type="ResourceKey" name="image" class="TunableIcon" default="None" display="Image" muid="63C98B582A91E77F" description="Image displayed in the promotion dialog." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="int" name="legal_text" class="TunableLocalizedString" default="0x0" display="Legal Text" muid="F66D7B6FF8866FE4" description="Legal text required for this promotion." allow_none="True" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="text" class="TunableLocalizedString" default="0x0" display="Text" muid="20D21B4F12EE033D" description="Text describing the promotion." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="title" class="TunableLocalizedString" default="0x0" display="Title" muid="7309EEEB4550CC7A" description="Title of the promotion." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <Tunable type="str" name="url" class="Tunable" default="None" display="Url" muid="F59D7ED26A3AF705" description="External url to open from PackDisplayPanel." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <Tunable type="int" name="bundle_name" class="TunableLocalizedString" default="0x0" display="Bundle Name" muid="101369BB488D5983" description="Name used in pack detail panel and main menu. If empty,&#xA;we fall back to using the MTX product name." allow_none="True" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="ResourceKey" name="icon_owned" class="TunableIcon" default="None" display="Icon Owned" muid="3DD14DC55A811689" description="Bundle icon that is displayed in the main menu&#xA;pack display when the player is entitled to that bundle." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <Tunable type="ResourceKey" name="icon_unowned" class="TunableIcon" default="None" display="Icon Unowned" muid="461CA5FF9B7C0CCA" description="Bundle icon that is displayed in the main menu&#xA;pack display when the player is not entitled to that bundle." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <Tunable type="int" name="short_description" class="TunableLocalizedString" default="0x0" display="Short Description" muid="2B524CA7F8F5C1CE" description="Short description of the bundle meant to be displayed in &#xA;a tooltip." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="CG_CHALLENGE_DATAS" class="TunableList" display="Cg Challenge Datas" muid="BD08E48107D0457B" description="A list of a challenge's data." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="CGChallengeTuning" muid="7B6AEE76F7F6B188" Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                    <Tunable type="int" name="cg_challenge_hashtag" class="TunableLocalizedString" default="0x0" display="Cg Challenge Hashtag" muid="F26E98122DACA6A5" description="Hashtag of this challenge" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="cg_challenge_name" class="TunableLocalizedString" default="0x0" display="Cg Challenge Name" muid="257E7E88587BC4F7" description="Name of this challenge" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="CHALLENGE_DATA" class="TunableList" display="Challenge Data" muid="1C9D5B4314C5089D" description="List of challenge event data for engagement challenge notification UI." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                <TunableTuple class="TunableChallengeNotificationTuple" muid="14C06B519219CD84" description="Data for each engagement challenge event." Deprecated="False" filter="0" group="General">
+                    <TunableList name="challenge_list" class="TunableList" display="Challenge List" muid="83965C6020486EFB" description="A list of tuples that describe each challenge." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableChallengeDataTuple" muid="1C1A0D2C7922C3A9" description="A tuple that contains data for a challenge." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="challenge_description" class="TunableLocalizedString" default="0x0" display="Challenge Description" muid="21A67AB84D5DADB7" description="The description of the challenge." allow_none="True" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="challenge_name" class="TunableLocalizedString" default="0x0" display="Challenge Name" muid="22F30937FFE6EA0F" description="The name of the challenge." allow_none="True" Deprecated="False" filter="0" group="General" />
+                            <TunableEnum type="CollectionIdentifier" name="collection_id" class="TunableEnumEntry" default="Unindentified" display="Collection Id" muid="E9ED7CF9539141C" dynamic_entries="objects-collection_manager.CollectionIdentifier._elements" static_entries="objects-collection_manager.CollectionIdentifier" description="A CollectionIdentifier that is associated with this&#xA;challenge. This is used by the UI to tie a collectible &#xA;with this challenge.&#xA;&#xA;Use the default of Unindentified for challenges that&#xA;aren't associated with a particular collection." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+                            <TunableTuple name="event_display" class="TunableChallengeEventDisplayTuple" display="Event Display" muid="9B6DA1581BBF3990" description="Display data for a challenge event." Deprecated="False" filter="0" group="General">
+                                <Tunable type="ResourceKey" name="activity_complete_icon" class="TunableIcon" default="None" display="Activity Complete Icon" muid="6935DDD246180DDC" description="Icon to be paired with the challenge complete text.&#xA;If not specified, the in-progress icon will be used." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="int" name="activity_complete_text" class="TunableLocalizedString" default="0x0" display="Activity Complete Text" muid="433EDFF7232E42F6" description="Status text for when the player has met the challenge goal.&#xA;This is currently displayed on a tooltip.&#xA;If not specified, the in-progress text will be used.&#xA;A CSS class of 'timeremaining' will have its color changed&#xA;when the event is close to ending.&#xA;The following tokens are available (same as the in-progress text):&#xA;0 - Number: Current collection progress, if available.&#xA;1 - Number: Collection goal, if available.&#xA;2 - Number: Hours remaining.&#xA;3 - Number: Days remaining." allow_none="True" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="ResourceKey" name="activity_icon" class="TunableIcon" default="None" display="Activity Icon" muid="D54AAEF3D97D1B85" description="Icon to display beside the activity progress bar." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="ResourceKey" name="activity_progress_icon" class="TunableIcon" default="None" display="Activity Progress Icon" muid="F9B882E00EC77777" description="Icon to be paired with the progress text." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="int" name="activity_progress_text" class="TunableLocalizedString" default="0x0" display="Activity Progress Text" muid="FE72A6FDEFBEDBF" description="Status text for when the player is still making progress towards&#xA;the challenge goal.  This is currently displayed on a tooltip.&#xA;A CSS class of 'timeremaining' will have its color changed&#xA;when the event is close to ending.&#xA;The following tokens are available:&#xA;0 - Number: Current collection progress, if available.&#xA;1 - Number: Collection goal, if available.&#xA;2 - Number: Hours remaining.&#xA;3 - Number: Days remaining." allow_none="True" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="ResourceKey" name="community_complete_icon" class="TunableIcon" default="None" display="Community Complete Icon" muid="B96DCB54D0A9FA41" description="Icon to be paired with the community challenge complete text." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="int" name="community_complete_text" class="TunableLocalizedString" default="0x0" display="Community Complete Text" muid="6E786536A25345B" description="Status text for when the community has met the challenge goal.&#xA;This text is only used when a goal is defined.&#xA;If not specified, the in-progress status text will be used.&#xA;Two Number tokens are available:&#xA;0 - Current community collection progress.&#xA;1 - Community collection goal, if any." allow_none="True" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="community_goal_amount" class="Tunable" default="0" display="Community Goal Amount" muid="E76D168C43D0CB93" description="Optional collection goal for the community to reach." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="ResourceKey" name="community_progress_icon" class="TunableIcon" default="None" display="Community Progress Icon" muid="89ED005FA69DC92B" description="Icon to be paired with the community status text." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="int" name="community_progress_text" class="TunableLocalizedString" default="0x0" display="Community Progress Text" muid="7E9F3D34FFD57220" description="Status text describing the community's progress.&#xA;This is currently displayed on a tooltip.&#xA;This text is displayed even when challenges do not have&#xA;community goals.&#xA;Two Number tokens are available:&#xA;0 - Current community collection progress.&#xA;1 - Community collection goal, if any." allow_none="True" Deprecated="False" filter="0" group="General" />
+                                <TunableTuple name="end_time" class="TunableChallengeDateTuple" display="End Time (UTC)" muid="204A059BF3C8723D" description="Date and time (UTC) for when the challenge event is expected to end.&#xA;This is currently used to compute the time remaining in the UI." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="int" name="day" class="TunableRange" default="1" display="Day" muid="A83BDC85C93BF63B" min="1" max="31" description="Day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="hour" class="TunableRange" default="0" display="Hour" muid="CCDD095DD890AF9E" min="0" max="23" description="Hour (24-hour)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="B3C504A6C18EA3B1" min="0" max="59" description="Minute" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="month" class="TunableRange" default="1" display="Month" muid="9391943F3F1BA8B1" min="1" max="12" description="Month" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="year" class="TunableRange" default="2016" display="Year" muid="F702F4675167E088" min="2014" max="None" description="Year" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                                <Tunable type="ResourceKey" name="event_icon" class="TunableIcon" default="None" display="Event Icon" muid="55FCE633575DF359" description="An icon to use for the challenge event." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="int" name="event_title" class="TunableLocalizedString" default="0x0" display="Event Title" muid="95449FFC1DDBDB85" description="Title to display.  If not provided, challenge name will be used." allow_none="True" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                            <Tunable type="ResourceKey" name="image" class="TunableResourceKey" default="None" display="Image" muid="5BC7489688F403F1" description="The main image displayed for challenge info." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                            <Tunable type="str" name="info_link" class="Tunable" default="" display="Info Link" muid="21A05CF9E8D99478" description="The url link to page for more info on a challenge." allow_none="True" Deprecated="False" filter="0" group="General" />
+                            <TunableList name="reward_items" class="TunableList" display="Reward Items" muid="B534EC2D05D8C228" description="A list of tuples that describe rewards for challenge." Deprecated="False" filter="0" group="General">
+                                <TunableTuple class="TunableChallengeRewardTuple" muid="5AA2498F4ECA7A72" description="A tuple that contains data for a challenge reward item." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="ResourceKey" name="reward_icon" class="TunableResourceKey" default="None" display="Reward Icon" muid="1EA1D7025B2CF32C" description="The icon of reward item." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                    <Tunable type="int" name="reward_name" class="TunableLocalizedString" default="0x0" display="Reward Name" muid="7E4DDAF9C2BE6654" description="The name of reward item." allow_none="True" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableList>
+                    <Tunable type="int" name="challenge_subtitle" class="TunableLocalizedString" default="0x0" display="Challenge Subtitle" muid="AF15A24DE4CCBB44" description="The subtitle text to be displayed in notification UI." allow_none="True" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="challenge_title" class="TunableLocalizedString" default="0x0" display="Challenge Title" muid="D4866BDAF1297B42" description="The title text to be displayed in notification UI." allow_none="True" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="str" name="switch_name" class="Tunable" default="" display="Switch Name" muid="1D83C85892B4D873" description="Server switch name to check whether challenge is active." allow_none="True" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="interaction" name="COME_NEAR_ACTIVE_SIM" class="TunableReference" display="Come Near Active Sim" muid="C41F79D10246742A" description="An affordance to push on a Sim so they come near the active Sim." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="DEFAULT_OVERLAY_MAP" class="TunableMapping" display="Default Overlay Map" muid="F261A1BC6D0BFA79" mapping_key="key" mapping_value="value" description="This is a mapping of MapOverlayEnum -&gt; List of MapOverlayEnums. The key&#xA;is used as the layer to be shown when no other overlays are present.&#xA;The value is a list of overlay types that would result in the default&#xA;layer being turned off if both are active." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="OverlayDefaultData">
+                <TunableTuple class="TunableTuple" muid="88BE71B07E93DD88" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="MapOverlayEnum" name="key" class="TunableEnumEntry" default="NONE" display="Key" muid="528D1151286A1B23" dynamic_entries="ui-ui_tuning.MapOverlayEnum._elements" static_entries="ui-ui_tuning.MapOverlayEnum" description="This is the OverlayType that acts as the default for the grouping&#xA;of OverlayTypes." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="D073F76BDDEB303" description="A list of OverlayTypes, that if turned on would result in the&#xA;default OverlayType being shut off." Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="MapOverlayEnum" class="TunableEnumEntry" default="NONE" muid="92D4ACDA965F5B1F" dynamic_entries="ui-ui_tuning.MapOverlayEnum._elements" static_entries="ui-ui_tuning.MapOverlayEnum" description="The OverlayType that causes the default value to turn off." Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="int" name="DLC_TRIALS_EXPIRATION_DIALOG_DURATION_IN_DAYS" class="TunableRange" default="14" display="Dlc Trials Expiration Dialog Duration In Days" muid="EEBA2B514D5E7451" min="1" max="None" description="Duration in number of days after trial expiration in which it's still&#xA;valid to show the Trial Expired dialog to the player.&#xA;&#xA;This value also doubles as the number of days after conversion in which&#xA;it's still valid to show the Welcome to Pack dialog.&#xA;&#xA;After this period of time, these dialogs will not be able to show when&#xA;the player returns to the game." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+
+            <TunableList name="ENGAGEMENT_MESSAGES" class="TunableMapping" display="Engagement Messages" muid="D355E02C05964614" mapping_key="key" mapping_value="value" description="Defines offline engagement messages on the main menu, keyed by destination name.&#xA;Maps as a subset of values for the UMMainMenuTemplateData class in as3.un" Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="UIEngagementMessageMap">
+                <TunableTuple class="TunableTuple" muid="61B5F3A781F8E563" Deprecated="False" filter="0" group="General">
+                    <Tunable type="str" name="key" class="Tunable" default="" display="Key" muid="BED920CAC3A275A4" description="Name of the destination these messages are assigned to." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="C75ADACD8DD848C5" description="List of engagement messages for a destination." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="UIEngagementMessage" muid="330A03A04DD7A7F9" description="Defines an engagement message." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                            <Tunable type="str" name="button_cta_url" class="Tunable" default="" display="Button Cta Url" muid="4411931C826D207C" description="Url for when cta button is pressed. If button_text is defined&#xA;this should also be defined." allow_none="True" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="button_text" class="TunableLocalizedString" default="0x0" display="Button Text" muid="49F3BB71E71128C3" description="Optional string to display on the cta button" allow_none="True" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="child_friendly" class="Tunable" default="False" display="Child Friendly" muid="917230CAB4A1DBDF" description="When true this message can be shown to children" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="description_text" class="TunableLocalizedString" default="0x0" display="Description Text" muid="9D77032F24E79077" description="String to display for the description of the message" allow_none="True" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="ResourceKey" name="image" class="TunableResourceKey" default="None" display="Image" muid="5726B5F443B72827" description="The main image displayed on the message" allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                            <Tunable type="int" name="layout" class="Tunable" default="1" display="Layout" muid="CF8A0EEC380F90CA" description="Layout id, integer value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="layout_position" class="TunableRange" default="0" display="Layout Position" muid="21FBC04214B912CA" min="0" max="3" description="0 = single large, 1 = left, 2 = right, 3 = middle" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="str" name="link_cta_url" class="Tunable" default="" display="Link Cta Url" muid="7E0DADA65900CBFE" description="Optional url for when a link in the description is pressed" allow_none="True" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="str" name="message_type" class="Tunable" default="Message" display="Message Type" muid="8EB26BBC8DBCF703" description="Message type." allow_none="True" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="title_text" class="TunableLocalizedString" default="0x0" display="Title Text" muid="DCE1D1C417A1BF7C" description="String to display for the title of the message" allow_none="True" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="str" name="video_url" class="Tunable" default="" display="Video Url" muid="AB2AB62F67493BC1" description="Optional url for when video button is pressed" allow_none="True" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="interaction" name="GO_HOME_INTERACTION" class="TunableReference" display="Go Home Interaction" muid="F5E80468B0147B0A" description="The interaction to push a Sim to go home." allow_none="False" Deprecated="False" export_modes="client_binary" filter="0" group="General" />
+
+            <TunableList name="LOADING_SCREEN_STRINGS" class="TunableMapping" display="Loading Screen Strings" muid="16814687BE024207" mapping_key="key" mapping_value="value" description="Mapping from the Pack to its associated loading strings." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="LoadingScreenStringsTuple">
+                <TunableTuple class="TunableTuple" muid="812C7B84C4018CA0" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Pack" name="key" class="TunableEnumEntry" default="BASE_GAME" display="Key" muid="F5E81D097DB394F3" static_entries="sims4-common.Pack" description="The pack containing the strings." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="A4CD58735F1C4C7D" description="The list of loading screen strings which belongs to the pack.&#xA;We always display the strings from base game AND from the latest&#xA;pack which the player is entitled to and has installed. " Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" class="TunableLocalizedString" default="0x0" muid="4B130227CCA2781B" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="MAIN_MENU_PLAY_TEXT" class="TunableMapping" display="Main Menu Play Text" muid="DB74F209C781B9AA" mapping_key="key" mapping_value="value" description="Defines text strings which can be shown under the play/new game button on the main menu.&#xA;A message will be randomly selected from a named group." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="MainMenuPlayTextMap">
+                <TunableTuple class="TunableTuple" muid="8EEB219EE1F1ACF0" Deprecated="False" filter="0" group="General">
+                    <Tunable type="str" name="key" class="Tunable" default="" display="Key" muid="D362E836CECF3970" description="Name of the group these messages are assigned to." Deprecated="False" filter="0" group="General" />
+                    <TunableList name="value" class="TunableList" display="Value" muid="AAC1F761E37C444B" description="List of main menu play texts." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="MainMenuPlayText" muid="15D88297F70F402C" description="Defines a main menu play button message." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                            <Tunable type="int" name="text" class="TunableLocalizedString" default="0x0" display="Text" muid="CA0C1F618E571290" description="String to display." Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="NEW_CONTENT_ALERT_TUNING" class="TunableMapping" display="New Content Alert Tuning" muid="E7D8CB70C41D025B" mapping_key="key" mapping_value="value" description="Mapping from Pack to its associated new content alert tuning" Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="NewContentAlertTuple">
+                <TunableTuple class="TunableTuple" muid="6DCAED600E96B7F5" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Pack" name="key" class="TunableEnumEntry" default="BASE_GAME" display="Key" muid="C7B59D3C4756E00D" static_entries="sims4-common.Pack" description="The pack containing the new content tuning. NOTE: this should never&#xA;be tuned to BASE_GAME. That would trigger for all users." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunablePackContentTuple" display="Value" muid="B24C520DA47D2CCA" description="Each pack will have a set of tuning of images and text to display&#xA;to inform the user what new features have been introduced in the &#xA;pack." Deprecated="False" filter="0" group="General">
+                        <TunableList name="cycle_images" class="TunableList" display="Cycle Images" muid="A1FEB619A1F603C7" description="A list of images (screenshots) that the UI cycles through to&#xA;show off some of the new features." Deprecated="False" filter="0" group="General">
+                            <Tunable type="ResourceKey" class="TunableResourceKey" default="None" muid="5B368119B7E80894" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        </TunableList>
+                        <TunableList name="feature_list" class="TunableList" display="Feature List" muid="4921CE422E58CF5D" max="4" description="A list of tuples that describe each new feature in the New&#xA;Content Alert UI. NOTE: This should NEVER have more than 4&#xA;elements in it." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableFeatureTuple" muid="E7BFA41AAB3F6359" description="A tuple that contains title text, description, an icon,&#xA;and a reference to the matching lesson for this new &#xA;feature." Deprecated="False" filter="0" group="General">
+                                <Tunable type="int" name="description_text" class="TunableLocalizedString" default="0x0" display="Description Text" muid="53E60FE5B2AA0AB" description="A short description of the new feature." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="ResourceKey" name="icon" class="TunableResourceKey" default="None" display="Icon" muid="C4A8CA311D3B4259" description="An icon that represents the feature." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="tutorial" name="lesson" class="TunableReference" display="Lesson" muid="6F1427FA5D3B1FBE" description="A reference to the lesson that the user can go look at&#xA;for this new feature." allow_none="True" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                <Tunable type="int" name="title_text" class="TunableLocalizedString" default="0x0" display="Title Text" muid="30DF8E9836EE5DAF" description="A title to be displayed in bold for the feature." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                        <Tunable type="int" name="title" class="TunableLocalizedString" default="0x0" display="Title" muid="F9348978E04DBDF9" description="The title to be displayed at the top of the New Content Alert&#xA;UI for this pack." Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="PACK_RELEASE_ORDER" class="TunableList" display="Pack Release Order" muid="E621E2556FCF8F95" description="List of Pack Ids in release order." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                <TunableEnum type="Pack" class="TunableEnumEntry" default="BASE_GAME" muid="89B82B037D7652B2" static_entries="sims4-common.Pack" description="A pack Id." Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <TunableList name="PACK_SPECIFIC_DATA" class="TunableMapping" display="Pack Specific Data" muid="C2511F1FF8797405" mapping_key="packId" mapping_value="packData" description="Mapping from a Pack to its associated data.  This includes pack icons,&#xA;filter strings, and the credits file." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="PackSpecificDataTuple">
+                <TunableTuple class="TunableTuple" muid="A52C0F64EC672409" Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="packData" class="TunablePackDataTuple" display="Packdata" muid="8BAC441969F22815" description="Each pack will have a set icons and can have an optional filter &#xA;string for use in Build/CAS and an optional Credits Title" Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="community_creator_name" class="TunableLocalizedString" default="0x0" display="Community Creator Name" muid="2992A708FC0FD8DD" description="The name of the community creator who helped create this pack,&#xA;to be displayed in the Pack Detail Panel&#xA; " allow_none="True" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="credits_title" class="TunableLocalizedString" default="0x0" display="Credits Title" muid="3F9A75EEB8666C40" description="The title used in the credits dropdown to select this packs credits.&#xA;If set, there must be a creditsxml file for this pack&#xA;in Assets/InGame/UI/Flash/data/" allow_none="True" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="ResourceKey" name="dlc_trial_image" class="TunableIcon" default="None" display="Dlc Trial Image" muid="DFCC0EA8FC2F45E0" description="Image displayed in the &quot;Trial Goals&quot; dialog in manage worlds&#xA;when the player runs a trial of this pack." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <Tunable type="int" name="dlc_trial_pack_goals_description" class="TunableLocalizedString" default="0x0" display="Dlc Trial Pack Goals Description" muid="67BB490BB65525AA" description="A description of the goals associated with this pack. This&#xA;is displayed in the &quot;Trial Goals&quot; dialog in manage worlds when&#xA;the player runs a trial of this pack." allow_none="True" Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="dlc_trial_region" class="OptionalTunable" default="disabled" display="Dlc Trial Region" muid="4A864423221E9C28" description="Reference to the region description catalog resource that will&#xA;be shown in the &quot;Trial Goals&quot; dialog in manage worlds when the&#xA;player runs a trial of this pack." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="36FA1E6B9C695C9A" />
+                            <Tunable type="regiondescription" name="enabled" class="TunableReference" display="Enabled" muid="25970B019BE4BD38" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableVariant>
+                        <Tunable type="int" name="dlc_trial_title" class="TunableLocalizedString" default="0x0" display="Dlc Trial Title" muid="CB9A1E3EBDACD636" description="The title to display in the &quot;Trial Goals&quot; dialog in manage worlds&#xA;when the player runs a trial of this pack." allow_none="True" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="filter_name" class="TunableLocalizedString" default="0x0" display="Filter Name" muid="3145A76E7D91EEDC" description="The name to used to describe the pack in CAS and BuildBuy filters.&#xA;If set, this pack will appear in the filter list." allow_none="True" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="ResourceKey" name="icon_128" class="TunableResourceKey" default="None" display="Icon 128" muid="674172DD054693E1" description="Pack icon. 128x128." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <Tunable type="ResourceKey" name="icon_32" class="TunableResourceKey" default="None" display="Icon 32" muid="4278BC34D772F949" description="Pack icon. 32x32." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <Tunable type="ResourceKey" name="icon_64" class="TunableResourceKey" default="None" display="Icon 64" muid="3C717DF54E943356" description="Pack icon. 64x64." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <Tunable type="ResourceKey" name="icon_owned" class="TunableIcon" default="None" display="Icon Owned" muid="199E01589608E860" description="Pack icon that is displayed in the main menu&#xA;pack display when the player owns that pack." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <Tunable type="ResourceKey" name="icon_unowned" class="TunableIcon" default="None" display="Icon Unowned" muid="F70820B11D9865DC" description="Pack icon that is displayed in the main menu&#xA;pack display when the player does not own that pack." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <TunableEnum type="PackSubTypes" name="pack_sub_type" class="TunableEnumEntry" default="FULL" display="Pack Sub Type" muid="824942D7E5FC7513" static_entries="ui-ui_tuning.PackSubTypes" description="Which sub type of pack is this." Deprecated="False" filter="0" group="General" />
+                        <TunableEnum type="PackTypes" name="pack_type" class="TunableEnumEntry" default="BASE" display="Pack Type" muid="BBE5475375528359" static_entries="ui-ui_tuning.PackTypes" description="Which type of pack is this." Deprecated="False" filter="0" group="General" />
+                        <TunableList name="promo_cycle_images" class="TunableList" display="Promo Cycle Images" muid="99B62793D6D9FC87" description="A list of promo screenshots and titles to display in the &#xA;Pack Detail panel." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="PromoCycleImagesTuning" muid="4667BD47FA957BF6" description="Screenshots and label displayed in the Pack Detail Panel&#xA;and Pack Preview Panel." Deprecated="False" filter="0" group="General">
+                                <Tunable type="ResourceKey" name="image_large" class="TunableResourceKey" default="None" display="Image Large" muid="E2E8245383729E86" description="The large version of the screenshot displayed in the Pack&#xA;Preview Panel." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="ResourceKey" name="image_small" class="TunableResourceKey" default="None" display="Image Small" muid="CCDFEB78508E524E" description="The small version of the screenshot displayed in the Pack &#xA;Detail Panel." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <Tunable type="int" name="title" class="TunableLocalizedString" default="0x0" display="Title" muid="3771158067413521" description="The title displayed over the screenshot in both the Pack&#xA;Detail Panel and Pack Preview Panel." Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                        <TunableList name="region_list" class="TunableList" display="Region List" muid="680A9F251592EBEF" description="A list of tuples that describe each new region in the pack." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunablePackRegionTuple" muid="C360BD3EF2FBDD5" description="A tuple that contains metadata for a world select region." Deprecated="False" filter="0" group="General">
+                                <Tunable type="bool" name="disable_view_lot_types" class="Tunable" default="False" display="Disable View Lot Types" muid="8CBA4B70F848C7BB" description="When tuned, this disables the view lot types button in the World Info Description panel.    " Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_destination_region" class="Tunable" default="False" display="Is Destination Region" muid="DA54BD1B86AEA60E" description="Whether this region is a destination world." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_player_facing" class="Tunable" default="False" display="Is Player Facing" muid="52F1D8175CD5D505" description="Whether to display this region in world select when the user does not own the associated pack" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="is_summit_weather_enabled" class="Tunable" default="False" display="Is Summit Weather Enabled" muid="2CC7C9D7891C6D7D" description="Whether this region has summit (EP10) weather enabled." Deprecated="False" filter="0" group="General" />
+                                <Tunable type="ResourceKey" name="overlay_layer" class="TunableResourceKey" default="None" display="Overlay Layer" muid="D7A242E9FEA88F97" description="Hero image displayed on mouse over of region in&#xA;world selection UI." allow_none="True" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                <TunableList name="parallax_layers" class="TunableList" display="Parallax Layers" muid="E754C0D603AB46CB" max="5" description="Images used for scrolling parallax layers for region&#xA;in world selection UI. Max number of images = 5." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="ResourceKey" class="TunableResourceKey" default="None" muid="9B3BA3EE9865E7D6" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                </TunableList>
+                                <Tunable type="int" name="region_description" class="TunableLocalizedString" default="0x0" display="Region Description" muid="BA5A888ADAE2397D" description="Localized description of region." allow_none="True" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="int" name="region_name" class="TunableLocalizedString" default="0x0" display="Region Name" muid="99A34A2D576E8CEA" description="Localized name of region." allow_none="True" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="regiondescription" name="region_resource" class="TunableReference" display="Region Resource" muid="E14212C7FC2E0FDA" description="Reference to the region description catalog resource associated with this region" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                <Tunable type="int" name="region_tooltip_override" class="TunableLocalizedString" default="0x0" display="Region Tooltip Override" muid="FF3B06FF258788C2" description="Tooltip on the world select. If none is set, will use region_description." allow_none="True" Deprecated="False" filter="0" group="General" />
+                                <TunableEnum type="RegionType" name="region_type" class="TunableEnumEntry" default="REGIONTYPE_RESIDENTIAL" display="Region Type" muid="1FD985A40B5F981C" static_entries="world-region.RegionType" description="The region type for this region.  Keep in sync &#xA;with gameplay tuning at region-&gt;region type" Deprecated="False" filter="0" group="General" />
+                                <TunableList name="tourist_highlights" class="TunableList" display="Tourist Highlights" muid="A209DCBEB6469C8C" description="Icon, heading, and description used to list points of&#xA;interest when selecting world for vacations." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple class="TunableTouristHighlightTuple" muid="474102601C0A85AD" description="Each highlight will have a set of tuning of icons,&#xA;heading, and description." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="int" name="description_text" class="TunableLocalizedString" default="0x0" display="Description Text" muid="D5AB80B8AE653FF1" description="The description." Deprecated="False" filter="0" group="General" />
+                                        <Tunable type="int" name="heading" class="TunableLocalizedString" default="0x0" display="Heading" muid="44E20DE0F8141DB7" description="The heading text." Deprecated="False" filter="0" group="General" />
+                                        <Tunable type="ResourceKey" name="icon" class="TunableIcon" default="None" display="Icon" muid="27CB5525FAF42F8F" description="Icon to be displayed ." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                                    </TunableTuple>
+                                </TunableList>
+                                <TunableList name="travel_only_lots" class="TunableMapping" display="Travel Only Lots" muid="91BF6BC46100B449" mapping_key="lot" mapping_value="unselectable_text" description="Any lots tuned here are unselectable outside of gameplay travel/vacation flows,&#xA;with text describing why this is the case." Deprecated="False" filter="0" group="General" mapping_class="ManageWorldsUnselectableLotsTuple">
+                                    <TunableTuple class="TunableTuple" muid="F72707912338FDFD" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="lotdescription" name="lot" class="TunableReference" display="Lot" muid="4F8F731374BF380E" description="The lot that is unselectable in manage worlds." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                        <Tunable type="int" name="unselectable_text" class="TunableLocalizedString" default="0x0" display="Unselectable Text" muid="D4B1F3CEA395C828" description="Localized text describing why the lot is unselectable." Deprecated="False" filter="0" group="General" />
+                                    </TunableTuple>
+                                </TunableList>
+                            </TunableTuple>
+                        </TunableList>
+                        <Tunable type="int" name="short_description" class="TunableLocalizedString" default="0x0" display="Short Description" muid="FB685CE033404C05" description="Short description of the pack meant to be displayed in &#xA;a tooltip." allow_none="True" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="str" name="webstore_id" class="Tunable" default="None" display="Webstore Id" muid="F8A2E57F5B62BB0" description="web store pack specific url identifier" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableEnum type="Pack" name="packId" class="TunableEnumEntry" default="BASE_GAME" display="Packid" muid="56854CBBB71B43D9" static_entries="sims4-common.Pack" description="The pack id for the associated data." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="PLATFORM_STRING_REPLACEMENTS" class="TunableList" display="Platform String Replacements" muid="E6BCC180D5102932" description="A list of strings that will be swapped out when in use on different &#xA;platforms. Each entry contains the original and replacement LocKey, the platforms&#xA;to perform the swap on, and the input method that is in use when the&#xA;LocKey is used." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="PlatformStringReplacementTuple" muid="ACA168FB0D65042B" Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                    <TunableEnum type="InputMethod" name="input_method" class="TunableEnumEntry" default="ANY" display="Input Method" muid="6432A333BC2F81F9" static_entries="ui-ui_tuning.InputMethod" description="The input method that should be in use when attempting to replace&#xA;the original_string." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="original_string" class="TunableLocalizedString" default="0x0" display="Original String" muid="F13B6663179AA8B3" description="The string that will be replaced or ignored." Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="Platform" name="platform" class="TunableEnumEntry" default="CONSOLE" display="Platform" muid="5B7F05272C75D21F" static_entries="ui-ui_tuning.Platform" description="The platforms on which the string will be replaced." Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="replacement_string" class="OptionalTunable" default="disabled" display="Replacement String" muid="5B28F2A75B7E3A4B" description="The string that will be used in place of original_string. If&#xA;omitted, original_string will simply be ignored entirely." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7BC50327CE774AF5" />
+                        <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="980DB65A962E1547" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="REGION_TYPE_HEADING_TUNING" class="TunableMapping" display="Region Type Heading Tuning" muid="99F43134EE93AA45" mapping_key="key" mapping_value="value" description="Mapping from region type to Heading information for world select&#xA;screen" Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="RegionTypeHeadingTuple">
+                <TunableTuple class="TunableTuple" muid="8F982E493F01F2D3" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="RegionType" name="key" class="TunableEnumEntry" default="REGIONTYPE_RESIDENTIAL" display="Key" muid="21FECD2066B4029C" static_entries="world-region.RegionType" description="The regiontype that should get this heading data" Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableRegionHeadingTuple" display="Value" muid="FD716386FAFD9A6F" description="Each region will have a set of tuning of icons and text to display&#xA;in the heading." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="heading" class="TunableLocalizedString" default="0x0" display="Heading" muid="2FA0CC22798B4606" description="The text to be displayed at the top." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="ResourceKey" name="icon" class="TunableIcon" default="None" display="Icon" muid="FF8F5C24DA91A883" description="Icon to be displayed next to the heading." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                        <TunableVariant type="None" name="vacation_subheading" class="OptionalTunable" default="disabled" display="Vacation Subheading" muid="8130EFB2D80549E8" description="The sub heading to be displayed below the heading when&#xA;selecting a lot for a vacation." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="9793E81EE1F7B71F" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="164ECE62414F9A87" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SCALING" class="TunableList" display="Scaling" muid="C9287610B3FC566D" description="Defines a min/max ui scaling value for a screen resolution." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="UIScaleTuple" muid="2AB505B4605FCC26" Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                    <Tunable type="float" name="scale_max" class="Tunable" default="1" display="Scale Max" muid="7F87B12060D45965" description="Provide a float value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="scale_min" class="Tunable" default="1" display="Scale Min" muid="2C41E43872CF41B0" description="Provide a float value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="screen_height" class="Tunable" default="0" display="Screen Height" muid="E757E62CD4A54BD2" description="Provide an integer value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="screen_width" class="Tunable" default="0" display="Screen Width" muid="FA3B7715B8DF358A" description="Provide an integer value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+
+        <Class name="MapOverlayEnum" muid="AE24B4BD3CEEB06B" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="EB9F150C5EDFE652" description="The list of elements in the dynamic enumeration." Deprecated="False" export_modes="client_binary,server_xml" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="CC9008BEABF5A8AF" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="NONE" muid="C4831FEB05B13337" enum_value="0" />
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="33183BD073F5FB65" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="9D27B8AEF1FECD0B" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="83189A4337ACDBE0" new_muid="EEBA2B514D5E7451" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRename" old_muid="2DF44D230F1EC476" new_muid="EEBA2B514D5E7451" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="D8D388ECF6E344E0" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

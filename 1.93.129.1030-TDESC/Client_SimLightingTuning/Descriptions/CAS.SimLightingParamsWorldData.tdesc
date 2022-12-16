@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="simlighting" class="CAS.SimLightingParamsWorldData" module="CAS" muid="7B95343AB15F5626" description="Global tuning parameters for sim lighting." export_modes="client_binary" path="Client_SimLightingTuning\Descriptions">
+        <Tunable type="float" name="AmbientDimming" class="Tunable" default="0.0" display="Ambient: Dimming" muid="E8220907777AC7B2" description="Decreases ambient by amount of direct lighting from key/fill to balance overall intensity." />
+
+        <Tunable type="float" name="AmbientFromLightsFactor" class="Tunable" default="0.0" display="Ambient: Amount from lights" muid="4E3D07806203A899" description="Controls what fraction of the key light to add to ambient." />
+
+        <Tunable type="float" name="AmbientFromOutdoorsFactor" class="Tunable" default="0.0" display="Ambient: Amount from outdoors" muid="7EE7AC13702093E3" description="Controls what fraction of the outdoor ambient color to add to ambient." />
+
+        <Tunable type="float" name="AmbientFromRoomFactor" class="Tunable" default="0.0" display="Ambient: Amount from room" muid="7CBCD2A112DCA9D0" description="Controls what fraction of the room ambient color to add to ambient." />
+
+        <Tunable type="float" name="AmbientFromSunFactor" class="Tunable" default="0.0" display="Ambient: Amount from sun" muid="AAF3B61E440AA96D" description="Controls what fraction of the sun directional color to add to ambient." />
+
+        <Tunable type="float" name="AmbientIntensityMax" class="Tunable" default="1.85" display="Ambient: Intensity max" muid="53D76DB137D8D3C2" description="Upper value for vertical gradient applied to ambient term." />
+
+        <Tunable type="float" name="AmbientIntensityMin" class="Tunable" default="1.2" display="Ambient: Intensity min" muid="600BC3B1E54464B0" description="Lower value for vertical gradient applied to ambient term." />
+
+        <Tunable type="float" name="BBBAmbientIntensityMax" class="Tunable" default="0.0" display="BBB: Ambient max" muid="EA8A86E0F4B2B30A" description="Intensity of BBB ambient light, at the top of the sim." />
+
+        <Tunable type="float" name="BBBAmbientIntensityMin" class="Tunable" default="0.0" display="BBB: Ambient min" muid="48ABB6532E0EECD3" description="Intensity of BBB ambient light, at the bottom of the sim." />
+
+        <TunableTuple name="BBBBaseColor" class="TunableVector3" display="BBB: Base color" muid="5DD7DBAADBE30F48" description="Sets base BBB color for all BBB lighting.">
+            <Tunable type="float" name="x" class="Tunable" default="0.24" muid="B5ADD5C036016BAA" />
+            <Tunable type="float" name="y" class="Tunable" default="0.24" muid="7F8A564FEE6D3BC7" />
+            <Tunable type="float" name="z" class="Tunable" default="0.48" muid="434DBC7BC4845328" />
+        </TunableTuple>
+
+        <Tunable type="bool" name="BBBEnableCustom" class="Tunable" default="False" display="BBB: Enable custom" muid="4DFE60606D8C5DCE" description="Enables sim-specific BBB. This disables influence from the object (light rig) BBB settings." />
+
+        <Tunable type="float" name="BBBFadeLumaEnd" class="Tunable" default="0.3" display="BBB: Fade luma end" muid="17D8E5D179A53072" description="Approximate luma to end fading out BBB; should be greater than the start value. BBB is inactive above this point." />
+
+        <Tunable type="float" name="BBBFadeLumaStart" class="Tunable" default="0.1" display="BBB: Fade luma start" muid="5CF599E9403FE24C" description="Approximate luma to start fading out BBB; should be less than the end value. Below this point the sim gets full BBB." />
+
+        <Tunable type="bool" name="BBBFadeSaturation" class="Tunable" default="False" display="BBB: Fade desaturate enable" muid="D997732421C13704" description="Enables desaturation as BBB fades out to avoid mixing bluish BBB colors with reddish normal light." />
+
+        <Tunable type="float" name="BBBFillIntensity" class="Tunable" default="0.3" display="BBB: Fill intensity" muid="797B40FC4B7220F6" description="Intensity of the BBB fill light." />
+
+        <Tunable type="float" name="BBBKeyIntensity" class="Tunable" default="0.5" display="BBB: Key intensity" muid="FECD9A1231314866" description="Intensity of the BBB key light." />
+
+        <Tunable type="float" name="BBBMaxLumaDelta" class="Tunable" default="8.0" display="BBB: Max Luma Delta" muid="851DFB839B92F926" description="Max amount of luma per second that BBB can change." />
+
+        <Tunable type="float" name="DistMax" class="Tunable" default="6.0" display="Sources: Distance max" muid="5C28631E7E6696FB" description="Maximum distance in meters for the distance-based falloff ramp for light contribution. Lights outside of this radius contribute no light." />
+
+        <Tunable type="float" name="DistMin" class="Tunable" default="0.0" display="Sources: Distance min" muid="5746B6FF33C9003D" description="Minimum distance in meters for the distance-based falloff ramp for light contribution. Lights within this radius contribute at full intensity." />
+
+        <Tunable type="float" name="FadeMax" class="Tunable" default="180.0" display="Sources: Angle-based fade max" muid="69A2C13073A9BA0E" description="Maximum angle in degrees for angle-based falloff for light contribution. Once the angle between a key/fill p-light and a source light reaches this threshold, the source light is attenuated to zero." />
+
+        <Tunable type="float" name="FadeMin" class="Tunable" default="0.0" display="Sources: Angle-based fade min" muid="1BF309D0AF2CD57E" description="Minimum angle in degrees for angle-based falloff for light contribution. Once the angle between a key/fill p-light and a source light is above the threshold, the source light starts attenuating." />
+
+        <Tunable type="float" name="FadePower" class="Tunable" default="0.8165" display="Sources: Angle-based fade power" muid="BD879397DEC5DEF2" description="Controls the sharpness of falloff as the angle between a key/fill p-light and a source light increases. 1.0 gives a linear ramp, &lt;1 gives softer falloff, &gt;1 gives sharper falloff." />
+
+        <Tunable type="float" name="FillAngle" class="Tunable" default="-65.0" display="Fill: Angle" muid="8D1C4231FBE04D7C" description="Yaw of the fill light in view space." />
+
+        <Tunable type="float" name="FillClamp" class="Tunable" default="0.421" display="Fill: Clamp" muid="36AF24D679F362F7" description="Luminance limit for fill light (limit for max of R/G/B)." />
+
+        <TunableTuple name="FillFloor" class="TunableVector3" display="Fill: Floor" muid="54E8D92D422F4691" description="Hard minimum R/G/B color value for fill light; the fill light is raised to this color value if it falls below.">
+            <Tunable type="float" name="x" class="Tunable" default="0" muid="7586A6C18989A06D" />
+            <Tunable type="float" name="y" class="Tunable" default="0" muid="BDBE97DBEC7E4626" />
+            <Tunable type="float" name="z" class="Tunable" default="0" muid="BCD3A7E107ECD462" />
+        </TunableTuple>
+
+        <Tunable type="float" name="FillHeight" class="Tunable" default="0.18" display="Fill: Height" muid="1DDA21382DC06810" description="Sets the relative height of the fill light, in meters, from the rig origin." />
+
+        <Tunable type="float" name="FillIntensity" class="Tunable" default="0.16" display="Fill: Intensity" muid="AE80F7B2407A939F" description="Intensity multiplier for fill light; amplifies or attenuates all contributions to the fill light, before the floor/clamp." />
+
+        <Tunable type="float" name="FillMin" class="Tunable" default="1.0" display="Fill: Minimum" muid="9F59F393645CFEF8" description="Minimum clamp for angle-based falloff (0-1) (applied for each source light)." />
+
+        <TunableTuple name="FillPedestal" class="TunableVector3" display="Fill: Pedestal" muid="D0349226140609C3" description="Additional colored light to add onto the fill light, after all source lights and min/maxes have been applied.">
+            <Tunable type="float" name="x" class="Tunable" default="0" muid="8BE1D66AD873BCFC" />
+            <Tunable type="float" name="y" class="Tunable" default="0" muid="85F6F396206BA158" />
+            <Tunable type="float" name="z" class="Tunable" default="0" muid="2D1F31D85C2BD20" />
+        </TunableTuple>
+
+        <Tunable type="float" name="FillSaturation" class="Tunable" default="1.0" display="Fill: Saturation" muid="6532D9BDEB44CA8" description="Increases or decreases the saturation of the source light contributions to the fill light color." />
+
+        <Tunable type="float" name="KeyAngle" class="Tunable" default="33.48" display="Key: Angle" muid="9E3A20471CE616FD" description="Yaw of the key light in view space." />
+
+        <Tunable type="float" name="KeyClamp" class="Tunable" default="0.602" display="Key: Clamp" muid="C749A98DC42B9E60" description="Luminance limit for key light (limit for max of R/G/B)." />
+
+        <TunableTuple type="float" name="KeyFloor" class="TunableVector3" display="Key: Floor" muid="B7134845A4F41054" description="Hard minimum R/G/B color value for key light; the key light is raised to this color value if it falls below.">
+            <Tunable type="float" name="x" class="Tunable" default="0" muid="3649BA3F1E1AB3A5" />
+            <Tunable type="float" name="y" class="Tunable" default="0" muid="9F08B315387ACB5A" />
+            <Tunable type="float" name="z" class="Tunable" default="0" muid="30CAE728EC2AD575" />
+        </TunableTuple>
+
+        <Tunable type="float" name="KeyHeight" class="Tunable" default="1.236" display="Key: Height" muid="2A92BA20BF30B1F0" description="Sets the relative height of the key light, in meters, from the rig origin." />
+
+        <Tunable type="float" name="KeyIntensity" class="Tunable" default="0.3" display="Key: Intensity" muid="6956DAF0CA3F2A14" description="Intensity multiplier for key light; amplifies or attenuates all contributions to the key light, before the floor/clamp." />
+
+        <Tunable type="float" name="KeyMin" class="Tunable" default="0.32" display="Key: Minimum" muid="B783297286BFC92D" description="Minimum clamp for angle-based falloff (0-1) (applied for each source light)." />
+
+        <TunableTuple name="KeyPedestal" class="TunableVector3" display="Key: Pedestal" muid="925C52561E265C3F" description="Additional colored light to add onto the key light, after all source lights and min/maxes have been applied.">
+            <Tunable type="float" name="x" class="Tunable" default="0" muid="7598F815BAC8B383" />
+            <Tunable type="float" name="y" class="Tunable" default="0" muid="D40219E656C51C3B" />
+            <Tunable type="float" name="z" class="Tunable" default="0" muid="3A8A137122BCEAEA" />
+        </TunableTuple>
+
+        <Tunable type="float" name="KeySaturation" class="Tunable" default="1.0" display="Key: Saturation" muid="86630C357C79B373" description="Increases or decreases the saturation of the source light contributions to the key light color." />
+
+        <Tunable type="float" name="LightBaseHeight" class="Tunable" default="0.508" display="Global: Light Target Height" muid="80D12DB02E01C441" description="Sets the height above the sim's root locator, in meters, to use as the origin of the perfect light rig." />
+
+        <Tunable type="float" name="PointLightExtrusionSkySide" class="Tunable" default="1.0" display="Point Lights: Sky Side Extrusion" muid="4FE973DE9728F6B" description="Extend a Window point light by this times window height on the sky side." />
+
+        <Tunable type="float" name="PointLightExtrusionSunSide" class="Tunable" default="1.0" display="Point Lights: Sun Side Extrusion" muid="D069291C54E09B56" description="Extend a Window point light by this times window height on the sun side." />
+
+        <Tunable type="float" name="PointLightFraction" class="Tunable" default="0.8" display="Point Lights: Fraction Applied" muid="A325F04A7E120F58" description="Sets the fraction of the four brightest lights that will be diverted to point lights." />
+
+        <Tunable type="float" name="PointLightMaxLumaDecrease" class="Tunable" default="2.0" display="Point Lights: Max Luma Decrease" muid="63D8AEDA88D16F5E" description="Sets the amount of luma per second that can be removed from a point light (2 =&gt; white to black in 1/2 seconds, 3 =&gt; 1/3 etc.)." />
+
+        <Tunable type="float" name="PointLightMaxLumaIncrease" class="Tunable" default="2.0" display="Point Lights: Max Luma Increase" muid="1A4EA6DE642DC886" description="Sets the amount of luma per second that can be added to a point light (2 =&gt; black to white in 1/2 seconds, 3=&gt;1/3 etc.)." />
+
+        <Tunable type="float" name="Rim1Angle" class="Tunable" default="128.0" display="Rim 1: Angle" muid="4623E1F3A0527CC" description="Yaw angle of first rim light, in degrees." />
+
+        <TunableTuple name="Rim1Color" class="TunableVector3" display="Rim 1: Color" muid="F1F1F9DA561B3349" description="Color of first rim light.">
+            <Tunable type="float" name="x" class="Tunable" default="0.56" muid="2394C98D562FE732" />
+            <Tunable type="float" name="y" class="Tunable" default="0.568" muid="769E203DFB1CFB4C" />
+            <Tunable type="float" name="z" class="Tunable" default="0.576" muid="5CE567BD7ACFEB8D" />
+        </TunableTuple>
+
+        <Tunable type="float" name="Rim1Height" class="Tunable" default="0.436" display="Rim 1: Height" muid="B2F16F11F2142325" description="Relative height of first rim light, in meters." />
+
+        <Tunable type="float" name="Rim1Intensity" class="Tunable" default="0.1" display="Rim 1: Intensity" muid="43EA9FC21822A7A6" description="Intensity of first rim light." />
+
+        <Tunable type="float" name="Rim1MaxRatio" class="Tunable" default="0" display="Rim 1: Max Ratio" muid="CF121B526444139B" description="Limits rim 1 contribution as a ratio of key+fill+ambient light. Zero disables limit." />
+
+        <Tunable type="float" name="Rim2Angle" class="Tunable" default="240.0" display="Rim 2: Angle" muid="683434832E4E4857" description="Yaw angle of second rim light, in degrees." />
+
+        <TunableTuple name="Rim2Color" class="TunableVector3" display="Rim 2: Color" muid="C002A70D6321A98F" description="Color of second rim light.">
+            <Tunable type="float" name="x" class="Tunable" default="0.56" muid="B963743AB42B6461" />
+            <Tunable type="float" name="y" class="Tunable" default="0.568" muid="5A41A2E2603B42FF" />
+            <Tunable type="float" name="z" class="Tunable" default="0.576" muid="FEE590FE89B9AABD" />
+        </TunableTuple>
+
+        <Tunable type="float" name="Rim2Height" class="Tunable" default="0.436" display="Rim 2: Height" muid="A739BB79B08BFD4D" description="Relative height of the second rim light, in meters." />
+
+        <Tunable type="float" name="Rim2Intensity" class="Tunable" default="0.0" display="Rim 2: Intensity" muid="D56BA2F7ABF5A3BB" description="Intensity of second rim light." />
+
+        <Tunable type="float" name="Rim2MaxRatio" class="Tunable" default="0" display="Rim 2: Max Ratio" muid="4648A47447051204" description="Limits rim 2 contribution as a ratio of key+fill+ambient light. Zero disables limit." />
+
+        <Tunable type="float" name="SourceClamp" class="Tunable" default="100.0" display="Sources: Source clamp" muid="D0871F253047E657" description="Limits the intensity of all non-sun source lights for perfect light computations (post-scale)." />
+
+        <Tunable type="float" name="SourceScale" class="Tunable" default="1.0" display="Sources: Source scale" muid="668B3E14590DD575" description="Scales all non-sun source light inputs up or down; this is an alternative to scaling the key/fill clamps and intensities." />
+
+        <Tunable type="float" name="SunClamp" class="Tunable" default="1.25" display="Outdoor: Sun clamp" muid="2987335DC19F238A" description="Maximum luminance value for the sun when lighting sims." />
+
+        <Tunable type="float" name="SunSaturation" class="Tunable" default="1.0" display="Outdoor: Sun saturation" muid="93CC560AD2B6C3C1" description="Saturation factor to apply specifically only to the sun." />
+
+        <Tunable type="float" name="SunScale" class="Tunable" default="1.0" display="Outdoor: Sun scale" muid="CFF98E195733F610" description="Scale factor to apply specifically only to the sun." />
+    </Instance>
+</TuningRoot>

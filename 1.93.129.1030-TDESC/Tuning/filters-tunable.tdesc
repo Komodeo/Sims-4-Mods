@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="filters.tunable" muid="FCC4A0499E9D2B2">
+        <Class name="FilterTermTag" muid="98D46FCD49DDC047" enum_bit_flag="False" enum_locked="True">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="55BE00D04B986757" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="946F2997AC0FB187" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="NO_TAG" muid="6BBAC050E56C7C02" enum_value="0" />
+        </Class>
+
+        <Class name="IsHomeZoneUniversityHousingFilterTerm" muid="60825BB8F99CB6D3">
+            <Tunable type="venue" name="UNIVERSITY_HOUSING_VENUE_TUNING" class="TunableReference" display="University Housing Venue Tuning" muid="C6966ABA1F6FD14F" description="The university housing venue.  This should be kept in sync with the same tunable in university_housing_tuning.py&#xA;and we would ideally just reference the get_university_housing_zone_ids in there, but doing so causes a circular&#xA;import." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </Class>
+
+        <Class name="TunableSimFilter" muid="BBA08D7D0855FC14">
+            <Tunable type="sim_filter" name="ANY_FILTER" class="TunableReference" display="Any Filter" muid="FFD938D9D5F16FA0" description="A filter used for creating debug sims in your neighborhood." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="sim_filter" name="BLANK_FILTER" class="TunableReference" display="Blank Filter" muid="F027A6E68F3957EF" description="A filter that is used when a filter of None is passed in.  This filter&#xA;should have no filter terms." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="TOP_NUMBER_OF_SIMS_TO_LOOK_AT" class="Tunable" default="5" display="Top Number Of Sims To Look At" muid="EA205D6097290043" description="When running a filter request and doing a weighted random, how many of&#xA;the top scorers will be used to get the results." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="sim_filter" name="UNIMPORTANT_FILTER" class="TunableReference" display="Unimportant Filter" muid="7D09CD6AA9819821" description="A filter used to find Sims that are considered unimportant. Unimportant&#xA;Sims can be used as a fallback before generating new SimInfos in the&#xA;case a filter request fails. This allows us to conserve SimInfos." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

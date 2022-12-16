@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="PushInteractionOnAllGreetedSimsInteraction" module="interactions.household_interactions" muid="69940F478A858AB1" description="This affordance will push the tuned affordance on all sims that are in the household &#xA;along with any greeted sims.  It will not push it on the actor." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="_pushed_interaction_tunables" class="TunableTuple" display="Pushed Interaction Tunables" muid="7FF2055718762CB3" Deprecated="False" filter="0" group="General">
+            <Tunable type="interaction" name="affordance_to_push" class="TunableReference" display="Affordance To Push" muid="A11E6F39D3B9C1B3" description="Affordance to push on all sims in the household and all greeted&#xA;sims." allow_none="False" Deprecated="False" filter="0" group="General" />
+            <Tunable type="bool" name="push_on_actor" class="Tunable" default="False" display="Push On Actor" muid="27E57362E62BD32B" description="Whether Afforance To Push should be pushed on the actor." Deprecated="False" filter="0" group="General" />
+            <TunableVariant type="None" name="target_override_for_pushed_affordance" class="OptionalTunable" default="disabled" display="Target Override For Pushed Affordance" muid="7A9754CF2BA2CC3A" description="ParticipantType for the target to be set on the pushed&#xA;affordance." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="56334D36F1835C7" />
+                <TunableEnum type="ParticipantType" name="enabled" class="TunableEnumEntry" default="Actor" display="Enabled" muid="13F6C92F29993548" static_entries="interactions.ParticipantType" description="ParticipantType for the target to be set on the pushed&#xA;affordance." Deprecated="False" filter="0" group="General" />
+            </TunableVariant>
+        </TunableTuple>
+
+        <TunableList name="_required_appropriateness_tags" class="TunableSet" display="Required Appropriateness Tags" muid="91620EB775DEDC48" description="A list of tags that a Sim must have to be eligible for this&#xA;interaction." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="DADF107681161998" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="strategy" class="PutDownStrategy" module="carry.put_down_strategy" muid="11392BCC44951494" description="Define how Sims put down an object." instance_needs_reference="True" instance_subclasses_only="False" path="Strategys\Descriptions" use_guid_for_reference="True">
+        <TunableList name="affordances" class="TunableList" display="Affordances" muid="E42E6694C2C211FA" description="A list of interactions that should be considered to be an&#xA;alternative to putting the object down." Deprecated="False" filter="0" group="General">
+            <Tunable type="interaction" class="TunableReference" muid="3FCEB00ACF422C5A" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <TunableVariant type="None" name="floor_cost" class="OptionalTunable" default="enabled" display="Floor Cost" muid="9170984F48B7A192" description="The base cost used to compare putting an object on the ground&#xA;with other options." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="20204D061B7230B7" />
+            <Tunable type="float" name="enabled" class="Tunable" default="15" display="Enabled" muid="D69E247EF4779381" description="The base cost used to compare putting an object on the ground&#xA;with other options." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="ideal_slot_type_set" class="OptionalTunable" default="disabled" display="Ideal Slot Type Set" muid="AF1CC58F53D13857" description="If specified, this set of slots will have the cost specified in&#xA;the 'preferred_slot_cost' field in put_down_tuning.&#xA;&#xA;This allows us to tell Sims to weight specific slot types higher&#xA;than others when considering where to put down this object." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="61E578A6A31C4E79" />
+            <Tunable type="slot_type_set" name="enabled" class="TunableReference" display="Enabled" muid="FC6F7CE42D760E7A" description="If specified, this set of slots will have the cost specified in&#xA;the 'preferred_slot_cost' field in put_down_tuning.&#xA;&#xA;This allows us to tell Sims to weight specific slot types higher&#xA;than others when considering where to put down this object." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="inventory_cost" class="OptionalTunable" default="enabled" display="Inventory Cost" muid="C6203296CFDBCD36" description="Cost for how likely a sim puts the object in their inventory&#xA;instead of putting it down." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="13E8302F672935B5" />
+            <Tunable type="float" name="enabled" class="Tunable" default="20" display="Enabled" muid="9DC672BB9D522C24" description="Cost for how likely a sim puts the object in their inventory&#xA;instead of putting it down." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="normal_slot_cost" class="OptionalTunable" default="enabled" display="Normal Slot Cost" muid="1E130AF321570442" description="Base score for a slot that this object does not prefer." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C3C2E111F7F2FB67" />
+            <Tunable type="float" name="enabled" class="Tunable" default="1" display="Enabled" muid="945D3674FF000BE4" description="Base score for a slot that this object does not prefer." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="object_inventory_cost" class="OptionalTunable" default="enabled" display="Object Inventory Cost" muid="F21AE04231E0592E" description="Base cost for a sim putting the object in a valid object&#xA;inventory." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="53B399F9657CD77A" />
+            <Tunable type="float" name="enabled" class="Tunable" default="5" display="Enabled" muid="69F89E1E34292D4B" description="Base cost for a sim putting the object in a valid object&#xA;inventory." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="preferred_slot_cost" class="OptionalTunable" default="enabled" display="Preferred Slot Cost" muid="DFFB95F488BA1E24" description="Base cost for a slot that this object prefers." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B4F68B45DC1C8BED" />
+            <Tunable type="float" name="enabled" class="Tunable" default="0" display="Enabled" muid="27C4E8D0AF0178DB" description="Base cost for a slot that this object prefers." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Tunable type="bool" name="put_down_on_terrain_facing_sim" class="Tunable" default="False" display="Put Down On Terrain Facing Sim" muid="5686B182FF788527" description="If true, the object will face the Sim when placing it on terrain.&#xA;Guitars and violins will enable this so they don't pop 180 degrees&#xA;after the Sim puts it down." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

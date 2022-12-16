@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="recipe" class="MusicRecipe" module="crafting.music" muid="EA34489592E20E9D" description="A Recipe that unlocks a song through the Write Song interaction on&#xA;music instruments." instance_subclasses_only="False" parents="Recipe" path="Recipes\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="music_style_while_crafting" class="TunableVariant" default="single_music_style" display="Music Style While Crafting" muid="9A2A2DA2E0A3994F" description="Tuning that decides which music style to play while crafting this&#xA;recipe." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="affordance_to_style_mapping" class="TunableTuple" display="Affordance To Style Mapping" muid="5980D89947DDA8E9" description="A mapping from affordance to music style, so that we can craft&#xA;this recipe on multiple instruments. the affordances in this&#xA;list should be some part of the phases of the recipe, so they&#xA;can pull from this list." Deprecated="False" filter="0" group="General">
+                <TunableList name="mapping" class="TunableMapping" display="Mapping" muid="AF9FAA74AE65EC54" mapping_key="affordance" mapping_value="music_style" description="A mapping from affordance to music style, so that we can craft&#xA;this recipe on multiple instruments. the affordances in this&#xA;list should be some part of the phases of the recipe, so they&#xA;can pull from this list." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="48E1D1277E09AB63" Deprecated="False" filter="0" group="General">
+                        <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="ACE8D39BF9841ABD" description="The affordance used to craft this recipe." allow_none="False" Deprecated="False" filter="0" group="General" restrict="PlayAudioCraftingPhaseStagingSuperInteraction" />
+                        <Tunable type="recipe" name="music_style" class="TunableReference" display="Music Style" muid="47F593FD57924B21" description="Which music style the Sim will pull tracks from while writing&#xA;the song." allow_none="False" Deprecated="False" filter="0" group="General" restrict="MusicStyle" />
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+            <TunableTuple name="single_music_style" class="TunableTuple" display="Single Music Style" muid="126C1CC79C76626" description="A single music style to use while crafting." Deprecated="False" filter="0" group="General">
+                <Tunable type="recipe" name="music_style" class="TunableReference" display="Music Style" muid="12833E93FF0F6382" description="Which music style the Sim will pull tracks from while writing&#xA;the song." allow_none="False" Deprecated="False" filter="0" group="General" restrict="MusicStyle" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableList name="music_track_unlocks" class="TunableList" display="Music Track Unlocks" muid="276D4A75132B49E7" description="The music tracks that will be unlocked when the crafting process is&#xA;complete." Deprecated="False" filter="0" group="General">
+            <Tunable type="recipe" class="TunableReference" muid="9BD9AB7307570991" description="The music track that will be unlocked when the crafting process&#xA;is complete." allow_none="False" Deprecated="False" filter="0" group="General" restrict="MusicTrack" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="tutorials.tutorial_tip" muid="ECED4903DF372A6">
+        <Class name="TutorialTipTuning" muid="1523B89F5312D928">
+            <TunableTuple name="FTUE_TUNABLES" class="FtueDataTuple" display="Ftue Tunables" muid="F22B0C34515EF756" description="Tunables relating to the FTUE tutorial mode." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+                <TunableList name="disable_ui_elements" class="TunableList" display="Disable Ui Elements" muid="C3241858F10FB80A" description="Disable one or more UI elements during a phase of the tutorial, denoted by&#xA;the starting and ending tips." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TutorialTipDisableUiElements" muid="AE658EAEC13B048B" description="Defines a set of UI elements to be disabled during a range of tips." Deprecated="False" filter="0" group="General">
+                        <TunableList name="elements" class="TunableEnumSet" display="Elements" muid="31D13600E674E2C3" description="List of UI elements to disable.  Note that not all elements can be disabled." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="TutorialTipUiElement" class="TunableEnumEntry" default="UI_INVALID" muid="6549142AF90D9BF0" static_entries="tutorials-tutorial_tip_enums.TutorialTipUiElement" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                        <Tunable type="tutorial_tip" name="end_tip" class="TunableReference" display="End Tip" muid="D41F5B1BD38B8109" description="When this tip becomes active or is satisfied, the target elements&#xA;will become re-enabled." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <Tunable type="int" name="reason" class="TunableLocalizedString" default="0x0" display="Reason" muid="7ED9BB8F57B62AB5" description="The reason the element has been disabled, usually displayed as a tooltip." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="tutorial_tip" name="start_tip" class="TunableReference" display="Start Tip" muid="57D53BEFBDE60A50" description="When this tip becomes active or is satisfied, the target elements&#xA;will become disabled." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="aspiration_category" name="ftue_aspiration_category" class="TunableReference" display="Ftue Aspiration Category" muid="C155863576D2350B" description="A reference to an aspiration category which is used in cas for the ftue flow" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <Tunable type="housedescription" name="start_house_description" class="TunableReference" display="Start House Description" muid="B9D86F9AE81BEEB8" description="A reference to the HouseDescription resource to load into in FTUE" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="F884F2F63362A2CC" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="E4CEFC8549BCD07" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

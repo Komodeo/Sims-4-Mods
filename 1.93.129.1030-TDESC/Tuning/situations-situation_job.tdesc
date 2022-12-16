@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="situations.situation_job" muid="14C1E1D5BEFB1B9E">
+        <Class name="JobLootTargetChoice" muid="ED09B6E60035665E" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="ALL_SIMS_IN_JOB" muid="4C2B9BE36AB4FA7E" enum_value="2" />
+
+            <EnumItem name="RANDOM_SIM" muid="5DAAD879DEC38EF5" enum_value="0" />
+        </Class>
+
+        <Class name="SituationJob" muid="131B82107FE139F1">
+            <TunableTuple name="ALTERNATIVE_SPAWN_BEHAVIOR" class="TunableTuple" display="Alternative Spawn Behavior" muid="A0FFEE11F112391D" Deprecated="False" filter="0" group="General">
+                <TunableList name="alternative_spawn_behaviors" class="TunableList" display="Alternative Spawn Behaviors" muid="616642C596753008" description="A list of (whitelist, spawn_action_list) pairs. The whitelist &#xA;defines which situation jobs are allowed to run spawn actions from &#xA;the spawn action list." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableTuple" muid="7E3DC9C8C4DD88A2" Deprecated="False" filter="0" group="General">
+                        <TunableList name="spawn_action_list" class="TunableList" display="Spawn Action List" muid="B000065180420B1B" description="The list of (spawn_action, weight) pairs." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="9F9E2F89FF84E932" Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="spawn_action" class="TunableSpawnActionVariant" default="fade_in" display="Spawn Action" muid="FE0990D5A407ED0B" description="A spawn action." Deprecated="False" filter="0" group="General">
+                                    <TunableTuple name="affordance" class="TunableSpawnActionAffordance" display="Affordance" muid="1FE9119B10D9DC0D" description="The Sim will run an interaction that will make it visible." Deprecated="False" filter="0" group="General">
+                                        <Tunable type="interaction" name="spawn_affordance" class="TunableReference" display="Spawn Affordance" muid="BF07A2738AA9123B" description="The affordance that is pushed on the Sim as soon as they are spawned&#xA;on the lot." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SuperInteraction" />
+                                    </TunableTuple>
+                                    <Tunable name="fade_in" class="TunableExistance" display="Fade In" muid="8D36C577DFA3B45B" />
+                                    <TunableTuple name="vehicle" class="TunableSpawnOnVehicleActionAffordance" display="Vehicle" muid="EB49F332E44F7AB3" Deprecated="False" filter="0" group="General">
+                                        <Tunable type="object" name="fallback_vehicle_def" class="TunableReference" display="Fallback Vehicle Def" muid="36F9C9CD8F6F84CC" description="The definition of the vehicle to spawn if the sim doesn't have&#xA;a favorite vehicle." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                                        <TunableEnum type="Tag" name="vehicle_obj_tag" class="TunableTag" default="INVALID" display="Vehicle Obj Tag" muid="6AE328B252A64802" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag to use to look up if the sim has a favorite vehicle&#xA;to use for the spawn action." Deprecated="False" dynamic_entries_prefix="Func" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                                    </TunableTuple>
+                                </TunableVariant>
+                                <Tunable type="float" name="weight" class="Tunable" default="1" display="Weight" muid="B7A2C6EFBA7B1AF1" description="The chance that this spawn action will be chosen&#xA;relative to other alternative spawn actions that&#xA;are available for a given situation job." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                        <TunableList name="whitelist" class="TunableList" display="Whitelist" muid="BB9BE54B20297EF0" description="The situation jobs which are allowed to run spawn actions&#xA;from the spawn action list." Deprecated="False" filter="0" group="General">
+                            <Tunable type="situation_job" class="TunableReference" muid="ACC4D80D2674BFB6" description="A situation job." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableList>
+                <Tunable type="float" name="chance_of_using_instance_spawn_action" class="TunablePercent" default="90" display="Chance Of Using Instance Spawn Action" muid="1F913978FEEC3089" min="0" max="100" description="The percent chance to use the instance defined spawn_action as &#xA;opposed to an alternative spawn action defined here." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <TunableEnum type="Tag" name="BLACKLIST_FROM_ALL_JOBS_TAG" class="TunableEnumEntry" default="INVALID" display="Blacklist From All Jobs Tag" muid="901D144395A35FAF" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag that is used to blacklist sims from all job types." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="interaction" name="CHANGE_OUTFIT_INTERACTION" class="TunableReference" display="Change Outfit Interaction" muid="A827A09AFA29D46E" description="A reference that should be tuned to an interaction that will just set&#xA;sim to their default outfit." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SuperInteraction" />
+        </Class>
+    </Module>
+</TuningRoot>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="drama_node" class="PickerDramaNode" module="drama_scheduler.picker_drama_node" muid="D31D17F9EAC5340D" description="A drama node which is meant to be chosen from a drama node picker&#xA;interaction. This allows us to use the drama scheduler to generate content&#xA;for picker interactions." instance_subclasses_only="False" parents="BaseDramaNode" path="DramaNodes\Descriptions" use_guid_for_reference="True">
+        <Deleted name="allow_during_work_hours" muid="AD3853F22FE4CE7E" />
+
+        <TunableVariant type="None" name="associated_sim_filter" class="OptionalTunable" default="disabled" display="Associated Sim Filter" muid="D3BDB45D3AA2796C" description="If tuned, will associate a sim with this drama node. Because they do&#xA;not have receivers or senders, picker drama nodes do not support the&#xA;normal flow for non-simless drama nodes." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="28D86B6051164BA7" />
+            <Tunable type="sim_filter" name="enabled" class="TunableReference" display="Enabled" muid="66AD3A3F98CB5CC1" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="associated_sim_name_override" class="OptionalTunable" default="disabled" display="Associated Sim Name Override" muid="BBA64F8BE8AAF430" description="If enabled and tuned, this string will be used for the name of the &#xA;associated Sim. " Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B1CB9D6E27A063DA" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="15A8645285C66BC6" description="The string to use in place of the associated Sim's name. This is&#xA;currently only supported by Mission Gigs." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="associated_sim_thumbnail_background" class="OptionalTunable" default="disabled" display="Associated Sim Thumbnail Background" muid="9807CCCC67AC5815" description="If enabled, the background behind the Associated Sim's thumbnail, or&#xA;the thumbnail override, will use this image." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="69EA4DE87DE99F07" />
+            <Tunable type="ResourceKey" name="enabled" class="TunableResourceKey" default="None" display="Enabled" muid="841BFA470ED28141" description="The image to use for the Associated Sim's background." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="associated_sim_thumbnail_override" class="OptionalTunable" default="disabled" display="Associated Sim Thumbnail Override" muid="B03420603B99C828" description="If enabled, an override thumbnail can be used in place of the tuned Associated Sim Filter." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B960D63674C03EC1" />
+            <Tunable type="ResourceKey" name="enabled" class="TunableResourceKey" default="None" display="Enabled" muid="E8593F3FB239F139" description="The image to use for the Associated Sim's thumbnail." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+        </TunableVariant>
+
+        <TunableVariant type="None" name="behavior" class="TunableVariant" default="none" display="Behavior" muid="F848FC76B329FC28" Deprecated="False" filter="0" group="General">
+            <Tunable name="none" class="TunableExistance" display="None" muid="37E39EEC549CCA7E" />
+            <TunableTuple name="schedule_career_gig" class="Tunable_ScheduleCareerGigPickerBehavior" display="Schedule Career Gig" muid="E9157A1C9E8DCFE1" description="A gig to schedule should the player pick this to run." Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="allow_add_career" class="Tunable" default="False" display="Allow Add Career" muid="6A49E62C2ED7BC7A" description="If tuned, picking this drama node will add the required career&#xA;if the sim doesn't already have it. If not tuned, trying to add a&#xA;gig for a career the sim doesn't have will throw an error." Deprecated="False" filter="0" group="General" />
+                <Tunable type="career_gig" name="career_gig" class="TunableReference" display="Career Gig" muid="6563E4B7E4720BF4" description="Career gig to schedule." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Gig" />
+            </TunableTuple>
+            <TunableTuple name="schedule_decorator_gig" class="Tunable_ScheduleDecoratorCareerGigPickerBehavior" display="Schedule Decorator Gig" muid="416EB56B6262440" description="A decorator gig to schedule should the player pick this to run." Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="allow_add_career" class="Tunable" default="False" display="Allow Add Career" muid="E4F0F06BB543FD" description="If tuned, picking this drama node will add the required career&#xA;if the sim doesn't already have it. If not tuned, trying to add a&#xA;gig for a career the sim doesn't have will throw an error." Deprecated="False" filter="0" group="General" />
+                <Tunable type="career_gig" name="career_gig" class="TunableReference" display="Career Gig" muid="2BE3C012076573A6" description="Career gig to schedule." allow_none="False" Deprecated="False" filter="0" group="General" restrict="Gig" />
+            </TunableTuple>
+            <TunableTuple name="schedule_drama_node" class="Tunable_ScheduleDramaNodePickerBehavior" display="Schedule Drama Node" muid="F1F4403837668566" description="Drama node to schedule should the player pick this to run." Deprecated="False" filter="0" group="General">
+                <Tunable type="drama_node" name="drama_node" class="TunableReference" display="Drama Node" muid="E957BFEDED9259F5" description="Drama node to schedule." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="bool" name="disable_if_visibility_tests_fail_with_tooltip" class="Tunable" default="False" display="Disable If Visibility Tests Fail With Tooltip" muid="55C8C868F2AC37EF" description="If checked, when the Visibility Tests fail and a tooltip is provided, &#xA;this entry will show in the picker but be disabled. This tuning works  &#xA;independently of the Disable Row If Visibility Tests Fail tunable in &#xA;Drama Node Picker Interaction." Deprecated="False" filter="0" group="General" />
+
+        <TunableEnum type="PickBehavior" name="on_pick_behavior" class="TunableEnumEntry" default="DO_NOTHING" display="On Pick Behavior" muid="F07E32B836A626AB" static_entries="drama_scheduler-picker_drama_node.PickBehavior" description="Determines what happens to this PickerDramaNode if it is picked in&#xA;a picker. " Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="picked_sim_info" muid="7B4EF11C906D41F0" />
+
+        <Deleted name="receiver_sim" muid="28E1A0E654041A5B" />
+
+        <Tunable type="bool" name="replace_if_removed" class="Tunable" default="False" display="Replace If Removed" muid="6CA33B8C1FCF3E6F" description="If True, whenever we remove this node because it was selected in a picker, we will replace it with a new&#xA;valid node from the same bucket." Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="sender_sim_info" muid="3C3A0882ABB7F772" />
+
+        <TdescFragTag name="visibility_tests" class="TunableTestSetWithTooltip" display="Visibility Tests" muid="54D1A25407F129F" description="Tests that will be run on the picker owner of this PickerDramaNode&#xA;to determine if this node should appear in a picker." filter="0" group="General" />
+    </Instance>
+</TuningRoot>

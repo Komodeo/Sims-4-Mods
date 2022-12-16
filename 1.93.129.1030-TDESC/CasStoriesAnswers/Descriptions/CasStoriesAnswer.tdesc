@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="cas_stories_answer" class="CasStoriesAnswer" module="cas.cas_stories_answer" muid="20F69ABF02D0F739" description="A CAS Stories Answer. This will be a selectable response to a question&#xA;posed to the player during the CAS Stories flow. Selecting this answer will&#xA;assign the sim a greater chance of having different features (these can be&#xA;traits, aspirations, etc)." instance_needs_reference="True" instance_subclasses_only="False" path="CasStoriesAnswers\Descriptions" use_guid_for_reference="True">
+        <Tunable type="int" name="text" class="TunableLocalizedString" default="0x0" display="Text" muid="1A646CFA640DED94" description="The text of this answer." Deprecated="False" export_modes="client_binary" filter="0" group="UI" />
+
+        <TunableList name="weightings" class="TunableList" display="Weightings" muid="FBBE4F9752BB07AC" description="A list of objects to apply weightings to if this answer is &#xA;selected. Weight is the weight that shoudld be added to the chance &#xA;to receive this object.  In the latter case a trait will be &#xA;selected from the trait chooser based on its cumulative weighting &#xA;throughout the CAS Stories survey." Deprecated="False" export_modes="client_binary" filter="0" group="General">
+            <TunableTuple class="CASAnswerWeightings" muid="6E81613476918FBB" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="weight" class="Tunable" default="0.0" display="Weight" muid="8B60319069D9517C" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="weighted_object" class="TunableVariant" default="trait" display="Weighted Object" muid="420F2240705C9BD3" Deprecated="False" filter="0" group="General">
+                    <Tunable type="aspiration_track" name="aspiration_track" class="TunableReference" display="Aspiration Track" muid="6BB43D81AD1AC93F" allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="trait" name="trait" class="TunableReference" display="Trait" muid="EF2ADBC9D039286E" allow_none="False" Deprecated="False" filter="0" group="General" restrict="Trait" />
+                    <Tunable type="cas_stories_trait_chooser" name="trait_chooser" class="TunableReference" display="Trait Chooser" muid="97905D7273631A8A" allow_none="False" Deprecated="False" filter="0" group="General" restrict="CasStoriesTraitChooser" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="situations.ambient.wildlife_encounter_director" muid="AA4F63FDFB3F6B6B">
+        <Class name="WildlifeEncounterGroups" muid="99C969052CCE6E8F" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="52AD3EDA41585481" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="D12F8D5DEF9F8BFD" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="INVALID" muid="730E35728ABA2545" enum_value="0" />
+        </Class>
+
+        <Class name="WildlifeEncounterDirectorMixin" muid="49E2C402C5743C97">
+            <Tunable type="object_state" name="ACTIVE_STATE" class="TunableReference" display="Active State" muid="D9D41A36B1D2423D" description="State to set wildlife broadcasters when active" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+
+            <TunableTuple name="DAILY_ROLL_TIME" class="TunableTimeOfDay" display="Daily Roll Time" muid="CE6B72DFAFB2154F" description="The time each day to re-roll the encounters for the day" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="hour" class="TunableRange" default="4" display="Hour" muid="2E160D67D49E4498" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="4886DE9ECC84FC00" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <Tunable type="object_state" name="INACTIVE_STATE" class="TunableReference" display="Inactive State" muid="E05709AA095435EA" description="State to set wildlife broadcasters when inactive" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+
+            <TunableList name="WILDLIFE_ENCOUNTER_GROUPS" class="TunableMapping" display="Wildlife Encounter Groups" muid="952DF78C268BB8C9" mapping_key="key" mapping_value="value" description="Mapping of Group enum to max instances of active broadcasters per group" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="4523D48C2BB42D77" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="WildlifeEncounterGroups" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="731D156E705C20E2" dynamic_entries="situations-ambient-wildlife_encounter_director.WildlifeEncounterGroups._elements" static_entries="situations-ambient-wildlife_encounter_director.WildlifeEncounterGroups" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="int" name="value" class="TunableRange" default="1" display="max_active_instances" muid="E86C072256599B7F" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

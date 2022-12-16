@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="DeliverBabySuperInteraction" module="interactions.utils.pregnancy_interactions" muid="613F2FA1693EB11A" description="An interaction that determines the outcome of the actor's Pregnancy,&#xA;displays appropriate dialogs to set offspring information, and then spawns&#xA;Sims." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="inherited_loots" class="OptionalTunable" default="disabled" display="Inherited Loots" muid="6CDAEA7E295A0855" description="If enabled, these loots will be applied to the baby if the parents&#xA;passed the test." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5475F791158E6949" />
+            <TunableList name="enabled" class="TunableList" display="Enabled" muid="6980DFF749272EF2" description="List of loot given to the child based on the tests on the parents." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="596BD031DE69A36A" description="Tuple of tests on parents to loots given to children." Deprecated="False" filter="0" group="General">
+                    <TdescFragTag name="birther_test" class="TunableTestSet" display="Birther Test" muid="DF75DC8C0811DE7F" description="Test to run on the sim giving birth. " filter="0" group="General" />
+                    <TunableList name="child_loot" class="TunableList" display="Child Loot" muid="679F775BABBF93C7" description="A list of loots to apply when both parents pass their tests.&#xA;Actor = birther sim&#xA;Target = baby" Deprecated="False" filter="0" group="General">
+                        <Tunable type="action" class="TunableReference" muid="525BCD1C159651D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+                    </TunableList>
+                    <TdescFragTag name="non_birther_test" class="TunableTestSet" display="Non Birther Test" muid="FE4A2F3029A5072E" description="Test to run on the sim not giving birth. " filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

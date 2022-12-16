@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="crafting.take_photo" muid="252D4961FB4BCC">
+        <Class name="_SimPhotoMode" muid="A29329C75156BD62">
+            <TunableList name="DEFAULT_MOOD_CATEGORIES" class="TunableList" display="Default Mood Categories" muid="E62F2B59E5FB635C" description="These mood categories will always be available for photography modes that support&#xA;mood categories. Additional mood categories can be specified in the &#xA;Take Photo tuning." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="Tunable_MoodCategory" muid="30840C5DF542937D" description="Mood categories are selectable in the photography UI  for certain photo&#xA;modes. When a player selects a mood category, one of the mood param&#xA;values associated with it is passed to the pose asm as the mood param &#xA;value." Deprecated="False" filter="0" group="General">
+                    <TdescFragTag name="actor_tests_pass_all" class="TunableTestSet" display="Actor Tests Pass All" muid="C629A1266AD6C9D1" description="A set of tests which will be run on the actor when there are no &#xA;target Sims (such as 1 Sim selfies). " filter="0" group="General" />
+                    <TunableTuple name="icon_tuning" class="TunableTuple" display="Icon Tuning" muid="D13C215FAD540D6F" description="A set of icons to associate with this mood category. Different&#xA;icons are for different states of the mood category's button in&#xA;the UI." Deprecated="False" filter="0" group="General">
+                        <Tunable type="ResourceKey" name="down_icon" class="TunableIconAllPacks" default="None" display="Down Icon" muid="AADE4A3F8414A2D8" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                        <Tunable type="ResourceKey" name="over_icon" class="TunableIconAllPacks" default="None" display="Over Icon" muid="A73DCCAB86FB596F" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                        <Tunable type="ResourceKey" name="up_icon" class="TunableIconAllPacks" default="None" display="Up Icon" muid="997668E912EA71B8" description="The icon image to be displayed." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x2f7d0004" />
+                    </TunableTuple>
+                    <TunableList name="mood_param_values" class="TunableList" display="Mood Param Values" muid="7C4FD149F779790F" min="1" description="A list of mood param values (strings). One of these will be&#xA;selected at random if a player selects this category in the UI." Deprecated="False" filter="0" group="General">
+                        <Tunable type="str" class="Tunable" default="None" muid="E5016D058B5DCDD6" Deprecated="False" filter="0" group="General" />
+                    </TunableList>
+                    <TdescFragTag name="target_tests_pass_all" class="TunableTestSet" display="Target Tests Pass All" muid="B8B01D0542FF61B8" description="A set of tests which will be run on every photo target. The&#xA;target will be the Target Participant and the photographer will&#xA;be the Actor participant. These tests must pass for all targets&#xA;for this mood category to be included. These will only run for &#xA;multi-Sim photos." filter="0" group="General" />
+                    <TdescFragTag name="target_tests_pass_one" class="TunableTestSet" display="Target Tests Pass One" muid="AE1D07028062CCE8" description="A set of tests which will be run on every photo target. The&#xA;target will be the Target Participant and the photographer will&#xA;be the Actor participant. These tests must pass for at least&#xA;one target for this mood category to be included. These will&#xA;only run for multi-Sim photos." filter="0" group="General" />
+                    <Tunable type="bool" name="test_for_incest" class="Tunable" default="False" display="Test For Incest" muid="20CF2C1DC1F8E4C8" description="If checked, this mood category will be disabled if any pair of&#xA;targets fails the incest test." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="tooltip" class="TunableLocalizedString" default="0x0" display="Tooltip" muid="AABC907BFF33F1F8" description="The tooltip for this category in the photography UI." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </Class>
+
+        <Class name="_TripodPhotoMode" muid="846A9D7BE5B6B64C">
+            <TunableList name="CLIP_INDEX_VALUES" class="TunableList" display="Clip Index Values" muid="77EFC79A8E1D6991" description="When we pose sims during tripod photography sessions, we don't want two&#xA;sims to choose the same pose clip. To avoid this, client assigns a&#xA;unique value to each actor's ClipIndex parameter. This is a list of all&#xA;valid ClipIndex values from which a unique element will be assigned to&#xA;each actor being posed.&#xA;&#xA;Note: Gameplay needs to make sure this list is kept in-sync with the&#xA;ClipIndex animation parameter." Deprecated="False" filter="0" group="General">
+                <Tunable type="str" class="Tunable" default="None" muid="38A0B189D199B58F" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </Class>
+
+        <Class name="_SelfiePhotoMode" muid="B1822F059DD7D4C8">
+            <TunableList name="CLIP_INDEX_VALUES" class="TunableList" display="Clip Index Values" muid="FA844E14058450F8" description="When we pose Sims during selfie photography sessions, we don't want the&#xA;Sim to choose the same pose clip in a row. To avoid this, client assigns a&#xA;unique value to each actor's ClipIndex parameter. This is a list of all&#xA;valid ClipIndex values from which a unique element will be assigned to&#xA;the actor being posed.&#xA;&#xA;Note: Gameplay needs to make sure this list is kept in-sync with the&#xA;ClipIndex animation parameter." Deprecated="False" filter="0" group="General">
+                <Tunable type="str" class="Tunable" default="None" muid="78B40B3A065FA691" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </Class>
+
+        <Class name="_TwoSimSelfiePhotoMode" muid="84435D6D98F2F4EA">
+            <TunableList name="CLIP_INDEX_VALUES" class="TunableList" display="Clip Index Values" muid="D8128363306F15B4" description="When we pose Sims during selfie photography sessions, we don't want the&#xA;Sim to choose the same pose clip in a row. To avoid this, client assigns a&#xA;unique value to each actor's ClipIndex parameter. This is a list of all&#xA;valid ClipIndex values from which a unique element will be assigned to&#xA;the actor being posed.&#xA;&#xA;Note: Gameplay needs to make sure this list is kept in-sync with the&#xA;ClipIndex animation parameter." Deprecated="False" filter="0" group="General">
+                <Tunable type="str" class="Tunable" default="None" muid="19F3F8EC72B2CFE2" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="559AB4BBB8E2EC57" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="559AB4BBB8E2EC57" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="559AB4BBB8E2EC57" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="559AB4BBB8E2EC57" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="559AB4BBB8E2EC57" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="559AB4BBB8E2EC57" />
+        </ActionList>
+
+        <ActionList>
+            <Action type="kRemove" old_muid="559AB4BBB8E2EC57" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

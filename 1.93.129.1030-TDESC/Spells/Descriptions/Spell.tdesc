@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="spell" class="Spell" module="spells.spells" muid="CF6847D78D104E1D" description="Spell resource tuning." instance_needs_reference="True" instance_subclasses_only="False" path="Spells\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="_display_data" class="OptionalTunable" default="enabled" display="Display Data" muid="2D4609C452ADE9BB" description="If enabled, specify display data for this instance." Deprecated="False" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6456335B68438264" />
+            <TunableTuple name="enabled" class="TunableTuple" display="Enabled" muid="242DB79E553D5AC3" description="The instance's display data." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="instance_display_description" class="OptionalTunable" default="enabled" display="Instance Display Description" muid="C2D7D6FAFEEA626C" description="If enabled, specify a display description for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B139EB2E9A65849C" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="A68EF29FF8C5F073" description="The instance's description. " Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_icon" class="OptionalTunable" default="enabled" display="Instance Display Icon" muid="AEA76EB5E45263B" description="If enabled, specify a display icon for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="645ED87909F4DC53" />
+                    <Tunable type="ResourceKey" name="enabled" class="TunableIcon" default="None" display="Enabled" muid="C280439FD143B9E1" description="The instance's icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_name" class="OptionalTunable" default="enabled" display="Instance Display Name" muid="20A58CF7BC890916" description="If enabled, specify a display name for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="E7ADA7743B97E375" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="81B44BDD8D68D165" description="The instance's name." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_tooltip" class="OptionalTunable" default="enabled" display="Instance Display Tooltip" muid="2889F1B0146AA74B" description="If enabled, specify a display tooltip for this instance." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B97618060C529EED" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="977C8C9D53A74337" description="The instance's tooltip. " Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableTuple name="ingredients" class="TunableItemCost" display="Ingredients" muid="C5B383438581BF98" description="Ingredients needed to cast the spell.  Interactions which specify this spell as the item cost will consume &#xA;the ingredients specified here." Deprecated="False" filter="0" group="General">
+            <TunableList name="ingredients" class="TunableList" display="Ingredients" muid="2339E8EB0DD12949" description="List of tuples of Objects and Quantity, which will indicate&#xA;the cost of items for this interaction to run" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="EBB95056C7825060" description="Pair of Object and Quantity needed for this interaction" Deprecated="False" filter="0" group="General">
+                    <Tunable type="object" name="ingredient" class="TunableReference" display="Ingredient" muid="4605BFA60D1E8E66" description="Object reference of the type of game object needed." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <TunableVariant type="None" name="missing_ingredient_additional_text" class="OptionalTunable" default="disabled" display="Missing Ingredient Additional Text" muid="E3866C5600AED5EF" description="If set, this text is inserted on a new line following a missing ingredient." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="57760792EB29FFAD" />
+                        <Tunable type="int" name="enabled" class="TunableLocalizedString" default="None" display="Enabled" muid="4D430B2FFAFB0A12" description="The string key of the text description" Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <Tunable type="int" name="quantity" class="TunableRange" default="1" display="Quantity" muid="A28F22430DDA8574" min="1" max="None" description="Quantity of objects needed" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+            <TunableVariant type="None" name="timing" class="TunableVariant" default="at_beginning" display="Timing" muid="F02A6D7FC74CD062" description="Determines the exact timing of the item cost." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="at_beginning" class="TunableTuple" display="At Beginning" muid="4F8B9412F350CC28" description="Items will be removed at the very beginning of the&#xA;interaction." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="at_end" class="TunableTuple" display="At End" muid="A1A453FF4DE6247A" description="Items will be removed at the end of the interaction." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="CleanupType" name="criticality" class="TunableEnumEntry" default="OnCancel" display="Criticality" muid="70DD820C3B1857A" static_entries="element_utils.CleanupType" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableVariant>
+        </TunableTuple>
+
+        <TunableVariant type="None" name="locked_description" class="OptionalTunable" default="disabled" display="Locked Description" muid="A2A5EAD3EDA04EB2" description="Description used in the spellbook if spell is not yet unlocked.&#xA;If unset, uses display data description." Deprecated="False" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="801FFF63125D2297" />
+            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="FF7EBF354124EDFF" description="A localized string that may NOT require tokens." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableList name="super_affordances" class="TunableSet" display="Super Affordances" muid="94A97C98C010863C" description="Super affordances this adds to the object." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="interaction" class="TunableReference" muid="49B47F9311C50C27" description="A super affordance added to this object." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="SuperInteraction" />
+        </TunableList>
+
+        <TunableList name="tags" class="TunableSet" display="Tags" muid="9AEB848C962D4CB0" description="Tags for the spell." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="Tag" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="7C450CEC0A051D11" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" binary_type="uint32" Deprecated="False" dynamic_entries_prefix="spell" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+        </TunableList>
+
+        <TunableList name="target_super_affordances" class="TunableProvidedAffordances" display="Target Super Affordances" muid="A09BB2762BDC224C" description="Super affordances this adds to the target." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="D421904AB4897D2F" description="Tunables related to a specific affordance we are providing,&#xA;with the ability to override specifics about targets,&#xA;restrictions, and dependencies." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" name="affordance" class="TunableReference" display="Affordance" muid="B7DB515BE6CFE592" description="An affordance we make available. Pay attention to who this&#xA;affordance is provided on. See the provided affordances&#xA;description for more info." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <Tunable type="bool" name="allow_self" class="Tunable" default="False" display="Allow Self" muid="CDB582AC2EF3153B" description="If set, the Sim running the providing interaction is&#xA;allowed to also run the provided interaction." Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="object_filter" class="TunableObjectFilterVariant" default="filter_by_sim" display="Object Filter" muid="7EDB9DA273BBF675" description="Define the type of objects this affordance is provided on." Deprecated="False" filter="0" group="General">
+                    <TunableTuple name="allow_all" class="Tunable_FilterAllowAll" display="Allow All" muid="66D0A0618E5327D5" description="No requirements. All objects are valid." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="filter_by_portal_flags" class="Tunable_FilterByPortalFlags" display="Filter By Portal Flags" muid="501FFD737D27A54F" description="Specify portal requirements for the object." Deprecated="False" filter="0" group="General">
+                        <TunableList name="portal_flags" class="TunableEnumFlags" display="Portal Flags" muid="D85EB9D483127085" description="The object must have any of these portal flags in order to&#xA;satisfy the requirement." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="PortalFlags" class="TunableEnumEntry" default="DEFAULT" muid="DF6E752A1685FCAF" dynamic_entries="routing-portals-portal_tuning.PortalFlags._elements" static_entries="routing-portals-portal_tuning.PortalFlags" Deprecated="False" filter="0" group="General" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="filter_by_sim" class="Tunable_FilterBySim" display="Filter By Sim" muid="E7FFCD1B537E5845" description="Specify Sim or non-Sim requirements for the object. " Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="filter_by_state" class="Tunable_FilterByState" display="Filter By State" muid="4D2BC3442D6026A5" description="Specify state requirements for the object." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="states" class="TunableWhitelist" display="States" muid="1022846CF76C9E02" description="The required states to pass this test." Deprecated="False" filter="0" group="General">
+                            <TunableVariant type="None" name="threshold" class="OptionalTunable" default="threshold" display="Threshold" muid="2312E114232DEEA9" description="Tunable option for how many items must be in the whitelist&#xA;for the whitelist to pass when testing a collection of items.&#xA;By default, only one object needs to be in the list." Deprecated="False" filter="0" group="General">
+                                <Tunable name="all_must_match" class="TunableExistance" display="All Must Match" muid="4E0F7998F5CD82B" />
+                                <TunableTuple name="threshold" class="TunableThreshold" display="Threshold" muid="6F4629D9315A9729" description="When testing a collection of items, the number of items in&#xA;that collection that are in the whitelist must pass this&#xA;threshold test for the whitelist to allow them all." Deprecated="False" filter="0" group="General">
+                                    <TunableEnum type="Operator" name="comparison" class="TunableOperator" default="GREATER_OR_EQUAL" display="Comparison" muid="9234880E79D4D082" static_entries="sims4-math.Operator" description="The comparison to perform against the value." Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="value" class="TunableRange" default="1" display="Value" muid="AA2CAD756297AA7A" min="0" max="None" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableVariant>
+                            <TunableList name="whitelist" class="TunableSet" display="Whitelist" muid="AC9AA86FE274934C" description="Whitelisted items." Deprecated="False" filter="0" group="General" unique_entries="true">
+                                <Tunable type="object_state" class="TunableReference" muid="86C0CC2508669EBC" description="The state value." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="ObjectStateValue" />
+                            </TunableList>
+                        </TunableTuple>
+                    </TunableTuple>
+                    <TunableTuple name="filter_by_tags" class="Tunable_FilterByTags" display="Filter By Tags" muid="76917CD9D8816ACC" description="Specify tag requirements for the object." Deprecated="False" filter="0" group="General">
+                        <TunableList name="tags" class="TunableSet" display="Tags" muid="7BE98CEA1B4B4B" min="1" description="The object must have any of these tags in order to satisfy the&#xA;requirement." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="EFB179B9D8F10565" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableTuple name="filter_by_terrain" class="Tunable_FilterByTerrain" display="Filter By Terrain" muid="5356F7AE20B751B2" description="Specify a requirement of the object being the terrain." Deprecated="False" filter="0" group="General">
+                        <TunableList name="disallowed_surfaces" class="TunableSet" display="Disallowed Surfaces" muid="5F3AB55DB0B49A2C" description="Routing surfaces where the placement of this object should&#xA;fail." Deprecated="False" filter="0" group="General" unique_entries="true">
+                            <TunableEnum type="SurfaceType" class="TunableEnumEntry" default="SURFACETYPE_POOL" muid="54B210BC4E00D334" static_entries="routing.SurfaceType" Deprecated="False" filter="0" group="General" invalid_entries="SURFACETYPE_UNKNOWN" />
+                        </TunableList>
+                    </TunableTuple>
+                </TunableVariant>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

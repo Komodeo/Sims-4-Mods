@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="seasons.seasons_tuning" muid="91B4AF3F3940C95">
+        <Class name="SeasonsTuning" muid="FE28803D9BFB8AB8">
+            <TunableList name="SEASON_LENGTH_OPTIONS" class="TunableMapping" display="Season Length Options" muid="4301889CBDCF0305" mapping_key="key" mapping_value="value" description="A mapping of individual season length options to the length of time&#xA;they are set to." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="SeasonLengthOptions">
+                <TunableTuple class="TunableTuple" muid="B4C0FBE7F1C12B2B" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SeasonLength" name="key" class="TunableEnumEntry" default="NORMAL" display="Key" muid="C842C0404B6E95B1" static_entries="seasons-seasons_enums.SeasonLength" binary_type="uint32" Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableTimeSpan" display="Value" muid="19FD391F49BB8C40" description="Length of this season option, in days." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                        <Tunable type="int" name="days" class="TunableRange" default="7" display="Days" muid="40AACB02614D2521" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="SEASON_TYPE_MAPPING" class="TunableMapping" display="Season Type Mapping" muid="47FC8A76AFA693A1" mapping_key="key" mapping_value="value" description="A mapping of the season type to the season resource it will use." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="E28B661C51FEEB41" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SeasonType" name="key" class="TunableEnumEntry" default="SUMMER" display="Key" muid="658CFFF1718F28ED" static_entries="seasons-seasons_enums.SeasonType" description="The season." Deprecated="False" filter="0" group="General" />
+                    <Tunable type="season" name="value" class="TunableReference" display="Value" muid="599B42AE924B049D" description="Season resource that will be mapped to this season." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableTuple name="STARTING_SEASON" class="TunableStartingSeason" display="Starting Season" muid="3D3B8096399BACC3" description="Tuning related to how the first season is chosen by a player new&#xA;to the Seasons gameplay." Deprecated="False" filter="0" group="General">
+                <TunableTuple name="alternate_season" class="TunableTuple" display="Alternate Season" muid="85F0C37767FB4A03" description="First season the player starts with upon introduction to Seasons,&#xA;if the current time is past the threshold specified." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="SeasonType" name="season" class="TunableEnumEntry" default="SUMMER" display="Season" muid="A8C5D8387713B35" static_entries="seasons-seasons_enums.SeasonType" Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="threshold" class="TunableTimeOfWeek" display="Threshold" muid="8FA3BD35724C8387" description="If, upon first introduction to Seasons gameplay, the player is past&#xA;this time of the week, we will use the alternate season specified" Deprecated="False" filter="0" group="General">
+                        <TunableEnum type="Days" name="day" class="TunableEnumEntry" default="WEDNESDAY" display="Day" muid="1F6074596A478F31" static_entries="tunable_time.Days" description="Day of the week" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="hour" class="TunableRange" default="12" display="Hour" muid="75607001A7BF1839" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="198BBA2C884C215" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                </TunableTuple>
+                <TunableEnum type="SeasonType" name="default_season" class="TunableEnumEntry" default="FALL" display="Default Season" muid="811929FDC086F30C" static_entries="seasons-seasons_enums.SeasonType" description="First season player starts the game as, unless the condition in&#xA;alternate season threshold is met." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+    </Module>
+</TuningRoot>

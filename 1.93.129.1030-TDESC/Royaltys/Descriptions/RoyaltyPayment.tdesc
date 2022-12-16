@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="royalty" class="RoyaltyPayment" module="sims.royalty_tracker" muid="D53E5F82B9FD6B31" description="Instance that holds information about a royalty payment." instance_subclasses_only="False" path="Royaltys\Descriptions" use_guid_for_reference="True">
+        <TunableList name="pay_curve" class="TunableCurve" display="Pay Curve" muid="97785EF2E99F48A5" description="This curve represents payment over time.&#xA;The X-axis is payment number, and the Y-axis is the amount of money to be paid.&#xA;There MUST be at least two entries in this. One entry for the first payment and&#xA;one entry for the final payment. If you don't do this, there will be no payments received.&#xA;The first payment will be X=1. The player will not get any payments where X is tuned to 0." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableVector2" muid="59F7CE417E8B54E5" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="x" class="Tunable" default="0.0" display="x: Payment Number" muid="B12DCC8AD0CBF2DC" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="y" class="Tunable" default="0.0" display="y: Simoleon Amount" muid="6FAA98636A0B3A76" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="bool" name="pay_forever" class="Tunable" default="False" display="Pay Forever" muid="8D0984EF51D6B67" description="If enabled, the final payment will continue to happen forever.&#xA;If disabled, the final payment will, in fact, be the final payment." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="float" name="payment_deviation_percent" class="Tunable" default="0" display="Payment Deviation Percent" muid="43CEE0159DEF74B8" description="Once the payment amount is decided (using the Pay Curve and the &#xA;Payment Multipliers), it will be multiplied by this number then &#xA;added to and subtracted from the final payment amount to give a min &#xA;and max. Then, a random amount between the min and max will be &#xA;chosen and awarded to the player.&#xA;&#xA;Example: After using the Payment Curve and the Payment Multipliers,&#xA;we get a payment amount of $10.&#xA;The Payment Deviation is 0.2. $10 x 0.2 = 2&#xA;Min = $10 - 2 = $8&#xA;Max = $10 + 2 = $12&#xA;Final Payment will be some random amount between $8 and $12,&#xA;inclusively." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="payment_multipliers" class="TunableTunableMultiplier" display="Payment Multipliers" muid="18818FAEA8CD318C" description="A list of test sets which, if they pass, will provide a multiplier to each royalty payment.&#xA;These tests are only checked when the royalties start and are applied to every payment.&#xA;They do not get tested before each payment is sent.&#xA;All tests will run, so all multipliers that pass will get multiplied together and then multiplied to each payment amount." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="710CD56F33E3778A" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="51E43D92D4202003" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="DB21D477BDACD640" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="D8B1A3B575846B85" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="CF8A184B0F1B2422" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableEnum type="Tag" name="payment_tag" class="TunableEnumEntry" default="INVALID" display="Payment Tag" muid="7A72659C6B32D53" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag that will be passed along with the royalty payment. This&#xA;is the tag that will be used for aspirations/achievements." Deprecated="False" filter="0" group="General" />
+
+        <TunableEnum type="ParticipantType" name="royalty_recipient" class="TunableEnumEntry" default="Actor" display="Royalty Recipient" muid="EE15274444989F82" static_entries="interactions.ParticipantType" description="This is the Sim earning the money.&#xA;This should always be a Sim (Actor, TargetSim, PickedSim, etc.)." Deprecated="False" filter="0" group="General" />
+
+        <TunableEnum type="ParticipantType" name="royalty_subject" class="TunableEnumEntry" default="Object" display="Royalty Subject" muid="909F2D54BDDBB025" static_entries="interactions.ParticipantType" description="This is the participant whose name will be used as the object that is earning the money.&#xA;Supported types are objects (Object, PickedObject, etc.) and Unlockable (for music).&#xA;Other object types might work but have not been tested." Deprecated="False" filter="0" group="General" />
+
+        <TunableEnum type="RoyaltyType" name="royalty_type" class="TunableEnumEntry" default="INVALID" display="Royalty Type" muid="183EB23158497142" dynamic_entries="sims-royalty_tracker.RoyaltyType._elements" static_entries="sims-royalty_tracker.RoyaltyType" description="The royalty type this entry belongs to. This is the section in the notification in which it will show." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

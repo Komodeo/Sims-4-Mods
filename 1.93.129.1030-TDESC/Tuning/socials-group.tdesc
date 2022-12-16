@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="socials.group" muid="2485B7A987B5AD9B">
+        <Class name="SocialGroup" muid="E078018FCE56B91A">
+            <Tunable type="int" name="BOREDOM_QUEUE_SIZE" class="TunableRange" default="1" display="Boredom Queue Size" muid="9B7928205CCA255B" min="0" max="None" description="The number of different interactions that are memorized to calculate&#xA;boredom. The larger the number, the easier it will be for Sims to be&#xA;bored even if different affordance are used.&#xA;&#xA;e.g. If this number is 1, then boredom will apply to the last run&#xA;interaction only. If the Sim runs X X X Y X, then X's boredom count is&#xA;1.&#xA;&#xA;e.g. If this number is 3, then boredom will apply to the last three run&#xA;interactions. If the Sim runs X X Y Z Z X, the X's boredom count is 3,&#xA;Y's i 1, and Z's is 2." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="object" name="CENTER_PLACEMENT_JIG_OBJECT_DEF" class="TunableReference" display="Center Placement Jig Object Def" muid="C3DE2E6E385FF625" description="Temporary object (jig) to be placed when computing position of a sim joining a social group." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="FACING_AWAY_PENALTY" class="Tunable" default="10" display="Facing Away Penalty" muid="385D66AA3987510C" description="The number of meters to penalize destinations that involve facing away from&#xA;the social group. This will be applied to destinations that violate the&#xA;tuning for FACING_RANGE_IDEAL." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="FACING_RANGE_IDEAL" class="TunableAngle" default="90.0" display="Facing Range Ideal" muid="3451899B022F873A" min="0.0" max="360.0" description="The facing angle restriction on the ideal constraint for this group. A&#xA;constraint with this facing restriction will be added to a constraint&#xA;set where the constraint without this restriction gets the facing away&#xA;penalty." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="FOCUS_LISTENER_SCORE" class="TunableRange" default="10" display="Focus Listener Score" muid="DE7C187466ED6213" min="0" max="None" description="Focus score assigned to the listeners in a social group.&#xA;&#xA;Higher numbers make Sims more likely to look at listeners." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="FOCUS_SPEAKER_SCORE" class="TunableRange" default="50" display="Focus Speaker Score" muid="1F73F328B6151940" min="0" max="None" description="Focus score assigned to the speaker in a social group.&#xA;&#xA;Higher numbers make Sims more likely to look at the speaker." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="INCOMPATIBLE_OBJECT_REPOSITION_RADIUS" class="Tunable" default="3" display="Incompatible Object Reposition Radius" muid="9CF19EADB72295C9" description="The distance to use when searching for a new social group focus position&#xA;if the initial positition is invalidated by an incompatible object." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="MAXIMUM_NUMBER_OF_NON_ADJUSTABLE_SIMS" class="TunableRange" default="1" display="Maximum Number Of Non Adjustable Sims" muid="1D2DAFFEF7864C69" min="0" max="None" description="The maximum number of entries in the list of non-adjustable Sims. Sims&#xA;are placed in the list when they complete mobile posture transitions,&#xA;and can be in the list more than once, thus occupying multiple&#xA;spots." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="MINIMUM_JIG_MOVE_EPSILON" class="TunableRange" default="0.01" display="Minimum Jig Move Epsilon" muid="1A11F91728040640" min="1.192092896e-07" max="None" description="A Sim will not adjust their position if the distance is smaller than&#xA;this" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="MINIMUM_JIG_TURN_EPSILON" class="TunableRange" default="0.01" display="Minimum Jig Turn Epsilon" muid="65ABA01C61CD420E" min="1.192092896e-07" max="None" description="A Sim will not adjust their position if the turning distance (arc in&#xA;radians) is smaller than this" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="MOVE_CONSTRAINT_EPSILON_SQ" class="TunableDistanceSquared" default="1.0" display="Move Constraint Epsilon Sq" muid="586CA1654D3DCE1D" description="When the focal point of the group moves by more than this epsilon,&#xA;attempt to re-center the social constraint." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="MOVEMENT_COST_BASE" class="TunableRange" default="0.1" display="Movement Cost Base" muid="49EAA05A0B12E624" min="0.0" max="None" description="Cost for moving at all when incrementally adjusting the position of a&#xA;Sim" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="MOVEMENT_COST_MULTIPLIER" class="TunableRange" default="0.1" display="Movement Cost Multiplier" muid="AB5076BAE7CB68D4" min="0.0" max="None" description="Multiplier on the cost of moving a given distance when adjusting the&#xA;position of a Sim" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="SETTLED_SOCIAL_ADJUSTMENT_DELAY" class="TunableTuple" display="Settled Social Adjustment Delay" muid="64A246140656E389" description="Once a group has become stagnant, the amount of time in seconds to delay&#xA;before performing a social adjustment attempt." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="lower_bound" class="TunableRealSecond" default="20" display="Lower Bound" muid="D3479A599D735E02" min="None" max="None" description="Minimum amount of time, in seconds, to delay adjustment (when stagnant)." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="upper_bound" class="TunableRealSecond" default="30" display="Upper Bound" muid="970B0D39E48FEAAE" min="None" max="None" description="Maximum amount of time, in seconds, to delay adjustment (when stagnant)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <Tunable type="interaction" name="SOCIAL_ADJUSTMENT_AFFORDANCE" class="TunableReference" display="Social Adjustment Affordance" muid="6EEECED9D6F87FB1" description="The affordance to push when doing social adjustment." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableTuple name="SOCIAL_ADJUSTMENT_DELAY" class="TunableTuple" display="Social Adjustment Delay" muid="9007806E524EBB5D" description="Amount of time, in seconds, to delay before the next social adjustment&#xA;attempt." Deprecated="False" filter="0" group="General">
+                <Tunable type="float" name="lower_bound" class="TunableRealSecond" default="2" display="Lower Bound" muid="60E65879C19001BD" min="None" max="None" description="Minimum amount of time, in seconds, to delay adjustment." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="float" name="upper_bound" class="TunableRealSecond" default="16" display="Upper Bound" muid="8EB6D64C2433441A" min="None" max="None" description="Maximum amount of time, in seconds, to delay adjustment" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+
+            <Tunable type="float" name="SOCIAL_GROUP_ARRANGEMENT_SETTLING_TIME" class="TunableSimMinute" default="10" display="Social Group Arrangement Settling Time" muid="B96975E3053458B4" min="0" max="None" description="After the social geometry changes, we keep track of the time.  Once&#xA;SOCIAL_GROUP_ARRANGEMENT_SETTLING_TIME has elapsed, we attempt&#xA;social adjustment less frequently (using SETTLED_SOCIAL_ADJUSTMENT_DELAY)." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="SOCIAL_GROUP_STAGNATION_TIME" class="TunableSimMinute" default="30" display="Social Group Stagnation Time" muid="73993B87220EA47A" min="0" max="None" description="After a social adjustment occurs we keep track of the time. We will not&#xA;clear out the list of Sims that cannot move in the group until&#xA;SOCIAL_GROUP_STAGNATION_TIME Sim minutes have elapsed." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="float" name="WORST_PLACED_SIM_RANDOMNESS" class="Tunable" default="1.0" display="Worst Placed Sim Randomness" muid="B67D4FF833F09AB" description="A floating point value that determines the randomness of the&#xA;selection of the worst placed Sim.  The worst placed Sim is given a&#xA;chance to change position by social adjustment. &#xA;&#xA;Larger values are more random.  A value of 0 means that there is no&#xA;randomness, while a value of 1000 means the selection is almost&#xA;completely random." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

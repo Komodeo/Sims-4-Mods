@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="situations.base_situation" muid="DA97E12DA028B299">
+        <Class name="EnsembleOption" muid="B14FA6B44A46BC6B" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="ADD_TO_ACTIVE_HOUSEHOLD" muid="36D320DDF69183BA" enum_value="2" />
+
+            <EnumItem name="ADD_TO_HOST" muid="F3350E7359763D2" enum_value="3" />
+
+            <EnumItem name="ONLY_WITHIN_SITUATION" muid="1365ADC392776F52" enum_value="1" />
+        </Class>
+
+        <Class name="BaseSituation" muid="4673F9DA941D9EDB">
+            <TunableList name="AUTOMATIC_BRONZE_TRAITS" class="TunableList" display="Automatic Bronze Traits" muid="62B2082A9A109F2" description="An optional collection of traits that, if possessed by the host, will automagically promote the situation to bronze on start." Deprecated="False" filter="0" group="General">
+                <Tunable type="trait" class="TunableReference" muid="55A0FDC74BB075B2" description="A trait that if possessed by the host will start a given situation at bronze." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <Tunable type="interaction" name="CHANGE_TO_SITUATION_OUTFIT" class="TunableReference" display="Change To Situation Outfit" muid="86C0E3E9C11482D7" description="The interaction used to cause Sims to spin into their situation outfit." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <TunableList name="PLAYABLE_SIMS_SCORE_MULTIPLIER" class="TunableCurve" display="Playable Sims Score Multiplier" muid="4D91628670349E21" description="Score multiplier based on number of playable Sims in the Situation" Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableVector2" muid="A7877744A6A72890" description="Point on a Curve" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="x" class="Tunable" default="0.0" display="X" muid="82A47E6805EACE68" description="x component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="y" class="Tunable" default="0.0" display="Y" muid="B16FAD5C617E5E5C" description="y component" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TdescFragTag name="SET_JOB_UNIFORM_TEST" class="TunableTestSet" display="Set Job Uniform Test" muid="CA60E5AC9381DDB8" description="A set of tests that are run to determine whether or not a Sim is&#xA;allowed to set a job uniform. If these tests pass, Sims will try&#xA;and set a job uniform based on their situation job tuning." filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

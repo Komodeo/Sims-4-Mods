@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation" class="FamilyMealSituation" module="situations.complex.family_meal" muid="7993BBFF0B8237B" instance_subclasses_only="False" parents="SituationComplexCommon, SituationComplex, Situation" path="Situations\Descriptions" use_guid_for_reference="True">
+        <Deleted name="_buff" muid="C2A98AD9986E5DE4" />
+
+        <Deleted name="_cost" muid="C19C2E1B5225F428" />
+
+        <Deleted name="_display_name" muid="3538812B31278A7A" />
+
+        <Deleted name="_icon" muid="EB667ADA299367A7" />
+
+        <Deleted name="_initiating_sim_tests" muid="C294D0A59C5421E6" />
+
+        <Deleted name="_level_data" muid="1EB5E862252B2F41" />
+
+        <Deleted name="_main_goal_visibility_test" muid="FF94CE3788DF6EF1" />
+
+        <Deleted name="_relationship_between_job_members" muid="50A032AF985B9D1E" />
+
+        <Deleted name="_resident_job" muid="43791D5072E13ACD" />
+
+        <Deleted name="audio_sting_on_start" muid="87E490CF926487CF" />
+
+        <Deleted name="background_audio" muid="C6518111365CDE66" />
+
+        <Tunable type="interaction" name="call_to_meal_interaction" class="TunableReference" display="Call To Meal Interaction" muid="39ED5FB9ACEE2F0C" description="Interaction that is pushed on the chef sim with the crafted &#xA;object as the target. " allow_none="False" Deprecated="False" filter="0" group="General" />
+
+        <Deleted name="category" muid="ECB5B3BBA9D3BE1D" />
+
+        <TunableTuple name="chef" class="TunableTuple" display="Chef" muid="F97EC2A4F83A4DB9" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="chef_cooking_role_state" class="TunableReference" display="Chef Cooking Role State" muid="362A4915CD44864" description="Chef's role state while making food." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="chef_eating_role_state" class="TunableReference" display="Chef Eating Role State" muid="7BF9DA1312969DC3" description="Chef's role state when eating." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="EC408DA54DF6C515" description="The SituationJob for the sim making the meal." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <Deleted name="compatible_venues" muid="1AC992A638E0727E" />
+
+        <TunableTuple name="cook_group_meal_interaction" class="TunableInteractionOfInterest" display="Cook Group Meal Interaction" muid="CD6D189C1FF75991" description="When this interaction is started, the chef has successfully&#xA;begun preparing the meal." Deprecated="False" filter="0" group="Triggers">
+            <TunableList name="affordances" class="TunableList" display="Affordances" muid="659FDE1C68381FDE" description="The Sim must have started either any affordance in this list or an&#xA;interaction matching one of the tags in this tunable's Tags&#xA;field." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="54869080653A1CC4" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="1FF7B8BB0FBACEA8" description="The Sim must have run either an interaction matching one of these&#xA;Tags or an affordance from the list of Affordances in this&#xA;tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="C4AE8A216B8A6EC0" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <Tunable type="float" name="cooking_timeout" class="TunableSimMinute" default="60" display="Cooking Timeout" muid="1CD496DB9133BD3D" min="None" max="None" description="The amount of time the sim will attempt to actually cook." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Triggers" />
+
+        <Deleted name="creation_ui_option" muid="A829FC99D8E596DC" />
+
+        <Deleted name="end_situation_dialog" muid="D241B7B4148D8081" />
+
+        <Deleted name="entitlement" muid="49C1E2C2A5B164AC" />
+
+        <Deleted name="exclusivity" muid="AC513D471DAB236" />
+
+        <Deleted name="force_invite_only" muid="B46B793A06AEBF8F" />
+
+        <Deleted name="goal_button_text" muid="2F6ACF62E4FAEFCA" />
+
+        <Deleted name="goal_sub_text" muid="35674C7A87CD6BD7" />
+
+        <TunableTuple name="guest_eater" class="TunableTuple" display="Guest Eater" muid="65847912D17C00FC" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="guest_eater_cooking_role_state" class="TunableReference" display="Guest Eater Cooking Role State" muid="823608A85B1A2979" description="Guest eater's role state while food is being prepared." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="guest_eater_eating_role_state" class="TunableReference" display="Guest Eater Eating Role State" muid="3FCE695C66D2C4B" description="Guest eater's role state when eating." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="1BA4DFBB30C2CEA7" description="The SituationJob for an eater (a non-chef) sim who doesn't live here." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <Deleted name="highlight_first_incomplete_minor_goal" muid="7354DFEADBF8E38B" />
+
+        <TunableTuple name="household_eater" class="TunableTuple" display="Household Eater" muid="D45B15065593BBAB" Deprecated="False" filter="0" group="Roles">
+            <Tunable type="role_state" name="household_eater_cooking_role_state" class="TunableReference" display="Household Eater Cooking Role State" muid="AB21800A9734C5D0" description="Eater's role state while food is being prepared." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="role_state" name="household_eater_eating_role_state" class="TunableReference" display="Household Eater Eating Role State" muid="EBC3763A1AE1B1CA" description="Eater's role state when eating." allow_none="False" Deprecated="False" filter="0" group="General" restrict="RoleState" />
+            <Tunable type="situation_job" name="situation_job" class="TunableReference" display="Situation Job" muid="A517C10B62C196E5" description="The SituationJob for an eater (a non-chef) sim." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SituationJob" />
+        </TunableTuple>
+
+        <Deleted name="job_display_ordering" muid="ABF8B30B1375BB00" />
+
+        <Deleted name="main_goal" muid="FCFD51ADF53FE238" />
+
+        <Deleted name="main_goal_audio_sting" muid="FCD089EF0F0FF00" />
+
+        <Deleted name="max_participants" muid="1ADF25DDCEE71544" />
+
+        <TunableTuple name="meal_is_done_interaction" class="TunableInteractionOfInterest" display="Meal Is Done Interaction" muid="6410545CA0CD4EFB" description="When this interaction has been completed by the chef, it will&#xA;signal the end of the eating phase." Deprecated="False" filter="0" group="Triggers">
+            <TunableList name="affordances" class="TunableList" display="Affordances" muid="1017670E7094BB44" description="The Sim must have started either any affordance in this list or an&#xA;interaction matching one of the tags in this tunable's Tags&#xA;field." Deprecated="False" filter="0" group="General">
+                <Tunable type="interaction" class="TunableReference" muid="CD024CD014450B82" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+            <TunableList name="tags" class="TunableSet" display="Tags" muid="6704B6A5D3CAF0E9" description="The Sim must have run either an interaction matching one of these&#xA;Tags or an affordance from the list of Affordances in this&#xA;tunable." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="F462DC341E12F1D4" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+        </TunableTuple>
+
+        <Tunable type="float" name="meal_timeout" class="TunableSimMinute" default="30" display="Meal Timeout" muid="28B9694D3BD98F43" min="None" max="None" description="The amount of time the meal will last, assuming not all sims made it to the meal." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Triggers" />
+
+        <Deleted name="minor_goal_chains" muid="ECCF637D3F7D6729" />
+
+        <Deleted name="recommended_job_object_notification" muid="3266FE2859C127A5" />
+
+        <Deleted name="recommended_job_object_text" muid="95969904CED111AD" />
+
+        <Deleted name="screen_slam_bronze" muid="5C89FC44CA227FC6" />
+
+        <Deleted name="screen_slam_gold" muid="9E501A932EFAF298" />
+
+        <Deleted name="screen_slam_no_medal" muid="7300DB0DF3C79A9C" />
+
+        <Deleted name="screen_slam_silver" muid="48D3F84108DBB0D6" />
+
+        <Deleted name="situation_description" muid="D240970F3C54E8EB" />
+
+        <Deleted name="suppress_scoring_progress_bar" muid="79279F21A3706A3C" />
+
+        <Deleted name="targeted_situation" muid="66F7AEFAAEF772A3" />
+
+        <Deleted name="travel_request_behavior" muid="839B88CE65BF20FF" />
+
+        <Tunable type="float" name="trying_to_cook_timeout" class="TunableSimMinute" default="30" display="Trying To Cook Timeout" muid="3363A361F8275EC4" min="None" max="None" description="The amount of time the sim will attempt to try to start cooking." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="Triggers" />
+
+        <Deleted name="venue_invitation_message" muid="E9F3FC962DBCF343" />
+
+        <Deleted name="venue_situation_player_job" muid="60482FCB940F194B" />
+    </Instance>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="66F58EF04B750EC5" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

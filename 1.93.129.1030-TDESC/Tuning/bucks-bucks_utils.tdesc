@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="bucks.bucks_utils" muid="55E3921741D2D4AC">
+        <Class name="BucksUtils" muid="C1620F6FF3FF4AAF">
+            <TunableList name="BUCK_TYPE_TO_DISPLAY_DATA" class="TunableMapping" display="Buck Type To Display Data" muid="61F3784E28FCB34A" mapping_key="Bucks Type" mapping_value="Bucks UI Data" description="For each supplied Bucks, a set of UI display data to be used when displaying&#xA;information related to this bucks in the UI." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="8ABFC1C6B6C9E53C" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="BucksType" name="Bucks Type" class="TunableEnumEntry" default="INVALID" display="Bucks Type" muid="57ED01ADB726172D" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    <TunableTuple name="Bucks UI Data" class="TunableTuple" display="Bucks Ui Data" muid="FEF532E12B61001A" description="A set of UI display data for one bucks type." Deprecated="False" filter="0" group="General">
+                        <TunableVariant type="None" name="cost_string" class="OptionalTunable" default="disabled" display="Cost String" muid="AE92175323AE7CB7" description="Format for displaying interaction names on interactions that&#xA;have this buck as a cost. 0.String is the interaction name. 1 will be the the cost&#xA;amount." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="CE5913C34CE53717" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="D3CD56E217EB3BE0" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="gain_string" class="OptionalTunable" default="disabled" display="Gain String" muid="AD8FB35E084B470E" description="Format for displaying interaction names on interactions that&#xA;have this buck as a gain. 0.String is the interaction name. 1 will be the the gain&#xA;amount." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7CA22934339301CB" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="5857A961722CDFF1" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <TunableVariant type="None" name="headline" class="OptionalTunable" default="disabled" display="Headline" muid="C71F973BBDF5C3A8" description="If enabled when this buck updates we will display&#xA;a headline update to the UI for selectable sims." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="C4952B3967A4EDF1" />
+                            <Tunable type="headline" name="enabled" class="TunableReference" display="Enabled" muid="1A194716446E50E9" description="The headline that we want to send down." allow_none="False" Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                        <Tunable type="int" name="ui_name" class="TunableLocalizedString" default="0x0" display="Ui Name" muid="CBFFF94C531C46DD" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                        <TunableVariant type="None" name="value_string" class="OptionalTunable" default="disabled" display="Value String" muid="1A61BE49B2849C7A" description="A string like &quot;{0.Money}&quot; that will be used in UI to display a&#xA;value of this currency." Deprecated="False" filter="0" group="General">
+                            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B2680AC883A94B69" />
+                            <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="9C7472E89CF7F374" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="BUCK_TYPE_TO_TRACKER_MAP" class="TunableMapping" display="Buck Type To Tracker Map" muid="C8E7799B33425EB" mapping_key="Bucks Type" mapping_value="Bucks Tracker" description="Maps a buck type to the tracker that uses that bucks type." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="17BC248806DC9029" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="BucksTrackerType" name="Bucks Tracker" class="TunableEnumEntry" default="HOUSEHOLD" display="Bucks Tracker" muid="DF41E0FF47A7FB1E" static_entries="bucks-bucks_enums.BucksTrackerType" Deprecated="False" filter="0" group="General" />
+                    <TunableEnum type="BucksType" name="Bucks Type" class="TunableEnumEntry" default="INVALID" display="Bucks Type" muid="85B740CED33F3562" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="WALLET_BUCK_TYPES" class="TunableEnumSet" display="Wallet Buck Types" muid="4148608BEAE3DADB" description="A list of buck types whose values will be displayed in the wallet&#xA;tooltip." Deprecated="False" export_modes="client_binary" filter="0" group="General" unique_entries="true">
+                <TunableEnum type="BucksType" class="TunableEnumEntry" default="INVALID" muid="35C76CDC68057877" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" binary_type="uint32" Deprecated="False" filter="0" group="General" pack_safe="True" />
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

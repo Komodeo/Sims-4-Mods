@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="StartCraftingAutonomouslySuperInteraction" module="crafting.crafting_interactions" muid="94A55CF48CB86A77" description="Interaction that allows a Sim to begin crafting a recipe autonomously.  This is never&#xA;available user-directed." instance_needs_reference="True" instance_subclasses_only="False" parents="AutonomousPickerSuperInteraction, SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <TunableList name="bucks_price_multipliers" class="TunableMapping" display="Bucks Price Multipliers" muid="1B54BF219B0C9EBA" mapping_key="key" mapping_value="value" description="Mapping of buck type to tested multiplier to apply to the bucks price&#xA;of the item." Deprecated="False" filter="0" group="Picker Tuning">
+            <TunableTuple class="TunableTuple" muid="49358F5A0818FFF4" Deprecated="False" filter="0" group="General">
+                <TunableEnum type="BucksType" name="key" class="TunableEnumEntry" default="INVALID" display="Key" muid="513E09F9E4B99245" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" description="Buck type to apply price multiplier to." Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="TunableTunableMultiplier" display="Value" muid="4BBD9E32765AAF33" description="Tested multipliers to apply to the bucks price of the item." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="87D43B47B1B4F6E2" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="B6343036749FD7AC" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="A75439656B0E5EB5" Deprecated="False" filter="0" group="General">
+                            <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="117C10DAB7633384" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="2190F34B9DA8F6C4" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="bool" name="check_fridge_shared_inventory" class="Tunable" default="True" display="Check Fridge Shared Inventory" muid="63404C462FE09F38" description="If checked, look through the fridge shared inventory for &#xA;gathering ingredients." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="check_sim_inventory" class="Tunable" default="True" display="Check Sim Inventory" muid="6012184A2BD38B70" description="If checked, look through the sims's inventory for &#xA;gathering ingredients." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="check_target_inventory" class="Tunable" default="False" display="Check Target Inventory" muid="103AA5A4CCC2E0AA" description="If checked, look through the target object's inventory for &#xA;gathering ingredients." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="craft_for_other_sims" class="TunableVariant" default="no_other_sims" display="Craft For Other Sims" muid="2C52E8D7AD8342F8" description="Options for crafting this drink for other sims." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="craft_for_specific_participant" class="TunableTuple" display="Craft For Specific Participant" muid="D0983C3C6A07F1BB" description="Craft for the Sim of a specific participant type. " Deprecated="False" filter="0" group="General">
+                <TunableEnum type="ParticipantTypeSingle" name="participant" class="TunableEnumEntry" default="PickedSim" display="Participant" muid="F43B2894E868753F" static_entries="interactions.ParticipantTypeSingle" description="The specific participant that we want to craft for. " Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="no_other_sims" class="TunableTuple" display="No Other Sims" muid="F1231337BB2913B7" description="Don't craft this for any other sims." Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="party_crafting" class="TunableTuple" display="Party Crafting" muid="F963B4EA2CF717F6" description="Craft for all for the Sims in a rally source." Deprecated="False" filter="0" group="General">
+                <TunableList name="rally_source" class="TunableEnumSet" default="ENSEMBLE" display="Rally Source" muid="7D4D46A6253C3229" description="A list of different sources that we want to use to figure&#xA;out the Sims to craft drinks for." Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="RallySource" class="TunableEnumEntry" default="ENSEMBLE" muid="1AE505CDF2FC8EC7" static_entries="interactions-base-super_interaction.RallySource" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableVariant type="None" name="funds_source" class="TunableVariant" default="household" display="Funds Source" muid="EBA8797B3CF098DC" description="When deducting the cost of the recipe, it will be deducted &#xA;from this funds source." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="bucks" class="Tunable_PaymentSourceBucks" display="Bucks" muid="52DD9E0AA8643C5A" description="Payment source is bucks." Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="allow_credits" class="Tunable" default="False" display="Allow Credits" muid="5E6E06A905FD7CE7" description="If False, the payment element will permit negative payments (credits)." Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="BucksType" name="bucks_type" class="TunableEnumEntry" default="INVALID" display="Bucks Type" muid="F011A7828D235BD5" dynamic_entries="bucks-bucks_enums.BucksType._elements" static_entries="bucks-bucks_enums.BucksType" description="The type of Bucks to pay." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                <TunableVariant type="None" name="cost_string_override" class="OptionalTunable" default="disabled" display="Cost String Override" muid="F9C043E477E8D2D1" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a cost. &#xA;&#xA;0.String is the interaction name. &#xA;1 will be the the cost amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="FF272E59C3B45FB" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="15934ADA134B2A67" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="gain_string_override" class="OptionalTunable" default="disabled" display="Gain String Override" muid="72DE4CAA8846BE57" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a gain.&#xA; &#xA;0.String is the interaction name. &#xA;1 will be the the gain amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="497EBA1BFC999981" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="53AF339B0861060F" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="bool" name="require_full_amount" class="Tunable" default="True" display="Require Full Amount" muid="638D94723890E279" description="If False, the payment element will subtract whatever funds are &#xA;available if there are not enough funds." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="business" class="Tunable_PaymentSourceBusiness" display="Business" muid="AC51EB2A59DDD5B1" description="Payment source is the active retail lot. If there is no active retail lot,&#xA;will use household funds." Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="allow_credits" class="Tunable" default="False" display="Allow Credits" muid="B6A5B401C0BA7C9" description="If False, the payment element will permit negative payments (credits)." Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="cost_string_override" class="OptionalTunable" default="disabled" display="Cost String Override" muid="5D7D310EC8C90AFF" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a cost. &#xA;&#xA;0.String is the interaction name. &#xA;1 will be the the cost amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="3535CB1833E52F70" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="6FEF876DBDD06E32" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableEnum type="BusinessFundsCategory" name="funds_category" class="TunableEnumEntry" default="NONE" display="Funds Category" muid="CBB16F5748BD40E" dynamic_entries="business-business_funds.BusinessFundsCategory._elements" static_entries="business-business_funds.BusinessFundsCategory" description="If defined, this expense is categorized and can be displayed in the&#xA;Retail finance dialog." Deprecated="False" filter="0" group="General" invalid_entries="NONE" />
+                <TunableVariant type="None" name="gain_string_override" class="OptionalTunable" default="disabled" display="Gain String Override" muid="3DE555B2795A0F56" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a gain.&#xA; &#xA;0.String is the interaction name. &#xA;1 will be the the gain amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="4AEA5CF7D4F6F306" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="6CD6D9565DB7D331" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="bool" name="require_full_amount" class="Tunable" default="True" display="Require Full Amount" muid="9E0C102F9FF8B24D" description="If False, the payment element will subtract whatever funds are &#xA;available if there are not enough funds." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="household" class="Tunable_PaymentSourceHousehold" display="Household" muid="4907EDD9C1FBDC99" description="Payment source is the provided sim's household funds." Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="allow_credits" class="Tunable" default="False" display="Allow Credits" muid="603D9091E6AE25C0" description="If False, the payment element will permit negative payments (credits)." Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="cost_string_override" class="OptionalTunable" default="disabled" display="Cost String Override" muid="DA719E62BBA3178D" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a cost. &#xA;&#xA;0.String is the interaction name. &#xA;1 will be the the cost amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B4B150D7127DEF96" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="D952E642E45D947A" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="gain_string_override" class="OptionalTunable" default="disabled" display="Gain String Override" muid="2357EE2266372A84" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a gain.&#xA; &#xA;0.String is the interaction name. &#xA;1 will be the the gain amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="79DD587109804921" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="88AA2E1FA59007D6" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="bool" name="require_full_amount" class="Tunable" default="True" display="Require Full Amount" muid="CC5D168FA6DA7D56" description="If False, the payment element will subtract whatever funds are &#xA;available if there are not enough funds." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="no_source" class="Tunable_PaymentSourceNoSource" display="No Source" muid="2003D7283E6B429" description="No payment source, just pluck the funds out of thin air." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="cost_string_override" class="OptionalTunable" default="disabled" display="Cost String Override" muid="E5F7448A8E301DE1" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a cost. &#xA;&#xA;0.String is the interaction name. &#xA;1 will be the the cost amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8CC74609575AE665" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="8560300F31B21549" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="gain_string_override" class="OptionalTunable" default="disabled" display="Gain String Override" muid="98E580B981DB4003" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a gain.&#xA; &#xA;0.String is the interaction name. &#xA;1 will be the the gain amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="5E45C351B9A571D3" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="61D93533EAF67C0B" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+            <TunableTuple name="statistic" class="Tunable_PaymentSourceStatistic" display="Statistic" muid="7BEFC9978C4AD5B3" description="Payment source is a statistic on a participant" Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="allow_credits" class="Tunable" default="False" display="Allow Credits" muid="D471AF7B7B359CCA" description="If False, the payment element will permit negative payments (credits)." Deprecated="False" filter="0" group="General" />
+                <TunableVariant type="None" name="cost_string_override" class="OptionalTunable" default="disabled" display="Cost String Override" muid="D26A40A776888937" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a cost. &#xA;&#xA;0.String is the interaction name. &#xA;1 will be the the cost amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D6C5ACE6C5C8A23A" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="A72EC283F0CA1321" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="gain_string_override" class="OptionalTunable" default="disabled" display="Gain String Override" muid="3B33B1830CB2DE1A" description="When enabled, override the format for displaying interaction names on interactions that&#xA;have this payment as a gain.&#xA; &#xA;0.String is the interaction name. &#xA;1 will be the the gain amount." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7721280F3C73BD57" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="C7F8174B1A0DBC17" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableEnum type="ParticipantType" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="6C73113FB22A4EED" static_entries="interactions.ParticipantType" description="The participant whose statistic should be used to pay" Deprecated="False" filter="0" group="General" />
+                <Tunable type="bool" name="require_full_amount" class="Tunable" default="True" display="Require Full Amount" muid="A2E7EB4B3FF75B83" description="If False, the payment element will subtract whatever funds are &#xA;available if there are not enough funds." Deprecated="False" filter="0" group="General" />
+                <Tunable type="statistic" name="statistic" class="TunableReference" display="Statistic" muid="89710C1F0F79FEF6" description="The statistic that should be used to pay." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+
+        <Tunable type="bool" name="ingredient_cost_only" class="Tunable" default="False" display="Ingredient Cost Only" muid="7DF9F53BB486456" description="If true, this interaction will require ingredients for all recipes and not have a simoleon cost." Deprecated="False" filter="0" group="General" />
+
+        <TunableTuple name="price_multiplier" class="TunableTunableMultiplier" display="Price Multiplier" muid="4FD7EBA8D174204" description="Tested multipliers to apply to the price of the item." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="C4824756F5B36278" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="3BFFEB665E03485" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="2CBEBA49EB5A685C" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="102FF93193203136" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="A934681BA2EEF532" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableList name="recipes" class="TunableList" display="Recipes" muid="B802662BC23C6540" description="The recipes a Sim can craft." Deprecated="False" filter="0" group="General">
+            <Tunable type="recipe" class="TunableReference" muid="7269D38DC68C275" description="Recipe to craft." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <Tunable type="bool" name="set_target_as_current_ico" class="Tunable" default="False" display="Set Target As Current Ico" muid="B0FE39A1E2D70EF8" description="After creating the crafting component, if this is checked, the&#xA;value of current_ico on the crafting_process will be set to the&#xA;target.&#xA;&#xA;This is a way to make an object that we are not creating as an ICO&#xA;to behave a bit like an ICO. By setting the current_ico to the&#xA;target it allows the crafting interactions to return the target as&#xA;the carry target, enabling the non ICO object to be carried to&#xA;where it needs to be.&#xA;&#xA;For an example of when you might want to set this consider the Kave&#xA;bowl. The Kava Bowl acts as both an ICO and a Final Product that&#xA;holds individual servings. The only way to carry the Kava Bowl to&#xA;the correct place to run the interaction is to set the current_ico&#xA;to the kava bowl despite it not actually being a traditional ICO." Deprecated="False" filter="0" group="General" />
+
+        <TdescFragTag name="test_reserve_object" class="TunableReserveObject" display="Test Reserve Object" muid="527E0518E19A88FB" description="The reservation type to use when testing for this interaction's&#xA;autonomous availability." filter="0" group="General" />
+    </Instance>
+</TuningRoot>

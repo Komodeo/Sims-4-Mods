@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="breed" class="Breed" module="sims.pets.breed_tuning" muid="20D98D0D093F20EF" description="Breed properties and various gameplay behaviors." instance_subclasses_only="False" path="Breeds\Descriptions" use_guid_for_reference="True">
+        <Tunable type="int" name="breed_description" class="TunableLocalizedString" default="0x0" display="Breed Description" muid="FE8927A70B91F45C" description="The breed description." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <Tunable type="int" name="breed_display_name" class="TunableLocalizedString" default="0x0" display="Breed Display Name" muid="735EBF336B095646" description="The breed display name." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableEnum type="SpeciesExtended" name="breed_species" class="TunableEnumEntry" default="HUMAN" display="Breed Species" muid="EB61E04A10981E30" static_entries="sims-sim_info_types.SpeciesExtended" description="This breed is restricted to this species." binary_type="uint32" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" invalid_entries="HUMAN,INVALID" />
+
+        <TunableEnum type="Tag" name="breed_tag" class="TunableTag" default="INVALID" display="Breed Tag" muid="15D6A1409DC378CF" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag associated with this breed." Deprecated="False" dynamic_entries_prefix="breed" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" invalid_entries="INVALID" />
+
+        <TunableList name="breed_traits" class="TunableSet" display="Breed Traits" muid="43CC0E52F1336398" description="Traits that are by default associated with this breed." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" unique_entries="true">
+            <Tunable type="trait" class="TunableReference" muid="FAECE29614BDC5F2" allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+
+        <TunableList name="breed_voices" class="TunableList" display="Breed Voices" muid="74A12F1072B012E1" description="A list valid voice actors and pitch ranges that this breed can have&#xA;when randomly generated." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+            <TunableTuple class="BreedVoiceTuple" muid="D93166D4082C7F6B" Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="breed_voice_actor_index" class="Tunable" default="0" display="Breed Voice Actor Index" muid="7EC19918432A2D34" description="The breed's default voice actor is a combination of its species&#xA;and index. In general, 0-3 is mapped to A-D, though not all&#xA;species have all four.&#xA;&#xA;(The mapping of species+index to voice actor is maintained in&#xA;CASSharedUtils.cpp.)&#xA;&#xA;Dogs and small dogs share the same voice actors, and have four:&#xA;Index 0 - DogA (Generic Dog)&#xA;Index 1 - DogB (Small Yappy Dog)&#xA;Index 2 - DogC (Tough Dog)&#xA;Index 3 - DogD (Big Dumb Hound Dog)&#xA;&#xA;Cats have two:&#xA;Index 0 - CatA (Generic Cat)&#xA;Index 1 - CatB (Scratchy Alley Cat)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="breed_voice_pitch" class="TunableInterval" display="Breed Voice Pitch" muid="CB4ECF97577CB7A7" description="Min/max voice pitch that the breed will have." Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="lower_bound" class="TunableRange" default="-1" display="Lower Bound" muid="E2850BF57FF2D7A8" min="-1" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="D1D9787B5FB1A2C3" min="None" max="1" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="sim_info_resources" class="TunableSet" display="Sim Info Resources" muid="D7961746DE2A2D07" description="A list of YA resources for the breed. CAS will attempt to age down &#xA;or up when they are generating the sim info with the age we pass in&#xA;through the SimInfo. " Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="ResourceKey" class="TunableResourceKey" default="None" muid="BBF0FA7C58D86A2B" Deprecated="False" filter="0" group="General" resource_types="0x25ed6f4" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="sims.outfits.outfit_tuning" muid="9514F21953A49C7">
+        <Class name="OutfitTuning" muid="E766D103565AA4BD">
+            <TunableList name="COSTUMES_LOCALIZATION_TUNING" class="TunableMapping" display="Costumes Localization Tuning" muid="7516774AEDD58EFC" mapping_key="key" mapping_value="value" description="Mapping of tags for sim costumes to localization strings.  This will be&#xA;used for pie menu interactions when we want to switch to this specific&#xA;custom costume tags." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="98A483E48E9BCFD3" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="Tag" name="key" class="TunableEnumWithFilter" default="INVALID" display="Key" muid="3669DC328918F30D" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="uniform|outfitcategory|style" filter="0" group="General" pack_safe="True" />
+                    <Tunable type="int" name="value" class="TunableLocalizedString" default="0x0" display="Value" muid="5B1C1E6BD8BEB1BA" description="A localized string that may use tokens." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="INAPPROPRIATE_STREETWEAR" class="TunableList" display="Inappropriate Streetwear" muid="661B2CAE85D233C2" description="A list of outfit categories inappropriate for wearing on open streets.&#xA;If the Sim is in one of these categories when they first decided to go&#xA;off-lot, they will switch out of it beforehand." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="OutfitCategory" class="TunableEnumEntry" default="EVERYDAY" muid="B26DBA9C3D670886" static_entries="sims-outfits-outfit_enums.OutfitCategory" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <TunableList name="LOOT_ON_OUTFIT_CHANGE" class="TunableList" display="Loot On Outfit Change" muid="A705BF580B895960" description="Loot that will be applied every time a Sim changes their outfit." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="action" class="TunableReference" muid="79C43E26F2A2644F" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="LootActions" />
+            </TunableList>
+
+            <TunableList name="OUTFIT_CATEGORY_TUNING" class="TunableMapping" display="Outfit Category Tuning" muid="F6A94A4348E03DE5" mapping_key="key" mapping_value="value" description="Define attributes specific to each of the existing outfit categories." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="F8E94E687262E5B5" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="OutfitCategory" name="key" class="TunableEnumEntry" default="EVERYDAY" display="Key" muid="39CB5518CB0EB22E" static_entries="sims-outfits-outfit_enums.OutfitCategory" Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="D1724FB8EE491E16" description="Data specific to the outfit category." Deprecated="False" filter="0" group="General">
+                        <TunableList name="buffs" class="TunableList" display="Buffs" muid="AA57836F90155AD2" description="List of buffs given to sim while in this outfit category." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableBuffReference" muid="27F00D8670D9D929" description="Buff that will get added to sim." Deprecated="False" filter="0" group="General">
+                                <TunableVariant type="None" name="buff_reason" class="OptionalTunable" default="disabled" display="Buff Reason" muid="6549573DFDA4470D" description="If set, specify a reason why the buff was added." Deprecated="False" filter="0" group="General">
+                                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="8BA03E634E9B8739" />
+                                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="17FFE24B2E68A365" description="The reason the buff was added. This will be displayed in the&#xA;buff tooltip." Deprecated="False" filter="0" group="General" />
+                                </TunableVariant>
+                                <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="1B14C854AD65EB52" description="Buff that will get added to sim." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                            </TunableTuple>
+                        </TunableList>
+                        <TunableVariant type="None" name="save_outfit_category" class="OptionalTunable" default="save_this_category" display="Save Outfit Category" muid="9B7754CB935DFA24" description="If set to 'save_this_category', a Sim saved while wearing this&#xA;outfit category will change back into this outfit category on&#xA;load.&#xA;&#xA;e.g.: you're tuning Everyday outfit, which is set as&#xA;save_this_category, meaning a sim wearing everyday will still be&#xA;wearing everyday on load.&#xA;&#xA;Otherwise, you can set to save_as_different_category, which&#xA;allows you to specific another outfit category for the sim to be&#xA;saved in instead of this category.&#xA;&#xA;e.g.: if tuning Bathing category, if the sim is in the bathing&#xA;category, set this to Everyday so that when the sim loads back&#xA;up, the sim will be in Everyday wear instead of naked." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="OutfitCategory" name="save_as_different_category" class="TunableEnumEntry" default="EVERYDAY" display="Save As Different Category" muid="8D3B570CCF400C08" static_entries="sims-outfits-outfit_enums.OutfitCategory" description="The outfit category to save as instead of this category." Deprecated="False" filter="0" group="General" />
+                            <Tunable name="save_this_category" class="TunableExistance" display="Save This Category" muid="3E21B5073486C47D" />
+                        </TunableVariant>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="animation" name="OUTFIT_CHANGE_ANIMATION" class="TunableReference" display="Outfit Change Animation" muid="33457EA09EF8AD5C" description="An animation to use when switching into an outfit." allow_none="False" Deprecated="False" filter="0" group="General" restrict="AnimationElement" />
+
+            <TunableList name="OUTFIT_CHANGE_REASONS" class="TunableMapping" display="Outfit Change Reasons" muid="B977619CCBB89F1A" mapping_key="OutfitChangeReason" mapping_value="TunableMappings" description="Define the outfits that correspond to specific Outfit Change Reasons." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="1ADF297CC2DA8B86" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="OutfitChangeReason" name="OutfitChangeReason" class="TunableEnumEntry" default="PreviousClothing" display="Outfitchangereason" muid="3D823B72F7C3EEE6" dynamic_entries="sims-outfits-outfit_enums.OutfitChangeReason._elements" static_entries="sims-outfits-outfit_enums.OutfitChangeReason" Deprecated="False" filter="0" group="General" />
+                    <TunableList name="TunableMappings" class="TunableList" display="Tunablemappings" muid="945D71C13B2AFE08" description="A list of test and Outfit Category pairs. The outfit corresponding to the&#xA;first passing test is selected." Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="26E4E67782FD5FAE" description="A test and Outfit Category pair." Deprecated="False" filter="0" group="General">
+                            <TunableEnum type="OutfitCategory" name="outfit_category" class="TunableEnumEntry" default="EVERYDAY" display="Outfit Category" muid="2041D30292C1623" static_entries="sims-outfits-outfit_enums.OutfitCategory" description="Should the associated test pass, the Outfit Category to&#xA;switch into for the specified reason." Deprecated="False" filter="0" group="General" />
+                            <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="E15801DA2EFDCE0E" description="A list of tests groups.  At least one must pass all its sub-&#xA;tests to pass the TestSet.&#xA;&#xA;ORs of ANDs" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

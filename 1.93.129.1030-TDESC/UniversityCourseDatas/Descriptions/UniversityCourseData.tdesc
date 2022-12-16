@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="university_course_data" class="UniversityCourseData" module="sims.university.university_tuning" muid="299CC268A38B0925" description="University Course Data tunable resource." instance_needs_reference="True" instance_subclasses_only="False" path="UniversityCourseDatas\Descriptions" use_guid_for_reference="True">
+        <TunableList name="classroom_tag" class="TunableMapping" display="Classroom Tag" muid="239E3A9232B81B4B" mapping_key="key" mapping_value="value" description="University specific classroom tags.&#xA;Used by university interactions on shells to determine which building&#xA;shell should have the interaction(s) available." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="5A449C3E0B49F38C" Deprecated="False" filter="0" group="General">
+                <Tunable type="university" name="key" class="TunableReference" display="Key" muid="34988717E7C67CBA" allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableSet" display="Value" muid="CC1A9782A6224BE2" min="1" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumEntry" default="INVALID" muid="D94FE2991410B260" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <Tunable type="int" name="cost" class="TunableRange" default="200" display="Cost" muid="8D32324D3E318C7D" min="0" max="None" description="The cost of this course." tuning_state="NeedsTuning" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+
+        <TunableTuple name="course_skill_data" class="TunableTuple" display="Course Skill Data" muid="80A64A745DC0D931" description="The related skill data for this specific course.  Whenever a Sim &#xA;does something that increases their course grade performance (like&#xA;attending lecture or studying), this skill will also increase by&#xA;the tunable amount.  Likewise, whenever this related skill &#xA;increases, the course grade will also increase." Deprecated="False" filter="0" group="General">
+            <TunableVariant type="None" name="related_skill" class="OptionalTunable" default="disabled" display="Related Skill" muid="8BCDF1D79F0AC315" description="The related skill associated with this course." Deprecated="False" filter="0" group="General">
+                <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="B100861742523948" />
+                <Tunable type="statistic" name="enabled" class="TunableReference" display="Enabled" muid="54E5AC776642661E" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Skill" />
+            </TunableVariant>
+        </TunableTuple>
+
+        <TunableList name="course_tags" class="TunableTags" display="Course Tags" muid="B7B74FA6F3F01EE9" Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="D2FC3468F34EFCDD" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="The tag for this course.  Used for objects that may be shared &#xA;between courses." Deprecated="False" dynamic_entries_prefix="course" filter="0" group="General" invalid_entries="INVALID" pack_safe="True" />
+        </TunableList>
+
+        <Tunable type="aspiration" name="final_requirement_aspiration" class="TunableReference" display="Final Requirement Aspiration" muid="EB432C1E41C45D02" description="An aspiration to use for tracking the final course requirement. " allow_none="True" Deprecated="False" filter="0" group="General" restrict="AspirationAssignment" />
+
+        <TunableEnum type="FinalCourseRequirement" name="final_requirement_type" class="TunableEnumEntry" default="NONE" display="Final Requirement Type" muid="D5CAA26486FCD916" static_entries="sims-university-university_enums.FinalCourseRequirement" description="The final requirement for this course.  This requirement must be &#xA;completed before the course can be considered complete." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="ResourceKey" name="icon" class="TunableIcon" default="None" display="Icon" muid="8951788515411B2A" description="Icon for this university course." allow_none="True" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" resource_types="0x2f7d0004" />
+
+        <TunableList name="professor_assignment_trait" class="TunableMapping" display="Professor Assignment Trait" muid="6A7A1ED5D8B933B" mapping_key="key" mapping_value="value" description="A mapping of University -&gt; professor assignment trait.&#xA;&#xA;This is needed because each of the universities shipped with EP08&#xA;use the exact same classes but we want different teachers for each&#xA;university." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="D6677A316D212D03" Deprecated="False" filter="0" group="General">
+                <Tunable type="university" name="key" class="TunableReference" display="Key" muid="65E82B7BDD51EF86" description="A reference to the University that the professor will belong to." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <Tunable type="trait" name="value" class="TunableReference" display="Value" muid="C148DEC508B4F547" description="The trait used to identify the professor for this course." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="spawn_point_tag" class="TunableMapping" display="Spawn Point Tag" muid="76C95FAA291A6504" mapping_key="key" mapping_value="value" description="University specific spawn point tags.&#xA;Used by course related interactions to determine which spawn&#xA;point to use for the constraint. (i.e. the one in front of the&#xA;appropriate building)" Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="57A2901EE50BCD78" Deprecated="False" filter="0" group="General">
+                <Tunable type="university" name="key" class="TunableReference" display="Key" muid="4DE15B03FF06834D" allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableList name="value" class="TunableSet" display="Value" muid="86178C9E67CD52D0" min="1" Deprecated="False" filter="0" group="General" unique_entries="true">
+                    <TunableEnum type="Tag" class="TunableEnumWithFilter" default="INVALID" muid="BEFD6926512FD59D" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" Deprecated="False" dynamic_entries_prefix="Spawn" filter="0" group="General" />
+                </TunableList>
+            </TunableTuple>
+        </TunableList>
+
+        <TunableList name="university_course_mapping" class="TunableMapping" display="University Course Mapping" muid="1C903EFAD0BC867" mapping_key="key" mapping_value="value" description="University specific course name and description.&#xA;Each university can have its own course name and description&#xA;defined." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="UniversityCourseDataMapping">
+            <TunableTuple class="TunableTuple" muid="4D9B704B10AB7BBC" Deprecated="False" filter="0" group="General">
+                <Tunable type="university" name="key" class="TunableReference" display="Key" muid="97F60D84E12E1B45" allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableTuple name="value" class="UniversityCourseDisplayData" display="Value" muid="5F2D868FC1C5F4CD" Deprecated="False" filter="0" group="General">
+                    <Tunable type="int" name="course_description" class="TunableLocalizedString" default="0x0" display="Course Description" muid="955445B968563AE8" description="A description for this course." allow_none="True" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="int" name="course_name" class="TunableLocalizedString" default="0x0" display="Course Name" muid="2CD03114F92E15E2" description="The name of this course." Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

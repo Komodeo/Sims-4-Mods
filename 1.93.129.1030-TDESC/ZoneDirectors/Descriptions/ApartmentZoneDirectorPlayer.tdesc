@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="zone_director" class="ApartmentZoneDirectorPlayer" module="apartments.apartment_zone_director" muid="702F2849A1FB1849" description="Zone Director for apartments owned by the active household." instance_needs_reference="True" instance_subclasses_only="False" parents="ZoneDirectorResidentialPlayer, ZoneDirectorResidentialBase, SchedulingZoneDirector, ZoneDirectorBase" path="ZoneDirectors\Descriptions" use_guid_for_reference="True">
+        <TunableList name="neighbor_reaction_events" class="TunableMapping" display="Neighbor Reaction Events" muid="4B46C62102DB381C" mapping_key="key" mapping_value="value" description="A map of different neighbor reaction event listeners that we want&#xA;to keep active on the Sims while this zone director is running and&#xA;the situations to create when those event listeners are completed." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="CC7D500F020460D2" Deprecated="False" filter="0" group="General">
+                <Tunable type="aspiration" name="key" class="TunableReference" display="Key" muid="9DE93A5F92823722" description="The aspiration that we will register on all of the active&#xA;household Sims that when completed will then trigger the&#xA;appropriate situation." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ZoneDirectorEventListener" />
+                <TunableTuple name="value" class="TunableTuple" display="Value" muid="8559E58E8BAB25A7" description="Extra data for this specific aspiration." Deprecated="False" filter="0" group="General">
+                    <Tunable type="situation" name="situation" class="TunableReference" display="Situation" muid="B3C7DA34F4EA60F1" description="The Situation that we want to start on the completion of&#xA;this aspiration." allow_none="False" Deprecated="False" filter="0" group="General" />
+                    <Tunable type="float" name="timeout" class="TunableSimMinute" default="60" display="Timeout" muid="B9DF3ABFE4081DF9" min="0" max="None" description="The amount of time in Sim Minutes that will pass from the&#xA;completion of the aspiration before we will start the&#xA;situation again." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

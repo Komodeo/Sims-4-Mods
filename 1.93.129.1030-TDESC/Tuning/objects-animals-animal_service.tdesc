@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.animals.animal_service" muid="B4EA1FC264C5431D">
+        <Class name="AnimalService" muid="764C03BBBA0E186F">
+            <Tunable type="statistic" name="AGING_STATISTIC" class="TunableReference" display="Aging Statistic" muid="B1E742C3D5C9526D" description="The statistic we are operating on." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" restrict="Commodity" />
+
+            <TunableList name="AUTO_ASSIGN_NEW_INHABITANTS" class="TunableList" display="Auto Assign New Inhabitants" muid="9BC47E80D5B8F2FF" description="On a schedule, automatically assigns new animals to existing homes&#xA;that have vacancy. The assignment will try to assign existing homeless&#xA;animals before creating new animals. " Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="D292B96C9CA5A6EF" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="CreatureType" name="animal_type" class="TunableEnumEntry" default="Rabbit" display="Animal Type" muid="D0780B096F8D588B" static_entries="animation-animation_constants.CreatureType" description="The animal home type to scan for on the existing lot." Deprecated="False" filter="0" group="General" />
+                    <TunableTuple name="max_homes_to_assign" class="TunableInterval" display="Max Homes To Assign" muid="535CA97183C14C93" description="When auto-assignment triggers, this is the maximum number of homes to&#xA;randomly pick. Homes at max capacity are excluded. The value is a random&#xA;number between the lower and upper bounds, inclusively.&#xA;&#xA;For example:&#xA;The value is randomly 3.&#xA;15 homes are on the lot (10 empty or partially full, 5 full)&#xA;From the 10 homes, 3 are randomly picked for auto-assignment." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="A1F8BCA91FDBB9DA" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="78388EFF4D1D0B91" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TunableTuple name="num_assignments_per_home" class="TunableInterval" display="Num Assignments Per Home" muid="8807AFCFBF186C3D" description="The number of auto-assignments per home. The value is a random number&#xA;between the lower and upper bounds, inclusively." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="lower_bound" class="TunableRange" default="1" display="Lower Bound" muid="D8E3665931C80464" min="0" max="None" description="The lower bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="int" name="upper_bound" class="TunableRange" default="1" display="Upper Bound" muid="9C68F143963DAB2A" min="None" max="None" description="The upper bound of the interval." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    </TunableTuple>
+                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="246C55F2C651E4EA" description="Conditional tests to determine if auto-assignment occurs." filter="0" group="General" />
+                    <TunableTuple name="weekly_schedule" class="TunableWeeklySchedule" display="Weekly Schedule" muid="DA58EF08FDDD7B09" description="Determines when to trigger the auto-assignment." Deprecated="False" filter="0" group="General">
+                        <TunableList name="schedule_entries" class="TunableList" display="Schedule Entries" muid="9A1FB40F2D251AB1" description="A list of event schedules. Each event is a mapping of days of&#xA;the week to a start_time and duration." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableScheduleEntry" muid="986681950EB98972" description="A schedule. Define availability for days of the week. For the set of&#xA;specified days, define an hour of the day and a duration, in hours.&#xA;Optionally, specified if the start time is random within the tuned window." Deprecated="False" filter="0" group="General">
+                                <TunableTuple name="days_available" class="TunableAvailableDays" display="Days Available" muid="94B2B472D45C1259" description="Which days of the week to include" Deprecated="False" filter="0" group="General">
+                                    <Tunable type="bool" name="0 SUNDAY" class="Tunable" default="False" display="0 Sunday" muid="D49B72DF681B624B" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="1 MONDAY" class="Tunable" default="False" display="1 Monday" muid="F214A97DB649F83D" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="2 TUESDAY" class="Tunable" default="False" display="2 Tuesday" muid="8558225FF75D06F0" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="3 WEDNESDAY" class="Tunable" default="False" display="3 Wednesday" muid="B7394F2270B4A6D" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="4 THURSDAY" class="Tunable" default="False" display="4 Thursday" muid="4AB38A429FE60E14" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="5 FRIDAY" class="Tunable" default="False" display="5 Friday" muid="FA0D5EA76F811BE" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="bool" name="6 SATURDAY" class="Tunable" default="False" display="6 Saturday" muid="FAFC3C5362A5FFE0" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                                <Tunable type="float" name="duration" class="Tunable" default="1.0" display="Duration" muid="A864BCCB8C736E1C" description="Duration of this work session in hours." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <Tunable type="bool" name="random_start" class="Tunable" default="False" display="Random Start" muid="CA71365D192069D3" description="If checked, this schedule will have a random start time in the tuned&#xA;window each time." Deprecated="False" filter="0" group="General" />
+                                <TunableEnum type="CareerShiftType" name="schedule_shift_type" class="TunableEnumEntry" default="ALL_DAY" display="Schedule Shift Type" muid="75A1F226C9407BF5" static_entries="careers-career_enums.CareerShiftType" description="Shift Type for the schedule, this will be used for validations." Deprecated="False" filter="0" group="General" />
+                                <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="A7F0E4486E186A76" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                                    <Tunable type="int" name="hour" class="TunableRange" default="9" display="Hour" muid="F7863D80BE6E3E" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                    <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="FA3FBCD3DD23B1AD" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                </TunableTuple>
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="GARDENING_HELP_ANIMAL_STATES" class="TunableList" display="Gardening Help Animal States" muid="4A620DEE1FA9DDE1" description="For animals with gardening help enabled, these are the states that&#xA;an animal will transition from/to whenever the plant's state changes.&#xA;The order of these lists is the preference in the animal to pick." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="CFC6CBEE7D834C14" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="CreatureType" name="animal_type" class="TunableEnumEntry" default="Rabbit" display="Animal Type" muid="2F77B68A90A3A9BA" static_entries="animation-animation_constants.CreatureType" Deprecated="False" filter="0" group="General" invalid_entries="Invalid" />
+                    <TunableList name="states" class="TunableList" display="States" muid="7D083A247E339D4A" Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="EF7386B92C45D717" Deprecated="False" filter="0" group="General">
+                            <Tunable type="object_state" name="from_state" class="TunableReference" display="From State" muid="4962F8A7CD73029C" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                            <Tunable type="object_state" name="to_state" class="TunableReference" display="To State" muid="F1C2B10B6A97799F" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+                        </TunableTuple>
+                    </TunableList>
+                </TunableTuple>
+            </TunableList>
+
+            <Tunable type="object_state" name="GARDENING_HELP_STATE" class="TunableReference" display="Gardening Help State" muid="EFF2243BA6295C34" description="The gardening help state that animals have when&#xA;gardening help is enabled." allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+
+            <TunableList name="GARDENING_HELP_WEED_STATES" class="TunableList" display="Gardening Help Weed States" muid="ABD53AEA0BCC9421" description="For animals with gardening help enabled,&#xA;these are the relevant weed states on plants to watch for.                 " Deprecated="False" filter="0" group="General">
+                <Tunable type="object_state" class="TunableReference" muid="8D18CE4184C799D4" allow_none="False" Deprecated="False" filter="0" group="General" restrict="ObjectStateValue" />
+            </TunableList>
+
+            <TunableTuple name="MAX_EMPTY_HOMES_TO_POPULATE" class="TunableTuple" display="Max Empty Homes To Populate" muid="6D7122C061F2E0C5" description="Some Animal Home Component objects are configured to populate empty homes&#xA;for the following conditions. These settings configure the maximum number&#xA;of empty homes that can be populated at one time." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="on_new_homes" class="TunableRange" default="5" display="On New Homes" muid="971896D229A4DC0F" min="0" max="5" description="The limit on number of new homes to populate if placed during Build/Buy." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="on_zone_load" class="TunableRange" default="5" display="On Zone Load" muid="3F2F90678F559127" min="0" max="5" description="The limit on number of empty homes to populate after zone load." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </Class>
+    </Module>
+</TuningRoot>

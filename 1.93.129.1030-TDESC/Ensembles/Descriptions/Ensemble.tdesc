@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="ensemble" class="Ensemble" module="ensemble.ensemble" muid="E642FF96D5E42082" description="An ensemble is a group of sims, similar to a social group, but with a few&#xA;key differences.&#xA;&#xA;1. It is formed through systems other than socialization and never created&#xA;automatically.  A situation will request putting its sims into an ensemble.&#xA;2. It doesn't require social constraints.  A sim can wander away from the&#xA;group to, for example use the bathroom and they will still be a part of the&#xA;ensemble.&#xA;3. It also offers flocking by influencing the autonomy of the group to want&#xA;to do things close to the center of mass of the group." instance_needs_reference="True" instance_subclasses_only="False" path="Ensembles\Descriptions" use_guid_for_reference="True">
+        <TunableTuple name="center_of_mass_multiplier" class="TunableTunableMultiplier" display="Center Of Mass Multiplier" muid="8FE1DD983012A3E4" description="Define multipliers that control the weight that a Sim has when&#xA;determining the ensemble's center of mass." Deprecated="False" filter="0" group="General">
+            <Tunable type="float" name="base_value" class="Tunable" default="1" display="Base Value" muid="F8A5AE43807F44C4" description="The basic value to return if no modifications are applied." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="DF56A41F700CAEF9" description="A list of multipliers to apply to base_value." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="D9423DE29A807B68" Deprecated="False" filter="0" group="General">
+                    <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="246C52FCF99AC48F" min="0" max="None" description="The multiplier to apply to base_value if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="E6F50846172C3962" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                </TunableTuple>
+            </TunableList>
+        </TunableTuple>
+
+        <TunableList name="ensemble_autonomous_interactions" class="TunableSet" display="Ensemble Autonomous Interactions" muid="CC2B169773DA6EED" description="This is a set of self interactions that are generated for Sims part &#xA;of this ensemble.&#xA;&#xA;The interactions don't target anything and have an additional&#xA;constraint equivalent to the circle defined by the ensemble's center&#xA;of mass and radius." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="interaction" class="TunableReference" muid="CA4958B132EBB50D" allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+        </TunableList>
+
+        <Tunable type="float" name="ensemble_autonomy_bonus_multiplier" class="TunableRange" default="2.0" display="Ensemble Autonomy Bonus Multiplier" muid="1E6E18C3C30FBCF3" min="1.0" max="None" description="The autonomy multiplier that will be applied for objects within the&#xA;autonomy center of mass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="float" name="max_ensemble_radius" class="TunableDistanceSquared" default="1.0" display="Max Ensemble Radius" muid="BCD544FC08A1442B" description="The maximum distance away from the center of mass that Sims will&#xA;receive an autonomy bonus for.&#xA;&#xA;If Sims are beyond this distance from the ensemble's center of mass,&#xA;then they will autonomously consider to run any interaction from&#xA;ensemble_autonomous_interactions.&#xA;&#xA;Any such interaction will have an additional constraint that is a&#xA;circle whose radius is this value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="max_limit" class="OptionalTunable" default="disabled" display="Max Limit" muid="3A182D912E1ABB29" description="If enabled this ensemble will have a maximum number of Sims that&#xA;can be a part of it." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="12CD3308B91131BD" />
+            <Tunable type="int" name="enabled" class="TunableRange" default="8" display="Enabled" muid="F1A41399FF81B095" min="2" max="None" description="The maximum number of Sims that can be in this ensemble." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <TunableList name="prohibited_species" class="TunableSet" display="Prohibited Species" muid="9F56C10736A4B2B5" description="A set of species that cannot be added to this type of ensemble." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <TunableEnum type="Species" class="TunableEnumEntry" default="HUMAN" muid="9BA9D2A75770739" static_entries="sims-sim_info_types.Species" description="A species that cannot be added to this type of ensemble." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+        </TunableList>
+
+        <Tunable type="bool" name="rally" class="Tunable" default="True" display="Rally" muid="7EAC572A16CCB7DB" description="If this is True then this ensemble will offer rallying behavior." Deprecated="False" filter="0" group="General" />
+
+        <Tunable type="bool" name="visible" class="Tunable" default="True" display="Visible" muid="98D2ADD4781C85D8" description="If this ensemble is visible and displays to the UI." Deprecated="False" filter="0" group="General" />
+    </Instance>
+</TuningRoot>

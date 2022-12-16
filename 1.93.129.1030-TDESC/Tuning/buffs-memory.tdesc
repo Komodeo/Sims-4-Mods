@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="buffs.memory" muid="CD56B2FCAFD07632">
+        <Class name="MemoryUid" muid="84746E132B06EECC" enum_bit_flag="False" enum_locked="True" enum_sorted="True">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="A14D486911C953FB" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="4A3F067A33A8093B" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="Invalid" muid="E77241EDE92CC28F" enum_value="0" />
+        </Class>
+
+        <Class name="Memory" muid="475550B6FC3BB67C">
+            <TunableList name="MEMORIES" class="TunableMapping" display="Memories" muid="46DF81E40367E515" mapping_key="key" mapping_value="value" Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" mapping_class="MemoryMappingTuple">
+                <TunableTuple class="TunableTuple" muid="3C22380ED64FC10C" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="MemoryUid" name="key" class="TunableEnumEntry" default="Invalid" display="Key" muid="B2425FE630C1916" dynamic_entries="buffs-memory.MemoryUid._elements" static_entries="buffs-memory.MemoryUid" description="The Type of Memory. Should be unique. Defined in MemoryUid." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+                    <TunableTuple name="value" class="TunableMemoryTuple" display="Value" muid="72BEE57C2EEB9C63" Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="name" class="TunableLocalizedString" default="0x0" display="Name" muid="EB08EB9C8C13570D" description="Localization String for the kind of memory." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General" />
+                        <Tunable type="interaction" name="reminisce_affordance" class="TunableReference" display="Reminisce Affordance" muid="165690DEDD501ACF" description="The interaction that is pushed on the Sim when they Reminisce about this Memory. Should most often be from the Reminisce Prototype." allow_none="False" Deprecated="False" filter="0" group="General" restrict="SuperInteraction" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+</TuningRoot>

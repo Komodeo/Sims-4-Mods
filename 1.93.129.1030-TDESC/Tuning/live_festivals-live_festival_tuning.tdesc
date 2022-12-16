@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="live_festivals.live_festival_tuning" muid="B65651D2B7DAA342">
+        <Class name="LiveFestivalEventState" muid="E2CA22509F15D6DB" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="ACTIVE" muid="2EB3A392DBB265F7" enum_value="0" />
+
+            <EnumItem name="DISABLED" muid="A354B04CA15A3073" enum_value="1" />
+        </Class>
+
+        <Class name="LiveFestivalTuning" muid="926116A1937D2717">
+            <TunableList name="LIVE_FESTIVAL_EVENT_DATA" class="TunableMapping" display="Live Festival Event Data" muid="4E694BE8C7AD6794" mapping_key="key" mapping_value="value" description="Defines event data for live events." Deprecated="False" export_modes="client_binary" filter="0" group="General" mapping_class="LiveFestivalEventMap">
+                <TunableTuple class="TunableTuple" muid="FB2DFE462118A368" Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="LiveEventName" name="key" class="TunableEnumEntry" default="DEFAULT" display="Key" muid="D68DBFD601C5F608" dynamic_entries="live_events-live_event_service.LiveEventName._elements" static_entries="live_events-live_event_service.LiveEventName" description="Festival event key." Deprecated="False" filter="0" group="General" invalid_entries="DEFAULT" />
+                    <TunableTuple name="value" class="LiveFestivalEvent" display="Value" muid="F7C67531106441F0" description="Defines a live festival event" Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="end_date" class="TunableChallengeDateTuple" display="End Date (UTC)" muid="E915B81997576B63" description="Date and time (UTC) for when the event is expected to end." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="day" class="TunableRange" default="1" display="Day" muid="80FAA7C55BBA5DC9" min="1" max="31" description="Day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="hour" class="TunableRange" default="0" display="Hour" muid="91F8DC0FDAB527FC" min="0" max="23" description="Hour (24-hour)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="E71B37C0F0E2B798" min="0" max="59" description="Minute" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="month" class="TunableRange" default="1" display="Month" muid="66BAD7592F44A1EA" min="1" max="12" description="Month" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="year" class="TunableRange" default="2021" display="Year" muid="91986F6C02EBB9CD" min="2014" max="None" description="Year" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableTuple name="festival_time" class="LiveFestivalEventDate" display="Festival Time" muid="E5DCB23817227506" description="In-game time of festival." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="day" class="TunableRange" default="0" display="Day" muid="36257649D9AB1E8B" min="0" max="6" description="Day of week, 0 = sunday, 6 = saturday." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="duration" class="Tunable" default="0" display="Duration" muid="D15FF675B96B1206" description="Duration of festival (estimated) in minutes." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="hour" class="TunableRange" default="0" display="Hour" muid="50EA652ECD659F07" min="0" max="23" description="Hour (24-hour)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <Tunable type="str" name="live_event_name" class="Tunable" default="" display="Live Event Name" muid="41CA573CDA6AE454" description="The name of this live festival, as defined by the PMs in the UM message that triggers it.&#xA;This is needed so client can map festivals to their names from the UM messages.&#xA;This should be the same as the name picked as the key for this festival." Deprecated="False" filter="0" group="General" />
+                        <Tunable type="lotdescription" name="lot" class="TunableReference" display="Lot" muid="304F788569BB49C6" description="Reference to the lot associated with this festival." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <Tunable type="int" name="name" class="TunableLocalizedString" default="0x0" display="Name" muid="1F5120B1FB002F19" description="User-facing name for festival to be displayed in UI." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="start_date" class="TunableChallengeDateTuple" display="Start Date (UTC)" muid="64425D0454E6FF7C" description="Date and time (UTC) for when the event is expected to start." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="day" class="TunableRange" default="1" display="Day" muid="25446674C27DC917" min="1" max="31" description="Day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="hour" class="TunableRange" default="0" display="Hour" muid="55A72A78805C5257" min="0" max="23" description="Hour (24-hour)" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="F77F23D6F7FE0D1F" min="0" max="59" description="Minute" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="month" class="TunableRange" default="1" display="Month" muid="F3513C48FACA0E7C" min="1" max="12" description="Month" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="year" class="TunableRange" default="2021" display="Year" muid="F25D770B72FE4F9F" min="2014" max="None" description="Year" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <TunableEnum type="LiveFestivalEventState" name="state" class="TunableEnumEntry" default="ACTIVE" display="State" muid="E3E02C7F65921062" static_entries="live_festivals-live_festival_tuning.LiveFestivalEventState" description="The active state of the event" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="worlddescription" name="street" class="TunableReference" display="Street" muid="A13DFDA0CB21E558" description="Reference to the street associated with this festival." Deprecated="False" filter="0" group="General" pack_safe="True" />
+                        <Tunable type="ResourceKey" name="street_description_image" class="TunableResourceKey" default="None" display="Street Description Image" muid="DEC867F209DECEC1" description="An image which is shown on the map street description tooltip" Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="5BDA30E47684A5BC" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

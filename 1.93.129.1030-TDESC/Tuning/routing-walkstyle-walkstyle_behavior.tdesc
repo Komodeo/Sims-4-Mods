@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="routing.walkstyle.walkstyle_behavior" muid="8E7B7585C9F0AC0">
+        <Class name="WalksStyleBehavior" muid="8F73B9087FD82EA4">
+            <TunableList name="CARRY_INCOMPATIBLE_WALKSTYLES" class="TunableSet" display="Carry Incompatible Walkstyles" muid="D33F1EA211B97A48" description="List of walkstyles that should be considered incompatible with the Sim carrying anything." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="ResourceKey" class="TunableWalkstyle" default="None" muid="2196B6CB132C8139" Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x27c01d95" />
+            </TunableList>
+
+            <TunableList name="TERRAIN_TAG_WALKSTYLES" class="TunableList" display="Terrain Tag Walkstyles" muid="B9EC876EB94C07D0" description="Associate a terrain tag to a specific walkstyle." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="FCAD7D0E5FD7D6B9" description="The terrain tags and walkstyles that are associated." Deprecated="False" filter="0" group="General">
+                    <TunableEnum type="TerrainTag" name="terrain_tag" class="TunableEnumEntry" default="INVALID" display="Terrain Tag" muid="5BF38092972BD39D" static_entries="world-terrain_enums.TerrainTag" description="The terrain tag that applies the tuned walkstyle." Deprecated="False" filter="0" group="General" invalid_entries="INVALID" />
+                    <Tunable type="ResourceKey" name="walkstyle_to_use" class="TunableWalkstyle" default="None" display="Walkstyle To Use" muid="E6C6C95022F06398" description="The walkstyle that should be used on the given terrain type." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x27c01d95" />
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="WALKSTYLE_COST" class="TunableMapping" display="Walkstyle Cost" muid="BAA3AACF032F8AC2" mapping_key="key" mapping_value="value" description="Associate a specific walkstyle to a statistic cost before the walkstyle&#xA;can be activated." Deprecated="False" filter="0" group="General">
+                <TunableTuple class="TunableTuple" muid="EE415E667CA44D83" Deprecated="False" filter="0" group="General">
+                    <Tunable type="ResourceKey" name="key" class="TunableWalkstyle" default="None" display="Key" muid="69A81109355341B5" description="The walkstyle that should have a specified cost when triggered." Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x27c01d95" />
+                    <TunableTuple name="value" class="TunableTuple" display="Value" muid="1A8E0A1EFE2F7DAB" description="Cost data of the specified walkstyle." Deprecated="False" filter="0" group="General">
+                        <Tunable type="int" name="cost" class="TunableRange" default="1" display="Cost" muid="E1AC81B0207D339C" min="0" max="None" description="When the walkstyle is triggered during a route, this is the&#xA;cost that will be substracted from the specified statistic. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="statistic" name="walkstyle_cost_statistic" class="TunableReference" display="Walkstyle Cost Statistic" muid="C642F05DA41EC1A1" description="The statistic we are operating on when the walkstyle is&#xA;triggered." allow_none="False" Deprecated="False" filter="0" group="General" pack_safe="True" />
+                    </TunableTuple>
+                </TunableTuple>
+            </TunableList>
+
+            <TunableList name="WALKSTYLES_OVERRIDE_TELEPORT" class="TunableList" display="Walkstyles Override Teleport" muid="6C2CC2C8718D9397" description="Any walkstyles found here will be able to override the teleport styles&#xA;if they are specified." Deprecated="False" filter="0" group="General">
+                <Tunable type="ResourceKey" class="TunableWalkstyle" default="None" muid="41D1CF503DE94DE6" Deprecated="False" filter="0" group="General" pack_safe="True" resource_types="0x27c01d95" />
+            </TunableList>
+        </Class>
+    </Module>
+
+    <VersionHistory>
+        <ActionList>
+            <Action type="kRemove" old_muid="8BD0A593A44CDC7A" />
+        </ActionList>
+    </VersionHistory>
+</TuningRoot>

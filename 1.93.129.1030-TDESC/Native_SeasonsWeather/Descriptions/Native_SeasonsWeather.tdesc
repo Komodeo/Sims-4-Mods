@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="Native_SeasonsWeather" name="Native_SeasonsWeather" class="Native_SeasonsWeather" module="buildbuy" muid="2E78C42CC65FA378" description="Seasons and weather tuning loaded by native code" export_modes="client_binary, server_binary" path="Native_SeasonsWeather\Descriptions">
+        <TunableList name="LeafDropTuningMap" class="TunableMapping" display="Leaf Drop Tuning Map" muid="FF046A4ED81DEEC0" mapping_key="key_tag" mapping_value="value_leaf_drop_tuple" description="Mapping from leaf drop tags to metadata" mapping_class="Native_SeasonsWeather.LeafDropMapEntry">
+            <TunableTuple name="MapEntry" class="Native_SeasonsWeather.LeafDropMapEntry" muid="44680C32188549E5">
+                <TunableEnum type="Tag" name="key_tag" class="TunableEnumEntry" default="INVALID" display="Leaf Drop Tag" muid="83A090CF6EF7522D" dynamic_entries="tag.Tag._elements" static_entries="tag.Tag" description="Must be one of the Func_DropsLeaves_XXXX tags" binary_type="uint32" />
+                <TunableTuple name="value_leaf_drop_tuple" class="Native_SeasonsWeather.LeafDropValue" display="Leaf Drop Tag Metadata" muid="4DA4731B1CD0BE28">
+                    <Tunable type="float" name="BaseDropDistanceMax" class="Tunable" default="10.0" display="Base Drop Distance Max" muid="A8255CD75179FF47" description="Maximum distance away from the tree that base leaves are dropped (meters)." />
+                    <Tunable type="int" name="DropAmount" class="Tunable" default="150" display="Drop Amount" muid="DD8EAB8B4E17800D" description="Number of leaf tiles that the tree attempts to drop over the entire course of fall." />
+                    <Tunable type="str" name="LeafDropEffect" class="Tunable" default="None" muid="418D4E01CF9AE15D" description="Leaf drop effect name." binary_type="HashCode64" />
+                    <Tunable type="float" name="OverlayDropDistanceMax" class="Tunable" default="5.0" display="Overlay Drop Distance Max" muid="8912F3A971AF4E42" description="Maximum distance away from the tree where overlay leaves (to increase density) are dropped (meters)." />
+                    <Tunable type="float" name="OverlayDropDistanceMin" class="Tunable" default="1.5" display="Overlay Drop Distance Min" muid="25FA5CF628B31560" description="Minimum distance away from the tree where overlay leaves (to increase density) are dropped (meters)." />
+                </TunableTuple>
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

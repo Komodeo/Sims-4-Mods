@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="action" class="WeightedSingleSimLootActions" module="interactions.utils.loot" muid="3B2A3066BAAC21AA" instance_needs_reference="True" instance_subclasses_only="False" path="Actions\Descriptions" use_guid_for_reference="True">
+        <TunableList name="loot_actions" class="TunableList" display="Loot Actions" muid="1728D0538E3C75A4" description="A list of weighted Loot Actions that operate only on one Sim." Deprecated="False" filter="0" group="General">
+            <TunableTuple class="TunableTuple" muid="FA4B9434D00FDA07" Deprecated="False" filter="0" group="General">
+                <TunableTuple name="buff_loot" class="TunableDynamicBuffLootOp" display="Buff Loot" muid="1B249256EA868CAE" description="This loot will give a random buff based on the weight get tuned inside." Deprecated="False" filter="0" group="General">
+                    <TunableVariant type="None" name="buff_reason" class="OptionalTunable" default="disabled" display="Buff Reason" muid="E14C0122B7955F01" description="If set, specify a reason why the buff was added." Deprecated="False" filter="0" group="General">
+                        <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="6D8271E869E18F15" />
+                        <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="3AF4EEBC1F77B517" description="The reason the buff was added. This will be displayed in the&#xA;buff tooltip." Deprecated="False" filter="0" group="General" />
+                    </TunableVariant>
+                    <TunableList name="buffs" class="TunableMapping" display="Buffs" muid="74EAD8F1D2999EFA" mapping_key="key" mapping_value="value" description="            " Deprecated="False" filter="0" group="General">
+                        <TunableTuple class="TunableTuple" muid="F1A74A918B9D797B" Deprecated="False" filter="0" group="General">
+                            <Tunable type="buff" name="key" class="TunableReference" display="Key" muid="7F6292315E21CC53" description="Buff that will get this weight in the random." allow_none="False" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="float" name="value" class="Tunable" default="0" display="Value" muid="C3FE9FCC6BF0D830" description="The weight value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableList>
+                    <TunableTuple name="chance" class="TunableSuccessChance" display="Chance" muid="3E18B8E0D67EE544" description="Percent chance that the loot action will be considered. The&#xA;chance is evaluated just before running the tests." Deprecated="False" filter="0" group="General">
+                        <Tunable type="float" name="base_chance" class="TunablePercent" default="100" display="Base Chance" muid="AF7E1EA7EC6A79C2" min="0" max="100" description="The basic chance of success." Deprecated="False" filter="0" group="General" />
+                        <TunableList name="multipliers" class="TunableList" display="Multipliers" muid="C3934F5AD1D586AD" description="A list of multipliers to apply to base_chance." Deprecated="False" filter="0" group="General">
+                            <TunableTuple class="TunableTuple" muid="3F75448E897D91B9" Deprecated="False" filter="0" group="General">
+                                <Tunable type="float" name="multiplier" class="TunableRange" default="1" display="Multiplier" muid="80C73A589C770745" min="0" max="None" description="The multiplier to apply to base_chance if the associated&#xA;tests pass." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                                <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="741EBF23FCF51CEA" description="A series of tests that must pass in order for multiplier to&#xA;be applied." filter="0" group="General" />
+                            </TunableTuple>
+                        </TunableList>
+                    </TunableTuple>
+                    <TunableEnum type="ParticipantType" name="subject" class="TunableEnumEntry" default="Actor" display="Subject" muid="E490B1809A2DEEE6" static_entries="interactions.ParticipantType" description="" Deprecated="False" filter="0" group="General" invalid_entries="Invalid,All,PickedItemId" />
+                    <TdescFragTag name="subject_filter_tests" class="TunableTestSet" display="Subject Filter Tests" muid="7D15417E0F12AFC3" description="These tests will be run once per subject. If the subject &#xA;participant of this loot action resolves to multiple objects, each &#xA;of those objects will be tested individually. Any subject that &#xA;fails this test will be ignored by this loot. This will have no &#xA;effect on whether we consider the loot to have passed testing on&#xA;on other subjects or targets. We can use this in cases where we &#xA;want to give loot based on some criteria like &quot;All active household&#xA;members that are dogs get this loot&quot;.&#xA;&#xA;These tests will have no effect on &quot;run tests first&quot; as they are&#xA;only used for participant filtering and not to determine loot &#xA;success.&#xA;&#xA;The resolver used for these tests is a SingleObjectResolver based &#xA;on subject sim. This means that test should generally be &#xA;testing against &quot;Actor&quot; and should not assume the presence of &#xA;additional participants that may be present in the containing loot.&#xA;Ask a GPE if you have questions." filter="0" group="General" />
+                    <TdescFragTag name="tests" class="TunableTestSet" display="Tests" muid="C09351009D0EAA4B" description="The test to decide whether the loot action can be applied." filter="0" group="General" />
+                    <TunableVariant type="None" name="text" class="TunableVariant" default="use_default" display="Text" muid="ABDBABE4C41FF98C" description="Specify the display text to use for this tunable. This tuning&#xA;structure may be shared across multiple tunables. It is up to the&#xA;system consuming the tunable to determine in which ways the tuned&#xA;display text is used.&#xA;&#xA;e.g. Loot Operations&#xA; The adventure system auto-generates notifications based on the loot&#xA; that was awarded from a chance card. A loot's display text, if&#xA; used, will be an item in the generated bulleted list. The ability&#xA; to override display text allows tuners to set custom next in such&#xA; notifications.&#xA; &#xA;e.g. Reward Tuning&#xA; Rewards have display text so that, similarly to adventures, a&#xA; bulleted list of entries can be auto-generated when obtained by a&#xA; Sim. Use this tunable to control the text of such entries." Deprecated="False" filter="0" group="General">
+                        <Tunable name="no_text" class="TunableExistance" display="No Text" muid="5BBE3B1D0ECB6EF7" />
+                        <Tunable type="int" name="override" class="TunableLocalizedString" default="0x0" display="Override" muid="DD9AE919E15DB48B" description="Specify a string override. The tokens are different depending on&#xA;the type of tunable." Deprecated="False" filter="0" group="General" />
+                        <Tunable name="use_default" class="TunableExistance" display="Use Default" muid="7482F37A5BC4DD46" />
+                    </TunableVariant>
+                </TunableTuple>
+                <Tunable type="int" name="weight" class="Tunable" default="1" display="Weight" muid="79522684324C96E2" description="Accompanying weight of the loot." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableList>
+    </Instance>
+</TuningRoot>

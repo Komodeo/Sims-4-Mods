@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="aspiration" class="TimedAspiration" module="aspirations.timed_aspiration" muid="7C6A96D90482CAB6" description="An aspiration that is only active for a specific amount of time before it&#xA;will timeout." instance_subclasses_only="False" parents="AspirationBasic" path="Aspirations\Descriptions" use_guid_for_reference="True">
+        <TunableVariant type="None" name="_display_data" class="OptionalTunable" default="disabled" display="Display Data" muid="35E51EDA9E497C13" description="If enabled, specify display data for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="UI">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="1F391ADA98DBC887" />
+            <TunableTuple name="optional_display_mixin" class="OptionalDisplayMixinTunable" display="Optional Display Mixin" muid="82CF1CFC29C3EB72" description="The instance's display data." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="instance_display_description" class="OptionalTunable" default="enabled_display_description" display="Instance Display Description" muid="753D6B3FF806776C" description="If enabled, specify a display description for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="3B455EDFA706556" />
+                    <Tunable type="int" name="enabled_display_description" class="TunableLocalizedString" default="0x0" display="Enabled Display Description" muid="87A8279860DA5E85" description="The instance's description. " Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_icon" class="OptionalTunable" default="enabled_display_icon" display="Instance Display Icon" muid="3447DE1B436F97E3" description="If enabled, specify a display icon for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="67E9D2E0A53757B4" />
+                    <Tunable type="ResourceKey" name="enabled_display_icon" class="TunableIcon" default="None" display="Enabled Display Icon" muid="51E92252533EC25A" description="The instance's icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_name" class="OptionalTunable" default="enabled_display_name" display="Instance Display Name" muid="53C839414596D929" description="If enabled, specify a display name for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="7042F43CD23D7FE0" />
+                    <Tunable type="int" name="enabled_display_name" class="TunableLocalizedString" default="0x0" display="Enabled Display Name" muid="5607B1D45DFC435A" description="The instance's name." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_secondary_icon" class="OptionalTunable" default="disabled" display="Instance Display Secondary Icon" muid="2B6794902D1A1244" description="If enabled, specify a secondary display icon for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="134B18C6D43CB274" />
+                    <Tunable type="ResourceKey" name="enabled_display_secondary_icon" class="TunableIcon" default="None" display="Enabled Display Secondary Icon" muid="F8981567112264E1" description="The instance's icon." Deprecated="False" filter="0" group="General" resource_types="0x2f7d0004" />
+                </TunableVariant>
+                <TunableVariant type="None" name="instance_display_tooltip" class="OptionalTunable" default="enabled_display_tooltip" display="Instance Display Tooltip" muid="189D5A9865CEEC71" description="If enabled, specify a display tooltip for this instance." Deprecated="False" export_modes="client_binary,server_binary,server_xml" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="BF35977D4F19FFB" />
+                    <Tunable type="int" name="enabled_display_tooltip" class="TunableLocalizedString" default="0x0" display="Enabled Display Tooltip" muid="8F4982D990C7AB5C" description="The instance's tooltip. " Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+            </TunableTuple>
+        </TunableVariant>
+
+        <Deleted name="do_not_register_events_on_load" muid="7C03C006D3870AB5" />
+
+        <TunableVariant type="None" name="duration" class="TunableVariant" default="none" display="Duration" muid="A15DE2772B62CD7A" Deprecated="False" filter="0" group="General">
+            <TunableTuple name="duration" class="TunableTimeSpan" display="Duration" muid="926F5FEC70B97578" description="The time that this aspiration is active within the tracker." Deprecated="False" filter="0" group="General">
+                <Tunable type="int" name="days" class="TunableRange" default="0" display="Days" muid="28FAC8DE102CB27D" min="0" max="None" description="Number of days" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="hours" class="TunableRange" default="0" display="Hours" muid="6E1CDADB289F2A51" min="0" max="23" description="Number of hours" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                <Tunable type="int" name="minutes" class="TunableRange" default="0" display="Minutes" muid="C938828A1CF25700" min="0" max="59" description="Number of minutes" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <Tunable name="none" class="TunableExistance" display="None" muid="2622892982D2BFE5" />
+            <TunableTuple name="weekly_schedule" class="TunableWeeklySchedule" display="Weekly Schedule" muid="56AFE05910989483" description="Determines days of the week when the aspiration will deactivate." Deprecated="False" filter="0" group="General">
+                <TunableList name="schedule_entries" class="TunableList" display="Schedule Entries" muid="D1419D1A18836ED9" description="A list of event schedules. Each event is a mapping of days of&#xA;the week to a start_time and duration." Deprecated="False" filter="0" group="General">
+                    <TunableTuple class="TunableScheduleEntry" muid="7BF63FC257F52A05" description="A schedule. Define availability for days of the week. For the set of&#xA;specified days, define an hour of the day and a duration, in hours.&#xA;Optionally, specified if the start time is random within the tuned window." Deprecated="False" filter="0" group="General">
+                        <TunableTuple name="days_available" class="TunableAvailableDays" display="Days Available" muid="E26596B9CB7A75CA" description="Which days of the week to include" Deprecated="False" filter="0" group="General">
+                            <Tunable type="bool" name="0 SUNDAY" class="Tunable" default="False" display="0 Sunday" muid="A347839CFBE8DA7C" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="1 MONDAY" class="Tunable" default="False" display="1 Monday" muid="B6A693292EC3075" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="2 TUESDAY" class="Tunable" default="False" display="2 Tuesday" muid="BE0B675F721C78FB" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="3 WEDNESDAY" class="Tunable" default="False" display="3 Wednesday" muid="DD6D2E2228EEEBBC" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="4 THURSDAY" class="Tunable" default="False" display="4 Thursday" muid="91BA3EA5B003DC23" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="5 FRIDAY" class="Tunable" default="False" display="5 Friday" muid="F1677C410E6CBDFF" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="bool" name="6 SATURDAY" class="Tunable" default="False" display="6 Saturday" muid="C5B8C84DF2B59B74" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                        <Tunable type="float" name="duration" class="Tunable" default="1.0" display="Duration" muid="6AE403230DE69688" description="Duration of this work session in hours." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        <Tunable type="bool" name="random_start" class="Tunable" default="False" display="Random Start" muid="E56EA4B8C7EB5E92" description="If checked, this schedule will have a random start time in the tuned&#xA;window each time." Deprecated="False" filter="0" group="General" />
+                        <TunableEnum type="CareerShiftType" name="schedule_shift_type" class="TunableEnumEntry" default="ALL_DAY" display="Schedule Shift Type" muid="CE282CA0337983B6" static_entries="careers-career_enums.CareerShiftType" description="Shift Type for the schedule, this will be used for validations." Deprecated="False" filter="0" group="General" />
+                        <TunableTuple name="start_time" class="TunableTimeOfDay" display="Start Time" muid="22E3DE3C4AD09389" description="An Hour(24Hr) and Minute representing a time relative to the beginning of a day." Deprecated="False" filter="0" group="General">
+                            <Tunable type="int" name="hour" class="TunableRange" default="9" display="Hour" muid="186915B16EA1C745" min="0" max="23" description="Hour of the day" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                            <Tunable type="int" name="minute" class="TunableRange" default="0" display="Minute" muid="E9E529B872F073F4" min="0" max="59" description="Minute of Hour" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+                        </TunableTuple>
+                    </TunableTuple>
+                </TunableList>
+            </TunableTuple>
+        </TunableVariant>
+
+        <TunableList name="on_cancel_loot_actions" class="TunableList" display="On Cancel Loot Actions" muid="C7016F551DA77B73" description="List of loots operations that will be awarded when &#xA;this aspiration is cancelled." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="7491E14BB8851F14" allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+        </TunableList>
+
+        <TunableList name="on_complete_loot_actions" class="TunableList" display="On Complete Loot Actions" muid="2264CC91FF2F4F5E" description="List of loots operations that will be awarded when &#xA;this aspiration complete." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="F9888E96AE1C0E65" allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+        </TunableList>
+
+        <TunableList name="on_failure_loot_actions" class="TunableList" display="On Failure Loot Actions" muid="AFC749D5836698E6" description="List of loots operations that will be awarded when &#xA;this aspiration fails." Deprecated="False" filter="0" group="General">
+            <Tunable type="action" class="TunableReference" muid="C351CD40BE0E9B9A" allow_none="False" Deprecated="False" filter="0" group="General" restrict="LootActions" />
+        </TunableList>
+
+        <TdescFragTag name="tests" class="TunableTestSetWithTooltip" display="Tests" muid="560C67E75F3899E9" description="Test set that must pass for this aspiration to be available." filter="0" group="General" />
+
+        <TunableVariant type="None" name="warning_buff" class="OptionalTunable" default="disabled" display="Warning Buff" muid="1F2CAFB9DF11D8C0" description="If enabled, the buff is given to the Sim as a warning the aspiration&#xA;duration is ending." Deprecated="False" filter="0" group="General">
+            <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="A89BA5DCB1086853" />
+            <TunableTuple name="enabled" class="TunableBuffReference" display="Enabled" muid="76FE17D8F676AEB" description="The buff that is given to the Sim when the aspiration is getting&#xA;close to timing out." Deprecated="False" filter="0" group="General">
+                <TunableVariant type="None" name="buff_reason" class="OptionalTunable" default="disabled" display="Buff Reason" muid="E52796C83868DF1F" description="If set, specify a reason why the buff was added." Deprecated="False" filter="0" group="General">
+                    <Tunable name="disabled" class="TunableExistance" display="Disabled" muid="D78B8C185EDC47B" />
+                    <Tunable type="int" name="enabled" class="TunableLocalizedString" default="0x0" display="Enabled" muid="5731FD82BD89894D" description="The reason the buff was added. This will be displayed in the&#xA;buff tooltip." Deprecated="False" filter="0" group="General" />
+                </TunableVariant>
+                <Tunable type="buff" name="buff_type" class="TunableReference" display="Buff Type" muid="B98A5196E8ECA3DE" description="Buff that will get added to sim." allow_none="False" Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="objects.components.spawner_component" muid="FD404F855D8267E8">
+        <Class name="GlobalObjectSpawnerTuning" muid="5C678DA29A7A2D1C">
+            <Tunable type="float" name="SPAWN_ON_GROUND_FGL_HEIGHT_TOLERANCE" class="Tunable" default="0.1" display="Spawn On Ground Fgl Height Tolerance" muid="A207E2603029479B" description="Maximum height tolerance on the terrain we will use for the placement &#xA;of the spawned object.&#xA;If the spawned objects have interactions on them, this value will&#xA;generate a height difference between the object and the sim.  Because&#xA;of this if this value changes all animations on spawned objects should&#xA;be verified.  Include a GPE and an Animator when making changes to &#xA;this value. " tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+
+        <Class name="SpawnerActionEnum" muid="138DB08B239DAF4F" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="SPAWNER_DISABLE" muid="83A77E405322BFE1" enum_value="0" />
+
+            <EnumItem name="SPAWNER_ENABLE" muid="AB94FF8C3DD339EE" enum_value="1" />
+        </Class>
+
+        <Class name="SpawnerComponent" muid="5302D7C24A171F92">
+            <Tunable type="statistic" name="GROUND_SPAWNER_DECAY_COMMODITY" class="TunableReference" display="Ground Spawner Decay Commodity" muid="8295A2C21A51B3B1" description="Commodity which will trigger the ground spawner of an object on decay." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="statistic" name="SLOT_SPAWNER_DECAY_COMMODITY" class="TunableReference" display="Slot Spawner Decay Commodity" muid="81184158792F7068" description="Commodity which will trigger the slot spawner of an object on decay." allow_none="False" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="SPAWNER_COMMODITY_RESET_VARIANCE" class="TunableRange" default="0" display="Spawner Commodity Reset Variance" muid="E26AC5307E569751" min="0" max="None" description="Max variance to apply when the spawn commodity is being reset to its&#xA;threshold value.  This is meant to add some randomness on how spawners&#xA;will create objects.&#xA;&#xA;e.g.  After a spawner creates an objects its spawn statistic will go&#xA;back to 100-RandomValue from 0 to Variance this way it wont always start&#xA;at the same time" tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+
+        <Class name="SpawnerInitializer" muid="9BB1FE8EA555F038">
+            <Tunable type="int" name="SPAWN_DELAYED_END" class="TunableRange" default="60" display="Spawn Delayed End" muid="B415ED18C3C198F0" min="0" max="None" description="This is the maximum amount of sim minutes we wait before we start&#xA;spawning objects for the first time in the zone at SPAWN_FREQUENCY. We&#xA;pick a random time between the start and end delayed time." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="SPAWN_DELAYED_START" class="TunableRange" default="15" display="Spawn Delayed Start" muid="B570B5D4A6A46E17" min="0" max="None" description="This is the minimum amount of sim minutes we wait before we start&#xA;spawning objects for the first time in the zone at SPAWN_FREQUENCY. We&#xA;pick a random time between the start and end delayed time." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="int" name="SPAWN_FREQUENCY" class="Tunable" default="5" display="Spawn Frequency" muid="D2C6542A0D37EC6D" description="This is the frequency at which the spawner components spawn the&#xA;individual objects for the first time you are playing in the zone.&#xA;Please talk with a GPE about performance concerns if you tune this&#xA;value." tuning_state="NeedsTuning" Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

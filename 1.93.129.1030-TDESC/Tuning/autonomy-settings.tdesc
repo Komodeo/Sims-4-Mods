@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Module name="autonomy.settings" muid="4E70791B127BAAFD">
+        <Class name="AutonomyState" muid="A18140AF087941D6" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="DISABLED" muid="3DCCC255D95270AF" enum_value="0" />
+
+            <EnumItem name="FULL" muid="1F011BCB8643689" enum_value="3" />
+
+            <EnumItem name="LIMITED_ONLY" muid="9C93A37907F549E0" enum_value="1" />
+
+            <EnumItem name="MEDIUM" muid="8C921D93B8D2C5CD" enum_value="2" />
+
+            <EnumItem name="UNDEFINED" muid="5F7D9305006C562E" enum_value="-1" />
+        </Class>
+
+        <Class name="AutonomyRandomization" muid="6D48FD7E39D2A84D" enum_bit_flag="False" enum_locked="False">
+            <EnumItem name="DISABLED" muid="25100085728C759" enum_value="0" />
+
+            <EnumItem name="ENABLED" muid="CE846A3B2C847D8C" enum_value="1" />
+
+            <EnumItem name="UNDEFINED" muid="185F847254695333" enum_value="-1" />
+        </Class>
+
+        <Class name="AutonomySettingsGroup" muid="20B62C29926DEFC9" enum_bit_flag="False" enum_locked="False">
+            <TunableList name="_elements" class="TunableDynamicEnumElements" display="Elements" muid="518D7980DA72C4CF" description="The list of elements in the dynamic enumeration." Deprecated="False" filter="0" group="General" unique_entries="true">
+                <Tunable type="str" class="TunableEnumItem" default="None" muid="2A68F4E9B53B2371" Deprecated="False" filter="0" group="General" />
+            </TunableList>
+
+            <EnumItem name="DEFAULT" muid="53F7267A4EFB6079" enum_value="0" />
+        </Class>
+
+        <Class name="AutonomySettings" muid="E35ED6E956774A81">
+            <TunableEnum type="AutonomyState" name="STARTING_DEFAULT_AUTONOMY_STATE" class="TunableEnumEntry" default="FULL" display="Starting Default Autonomy State" muid="53ACE4152EB4DDA6" static_entries="autonomy-settings.AutonomyState" description="The autonomy state for the &quot;default&quot; layer.  If a Sim doesn't have&#xA;anything that overrides their autonomy state, this will be used instead.&#xA;It is NOT used to define the default option in the autonomy options&#xA;menu, it applies to all Sims that don't have an overridden autonomy&#xA;state setting.  Sims in the playable household will all have an&#xA;overridden setting." Deprecated="False" filter="0" group="General" />
+
+            <TunableEnum type="AutonomyRandomization" name="STARTING_DEFAULT_RANDOMIZATION" class="TunableEnumEntry" default="ENABLED" display="Starting Default Randomization" muid="D9C74061A7E7CFCE" static_entries="autonomy-settings.AutonomyRandomization" description="The randomization state for the &quot;default&quot; layer.  If a Sim doesn't have&#xA;anything that overrides their randomization state, this will be used&#xA;instead." Deprecated="False" filter="0" group="General" />
+
+            <TunableEnum type="AutonomyState" name="STARTING_HOUSEHOLD_AUTONOMY_STATE" class="TunableEnumEntry" default="FULL" display="Starting Household Autonomy State" muid="DE97DEFC8AE58234" static_entries="autonomy-settings.AutonomyState" description="The default autonomy setting when one hasn't been loaded.  This is the&#xA;default value for the autonomy drop-down in the options menu." Deprecated="False" filter="0" group="General" />
+
+            <Tunable type="bool" name="STARTING_SELECTED_SIM_AUTONOMY" class="Tunable" default="True" display="Starting Selected Sim Autonomy" muid="35EF788CEF74E228" description="The default autonomy setting for the selected sim's autonomy.  If&#xA;checked, the selected sim will behave normally according to the autonomy&#xA;state.  If unchecked, the selected sim will not run autonomy at all." Deprecated="False" filter="0" group="General" />
+        </Class>
+    </Module>
+</TuningRoot>

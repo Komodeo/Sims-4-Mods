@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="situation_goal" class="SituationGoalCompound" module="situations.situation_goal_compound" muid="155779131EC58B5B" description="Compound situation goal.&#xA;&#xA;Depending on the Evaluation Mode tunable, this can pass if either&#xA;(a) any sub goals pass, or&#xA;(b) all sub goals pass" instance_needs_reference="True" instance_subclasses_only="False" parents="SituationGoal" path="SituationGoals\Descriptions" use_guid_for_reference="True">
+        <Deleted name="_iterations" muid="9F492F37E52FFF7D" />
+
+        <TunableVariant type="None" name="evaluation_mode" class="TunableVariant" default="any" display="Evaluation Mode" muid="AA2FF7F261DEFDC4" description="Determines how progress of the compound goal is tracked.&#xA;&#xA;Any - Compound goal completes when any sub-goals complete.&#xA;All - Compound goal completes when all sub-goals complete." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="all" class="Tunable_EvalModeAll" display="All" muid="E11687BC2F038B0E" description="Evaluation mode where a compound goal is completed if all of its sub-goals&#xA;are completed." Deprecated="False" filter="0" group="General" />
+            <TunableTuple name="any" class="Tunable_EvalModeAny" display="Any" muid="784CE016CF1D73C" description="Evaluation mode where a compound goal is completed if any of its sub-goals&#xA;are completed." Deprecated="False" filter="0" group="General" />
+        </TunableVariant>
+
+        <Deleted name="score_on_iteration_complete" muid="2768065EAD1FEB79" />
+
+        <TunableList name="situation_goals" class="TunableList" display="Situation Goals" muid="E3D0C71C0B6D4B48" min="2" description="If any of the situation goal passes this situation goal will pass too." Deprecated="False" filter="0" group="General" unique_entries="true">
+            <Tunable type="situation_goal" class="TunableReference" muid="3E226EC653EEE987" description="If this situation goal passes, pass this compound one." allow_none="False" Deprecated="False" filter="0" group="General" />
+        </TunableList>
+    </Instance>
+</TuningRoot>

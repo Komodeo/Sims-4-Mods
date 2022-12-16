@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<TuningRoot>
+    <Instance instance_type="interaction" class="GoToSpecificLotTravelInteraction" module="sims.self_interactions" muid="807E84740D7136AB" description="Interaction that sends a Sim to a specific lot defined in tuning." instance_needs_reference="True" instance_subclasses_only="False" parents="SuperInteraction, Interaction" path="Interactions\Descriptions" use_guid_for_reference="True">
+        <Tunable type="bool" name="check_region_compatibility" class="Tunable" default="False" display="Check Region Compatibility" muid="5093C3CB58587336" description="If checked, the interaction will fail if the actor's region is not&#xA;compatible with the destination region." Deprecated="False" filter="0" group="General" />
+
+        <TunableVariant type="None" name="destination" class="TunableVariant" default="participant_home_zone" display="Destination" muid="534D358A9BC7FE3E" description="This is the process of how we determine which zone the Sim will&#xA;travel to." Deprecated="False" filter="0" group="General">
+            <TunableTuple name="career_customer_lot" class="TunableTravelCareerCustomerLot" display="Career Customer Lot" muid="E73BD0EA02A12FBC" description="Travel to the Sim's customer's lot." Deprecated="False" filter="0" group="General">
+                <Tunable type="career" name="career" class="TunableReference" display="Career" muid="D183B87E08FE6DD4" description="The career used to look up the customer's lot." allow_none="False" Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="ParticipantTypeSingleSim" name="participant" class="TunableEnumEntry" default="Actor" display="Participant" muid="8C18A968DC53225C" static_entries="interactions.ParticipantTypeSingleSim" description="The Sim whose career to test." Deprecated="False" filter="0" group="General" invalid_entries="Invalid" />
+            </TunableTuple>
+            <TunableTuple name="object_household_owner_zone" class="TunableTravelObjectHouseholdOwnerHomeZone" display="Object Household Owner Zone" muid="7E7A6530D1169D45" description="Resolves an object's owner household's home zone id." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="ParticipantTypeObject" name="participant" class="TunableEnumEntry" default="Object" display="Participant" muid="8625F0C2885CBA43" static_entries="interactions.ParticipantTypeObject" description="The object whose household we want to visit." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="participant_home_zone" class="TunableTravelParticipantHomeZone" display="Participant Home Zone" muid="B6010F5BAE67375C" description="Resolves into the zone id where a tuned participant lives." Deprecated="False" filter="0" group="General">
+                <Tunable type="bool" name="allow_travel_group_zone" class="Tunable" default="True" display="Allow Travel Group Zone" muid="5E7566FBD211AA37" description="Whether or not we include the participant's travel group home." Deprecated="False" filter="0" group="General" />
+                <TunableEnum type="ParticipantTypeSingle" name="participant_with_home" class="TunableEnumEntry" default="Actor" display="Participant With Home" muid="EB9DA9AEF6872F18" static_entries="interactions.ParticipantTypeSingle" description="The participant whose home we want to visit." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="participant_zone" class="TunableTravelParticipantZone" display="Participant Zone" muid="440BB43601053418" description="Resolves into the zone id where a tuned participant is currently at." Deprecated="False" filter="0" group="General">
+                <TunableEnum type="ParticipantTypeSingle" name="participant_to_visit" class="TunableEnumEntry" default="TargetSim" display="Participant To Visit" muid="5AC6543BFD42340C" static_entries="interactions.ParticipantTypeSingle" description="The participant we want to visit." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+            <TunableTuple name="specific_lot" class="TunableTravelSpecificLot" display="Specific Lot" muid="391FB4408F19B443" description="Resolves into a zone_id for a specific tuned lot." Deprecated="False" filter="0" group="General">
+                <Tunable type="lotdescription" name="destination_lot" class="TunableReference" display="Destination Lot" muid="982DBC7F68B9E708" description="The lot description of the destination lot." Deprecated="False" filter="0" group="General" />
+            </TunableTuple>
+        </TunableVariant>
+    </Instance>
+</TuningRoot>
